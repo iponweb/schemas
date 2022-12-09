@@ -1,0 +1,14 @@
+{
+  "type": "object",
+  "properties": {
+    "enabled": {
+      "description": "Enabled enables consolidation if it has been set",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

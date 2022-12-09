@@ -1,0 +1,50 @@
+{
+  "description": "ConstraintTemplatePodStatusStatus defines the observed state of ConstraintTemplatePodStatus.",
+  "type": "object",
+  "properties": {
+    "errors": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "$ref": "_definitions.json#/definitions/sh.gatekeeper.frameworks.constraint.pkg.apis.templates.v1beta1.CreateCRDError"
+      }
+    },
+    "id": {
+      "description": "Important: Run \"make\" to regenerate code after modifying this file",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "observedGeneration": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int64"
+    },
+    "operations": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "templateUID": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

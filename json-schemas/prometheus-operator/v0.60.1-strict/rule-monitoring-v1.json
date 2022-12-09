@@ -1,0 +1,59 @@
+{
+  "description": "Rule describes an alerting or recording rule See Prometheus documentation: [alerting](https://www.prometheus.io/docs/prometheus/latest/configuration/alerting_rules/) or [recording](https://www.prometheus.io/docs/prometheus/latest/configuration/recording_rules/#recording-rules) rule",
+  "type": "object",
+  "required": [
+    "expr"
+  ],
+  "properties": {
+    "alert": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "annotations": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "expr": {
+      "default": {},
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.util.intstr.IntOrString"
+    },
+    "for": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "labels": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "record": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

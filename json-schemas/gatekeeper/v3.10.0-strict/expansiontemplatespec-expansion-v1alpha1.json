@@ -1,0 +1,38 @@
+{
+  "description": "ExpansionTemplateSpec defines the desired state of ExpansionTemplate.",
+  "type": "object",
+  "properties": {
+    "applyTo": {
+      "description": "ApplyTo lists the specific groups, versions and kinds of generator resources which will be expanded.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/sh.gatekeeper.pkg.mutation.match.ApplyTo"
+      }
+    },
+    "enforcementAction": {
+      "description": "EnforcementAction specifies the enforcement action to be used for resources matching the ExpansionTemplate. Specifying an empty value will use the enforcement action specified by the Constraint in violation.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "generatedGVK": {
+      "description": "GeneratedGVK specifies the GVK of the resources which the generator resource creates.",
+      "default": {},
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.apis.expansion.v1alpha1.GeneratedGVK"
+    },
+    "templateSource": {
+      "description": "TemplateSource specifies the source field on the generator resource to use as the base for expanded resource. For Pod-creating generators, this is usually spec.template",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

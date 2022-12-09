@@ -1,0 +1,37 @@
+{
+  "description": "Sigv4 optionally configures AWS's Signature Verification 4 signing process to sign requests. Cannot be set at the same time as basic_auth or authorization.",
+  "type": "object",
+  "properties": {
+    "accessKey": {
+      "description": "AccessKey is the AWS API key. If blank, the environment variable `AWS_ACCESS_KEY_ID` is used.",
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SecretKeySelector"
+    },
+    "profile": {
+      "description": "Profile is the named AWS profile used to authenticate.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "region": {
+      "description": "Region is the AWS region. If blank, the region from the default credentials chain used.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "roleArn": {
+      "description": "RoleArn is the named AWS profile used to authenticate.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "secretKey": {
+      "description": "SecretKey is the AWS API secret. If blank, the environment variable `AWS_SECRET_ACCESS_KEY` is used.",
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SecretKeySelector"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

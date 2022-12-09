@@ -1,0 +1,155 @@
+{
+  "description": "SlackConfig configures notifications via Slack. See https://prometheus.io/docs/alerting/latest/configuration/#slack_config",
+  "type": "object",
+  "properties": {
+    "actions": {
+      "description": "A list of Slack actions that are sent with each notification.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.SlackAction"
+      }
+    },
+    "apiURL": {
+      "description": "The secret's key that contains the Slack webhook URL. The secret needs to be in the same namespace as the AlertmanagerConfig object and accessible by the Prometheus Operator.",
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.SecretKeySelector"
+    },
+    "callbackId": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "channel": {
+      "description": "The channel or user to send notifications to.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "color": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "fallback": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "fields": {
+      "description": "A list of Slack fields that are sent with each notification.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.SlackField"
+      }
+    },
+    "footer": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "httpConfig": {
+      "description": "HTTP client configuration.",
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.HTTPConfig"
+    },
+    "iconEmoji": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "iconURL": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "imageURL": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "linkNames": {
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "mrkdwnIn": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "pretext": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "sendResolved": {
+      "description": "Whether or not to notify about resolved alerts.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "shortFields": {
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "text": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "thumbURL": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "title": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "titleLink": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "username": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

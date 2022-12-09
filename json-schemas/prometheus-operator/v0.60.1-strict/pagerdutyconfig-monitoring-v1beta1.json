@@ -1,0 +1,116 @@
+{
+  "description": "PagerDutyConfig configures notifications via PagerDuty. See https://prometheus.io/docs/alerting/latest/configuration/#pagerduty_config",
+  "type": "object",
+  "properties": {
+    "class": {
+      "description": "The class/type of the event.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "client": {
+      "description": "Client identification.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "clientURL": {
+      "description": "Backlink to the sender of notification.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "component": {
+      "description": "The part or component of the affected system that is broken.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "description": {
+      "description": "Description of the incident.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "details": {
+      "description": "Arbitrary key/value pairs that provide further detail about the incident.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.KeyValue"
+      }
+    },
+    "group": {
+      "description": "A cluster or grouping of sources.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "httpConfig": {
+      "description": "HTTP client configuration.",
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.HTTPConfig"
+    },
+    "pagerDutyImageConfigs": {
+      "description": "A list of image details to attach that provide further detail about an incident.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.PagerDutyImageConfig"
+      }
+    },
+    "pagerDutyLinkConfigs": {
+      "description": "A list of link details to attach that provide further detail about an incident.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.PagerDutyLinkConfig"
+      }
+    },
+    "routingKey": {
+      "description": "The secret's key that contains the PagerDuty integration key (when using Events API v2). Either this field or `serviceKey` needs to be defined. The secret needs to be in the same namespace as the AlertmanagerConfig object and accessible by the Prometheus Operator.",
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.SecretKeySelector"
+    },
+    "sendResolved": {
+      "description": "Whether or not to notify about resolved alerts.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "serviceKey": {
+      "description": "The secret's key that contains the PagerDuty service key (when using integration type \"Prometheus\"). Either this field or `routingKey` needs to be defined. The secret needs to be in the same namespace as the AlertmanagerConfig object and accessible by the Prometheus Operator.",
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.SecretKeySelector"
+    },
+    "severity": {
+      "description": "Severity of the incident.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "url": {
+      "description": "The URL to send requests to.",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

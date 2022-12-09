@@ -1,0 +1,26 @@
+{
+  "type": "object",
+  "properties": {
+    "dump": {
+      "description": "Also dump the state of OPA with the trace. Set to `All` to dump everything.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "kind": {
+      "description": "Only trace requests of the following GroupVersionKind",
+      "default": {},
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.apis.config.v1alpha1.GVK"
+    },
+    "user": {
+      "description": "Only trace requests from the specified user",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

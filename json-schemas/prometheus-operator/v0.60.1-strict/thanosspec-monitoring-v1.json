@@ -1,0 +1,145 @@
+{
+  "description": "ThanosSpec defines parameters for a Prometheus server within a Thanos deployment.",
+  "type": "object",
+  "properties": {
+    "additionalArgs": {
+      "description": "AdditionalArgs allows setting additional arguments for the Thanos container. The arguments are passed as-is to the Thanos container which may cause issues if they are invalid or not supported the given Thanos version. In case of an argument conflict (e.g. an argument which is already set by the operator itself) or when providing an invalid argument the reconciliation will fail and an error will be logged.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.Argument"
+      }
+    },
+    "baseImage": {
+      "description": "Thanos base image if other than default. Deprecated: use 'image' instead",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "grpcListenLocal": {
+      "description": "If true, the Thanos sidecar listens on the loopback interface for the gRPC endpoints. It has no effect if `listenLocal` is true.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "grpcServerTlsConfig": {
+      "description": "GRPCServerTLSConfig configures the TLS parameters for the gRPC server providing the StoreAPI. Note: Currently only the CAFile, CertFile, and KeyFile fields are supported. Maps to the '--grpc-server-tls-*' CLI args.",
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.TLSConfig"
+    },
+    "httpListenLocal": {
+      "description": "If true, the Thanos sidecar listens on the loopback interface for the HTTP endpoints. It has no effect if `listenLocal` is true.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "image": {
+      "description": "Image if specified has precedence over baseImage, tag and sha combinations. Specifying the version is still necessary to ensure the Prometheus Operator knows what version of Thanos is being configured.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "listenLocal": {
+      "description": "If true, the Thanos sidecar listens on the loopback interface for the HTTP and gRPC endpoints. It takes precedence over `grpcListenLocal` and `httpListenLocal`. Deprecated: use `grpcListenLocal` and `httpListenLocal` instead.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "logFormat": {
+      "description": "LogFormat for Thanos sidecar to be configured with.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "logLevel": {
+      "description": "LogLevel for Thanos sidecar to be configured with.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "minTime": {
+      "description": "MinTime for Thanos sidecar to be configured with. Option can be a constant time in RFC3339 format or time duration relative to current time, such as -1d or 2h45m. Valid duration units are ms, s, m, h, d, w, y.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "objectStorageConfig": {
+      "description": "ObjectStorageConfig configures object storage in Thanos. Alternative to ObjectStorageConfigFile, and lower order priority.",
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SecretKeySelector"
+    },
+    "objectStorageConfigFile": {
+      "description": "ObjectStorageConfigFile specifies the path of the object storage configuration file. When used alongside with ObjectStorageConfig, ObjectStorageConfigFile takes precedence.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "readyTimeout": {
+      "description": "ReadyTimeout is the maximum time Thanos sidecar will wait for Prometheus to start. Eg 10m",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "resources": {
+      "description": "Resources defines the resource requirements for the Thanos sidecar. If not provided, no requests/limits will be set",
+      "default": {},
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ResourceRequirements"
+    },
+    "sha": {
+      "description": "SHA of Thanos container image to be deployed. Defaults to the value of `version`. Similar to a tag, but the SHA explicitly deploys an immutable container image. Version and Tag are ignored if SHA is set. Deprecated: use 'image' instead.  The image digest can be specified as part of the image URL.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "tag": {
+      "description": "Tag of Thanos sidecar container image to be deployed. Defaults to the value of `version`. Version is ignored if Tag is set. Deprecated: use 'image' instead.  The image tag can be specified as part of the image URL.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "tracingConfig": {
+      "description": "TracingConfig configures tracing in Thanos. This is an experimental feature, it may change in any upcoming release in a breaking way.",
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SecretKeySelector"
+    },
+    "tracingConfigFile": {
+      "description": "TracingConfig specifies the path of the tracing configuration file. When used alongside with TracingConfig, TracingConfigFile takes precedence.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "version": {
+      "description": "Version describes the version of Thanos to use.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "volumeMounts": {
+      "description": "VolumeMounts allows configuration of additional VolumeMounts on the output StatefulSet definition. VolumeMounts specified will be appended to other VolumeMounts in the thanos-sidecar container.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.VolumeMount"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

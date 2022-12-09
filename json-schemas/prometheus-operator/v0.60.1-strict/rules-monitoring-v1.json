@@ -1,0 +1,12 @@
+{
+  "description": "/--rules.*/ command-line arguments",
+  "type": "object",
+  "properties": {
+    "alert": {
+      "default": {},
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.RulesAlert"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

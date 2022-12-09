@@ -1,0 +1,76 @@
+{
+  "description": "QueueConfig allows the tuning of remote write's queue_config parameters. This object is referenced in the RemoteWriteSpec object.",
+  "type": "object",
+  "properties": {
+    "batchSendDeadline": {
+      "description": "BatchSendDeadline is the maximum time a sample will wait in buffer.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "capacity": {
+      "description": "Capacity is the number of samples to buffer per shard before we start dropping them.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32"
+    },
+    "maxBackoff": {
+      "description": "MaxBackoff is the maximum retry delay.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "maxRetries": {
+      "description": "MaxRetries is the maximum number of times to retry a batch on recoverable errors.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32"
+    },
+    "maxSamplesPerSend": {
+      "description": "MaxSamplesPerSend is the maximum number of samples per send.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32"
+    },
+    "maxShards": {
+      "description": "MaxShards is the maximum number of shards, i.e. amount of concurrency.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32"
+    },
+    "minBackoff": {
+      "description": "MinBackoff is the initial retry delay. Gets doubled for every retry.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "minShards": {
+      "description": "MinShards is the minimum number of shards, i.e. amount of concurrency.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32"
+    },
+    "retryOnRateLimit": {
+      "description": "Retry upon receiving a 429 status code from the remote-write storage. This is experimental feature and might change in the future.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

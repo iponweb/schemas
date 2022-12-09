@@ -1,0 +1,19 @@
+{
+  "type": "object",
+  "properties": {
+    "externalData": {
+      "description": "ExternalData describes the external data provider to be used for mutation.",
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.apis.mutations.v1alpha1.ExternalData"
+    },
+    "fromMetadata": {
+      "description": "FromMetadata assigns a value from the specified metadata field.",
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.apis.mutations.v1alpha1.FromMetadata"
+    },
+    "value": {
+      "description": "Value is a constant value that will be assigned to `location`",
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.pkg.mutation.types.Anything"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

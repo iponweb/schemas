@@ -1,0 +1,59 @@
+{
+  "description": "OAuth2 allows an endpoint to authenticate with OAuth2. More info: https://prometheus.io/docs/prometheus/latest/configuration/configuration/#oauth2",
+  "type": "object",
+  "required": [
+    "clientId",
+    "clientSecret",
+    "tokenUrl"
+  ],
+  "properties": {
+    "clientId": {
+      "description": "The secret or configmap containing the OAuth2 client id",
+      "default": {},
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.SecretOrConfigMap"
+    },
+    "clientSecret": {
+      "description": "The secret containing the OAuth2 client secret",
+      "default": {},
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SecretKeySelector"
+    },
+    "endpointParams": {
+      "description": "Parameters to append to the token URL",
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "scopes": {
+      "description": "OAuth2 scopes used for the token request",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "tokenUrl": {
+      "description": "The URL to fetch the token from",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

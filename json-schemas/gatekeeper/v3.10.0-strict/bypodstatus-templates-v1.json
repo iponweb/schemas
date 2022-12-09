@@ -1,0 +1,32 @@
+{
+  "description": "ByPodStatus defines the observed state of ConstraintTemplate as seen by an individual controller",
+  "type": "object",
+  "properties": {
+    "errors": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/sh.gatekeeper.frameworks.constraint.pkg.apis.templates.v1.CreateCRDError"
+      }
+    },
+    "id": {
+      "description": "a unique identifier for the pod that wrote the status",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "observedGeneration": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int64"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

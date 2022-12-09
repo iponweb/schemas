@@ -1,0 +1,57 @@
+{
+  "description": "ConstraintPodStatusStatus defines the observed state of ConstraintPodStatus.",
+  "type": "object",
+  "properties": {
+    "constraintUID": {
+      "description": "Storing the constraint UID allows us to detect drift, such as when a constraint has been recreated after its CRD was deleted out from under it, interrupting the watch",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "enforced": {
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "errors": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/sh.gatekeeper.apis.status.v1beta1.Error"
+      }
+    },
+    "id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "observedGeneration": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int64"
+    },
+    "operations": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

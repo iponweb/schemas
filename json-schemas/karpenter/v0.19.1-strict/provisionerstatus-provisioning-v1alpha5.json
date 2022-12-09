@@ -1,0 +1,34 @@
+{
+  "description": "ProvisionerStatus defines the observed state of Provisioner",
+  "type": "object",
+  "properties": {
+    "conditions": {
+      "description": "Conditions is the set of conditions required for this provisioner to scale its target, and indicates whether or not those conditions are met.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/dev.knative.pkg.apis.Condition"
+      }
+    },
+    "lastScaleTime": {
+      "description": "LastScaleTime is the last time the Provisioner scaled the number of nodes",
+      "$ref": "_definitions.json#/definitions/dev.knative.pkg.apis.VolatileTime"
+    },
+    "resources": {
+      "description": "Resources is the list of resources that have been provisioned.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.api.resource.Quantity"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

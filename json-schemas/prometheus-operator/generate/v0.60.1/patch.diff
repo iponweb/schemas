@@ -1,0 +1,33 @@
+diff --git a/pkg/apis/monitoring/v1/doc.go b/pkg/apis/monitoring/v1/doc.go
+index 64c4725..2728037 100644
+--- a/pkg/apis/monitoring/v1/doc.go
++++ b/pkg/apis/monitoring/v1/doc.go
+@@ -14,5 +14,6 @@
+ 
+ // +k8s:deepcopy-gen=package
+ // +groupName=monitoring.coreos.com
++// +k8s:openapi-gen=true
+ 
+ package v1
+diff --git a/pkg/apis/monitoring/v1alpha1/doc.go b/pkg/apis/monitoring/v1alpha1/doc.go
+index aca68fd..796b535 100644
+--- a/pkg/apis/monitoring/v1alpha1/doc.go
++++ b/pkg/apis/monitoring/v1alpha1/doc.go
+@@ -14,5 +14,6 @@
+ 
+ // +k8s:deepcopy-gen=package
+ // +groupName=monitoring.coreos.com
++// +k8s:openapi-gen=true
+ 
+ package v1alpha1
+diff --git a/pkg/apis/monitoring/v1beta1/doc.go b/pkg/apis/monitoring/v1beta1/doc.go
+index 5b75b14..73b949d 100644
+--- a/pkg/apis/monitoring/v1beta1/doc.go
++++ b/pkg/apis/monitoring/v1beta1/doc.go
+@@ -14,5 +14,6 @@
+ 
+ // +k8s:deepcopy-gen=package
+ // +groupName=monitoring.coreos.com
++// +k8s:openapi-gen=true
+ 
+ package v1beta1

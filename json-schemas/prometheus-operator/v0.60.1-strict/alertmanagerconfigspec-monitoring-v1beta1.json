@@ -1,0 +1,45 @@
+{
+  "description": "AlertmanagerConfigSpec is a specification of the desired behavior of the Alertmanager configuration. By definition, the Alertmanager configuration only applies to alerts for which the `namespace` label is equal to the namespace of the AlertmanagerConfig resource.",
+  "type": "object",
+  "properties": {
+    "inhibitRules": {
+      "description": "List of inhibition rules. The rules will only apply to alerts matching the resource's namespace.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.InhibitRule"
+      }
+    },
+    "receivers": {
+      "description": "List of receivers.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.Receiver"
+      }
+    },
+    "route": {
+      "description": "The Alertmanager route definition for alerts matching the resource's namespace. If present, it will be added to the generated Alertmanager configuration as a first-level route.",
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.Route"
+    },
+    "timeIntervals": {
+      "description": "List of TimeInterval specifying when the routes should be muted or active.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.TimeInterval"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

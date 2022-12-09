@@ -1,0 +1,19 @@
+{
+  "description": "Limits define bounds on the resources being provisioned by Karpenter",
+  "type": "object",
+  "properties": {
+    "resources": {
+      "description": "Resources contains all the allocatable resources that Karpenter supports for limiting.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.api.resource.Quantity"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

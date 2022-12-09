@@ -1,0 +1,34 @@
+{
+  "description": "Matcher defines how to match on alert's labels.",
+  "type": "object",
+  "required": [
+    "name"
+  ],
+  "properties": {
+    "matchType": {
+      "description": "Match operator, one of `=` (equal to), `!=` (not equal to), `=~` (regex match) or `!~` (not regex match). Negative operators (`!=` and `!~`) require Alertmanager >= v0.22.0.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "name": {
+      "description": "Label to match.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "value": {
+      "description": "Label value to match.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

@@ -1,0 +1,16 @@
+{
+  "description": "AlertmanagerWebSpec defines the web command line flags when starting Alertmanager.",
+  "type": "object",
+  "properties": {
+    "httpConfig": {
+      "description": "Defines HTTP parameters for web server.",
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.WebHTTPConfig"
+    },
+    "tlsConfig": {
+      "description": "Defines the TLS parameters for HTTPS.",
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.WebTLSConfig"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

@@ -1,0 +1,62 @@
+{
+  "type": "object",
+  "properties": {
+    "deleteOnTermination": {
+      "description": "DeleteOnTermination indicates whether the EBS volume is deleted on instance termination.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "encrypted": {
+      "description": "Encrypted indicates whether the EBS volume is encrypted. Encrypted volumes can only be attached to instances that support Amazon EBS encryption. If you are creating a volume from a snapshot, you can't specify an encryption value.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "iops": {
+      "description": "IOPS is the number of I/O operations per second (IOPS). For gp3, io1, and io2 volumes, this represents the number of IOPS that are provisioned for the volume. For gp2 volumes, this represents the baseline performance of the volume and the rate at which the volume accumulates I/O credits for bursting.\n\nThe following are the supported values for each volume type:\n\n   * gp3: 3,000-16,000 IOPS\n\n   * io1: 100-64,000 IOPS\n\n   * io2: 100-64,000 IOPS\n\nFor io1 and io2 volumes, we guarantee 64,000 IOPS only for Instances built on the Nitro System (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#ec2-nitro-instances). Other instance families guarantee performance up to 32,000 IOPS.\n\nThis parameter is supported for io1, io2, and gp3 volumes only. This parameter is not supported for gp2, st1, sc1, or standard volumes.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int64"
+    },
+    "kmsKeyID": {
+      "description": "KMSKeyID (ARN) of the symmetric Key Management Service (KMS) CMK used for encryption.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "snapshotID": {
+      "description": "SnapshotID is the ID of an EBS snapshot",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "throughput": {
+      "description": "Throughput to provision for a gp3 volume, with a maximum of 1,000 MiB/s. Valid Range: Minimum value of 125. Maximum value of 1000.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int64"
+    },
+    "volumeSize": {
+      "description": "VolumeSize in GiBs. You must specify either a snapshot ID or a volume size. The following are the supported volumes sizes for each volume type:\n\n   * gp2 and gp3: 1-16,384\n\n   * io1 and io2: 4-16,384\n\n   * st1 and sc1: 125-16,384\n\n   * standard: 1-1,024",
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.api.resource.Quantity"
+    },
+    "volumeType": {
+      "description": "VolumeType of the block device. For more information, see Amazon EBS volume types (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html) in the Amazon Elastic Compute Cloud User Guide.",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

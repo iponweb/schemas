@@ -1,0 +1,22 @@
+{
+  "type": "object",
+  "properties": {
+    "assign": {
+      "description": "Assign.value holds the value to be assigned",
+      "default": {},
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.apis.mutations.v1.AssignField"
+    },
+    "pathTests": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/sh.gatekeeper.apis.mutations.v1.PathTest"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

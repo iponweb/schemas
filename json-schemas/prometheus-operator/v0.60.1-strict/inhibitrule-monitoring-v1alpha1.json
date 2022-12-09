@@ -1,0 +1,44 @@
+{
+  "description": "InhibitRule defines an inhibition rule that allows to mute alerts when other alerts are already firing. See https://prometheus.io/docs/alerting/latest/configuration/#inhibit_rule",
+  "type": "object",
+  "properties": {
+    "equal": {
+      "description": "Labels that must have an equal value in the source and target alert for the inhibition to take effect.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "sourceMatch": {
+      "description": "Matchers for which one or more alerts have to exist for the inhibition to take effect. The operator enforces that the alert matches the resource's namespace.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.Matcher"
+      }
+    },
+    "targetMatch": {
+      "description": "Matchers that have to be fulfilled in the alerts to be muted. The operator enforces that the alert matches the resource's namespace.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.Matcher"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

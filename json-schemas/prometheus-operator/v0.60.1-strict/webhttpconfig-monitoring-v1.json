@@ -1,0 +1,19 @@
+{
+  "description": "WebHTTPConfig defines HTTP parameters for web server.",
+  "type": "object",
+  "properties": {
+    "headers": {
+      "description": "List of headers that can be added to HTTP responses.",
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.WebHTTPHeaders"
+    },
+    "http2": {
+      "description": "Enable HTTP/2 support. Note that HTTP/2 is only supported with TLS. When TLSConfig is not configured, HTTP/2 will be disabled. Whenever the value of the field changes, a rolling update will be triggered.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

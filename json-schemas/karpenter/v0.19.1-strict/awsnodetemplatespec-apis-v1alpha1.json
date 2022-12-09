@@ -1,0 +1,127 @@
+{
+  "description": "AWSNodeTemplateSpec is the top level specification for the AWS Karpenter Provider. This will contain configuration necessary to launch instances in AWS.",
+  "type": "object",
+  "properties": {
+    "amiFamily": {
+      "description": "AMIFamily is the AMI family that instances use.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "amiSelector": {
+      "description": "AMISelector discovers AMIs to be used by Amazon EC2 tags.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "apiVersion": {
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "blockDeviceMappings": {
+      "description": "BlockDeviceMappings to be applied to provisioned nodes.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "$ref": "_definitions.json#/definitions/sh.karpenter.pkg.apis.v1alpha1.BlockDeviceMapping"
+      }
+    },
+    "context": {
+      "description": "Context is a Reserved field in EC2 APIs https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateFleet.html",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "instanceProfile": {
+      "description": "InstanceProfile is the AWS identity that instances use.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "kind": {
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "launchTemplate": {
+      "description": "LaunchTemplateName for the node. If not specified, a launch template will be generated. NOTE: This field is for specifying a custom launch template and is exposed in the Spec as `launchTemplate` for backwards compatibility.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "metadataOptions": {
+      "description": "MetadataOptions for the generated launch template of provisioned nodes.\n\nThis specifies the exposure of the Instance Metadata Service to provisioned EC2 nodes. For more information, see Instance Metadata and User Data (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html) in the Amazon Elastic Compute Cloud User Guide.\n\nRefer to recommended, security best practices (https://aws.github.io/aws-eks-best-practices/security/docs/iam/#restrict-access-to-the-instance-profile-assigned-to-the-worker-node) for limiting exposure of Instance Metadata and User Data to pods. If omitted, defaults to httpEndpoint enabled, with httpProtocolIPv6 disabled, with httpPutResponseLimit of 2, and with httpTokens required.",
+      "$ref": "_definitions.json#/definitions/sh.karpenter.pkg.apis.v1alpha1.MetadataOptions"
+    },
+    "securityGroupSelector": {
+      "description": "SecurityGroups specify the names of the security groups.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "subnetSelector": {
+      "description": "SubnetSelector discovers subnets by tags. A value of \"\" is a wildcard.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "tags": {
+      "description": "Tags to be applied on ec2 resources like instances and launch templates.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "userData": {
+      "description": "UserData to be applied to the provisioned nodes. It must be in the appropriate format based on the AMIFamily in use. Karpenter will merge certain fields into this UserData to ensure nodes are being provisioned with the correct configuration.",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

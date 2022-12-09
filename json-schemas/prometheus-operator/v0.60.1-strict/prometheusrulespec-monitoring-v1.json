@@ -1,0 +1,19 @@
+{
+  "description": "PrometheusRuleSpec contains specification parameters for a Rule.",
+  "type": "object",
+  "properties": {
+    "groups": {
+      "description": "Content of Prometheus rule file",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.RuleGroup"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

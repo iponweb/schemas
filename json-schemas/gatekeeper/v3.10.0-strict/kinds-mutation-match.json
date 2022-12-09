@@ -1,0 +1,35 @@
+{
+  "description": "Kinds accepts a list of objects with apiGroups and kinds fields that list the groups/kinds of objects to which the mutation will apply. If multiple groups/kinds objects are specified, only one match is needed for the resource to be in scope.",
+  "type": "object",
+  "properties": {
+    "apiGroups": {
+      "description": "APIGroups is the API groups the resources belong to. '*' is all groups. If '*' is present, the length of the slice must be one. Required.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "kinds": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

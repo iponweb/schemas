@@ -1,0 +1,25 @@
+{
+  "type": "object",
+  "properties": {
+    "group": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "kind": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "version": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

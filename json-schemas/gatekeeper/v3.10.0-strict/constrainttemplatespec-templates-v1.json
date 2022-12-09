@@ -1,0 +1,22 @@
+{
+  "description": "ConstraintTemplateSpec defines the desired state of ConstraintTemplate.",
+  "type": "object",
+  "properties": {
+    "crd": {
+      "default": {},
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.frameworks.constraint.pkg.apis.templates.v1.CRD"
+    },
+    "targets": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/sh.gatekeeper.frameworks.constraint.pkg.apis.templates.v1.Target"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

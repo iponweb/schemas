@@ -1,0 +1,30 @@
+{
+  "type": "object",
+  "properties": {
+    "operation": {
+      "description": "Operation describes whether values should be merged in (\"merge\"), or pruned (\"prune\"). Default value is \"merge\"",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "pathTests": {
+      "description": "PathTests are a series of existence tests that can be checked before a mutation is applied",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/sh.gatekeeper.apis.mutations.v1alpha1.PathTest"
+      }
+    },
+    "values": {
+      "description": "Values describes the values provided to the operation as `values.fromList`.",
+      "default": {},
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.apis.mutations.v1alpha1.Values"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

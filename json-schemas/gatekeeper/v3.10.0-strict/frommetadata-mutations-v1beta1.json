@@ -1,0 +1,14 @@
+{
+  "type": "object",
+  "properties": {
+    "field": {
+      "description": "Field specifies which metadata field provides the assigned value. Valid fields are `namespace` and `name`.",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

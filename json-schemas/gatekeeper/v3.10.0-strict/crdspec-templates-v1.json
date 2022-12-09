@@ -1,0 +1,14 @@
+{
+  "type": "object",
+  "properties": {
+    "names": {
+      "default": {},
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.frameworks.constraint.pkg.apis.templates.v1.Names"
+    },
+    "validation": {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.frameworks.constraint.pkg.apis.templates.v1.Validation"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

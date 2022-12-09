@@ -1,0 +1,487 @@
+{
+  "oneOf": [
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.APIServerConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.AlertingSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.Alertmanager"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.AlertmanagerConfiguration"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.AlertmanagerEndpoints"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.AlertmanagerGlobalConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.AlertmanagerList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.AlertmanagerSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.AlertmanagerStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.AlertmanagerWebSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.ArbitraryFSAccessThroughSMsConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.Argument"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.AttachMetadata"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.Authorization"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.BasicAuth"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.EmbeddedObjectMetadata"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.EmbeddedPersistentVolumeClaim"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.Endpoint"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.Exemplars"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.HTTPConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.HostAlias"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.MetadataConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.NamespaceSelector"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.OAuth2"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.ObjectReference"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.PodMetricsEndpoint"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.PodMetricsEndpointTLSConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.PodMonitor"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.PodMonitorList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.PodMonitorSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.Probe"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.ProbeList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.ProbeSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.ProbeTLSConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.ProbeTargetIngress"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.ProbeTargetStaticConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.ProbeTargets"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.ProberSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.Prometheus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.PrometheusCondition"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.PrometheusList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.PrometheusRule"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.PrometheusRuleExcludeConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.PrometheusRuleList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.PrometheusRuleSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.PrometheusSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.PrometheusStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.PrometheusWebSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.QuerySpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.QueueConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.RelabelConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.RemoteReadSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.RemoteWriteSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.Rule"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.RuleGroup"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.Rules"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.RulesAlert"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.SafeAuthorization"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.SafeTLSConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.SecretOrConfigMap"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.ServiceMonitor"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.ServiceMonitorList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.ServiceMonitorSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.ShardStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.Sigv4"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.StorageSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.TLSConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.TSDBSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.ThanosRuler"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.ThanosRulerList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.ThanosRulerSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.ThanosRulerStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.ThanosSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.WebHTTPConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.WebHTTPHeaders"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.WebTLSConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.AlertmanagerConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.AlertmanagerConfigList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.AlertmanagerConfigSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.DayOfMonthRange"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.EmailConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.HTTPConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.InhibitRule"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.KeyValue"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.Matcher"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.MuteTimeInterval"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.OpsGenieConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.OpsGenieConfigResponder"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.PagerDutyConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.PagerDutyImageConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.PagerDutyLinkConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.PushoverConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.Receiver"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.Route"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.SNSConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.SlackAction"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.SlackConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.SlackConfirmationField"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.SlackField"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.TelegramConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.TimeInterval"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.TimeRange"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.VictorOpsConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.WeChatConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.WebhookConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.AlertmanagerConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.AlertmanagerConfigList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.AlertmanagerConfigSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.DayOfMonthRange"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.EmailConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.HTTPConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.InhibitRule"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.KeyValue"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.Matcher"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.OpsGenieConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.OpsGenieConfigResponder"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.PagerDutyConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.PagerDutyImageConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.PagerDutyLinkConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.PushoverConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.Receiver"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.Route"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.SNSConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.SecretKeySelector"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.SlackAction"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.SlackConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.SlackConfirmationField"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.SlackField"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.TelegramConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.TimeInterval"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.TimePeriod"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.TimeRange"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.VictorOpsConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.WeChatConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.WebhookConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.Affinity"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ConfigMapKeySelector"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.Container"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.EmptyDirVolumeSource"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.EphemeralVolumeSource"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.LocalObjectReference"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.PersistentVolumeClaimSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.PersistentVolumeClaimStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.PodSecurityContext"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ResourceRequirements"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SecretKeySelector"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.Toleration"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.TopologySpreadConstraint"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.Volume"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.VolumeMount"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.JSON"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.FieldsV1"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.LabelSelector"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.LabelSelectorRequirement"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ManagedFieldsEntry"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.OwnerReference"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.util.intstr.IntOrString"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.api.resource.Quantity"
+    }
+  ]
+}

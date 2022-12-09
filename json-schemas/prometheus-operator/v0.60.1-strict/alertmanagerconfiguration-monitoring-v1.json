@@ -1,0 +1,30 @@
+{
+  "description": "AlertmanagerConfiguration defines the Alertmanager configuration.",
+  "type": "object",
+  "properties": {
+    "global": {
+      "description": "Defines the global parameters of the Alertmanager configuration.",
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.AlertmanagerGlobalConfig"
+    },
+    "name": {
+      "description": "The name of the AlertmanagerConfig resource which is used to generate the Alertmanager configuration. It must be defined in the same namespace as the Alertmanager object. The operator will not enforce a `namespace` label for routes and inhibition rules.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "templates": {
+      "description": "Custom notification templates.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.SecretOrConfigMap"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

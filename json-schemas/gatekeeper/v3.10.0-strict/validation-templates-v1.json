@@ -1,0 +1,16 @@
+{
+  "type": "object",
+  "properties": {
+    "legacySchema": {
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "openAPIV3Schema": {
+      "$ref": "_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.JSONSchemaProps"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

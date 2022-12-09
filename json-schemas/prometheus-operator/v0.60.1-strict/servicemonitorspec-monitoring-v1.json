@@ -1,0 +1,108 @@
+{
+  "description": "ServiceMonitorSpec contains specification parameters for a ServiceMonitor.",
+  "type": "object",
+  "required": [
+    "endpoints",
+    "selector"
+  ],
+  "properties": {
+    "endpoints": {
+      "description": "A list of endpoints allowed as part of this ServiceMonitor.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.Endpoint"
+      }
+    },
+    "jobLabel": {
+      "description": "JobLabel selects the label from the associated Kubernetes service which will be used as the `job` label for all metrics.\n\nFor example: If in `ServiceMonitor.spec.jobLabel: foo` and in `Service.metadata.labels.foo: bar`, then the `job=\"bar\"` label is added to all metrics.\n\nIf the value of this field is empty or if the label doesn't exist for the given Service, the `job` label of the metrics defaults to the name of the Kubernetes Service.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "labelLimit": {
+      "description": "Per-scrape limit on number of labels that will be accepted for a sample. Only valid in Prometheus versions 2.27.0 and newer.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int64"
+    },
+    "labelNameLengthLimit": {
+      "description": "Per-scrape limit on length of labels name that will be accepted for a sample. Only valid in Prometheus versions 2.27.0 and newer.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int64"
+    },
+    "labelValueLengthLimit": {
+      "description": "Per-scrape limit on length of labels value that will be accepted for a sample. Only valid in Prometheus versions 2.27.0 and newer.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int64"
+    },
+    "namespaceSelector": {
+      "description": "Selector to select which namespaces the Kubernetes Endpoints objects are discovered from.",
+      "default": {},
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.NamespaceSelector"
+    },
+    "podTargetLabels": {
+      "description": "PodTargetLabels transfers labels on the Kubernetes `Pod` onto the created metrics.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "sampleLimit": {
+      "description": "SampleLimit defines per-scrape limit on number of scraped samples that will be accepted.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int64"
+    },
+    "selector": {
+      "description": "Selector to select Endpoints objects.",
+      "default": {},
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.LabelSelector"
+    },
+    "targetLabels": {
+      "description": "TargetLabels transfers labels from the Kubernetes `Service` onto the created metrics.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "targetLimit": {
+      "description": "TargetLimit defines a limit on the number of scraped targets that will be accepted.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int64"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

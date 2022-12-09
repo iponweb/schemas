@@ -1,0 +1,20 @@
+{
+  "description": "PathTest allows the user to customize how the mutation works if parent paths are missing. It traverses the list in order. All sub paths are tested against the provided condition, if the test fails, the mutation is not applied. All `subPath` entries must be a prefix of `location`. Any glob characters will take on the same value as was used to expand the matching glob in `location`.\n\nAvailable Tests: * MustExist    - the path must exist or do not mutate * MustNotExist - the path must not exist or do not mutate.",
+  "type": "object",
+  "properties": {
+    "condition": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "subPath": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

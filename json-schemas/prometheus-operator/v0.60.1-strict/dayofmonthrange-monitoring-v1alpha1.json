@@ -1,0 +1,24 @@
+{
+  "description": "DayOfMonthRange is an inclusive range of days of the month beginning at 1",
+  "type": "object",
+  "properties": {
+    "end": {
+      "description": "End of the inclusive range",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32"
+    },
+    "start": {
+      "description": "Start of the inclusive range",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

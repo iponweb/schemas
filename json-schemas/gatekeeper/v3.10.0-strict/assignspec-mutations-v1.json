@@ -1,0 +1,36 @@
+{
+  "description": "AssignSpec defines the desired state of Assign.",
+  "type": "object",
+  "properties": {
+    "applyTo": {
+      "description": "ApplyTo lists the specific groups, versions and kinds a mutation will be applied to. This is necessary because every mutation implies part of an object schema and object schemas are associated with specific GVKs.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/sh.gatekeeper.pkg.mutation.match.ApplyTo"
+      }
+    },
+    "location": {
+      "description": "Location describes the path to be mutated, for example: `spec.containers[name: main]`.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "match": {
+      "description": "Match allows the user to limit which resources get mutated. Individual match criteria are AND-ed together. An undefined match criteria matches everything.",
+      "default": {},
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.pkg.mutation.match.Match"
+    },
+    "parameters": {
+      "description": "Parameters define the behavior of the mutator.",
+      "default": {},
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.apis.mutations.v1.Parameters"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

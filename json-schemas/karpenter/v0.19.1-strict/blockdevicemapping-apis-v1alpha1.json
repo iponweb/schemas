@@ -1,0 +1,18 @@
+{
+  "type": "object",
+  "properties": {
+    "deviceName": {
+      "description": "The device name (for example, /dev/sdh or xvdh).",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "ebs": {
+      "description": "EBS contains parameters used to automatically set up EBS volumes when an instance is launched.",
+      "$ref": "_definitions.json#/definitions/sh.karpenter.pkg.apis.v1alpha1.BlockDevice"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

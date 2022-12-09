@@ -1,0 +1,37 @@
+{
+  "description": "MetadataOptions contains parameters for specifying the exposure of the Instance Metadata Service to provisioned EC2 nodes.",
+  "type": "object",
+  "properties": {
+    "httpEndpoint": {
+      "description": "HTTPEndpoint enables or disables the HTTP metadata endpoint on provisioned nodes. If metadata options is non-nil, but this parameter is not specified, the default state is \"enabled\".\n\nIf you specify a value of \"disabled\", instance metadata will not be accessible on the node.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "httpProtocolIPv6": {
+      "description": "HTTPProtocolIPv6 enables or disables the IPv6 endpoint for the instance metadata service on provisioned nodes. If metadata options is non-nil, but this parameter is not specified, the default state is \"disabled\".",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "httpPutResponseHopLimit": {
+      "description": "HTTPPutResponseHopLimit is the desired HTTP PUT response hop limit for instance metadata requests. The larger the number, the further instance metadata requests can travel. Possible values are integers from 1 to 64. If metadata options is non-nil, but this parameter is not specified, the default value is 1.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int64"
+    },
+    "httpTokens": {
+      "description": "HTTPTokens determines the state of token usage for instance metadata requests. If metadata options is non-nil, but this parameter is not specified, the default state is \"optional\".\n\nIf the state is optional, one can choose to retrieve instance metadata with or without a signed token header on the request. If one retrieves the IAM role credentials without a token, the version 1.0 role credentials are returned. If one retrieves the IAM role credentials using a valid signed token, the version 2.0 role credentials are returned.\n\nIf the state is \"required\", one must send a signed token header with any instance metadata retrieval requests. In this state, retrieving the IAM role credentials always returns the version 2.0 credentials; the version 1.0 credentials are not available.",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

@@ -1,0 +1,16 @@
+{
+  "description": "ProbeTargets defines how to discover the probed targets. One of the `staticConfig` or `ingress` must be defined. If both are defined, `staticConfig` takes precedence.",
+  "type": "object",
+  "properties": {
+    "ingress": {
+      "description": "ingress defines the Ingress objects to probe and the relabeling configuration. If `staticConfig` is also defined, `staticConfig` takes precedence.",
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.ProbeTargetIngress"
+    },
+    "staticConfig": {
+      "description": "staticConfig defines the static list of targets to probe and the relabeling configuration. If `ingress` is also defined, `staticConfig` takes precedence. More info: https://prometheus.io/docs/prometheus/latest/configuration/configuration/#static_config.",
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.ProbeTargetStaticConfig"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

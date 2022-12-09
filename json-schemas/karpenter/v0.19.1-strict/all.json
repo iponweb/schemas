@@ -1,0 +1,79 @@
+{
+  "oneOf": [
+    {
+      "$ref": "_definitions.json#/definitions/dev.knative.pkg.apis.Condition"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/dev.knative.pkg.apis.VolatileTime"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.NodeSelectorRequirement"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.Taint"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.api.resource.Quantity"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Duration"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.FieldsV1"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ManagedFieldsEntry"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.OwnerReference"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.runtime.RawExtension"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.karpenter.core.pkg.apis.provisioning.v1alpha5.Consolidation"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.karpenter.core.pkg.apis.provisioning.v1alpha5.KubeletConfiguration"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.karpenter.core.pkg.apis.provisioning.v1alpha5.Limits"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.karpenter.core.pkg.apis.provisioning.v1alpha5.ProviderRef"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.karpenter.core.pkg.apis.provisioning.v1alpha5.ProvisionerSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.karpenter.core.pkg.apis.provisioning.v1alpha5.ProvisionerStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.karpenter.pkg.apis.v1alpha1.AWSNodeTemplate"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.karpenter.pkg.apis.v1alpha1.AWSNodeTemplateSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.karpenter.pkg.apis.v1alpha1.BlockDevice"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.karpenter.pkg.apis.v1alpha1.BlockDeviceMapping"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.karpenter.pkg.apis.v1alpha1.MetadataOptions"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.karpenter.pkg.apis.v1alpha5.Provisioner"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.util.intstr.IntOrString"
+    }
+  ]
+}

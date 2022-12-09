@@ -1,0 +1,105 @@
+diff --git a/apis/config/v1alpha1/doc.go b/apis/config/v1alpha1/doc.go
+new file mode 100644
+index 0000000..0843ffe
+--- /dev/null
++++ b/apis/config/v1alpha1/doc.go
+@@ -0,0 +1,2 @@
++// +k8s:openapi-gen=true
++package v1alpha1
+diff --git a/apis/expansion/unversioned/doc.go b/apis/expansion/unversioned/doc.go
+index 46b8b63..2ca135a 100644
+--- a/apis/expansion/unversioned/doc.go
++++ b/apis/expansion/unversioned/doc.go
+@@ -1,4 +1,6 @@
+ // Package unversioned contains the internal representation of expansion objects
++
++// +k8s:openapi-gen=true
+ package unversioned
+
+ // +kubebuilder:object:generate=true
+diff --git a/apis/expansion/v1alpha1/doc.go b/apis/expansion/v1alpha1/doc.go
+index 30787b7..9c1dd25 100644
+--- a/apis/expansion/v1alpha1/doc.go
++++ b/apis/expansion/v1alpha1/doc.go
+@@ -2,4 +2,5 @@
+
+ // +k8s:conversion-gen=github.com/open-policy-agent/gatekeeper/apis/expansion/unversioned
+ // -external-types=github.com/open-policy-agent/gatekeeper/apis/expansion/v1alpha1
++// +k8s:openapi-gen=true
+ package v1alpha1
+diff --git a/apis/mutations/unversioned/doc.go b/apis/mutations/unversioned/doc.go
+index 8399130..9159c98 100644
+--- a/apis/mutations/unversioned/doc.go
++++ b/apis/mutations/unversioned/doc.go
+@@ -1,4 +1,5 @@
+ // Package unversioned contains the internal representation of mutator objects
++// +k8s:openapi-gen=true
+ package unversioned
+
+ // +kubebuilder:object:generate=true
+diff --git a/apis/mutations/v1/doc.go b/apis/mutations/v1/doc.go
+index bd3e26d..ccfb5b7 100644
+--- a/apis/mutations/v1/doc.go
++++ b/apis/mutations/v1/doc.go
+@@ -2,4 +2,5 @@
+
+ // +k8s:conversion-gen=github.com/open-policy-agent/gatekeeper/apis/mutations/unversioned
+ // -external-types=github.com/open-policy-agent/gatekeeper/apis/mutations/v1beta1
++// +k8s:openapi-gen=true
+ package v1
+diff --git a/apis/mutations/v1alpha1/doc.go b/apis/mutations/v1alpha1/doc.go
+index 06f0502..dbc9587 100644
+--- a/apis/mutations/v1alpha1/doc.go
++++ b/apis/mutations/v1alpha1/doc.go
+@@ -2,4 +2,5 @@
+
+ // +k8s:conversion-gen=github.com/open-policy-agent/gatekeeper/apis/mutations/unversioned
+ // -external-types=github.com/open-policy-agent/gatekeeper/apis/mutations/v1alpha1
++// +k8s:openapi-gen=true
+ package v1alpha1
+diff --git a/apis/mutations/v1beta1/doc.go b/apis/mutations/v1beta1/doc.go
+index 1c9681a..865ea80 100644
+--- a/apis/mutations/v1beta1/doc.go
++++ b/apis/mutations/v1beta1/doc.go
+@@ -2,4 +2,5 @@
+
+ // +k8s:conversion-gen=github.com/open-policy-agent/gatekeeper/apis/mutations/unversioned
+ // -external-types=github.com/open-policy-agent/gatekeeper/apis/mutations/v1beta1
++// +k8s:openapi-gen=true
+ package v1beta1
+diff --git a/apis/status/v1beta1/doc.go b/apis/status/v1beta1/doc.go
+new file mode 100644
+index 0000000..b2a1c50
+--- /dev/null
++++ b/apis/status/v1beta1/doc.go
+@@ -0,0 +1,2 @@
++// +k8s:openapi-gen=true
++package v1beta1
+diff --git a/pkg/mutation/match/doc.go b/pkg/mutation/match/doc.go
+new file mode 100644
+index 0000000..fb30ca6
+--- /dev/null
++++ b/pkg/mutation/match/doc.go
+@@ -0,0 +1,2 @@
++// +k8s:openapi-gen=true
++package match
+diff --git a/pkg/mutation/types/anything.go b/pkg/mutation/types/anything.go
+index 9236aff..dc9aa27 100644
+--- a/pkg/mutation/types/anything.go
++++ b/pkg/mutation/types/anything.go
+@@ -11,6 +11,7 @@ import (
+ // that plays nicely with controller-gen
+ // +kubebuilder:object:generate=false
+ // +kubebuilder:validation:Type=""
++// +k8s:openapi-gen=true
+ type Anything struct {
+ 	Value interface{} `json:"-"`
+ }
+diff --git a/pkg/mutation/types/docs.go b/pkg/mutation/types/docs.go
+new file mode 100644
+index 0000000..2c6459a
+--- /dev/null
++++ b/pkg/mutation/types/docs.go
+@@ -0,0 +1,2 @@
++// +k8s:openapi-gen=true
++package types

@@ -1,0 +1,46 @@
+{
+  "description": "ProbeTargetStaticConfig defines the set of static targets considered for probing.",
+  "type": "object",
+  "properties": {
+    "labels": {
+      "description": "Labels assigned to all metrics scraped from the targets.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "relabelingConfigs": {
+      "description": "RelabelConfigs to apply to the label set of the targets before it gets scraped. More info: https://prometheus.io/docs/prometheus/latest/configuration/configuration/#relabel_config",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.RelabelConfig"
+      }
+    },
+    "static": {
+      "description": "The list of hosts to probe.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}
