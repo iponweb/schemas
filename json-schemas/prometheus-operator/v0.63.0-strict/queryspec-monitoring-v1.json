@@ -1,0 +1,38 @@
+{
+  "description": "QuerySpec defines the query command line flags when starting Prometheus.",
+  "type": "object",
+  "properties": {
+    "lookbackDelta": {
+      "description": "The delta difference allowed for retrieving metrics during expression evaluations.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "maxConcurrency": {
+      "description": "Number of concurrent queries that can be run at once.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32"
+    },
+    "maxSamples": {
+      "description": "Maximum number of samples a single query can load into memory. Note that queries will fail if they would load more samples than this into memory, so this also limits the number of samples a query can return.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32"
+    },
+    "timeout": {
+      "description": "Maximum time a query may take before being aborted.",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

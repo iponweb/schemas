@@ -1,0 +1,115 @@
+{
+  "description": "OpsGenieConfig configures notifications via OpsGenie. See https://prometheus.io/docs/alerting/latest/configuration/#opsgenie_config",
+  "type": "object",
+  "properties": {
+    "actions": {
+      "description": "Comma separated list of actions that will be available for the alert.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "apiKey": {
+      "description": "The secret's key that contains the OpsGenie API key. The secret needs to be in the same namespace as the AlertmanagerConfig object and accessible by the Prometheus Operator.",
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SecretKeySelector"
+    },
+    "apiURL": {
+      "description": "The URL to send OpsGenie API requests to.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "description": {
+      "description": "Description of the incident.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "details": {
+      "description": "A set of arbitrary key/value pairs that provide further detail about the incident.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.KeyValue"
+      }
+    },
+    "entity": {
+      "description": "Optional field that can be used to specify which domain alert is related to.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "httpConfig": {
+      "description": "HTTP client configuration.",
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.HTTPConfig"
+    },
+    "message": {
+      "description": "Alert text limited to 130 characters.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "note": {
+      "description": "Additional alert note.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "priority": {
+      "description": "Priority level of alert. Possible values are P1, P2, P3, P4, and P5.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "responders": {
+      "description": "List of responders responsible for notifications.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.OpsGenieConfigResponder"
+      }
+    },
+    "sendResolved": {
+      "description": "Whether or not to notify about resolved alerts.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "source": {
+      "description": "Backlink to the sender of the notification.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "tags": {
+      "description": "Comma separated list of tags attached to the notifications.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "updateAlerts": {
+      "description": "Whether to update message and description of the alert in OpsGenie if it already exists By default, the alert is never updated in OpsGenie, the new message only appears in activity log.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

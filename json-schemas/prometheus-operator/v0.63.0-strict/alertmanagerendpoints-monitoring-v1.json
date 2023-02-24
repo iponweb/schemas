@@ -1,0 +1,88 @@
+{
+  "description": "AlertmanagerEndpoints defines a selection of a single Endpoints object containing alertmanager IPs to fire alerts against.",
+  "type": "object",
+  "required": [
+    "namespace",
+    "name",
+    "port"
+  ],
+  "properties": {
+    "apiVersion": {
+      "description": "Version of the Alertmanager API that Prometheus uses to send alerts. It can be \"v1\" or \"v2\".",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "authorization": {
+      "description": "Authorization section for this alertmanager endpoint",
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.SafeAuthorization"
+    },
+    "basicAuth": {
+      "description": "BasicAuth allow an endpoint to authenticate over basic authentication",
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.BasicAuth"
+    },
+    "bearerTokenFile": {
+      "description": "BearerTokenFile to read from filesystem to use when authenticating to Alertmanager.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "enableHttp2": {
+      "description": "Whether to enable HTTP2.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "name": {
+      "description": "Name of Endpoints object in Namespace.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "namespace": {
+      "description": "Namespace of Endpoints object.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "pathPrefix": {
+      "description": "Prefix for the HTTP path alerts are pushed to.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "port": {
+      "description": "Port the Alertmanager API is exposed on.",
+      "default": {},
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.util.intstr.IntOrString"
+    },
+    "scheme": {
+      "description": "Scheme to use when firing alerts.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "timeout": {
+      "description": "Timeout is a per-target Alertmanager timeout when pushing alerts.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "tlsConfig": {
+      "description": "TLS Config to use for alertmanager connection.",
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.TLSConfig"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

@@ -1,0 +1,77 @@
+{
+  "description": "VictorOpsConfig configures notifications via VictorOps. See https://prometheus.io/docs/alerting/latest/configuration/#victorops_config",
+  "type": "object",
+  "properties": {
+    "apiKey": {
+      "description": "The secret's key that contains the API key to use when talking to the VictorOps API. The secret needs to be in the same namespace as the AlertmanagerConfig object and accessible by the Prometheus Operator.",
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.SecretKeySelector"
+    },
+    "apiUrl": {
+      "description": "The VictorOps API URL.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "customFields": {
+      "description": "Additional custom fields for notification.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.KeyValue"
+      }
+    },
+    "entityDisplayName": {
+      "description": "Contains summary of the alerted problem.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "httpConfig": {
+      "description": "The HTTP client's configuration.",
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.HTTPConfig"
+    },
+    "messageType": {
+      "description": "Describes the behavior of the alert (CRITICAL, WARNING, INFO).",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "monitoringTool": {
+      "description": "The monitoring tool the state message is from.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "routingKey": {
+      "description": "A key used to map the alert to a team.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "sendResolved": {
+      "description": "Whether or not to notify about resolved alerts.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "stateMessage": {
+      "description": "Contains long explanation of the alerted problem.",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

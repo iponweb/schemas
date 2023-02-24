@@ -1,0 +1,26 @@
+{
+  "description": "Authorization contains optional `Authorization` header configuration. This section is only understood by versions of Prometheus >= 2.26.0.",
+  "type": "object",
+  "properties": {
+    "credentials": {
+      "description": "The secret's key that contains the credentials of the request",
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SecretKeySelector"
+    },
+    "credentialsFile": {
+      "description": "File to read a secret from, mutually exclusive with Credentials (from SafeAuthorization)",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "type": {
+      "description": "Set the authentication type. Defaults to Bearer, Basic will cause an error",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

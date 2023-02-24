@@ -1,0 +1,72 @@
+{
+  "description": "TimePeriod describes periods of time.",
+  "type": "object",
+  "properties": {
+    "daysOfMonth": {
+      "description": "DaysOfMonth is a list of DayOfMonthRange",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.DayOfMonthRange"
+      }
+    },
+    "months": {
+      "description": "Months is a list of MonthRange",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "times": {
+      "description": "Times is a list of TimeRange",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.TimeRange"
+      }
+    },
+    "weekdays": {
+      "description": "Weekdays is a list of WeekdayRange",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "years": {
+      "description": "Years is a list of YearRange",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

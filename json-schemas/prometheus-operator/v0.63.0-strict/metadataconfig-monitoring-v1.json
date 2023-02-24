@@ -1,0 +1,22 @@
+{
+  "description": "MetadataConfig configures the sending of series metadata to the remote storage.",
+  "type": "object",
+  "properties": {
+    "send": {
+      "description": "Whether metric metadata is sent to the remote storage or not.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "sendInterval": {
+      "description": "How frequently metric metadata is sent to the remote storage.",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

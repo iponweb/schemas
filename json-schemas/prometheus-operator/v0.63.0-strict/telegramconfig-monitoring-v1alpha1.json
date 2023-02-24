@@ -1,0 +1,59 @@
+{
+  "description": "TelegramConfig configures notifications via Telegram. See https://prometheus.io/docs/alerting/latest/configuration/#telegram_config",
+  "type": "object",
+  "properties": {
+    "apiURL": {
+      "description": "The Telegram API URL i.e. https://api.telegram.org. If not specified, default API URL will be used.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "botToken": {
+      "description": "Telegram bot token The secret needs to be in the same namespace as the AlertmanagerConfig object and accessible by the Prometheus Operator.",
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SecretKeySelector"
+    },
+    "chatID": {
+      "description": "The Telegram chat ID.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int64"
+    },
+    "disableNotifications": {
+      "description": "Disable telegram notifications",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "httpConfig": {
+      "description": "HTTP client configuration.",
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.HTTPConfig"
+    },
+    "message": {
+      "description": "Message template",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "parseMode": {
+      "description": "Parse mode for telegram message",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "sendResolved": {
+      "description": "Whether to notify about resolved alerts.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

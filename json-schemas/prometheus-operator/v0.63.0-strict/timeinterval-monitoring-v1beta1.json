@@ -1,0 +1,26 @@
+{
+  "description": "TimeInterval specifies the periods in time when notifications will be muted or active.",
+  "type": "object",
+  "properties": {
+    "name": {
+      "description": "Name of the time interval.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "timeIntervals": {
+      "description": "TimeIntervals is a list of TimePeriod.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.TimePeriod"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

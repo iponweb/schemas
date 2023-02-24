@@ -1,0 +1,41 @@
+{
+  "description": "Matcher defines how to match on alert's labels.",
+  "type": "object",
+  "required": [
+    "name"
+  ],
+  "properties": {
+    "matchType": {
+      "description": "Match operation available with AlertManager >= v0.22.0 and takes precedence over Regex (deprecated) if non-empty.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "name": {
+      "description": "Label to match.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "regex": {
+      "description": "Whether to match on equality (false) or regular-expression (true). Deprecated as of AlertManager >= v0.22.0 where a user should use MatchType instead.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "value": {
+      "description": "Label value to match.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

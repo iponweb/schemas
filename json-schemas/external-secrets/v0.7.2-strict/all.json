@@ -1,0 +1,532 @@
+{
+  "oneOf": [
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.AWSAuth"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.AWSAuthSecretRef"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.AWSJWTAuth"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.AWSProvider"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.AkeylessAuth"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.AkeylessAuthSecretRef"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.AkeylessKubernetesAuth"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.AkeylessProvider"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.AlibabaAuth"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.AlibabaAuthSecretRef"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.AlibabaProvider"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.AzureKVAuth"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.AzureKVProvider"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.CAProvider"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.CertAuth"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.ClusterSecretStore"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.ExternalSecret"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.ExternalSecretData"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.ExternalSecretDataRemoteRef"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.ExternalSecretSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.ExternalSecretStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.ExternalSecretStatusCondition"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.ExternalSecretTarget"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.ExternalSecretTemplate"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.ExternalSecretTemplateMetadata"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.FakeProvider"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.FakeProviderData"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.GCPSMAuth"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.GCPSMAuthSecretRef"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.GCPSMProvider"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.GCPWorkloadIdentity"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.GitlabAuth"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.GitlabProvider"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.GitlabSecretRef"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.IBMAuth"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.IBMAuthSecretRef"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.IBMProvider"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.KubernetesAuth"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.KubernetesProvider"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.KubernetesServer"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.OracleAuth"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.OracleProvider"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.OracleSecretRef"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.SecretStore"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.SecretStoreProvider"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.SecretStoreRef"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.SecretStoreRetrySettings"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.SecretStoreSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.SecretStoreStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.SecretStoreStatusCondition"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.ServiceAccountAuth"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.TemplateFrom"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.TemplateRef"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.TemplateRefItem"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.TokenAuth"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.VaultAppRole"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.VaultAuth"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.VaultCertAuth"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.VaultJwtAuth"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.VaultKubernetesAuth"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.VaultKubernetesServiceAccountTokenAuth"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.VaultLdapAuth"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.VaultProvider"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.WebhookCAProvider"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.WebhookProvider"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.WebhookResult"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.WebhookSecret"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.YandexLockboxAuth"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.YandexLockboxCAProvider"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.YandexLockboxProvider"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.AWSAuth"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.AWSAuthSecretRef"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.AWSJWTAuth"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.AWSProvider"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.AkeylessAuth"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.AkeylessAuthSecretRef"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.AkeylessKubernetesAuth"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.AkeylessProvider"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.AlibabaAuth"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.AlibabaAuthSecretRef"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.AlibabaProvider"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.AzureKVAuth"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.AzureKVProvider"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.CAProvider"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.CertAuth"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.ClusterExternalSecret"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.ClusterExternalSecretNamespaceFailure"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.ClusterExternalSecretSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.ClusterExternalSecretStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.ClusterExternalSecretStatusCondition"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.ClusterSecretStore"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.ClusterSecretStoreCondition"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.DopplerAuth"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.DopplerAuthSecretRef"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.DopplerProvider"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.ExternalSecret"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.ExternalSecretData"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.ExternalSecretDataFromRemoteRef"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.ExternalSecretDataRemoteRef"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.ExternalSecretFind"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.ExternalSecretRewrite"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.ExternalSecretRewriteRegexp"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.ExternalSecretSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.ExternalSecretStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.ExternalSecretStatusCondition"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.ExternalSecretTarget"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.ExternalSecretTemplate"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.ExternalSecretTemplateMetadata"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.FakeProvider"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.FakeProviderData"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.FindName"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.GCPSMAuth"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.GCPSMAuthSecretRef"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.GCPSMProvider"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.GCPWorkloadIdentity"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.GeneratorRef"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.GitlabAuth"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.GitlabProvider"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.GitlabSecretRef"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.IBMAuth"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.IBMAuthContainerAuth"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.IBMAuthSecretRef"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.IBMProvider"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.KubernetesAuth"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.KubernetesProvider"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.KubernetesServer"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.OnePasswordAuth"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.OnePasswordAuthSecretRef"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.OnePasswordProvider"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.OracleAuth"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.OracleProvider"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.OracleSecretRef"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.SecretStore"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.SecretStoreProvider"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.SecretStoreRef"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.SecretStoreRetrySettings"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.SecretStoreSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.SecretStoreStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.SecretStoreStatusCondition"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.SenhaseguraAuth"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.SenhaseguraProvider"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.SourceRef"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.TemplateFrom"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.TemplateRef"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.TemplateRefItem"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.TokenAuth"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.VaultAppRole"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.VaultAuth"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.VaultCertAuth"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.VaultJwtAuth"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.VaultKubernetesAuth"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.VaultKubernetesServiceAccountTokenAuth"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.VaultLdapAuth"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.VaultProvider"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.WebhookCAProvider"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.WebhookProvider"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.WebhookResult"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.WebhookSecret"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.YandexCertificateManagerAuth"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.YandexCertificateManagerCAProvider"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.YandexCertificateManagerProvider"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.YandexLockboxAuth"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.YandexLockboxCAProvider"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.YandexLockboxProvider"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.meta.v1.SecretKeySelector"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.meta.v1.ServiceAccountSelector"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Duration"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.FieldsV1"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.LabelSelector"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.LabelSelectorRequirement"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ManagedFieldsEntry"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.OwnerReference"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.util.intstr.IntOrString"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.api.resource.Quantity"
+    }
+  ]
+}

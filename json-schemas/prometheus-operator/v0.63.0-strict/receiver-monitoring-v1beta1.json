@@ -1,0 +1,129 @@
+{
+  "description": "Receiver defines one or more notification integrations.",
+  "type": "object",
+  "required": [
+    "name"
+  ],
+  "properties": {
+    "emailConfigs": {
+      "description": "List of Email configurations.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.EmailConfig"
+      }
+    },
+    "name": {
+      "description": "Name of the receiver. Must be unique across all items from the list.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "opsgenieConfigs": {
+      "description": "List of OpsGenie configurations.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.OpsGenieConfig"
+      }
+    },
+    "pagerdutyConfigs": {
+      "description": "List of PagerDuty configurations.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.PagerDutyConfig"
+      }
+    },
+    "pushoverConfigs": {
+      "description": "List of Pushover configurations.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.PushoverConfig"
+      }
+    },
+    "slackConfigs": {
+      "description": "List of Slack configurations.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.SlackConfig"
+      }
+    },
+    "snsConfigs": {
+      "description": "List of SNS configurations",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.SNSConfig"
+      }
+    },
+    "telegramConfigs": {
+      "description": "List of Telegram configurations.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.TelegramConfig"
+      }
+    },
+    "victoropsConfigs": {
+      "description": "List of VictorOps configurations.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.VictorOpsConfig"
+      }
+    },
+    "webhookConfigs": {
+      "description": "List of webhook configurations.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.WebhookConfig"
+      }
+    },
+    "wechatConfigs": {
+      "description": "List of WeChat configurations.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.WeChatConfig"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

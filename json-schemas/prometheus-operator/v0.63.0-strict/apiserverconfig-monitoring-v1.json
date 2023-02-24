@@ -1,0 +1,45 @@
+{
+  "description": "APIServerConfig defines a host and auth methods to access apiserver. More info: https://prometheus.io/docs/prometheus/latest/configuration/configuration/#kubernetes_sd_config",
+  "type": "object",
+  "required": [
+    "host"
+  ],
+  "properties": {
+    "authorization": {
+      "description": "Authorization section for accessing apiserver",
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.Authorization"
+    },
+    "basicAuth": {
+      "description": "BasicAuth allow an endpoint to authenticate over basic authentication",
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.BasicAuth"
+    },
+    "bearerToken": {
+      "description": "Bearer token for accessing apiserver.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "bearerTokenFile": {
+      "description": "File to read bearer token for accessing apiserver.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "host": {
+      "description": "Host of apiserver. A valid string consisting of a hostname or IP followed by an optional port number",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "tlsConfig": {
+      "description": "TLS Config to use for accessing apiserver.",
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.TLSConfig"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

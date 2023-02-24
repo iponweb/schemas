@@ -1,0 +1,98 @@
+{
+  "description": "PodMonitorSpec contains specification parameters for a PodMonitor.",
+  "type": "object",
+  "required": [
+    "podMetricsEndpoints",
+    "selector"
+  ],
+  "properties": {
+    "attachMetadata": {
+      "description": "Attaches node metadata to discovered targets. Requires Prometheus v2.35.0 and above.",
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.AttachMetadata"
+    },
+    "jobLabel": {
+      "description": "The label to use to retrieve the job name from.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "labelLimit": {
+      "description": "Per-scrape limit on number of labels that will be accepted for a sample. Only valid in Prometheus versions 2.27.0 and newer.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int64"
+    },
+    "labelNameLengthLimit": {
+      "description": "Per-scrape limit on length of labels name that will be accepted for a sample. Only valid in Prometheus versions 2.27.0 and newer.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int64"
+    },
+    "labelValueLengthLimit": {
+      "description": "Per-scrape limit on length of labels value that will be accepted for a sample. Only valid in Prometheus versions 2.27.0 and newer.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int64"
+    },
+    "namespaceSelector": {
+      "description": "Selector to select which namespaces the Endpoints objects are discovered from.",
+      "default": {},
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.NamespaceSelector"
+    },
+    "podMetricsEndpoints": {
+      "description": "A list of endpoints allowed as part of this PodMonitor.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.PodMetricsEndpoint"
+      }
+    },
+    "podTargetLabels": {
+      "description": "PodTargetLabels transfers labels on the Kubernetes Pod onto the target.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "sampleLimit": {
+      "description": "SampleLimit defines per-scrape limit on number of scraped samples that will be accepted.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int64"
+    },
+    "selector": {
+      "description": "Selector to select Pod objects.",
+      "default": {},
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.LabelSelector"
+    },
+    "targetLimit": {
+      "description": "TargetLimit defines a limit on the number of scraped targets that will be accepted.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int64"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

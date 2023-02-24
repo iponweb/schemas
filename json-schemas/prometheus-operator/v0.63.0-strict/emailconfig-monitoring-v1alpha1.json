@@ -1,0 +1,101 @@
+{
+  "description": "EmailConfig configures notifications via Email.",
+  "type": "object",
+  "properties": {
+    "authIdentity": {
+      "description": "The identity to use for authentication.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "authPassword": {
+      "description": "The secret's key that contains the password to use for authentication. The secret needs to be in the same namespace as the AlertmanagerConfig object and accessible by the Prometheus Operator.",
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SecretKeySelector"
+    },
+    "authSecret": {
+      "description": "The secret's key that contains the CRAM-MD5 secret. The secret needs to be in the same namespace as the AlertmanagerConfig object and accessible by the Prometheus Operator.",
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SecretKeySelector"
+    },
+    "authUsername": {
+      "description": "The username to use for authentication.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "from": {
+      "description": "The sender address.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "headers": {
+      "description": "Further headers email header key/value pairs. Overrides any headers previously set by the notification implementation.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.KeyValue"
+      }
+    },
+    "hello": {
+      "description": "The hostname to identify to the SMTP server.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "html": {
+      "description": "The HTML body of the email notification.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "requireTLS": {
+      "description": "The SMTP TLS requirement. Note that Go does not support unencrypted connections to remote SMTP endpoints.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "sendResolved": {
+      "description": "Whether or not to notify about resolved alerts.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "smarthost": {
+      "description": "The SMTP host and port through which emails are sent. E.g. example.com:25",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "text": {
+      "description": "The text body of the email notification.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "tlsConfig": {
+      "description": "TLS configuration",
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.SafeTLSConfig"
+    },
+    "to": {
+      "description": "The email address to send notifications to.",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

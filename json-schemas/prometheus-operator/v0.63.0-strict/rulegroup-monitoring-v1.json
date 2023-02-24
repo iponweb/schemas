@@ -1,0 +1,45 @@
+{
+  "description": "RuleGroup is a list of sequentially evaluated recording and alerting rules.",
+  "type": "object",
+  "required": [
+    "name",
+    "rules"
+  ],
+  "properties": {
+    "interval": {
+      "description": "Interval determines how often rules in the group are evaluated.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "name": {
+      "description": "Name of the rule group.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "partial_response_strategy": {
+      "description": "PartialResponseStrategy is only used by ThanosRuler and will be ignored by Prometheus instances. More info: https://github.com/thanos-io/thanos/blob/main/docs/components/rule.md#partial-response",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "rules": {
+      "description": "List of alerting and recording rules.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.Rule"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

@@ -1,0 +1,22 @@
+{
+  "description": "TimeRange defines a start and end time in 24hr format",
+  "type": "object",
+  "properties": {
+    "endTime": {
+      "description": "EndTime is the end time in 24hr format.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "startTime": {
+      "description": "StartTime is the start time in 24hr format.",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

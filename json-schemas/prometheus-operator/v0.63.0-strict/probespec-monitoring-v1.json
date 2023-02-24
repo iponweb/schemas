@@ -1,0 +1,117 @@
+{
+  "description": "ProbeSpec contains specification parameters for a Probe.",
+  "type": "object",
+  "properties": {
+    "authorization": {
+      "description": "Authorization section for this endpoint",
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.SafeAuthorization"
+    },
+    "basicAuth": {
+      "description": "BasicAuth allow an endpoint to authenticate over basic authentication. More info: https://prometheus.io/docs/operating/configuration/#endpoint",
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.BasicAuth"
+    },
+    "bearerTokenSecret": {
+      "description": "Secret to mount to read bearer token for scraping targets. The secret needs to be in the same namespace as the probe and accessible by the Prometheus Operator.",
+      "default": {},
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SecretKeySelector"
+    },
+    "interval": {
+      "description": "Interval at which targets are probed using the configured prober. If not specified Prometheus' global scrape interval is used.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "jobName": {
+      "description": "The job name assigned to scraped metrics by default.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "labelLimit": {
+      "description": "Per-scrape limit on number of labels that will be accepted for a sample. Only valid in Prometheus versions 2.27.0 and newer.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int64"
+    },
+    "labelNameLengthLimit": {
+      "description": "Per-scrape limit on length of labels name that will be accepted for a sample. Only valid in Prometheus versions 2.27.0 and newer.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int64"
+    },
+    "labelValueLengthLimit": {
+      "description": "Per-scrape limit on length of labels value that will be accepted for a sample. Only valid in Prometheus versions 2.27.0 and newer.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int64"
+    },
+    "metricRelabelings": {
+      "description": "MetricRelabelConfigs to apply to samples before ingestion.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.RelabelConfig"
+      }
+    },
+    "module": {
+      "description": "The module to use for probing specifying how to probe the target. Example module configuring in the blackbox exporter: https://github.com/prometheus/blackbox_exporter/blob/master/example.yml",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "oauth2": {
+      "description": "OAuth2 for the URL. Only valid in Prometheus versions 2.27.0 and newer.",
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.OAuth2"
+    },
+    "prober": {
+      "description": "Specification for the prober to use for probing targets. The prober.URL parameter is required. Targets cannot be probed if left empty.",
+      "default": {},
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.ProberSpec"
+    },
+    "sampleLimit": {
+      "description": "SampleLimit defines per-scrape limit on number of scraped samples that will be accepted.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int64"
+    },
+    "scrapeTimeout": {
+      "description": "Timeout for scraping metrics from the Prometheus exporter. If not specified, the Prometheus global scrape interval is used.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "targetLimit": {
+      "description": "TargetLimit defines a limit on the number of scraped targets that will be accepted.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int64"
+    },
+    "targets": {
+      "description": "Targets defines a set of static or dynamically discovered targets to probe.",
+      "default": {},
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.ProbeTargets"
+    },
+    "tlsConfig": {
+      "description": "TLS configuration to use when scraping the endpoint.",
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.ProbeTLSConfig"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

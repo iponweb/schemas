@@ -1,0 +1,58 @@
+{
+  "type": "object",
+  "required": [
+    "shardID",
+    "replicas",
+    "updatedReplicas",
+    "availableReplicas",
+    "unavailableReplicas"
+  ],
+  "properties": {
+    "availableReplicas": {
+      "description": "Total number of available pods (ready for at least minReadySeconds) targeted by this shard.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32",
+      "default": 0
+    },
+    "replicas": {
+      "description": "Total number of pods targeted by this shard.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32",
+      "default": 0
+    },
+    "shardID": {
+      "description": "Identifier of the shard.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "unavailableReplicas": {
+      "description": "Total number of unavailable pods targeted by this shard.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32",
+      "default": 0
+    },
+    "updatedReplicas": {
+      "description": "Total number of non-terminated pods targeted by this shard that have the desired spec.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32",
+      "default": 0
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

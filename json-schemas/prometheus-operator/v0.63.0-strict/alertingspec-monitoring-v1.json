@@ -1,0 +1,22 @@
+{
+  "description": "AlertingSpec defines parameters for alerting configuration of Prometheus servers.",
+  "type": "object",
+  "required": [
+    "alertmanagers"
+  ],
+  "properties": {
+    "alertmanagers": {
+      "description": "AlertmanagerEndpoints Prometheus should fire alerts against.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.AlertmanagerEndpoints"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

@@ -1,0 +1,157 @@
+{
+  "description": "Endpoint defines a scrapeable endpoint serving Prometheus metrics.",
+  "type": "object",
+  "properties": {
+    "authorization": {
+      "description": "Authorization section for this endpoint",
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.SafeAuthorization"
+    },
+    "basicAuth": {
+      "description": "BasicAuth allow an endpoint to authenticate over basic authentication More info: https://prometheus.io/docs/operating/configuration/#endpoints",
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.BasicAuth"
+    },
+    "bearerTokenFile": {
+      "description": "File to read bearer token for scraping targets.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "bearerTokenSecret": {
+      "description": "Secret to mount to read bearer token for scraping targets. The secret needs to be in the same namespace as the service monitor and accessible by the Prometheus Operator.",
+      "default": {},
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SecretKeySelector"
+    },
+    "enableHttp2": {
+      "description": "Whether to enable HTTP2.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "filterRunning": {
+      "description": "Drop pods that are not running. (Failed, Succeeded). Enabled by default. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#pod-phase",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "followRedirects": {
+      "description": "FollowRedirects configures whether scrape requests follow HTTP 3xx redirects.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "honorLabels": {
+      "description": "HonorLabels chooses the metric's labels on collisions with target labels.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "honorTimestamps": {
+      "description": "HonorTimestamps controls whether Prometheus respects the timestamps present in scraped data.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "interval": {
+      "description": "Interval at which metrics should be scraped If not specified Prometheus' global scrape interval is used.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "metricRelabelings": {
+      "description": "MetricRelabelConfigs to apply to samples before ingestion.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.RelabelConfig"
+      }
+    },
+    "oauth2": {
+      "description": "OAuth2 for the URL. Only valid in Prometheus versions 2.27.0 and newer.",
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.OAuth2"
+    },
+    "params": {
+      "description": "Optional HTTP URL parameters",
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": {
+        "type": [
+          "array",
+          "null"
+        ],
+        "items": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "default": ""
+        }
+      }
+    },
+    "path": {
+      "description": "HTTP path to scrape for metrics. If empty, Prometheus uses the default value (e.g. `/metrics`).",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "port": {
+      "description": "Name of the service port this endpoint refers to. Mutually exclusive with targetPort.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "proxyUrl": {
+      "description": "ProxyURL eg http://proxyserver:2195 Directs scrapes to proxy through this endpoint.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "relabelings": {
+      "description": "RelabelConfigs to apply to samples before scraping. Prometheus Operator automatically adds relabelings for a few standard Kubernetes fields. The original scrape job's name is available via the `__tmp_prometheus_job_name` label. More info: https://prometheus.io/docs/prometheus/latest/configuration/configuration/#relabel_config",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.RelabelConfig"
+      }
+    },
+    "scheme": {
+      "description": "HTTP scheme to use for scraping.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "scrapeTimeout": {
+      "description": "Timeout after which the scrape is ended If not specified, the Prometheus global scrape timeout is used unless it is less than `Interval` in which the latter is used.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "targetPort": {
+      "description": "Name or number of the target port of the Pod behind the Service, the port must be specified with container port property. Mutually exclusive with port.",
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.util.intstr.IntOrString"
+    },
+    "tlsConfig": {
+      "description": "TLS configuration to use when scraping the endpoint",
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.TLSConfig"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

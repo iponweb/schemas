@@ -1,0 +1,36 @@
+{
+  "description": "SafeTLSConfig specifies safe TLS configuration parameters.",
+  "type": "object",
+  "properties": {
+    "ca": {
+      "description": "Certificate authority used when verifying server certificates.",
+      "default": {},
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.SecretOrConfigMap"
+    },
+    "cert": {
+      "description": "Client certificate to present when doing client-authentication.",
+      "default": {},
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.SecretOrConfigMap"
+    },
+    "insecureSkipVerify": {
+      "description": "Disable target certificate validation.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "keySecret": {
+      "description": "Secret containing the client key file for the targets.",
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SecretKeySelector"
+    },
+    "serverName": {
+      "description": "Used to verify the hostname for the targets.",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

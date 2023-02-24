@@ -1,0 +1,79 @@
+{
+  "description": "SNSConfig configures notifications via AWS SNS. See https://prometheus.io/docs/alerting/latest/configuration/#sns_configs",
+  "type": "object",
+  "properties": {
+    "apiURL": {
+      "description": "The SNS API URL i.e. https://sns.us-east-2.amazonaws.com. If not specified, the SNS API URL from the SNS SDK will be used.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "attributes": {
+      "description": "SNS message attributes.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "httpConfig": {
+      "description": "HTTP client configuration.",
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.HTTPConfig"
+    },
+    "message": {
+      "description": "The message content of the SNS notification.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "phoneNumber": {
+      "description": "Phone number if message is delivered via SMS in E.164 format. If you don't specify this value, you must specify a value for the TopicARN or TargetARN.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "sendResolved": {
+      "description": "Whether or not to notify about resolved alerts.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "sigv4": {
+      "description": "Configures AWS's Signature Verification 4 signing process to sign requests.",
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.Sigv4"
+    },
+    "subject": {
+      "description": "Subject line when the message is delivered to email endpoints.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "targetARN": {
+      "description": "The  mobile platform endpoint ARN if message is delivered via mobile notifications. If you don't specify this value, you must specify a value for the topic_arn or PhoneNumber.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "topicARN": {
+      "description": "SNS topic ARN, i.e. arn:aws:sns:us-east-2:698519295917:My-Topic If you don't specify this value, you must specify a value for the PhoneNumber or TargetARN.",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}
