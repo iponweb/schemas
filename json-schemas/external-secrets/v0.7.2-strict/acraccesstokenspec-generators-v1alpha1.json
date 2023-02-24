@@ -1,0 +1,45 @@
+{
+  "description": "ACRAccessTokenSpec defines how to generate the access token e.g. how to authenticate and which registry to use. see: https://github.com/Azure/acr/blob/main/docs/AAD-OAuth.md#overview",
+  "type": "object",
+  "required": [
+    "auth",
+    "registry"
+  ],
+  "properties": {
+    "auth": {
+      "default": {},
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.generators.v1alpha1.ACRAuth"
+    },
+    "environmentType": {
+      "description": "EnvironmentType specifies the Azure cloud environment endpoints to use for connecting and authenticating with Azure. By default it points to the public cloud AAD endpoint. The following endpoints are available, also see here: https://github.com/Azure/go-autorest/blob/main/autorest/azure/environments.go#L152 PublicCloud, USGovernmentCloud, ChinaCloud, GermanCloud",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "registry": {
+      "description": "the domain name of the ACR registry e.g. foobarexample.azurecr.io",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "scope": {
+      "description": "Define the scope for the access token, e.g. pull/push access for a repository. if not provided it will return a refresh token that has full scope. Note: you need to pin it down to the repository level, there is no wildcard available.\n\nexamples: repository:my-repository:pull,push repository:my-repository:pull\n\nsee docs for details: https://docs.docker.com/registry/spec/auth/scope/",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "tenantId": {
+      "description": "TenantID configures the Azure Tenant to send requests to. Required for ServicePrincipal auth type.",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

@@ -1,0 +1,19 @@
+{
+  "type": "object",
+  "properties": {
+    "managedIdentity": {
+      "description": "ManagedIdentity uses Azure Managed Identity to authenticate with Azure.",
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.generators.v1alpha1.AzureACRManagedIdentityAuth"
+    },
+    "servicePrincipal": {
+      "description": "ServicePrincipal uses Azure Service Principal credentials to authenticate with Azure.",
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.generators.v1alpha1.AzureACRServicePrincipalAuth"
+    },
+    "workloadIdentity": {
+      "description": "WorkloadIdentity uses Azure Workload Identity to authenticate with Azure.",
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.generators.v1alpha1.AzureACRWorkloadIdentityAuth"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

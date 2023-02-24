@@ -28,6 +28,7 @@ cd "${SOURCES_ROOT}" && go mod vendor
 GO111MODULE=off openapi-gen -v 4 -h "${ROOT}/generate/boilerplate.go.txt" \
     --input-dirs "${REPOSITORY}/apis/externalsecrets/v1alpha1" \
     --input-dirs "${REPOSITORY}/apis/externalsecrets/v1beta1" \
+    --input-dirs "${REPOSITORY}/apis/generators/v1alpha1" \
     --input-dirs "${REPOSITORY}/apis/meta/v1" \
     --input-dirs "k8s.io/apimachinery/pkg/apis/meta/v1,k8s.io/apimachinery/pkg/runtime,k8s.io/apimachinery/pkg/version" \
     --output-package "generated/openapi" \

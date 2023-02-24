@@ -30,6 +30,14 @@ var (
 		"github.com/external-secrets/external-secrets/apis/externalsecrets/v1alpha1.ExternalSecret",
 		"github.com/external-secrets/external-secrets/apis/externalsecrets/v1alpha1.SecretStore",
 		"github.com/external-secrets/external-secrets/apis/externalsecrets/v1alpha1.ClusterSecretStore",
+		"github.com/external-secrets/external-secrets/apis/externalsecrets/v1alpha1.PushSecret",
+
+		"github.com/external-secrets/external-secrets/apis/generators/v1alpha1.ACRAccessToken",
+		"github.com/external-secrets/external-secrets/apis/generators/v1alpha1.ECRAuthorizationToken",
+		"github.com/external-secrets/external-secrets/apis/generators/v1alpha1.GCRAccessToken",
+		"github.com/external-secrets/external-secrets/apis/generators/v1alpha1.Fake",
+		"github.com/external-secrets/external-secrets/apis/generators/v1alpha1.Password",
+
 		"github.com/external-secrets/external-secrets/apis/externalsecrets/v1beta1.ExternalSecret",
 		"github.com/external-secrets/external-secrets/apis/externalsecrets/v1beta1.ClusterExternalSecret",
 		"github.com/external-secrets/external-secrets/apis/externalsecrets/v1beta1.SecretStore",

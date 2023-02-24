@@ -1,0 +1,22 @@
+{
+  "description": "FakeSpec contains the static data.",
+  "type": "object",
+  "properties": {
+    "data": {
+      "description": "Data defines the static data returned by this generator.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

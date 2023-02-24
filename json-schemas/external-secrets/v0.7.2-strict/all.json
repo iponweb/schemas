@@ -130,6 +130,36 @@
       "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.OracleSecretRef"
     },
     {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.PushSecret"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.PushSecretData"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.PushSecretMatch"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.PushSecretRemoteRef"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.PushSecretSecret"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.PushSecretSelector"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.PushSecretSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.PushSecretStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.PushSecretStatusCondition"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.PushSecretStoreRef"
+    },
+    {
       "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.SecretStore"
     },
     {
@@ -491,6 +521,69 @@
     },
     {
       "$ref": "_definitions.json#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.YandexLockboxProvider"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.generators.v1alpha1.ACRAccessToken"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.generators.v1alpha1.ACRAccessTokenSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.generators.v1alpha1.ACRAuth"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.generators.v1alpha1.AWSAuth"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.generators.v1alpha1.AWSAuthSecretRef"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.generators.v1alpha1.AWSJWTAuth"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.generators.v1alpha1.AzureACRManagedIdentityAuth"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.generators.v1alpha1.AzureACRServicePrincipalAuth"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.generators.v1alpha1.AzureACRServicePrincipalAuthSecretRef"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.generators.v1alpha1.AzureACRWorkloadIdentityAuth"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.generators.v1alpha1.ECRAuthorizationToken"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.generators.v1alpha1.ECRAuthorizationTokenSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.generators.v1alpha1.Fake"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.generators.v1alpha1.FakeSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.generators.v1alpha1.GCPSMAuth"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.generators.v1alpha1.GCPSMAuthSecretRef"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.generators.v1alpha1.GCPWorkloadIdentity"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.generators.v1alpha1.GCRAccessToken"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.generators.v1alpha1.GCRAccessTokenSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.generators.v1alpha1.Password"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.generators.v1alpha1.PasswordSpec"
     },
     {
       "$ref": "_definitions.json#/definitions/io.external-secrets.apis.meta.v1.SecretKeySelector"
