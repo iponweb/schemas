@@ -1,0 +1,33 @@
+{
+  "description": "VenafiTPP defines connection configuration details for a Venafi TPP instance",
+  "type": "object",
+  "required": [
+    "url",
+    "credentialsRef"
+  ],
+  "properties": {
+    "caBundle": {
+      "description": "Base64-encoded bundle of PEM CAs which will be used to validate the certificate chain presented by the TPP server. Only used if using HTTPS; ignored for HTTP. If undefined, the certificate bundle in the cert-manager controller container is used to validate the chain.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "byte"
+    },
+    "credentialsRef": {
+      "description": "CredentialsRef is a reference to a Secret containing the username and password for the TPP server. The secret must contain two keys, 'username' and 'password'.",
+      "default": {},
+      "$ref": "_definitions.json#/definitions/io.cert-manager.pkg.apis.meta.v1.LocalObjectReference"
+    },
+    "url": {
+      "description": "URL is the base URL for the vedsdk endpoint of the Venafi TPP instance, for example: \"https://tpp.example.com/vedsdk\".",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

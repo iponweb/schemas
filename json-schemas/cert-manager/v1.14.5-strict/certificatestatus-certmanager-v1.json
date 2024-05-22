@@ -1,0 +1,62 @@
+{
+  "description": "CertificateStatus defines the observed state of Certificate",
+  "type": "object",
+  "properties": {
+    "conditions": {
+      "description": "List of status conditions to indicate the status of certificates. Known condition types are `Ready` and `Issuing`.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/io.cert-manager.pkg.apis.certmanager.v1.CertificateCondition"
+      },
+      "x-kubernetes-list-map-keys": [
+        "type"
+      ],
+      "x-kubernetes-list-type": "map"
+    },
+    "failedIssuanceAttempts": {
+      "description": "The number of continuous failed issuance attempts up till now. This field gets removed (if set) on a successful issuance and gets set to 1 if unset and an issuance has failed. If an issuance has failed, the delay till the next issuance will be calculated using formula time.Hour * 2 ^ (failedIssuanceAttempts - 1).",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32"
+    },
+    "lastFailureTime": {
+      "description": "LastFailureTime is set only if the lastest issuance for this Certificate failed and contains the time of the failure. If an issuance has failed, the delay till the next issuance will be calculated using formula time.Hour * 2 ^ (failedIssuanceAttempts - 1). If the latest issuance has succeeded this field will be unset.",
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
+    },
+    "nextPrivateKeySecretName": {
+      "description": "The name of the Secret resource containing the private key to be used for the next certificate iteration. The keymanager controller will automatically set this field if the `Issuing` condition is set to `True`. It will automatically unset this field when the Issuing condition is not set or False.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "notAfter": {
+      "description": "The expiration time of the certificate stored in the secret named by this resource in `spec.secretName`.",
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
+    },
+    "notBefore": {
+      "description": "The time after which the certificate stored in the secret named by this resource in `spec.secretName` is valid.",
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
+    },
+    "renewalTime": {
+      "description": "RenewalTime is the time at which the certificate will be next renewed. If not set, no upcoming renewal is scheduled.",
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
+    },
+    "revision": {
+      "description": "The current 'revision' of the certificate as issued.\n\nWhen a CertificateRequest resource is created, it will have the `cert-manager.io/certificate-revision` set to one greater than the current value of this field.\n\nUpon issuance, this field will be set to the value of the annotation on the CertificateRequest resource used to issue the certificate.\n\nPersisting the value on the CertificateRequest resource allows the certificates controller to know whether a request is part of an old issuance or if it is part of the ongoing revision's issuance by checking if the revision value in the annotation is greater than this field.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

@@ -1,0 +1,27 @@
+{
+  "description": "Configures an issuer to sign certificates using a Venafi TPP or Cloud policy zone.",
+  "type": "object",
+  "required": [
+    "zone"
+  ],
+  "properties": {
+    "cloud": {
+      "description": "Cloud specifies the Venafi cloud configuration settings. Only one of TPP or Cloud may be specified.",
+      "$ref": "_definitions.json#/definitions/io.cert-manager.pkg.apis.certmanager.v1.VenafiCloud"
+    },
+    "tpp": {
+      "description": "TPP specifies Trust Protection Platform configuration settings. Only one of TPP or Cloud may be specified.",
+      "$ref": "_definitions.json#/definitions/io.cert-manager.pkg.apis.certmanager.v1.VenafiTPP"
+    },
+    "zone": {
+      "description": "Zone is the Venafi Policy Zone to use for this issuer. All requests made to the Venafi platform will be restricted by the named zone policy. This field is required.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

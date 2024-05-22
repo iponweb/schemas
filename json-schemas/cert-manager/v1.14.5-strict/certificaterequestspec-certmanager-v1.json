@@ -1,0 +1,99 @@
+{
+  "description": "CertificateRequestSpec defines the desired state of CertificateRequest\n\nNOTE: It is important to note that the issuer can choose to ignore or change any of the requested attributes. How the issuer maps a certificate request to a signed certificate is the full responsibility of the issuer itself. For example, as an edge case, an issuer that inverts the isCA value is free to do so.",
+  "type": "object",
+  "required": [
+    "issuerRef",
+    "request"
+  ],
+  "properties": {
+    "duration": {
+      "description": "Requested 'duration' (i.e. lifetime) of the Certificate. Note that the issuer may choose to ignore the requested duration, just like any other requested attribute.",
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Duration"
+    },
+    "extra": {
+      "description": "Extra contains extra attributes of the user that created the CertificateRequest. Populated by the cert-manager webhook on creation and immutable.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": {
+        "type": [
+          "array",
+          "null"
+        ],
+        "items": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "default": ""
+        }
+      }
+    },
+    "groups": {
+      "description": "Groups contains group membership of the user that created the CertificateRequest. Populated by the cert-manager webhook on creation and immutable.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      },
+      "x-kubernetes-list-type": "atomic"
+    },
+    "isCA": {
+      "description": "Requested basic constraints isCA value. Note that the issuer may choose to ignore the requested isCA value, just like any other requested attribute.\n\nNOTE: If the CSR in the `Request` field has a BasicConstraints extension, it must have the same isCA value as specified here.\n\nIf true, this will automatically add the `cert sign` usage to the list of requested `usages`.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "issuerRef": {
+      "description": "Reference to the issuer responsible for issuing the certificate. If the issuer is namespace-scoped, it must be in the same namespace as the Certificate. If the issuer is cluster-scoped, it can be used from any namespace.\n\nThe `name` field of the reference must always be specified.",
+      "default": {},
+      "$ref": "_definitions.json#/definitions/io.cert-manager.pkg.apis.meta.v1.ObjectReference"
+    },
+    "request": {
+      "description": "The PEM-encoded X.509 certificate signing request to be submitted to the issuer for signing.\n\nIf the CSR has a BasicConstraints extension, its isCA attribute must match the `isCA` value of this CertificateRequest. If the CSR has a KeyUsage extension, its key usages must match the key usages in the `usages` field of this CertificateRequest. If the CSR has a ExtKeyUsage extension, its extended key usages must match the extended key usages in the `usages` field of this CertificateRequest.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "byte"
+    },
+    "uid": {
+      "description": "UID contains the uid of the user that created the CertificateRequest. Populated by the cert-manager webhook on creation and immutable.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "usages": {
+      "description": "Requested key usages and extended key usages.\n\nNOTE: If the CSR in the `Request` field has uses the KeyUsage or ExtKeyUsage extension, these extensions must have the same values as specified here without any additional values.\n\nIf unset, defaults to `digital signature` and `key encipherment`.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "username": {
+      "description": "Username contains the name of the user that created the CertificateRequest. Populated by the cert-manager webhook on creation and immutable.",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

@@ -1,0 +1,20 @@
+{
+  "description": "VaultAuth is configuration used to authenticate with a Vault server. The order of precedence is [`tokenSecretRef`, `appRole` or `kubernetes`].",
+  "type": "object",
+  "properties": {
+    "appRole": {
+      "description": "AppRole authenticates with Vault using the App Role auth mechanism, with the role and secret stored in a Kubernetes Secret resource.",
+      "$ref": "_definitions.json#/definitions/io.cert-manager.pkg.apis.certmanager.v1.VaultAppRole"
+    },
+    "kubernetes": {
+      "description": "Kubernetes authenticates with Vault by passing the ServiceAccount token stored in the named Secret resource to the Vault server.",
+      "$ref": "_definitions.json#/definitions/io.cert-manager.pkg.apis.certmanager.v1.VaultKubernetesAuth"
+    },
+    "tokenSecretRef": {
+      "description": "TokenSecretRef authenticates with Vault by presenting a token.",
+      "$ref": "_definitions.json#/definitions/io.cert-manager.pkg.apis.meta.v1.SecretKeySelector"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

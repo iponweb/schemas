@@ -1,0 +1,23 @@
+{
+  "description": "ACMEIssuerDNS01ProviderAcmeDNS is a structure containing the configuration for ACME-DNS servers",
+  "type": "object",
+  "required": [
+    "host",
+    "accountSecretRef"
+  ],
+  "properties": {
+    "accountSecretRef": {
+      "default": {},
+      "$ref": "_definitions.json#/definitions/io.cert-manager.pkg.apis.meta.v1.SecretKeySelector"
+    },
+    "host": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

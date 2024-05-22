@@ -1,0 +1,49 @@
+{
+  "type": "object",
+  "properties": {
+    "class": {
+      "description": "This field configures the annotation `kubernetes.io/ingress.class` when creating Ingress resources to solve ACME challenges that use this challenge solver. Only one of `class`, `name` or `ingressClassName` may be specified.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "ingressClassName": {
+      "description": "This field configures the field `ingressClassName` on the created Ingress resources used to solve ACME challenges that use this challenge solver. This is the recommended way of configuring the ingress class. Only one of `class`, `name` or `ingressClassName` may be specified.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "ingressTemplate": {
+      "description": "Optional ingress template used to configure the ACME challenge solver ingress used for HTTP01 challenges.",
+      "$ref": "_definitions.json#/definitions/io.cert-manager.pkg.apis.acme.v1.ACMEChallengeSolverHTTP01IngressTemplate"
+    },
+    "name": {
+      "description": "The name of the ingress resource that should have ACME challenge solving routes inserted into it in order to solve HTTP01 challenges. This is typically used in conjunction with ingress controllers like ingress-gce, which maintains a 1:1 mapping between external IPs and ingress resources. Only one of `class`, `name` or `ingressClassName` may be specified.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "podTemplate": {
+      "description": "Optional pod template used to configure the ACME challenge solver pods used for HTTP01 challenges.",
+      "$ref": "_definitions.json#/definitions/io.cert-manager.pkg.apis.acme.v1.ACMEChallengeSolverHTTP01IngressPodTemplate"
+    },
+    "serviceType": {
+      "description": "Optional service type for Kubernetes solver service. Supported values are NodePort or ClusterIP. If unset, defaults to NodePort.\n\nPossible enum values:\n - `\"ClusterIP\"` means a service will only be accessible inside the cluster, via the cluster IP.\n - `\"ExternalName\"` means a service consists of only a reference to an external name that kubedns or equivalent will return as a CNAME record, with no exposing or proxying of any pods involved.\n - `\"LoadBalancer\"` means a service will be exposed via an external load balancer (if the cloud provider supports it), in addition to 'NodePort' type.\n - `\"NodePort\"` means a service will be exposed on one port of every node, in addition to 'ClusterIP' type.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "ClusterIP",
+        "ExternalName",
+        "LoadBalancer",
+        "NodePort"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

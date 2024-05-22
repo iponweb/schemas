@@ -1,0 +1,28 @@
+{
+  "description": "IssuerSpec is the specification of an Issuer. This includes any configuration required for the issuer.",
+  "type": "object",
+  "properties": {
+    "acme": {
+      "description": "ACME configures this issuer to communicate with a RFC8555 (ACME) server to obtain signed x509 certificates.",
+      "$ref": "_definitions.json#/definitions/io.cert-manager.pkg.apis.acme.v1.ACMEIssuer"
+    },
+    "ca": {
+      "description": "CA configures this issuer to sign certificates using a signing CA keypair stored in a Secret resource. This is used to build internal PKIs that are managed by cert-manager.",
+      "$ref": "_definitions.json#/definitions/io.cert-manager.pkg.apis.certmanager.v1.CAIssuer"
+    },
+    "selfSigned": {
+      "description": "SelfSigned configures this issuer to 'self sign' certificates using the private key used to create the CertificateRequest object.",
+      "$ref": "_definitions.json#/definitions/io.cert-manager.pkg.apis.certmanager.v1.SelfSignedIssuer"
+    },
+    "vault": {
+      "description": "Vault configures this issuer to sign certificates using a HashiCorp Vault PKI backend.",
+      "$ref": "_definitions.json#/definitions/io.cert-manager.pkg.apis.certmanager.v1.VaultIssuer"
+    },
+    "venafi": {
+      "description": "Venafi configures this issuer to sign certificates using a Venafi TPP or Venafi Cloud policy zone.",
+      "$ref": "_definitions.json#/definitions/io.cert-manager.pkg.apis.certmanager.v1.VenafiIssuer"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

@@ -1,0 +1,33 @@
+{
+  "description": "ObjectReference is a reference to an object with a given name, kind and group.",
+  "type": "object",
+  "required": [
+    "name"
+  ],
+  "properties": {
+    "group": {
+      "description": "Group of the resource being referred to.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "kind": {
+      "description": "Kind of the resource being referred to.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "name": {
+      "description": "Name of the resource being referred to.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

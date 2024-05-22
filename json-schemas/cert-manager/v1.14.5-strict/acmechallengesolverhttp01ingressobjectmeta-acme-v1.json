@@ -1,0 +1,35 @@
+{
+  "type": "object",
+  "properties": {
+    "annotations": {
+      "description": "Annotations that should be added to the created ACME HTTP01 solver ingress.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "labels": {
+      "description": "Labels that should be added to the created ACME HTTP01 solver ingress.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

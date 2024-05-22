@@ -1,0 +1,22 @@
+{
+  "description": "Configures an issuer to 'self sign' certificates using the private key used to create the CertificateRequest object.",
+  "type": "object",
+  "properties": {
+    "crlDistributionPoints": {
+      "description": "The CRL distribution points is an X.509 v3 certificate extension which identifies the location of the CRL from which the revocation of this certificate can be checked. If not set certificate will be issued without CDP. Values are strings.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

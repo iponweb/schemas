@@ -1,0 +1,64 @@
+{
+  "description": "ACMEIssuerDNS01ProviderAzureDNS is a structure containing the configuration for Azure DNS",
+  "type": "object",
+  "required": [
+    "subscriptionID",
+    "resourceGroupName"
+  ],
+  "properties": {
+    "clientID": {
+      "description": "Auth: Azure Service Principal: The ClientID of the Azure Service Principal used to authenticate with Azure DNS. If set, ClientSecret and TenantID must also be set.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "clientSecretSecretRef": {
+      "description": "Auth: Azure Service Principal: A reference to a Secret containing the password associated with the Service Principal. If set, ClientID and TenantID must also be set.",
+      "$ref": "_definitions.json#/definitions/io.cert-manager.pkg.apis.meta.v1.SecretKeySelector"
+    },
+    "environment": {
+      "description": "name of the Azure environment (default AzurePublicCloud)",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "hostedZoneName": {
+      "description": "name of the DNS zone that should be used",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "managedIdentity": {
+      "description": "Auth: Azure Workload Identity or Azure Managed Service Identity: Settings to enable Azure Workload Identity or Azure Managed Service Identity If set, ClientID, ClientSecret and TenantID must not be set.",
+      "$ref": "_definitions.json#/definitions/io.cert-manager.pkg.apis.acme.v1.AzureManagedIdentity"
+    },
+    "resourceGroupName": {
+      "description": "resource group the DNS zone is located in",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "subscriptionID": {
+      "description": "ID of the Azure subscription",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "tenantID": {
+      "description": "Auth: Azure Service Principal: The TenantID of the Azure Service Principal used to authenticate with Azure DNS. If set, ClientID and ClientSecret must also be set.",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

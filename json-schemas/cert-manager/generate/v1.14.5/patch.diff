@@ -1,0 +1,101 @@
+diff --git a/pkg/apis/acme/v1/doc.go b/pkg/apis/acme/v1/doc.go
+index 92b6583..199b29e 100644
+--- a/pkg/apis/acme/v1/doc.go
++++ b/pkg/apis/acme/v1/doc.go
+@@ -17,4 +17,5 @@ limitations under the License.
+ // Package v1 is the v1 version of the API.
+ // +k8s:deepcopy-gen=package,register
+ // +groupName=acme.cert-manager.io
++// +k8s:openapi-gen=true
+ package v1
+diff --git a/pkg/apis/acme/v1/types_challenge.go b/pkg/apis/acme/v1/types_challenge.go
+index cfc4f24..1166424 100644
+--- a/pkg/apis/acme/v1/types_challenge.go
++++ b/pkg/apis/acme/v1/types_challenge.go
+@@ -27,7 +27,6 @@ import (
+ // +kubebuilder:storageversion
+ 
+ // Challenge is a type to represent a Challenge request with an ACME server
+-// +k8s:openapi-gen=true
+ // +kubebuilder:printcolumn:name="State",type="string",JSONPath=".status.state"
+ // +kubebuilder:printcolumn:name="Domain",type="string",JSONPath=".spec.dnsName"
+ // +kubebuilder:printcolumn:name="Reason",type="string",JSONPath=".status.reason",description="",priority=1
+diff --git a/pkg/apis/acme/v1/types_issuer.go b/pkg/apis/acme/v1/types_issuer.go
+index f202515..4d7bf2d 100644
+--- a/pkg/apis/acme/v1/types_issuer.go
++++ b/pkg/apis/acme/v1/types_issuer.go
+@@ -337,7 +337,7 @@ type ACMEChallengeSolverHTTP01IngressPodSpec struct {
+ 
+ 	// If specified, the pod's imagePullSecrets
+ 	// +optional
+-	ImagePullSecrets []corev1.LocalObjectReference `json:"imagePullSecrets,omitempty" patchStrategy:"merge" patchMergeKey:"name"`
++	ImagePullSecrets []corev1.LocalObjectReference `json:"imagePullSecrets,omitempty"`
+ }
+ 
+ type ACMEChallengeSolverHTTP01IngressTemplate struct {
+diff --git a/pkg/apis/acme/v1/types_order.go b/pkg/apis/acme/v1/types_order.go
+index e9a50a3..160acc2 100644
+--- a/pkg/apis/acme/v1/types_order.go
++++ b/pkg/apis/acme/v1/types_order.go
+@@ -27,7 +27,6 @@ import (
+ // +kubebuilder:storageversion
+ 
+ // Order is a type to represent an Order with an ACME server
+-// +k8s:openapi-gen=true
+ type Order struct {
+ 	metav1.TypeMeta   `json:",inline"`
+ 	metav1.ObjectMeta `json:"metadata"`
+diff --git a/pkg/apis/certmanager/v1/doc.go b/pkg/apis/certmanager/v1/doc.go
+index 348211c..5826ddf 100644
+--- a/pkg/apis/certmanager/v1/doc.go
++++ b/pkg/apis/certmanager/v1/doc.go
+@@ -18,4 +18,5 @@ limitations under the License.
+ // +k8s:deepcopy-gen=package,register
+ // +groupName=cert-manager.io
+ // +groupGoName=Certmanager
++// +k8s:openapi-gen=true
+ package v1
+diff --git a/pkg/apis/certmanager/v1/types_certificaterequest.go b/pkg/apis/certmanager/v1/types_certificaterequest.go
+index 59797c7..2d17cb1 100644
+--- a/pkg/apis/certmanager/v1/types_certificaterequest.go
++++ b/pkg/apis/certmanager/v1/types_certificaterequest.go
+@@ -55,7 +55,6 @@ const (
+ //
+ // A CertificateRequest is a one-shot resource, meaning it represents a single
+ // point in time request for a certificate and cannot be re-used.
+-// +k8s:openapi-gen=true
+ type CertificateRequest struct {
+ 	metav1.TypeMeta `json:",inline"`
+ 	// Standard object's metadata.
+diff --git a/pkg/apis/certmanager/v1/types_issuer.go b/pkg/apis/certmanager/v1/types_issuer.go
+index 4d5fc44..ce0dfc0 100644
+--- a/pkg/apis/certmanager/v1/types_issuer.go
++++ b/pkg/apis/certmanager/v1/types_issuer.go
+@@ -25,7 +25,6 @@ import (
+ 
+ // +genclient
+ // +genclient:nonNamespaced
+-// +k8s:openapi-gen=true
+ // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+ // +kubebuilder:storageversion
+ 
+@@ -56,8 +55,7 @@ type ClusterIssuerList struct {
+ 	Items []ClusterIssuer `json:"items"`
+ }
+ 
+-// +genclient
+-// +k8s:openapi-gen=true
++// +genclientf
+ // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+ // +kubebuilder:storageversion
+ 
+diff --git a/pkg/apis/meta/v1/doc.go b/pkg/apis/meta/v1/doc.go
+index 9a67368..c3a6e15 100644
+--- a/pkg/apis/meta/v1/doc.go
++++ b/pkg/apis/meta/v1/doc.go
+@@ -18,4 +18,5 @@ limitations under the License.
+ // +k8s:deepcopy-gen=package
+ // +gencrdrefdocs:force
+ // +groupName=meta.cert-manager.io
++// +k8s:openapi-gen=true
+ package v1

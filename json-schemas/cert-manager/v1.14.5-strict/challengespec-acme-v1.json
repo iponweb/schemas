@@ -1,0 +1,83 @@
+{
+  "type": "object",
+  "required": [
+    "url",
+    "authorizationURL",
+    "dnsName",
+    "type",
+    "token",
+    "key",
+    "solver",
+    "issuerRef"
+  ],
+  "properties": {
+    "authorizationURL": {
+      "description": "The URL to the ACME Authorization resource that this challenge is a part of.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "dnsName": {
+      "description": "dnsName is the identifier that this challenge is for, e.g. example.com. If the requested DNSName is a 'wildcard', this field MUST be set to the non-wildcard domain, e.g. for `*.example.com`, it must be `example.com`.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "issuerRef": {
+      "description": "References a properly configured ACME-type Issuer which should be used to create this Challenge. If the Issuer does not exist, processing will be retried. If the Issuer is not an 'ACME' Issuer, an error will be returned and the Challenge will be marked as failed.",
+      "default": {},
+      "$ref": "_definitions.json#/definitions/io.cert-manager.pkg.apis.meta.v1.ObjectReference"
+    },
+    "key": {
+      "description": "The ACME challenge key for this challenge For HTTP01 challenges, this is the value that must be responded with to complete the HTTP01 challenge in the format: `<private key JWK thumbprint>.<key from acme server for challenge>`. For DNS01 challenges, this is the base64 encoded SHA256 sum of the `<private key JWK thumbprint>.<key from acme server for challenge>` text that must be set as the TXT record content.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "solver": {
+      "description": "Contains the domain solving configuration that should be used to solve this challenge resource.",
+      "default": {},
+      "$ref": "_definitions.json#/definitions/io.cert-manager.pkg.apis.acme.v1.ACMEChallengeSolver"
+    },
+    "token": {
+      "description": "The ACME challenge token for this challenge. This is the raw value returned from the ACME server.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "type": {
+      "description": "The type of ACME challenge this resource represents. One of \"HTTP-01\" or \"DNS-01\".",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "url": {
+      "description": "The URL of the ACME Challenge resource for this challenge. This can be used to lookup details about the status of this challenge.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "wildcard": {
+      "description": "wildcard will be true if this challenge is for a wildcard identifier, for example '*.example.com'.",
+      "type": [
+        "boolean",
+        "null"
+      ],
+      "default": false
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

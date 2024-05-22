@@ -1,0 +1,43 @@
+{
+  "description": "CertificateRequestStatus defines the observed state of CertificateRequest and resulting signed certificate.",
+  "type": "object",
+  "properties": {
+    "ca": {
+      "description": "The PEM encoded X.509 certificate of the signer, also known as the CA (Certificate Authority). This is set on a best-effort basis by different issuers. If not set, the CA is assumed to be unknown/not available.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "byte"
+    },
+    "certificate": {
+      "description": "The PEM encoded X.509 certificate resulting from the certificate signing request. If not set, the CertificateRequest has either not been completed or has failed. More information on failure can be found by checking the `conditions` field.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "byte"
+    },
+    "conditions": {
+      "description": "List of status conditions to indicate the status of a CertificateRequest. Known condition types are `Ready`, `InvalidRequest`, `Approved` and `Denied`.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/io.cert-manager.pkg.apis.certmanager.v1.CertificateRequestCondition"
+      },
+      "x-kubernetes-list-map-keys": [
+        "type"
+      ],
+      "x-kubernetes-list-type": "map"
+    },
+    "failureTime": {
+      "description": "FailureTime stores the time that this CertificateRequest failed. This is used to influence garbage collection and back-off.",
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

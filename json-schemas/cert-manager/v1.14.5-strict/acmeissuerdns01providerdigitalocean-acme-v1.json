@@ -1,0 +1,15 @@
+{
+  "description": "ACMEIssuerDNS01ProviderDigitalOcean is a structure containing the DNS configuration for DigitalOcean Domains",
+  "type": "object",
+  "required": [
+    "tokenSecretRef"
+  ],
+  "properties": {
+    "tokenSecretRef": {
+      "default": {},
+      "$ref": "_definitions.json#/definitions/io.cert-manager.pkg.apis.meta.v1.SecretKeySelector"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}
