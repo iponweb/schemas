@@ -1,0 +1,16 @@
+{
+  "description": "HTTPRequestMirrorFilter defines configuration for the RequestMirror filter.",
+  "type": "object",
+  "required": [
+    "backendRef"
+  ],
+  "properties": {
+    "backendRef": {
+      "description": "BackendRef references a resource where mirrored requests are sent.\n\nMirrored requests must be sent only to a single destination endpoint within this BackendRef, irrespective of how many endpoints are present within this BackendRef.\n\nIf the referent cannot be found, this BackendRef is invalid and must be dropped from the Gateway. The controller must ensure the \"ResolvedRefs\" condition on the Route status is set to `status: False` and not configure this backend in the underlying implementation.\n\nIf there is a cross-namespace reference to an *existing* object that is not allowed by a ReferenceGrant, the controller must ensure the \"ResolvedRefs\"  condition on the Route is set to `status: False`, with the \"RefNotPermitted\" reason and not configure this backend in the underlying implementation.\n\nIn either error case, the Message of the `ResolvedRefs` Condition should be used to provide more detail about the problem.\n\nSupport: Extended for Kubernetes Service\n\nSupport: Implementation-specific for any other resource",
+      "default": {},
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.apis.v1.BackendObjectReference"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

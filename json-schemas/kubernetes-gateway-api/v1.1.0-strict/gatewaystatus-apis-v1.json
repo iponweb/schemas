@@ -1,0 +1,49 @@
+{
+  "description": "GatewayStatus defines the observed state of Gateway.",
+  "type": "object",
+  "properties": {
+    "addresses": {
+      "description": "Addresses lists the network addresses that have been bound to the Gateway.\n\nThis list may differ from the addresses provided in the spec under some conditions:\n\n  * no addresses are specified, all addresses are dynamically assigned\n  * a combination of specified and dynamic addresses are assigned\n  * a specified address was unusable (e.g. already in use)\n\n<gateway:validateIPAddress>",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.apis.v1.GatewayStatusAddress"
+      }
+    },
+    "conditions": {
+      "description": "Conditions describe the current conditions of the Gateway.\n\nImplementations should prefer to express Gateway conditions using the `GatewayConditionType` and `GatewayConditionReason` constants so that operators and tools can converge on a common vocabulary to describe Gateway state.\n\nKnown condition types are:\n\n* \"Accepted\" * \"Programmed\" * \"Ready\"",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Condition"
+      },
+      "x-kubernetes-list-map-keys": [
+        "type"
+      ],
+      "x-kubernetes-list-type": "map"
+    },
+    "listeners": {
+      "description": "Listeners provide status for each unique listener port defined in the Spec.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.apis.v1.ListenerStatus"
+      },
+      "x-kubernetes-list-map-keys": [
+        "name"
+      ],
+      "x-kubernetes-list-type": "map"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

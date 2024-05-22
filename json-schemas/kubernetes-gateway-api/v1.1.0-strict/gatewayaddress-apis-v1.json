@@ -1,0 +1,26 @@
+{
+  "description": "GatewayAddress describes an address that can be bound to a Gateway.",
+  "type": "object",
+  "required": [
+    "value"
+  ],
+  "properties": {
+    "type": {
+      "description": "Type of the address.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "value": {
+      "description": "Value of the address. The validity of the values will depend on the type and support by the controller.\n\nExamples: `1.2.3.4`, `128::1`, `my-ip-address`.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}
