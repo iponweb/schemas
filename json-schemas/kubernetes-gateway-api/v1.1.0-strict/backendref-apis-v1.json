@@ -1,21 +1,10 @@
 {
-  "description": "HTTPBackendRef defines how a HTTPRoute should forward an HTTP request.",
+  "description": "BackendRef defines how a Route should forward a request to a Kubernetes resource.\n\nNote that when a namespace different than the local namespace is specified, a ReferenceGrant object is required in the referent namespace to allow that namespace's owner to accept the reference. See the ReferenceGrant documentation for details.",
   "type": "object",
   "required": [
     "name"
   ],
   "properties": {
-    "filters": {
-      "description": "Filters defined at this level should be executed if and only if the request is being forwarded to the backend defined here.\n\nSupport: Implementation-specific (For broader support of filters, use the Filters field in HTTPRouteRule.)",
-      "type": [
-        "array",
-        "null"
-      ],
-      "items": {
-        "default": {},
-        "$ref": "_definitions.json#/definitions/io.k8s.sigs.gateway-api.apis.v1.HTTPRouteFilter"
-      }
-    },
     "group": {
       "description": "Group is the group of the referent. For example, \"gateway.networking.k8s.io\". When unspecified or empty string, core API group is inferred.",
       "type": [

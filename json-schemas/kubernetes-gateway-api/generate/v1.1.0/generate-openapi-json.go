@@ -29,15 +29,15 @@ var (
 	// they will be calculated on build. The list are the keys of the map
 	// returned from the function GetOpenAPIDefinitions at:
 	crdNames = []string{
-		"github.com/kubernetes-sigs/gateway-api/apis/v1.GatewayClass",
-		"github.com/kubernetes-sigs/gateway-api/apis/v1.Gateway",
-		"github.com/kubernetes-sigs/gateway-api/apis/v1.HTTPRoute",
-		"github.com/kubernetes-sigs/gateway-api/apis/v1.GRPCRoute",
-		//"github.com/kubernetes-sigs/gateway-api/apis/v1alpha2.BackendLBPolicy",
-		//"github.com/kubernetes-sigs/gateway-api/apis/v1alpha2.ReferenceGrant",
-		//"github.com/kubernetes-sigs/gateway-api/apis/v1alpha2.TCPRoute",
-		//"github.com/kubernetes-sigs/gateway-api/apis/v1alpha2.TLSRoute",
-		//"github.com/kubernetes-sigs/gateway-api/apis/v1alpha2.UDPRoute",
+		"sigs.k8s.io/gateway-api/apis/v1.GatewayClass",
+		"sigs.k8s.io/gateway-api/apis/v1.Gateway",
+		"sigs.k8s.io/gateway-api/apis/v1.HTTPRoute",
+		"sigs.k8s.io/gateway-api/apis/v1.GRPCRoute",
+		"sigs.k8s.io/gateway-api/apis/v1alpha2.BackendLBPolicy",
+		"sigs.k8s.io/gateway-api/apis/v1alpha2.ReferenceGrant",
+		"sigs.k8s.io/gateway-api/apis/v1alpha2.TCPRoute",
+		"sigs.k8s.io/gateway-api/apis/v1alpha2.TLSRoute",
+		"sigs.k8s.io/gateway-api/apis/v1alpha2.UDPRoute",
 	}
 
 	hostConversionRules = map[string]string{

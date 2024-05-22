@@ -31,6 +31,9 @@
       "$ref": "_definitions.json#/definitions/io.k8s.sigs.gateway-api.apis.v1.BackendObjectReference"
     },
     {
+      "$ref": "_definitions.json#/definitions/io.k8s.sigs.gateway-api.apis.v1.BackendRef"
+    },
+    {
       "$ref": "_definitions.json#/definitions/io.k8s.sigs.gateway-api.apis.v1.CookieConfig"
     },
     {
@@ -179,6 +182,69 @@
     },
     {
       "$ref": "_definitions.json#/definitions/io.k8s.sigs.gateway-api.apis.v1.SessionPersistence"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.sigs.gateway-api.apis.v1alpha2.BackendLBPolicy"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.sigs.gateway-api.apis.v1alpha2.BackendLBPolicySpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.sigs.gateway-api.apis.v1alpha2.LocalPolicyTargetReference"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.sigs.gateway-api.apis.v1alpha2.PolicyAncestorStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.sigs.gateway-api.apis.v1alpha2.PolicyStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.sigs.gateway-api.apis.v1alpha2.ReferenceGrant"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.sigs.gateway-api.apis.v1alpha2.TCPRoute"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.sigs.gateway-api.apis.v1alpha2.TCPRouteRule"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.sigs.gateway-api.apis.v1alpha2.TCPRouteSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.sigs.gateway-api.apis.v1alpha2.TCPRouteStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.sigs.gateway-api.apis.v1alpha2.TLSRoute"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.sigs.gateway-api.apis.v1alpha2.TLSRouteRule"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.sigs.gateway-api.apis.v1alpha2.TLSRouteSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.sigs.gateway-api.apis.v1alpha2.TLSRouteStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.sigs.gateway-api.apis.v1alpha2.UDPRoute"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.sigs.gateway-api.apis.v1alpha2.UDPRouteRule"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.sigs.gateway-api.apis.v1alpha2.UDPRouteSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.sigs.gateway-api.apis.v1alpha2.UDPRouteStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.sigs.gateway-api.apis.v1beta1.ReferenceGrantFrom"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.sigs.gateway-api.apis.v1beta1.ReferenceGrantSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.sigs.gateway-api.apis.v1beta1.ReferenceGrantTo"
     },
     {
       "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.util.intstr.IntOrString"

@@ -1,0 +1,32 @@
+{
+  "description": "BackendLBPolicySpec defines the desired state of BackendLBPolicy. Note: there is no Override or Default policy configuration.",
+  "type": "object",
+  "required": [
+    "targetRefs"
+  ],
+  "properties": {
+    "sessionPersistence": {
+      "description": "SessionPersistence defines and configures session persistence for the backend.\n\nSupport: Extended",
+      "$ref": "_definitions.json#/definitions/io.k8s.sigs.gateway-api.apis.v1.SessionPersistence"
+    },
+    "targetRefs": {
+      "description": "TargetRef identifies an API object to apply policy to. Currently, Backends (i.e. Service, ServiceImport, or any implementation-specific backendRef) are the only valid API target references.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/io.k8s.sigs.gateway-api.apis.v1alpha2.LocalPolicyTargetReference"
+      },
+      "x-kubernetes-list-map-keys": [
+        "group",
+        "kind",
+        "name"
+      ],
+      "x-kubernetes-list-type": "map"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

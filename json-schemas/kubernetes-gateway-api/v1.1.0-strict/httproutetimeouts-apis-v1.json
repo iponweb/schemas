@@ -1,5 +1,5 @@
 {
-  "description": "HTTPRouteTimeouts defines timeouts that can be configured for an HTTPRoute. Timeout values are represented with Gateway API Duration formatting.",
+  "description": "HTTPRouteTimeouts defines timeouts that can be configured for an HTTPRoute.",
   "type": "object",
   "properties": {
     "backendRequest": {

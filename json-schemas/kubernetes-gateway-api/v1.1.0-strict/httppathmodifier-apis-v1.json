@@ -1,5 +1,5 @@
 {
-  "description": "HTTPPathModifier defines configuration for path modifiers.",
+  "description": "HTTPPathModifier defines configuration for path modifiers. <gateway:experimental>",
   "type": "object",
   "required": [
     "type"
