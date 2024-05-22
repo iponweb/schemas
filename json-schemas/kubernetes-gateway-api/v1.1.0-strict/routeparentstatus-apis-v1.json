@@ -32,7 +32,7 @@
     "parentRef": {
       "description": "ParentRef corresponds with a ParentRef in the spec that this RouteParentStatus struct describes the status of.",
       "default": {},
-      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.apis.v1.ParentReference"
+      "$ref": "_definitions.json#/definitions/io.k8s.sigs.gateway-api.apis.v1.ParentReference"
     }
   },
   "additionalProperties": false,

@@ -13,7 +13,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.apis.v1.HTTPRouteFilter"
+        "$ref": "_definitions.json#/definitions/io.k8s.sigs.gateway-api.apis.v1.HTTPRouteFilter"
       }
     },
     "group": {

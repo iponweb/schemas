@@ -21,6 +21,8 @@ const (
 	kubernetesSwaggerUrl = "https://raw.githubusercontent.com/kubernetes/kubernetes/v1.25.2/api/openapi-spec/swagger.json"
 )
 
+// See also:
+// - https://gateway-api.sigs.k8s.io/reference/spec
 var (
 	// crdNames correspond to the internal OpenAPI definition names of the
 	// CRDs we're interested in. Dependencies do not need to be listed, as
@@ -31,10 +33,15 @@ var (
 		"github.com/kubernetes-sigs/gateway-api/apis/v1.Gateway",
 		"github.com/kubernetes-sigs/gateway-api/apis/v1.HTTPRoute",
 		"github.com/kubernetes-sigs/gateway-api/apis/v1.GRPCRoute",
+		//"github.com/kubernetes-sigs/gateway-api/apis/v1alpha2.BackendLBPolicy",
+		//"github.com/kubernetes-sigs/gateway-api/apis/v1alpha2.ReferenceGrant",
+		//"github.com/kubernetes-sigs/gateway-api/apis/v1alpha2.TCPRoute",
+		//"github.com/kubernetes-sigs/gateway-api/apis/v1alpha2.TLSRoute",
+		//"github.com/kubernetes-sigs/gateway-api/apis/v1alpha2.UDPRoute",
 	}
 
 	hostConversionRules = map[string]string{
-		"github.com/kubernetes-sigs/gateway-api": "gateway.networking.k8s.io",
+		"github.com/kubernetes-sigs/gateway-api": "gateway-api.sigs.k8s.io",
 	}
 )
 

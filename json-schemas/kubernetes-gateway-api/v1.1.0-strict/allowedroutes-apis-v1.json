@@ -10,12 +10,12 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.apis.v1.RouteGroupKind"
+        "$ref": "_definitions.json#/definitions/io.k8s.sigs.gateway-api.apis.v1.RouteGroupKind"
       }
     },
     "namespaces": {
       "description": "Namespaces indicates namespaces from which Routes may be attached to this Listener. This is restricted to the namespace of this Gateway by default.\n\nSupport: Core",
-      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.apis.v1.RouteNamespaces"
+      "$ref": "_definitions.json#/definitions/io.k8s.sigs.gateway-api.apis.v1.RouteNamespaces"
     }
   },
   "additionalProperties": false,

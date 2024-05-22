@@ -10,7 +10,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.apis.v1.HTTPHeader"
+        "$ref": "_definitions.json#/definitions/io.k8s.sigs.gateway-api.apis.v1.HTTPHeader"
       },
       "x-kubernetes-list-map-keys": [
         "name"
@@ -40,7 +40,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.apis.v1.HTTPHeader"
+        "$ref": "_definitions.json#/definitions/io.k8s.sigs.gateway-api.apis.v1.HTTPHeader"
       },
       "x-kubernetes-list-map-keys": [
         "name"

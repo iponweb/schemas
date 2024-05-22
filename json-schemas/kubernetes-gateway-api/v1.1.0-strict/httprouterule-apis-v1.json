@@ -10,7 +10,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.apis.v1.HTTPBackendRef"
+        "$ref": "_definitions.json#/definitions/io.k8s.sigs.gateway-api.apis.v1.HTTPBackendRef"
       }
     },
     "filters": {
@@ -21,7 +21,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.apis.v1.HTTPRouteFilter"
+        "$ref": "_definitions.json#/definitions/io.k8s.sigs.gateway-api.apis.v1.HTTPRouteFilter"
       }
     },
     "matches": {
@@ -32,16 +32,16 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.apis.v1.HTTPRouteMatch"
+        "$ref": "_definitions.json#/definitions/io.k8s.sigs.gateway-api.apis.v1.HTTPRouteMatch"
       }
     },
     "sessionPersistence": {
       "description": "SessionPersistence defines and configures session persistence for the route rule.\n\nSupport: Extended\n\n<gateway:experimental>",
-      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.apis.v1.SessionPersistence"
+      "$ref": "_definitions.json#/definitions/io.k8s.sigs.gateway-api.apis.v1.SessionPersistence"
     },
     "timeouts": {
       "description": "Timeouts defines the timeouts that can be configured for an HTTP request.\n\nSupport: Extended\n\n<gateway:experimental>",
-      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.apis.v1.HTTPRouteTimeouts"
+      "$ref": "_definitions.json#/definitions/io.k8s.sigs.gateway-api.apis.v1.HTTPRouteTimeouts"
     }
   },
   "additionalProperties": false,

@@ -10,7 +10,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.apis.v1.GRPCHeaderMatch"
+        "$ref": "_definitions.json#/definitions/io.k8s.sigs.gateway-api.apis.v1.GRPCHeaderMatch"
       },
       "x-kubernetes-list-map-keys": [
         "name"
@@ -19,7 +19,7 @@
     },
     "method": {
       "description": "Method specifies a gRPC request service/method matcher. If this field is not specified, all services and methods will match.",
-      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.apis.v1.GRPCMethodMatch"
+      "$ref": "_definitions.json#/definitions/io.k8s.sigs.gateway-api.apis.v1.GRPCMethodMatch"
     }
   },
   "additionalProperties": false,

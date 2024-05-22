@@ -26,12 +26,12 @@
     "spec": {
       "description": "Spec defines the desired state of HTTPRoute.",
       "default": {},
-      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.apis.v1.HTTPRouteSpec"
+      "$ref": "_definitions.json#/definitions/io.k8s.sigs.gateway-api.apis.v1.HTTPRouteSpec"
     },
     "status": {
       "description": "Status defines the current state of HTTPRoute.",
       "default": {},
-      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.apis.v1.HTTPRouteStatus"
+      "$ref": "_definitions.json#/definitions/io.k8s.sigs.gateway-api.apis.v1.HTTPRouteStatus"
     }
   },
   "additionalProperties": false,

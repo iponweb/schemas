@@ -26,12 +26,12 @@
     "spec": {
       "description": "Spec defines the desired state of Gateway.",
       "default": {},
-      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.apis.v1.GatewaySpec"
+      "$ref": "_definitions.json#/definitions/io.k8s.sigs.gateway-api.apis.v1.GatewaySpec"
     },
     "status": {
       "description": "Status defines the current state of Gateway.",
       "default": {},
-      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.apis.v1.GatewayStatus"
+      "$ref": "_definitions.json#/definitions/io.k8s.sigs.gateway-api.apis.v1.GatewayStatus"
     }
   },
   "additionalProperties": false,

@@ -27,7 +27,7 @@ cd "${SOURCES_ROOT}" && go mod vendor
 #: Generate OpenAPI golang scheme
 GO111MODULE=off openapi-gen -v 4 -h "${ROOT}/generate/boilerplate.go.txt" \
     --input-dirs "${REPOSITORY}/apis/v1" \
-    --input-dirs "k8s.io/apimachinery/pkg/apis/meta/v1,k8s.io/apimachinery/pkg/runtime,k8s.io/apimachinery/pkg/version,k8s.io/api/core/v1" \
+    --input-dirs "k8s.io/apimachinery/pkg/apis/meta/v1,k8s.io/apimachinery/pkg/runtime,k8s.io/apimachinery/pkg/version" \
     --output-package "generated/openapi" \
     --output-file-base "openapi_generated" \
     --output-base "${ROOT}/generate/${VERSION}"

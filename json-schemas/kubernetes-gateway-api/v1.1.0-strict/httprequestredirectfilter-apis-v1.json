@@ -11,7 +11,7 @@
     },
     "path": {
       "description": "Path defines parameters used to modify the path of the incoming request. The modified path is then used to construct the `Location` header. When empty, the request path is used as-is.\n\nSupport: Extended",
-      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.apis.v1.HTTPPathModifier"
+      "$ref": "_definitions.json#/definitions/io.k8s.sigs.gateway-api.apis.v1.HTTPPathModifier"
     },
     "port": {
       "description": "Port is the port to be used in the value of the `Location` header in the response.\n\nIf no port is specified, the redirect port MUST be derived using the following rules:\n\n* If redirect scheme is not-empty, the redirect port MUST be the well-known\n  port associated with the redirect scheme. Specifically \"http\" to port 80\n  and \"https\" to port 443. If the redirect scheme does not have a\n  well-known port, the listener port of the Gateway SHOULD be used.\n* If redirect scheme is empty, the redirect port MUST be the Gateway\n  Listener port.\n\nImplementations SHOULD NOT add the port number in the 'Location' header in the following cases:\n\n* A Location header that will use HTTP (whether that is determined via\n  the Listener protocol or the Scheme field) _and_ use port 80.\n* A Location header that will use HTTPS (whether that is determined via\n  the Listener protocol or the Scheme field) _and_ use port 443.\n\nSupport: Extended",

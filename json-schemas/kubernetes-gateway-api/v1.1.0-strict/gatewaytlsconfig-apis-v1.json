@@ -10,12 +10,12 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.apis.v1.SecretObjectReference"
+        "$ref": "_definitions.json#/definitions/io.k8s.sigs.gateway-api.apis.v1.SecretObjectReference"
       }
     },
     "frontendValidation": {
       "description": "FrontendValidation holds configuration information for validating the frontend (client). Setting this field will require clients to send a client certificate required for validation during the TLS handshake. In browsers this may result in a dialog appearing that requests a user to specify the client certificate. The maximum depth of a certificate chain accepted in verification is Implementation specific.\n\nSupport: Extended\n\n<gateway:experimental>",
-      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.apis.v1.FrontendTLSValidation"
+      "$ref": "_definitions.json#/definitions/io.k8s.sigs.gateway-api.apis.v1.FrontendTLSValidation"
     },
     "mode": {
       "description": "Mode defines the TLS behavior for the TLS session initiated by the client. There are two possible modes:\n\n- Terminate: The TLS session between the downstream client and the\n  Gateway is terminated at the Gateway. This mode requires certificates\n  to be specified in some way, such as populating the certificateRefs\n  field.\n- Passthrough: The TLS session is NOT terminated by the Gateway. This\n  implies that the Gateway can't decipher the TLS stream except for\n  the ClientHello message of the TLS protocol. The certificateRefs field\n  is ignored in this mode.\n\nSupport: Core",

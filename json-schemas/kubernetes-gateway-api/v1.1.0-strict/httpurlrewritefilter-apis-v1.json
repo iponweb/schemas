@@ -11,7 +11,7 @@
     },
     "path": {
       "description": "Path defines a path rewrite.\n\nSupport: Extended",
-      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.apis.v1.HTTPPathModifier"
+      "$ref": "_definitions.json#/definitions/io.k8s.sigs.gateway-api.apis.v1.HTTPPathModifier"
     }
   },
   "additionalProperties": false,

@@ -10,7 +10,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.apis.v1.GRPCBackendRef"
+        "$ref": "_definitions.json#/definitions/io.k8s.sigs.gateway-api.apis.v1.GRPCBackendRef"
       }
     },
     "filters": {
@@ -21,7 +21,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.apis.v1.GRPCRouteFilter"
+        "$ref": "_definitions.json#/definitions/io.k8s.sigs.gateway-api.apis.v1.GRPCRouteFilter"
       }
     },
     "matches": {
@@ -32,12 +32,12 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.apis.v1.GRPCRouteMatch"
+        "$ref": "_definitions.json#/definitions/io.k8s.sigs.gateway-api.apis.v1.GRPCRouteMatch"
       }
     },
     "sessionPersistence": {
       "description": "SessionPersistence defines and configures session persistence for the route rule.\n\nSupport: Extended\n\n<gateway:experimental>",
-      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.apis.v1.SessionPersistence"
+      "$ref": "_definitions.json#/definitions/io.k8s.sigs.gateway-api.apis.v1.SessionPersistence"
     }
   },
   "additionalProperties": false,

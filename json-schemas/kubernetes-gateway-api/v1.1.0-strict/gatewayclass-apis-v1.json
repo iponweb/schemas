@@ -26,12 +26,12 @@
     "spec": {
       "description": "Spec defines the desired state of GatewayClass.",
       "default": {},
-      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.apis.v1.GatewayClassSpec"
+      "$ref": "_definitions.json#/definitions/io.k8s.sigs.gateway-api.apis.v1.GatewayClassSpec"
     },
     "status": {
       "description": "Status defines the current state of GatewayClass.\n\nImplementations MUST populate status on all GatewayClass resources which specify their controller name.",
       "default": {},
-      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.apis.v1.GatewayClassStatus"
+      "$ref": "_definitions.json#/definitions/io.k8s.sigs.gateway-api.apis.v1.GatewayClassStatus"
     }
   },
   "additionalProperties": false,

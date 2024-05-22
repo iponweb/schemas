@@ -24,7 +24,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.apis.v1.ParentReference"
+        "$ref": "_definitions.json#/definitions/io.k8s.sigs.gateway-api.apis.v1.ParentReference"
       }
     },
     "rules": {
@@ -35,7 +35,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.apis.v1.GRPCRouteRule"
+        "$ref": "_definitions.json#/definitions/io.k8s.sigs.gateway-api.apis.v1.GRPCRouteRule"
       }
     }
   },

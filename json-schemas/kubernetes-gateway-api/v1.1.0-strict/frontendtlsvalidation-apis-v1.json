@@ -10,7 +10,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.apis.v1.ObjectReference"
+        "$ref": "_definitions.json#/definitions/io.k8s.sigs.gateway-api.apis.v1.ObjectReference"
       }
     }
   },

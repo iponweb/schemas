@@ -32,7 +32,7 @@
     },
     "parametersRef": {
       "description": "ParametersRef is a reference to a resource that contains the configuration parameters corresponding to the Gateway. This is optional if the controller does not require any additional configuration.\n\nThis follows the same semantics as GatewayClass's `parametersRef`, but on a per-Gateway basis\n\nThe Gateway's GatewayClass may provide its own `parametersRef`. When both are specified, the merging behavior is implementation specific. It is generally recommended that GatewayClass provides defaults that can be overridden by a Gateway.\n\nSupport: Implementation-specific",
-      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.apis.v1.LocalParametersReference"
+      "$ref": "_definitions.json#/definitions/io.k8s.sigs.gateway-api.apis.v1.LocalParametersReference"
     }
   },
   "additionalProperties": false,

@@ -10,7 +10,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.apis.v1.HTTPHeaderMatch"
+        "$ref": "_definitions.json#/definitions/io.k8s.sigs.gateway-api.apis.v1.HTTPHeaderMatch"
       },
       "x-kubernetes-list-map-keys": [
         "name"
@@ -26,7 +26,7 @@
     },
     "path": {
       "description": "Path specifies a HTTP request path matcher. If this field is not specified, a default prefix match on the \"/\" path is provided.",
-      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.apis.v1.HTTPPathMatch"
+      "$ref": "_definitions.json#/definitions/io.k8s.sigs.gateway-api.apis.v1.HTTPPathMatch"
     },
     "queryParams": {
       "description": "QueryParams specifies HTTP query parameter matchers. Multiple match values are ANDed together, meaning, a request must match all the specified query parameters to select the route.\n\nSupport: Extended",
@@ -36,7 +36,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.apis.v1.HTTPQueryParamMatch"
+        "$ref": "_definitions.json#/definitions/io.k8s.sigs.gateway-api.apis.v1.HTTPQueryParamMatch"
       },
       "x-kubernetes-list-map-keys": [
         "name"

@@ -10,7 +10,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.apis.v1.GatewayStatusAddress"
+        "$ref": "_definitions.json#/definitions/io.k8s.sigs.gateway-api.apis.v1.GatewayStatusAddress"
       }
     },
     "conditions": {
@@ -36,7 +36,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.apis.v1.ListenerStatus"
+        "$ref": "_definitions.json#/definitions/io.k8s.sigs.gateway-api.apis.v1.ListenerStatus"
       },
       "x-kubernetes-list-map-keys": [
         "name"

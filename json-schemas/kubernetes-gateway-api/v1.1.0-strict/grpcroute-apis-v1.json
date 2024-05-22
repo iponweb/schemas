@@ -23,12 +23,12 @@
     "spec": {
       "description": "Spec defines the desired state of GRPCRoute.",
       "default": {},
-      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.apis.v1.GRPCRouteSpec"
+      "$ref": "_definitions.json#/definitions/io.k8s.sigs.gateway-api.apis.v1.GRPCRouteSpec"
     },
     "status": {
       "description": "Status defines the current state of GRPCRoute.",
       "default": {},
-      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.apis.v1.GRPCRouteStatus"
+      "$ref": "_definitions.json#/definitions/io.k8s.sigs.gateway-api.apis.v1.GRPCRouteStatus"
     }
   },
   "additionalProperties": false,
