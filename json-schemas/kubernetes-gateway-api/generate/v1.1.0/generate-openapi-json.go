@@ -18,7 +18,7 @@ import (
 )
 
 const (
-	kubernetesSwaggerUrl = "https://raw.githubusercontent.com/kubernetes/kubernetes/v1.25.2/api/openapi-spec/swagger.json"
+	kubernetesSwaggerUrl = "https://raw.githubusercontent.com/kubernetes/kubernetes/v1.29.5/api/openapi-spec/swagger.json"
 )
 
 // See also:
@@ -38,6 +38,10 @@ var (
 		"sigs.k8s.io/gateway-api/apis/v1alpha2.TCPRoute",
 		"sigs.k8s.io/gateway-api/apis/v1alpha2.TLSRoute",
 		"sigs.k8s.io/gateway-api/apis/v1alpha2.UDPRoute",
+		"sigs.k8s.io/gateway-api/apis/v1beta1.GatewayClass",
+		"sigs.k8s.io/gateway-api/apis/v1beta1.Gateway",
+		"sigs.k8s.io/gateway-api/apis/v1beta1.HTTPRoute",
+		"sigs.k8s.io/gateway-api/apis/v1beta1.ReferenceGrant",
 	}
 
 	hostConversionRules = map[string]string{

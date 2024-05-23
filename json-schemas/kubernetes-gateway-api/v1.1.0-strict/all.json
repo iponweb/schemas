@@ -238,6 +238,18 @@
       "$ref": "_definitions.json#/definitions/io.k8s.sigs.gateway-api.apis.v1alpha2.UDPRouteStatus"
     },
     {
+      "$ref": "_definitions.json#/definitions/io.k8s.sigs.gateway-api.apis.v1beta1.Gateway"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.sigs.gateway-api.apis.v1beta1.GatewayClass"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.sigs.gateway-api.apis.v1beta1.HTTPRoute"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.sigs.gateway-api.apis.v1beta1.ReferenceGrant"
+    },
+    {
       "$ref": "_definitions.json#/definitions/io.k8s.sigs.gateway-api.apis.v1beta1.ReferenceGrantFrom"
     },
     {

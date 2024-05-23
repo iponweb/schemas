@@ -2208,6 +2208,126 @@
       },
       "additionalProperties": false
     },
+    "io.k8s.sigs.gateway-api.apis.v1beta1.Gateway": {
+      "description": "Gateway represents an instance of a service-traffic handling infrastructure by binding Listeners to a set of IP addresses.",
+      "type": "object",
+      "required": [
+        "spec"
+      ],
+      "properties": {
+        "apiVersion": {
+          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+          "type": "string"
+        },
+        "kind": {
+          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+          "type": "string"
+        },
+        "metadata": {
+          "default": {},
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+        },
+        "spec": {
+          "description": "Spec defines the desired state of Gateway.",
+          "default": {},
+          "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.GatewaySpec"
+        },
+        "status": {
+          "description": "Status defines the current state of Gateway.",
+          "default": {},
+          "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.GatewayStatus"
+        }
+      },
+      "additionalProperties": false
+    },
+    "io.k8s.sigs.gateway-api.apis.v1beta1.GatewayClass": {
+      "description": "GatewayClass describes a class of Gateways available to the user for creating Gateway resources.\n\nIt is recommended that this resource be used as a template for Gateways. This means that a Gateway is based on the state of the GatewayClass at the time it was created and changes to the GatewayClass or associated parameters are not propagated down to existing Gateways. This recommendation is intended to limit the blast radius of changes to GatewayClass or associated parameters. If implementations choose to propagate GatewayClass changes to existing Gateways, that MUST be clearly documented by the implementation.\n\nWhenever one or more Gateways are using a GatewayClass, implementations SHOULD add the `gateway-exists-finalizer.gateway.networking.k8s.io` finalizer on the associated GatewayClass. This ensures that a GatewayClass associated with a Gateway is not deleted while in use.\n\nGatewayClass is a Cluster level resource.",
+      "type": "object",
+      "required": [
+        "spec"
+      ],
+      "properties": {
+        "apiVersion": {
+          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+          "type": "string"
+        },
+        "kind": {
+          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+          "type": "string"
+        },
+        "metadata": {
+          "default": {},
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+        },
+        "spec": {
+          "description": "Spec defines the desired state of GatewayClass.",
+          "default": {},
+          "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.GatewayClassSpec"
+        },
+        "status": {
+          "description": "Status defines the current state of GatewayClass.\n\nImplementations MUST populate status on all GatewayClass resources which specify their controller name.",
+          "default": {},
+          "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.GatewayClassStatus"
+        }
+      },
+      "additionalProperties": false
+    },
+    "io.k8s.sigs.gateway-api.apis.v1beta1.HTTPRoute": {
+      "description": "HTTPRoute provides a way to route HTTP requests. This includes the capability to match requests by hostname, path, header, or query param. Filters can be used to specify additional processing steps. Backends specify where matching requests should be routed.",
+      "type": "object",
+      "required": [
+        "spec"
+      ],
+      "properties": {
+        "apiVersion": {
+          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+          "type": "string"
+        },
+        "kind": {
+          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+          "type": "string"
+        },
+        "metadata": {
+          "default": {},
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+        },
+        "spec": {
+          "description": "Spec defines the desired state of HTTPRoute.",
+          "default": {},
+          "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.HTTPRouteSpec"
+        },
+        "status": {
+          "description": "Status defines the current state of HTTPRoute.",
+          "default": {},
+          "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.HTTPRouteStatus"
+        }
+      },
+      "additionalProperties": false
+    },
+    "io.k8s.sigs.gateway-api.apis.v1beta1.ReferenceGrant": {
+      "description": "ReferenceGrant identifies kinds of resources in other namespaces that are trusted to reference the specified kinds of resources in the same namespace as the policy.\n\nEach ReferenceGrant can be used to represent a unique trust relationship. Additional Reference Grants can be used to add to the set of trusted sources of inbound references for the namespace they are defined within.\n\nAll cross-namespace references in Gateway API (with the exception of cross-namespace Gateway-route attachment) require a ReferenceGrant.\n\nReferenceGrant is a form of runtime verification allowing users to assert which cross-namespace object references are permitted. Implementations that support ReferenceGrant MUST NOT permit cross-namespace references which have no grant, and MUST respond to the removal of a grant by revoking the access that the grant allowed.",
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+          "type": "string"
+        },
+        "kind": {
+          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+          "type": "string"
+        },
+        "metadata": {
+          "default": {},
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+        },
+        "spec": {
+          "description": "Spec defines the desired state of ReferenceGrant.",
+          "default": {},
+          "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1beta1.ReferenceGrantSpec"
+        }
+      },
+      "additionalProperties": false
+    },
     "io.k8s.sigs.gateway-api.apis.v1beta1.ReferenceGrantFrom": {
       "description": "ReferenceGrantFrom describes trusted namespaces and kinds.",
       "type": "object",
