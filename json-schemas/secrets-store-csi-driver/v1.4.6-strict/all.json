@@ -1,0 +1,76 @@
+{
+  "oneOf": [
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.FieldsV1"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ManagedFieldsEntry"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.OwnerReference"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.x-k8s.csi.secrets-store.apis.v1.SecretObject"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.x-k8s.csi.secrets-store.apis.v1.SecretObjectData"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.x-k8s.csi.secrets-store.apis.v1.SecretProviderClass"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.x-k8s.csi.secrets-store.apis.v1.SecretProviderClassObject"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.x-k8s.csi.secrets-store.apis.v1.SecretProviderClassPodStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.x-k8s.csi.secrets-store.apis.v1.SecretProviderClassPodStatusStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.x-k8s.csi.secrets-store.apis.v1.SecretProviderClassSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.x-k8s.csi.secrets-store.apis.v1.SecretProviderClassStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.x-k8s.csi.secrets-store.apis.v1alpha1.ByPodStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.x-k8s.csi.secrets-store.apis.v1alpha1.SecretObject"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.x-k8s.csi.secrets-store.apis.v1alpha1.SecretObjectData"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.x-k8s.csi.secrets-store.apis.v1alpha1.SecretProviderClass"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.x-k8s.csi.secrets-store.apis.v1alpha1.SecretProviderClassObject"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.x-k8s.csi.secrets-store.apis.v1alpha1.SecretProviderClassPodStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.x-k8s.csi.secrets-store.apis.v1alpha1.SecretProviderClassPodStatusStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.x-k8s.csi.secrets-store.apis.v1alpha1.SecretProviderClassSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.x-k8s.csi.secrets-store.apis.v1alpha1.SecretProviderClassStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.util.intstr.IntOrString"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.api.resource.Quantity"
+    }
+  ]
+}
