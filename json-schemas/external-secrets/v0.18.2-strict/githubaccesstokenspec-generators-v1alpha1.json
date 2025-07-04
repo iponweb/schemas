@@ -1,0 +1,66 @@
+{
+  "type": "object",
+  "required": [
+    "appID",
+    "installID",
+    "auth"
+  ],
+  "properties": {
+    "appID": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "auth": {
+      "description": "Auth configures how ESO authenticates with a Github instance.",
+      "default": {},
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.generators.v1alpha1.GithubAuth"
+    },
+    "installID": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "permissions": {
+      "description": "Map of permissions the token will have. If omitted, defaults to all permissions the GitHub App has.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "repositories": {
+      "description": "List of repositories the token will have access to. If omitted, defaults to all repositories the GitHub App is installed to.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "url": {
+      "description": "URL configures the Github instance URL. Defaults to https://github.com/.",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

@@ -1,0 +1,14 @@
+{
+  "type": "object",
+  "required": [
+    "privateKey"
+  ],
+  "properties": {
+    "privateKey": {
+      "default": {},
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.generators.v1alpha1.GithubSecretRef"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

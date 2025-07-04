@@ -6,7 +6,7 @@ FROM golang:alpine as builder
 #: - https://github.com/kubernetes/kube-openapi/tree/master/cmd/openapi-gen
 #:
 RUN set -x \
-    && go install k8s.io/kube-openapi/cmd/openapi-gen@89dc17294c724e45c647d896300e9b583687b7c0
+    && go install k8s.io/kube-openapi/cmd/openapi-gen@9bd5c66d9911c53f5aedb8595fde9c229ca56703
 
 FROM golang:alpine
 
@@ -18,10 +18,8 @@ FROM golang:alpine
 RUN set -x \
     && apk add --no-cache python3 py3-pip git \
     && python3 -m venv /venv \
-    && /venv/bin/pip install wheel \
-    && /venv/bin/pip install "cython<3.0.0" \
-    && /venv/bin/pip install --no-build-isolation pyyaml==5.4.1 \
-    && /venv/bin/pip install openapi2jsonschema
+    && /venv/bin/pip install -U setuptools \
+    && /venv/bin/pip install --no-build-isolation wheel "cython<3.0.0" openapi2jsonschema pyyaml openapi2jsonschema
 
 
 ENV PATH="/venv/bin:$PATH"

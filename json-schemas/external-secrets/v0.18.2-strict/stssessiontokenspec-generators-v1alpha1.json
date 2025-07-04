@@ -1,0 +1,34 @@
+{
+  "type": "object",
+  "required": [
+    "region"
+  ],
+  "properties": {
+    "auth": {
+      "description": "Auth defines how to authenticate with AWS",
+      "default": {},
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.generators.v1alpha1.AWSAuth"
+    },
+    "region": {
+      "description": "Region specifies the region to operate in.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "requestParameters": {
+      "description": "RequestParameters contains parameters that can be passed to the STS service.",
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.generators.v1alpha1.RequestParameters"
+    },
+    "role": {
+      "description": "You can assume a role before making calls to the desired AWS service.",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

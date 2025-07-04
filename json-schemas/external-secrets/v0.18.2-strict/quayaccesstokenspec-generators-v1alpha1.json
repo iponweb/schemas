@@ -1,0 +1,31 @@
+{
+  "type": "object",
+  "required": [
+    "robotAccount",
+    "serviceAccountRef"
+  ],
+  "properties": {
+    "robotAccount": {
+      "description": "Name of the robot account you are federating with",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "serviceAccountRef": {
+      "description": "Name of the service account you are federating with",
+      "default": {},
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.meta.v1.ServiceAccountSelector"
+    },
+    "url": {
+      "description": "URL configures the Quay instance URL. Defaults to quay.io.",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

@@ -1,0 +1,24 @@
+{
+  "type": "object",
+  "required": [
+    "kind",
+    "generator"
+  ],
+  "properties": {
+    "generator": {
+      "description": "Generator the spec for this generator, must match the kind.",
+      "default": {},
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.generators.v1alpha1.GeneratorSpec"
+    },
+    "kind": {
+      "description": "Kind the kind of this generator.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

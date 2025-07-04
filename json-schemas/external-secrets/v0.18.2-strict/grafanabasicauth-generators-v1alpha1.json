@@ -1,0 +1,24 @@
+{
+  "type": "object",
+  "required": [
+    "username",
+    "password"
+  ],
+  "properties": {
+    "password": {
+      "description": "A basic auth password used to authenticate against the Grafana instance.",
+      "default": {},
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.generators.v1alpha1.SecretKeySelector"
+    },
+    "username": {
+      "description": "A basic auth username used to authenticate against the Grafana instance.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

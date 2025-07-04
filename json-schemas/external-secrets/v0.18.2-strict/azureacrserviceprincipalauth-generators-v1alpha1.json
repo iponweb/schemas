@@ -1,0 +1,14 @@
+{
+  "type": "object",
+  "required": [
+    "secretRef"
+  ],
+  "properties": {
+    "secretRef": {
+      "default": {},
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.generators.v1alpha1.AzureACRServicePrincipalAuthSecretRef"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}
