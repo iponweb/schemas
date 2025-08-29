@@ -1,0 +1,12 @@
+{
+  "description": "AllowedListeners defines which ListenerSets can be attached to this Gateway.",
+  "type": "object",
+  "properties": {
+    "namespaces": {
+      "description": "Namespaces defines which namespaces ListenerSets can be attached to this Gateway. While this feature is experimental, the default value is to allow no ListenerSets.",
+      "$ref": "_definitions.json#/definitions/io.k8s.sigs.gateway-api.apis.v1.ListenerNamespaces"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

@@ -1,0 +1,12 @@
+{
+  "description": "GatewayBackendTLS describes backend TLS configuration for gateway.",
+  "type": "object",
+  "properties": {
+    "clientCertificateRef": {
+      "description": "ClientCertificateRef is a reference to an object that contains a Client Certificate and the associated private key.\n\nReferences to a resource in different namespace are invalid UNLESS there is a ReferenceGrant in the target namespace that allows the certificate to be attached. If a ReferenceGrant does not allow this reference, the \"ResolvedRefs\" condition MUST be set to False for this listener with the \"RefNotPermitted\" reason.\n\nClientCertificateRef can reference to standard Kubernetes resources, i.e. Secret, or implementation-specific custom resources.\n\nThis setting can be overridden on the service level by use of BackendTLSPolicy.\n\nSupport: Core\n\n<gateway:experimental>",
+      "$ref": "_definitions.json#/definitions/io.k8s.sigs.gateway-api.apis.v1.SecretObjectReference"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

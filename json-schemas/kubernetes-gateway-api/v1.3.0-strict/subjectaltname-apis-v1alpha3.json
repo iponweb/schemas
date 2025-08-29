@@ -1,0 +1,33 @@
+{
+  "description": "SubjectAltName represents Subject Alternative Name.",
+  "type": "object",
+  "required": [
+    "type"
+  ],
+  "properties": {
+    "hostname": {
+      "description": "Hostname contains Subject Alternative Name specified in DNS name format. Required when Type is set to Hostname, ignored otherwise.\n\nSupport: Core",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "type": {
+      "description": "Type determines the format of the Subject Alternative Name. Always required.\n\nSupport: Core",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "uri": {
+      "description": "URI contains Subject Alternative Name specified in a full URI format. It MUST include both a scheme (e.g., \"http\" or \"ftp\") and a scheme-specific-part. Common values include SPIFFE IDs like \"spiffe://mycluster.example.com/ns/myns/sa/svc1sa\". Required when Type is set to URI, ignored otherwise.\n\nSupport: Core",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

@@ -1,0 +1,25 @@
+{
+  "type": "object",
+  "required": [
+    "numerator"
+  ],
+  "properties": {
+    "denominator": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32"
+    },
+    "numerator": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32",
+      "default": 0
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

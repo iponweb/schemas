@@ -1,0 +1,26 @@
+{
+  "description": "TLSRouteRule is the configuration for a given rule.",
+  "type": "object",
+  "properties": {
+    "backendRefs": {
+      "description": "BackendRefs defines the backend(s) where matching requests should be sent. If unspecified or invalid (refers to a nonexistent resource or a Service with no endpoints), the rule performs no forwarding; if no filters are specified that would result in a response being sent, the underlying implementation must actively reject request attempts to this backend, by rejecting the connection or returning a 500 status code. Request rejections must respect weight; if an invalid backend is requested to have 80% of requests, then 80% of requests must be rejected instead.\n\nSupport: Core for Kubernetes Service\n\nSupport: Extended for Kubernetes ServiceImport\n\nSupport: Implementation-specific for any other resource\n\nSupport for weight: Extended",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/io.k8s.sigs.gateway-api.apis.v1.BackendRef"
+      }
+    },
+    "name": {
+      "description": "Name is the name of the route rule. This name MUST be unique within a Route if it is set.\n\nSupport: Extended",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}
