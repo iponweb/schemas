@@ -1,0 +1,173 @@
+{
+  "description": "StreamAggrRule defines the rule in stream aggregation config",
+  "type": "object",
+  "required": [
+    "interval",
+    "outputs"
+  ],
+  "properties": {
+    "by": {
+      "description": "By is an optional list of labels for grouping input series.\n\nSee also Without.\n\nIf neither By nor Without are set, then the Outputs are calculated individually per each input time series.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "dedup_interval": {
+      "description": "DedupInterval is an optional interval for deduplication.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "drop_input_labels": {
+      "description": "DropInputLabels is an optional list with labels, which must be dropped before further processing of input samples.\n\nLabels are dropped before de-duplication and aggregation.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "enable_windows": {
+      "description": "EnableWindows enables aggregating data in separate windows",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "flush_on_shutdown": {
+      "description": "FlushOnShutdown defines whether to flush the aggregation state on process termination or config reload. Is `false` by default. It is not recommended changing this setting, unless unfinished aggregations states are preferred to missing data points.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "ignoreFirstSampleInterval": {
+      "description": "IgnoreFirstSampleInterval sets interval for total and prometheus_total during which first samples will be ignored",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "ignore_first_intervals": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32"
+    },
+    "ignore_old_samples": {
+      "description": "IgnoreOldSamples instructs to ignore samples with old timestamps outside the current aggregation interval.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "input_relabel_configs": {
+      "description": "InputRelabelConfigs is an optional relabeling rules, which are applied on the input before aggregation.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.RelabelConfig"
+      }
+    },
+    "interval": {
+      "description": "Interval is the interval between aggregations.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "keep_metric_names": {
+      "description": "KeepMetricNames instructs to leave metric names as is for the output time series without adding any suffix.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "match": {
+      "description": "Match is a label selector (or list of label selectors) for filtering time series for the given selector.\n\nIf the match isn't set, then all the input time series are processed.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "no_align_flush_to_interval": {
+      "description": "NoAlignFlushToInterval disables aligning of flushes to multiples of Interval. By default flushes are aligned to Interval.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "output_relabel_configs": {
+      "description": "OutputRelabelConfigs is an optional relabeling rules, which are applied on the aggregated output before being sent to remote storage.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.RelabelConfig"
+      }
+    },
+    "outputs": {
+      "description": "Outputs is a list of output aggregate functions to produce.\n\nThe following names are allowed:\n\n- total - aggregates input counters - increase - counts the increase over input counters - count_series - counts the input series - count_samples - counts the input samples - sum_samples - sums the input samples - last - the last biggest sample value - min - the minimum sample value - max - the maximum sample value - avg - the average value across all the samples - stddev - standard deviation across all the samples - stdvar - standard variance across all the samples - histogram_bucket - creates VictoriaMetrics histogram for input samples - quantiles(phi1, ..., phiN) - quantiles' estimation for phi in the range [0..1]\n\nThe output time series will have the following names:\n\n  input_name:aggr_<interval>_<output>",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "staleness_interval": {
+      "description": "Staleness interval is interval after which the series state will be reset if no samples have been sent during it. The parameter is only relevant for outputs: total, total_prometheus, increase, increase_prometheus and histogram_bucket.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "without": {
+      "description": "Without is an optional list of labels, which must be excluded when grouping input series.\n\nSee also By.\n\nIf neither By nor Without are set, then the Outputs are calculated individually per each input time series.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

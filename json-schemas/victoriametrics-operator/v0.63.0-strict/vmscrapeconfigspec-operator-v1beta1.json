@@ -1,0 +1,286 @@
+{
+  "description": "VMScrapeConfigSpec defines the desired state of VMScrapeConfig",
+  "type": "object",
+  "properties": {
+    "authorization": {
+      "description": "Authorization with http header Authorization",
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.Authorization"
+    },
+    "azureSDConfigs": {
+      "description": "AzureSDConfigs defines a list of Azure service discovery configurations.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.AzureSDConfig"
+      }
+    },
+    "basicAuth": {
+      "description": "BasicAuth allow an endpoint to authenticate over basic authentication",
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.BasicAuth"
+    },
+    "bearerTokenFile": {
+      "description": "File to read bearer token for scraping targets.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "bearerTokenSecret": {
+      "description": "Secret to mount to read bearer token for scraping targets. The secret needs to be in the same namespace as the scrape object and accessible by the victoria-metrics operator.",
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SecretKeySelector"
+    },
+    "consulSDConfigs": {
+      "description": "ConsulSDConfigs defines a list of Consul service discovery configurations.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.ConsulSDConfig"
+      }
+    },
+    "digitalOceanSDConfigs": {
+      "description": "DigitalOceanSDConfigs defines a list of DigitalOcean service discovery configurations.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.DigitalOceanSDConfig"
+      }
+    },
+    "dnsSDConfigs": {
+      "description": "DNSSDConfigs defines a list of DNS service discovery configurations.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.DNSSDConfig"
+      }
+    },
+    "ec2SDConfigs": {
+      "description": "EC2SDConfigs defines a list of EC2 service discovery configurations.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.EC2SDConfig"
+      }
+    },
+    "fileSDConfigs": {
+      "description": "FileSDConfigs defines a list of file service discovery configurations.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.FileSDConfig"
+      }
+    },
+    "follow_redirects": {
+      "description": "FollowRedirects controls redirects for scraping.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "gceSDConfigs": {
+      "description": "GCESDConfigs defines a list of GCE service discovery configurations.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.GCESDConfig"
+      }
+    },
+    "honorLabels": {
+      "description": "HonorLabels chooses the metric's labels on collisions with target labels.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "honorTimestamps": {
+      "description": "HonorTimestamps controls whether vmagent respects the timestamps present in scraped data.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "httpSDConfigs": {
+      "description": "HTTPSDConfigs defines a list of HTTP service discovery configurations.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.HTTPSDConfig"
+      }
+    },
+    "interval": {
+      "description": "Interval at which metrics should be scraped",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "kubernetesSDConfigs": {
+      "description": "KubernetesSDConfigs defines a list of Kubernetes service discovery configurations.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.KubernetesSDConfig"
+      }
+    },
+    "max_scrape_size": {
+      "description": "MaxScrapeSize defines a maximum size of scraped data for a job",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "metricRelabelConfigs": {
+      "description": "MetricRelabelConfigs to apply to samples after scrapping.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.RelabelConfig"
+      }
+    },
+    "oauth2": {
+      "description": "OAuth2 defines auth configuration",
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.OAuth2"
+    },
+    "openstackSDConfigs": {
+      "description": "OpenStackSDConfigs defines a list of OpenStack service discovery configurations.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.OpenStackSDConfig"
+      }
+    },
+    "params": {
+      "description": "Optional HTTP URL parameters",
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": {
+        "type": [
+          "array",
+          "null"
+        ],
+        "items": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "default": ""
+        }
+      }
+    },
+    "path": {
+      "description": "HTTP path to scrape for metrics.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "proxyURL": {
+      "description": "ProxyURL eg http://proxyserver:2195 Directs scrapes to proxy through this endpoint.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "relabelConfigs": {
+      "description": "RelabelConfigs to apply to samples during service discovery.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.RelabelConfig"
+      }
+    },
+    "sampleLimit": {
+      "description": "SampleLimit defines per-scrape limit on number of scraped samples that will be accepted.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int64"
+    },
+    "scheme": {
+      "description": "HTTP scheme to use for scraping.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "scrapeTimeout": {
+      "description": "Timeout after which the scrape is ended",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "scrape_interval": {
+      "description": "ScrapeInterval is the same as Interval and has priority over it. one of scrape_interval or interval can be used",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "seriesLimit": {
+      "description": "SeriesLimit defines per-scrape limit on number of unique time series a single target can expose during all the scrapes on the time window of 24h.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int64"
+    },
+    "staticConfigs": {
+      "description": "StaticConfigs defines a list of static targets with a common label set.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.StaticConfig"
+      }
+    },
+    "tlsConfig": {
+      "description": "TLSConfig configuration to use when scraping the endpoint",
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.TLSConfig"
+    },
+    "vm_scrape_params": {
+      "description": "VMScrapeParams defines VictoriaMetrics specific scrape parameters",
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.VMScrapeParams"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

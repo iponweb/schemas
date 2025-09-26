@@ -1,0 +1,72 @@
+{
+  "description": "TelegramConfig configures notification via telegram https://prometheus.io/docs/alerting/latest/configuration/#telegram_config",
+  "type": "object",
+  "required": [
+    "bot_token",
+    "chat_id"
+  ],
+  "properties": {
+    "api_url": {
+      "description": "APIUrl the Telegram API URL i.e. https://api.telegram.org.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "bot_token": {
+      "description": "BotToken token for the bot https://core.telegram.org/bots/api",
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SecretKeySelector"
+    },
+    "chat_id": {
+      "description": "ChatID is ID of the chat where to send the messages.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32",
+      "default": 0
+    },
+    "disable_notifications": {
+      "description": "DisableNotifications",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "http_config": {
+      "description": "HTTP client configuration.",
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.HTTPConfig"
+    },
+    "message": {
+      "description": "Message is templated message",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "message_thread_id": {
+      "description": "MessageThreadID defines ID of the message thread where to send the messages.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32"
+    },
+    "parse_mode": {
+      "description": "ParseMode for telegram message, supported values are MarkdownV2, Markdown, Markdown and empty string for plain text.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "send_resolved": {
+      "description": "SendResolved controls notify about resolved alerts.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

@@ -1,0 +1,35 @@
+{
+  "type": "object",
+  "properties": {
+    "graphitePort": {
+      "description": "GraphitePort listen port",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "influxPort": {
+      "description": "InfluxPort listen port",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "openTSDBHTTPPort": {
+      "description": "OpenTSDBHTTPPort for http connections.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "openTSDBPort": {
+      "description": "OpenTSDBPort for tcp and udp listen",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

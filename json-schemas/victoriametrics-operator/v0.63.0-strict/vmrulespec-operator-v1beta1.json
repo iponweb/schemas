@@ -1,0 +1,22 @@
+{
+  "description": "VMRuleSpec defines the desired state of VMRule",
+  "type": "object",
+  "required": [
+    "groups"
+  ],
+  "properties": {
+    "groups": {
+      "description": "Groups list of group rules",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.RuleGroup"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

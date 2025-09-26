@@ -1,0 +1,584 @@
+{
+  "description": "VMAuthSpec defines the desired state of VMAuth",
+  "type": "object",
+  "properties": {
+    "affinity": {
+      "description": "Affinity If specified, the pod's scheduling constraints.",
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.Affinity"
+    },
+    "configMaps": {
+      "description": "ConfigMaps is a list of ConfigMaps in the same namespace as the Application object, which shall be mounted into the Application container at /etc/vm/configs/CONFIGMAP_NAME folder",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "configReloadAuthKeySecret": {
+      "description": "ConfigReloadAuthKeySecret defines optional secret reference authKey for /-/reload API requests. Given secret reference will be added to the application and vm-config-reloader as volume available since v0.57.0 version",
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SecretKeySelector"
+    },
+    "configReloaderExtraArgs": {
+      "description": "ConfigReloaderExtraArgs that will be passed to  VMAuths config-reloader container for example resyncInterval: \"30s\"",
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "configReloaderImageTag": {
+      "description": "ConfigReloaderImageTag defines image:tag for config-reloader container",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "configReloaderResources": {
+      "description": "ConfigReloaderResources config-reloader container resource request and limits, https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/ if not defined default resources from operator config will be used",
+      "default": {},
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ResourceRequirements"
+    },
+    "configSecret": {
+      "description": "ConfigSecret is the name of a Kubernetes Secret in the same namespace as the VMAuth object, which contains auth configuration for vmauth, configuration must be inside secret key: config.yaml. It must be created and managed manually. If it's defined, configuration for vmauth becomes unmanaged and operator'll not create any related secrets/config-reloaders Deprecated: use externalConfig.secretRef instead",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "containers": {
+      "description": "Containers property allows to inject additions sidecars or to patch existing containers. It can be useful for proxies, backup, etc.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.Container"
+      }
+    },
+    "default_url": {
+      "description": "DefaultURLs backend url for non-matching paths filter usually used for default backend with error message",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "disableAutomountServiceAccountToken": {
+      "description": "DisableAutomountServiceAccountToken whether to disable serviceAccount auto mount by Kubernetes (available from v0.54.0). Operator will conditionally create volumes and volumeMounts for containers if it requires k8s API access. For example, vmagent and vm-config-reloader requires k8s API access. Operator creates volumes with name: \"kube-api-access\", which can be used as volumeMount for extraContainers if needed. And also adds VolumeMounts at /var/run/secrets/kubernetes.io/serviceaccount.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "disableSelfServiceScrape": {
+      "description": "DisableSelfServiceScrape controls creation of VMServiceScrape by operator for the application. Has priority over `VM_DISABLESELFSERVICESCRAPECREATION` operator env variable",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "discover_backend_ips": {
+      "description": "DiscoverBackendIPs instructs discovering URLPrefix backend IPs via DNS.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "dnsConfig": {
+      "description": "Specifies the DNS parameters of a pod. Parameters specified here will be merged to the generated DNS configuration based on DNSPolicy.",
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.PodDNSConfig"
+    },
+    "dnsPolicy": {
+      "description": "DNSPolicy sets DNS policy for the pod",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "drop_src_path_prefix_parts": {
+      "description": "DropSrcPathPrefixParts is the number of `/`-delimited request path prefix parts to drop before proxying the request to backend. See [here](https://docs.victoriametrics.com/victoriametrics/vmauth/#dropping-request-path-prefix) for more details.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32"
+    },
+    "dump_request_on_errors": {
+      "description": "DumpRequestOnErrors instructs vmauth to return detailed request params to the client if routing rules don't allow to forward request to the backends. Useful for debugging `src_hosts` and `src_headers` based routing rules\n\navailable since v1.107.0 vmauth version",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "externalConfig": {
+      "description": "ExternalConfig defines a source of external VMAuth configuration. If it's defined, configuration for vmauth becomes unmanaged and operator'll not create any related secrets/config-reloaders",
+      "default": {},
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.ExternalConfig"
+    },
+    "extraArgs": {
+      "description": "ExtraArgs that will be passed to the application container for example remoteWrite.tmpDataPath: /tmp",
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "extraEnvs": {
+      "description": "ExtraEnvs that will be passed to the application container",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.EnvVar"
+      }
+    },
+    "extraEnvsFrom": {
+      "description": "ExtraEnvsFrom defines source of env variables for the application container could either be secret or configmap",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.EnvFromSource"
+      }
+    },
+    "headers": {
+      "description": "Headers represent additional http headers, that vmauth uses in form of [\"header_key: header_value\"] multiple values for header key: [\"header_key: value1,value2\"] it's available since 1.68.0 version of vmauth",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "hostAliases": {
+      "description": "HostAliases provides mapping for ip and hostname, that would be propagated to pod, cannot be used with HostNetwork.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.HostAlias"
+      }
+    },
+    "hostNetwork": {
+      "description": "HostNetwork controls whether the pod may use the node network namespace",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "host_aliases": {
+      "description": "HostAliasesUnderScore provides mapping for ip and hostname, that would be propagated to pod, cannot be used with HostNetwork. Has Priority over hostAliases field",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.HostAlias"
+      }
+    },
+    "image": {
+      "description": "Image - docker image settings if no specified operator uses default version from operator config",
+      "default": {},
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.Image"
+    },
+    "imagePullSecrets": {
+      "description": "ImagePullSecrets An optional list of references to secrets in the same namespace to use for pulling images from registries see https://kubernetes.io/docs/concepts/containers/images/#referring-to-an-imagepullsecrets-on-a-pod",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.LocalObjectReference"
+      }
+    },
+    "ingress": {
+      "description": "Ingress enables ingress configuration for VMAuth.",
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.EmbeddedIngress"
+    },
+    "initContainers": {
+      "description": "InitContainers allows adding initContainers to the pod definition. Any errors during the execution of an initContainer will lead to a restart of the Pod. More info: https://kubernetes.io/docs/concepts/workloads/pods/init-containers/",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.Container"
+      }
+    },
+    "internalListenPort": {
+      "description": "InternalListenPort instructs vmauth to serve internal routes at given port available from v0.56.0 operator and v1.111.0 vmauth version related doc https://docs.victoriametrics.com/victoriametrics/vmauth/#security",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "ip_filters": {
+      "description": "IPFilters defines per target src ip filters supported only with enterprise version of [vmauth](https://docs.victoriametrics.com/victoriametrics/vmauth/#ip-filters)",
+      "default": {},
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.VMUserIPFilters"
+    },
+    "license": {
+      "description": "License allows to configure license key to be used for enterprise features. Using license key is supported starting from VictoriaMetrics v1.94.0. See [here](https://docs.victoriametrics.com/victoriametrics/enterprise/)",
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.License"
+    },
+    "livenessProbe": {
+      "description": "LivenessProbe that will be added CRD pod",
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.Probe"
+    },
+    "load_balancing_policy": {
+      "description": "LoadBalancingPolicy defines load balancing policy to use for backend urls. Supported policies: least_loaded, first_available. See [here](https://docs.victoriametrics.com/victoriametrics/vmauth/#load-balancing) for more details (default \"least_loaded\")",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "logFormat": {
+      "description": "LogFormat for VMAuth to be configured with.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "logLevel": {
+      "description": "LogLevel for victoria metrics single to be configured with.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "managedMetadata": {
+      "description": "ManagedMetadata defines metadata that will be added to the all objects created by operator for the given CustomResource",
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.ManagedObjectsMetadata"
+    },
+    "max_concurrent_requests": {
+      "description": "MaxConcurrentRequests defines max concurrent requests per user 300 is default value for vmauth",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32"
+    },
+    "minReadySeconds": {
+      "description": "MinReadySeconds defines a minimum number of seconds to wait before starting update next pod if previous in healthy state Has no effect for VLogs and VMSingle",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32"
+    },
+    "nodeSelector": {
+      "description": "NodeSelector Define which Nodes the Pods are scheduled on.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "paused": {
+      "description": "Paused If set to true all actions on the underlying managed objects are not going to be performed, except for delete actions.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "podDisruptionBudget": {
+      "description": "PodDisruptionBudget created by operator",
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.EmbeddedPodDisruptionBudgetSpec"
+    },
+    "podMetadata": {
+      "description": "PodMetadata configures Labels and Annotations which are propagated to the VMAuth pods.",
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.EmbeddedObjectMetadata"
+    },
+    "port": {
+      "description": "Port listen address",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "priorityClassName": {
+      "description": "PriorityClassName class assigned to the Pods",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "readinessGates": {
+      "description": "ReadinessGates defines pod readiness gates",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.PodReadinessGate"
+      }
+    },
+    "readinessProbe": {
+      "description": "ReadinessProbe that will be added CRD pod",
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.Probe"
+    },
+    "replicaCount": {
+      "description": "ReplicaCount is the expected size of the Application.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32"
+    },
+    "resources": {
+      "description": "Resources container resource request and limits, https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/ if not defined default resources from operator config will be used",
+      "default": {},
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ResourceRequirements"
+    },
+    "response_headers": {
+      "description": "ResponseHeaders represent additional http headers, that vmauth adds for request response in form of [\"header_key: header_value\"] multiple values for header key: [\"header_key: value1,value2\"] it's available since 1.93.0 version of vmauth",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "retry_status_codes": {
+      "description": "RetryStatusCodes defines http status codes in numeric format for request retries e.g. [429,503]",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "integer",
+          "null"
+        ],
+        "format": "int32",
+        "default": 0
+      }
+    },
+    "revisionHistoryLimitCount": {
+      "description": "The number of old ReplicaSets to retain to allow rollback in deployment or maximum number of revisions that will be maintained in the Deployment revision history. Has no effect at StatefulSets Defaults to 10.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32"
+    },
+    "runtimeClassName": {
+      "description": "RuntimeClassName - defines runtime class for kubernetes pod. https://kubernetes.io/docs/concepts/containers/runtime-class/",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "schedulerName": {
+      "description": "SchedulerName - defines kubernetes scheduler name",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "secrets": {
+      "description": "Secrets is a list of Secrets in the same namespace as the Application object, which shall be mounted into the Application container at /etc/vm/secrets/SECRET_NAME folder",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "securityContext": {
+      "description": "SecurityContext holds pod-level security attributes and common container settings. This defaults to the default PodSecurityContext.",
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.SecurityContext"
+    },
+    "selectAllByDefault": {
+      "description": "SelectAllByDefault changes default behavior for empty CRD selectors, such userSelector. with selectAllByDefault: true and empty userSelector and userNamespaceSelector Operator selects all exist users with selectAllByDefault: false - selects nothing",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "serviceAccountName": {
+      "description": "ServiceAccountName is the name of the ServiceAccount to use to run the pods",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "serviceScrapeSpec": {
+      "description": "ServiceScrapeSpec that will be added to vmauth VMServiceScrape spec",
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.VMServiceScrapeSpec"
+    },
+    "serviceSpec": {
+      "description": "ServiceSpec that will be added to vmsingle service spec",
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.AdditionalServiceSpec"
+    },
+    "startupProbe": {
+      "description": "StartupProbe that will be added to CRD pod",
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.Probe"
+    },
+    "terminationGracePeriodSeconds": {
+      "description": "TerminationGracePeriodSeconds period for container graceful termination",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int64"
+    },
+    "tlsConfig": {
+      "description": "TLSConfig defines tls configuration for the backend connection",
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.TLSConfig"
+    },
+    "tolerations": {
+      "description": "Tolerations If specified, the pod's tolerations.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.Toleration"
+      }
+    },
+    "topologySpreadConstraints": {
+      "description": "TopologySpreadConstraints embedded kubernetes pod configuration option, controls how pods are spread across your cluster among failure-domains such as regions, zones, nodes, and other user-defined topology domains https://kubernetes.io/docs/concepts/workloads/pods/pod-topology-spread-constraints/",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.TopologySpreadConstraint"
+      }
+    },
+    "unauthorizedAccessConfig": {
+      "description": "UnauthorizedAccessConfig configures access for un authorized users\n\nDeprecated: use unauthorizedUserAccessSpec instead will be removed at v1.0 release",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.UnauthorizedAccessConfigURLMap"
+      }
+    },
+    "unauthorizedUserAccessSpec": {
+      "description": "UnauthorizedUserAccessSpec defines unauthorized_user config section of vmauth config",
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.VMAuthUnauthorizedUserAccessSpec"
+    },
+    "useDefaultResources": {
+      "description": "UseDefaultResources controls resource settings By default, operator sets built-in resource requirements",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "useProxyProtocol": {
+      "description": "UseProxyProtocol enables proxy protocol for vmauth https://www.haproxy.org/download/2.3/doc/proxy-protocol.txt",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "useStrictSecurity": {
+      "description": "UseStrictSecurity enables strict security mode for component it restricts disk writes access uses non-root user out of the box drops not needed security permissions",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "useVMConfigReloader": {
+      "description": "UseVMConfigReloader replaces prometheus-like config-reloader with vm one. It uses secrets watch instead of file watch which greatly increases speed of config updates",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "userNamespaceSelector": {
+      "description": "UserNamespaceSelector Namespaces to be selected for  VMAuth discovery. Works in combination with Selector. NamespaceSelector nil - only objects at VMAuth namespace. Selector nil - only objects at NamespaceSelector namespaces. If both nil - behaviour controlled by selectAllByDefault",
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.LabelSelector"
+    },
+    "userSelector": {
+      "description": "UserSelector defines VMUser to be selected for config file generation. Works in combination with NamespaceSelector. NamespaceSelector nil - only objects at VMAuth namespace. If both nil - behaviour controlled by selectAllByDefault",
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.LabelSelector"
+    },
+    "volumeMounts": {
+      "description": "VolumeMounts allows configuration of additional VolumeMounts on the output Deployment/StatefulSet definition. VolumeMounts specified will be appended to other VolumeMounts in the Application container",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.VolumeMount"
+      }
+    },
+    "volumes": {
+      "description": "Volumes allows configuration of additional volumes on the output Deployment/StatefulSet definition. Volumes specified will be appended to other volumes that are generated. / +optional",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.Volume"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

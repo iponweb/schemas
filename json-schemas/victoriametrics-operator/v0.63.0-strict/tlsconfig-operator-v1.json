@@ -1,0 +1,55 @@
+{
+  "description": "TLSConfig specifies TLS configuration parameters with optional references to secrets with corresponding sensitive values",
+  "type": "object",
+  "properties": {
+    "caFile": {
+      "description": "CAFile defines path to the pre-mounted file with TLS ca certificate",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "caSecretKeyRef": {
+      "description": "CASecret defines secret reference with tls CA key by given key",
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SecretKeySelector"
+    },
+    "certFile": {
+      "description": "CertFile defines path to the pre-mounted file with TLS certificate mutually exclusive with CertSecret",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "certSecretKeyRef": {
+      "description": "CertSecret defines secret reference with TLS cert by given key mutually exclusive with CASecret",
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SecretKeySelector"
+    },
+    "insecureSkipVerify": {
+      "description": "Disable target certificate validation.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "keyFile": {
+      "description": "KeyFile defines path to the pre-mounted file with TLS cert key mutually exclusive with CertSecret",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "keySecretKeyRef": {
+      "description": "CertSecret defines secret reference with TLS key by given key",
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SecretKeySelector"
+    },
+    "serverName": {
+      "description": "Used to verify the hostname for the targets.",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

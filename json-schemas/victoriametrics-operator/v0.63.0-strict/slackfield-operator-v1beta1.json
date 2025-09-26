@@ -1,0 +1,32 @@
+{
+  "description": "SlackField configures a single Slack field that is sent with each notification. See https://api.slack.com/docs/message-attachments#fields for more information.",
+  "type": "object",
+  "required": [
+    "title",
+    "value"
+  ],
+  "properties": {
+    "short": {
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "title": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "value": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

@@ -1,0 +1,55 @@
+{
+  "description": "SyslogUDPListener defines configuration for UDP syslog server listen",
+  "type": "object",
+  "required": [
+    "listenPort"
+  ],
+  "properties": {
+    "compressMethod": {
+      "description": "CompressMethod for syslog messages see https://docs.victoriametrics.com/victorialogs/data-ingestion/syslog/#compression",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "decolorizeFields": {
+      "description": "DecolorizeFields to remove ANSI color codes across logs see https://docs.victoriametrics.com/victorialogs/data-ingestion/syslog/#decolorizing-fields",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "ignoreFields": {
+      "description": "IgnoreFields to ignore at logs see https://docs.victoriametrics.com/victorialogs/data-ingestion/syslog/#dropping-fields",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "listenPort": {
+      "description": "ListenPort defines listen port",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32",
+      "default": 0
+    },
+    "streamFields": {
+      "description": "StreamFields to use as log stream labels see https://docs.victoriametrics.com/victorialogs/data-ingestion/syslog/#stream-fields",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "tenantID": {
+      "description": "TenantID for logs ingested in form of accountID:projectID see https://docs.victoriametrics.com/victorialogs/data-ingestion/syslog/#multiple-configs",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

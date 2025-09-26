@@ -1,0 +1,12 @@
+{
+  "description": "StatefulSetUpdateStrategyBehavior customizes behavior for StatefulSet updates.",
+  "type": "object",
+  "properties": {
+    "maxUnavailable": {
+      "description": "MaxUnavailable defines the maximum number of pods that can be unavailable during the update. It can be specified as an absolute number (e.g. 2) or a percentage of the total pods (e.g. \"50%\"). For example, if set to 100%, all pods will be upgraded at once, minimizing downtime when needed.",
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.util.intstr.IntOrString"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

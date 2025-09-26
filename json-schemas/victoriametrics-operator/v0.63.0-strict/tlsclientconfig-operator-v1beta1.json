@@ -1,0 +1,55 @@
+{
+  "description": "TLSClientConfig defines TLS configuration for the application's client",
+  "type": "object",
+  "properties": {
+    "ca_file": {
+      "description": "CAFile defines path to the pre-mounted file with CA mutually exclusive with CASecretRef",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "ca_secret_ref": {
+      "description": "CA defines reference for secret with CA content under given key mutually exclusive with CAFile",
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SecretKeySelector"
+    },
+    "cert_file": {
+      "description": "CertFile defines path to the pre-mounted file with certificate mutually exclusive with CertSecretRef",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "cert_secret_ref": {
+      "description": "CertSecretRef defines reference for secret with certificate content under given key mutually exclusive with CertFile",
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SecretKeySelector"
+    },
+    "insecure_skip_verify": {
+      "description": "Cert defines reference for secret with CA content under given key mutually exclusive with CertFile",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "key_file": {
+      "description": "KeyFile defines path to the pre-mounted file with certificate key mutually exclusive with KeySecretRef",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "key_secret_ref": {
+      "description": "Key defines reference for secret with certificate key content under given key mutually exclusive with KeyFile",
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SecretKeySelector"
+    },
+    "server_name": {
+      "description": "ServerName indicates a name of a server",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

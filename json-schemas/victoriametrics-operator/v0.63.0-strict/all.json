@@ -1,0 +1,715 @@
+{
+  "oneOf": [
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1.OAuth2"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1.SyslogServerSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1.SyslogTCPListener"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1.SyslogUDPListener"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1.TLSConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1.TLSServerConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1.VLAgent"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1.VLAgentRemoteWriteSettings"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1.VLAgentRemoteWriteSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1.VLAgentSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1.VLAgentStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1.VLCluster"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1.VLClusterSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1.VLClusterStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1.VLInsert"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1.VLSelect"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1.VLSingle"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1.VLSingleSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1.VLSingleStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1.VLStorage"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1.VMAnomaly"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1.VMAnomalyMonitoringPullSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1.VMAnomalyMonitoringPushSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1.VMAnomalyMonitoringSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1.VMAnomalyReadersSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1.VMAnomalySpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1.VMAnomalyStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1.VMAnomalyVMWriterMetricFormatSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1.VMAnomalyWritersSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1.VTCluster"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1.VTClusterSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1.VTClusterStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1.VTInsert"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1.VTSelect"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1.VTSingle"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1.VTSingleSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1.VTSingleStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1.VTStorage"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.APIServerConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.AWS"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.AdditionalServiceSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.AlertmanagerGossipConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.AlertmanagerHTTPConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.AlertmanagerWebConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.ArbitraryFSAccessThroughSMsConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.AttachMetadata"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.Authorization"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.AzureSDConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.BasicAuth"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.BearerAuth"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.CRDRef"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.ConfigMapKeyReference"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.ConsulSDConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.DNSSDConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.DigitalOceanSDConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.DiscordConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.DiscoverySelector"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.EC2Filter"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.EC2SDConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.EmailConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.EmbeddedHPA"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.EmbeddedIngress"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.EmbeddedObjectMetadata"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.EmbeddedPersistentVolumeClaim"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.EmbeddedPodDisruptionBudgetSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.Endpoint"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.ExternalConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.FileSDConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.GCESDConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.HTTPConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.HTTPSDConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.Image"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.ImageConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.InhibitRule"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.InsertPorts"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.JiraConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.K8SSelectorConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.KubernetesSDConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.License"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.LinkConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.MSTeamsConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.MSTeamsV2Config"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.ManagedObjectsMetadata"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.NamespaceDiscovery"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.NamespaceSelector"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.OAuth2"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.OpenStackSDConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.OpsGenieConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.OpsGenieConfigResponder"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.PagerDutyConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.PodMetricsEndpoint"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.ProbeTargetIngress"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.ProxyAuth"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.PushoverConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.Receiver"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.RelabelConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.RocketchatAttachmentAction"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.RocketchatAttachmentField"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.RocketchatConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.Route"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.Rule"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.RuleGroup"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.ScrapeObjectStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.SecretOrConfigMap"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.SecurityContext"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.Sigv4Config"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.SlackAction"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.SlackConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.SlackConfirmationField"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.SlackField"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.SnsConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.StatefulSetUpdateStrategyBehavior"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.StaticConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.StaticRef"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.StorageSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.StreamAggrConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.StreamAggrRule"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.TLSClientConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.TLSConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.TLSServerConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.TargetEndpoint"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.TargetRef"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.TargetRefBasicAuth"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.TelegramConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.TimeInterval"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.TimeIntervals"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.TimeRange"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.UnauthorizedAccessConfigURLMap"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.VLogs"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.VLogsSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.VLogsStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.VMAgent"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.VMAgentRemoteWriteSettings"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.VMAgentRemoteWriteSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.VMAgentSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.VMAgentStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.VMAlert"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.VMAlertDatasourceSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.VMAlertNotifierSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.VMAlertRemoteReadSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.VMAlertRemoteWriteSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.VMAlertSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.VMAlertStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.VMAlertmanager"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.VMAlertmanagerConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.VMAlertmanagerConfigSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.VMAlertmanagerConfigStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.VMAlertmanagerSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.VMAlertmanagerStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.VMAuth"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.VMAuthLoadBalancer"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.VMAuthLoadBalancerSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.VMAuthSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.VMAuthStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.VMAuthUnauthorizedUserAccessSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.VMBackup"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.VMCluster"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.VMClusterSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.VMClusterStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.VMInsert"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.VMNodeScrape"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.VMNodeScrapeSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.VMPodScrape"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.VMPodScrapeSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.VMProbe"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.VMProbeSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.VMProbeTargetStaticConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.VMProbeTargets"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.VMProberSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.VMRestore"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.VMRestoreOnStartConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.VMRule"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.VMRuleSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.VMRuleStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.VMScrapeConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.VMScrapeConfigSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.VMScrapeParams"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.VMSelect"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.VMServiceScrape"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.VMServiceScrapeSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.VMSingle"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.VMSingleSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.VMSingleStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.VMStaticScrape"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.VMStaticScrapeSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.VMStorage"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.VMUser"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.VMUserIPFilters"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.VMUserSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.VMUserStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.VictorOpsConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.WeChatConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.WebexConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.WebhookConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.apps.v1.RollingUpdateDeployment"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.apps.v1.StatefulSetPersistentVolumeClaimRetentionPolicy"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.autoscaling.v2.HorizontalPodAutoscalerBehavior"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.autoscaling.v2.MetricSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.Affinity"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.AppArmorProfile"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.Capabilities"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ConfigMapKeySelector"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.Container"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.EmptyDirVolumeSource"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.EnvFromSource"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.EnvVar"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.HostAlias"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.LocalObjectReference"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.PersistentVolumeClaim"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.PersistentVolumeClaimSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.PersistentVolumeClaimStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.PodDNSConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.PodReadinessGate"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.Probe"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ResourceRequirements"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SELinuxOptions"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SeccompProfile"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SecretKeySelector"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ServiceSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.Sysctl"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.Toleration"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.TopologySpreadConstraint"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.Volume"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.VolumeMount"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.WindowsSecurityContextOptions"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.networking.v1.IngressRule"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.networking.v1.IngressTLS"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.JSON"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.FieldsV1"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.LabelSelector"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.LabelSelectorRequirement"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ManagedFieldsEntry"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.OwnerReference"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.util.intstr.IntOrString"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.api.resource.Quantity"
+    }
+  ]
+}

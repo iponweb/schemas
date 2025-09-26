@@ -1,0 +1,30 @@
+{
+  "description": "TLSServerConfig defines VictoriaMetrics TLS configuration for the application's server",
+  "type": "object",
+  "properties": {
+    "certFile": {
+      "description": "CertFile defines path to the pre-mounted file with certificate mutually exclusive with CertSecret",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "certSecret": {
+      "description": "CertSecretRef defines reference for secret with certificate content under given key mutually exclusive with CertFile",
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SecretKeySelector"
+    },
+    "keyFile": {
+      "description": "KeyFile defines path to the pre-mounted file with certificate key mutually exclusive with KeySecretRef",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "keySecret": {
+      "description": "Key defines reference for secret with certificate key content under given key mutually exclusive with KeyFile",
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SecretKeySelector"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

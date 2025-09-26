@@ -1,0 +1,28 @@
+{
+  "description": "TimeRange  ranges inclusive of the starting time and exclusive of the end time",
+  "type": "object",
+  "required": [
+    "start_time",
+    "end_time"
+  ],
+  "properties": {
+    "end_time": {
+      "description": "EndTime for example HH:MM",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "start_time": {
+      "description": "StartTime for example  HH:MM",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

@@ -1,0 +1,104 @@
+{
+  "description": "EmailConfig configures notifications via Email.",
+  "type": "object",
+  "properties": {
+    "auth_identity": {
+      "description": "The identity to use for authentication.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "auth_password": {
+      "description": "AuthPassword defines secret name and key at CRD namespace.",
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SecretKeySelector"
+    },
+    "auth_secret": {
+      "description": "AuthSecret defines secret name and key at CRD namespace. It must contain the CRAM-MD5 secret.",
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SecretKeySelector"
+    },
+    "auth_username": {
+      "description": "The username to use for authentication.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "from": {
+      "description": "The sender address. fallback to global setting if empty",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "headers": {
+      "description": "Further headers email header key/value pairs. Overrides any headers previously set by the notification implementation.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "hello": {
+      "description": "The hostname to identify to the SMTP server.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "html": {
+      "description": "The HTML body of the email notification.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "require_tls": {
+      "description": "The SMTP TLS requirement. Note that Go does not support unencrypted connections to remote SMTP endpoints.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "send_resolved": {
+      "description": "SendResolved controls notify about resolved alerts.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "smarthost": {
+      "description": "The SMTP host through which emails are sent. fallback to global setting if empty",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "text": {
+      "description": "The text body of the email notification.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "tls_config": {
+      "description": "TLS configuration",
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.TLSConfig"
+    },
+    "to": {
+      "description": "The email address to send notifications to.",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

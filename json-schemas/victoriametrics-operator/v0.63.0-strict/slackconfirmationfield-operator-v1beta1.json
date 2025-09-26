@@ -1,0 +1,36 @@
+{
+  "description": "SlackConfirmationField protect users from destructive actions or particularly distinguished decisions by asking them to confirm their button click one more time. See https://api.slack.com/docs/interactive-message-field-guide#confirmation_fields for more information.",
+  "type": "object",
+  "required": [
+    "text"
+  ],
+  "properties": {
+    "dismiss_text": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "ok_text": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "text": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "title": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

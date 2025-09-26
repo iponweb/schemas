@@ -1,0 +1,28 @@
+{
+  "description": "ProbeTargetIngress defines the set of Ingress objects considered for probing.",
+  "type": "object",
+  "properties": {
+    "namespaceSelector": {
+      "description": "Select Ingress objects by namespace.",
+      "default": {},
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.NamespaceSelector"
+    },
+    "relabelingConfigs": {
+      "description": "RelabelConfigs to apply to samples during service discovery.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.RelabelConfig"
+      }
+    },
+    "selector": {
+      "description": "Select Ingress objects by labels.",
+      "default": {},
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.LabelSelector"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

@@ -1,0 +1,74 @@
+{
+  "description": "WeChatConfig configures notifications via WeChat. See https://prometheus.io/docs/alerting/latest/configuration/#wechat_config",
+  "type": "object",
+  "properties": {
+    "agent_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "api_secret": {
+      "description": "The secret's key that contains the WeChat API key. The secret needs to be in the same namespace as the AlertmanagerConfig fallback to global alertmanager setting if empty",
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SecretKeySelector"
+    },
+    "api_url": {
+      "description": "The WeChat API URL. fallback to global alertmanager setting if empty",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "corp_id": {
+      "description": "The corp id for authentication. fallback to global alertmanager setting if empty",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "http_config": {
+      "description": "HTTP client configuration.",
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.HTTPConfig"
+    },
+    "message": {
+      "description": "API request data as defined by the WeChat API.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "message_type": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "send_resolved": {
+      "description": "SendResolved controls notify about resolved alerts.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "to_party": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "to_tag": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "to_user": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

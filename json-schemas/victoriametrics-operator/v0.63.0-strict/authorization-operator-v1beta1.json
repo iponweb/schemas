@@ -1,0 +1,26 @@
+{
+  "description": "Authorization configures generic authorization params",
+  "type": "object",
+  "properties": {
+    "credentials": {
+      "description": "Reference to the secret with value for authorization",
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SecretKeySelector"
+    },
+    "credentialsFile": {
+      "description": "File with value for authorization",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "type": {
+      "description": "Type of authorization, default to bearer",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

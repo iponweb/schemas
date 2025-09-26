@@ -1,0 +1,19 @@
+{
+  "description": "ExternalConfig defines external source of configuration",
+  "type": "object",
+  "properties": {
+    "localPath": {
+      "description": "LocalPath contains static path to a config, which is managed externally for cases when using secrets is not applicable, e.g.: Vault sidecar.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "secretRef": {
+      "description": "SecretRef defines selector for externally managed secret which contains configuration",
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SecretKeySelector"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

@@ -1,0 +1,45 @@
+{
+  "description": "VLAgentStatus defines the observed state of VLAgent",
+  "type": "object",
+  "properties": {
+    "observedGeneration": {
+      "description": "ObservedGeneration defines current generation picked by operator for the reconcile",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int64"
+    },
+    "reason": {
+      "description": "Reason defines human readable error reason",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "replicas": {
+      "description": "ReplicaCount Total number of pods targeted by this VLAgent",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32"
+    },
+    "selector": {
+      "description": "Selector string form of label value set for autoscaling",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "updateStatus": {
+      "description": "UpdateStatus defines a status for update rollout",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

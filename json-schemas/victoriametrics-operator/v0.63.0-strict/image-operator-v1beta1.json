@@ -1,0 +1,29 @@
+{
+  "description": "Image defines docker image settings",
+  "type": "object",
+  "properties": {
+    "pullPolicy": {
+      "description": "PullPolicy describes how to pull docker image",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "repository": {
+      "description": "Repository contains name of docker image + it's repository if needed",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "tag": {
+      "description": "Tag contains desired docker image version",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

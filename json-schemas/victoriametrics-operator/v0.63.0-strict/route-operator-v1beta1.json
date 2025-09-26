@@ -1,0 +1,113 @@
+{
+  "description": "Route defines a node in the routing tree.",
+  "type": "object",
+  "required": [
+    "receiver"
+  ],
+  "properties": {
+    "active_time_intervals": {
+      "description": "ActiveTimeIntervals Times when the route should be active These must match the name at time_intervals",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "continue": {
+      "description": "Continue indicating whether an alert should continue matching subsequent sibling nodes. It will always be true for the first-level route if disableRouteContinueEnforce for vmalertmanager not set.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "group_by": {
+      "description": "List of labels to group by.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "group_interval": {
+      "description": "How long to wait before sending an updated notification.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "group_wait": {
+      "description": "How long to wait before sending the initial notification.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "matchers": {
+      "description": "List of matchers that the alert\u2019s labels should match. For the first level route, the operator adds a namespace: \"CRD_NS\" matcher. https://prometheus.io/docs/alerting/latest/configuration/#matcher",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "mute_time_intervals": {
+      "description": "MuteTimeIntervals is a list of interval names that will mute matched alert",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "receiver": {
+      "description": "Name of the receiver for this route.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "repeat_interval": {
+      "description": "How long to wait before repeating the last notification.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "routes": {
+      "description": "Child routes. https://prometheus.io/docs/alerting/latest/configuration/#route",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "$ref": "_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.JSON"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

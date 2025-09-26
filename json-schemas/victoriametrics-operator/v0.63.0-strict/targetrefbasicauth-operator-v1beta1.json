@@ -1,0 +1,22 @@
+{
+  "description": "TargetRefBasicAuth target basic authentication",
+  "type": "object",
+  "required": [
+    "username",
+    "password"
+  ],
+  "properties": {
+    "password": {
+      "description": "The secret in the service scrape namespace that contains the password for authentication. It must be at them same namespace as CRD",
+      "default": {},
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SecretKeySelector"
+    },
+    "username": {
+      "description": "The secret in the service scrape namespace that contains the username for authentication. It must be at them same namespace as CRD",
+      "default": {},
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SecretKeySelector"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

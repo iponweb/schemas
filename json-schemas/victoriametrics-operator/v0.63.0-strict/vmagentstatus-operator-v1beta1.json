@@ -1,0 +1,53 @@
+{
+  "description": "VMAgentStatus defines the observed state of VMAgent",
+  "type": "object",
+  "properties": {
+    "observedGeneration": {
+      "description": "ObservedGeneration defines current generation picked by operator for the reconcile",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int64"
+    },
+    "reason": {
+      "description": "Reason defines human readable error reason",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "replicas": {
+      "description": "ReplicaCount Total number of pods targeted by this VMAgent",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32"
+    },
+    "selector": {
+      "description": "Selector string form of label value set for autoscaling",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "shards": {
+      "description": "Shards represents total number of vmagent deployments with uniq scrape targets",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32"
+    },
+    "updateStatus": {
+      "description": "UpdateStatus defines a status for update rollout",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

@@ -1,0 +1,53 @@
+{
+  "description": "VMAlertDatasourceSpec defines the remote storage configuration for VmAlert to read alerts from",
+  "type": "object",
+  "required": [
+    "url"
+  ],
+  "properties": {
+    "basicAuth": {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.BasicAuth"
+    },
+    "bearerTokenFile": {
+      "description": "Path to bearer token file",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "bearerTokenSecret": {
+      "description": "Optional bearer auth token to use for -remoteWrite.url",
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SecretKeySelector"
+    },
+    "headers": {
+      "description": "Headers allow configuring custom http headers Must be in form of semicolon separated header with value e.g. headerName:headerValue vmalert supports it since 1.79.0 version",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "oauth2": {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.OAuth2"
+    },
+    "tlsConfig": {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.TLSConfig"
+    },
+    "url": {
+      "description": "Victoria Metrics or VMSelect url. Required parameter. E.g. http://127.0.0.1:8428",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

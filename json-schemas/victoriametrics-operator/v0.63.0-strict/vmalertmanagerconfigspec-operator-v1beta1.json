@@ -1,0 +1,49 @@
+{
+  "description": "VMAlertmanagerConfigSpec defines configuration for VMAlertmanagerConfig it must reference only locally defined objects",
+  "type": "object",
+  "required": [
+    "route",
+    "receivers"
+  ],
+  "properties": {
+    "inhibit_rules": {
+      "description": "InhibitRules will only apply for alerts matching the resource's namespace.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.InhibitRule"
+      }
+    },
+    "receivers": {
+      "description": "Receivers defines alert receivers",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.Receiver"
+      }
+    },
+    "route": {
+      "description": "Route definition for alertmanager, may include nested routes.",
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.Route"
+    },
+    "time_intervals": {
+      "description": "TimeIntervals defines named interval for active/mute notifications interval See https://prometheus.io/docs/alerting/latest/configuration/#time_interval",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.TimeIntervals"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

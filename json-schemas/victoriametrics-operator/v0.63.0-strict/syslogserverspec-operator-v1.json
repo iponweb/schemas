@@ -1,0 +1,28 @@
+{
+  "description": "SyslogServerSpec defines syslog servers configuration",
+  "type": "object",
+  "properties": {
+    "tcpListeners": {
+      "description": "TCPListeners defines syslog server TCP listener configuration",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1.SyslogTCPListener"
+      }
+    },
+    "udpListeners": {
+      "description": "UDPListeners defines syslog server UDP listener configuration",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1.SyslogUDPListener"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

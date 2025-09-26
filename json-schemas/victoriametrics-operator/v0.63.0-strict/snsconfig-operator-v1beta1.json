@@ -1,0 +1,78 @@
+{
+  "type": "object",
+  "properties": {
+    "api_url": {
+      "description": "The api URL",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "attributes": {
+      "description": "SNS message attributes",
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "http_config": {
+      "description": "HTTP client configuration.",
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.HTTPConfig"
+    },
+    "message": {
+      "description": "The message content of the SNS notification.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "phone_number": {
+      "description": "Phone number if message is delivered via SMS Specify this, topic_arn or target_arn",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "send_resolved": {
+      "description": "SendResolved controls notify about resolved alerts.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "sigv4": {
+      "description": "Configure the AWS Signature Verification 4 signing process",
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.Sigv4Config"
+    },
+    "subject": {
+      "description": "The subject line if message is delivered to an email endpoint.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "target_arn": {
+      "description": "Mobile platform endpoint ARN if message is delivered via mobile notifications Specify this, topic_arn or phone_number",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "topic_arn": {
+      "description": "SNS topic ARN, either specify this, phone_number or target_arn",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

@@ -1,0 +1,54 @@
+{
+  "description": "TargetRef describes target for user traffic forwarding. one of target types can be chosen: crd or static per targetRef. user can define multiple targetRefs with different ref Types.",
+  "type": "object",
+  "properties": {
+    "crd": {
+      "description": "CRD describes exist operator's CRD object, operator generates access url based on CRD params.",
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.CRDRef"
+    },
+    "hosts": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "paths": {
+      "description": "Paths - matched path to route.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "static": {
+      "description": "Static - user defined url for traffic forward, for instance http://vmsingle:8428",
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.StaticRef"
+    },
+    "targetRefBasicAuth": {
+      "description": "TargetRefBasicAuth allow an target endpoint to authenticate over basic authentication",
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.TargetRefBasicAuth"
+    },
+    "target_path_suffix": {
+      "description": "TargetPathSuffix allows to add some suffix to the target path It allows to hide tenant configuration from user with crd as ref. it also may contain any url encoded params.",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

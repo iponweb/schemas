@@ -1,0 +1,44 @@
+{
+  "description": "VMStaticScrapeSpec defines the desired state of VMStaticScrape.",
+  "type": "object",
+  "required": [
+    "targetEndpoints"
+  ],
+  "properties": {
+    "jobName": {
+      "description": "JobName name of job.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "sampleLimit": {
+      "description": "SampleLimit defines per-scrape limit on number of scraped samples that will be accepted.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int64"
+    },
+    "seriesLimit": {
+      "description": "SeriesLimit defines per-scrape limit on number of unique time series a single target can expose during all the scrapes on the time window of 24h.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int64"
+    },
+    "targetEndpoints": {
+      "description": "A list of target endpoints to scrape metrics from.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.TargetEndpoint"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

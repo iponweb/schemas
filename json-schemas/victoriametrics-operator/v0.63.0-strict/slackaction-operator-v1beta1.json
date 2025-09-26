@@ -1,0 +1,53 @@
+{
+  "description": "SlackAction configures a single Slack action that is sent with each notification. See https://api.slack.com/docs/message-attachments#action_fields and https://api.slack.com/docs/message-buttons for more information.",
+  "type": "object",
+  "required": [
+    "type",
+    "text"
+  ],
+  "properties": {
+    "confirm": {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.SlackConfirmationField"
+    },
+    "name": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "style": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "text": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "type": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "url": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "value": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

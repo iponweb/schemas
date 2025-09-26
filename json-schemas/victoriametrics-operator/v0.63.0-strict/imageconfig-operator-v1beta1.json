@@ -1,0 +1,30 @@
+{
+  "description": "ImageConfig is used to attach images to the incident. See https://developer.pagerduty.com/docs/ZG9jOjExMDI5NTgx-send-an-alert-event#the-images-property for more information.",
+  "type": "object",
+  "required": [
+    "source"
+  ],
+  "properties": {
+    "alt": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "href": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "source": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

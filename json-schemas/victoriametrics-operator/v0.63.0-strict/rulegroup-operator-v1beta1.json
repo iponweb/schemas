@@ -1,0 +1,165 @@
+{
+  "description": "RuleGroup is a list of sequentially evaluated recording and alerting rules.",
+  "type": "object",
+  "required": [
+    "name",
+    "rules"
+  ],
+  "properties": {
+    "concurrency": {
+      "description": "Concurrency defines how many rules execute at once.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32"
+    },
+    "eval_alignment": {
+      "description": "Optional The evaluation timestamp will be aligned with group's interval, instead of using the actual timestamp that evaluation happens at. It is enabled by default to get more predictable results and to visually align with graphs plotted via Grafana or vmui.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "eval_delay": {
+      "description": "Optional Adjust the `time` parameter of group evaluation requests to compensate intentional query delay from the datasource.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "eval_offset": {
+      "description": "Optional Group will be evaluated at the exact offset in the range of [0...interval].",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "extra_filter_labels": {
+      "description": "ExtraFilterLabels optional list of label filters applied to every rule's request within a group. Is compatible only with VM datasource. See more details [here](https://docs.victoriametrics.com/victoriametrics/#prometheus-querying-api-enhancements) Deprecated: use params instead",
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "headers": {
+      "description": "Headers contains optional HTTP headers added to each rule request Must be in form `header-name: value` For example:\n headers:\n   - \"CustomHeader: foo\"\n   - \"CustomHeader2: bar\"",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "interval": {
+      "description": "evaluation interval for group",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "labels": {
+      "description": "Labels optional list of labels added to every rule within a group. It has priority over the external labels. Labels are commonly used for adding environment or tenant-specific tag.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "limit": {
+      "description": "Limit the number of alerts an alerting rule and series a recording rule can produce",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32"
+    },
+    "name": {
+      "description": "Name of group",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "notifier_headers": {
+      "description": "NotifierHeaders contains optional HTTP headers added to each alert request which will send to notifier Must be in form `header-name: value` For example:\n headers:\n   - \"CustomHeader: foo\"\n   - \"CustomHeader2: bar\"",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "params": {
+      "description": "Params optional HTTP URL parameters added to each rule request",
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": {
+        "type": [
+          "array",
+          "null"
+        ],
+        "items": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "default": ""
+        }
+      }
+    },
+    "rules": {
+      "description": "Rules list of alert rules",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.Rule"
+      }
+    },
+    "tenant": {
+      "description": "Tenant id for group, can be used only with enterprise version of vmalert. See more details [here](https://docs.victoriametrics.com/victoriametrics/vmalert/#multitenancy).",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "type": {
+      "description": "Type defines datasource type for enterprise version of vmalert possible values - prometheus,graphite,vlogs",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

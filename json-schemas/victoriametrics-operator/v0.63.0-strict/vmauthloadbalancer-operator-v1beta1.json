@@ -1,0 +1,30 @@
+{
+  "description": "VMAuthLoadBalancer configures vmauth as a load balancer for the requests",
+  "type": "object",
+  "properties": {
+    "disableInsertBalancing": {
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "disableSelectBalancing": {
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "enabled": {
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "spec": {
+      "default": {},
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.VMAuthLoadBalancerSpec"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

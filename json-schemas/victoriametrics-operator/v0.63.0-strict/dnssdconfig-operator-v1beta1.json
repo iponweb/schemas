@@ -1,0 +1,40 @@
+{
+  "description": "DNSSDConfig allows specifying a set of DNS domain names which are periodically queried to discover a list of targets. The DNS servers to be contacted are read from /etc/resolv.conf. See [here](https://docs.victoriametrics.com/victoriametrics/sd_configs/#dns_sd_configs)",
+  "type": "object",
+  "required": [
+    "names",
+    "type"
+  ],
+  "properties": {
+    "names": {
+      "description": "A list of DNS domain names to be queried.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "port": {
+      "description": "The port number used if the query type is not SRV Ignored for SRV records",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32"
+    },
+    "type": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

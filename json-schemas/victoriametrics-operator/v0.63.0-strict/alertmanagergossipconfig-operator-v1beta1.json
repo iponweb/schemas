@@ -1,0 +1,16 @@
+{
+  "description": "AlertmanagerGossipConfig defines Gossip TLS configuration for alertmanager",
+  "type": "object",
+  "properties": {
+    "tls_client_config": {
+      "description": "TLSClientConfig defines client TLS configuration for alertmanager",
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.TLSClientConfig"
+    },
+    "tls_server_config": {
+      "description": "TLSServerConfig defines server TLS configuration for alertmanager",
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.TLSServerConfig"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

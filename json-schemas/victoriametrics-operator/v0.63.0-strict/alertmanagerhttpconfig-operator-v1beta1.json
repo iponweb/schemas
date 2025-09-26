@@ -1,0 +1,29 @@
+{
+  "description": "AlertmanagerHTTPConfig defines http server configuration for alertmanager",
+  "type": "object",
+  "properties": {
+    "headers": {
+      "description": "Headers defines list of headers that can be added to HTTP responses.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "http2": {
+      "description": "HTTP2 enables HTTP/2 support. Note that HTTP/2 is only supported with TLS. This can not be changed on the fly.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

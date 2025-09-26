@@ -1,0 +1,64 @@
+{
+  "description": "VMScrapeParams defines scrape target configuration that compatible only with VictoriaMetrics scrapers VMAgent and VMSingle",
+  "type": "object",
+  "properties": {
+    "disable_compression": {
+      "description": "DisableCompression",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "disable_keep_alive": {
+      "description": "disable_keepalive allows disabling HTTP keep-alive when scraping targets. By default, HTTP keep-alive is enabled, so TCP connections to scrape targets could be reused. See https://docs.victoriametrics.com/victoriametrics/vmagent/#scrape_config-enhancements",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "headers": {
+      "description": "Headers allows sending custom headers to scrape targets must be in of semicolon separated header with it's value eg: headerName: headerValue vmagent supports since 1.79.0 version",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "no_stale_markers": {
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "proxy_client_config": {
+      "description": "ProxyClientConfig configures proxy auth settings for scraping See feature description https://docs.victoriametrics.com/victoriametrics/vmagent/#scraping-targets-via-a-proxy",
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.ProxyAuth"
+    },
+    "scrape_align_interval": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "scrape_offset": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "stream_parse": {
+      "type": [
+        "boolean",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

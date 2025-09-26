@@ -1,0 +1,16 @@
+{
+  "description": "VMProbeTargets defines a set of static and dynamically discovered targets for the prober.",
+  "type": "object",
+  "properties": {
+    "ingress": {
+      "description": "Ingress defines the set of dynamically discovered ingress objects which hosts are considered for probing.",
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.ProbeTargetIngress"
+    },
+    "staticConfig": {
+      "description": "StaticConfig defines static targets which are considers for probing.",
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.VMProbeTargetStaticConfig"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

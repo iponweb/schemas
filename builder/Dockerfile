@@ -1,4 +1,4 @@
-FROM golang:alpine as builder
+FROM golang:alpine AS builder
 
 #: install openapi-gen
 #:
@@ -6,7 +6,7 @@ FROM golang:alpine as builder
 #: - https://github.com/kubernetes/kube-openapi/tree/master/cmd/openapi-gen
 #:
 RUN set -x \
-    && go install k8s.io/kube-openapi/cmd/openapi-gen@9bd5c66d9911c53f5aedb8595fde9c229ca56703
+    && go install 'k8s.io/kube-openapi/cmd/openapi-gen@589584f1c912f4367fe8954f649a59a98b912da5'
 
 FROM golang:alpine
 

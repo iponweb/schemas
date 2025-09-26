@@ -1,0 +1,37 @@
+{
+  "description": "CRDRef describe CRD target reference.",
+  "type": "object",
+  "required": [
+    "kind",
+    "name",
+    "namespace"
+  ],
+  "properties": {
+    "kind": {
+      "description": "Kind one of: VMAgent,VMAlert, VMSingle, VMCluster/vmselect, VMCluster/vmstorage,VMCluster/vminsert,VMAlertManager, VLSingle, VLCluster/vlinsert, VLCluster/vlselect, VLCluster/vlstorage, VTSingle, VTCluster/vtinsert, VTCluster/vtselect, VTCluster/vtstorage and VLAgent",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "name": {
+      "description": "Name target CRD object name",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "namespace": {
+      "description": "Namespace target CRD object namespace.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

@@ -1,0 +1,30 @@
+{
+  "description": "K8SSelectorConfig is Kubernetes Selector Config",
+  "type": "object",
+  "required": [
+    "role"
+  ],
+  "properties": {
+    "field": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "label": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "role": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

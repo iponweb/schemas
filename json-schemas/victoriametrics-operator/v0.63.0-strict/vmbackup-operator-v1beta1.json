@@ -1,0 +1,171 @@
+{
+  "type": "object",
+  "properties": {
+    "acceptEULA": {
+      "description": "AcceptEULA accepts enterprise feature usage, must be set to true. otherwise backupmanager cannot be added to single/cluster version. https://victoriametrics.com/legal/esa/ Deprecated: use license.key or license.keyRef instead",
+      "type": [
+        "boolean",
+        "null"
+      ],
+      "default": false
+    },
+    "concurrency": {
+      "description": "Defines number of concurrent workers. Higher concurrency may reduce backup duration (default 10)",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32"
+    },
+    "credentialsSecret": {
+      "description": "CredentialsSecret is secret in the same namespace for access to remote storage The secret is mounted into /etc/vm/creds.",
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SecretKeySelector"
+    },
+    "customS3Endpoint": {
+      "description": "Custom S3 endpoint for use with S3-compatible storages (e.g. MinIO). S3 is used if not set",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "destination": {
+      "description": "Defines destination for backup",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "destinationDisableSuffixAdd": {
+      "description": "DestinationDisableSuffixAdd - disables suffix adding for cluster version backups each vmstorage backup must have unique backup folder so operator adds POD_NAME as suffix for backup destination folder.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "disableDaily": {
+      "description": "Defines if daily backups disabled (default false)",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "disableHourly": {
+      "description": "Defines if hourly backups disabled (default false)",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "disableMonthly": {
+      "description": "Defines if monthly backups disabled (default false)",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "disableWeekly": {
+      "description": "Defines if weekly backups disabled (default false)",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "extraArgs": {
+      "description": "extra args like maxBytesPerSecond default 0",
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "extraEnvs": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.EnvVar"
+      }
+    },
+    "extraEnvsFrom": {
+      "description": "ExtraEnvsFrom defines source of env variables for the application container could either be secret or configmap",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.EnvFromSource"
+      }
+    },
+    "image": {
+      "description": "Image - docker image settings for VMBackuper",
+      "default": {},
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.Image"
+    },
+    "logFormat": {
+      "description": "LogFormat for VMBackup to be configured with. default or json",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "logLevel": {
+      "description": "LogLevel for VMBackup to be configured with.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "port": {
+      "description": "Port for health check connections",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "resources": {
+      "description": "Resources container resource request and limits, https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/ if not defined default resources from operator config will be used",
+      "default": {},
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ResourceRequirements"
+    },
+    "restore": {
+      "description": "Restore Allows to enable restore options for pod Read [more](https://docs.victoriametrics.com/victoriametrics/vmbackupmanager/#restore-commands)",
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.VMRestore"
+    },
+    "snapshotCreateURL": {
+      "description": "SnapshotCreateURL overwrites url for snapshot create",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "snapshotDeleteURL": {
+      "description": "SnapShotDeleteURL overwrites url for snapshot delete",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "volumeMounts": {
+      "description": "VolumeMounts allows configuration of additional VolumeMounts on the output Deployment definition. VolumeMounts specified will be appended to other VolumeMounts in the vmbackupmanager container, that are generated as a result of StorageSpec objects.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.VolumeMount"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

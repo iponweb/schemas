@@ -1,0 +1,50 @@
+{
+  "description": "AWS defines AWS cloud auth specific params",
+  "type": "object",
+  "properties": {
+    "ec2Endpoint": {
+      "description": "EC2Endpoint is an optional AWS EC2 API endpoint to use for the corresponding -remoteWrite.url if -remoteWrite.aws.useSigv4 is set",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "region": {
+      "description": "Region is an optional AWS region to use for the corresponding -remoteWrite.url if -remoteWrite.aws.useSigv4 is set",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "roleARN": {
+      "description": "RoleARN is an optional AWS region to use for the corresponding -remoteWrite.url if -remoteWrite.aws.useSigv4 is set",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "service": {
+      "description": "Service is an optional AWS Service to use for the corresponding -remoteWrite.url if -remoteWrite.aws.useSigv4 is set",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "stsEndpoint": {
+      "description": "STSEndpoint is an optional AWS STS API endpoint to use for the corresponding -remoteWrite.url if -remoteWrite.aws.useSigv4 is set",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "useSigv4": {
+      "description": "UseSigv4 enables SigV4 request signing for the corresponding -remoteWrite.url",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

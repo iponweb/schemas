@@ -1,0 +1,32 @@
+{
+  "description": "EC2Filter is the configuration for filtering EC2 instances.",
+  "type": "object",
+  "required": [
+    "name",
+    "values"
+  ],
+  "properties": {
+    "name": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "values": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

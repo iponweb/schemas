@@ -1,0 +1,42 @@
+{
+  "type": "object",
+  "required": [
+    "room_id"
+  ],
+  "properties": {
+    "api_url": {
+      "description": "The Webex Teams API URL, i.e. https://webexapis.com/v1/messages",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "http_config": {
+      "description": "HTTP client configuration. You must use this configuration to supply the bot token as part of the HTTP `Authorization` header.",
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.HTTPConfig"
+    },
+    "message": {
+      "description": "The message body template",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "room_id": {
+      "description": "The ID of the Webex Teams room where to send the messages",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "send_resolved": {
+      "description": "SendResolved controls notify about resolved alerts.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

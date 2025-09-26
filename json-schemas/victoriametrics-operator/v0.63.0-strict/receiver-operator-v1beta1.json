@@ -1,0 +1,187 @@
+{
+  "description": "Receiver defines one or more notification integrations.",
+  "type": "object",
+  "required": [
+    "name"
+  ],
+  "properties": {
+    "discord_configs": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.DiscordConfig"
+      }
+    },
+    "email_configs": {
+      "description": "EmailConfigs defines email notification configurations.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.EmailConfig"
+      }
+    },
+    "jira_configs": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.JiraConfig"
+      }
+    },
+    "msteams_configs": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.MSTeamsConfig"
+      }
+    },
+    "msteamsv2_configs": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.MSTeamsV2Config"
+      }
+    },
+    "name": {
+      "description": "Name of the receiver. Must be unique across all items from the list.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "opsgenie_configs": {
+      "description": "OpsGenieConfigs defines ops genie notification configurations.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.OpsGenieConfig"
+      }
+    },
+    "pagerduty_configs": {
+      "description": "PagerDutyConfigs defines pager duty notification configurations.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.PagerDutyConfig"
+      }
+    },
+    "pushover_configs": {
+      "description": "PushoverConfigs defines push over notification configurations.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.PushoverConfig"
+      }
+    },
+    "rocketchat_configs": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.RocketchatConfig"
+      }
+    },
+    "slack_configs": {
+      "description": "SlackConfigs defines slack notification configurations.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.SlackConfig"
+      }
+    },
+    "sns_configs": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.SnsConfig"
+      }
+    },
+    "telegram_configs": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.TelegramConfig"
+      }
+    },
+    "victorops_configs": {
+      "description": "VictorOpsConfigs defines victor ops notification configurations.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.VictorOpsConfig"
+      }
+    },
+    "webex_configs": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.WebexConfig"
+      }
+    },
+    "webhook_configs": {
+      "description": "WebhookConfigs defines webhook notification configurations.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.WebhookConfig"
+      }
+    },
+    "wechat_configs": {
+      "description": "WeChatConfigs defines wechat notification configurations.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.WeChatConfig"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

@@ -1,0 +1,56 @@
+{
+  "description": "GCESDConfig configures scrape targets from GCP GCE instances. The private IP address is used by default, but may be changed to the public IP address with relabeling. See [here](https://docs.victoriametrics.com/victoriametrics/sd_configs/#gce_sd_configs)\n\nThe GCE service discovery will load the Google Cloud credentials from the file specified by the GOOGLE_APPLICATION_CREDENTIALS environment variable. See https://cloud.google.com/kubernetes-engine/docs/tutorials/authenticating-to-cloud-platform",
+  "type": "object",
+  "required": [
+    "project",
+    "zone"
+  ],
+  "properties": {
+    "filter": {
+      "description": "Filter can be used optionally to filter the instance list by other criteria Syntax of this filter is described in the filter query parameter section: https://cloud.google.com/compute/docs/reference/latest/instances/list",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "port": {
+      "description": "The port to scrape metrics from. If using the public IP address, this must instead be specified in the relabeling rule.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32"
+    },
+    "project": {
+      "description": "The Google Cloud Project ID",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "tagSeparator": {
+      "description": "The tag separator is used to separate the tags on concatenation",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "zone": {
+      "description": "The zone of the scrape targets. If you need multiple zones use multiple GCESDConfigs.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

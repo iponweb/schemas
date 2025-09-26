@@ -1,0 +1,25 @@
+{
+  "description": "BasicAuth allow an endpoint to authenticate over basic authentication",
+  "type": "object",
+  "properties": {
+    "password": {
+      "description": "Password defines reference for secret with password value The secret needs to be in the same namespace as scrape object",
+      "default": {},
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SecretKeySelector"
+    },
+    "password_file": {
+      "description": "PasswordFile defines path to password file at disk must be pre-mounted",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "username": {
+      "description": "Username defines reference for secret with username value The secret needs to be in the same namespace as scrape object",
+      "default": {},
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SecretKeySelector"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

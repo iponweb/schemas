@@ -1,0 +1,42 @@
+{
+  "description": "HTTPSDConfig defines a HTTP service discovery configuration. See [here](https://docs.victoriametrics.com/victoriametrics/sd_configs/#http_sd_configs)",
+  "type": "object",
+  "required": [
+    "url"
+  ],
+  "properties": {
+    "authorization": {
+      "description": "Authorization header to use on every scrape request.",
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.Authorization"
+    },
+    "basicAuth": {
+      "description": "BasicAuth information to use on every scrape request.",
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.BasicAuth"
+    },
+    "proxyURL": {
+      "description": "ProxyURL eg http://proxyserver:2195 Directs scrapes to proxy through this endpoint.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "proxy_client_config": {
+      "description": "ProxyClientConfig configures proxy auth settings for scraping See [feature description](https://docs.victoriametrics.com/victoriametrics/vmagent/#scraping-targets-via-a-proxy)",
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.ProxyAuth"
+    },
+    "tlsConfig": {
+      "description": "TLS configuration to use on every scrape request",
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.TLSConfig"
+    },
+    "url": {
+      "description": "URL from which the targets are fetched.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

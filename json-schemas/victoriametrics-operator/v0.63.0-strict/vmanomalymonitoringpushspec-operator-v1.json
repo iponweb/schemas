@@ -1,0 +1,73 @@
+{
+  "description": "VMAnomalyMonitoringPushSpec defines metrics push configuration\n\nVMAnomaly uses prometheus text exposition format",
+  "type": "object",
+  "required": [
+    "url"
+  ],
+  "properties": {
+    "basicAuth": {
+      "description": "Basic auth defines basic authorization configuration",
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.BasicAuth"
+    },
+    "bearer": {
+      "description": "BearerAuth defines authorization with Authorization: Bearer header",
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.BearerAuth"
+    },
+    "extraLabels": {
+      "description": "ExtraLabels defines a set of labels to attach to the pushed metrics",
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "healthPath": {
+      "description": "HealthPath defines absolute or relative URL address where to check availability of the remote webserver",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "pushFrequency": {
+      "description": "PushFrequency defines push interval",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "tenantID": {
+      "description": "TenantID defines for VictoriaMetrics Cluster version only, tenants are identified by accountID, accountID:projectID or multitenant.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "timeout": {
+      "description": "Timeout for the requests, passed as a string",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "tlsConfig": {
+      "description": "TLSConfig defines tls connection configuration",
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.TLSConfig"
+    },
+    "url": {
+      "description": "defines target url for push requests",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

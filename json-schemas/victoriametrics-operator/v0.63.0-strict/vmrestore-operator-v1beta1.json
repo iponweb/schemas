@@ -1,0 +1,12 @@
+{
+  "description": "VMRestore defines config options for vmrestore start-up",
+  "type": "object",
+  "properties": {
+    "onStart": {
+      "description": "OnStart defines configuration for restore on pod start",
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.VMRestoreOnStartConfig"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

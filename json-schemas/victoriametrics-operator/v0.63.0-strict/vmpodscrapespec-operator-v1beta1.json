@@ -1,0 +1,74 @@
+{
+  "description": "VMPodScrapeSpec defines the desired state of VMPodScrape",
+  "type": "object",
+  "required": [
+    "podMetricsEndpoints"
+  ],
+  "properties": {
+    "attach_metadata": {
+      "description": "AttachMetadata configures metadata attaching from service discovery",
+      "default": {},
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.AttachMetadata"
+    },
+    "jobLabel": {
+      "description": "The label to use to retrieve the job name from.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "namespaceSelector": {
+      "description": "Selector to select which namespaces the Endpoints objects are discovered from.",
+      "default": {},
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.NamespaceSelector"
+    },
+    "podMetricsEndpoints": {
+      "description": "A list of endpoints allowed as part of this PodMonitor.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.PodMetricsEndpoint"
+      }
+    },
+    "podTargetLabels": {
+      "description": "PodTargetLabels transfers labels on the Kubernetes Pod onto the target.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "sampleLimit": {
+      "description": "SampleLimit defines per-scrape limit on number of scraped samples that will be accepted.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int64"
+    },
+    "selector": {
+      "description": "Selector to select Pod objects.",
+      "default": {},
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.LabelSelector"
+    },
+    "seriesLimit": {
+      "description": "SeriesLimit defines per-scrape limit on number of unique time series a single target can expose during all the scrapes on the time window of 24h.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int64"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

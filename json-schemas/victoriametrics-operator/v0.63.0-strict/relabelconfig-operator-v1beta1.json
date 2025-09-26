@@ -1,0 +1,128 @@
+{
+  "description": "RelabelConfig allows dynamic rewriting of the label set More info: https://docs.victoriametrics.com/victoriametrics/#relabeling",
+  "type": "object",
+  "properties": {
+    "action": {
+      "description": "Action to perform based on regex matching. Default is 'replace'",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "if": {
+      "description": "If represents metricsQL match expression (or list of expressions): '{__name__=~\"foo_.*\"}'",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "labels": {
+      "description": "Labels is used together with Match for `action: graphite`",
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "match": {
+      "description": "Match is used together with Labels for `action: graphite`",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "modulus": {
+      "description": "Modulus to take of the hash of the source label values.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int64"
+    },
+    "regex": {
+      "description": "Regular expression against which the extracted value is matched. Default is '(.*)' victoriaMetrics supports multiline regex joined with | https://docs.victoriametrics.com/victoriametrics/vmagent/#relabeling-enhancements",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "replacement": {
+      "description": "Replacement value against which a regex replace is performed if the regular expression matches. Regex capture groups are available. Default is '$1'",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "separator": {
+      "description": "Separator placed between concatenated source label values. default is ';'.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "sourceLabels": {
+      "description": "The source labels select values from existing labels. Their content is concatenated using the configured separator and matched against the configured regular expression for the replace, keep, and drop actions.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "source_labels": {
+      "description": "UnderScoreSourceLabels - additional form of source labels source_labels for compatibility with original relabel config. if set  both sourceLabels and source_labels, sourceLabels has priority. for details https://github.com/VictoriaMetrics/operator/issues/131",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "targetLabel": {
+      "description": "Label to which the resulting value is written in a replace action. It is mandatory for replace actions. Regex capture groups are available.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "target_label": {
+      "description": "UnderScoreTargetLabel - additional form of target label - target_label for compatibility with original relabel config. if set  both targetLabel and target_label, targetLabel has priority. for details https://github.com/VictoriaMetrics/operator/issues/131",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

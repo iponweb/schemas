@@ -1,0 +1,15 @@
+{
+  "description": "AttachMetadata configures metadata attachment",
+  "type": "object",
+  "properties": {
+    "node": {
+      "description": "Node instructs vmagent to add node specific metadata from service discovery Valid for roles: pod, endpoints, endpointslice.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}
