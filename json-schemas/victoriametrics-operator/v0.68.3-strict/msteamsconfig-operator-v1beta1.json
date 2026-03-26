@@ -1,0 +1,43 @@
+{
+  "type": "object",
+  "properties": {
+    "http_config": {
+      "description": "HTTP client configuration.",
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.HTTPConfig"
+    },
+    "send_resolved": {
+      "description": "SendResolved controls notify about resolved alerts.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "text": {
+      "description": "The text body of the teams notification.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "title": {
+      "description": "The title of the teams notification.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "webhook_url": {
+      "description": "The incoming webhook URL one of `urlSecret` and `url` must be defined.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "webhook_url_secret": {
+      "description": "URLSecret defines secret name and key at the CRD namespace. It must contain the webhook URL. one of `urlSecret` and `url` must be defined.",
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SecretKeySelector"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

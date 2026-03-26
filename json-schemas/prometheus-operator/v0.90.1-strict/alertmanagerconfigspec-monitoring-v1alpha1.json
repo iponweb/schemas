@@ -1,0 +1,51 @@
+{
+  "description": "AlertmanagerConfigSpec is a specification of the desired behavior of the Alertmanager configuration. By default, the Alertmanager configuration only applies to alerts for which the `namespace` label is equal to the namespace of the AlertmanagerConfig resource (see the `.spec.alertmanagerConfigMatcherStrategy` field of the Alertmanager CRD).",
+  "type": "object",
+  "properties": {
+    "inhibitRules": {
+      "description": "inhibitRules defines the list of inhibition rules. The rules will only apply to alerts matching the resource's namespace.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.InhibitRule"
+      },
+      "x-kubernetes-list-type": "atomic"
+    },
+    "muteTimeIntervals": {
+      "description": "muteTimeIntervals defines the list of MuteTimeInterval specifying when the routes should be muted.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.MuteTimeInterval"
+      },
+      "x-kubernetes-list-type": "atomic"
+    },
+    "receivers": {
+      "description": "receivers defines the list of receivers.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.Receiver"
+      },
+      "x-kubernetes-list-map-keys": [
+        "name"
+      ],
+      "x-kubernetes-list-type": "map"
+    },
+    "route": {
+      "description": "route defines the Alertmanager route definition for alerts matching the resource's namespace. If present, it will be added to the generated Alertmanager configuration as a first-level route.",
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.Route"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

@@ -1,0 +1,65 @@
+{
+  "description": "RelabelConfig allows dynamic rewriting of the label set for targets, alerts, scraped samples and remote write samples.\n\nMore info: https://prometheus.io/docs/prometheus/latest/configuration/configuration/#relabel_config",
+  "type": "object",
+  "properties": {
+    "action": {
+      "description": "action to perform based on the regex matching.\n\n`Uppercase` and `Lowercase` actions require Prometheus >= v2.36.0. `DropEqual` and `KeepEqual` actions require Prometheus >= v2.41.0.\n\nDefault: \"Replace\"",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "modulus": {
+      "description": "modulus to take of the hash of the source label values.\n\nOnly applicable when the action is `HashMod`.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int64"
+    },
+    "regex": {
+      "description": "regex defines the regular expression against which the extracted value is matched.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "replacement": {
+      "description": "replacement value against which a Replace action is performed if the regular expression matches.\n\nRegex capture groups are available.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "separator": {
+      "description": "separator defines the string between concatenated SourceLabels.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "sourceLabels": {
+      "description": "sourceLabels defines the source labels select values from existing labels. Their content is concatenated using the configured Separator and matched against the configured regular expression.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "targetLabel": {
+      "description": "targetLabel defines the label to which the resulting string is written in a replacement.\n\nIt is mandatory for `Replace`, `HashMod`, `Lowercase`, `Uppercase`, `KeepEqual` and `DropEqual` actions.\n\nRegex capture groups are available.",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

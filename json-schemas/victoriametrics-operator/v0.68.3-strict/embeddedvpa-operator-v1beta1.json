@@ -1,0 +1,26 @@
+{
+  "description": "EmbeddedVPA embeds VerticalPodAutoscaler spec v1. https://github.com/kubernetes/autoscaler/tree/master/vertical-pod-autoscaler",
+  "type": "object",
+  "properties": {
+    "recommenders": {
+      "description": "Recommenders specifies custom VPA recommender names.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "$ref": "_definitions.json#/definitions/io.k8s.autoscaler.vertical-pod-autoscaler.pkg.apis.autoscaling.k8s.io.v1.VerticalPodAutoscalerRecommenderSelector"
+      }
+    },
+    "resourcePolicy": {
+      "description": "ResourcePolicy controls how the autoscaler computes recommended resources per container.",
+      "$ref": "_definitions.json#/definitions/io.k8s.autoscaler.vertical-pod-autoscaler.pkg.apis.autoscaling.k8s.io.v1.PodResourcePolicy"
+    },
+    "updatePolicy": {
+      "description": "UpdatePolicy controls how the autoscaler applies changes to pod resources.",
+      "$ref": "_definitions.json#/definitions/io.k8s.autoscaler.vertical-pod-autoscaler.pkg.apis.autoscaling.k8s.io.v1.PodUpdatePolicy"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

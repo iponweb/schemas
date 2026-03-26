@@ -1,0 +1,19 @@
+{
+  "description": "SafeAuthorization specifies a subset of the Authorization struct, that is safe for use because it doesn't provide access to the Prometheus container's filesystem.",
+  "type": "object",
+  "properties": {
+    "credentials": {
+      "description": "credentials defines a key of a Secret in the namespace that contains the credentials for authentication.",
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SecretKeySelector"
+    },
+    "type": {
+      "description": "type defines the authentication type. The value is case-insensitive.\n\n\"Basic\" is not a supported value.\n\nDefault: \"Bearer\"",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

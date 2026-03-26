@@ -1,4 +1,5 @@
 {
+  "description": "PolicyStatus defines the common attributes that all Policies should include within their status.",
   "type": "object",
   "required": [
     "ancestors"

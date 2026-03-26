@@ -1,0 +1,44 @@
+{
+  "description": "APIServerConfig defines a host and auth methods to access apiserver.",
+  "type": "object",
+  "required": [
+    "host"
+  ],
+  "properties": {
+    "authorization": {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.Authorization"
+    },
+    "basicAuth": {
+      "description": "BasicAuth allow an endpoint to authenticate over basic authentication",
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.BasicAuth"
+    },
+    "bearerToken": {
+      "description": "Bearer token for accessing apiserver.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "bearerTokenFile": {
+      "description": "File to read bearer token for accessing apiserver.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "host": {
+      "description": "Host of apiserver. A valid string consisting of a hostname or IP followed by an optional port number",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "tlsConfig": {
+      "description": "TLSConfig Config to use for accessing apiserver.",
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.TLSConfig"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

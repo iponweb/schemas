@@ -1,0 +1,48 @@
+{
+  "description": "EC2SDConfig allow retrieving scrape targets from AWS EC2 instances. The private IP address is used by default, but may be changed to the public IP address with relabeling. The IAM credentials used must have the ec2:DescribeInstances permission to discover scrape targets. See [here](https://docs.victoriametrics.com/victoriametrics/sd_configs/#ec2_sd_configs)",
+  "type": "object",
+  "properties": {
+    "accessKey": {
+      "description": "AccessKey is the AWS API key.",
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SecretKeySelector"
+    },
+    "filters": {
+      "description": "Filters can be used optionally to filter the instance list by other criteria. Available filter criteria can be found here: https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeInstances.html Filter API documentation: https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_Filter.html",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.EC2Filter"
+      }
+    },
+    "port": {
+      "description": "The port to scrape metrics from. If using the public IP address, this must instead be specified in the relabeling rule.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32"
+    },
+    "region": {
+      "description": "The AWS region",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "roleARN": {
+      "description": "AWS Role ARN, an alternative to using AWS API keys.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "secretKey": {
+      "description": "SecretKey is the AWS API secret.",
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SecretKeySelector"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

@@ -1,0 +1,66 @@
+{
+  "description": "AlertmanagerGlobalConfig configures parameters that are valid in all other configuration contexts. See https://prometheus.io/docs/alerting/latest/configuration/#configuration-file",
+  "type": "object",
+  "properties": {
+    "httpConfig": {
+      "description": "httpConfig defines the default HTTP configuration.",
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.HTTPConfigWithProxy"
+    },
+    "jira": {
+      "description": "jira defines the default configuration for Jira.",
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.GlobalJiraConfig"
+    },
+    "opsGenieApiKey": {
+      "description": "opsGenieApiKey defines the default OpsGenie API Key.",
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SecretKeySelector"
+    },
+    "opsGenieApiUrl": {
+      "description": "opsGenieApiUrl defines the default OpsGenie API URL.",
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SecretKeySelector"
+    },
+    "pagerdutyUrl": {
+      "description": "pagerdutyUrl defines the default Pagerduty URL.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "resolveTimeout": {
+      "description": "resolveTimeout defines the default value used by alertmanager if the alert does not include EndsAt, after this time passes it can declare the alert as resolved if it has not been updated. This has no impact on alerts from Prometheus, as they always include EndsAt.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "rocketChat": {
+      "description": "rocketChat defines the default configuration for Rocket Chat.",
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.GlobalRocketChatConfig"
+    },
+    "slackApiUrl": {
+      "description": "slackApiUrl defines the default Slack API URL.",
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SecretKeySelector"
+    },
+    "smtp": {
+      "description": "smtp defines global SMTP parameters.",
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.GlobalSMTPConfig"
+    },
+    "telegram": {
+      "description": "telegram defines the default Telegram config",
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.GlobalTelegramConfig"
+    },
+    "victorops": {
+      "description": "victorops defines the default configuration for VictorOps.",
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.GlobalVictorOpsConfig"
+    },
+    "webex": {
+      "description": "webex defines the default configuration for Webex.",
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.GlobalWebexConfig"
+    },
+    "wechat": {
+      "description": "wechat defines the default WeChat Config",
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.GlobalWeChatConfig"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

@@ -1,0 +1,83 @@
+{
+  "description": "VictorOpsConfig configures notifications via VictorOps. See https://prometheus.io/docs/alerting/latest/configuration/#victorops_config",
+  "type": "object",
+  "required": [
+    "routing_key"
+  ],
+  "properties": {
+    "api_key": {
+      "description": "The secret's key that contains the API key to use when talking to the VictorOps API. It must be at them same namespace as CRD fallback to global setting if empty",
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SecretKeySelector"
+    },
+    "api_url": {
+      "description": "The VictorOps API URL.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "custom_fields": {
+      "description": "Adds optional custom fields https://github.com/prometheus/alertmanager/blob/v0.24.0/config/notifiers.go#L537",
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "entity_display_name": {
+      "description": "Contains summary of the alerted problem.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "http_config": {
+      "description": "The HTTP client's configuration.",
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.HTTPConfig"
+    },
+    "message_type": {
+      "description": "Describes the behavior of the alert (CRITICAL, WARNING, INFO).",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "monitoring_tool": {
+      "description": "The monitoring tool the state message is from.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "routing_key": {
+      "description": "A key used to map the alert to a team.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "send_resolved": {
+      "description": "SendResolved controls notify about resolved alerts.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "state_message": {
+      "description": "Contains long explanation of the alerted problem.",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

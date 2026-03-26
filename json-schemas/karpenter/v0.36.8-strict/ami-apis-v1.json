@@ -1,0 +1,38 @@
+{
+  "description": "AMI contains resolved AMI selector values utilized for node launch",
+  "type": "object",
+  "required": [
+    "id",
+    "requirements"
+  ],
+  "properties": {
+    "id": {
+      "description": "ID of the AMI",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "name": {
+      "description": "Name of the AMI",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "requirements": {
+      "description": "Requirements of the AMI to be utilized on an instance type",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.NodeSelectorRequirement"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

@@ -1,0 +1,33 @@
+{
+  "description": "ACMEIssuerDNS01ProviderAkamai is a structure containing the DNS configuration for Akamai DNS\u2014Zone Record Management API",
+  "type": "object",
+  "required": [
+    "serviceConsumerDomain",
+    "clientTokenSecretRef",
+    "clientSecretSecretRef",
+    "accessTokenSecretRef"
+  ],
+  "properties": {
+    "accessTokenSecretRef": {
+      "default": {},
+      "$ref": "_definitions.json#/definitions/io.cert-manager.pkg.apis.meta.v1.SecretKeySelector"
+    },
+    "clientSecretSecretRef": {
+      "default": {},
+      "$ref": "_definitions.json#/definitions/io.cert-manager.pkg.apis.meta.v1.SecretKeySelector"
+    },
+    "clientTokenSecretRef": {
+      "default": {},
+      "$ref": "_definitions.json#/definitions/io.cert-manager.pkg.apis.meta.v1.SecretKeySelector"
+    },
+    "serviceConsumerDomain": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

@@ -1,0 +1,25 @@
+{
+  "description": "MutatorError represents a single error caught while adding a mutator to a system.",
+  "type": "object",
+  "required": [
+    "message"
+  ],
+  "properties": {
+    "message": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "type": {
+      "description": "Type indicates a specific class of error for use by controller code. If not present, the error should be treated as not matching any known type.",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

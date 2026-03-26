@@ -1,0 +1,18 @@
+{
+  "type": "object",
+  "properties": {
+    "traces": {
+      "description": "List of requests to trace. Both \"user\" and \"kinds\" must be specified",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/sh.gatekeeper.apis.config.v1alpha1.Trace"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

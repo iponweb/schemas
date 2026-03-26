@@ -26,7 +26,7 @@
     },
     "status": {
       "default": {},
-      "$ref": "_definitions.json#/definitions/sh-core.karpenter.pkg.apis.provisioning.v1alpha5.ProvisionerStatus"
+      "$ref": "_definitions.json#/definitions/sh.karpenter.core.pkg.apis.provisioning.v1alpha5.ProvisionerStatus"
     }
   },
   "additionalProperties": false,

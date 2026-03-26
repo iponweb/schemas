@@ -1,0 +1,76 @@
+diff --git a/apis/externalsecrets/v1/doc.go b/apis/externalsecrets/v1/doc.go
+index 776e1b9..31d7690 100644
+--- a/apis/externalsecrets/v1/doc.go
++++ b/apis/externalsecrets/v1/doc.go
+@@ -16,6 +16,7 @@ limitations under the License.
+ 
+ // Package v1 contains resources for external-secrets
+ // +kubebuilder:object:generate=true
++// +k8s:openapi-gen=true
+ // +groupName=external-secrets.io
+ // +versionName=v1
+ package v1
+diff --git a/apis/externalsecrets/v1alpha1/doc.go b/apis/externalsecrets/v1alpha1/doc.go
+index cd03949..5a3f776 100644
+--- a/apis/externalsecrets/v1alpha1/doc.go
++++ b/apis/externalsecrets/v1alpha1/doc.go
+@@ -16,6 +16,7 @@ limitations under the License.
+ 
+ // Package v1alpha1 contains resources for external-secrets
+ // +kubebuilder:object:generate=true
++// +k8s:openapi-gen=true
+ // +groupName=external-secrets.io
+ // +versionName=v1alpha1
+ package v1alpha1
+diff --git a/apis/externalsecrets/v1beta1/doc.go b/apis/externalsecrets/v1beta1/doc.go
+index 4209d79..2164ba3 100644
+--- a/apis/externalsecrets/v1beta1/doc.go
++++ b/apis/externalsecrets/v1beta1/doc.go
+@@ -16,6 +16,7 @@ limitations under the License.
+ 
+ // Package v1beta1 contains resources for external-secrets
+ // +kubebuilder:object:generate=true
++// +k8s:openapi-gen=true
+ // +groupName=external-secrets.io
+ // +versionName=v1beta1
+ package v1beta1
+diff --git a/apis/generators/v1alpha1/doc.go b/apis/generators/v1alpha1/doc.go
+index fff7bc4..2db79fe 100644
+--- a/apis/generators/v1alpha1/doc.go
++++ b/apis/generators/v1alpha1/doc.go
+@@ -16,6 +16,7 @@ limitations under the License.
+ 
+ // Package v1alpha1 contains resources for generators
+ // +kubebuilder:object:generate=true
++// +k8s:openapi-gen=true
+ // +groupName=generators.external-secrets.io
+ // +versionName=v1alpha1
+ package v1alpha1
+diff --git a/apis/generators/v1alpha1/generator_types.go b/apis/generators/v1alpha1/generator_types.go
+index 911d6e6..ec32676 100644
+--- a/apis/generators/v1alpha1/generator_types.go
++++ b/apis/generators/v1alpha1/generator_types.go
+@@ -17,8 +17,8 @@ limitations under the License.
+ package v1alpha1
+ 
+ // ControllerClassResource defines a resource that can be assigned to a specific controller class.
+-type ControllerClassResource struct {
+-	Spec struct {
+-		ControllerClass string `json:"controller"`
+-	} `json:"spec"`
+-}
++//type ControllerClassResource struct {
++//	Spec struct {
++//		ControllerClass string `json:"controller"`
++//	} `json:"spec"`
++//}
+diff --git a/apis/meta/v1/doc.go b/apis/meta/v1/doc.go
+index c3b4f20..0a7a75e 100644
+--- a/apis/meta/v1/doc.go
++++ b/apis/meta/v1/doc.go
+@@ -16,4 +16,5 @@ limitations under the License.
+ 
+ // Package v1 contains meta types for external-secrets APIs
+ // +kubebuilder:object:generate=true
++// +k8s:openapi-gen=true
+ package v1

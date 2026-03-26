@@ -1,0 +1,25 @@
+{
+  "type": "object",
+  "required": [
+    "kind"
+  ],
+  "properties": {
+    "group": {
+      "description": "Group is the group of the Route.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "kind": {
+      "description": "Kind is the kind of the Route.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

@@ -1,0 +1,23 @@
+{
+  "description": "VenafiCloud defines connection configuration details for CyberArk Certificate Manager SaaS",
+  "type": "object",
+  "required": [
+    "apiTokenSecretRef"
+  ],
+  "properties": {
+    "apiTokenSecretRef": {
+      "description": "APITokenSecretRef is a secret key selector for the CyberArk Certificate Manager SaaS API token.",
+      "default": {},
+      "$ref": "_definitions.json#/definitions/io.cert-manager.pkg.apis.meta.v1.SecretKeySelector"
+    },
+    "url": {
+      "description": "URL is the base URL for CyberArk Certificate Manager SaaS. Defaults to \"https://api.venafi.cloud/\".",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

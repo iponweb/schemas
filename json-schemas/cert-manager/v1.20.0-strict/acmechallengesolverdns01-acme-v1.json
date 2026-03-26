@@ -1,0 +1,51 @@
+{
+  "description": "Used to configure a DNS01 challenge provider to be used when solving DNS01 challenges. Only one DNS provider may be configured per solver.",
+  "type": "object",
+  "properties": {
+    "acmeDNS": {
+      "description": "Use the 'ACME DNS' (https://github.com/joohoi/acme-dns) API to manage DNS01 challenge records.",
+      "$ref": "_definitions.json#/definitions/io.cert-manager.pkg.apis.acme.v1.ACMEIssuerDNS01ProviderAcmeDNS"
+    },
+    "akamai": {
+      "description": "Use the Akamai DNS zone management API to manage DNS01 challenge records.",
+      "$ref": "_definitions.json#/definitions/io.cert-manager.pkg.apis.acme.v1.ACMEIssuerDNS01ProviderAkamai"
+    },
+    "azureDNS": {
+      "description": "Use the Microsoft Azure DNS API to manage DNS01 challenge records.",
+      "$ref": "_definitions.json#/definitions/io.cert-manager.pkg.apis.acme.v1.ACMEIssuerDNS01ProviderAzureDNS"
+    },
+    "cloudDNS": {
+      "description": "Use the Google Cloud DNS API to manage DNS01 challenge records.",
+      "$ref": "_definitions.json#/definitions/io.cert-manager.pkg.apis.acme.v1.ACMEIssuerDNS01ProviderCloudDNS"
+    },
+    "cloudflare": {
+      "description": "Use the Cloudflare API to manage DNS01 challenge records.",
+      "$ref": "_definitions.json#/definitions/io.cert-manager.pkg.apis.acme.v1.ACMEIssuerDNS01ProviderCloudflare"
+    },
+    "cnameStrategy": {
+      "description": "CNAMEStrategy configures how the DNS01 provider should handle CNAME records when found in DNS zones.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "digitalocean": {
+      "description": "Use the DigitalOcean DNS API to manage DNS01 challenge records.",
+      "$ref": "_definitions.json#/definitions/io.cert-manager.pkg.apis.acme.v1.ACMEIssuerDNS01ProviderDigitalOcean"
+    },
+    "rfc2136": {
+      "description": "Use RFC2136 (\"Dynamic Updates in the Domain Name System\") (https://datatracker.ietf.org/doc/rfc2136/) to manage DNS01 challenge records.",
+      "$ref": "_definitions.json#/definitions/io.cert-manager.pkg.apis.acme.v1.ACMEIssuerDNS01ProviderRFC2136"
+    },
+    "route53": {
+      "description": "Use the AWS Route53 API to manage DNS01 challenge records.",
+      "$ref": "_definitions.json#/definitions/io.cert-manager.pkg.apis.acme.v1.ACMEIssuerDNS01ProviderRoute53"
+    },
+    "webhook": {
+      "description": "Configure an external webhook based DNS01 challenge solver to manage DNS01 challenge records.",
+      "$ref": "_definitions.json#/definitions/io.cert-manager.pkg.apis.acme.v1.ACMEIssuerDNS01ProviderWebhook"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

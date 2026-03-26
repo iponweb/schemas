@@ -1,0 +1,34 @@
+{
+  "description": "QueryArg defines item for query arguments",
+  "type": "object",
+  "required": [
+    "name",
+    "values"
+  ],
+  "properties": {
+    "name": {
+      "description": "Name of query argument",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "values": {
+      "description": "Values of query argument",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

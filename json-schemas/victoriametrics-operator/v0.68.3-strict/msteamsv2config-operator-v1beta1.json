@@ -1,0 +1,43 @@
+{
+  "description": "MSTeamsV2Config sends notifications using the new message format with adaptive cards as required by flows. https://support.microsoft.com/en-gb/office/create-incoming-webhooks-with-workflows-for-microsoft-teams-8ae491c7-0394-4861-ba59-055e33f75498 available from v0.55.0 operator version and v0.28.0 alertmanager version",
+  "type": "object",
+  "properties": {
+    "http_config": {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.HTTPConfig"
+    },
+    "send_resolved": {
+      "description": "SendResolved controls notify about resolved alerts.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "text": {
+      "description": "Message body template.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "title": {
+      "description": "Message title template.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "webhook_url": {
+      "description": "The incoming webhook URL one of `urlSecret` and `url` must be defined.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "webhook_url_secret": {
+      "description": "URLSecret defines secret name and key at the CRD namespace. It must contain the webhook URL. one of `webhook_url` or `webhook_url_secret` must be defined.",
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SecretKeySelector"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

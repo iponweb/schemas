@@ -1,0 +1,69 @@
+{
+  "description": "OAuth2 defines OAuth2 configuration parameters with optional references to secrets with corresponding sensitive values",
+  "type": "object",
+  "required": [
+    "tokenURL"
+  ],
+  "properties": {
+    "clientIDFile": {
+      "description": "ClientIDFile defines path to pre-mounted OAuth2 client id",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "clientIDSecret": {
+      "description": "ClientIDSecret defines secret or configmap containing the OAuth2 client id",
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SecretKeySelector"
+    },
+    "clientSecret": {
+      "description": "The secret containing the OAuth2 client secret",
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SecretKeySelector"
+    },
+    "clientSecretFile": {
+      "description": "ClientSecretFile defines path to pre-mounted OAuth2 client secret",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "endpointParams": {
+      "description": "EndpointParams to append to the token URL",
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "scopes": {
+      "description": "Scopes used for the token request",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "tokenURL": {
+      "description": "TokenURL defines URL to fetch the token from",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

@@ -1,0 +1,22 @@
+{
+  "description": "AssignMetadataSpec defines the desired state of AssignMetadata.",
+  "type": "object",
+  "properties": {
+    "location": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "match": {
+      "default": {},
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.pkg.mutation.match.Match"
+    },
+    "parameters": {
+      "default": {},
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.apis.mutations.v1.MetadataParameters"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

@@ -1,0 +1,29 @@
+{
+  "description": "NamespaceDiscovery is the configuration for discovering Kubernetes namespaces.",
+  "type": "object",
+  "properties": {
+    "names": {
+      "description": "List of namespaces where to watch for resources. If empty and `ownNamespace` isn't true, watch for resources in all namespaces.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "ownNamespace": {
+      "description": "Includes the namespace in which the pod exists to the list of watched namespaces.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

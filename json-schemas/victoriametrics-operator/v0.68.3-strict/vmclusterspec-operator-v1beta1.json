@@ -1,0 +1,91 @@
+{
+  "description": "VMClusterSpec defines the desired state of VMCluster",
+  "type": "object",
+  "properties": {
+    "clusterDomainName": {
+      "description": "ClusterDomainName defines domain name suffix for in-cluster dns addresses aka .cluster.local used by vminsert and vmselect to build vmstorage address",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "clusterVersion": {
+      "description": "ClusterVersion defines default images tag for all components. it can be overwritten with component specific image.tag value.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "imagePullSecrets": {
+      "description": "ImagePullSecrets An optional list of references to secrets in the same namespace to use for pulling images from registries see https://kubernetes.io/docs/concepts/containers/images/#referring-to-an-imagepullsecrets-on-a-pod",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.LocalObjectReference"
+      }
+    },
+    "license": {
+      "description": "License allows to configure license key to be used for enterprise features. Using license key is supported starting from VictoriaMetrics v1.94.0. See [here](https://docs.victoriametrics.com/victoriametrics/enterprise/)",
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.License"
+    },
+    "managedMetadata": {
+      "description": "ManagedMetadata defines metadata that will be added to the all objects created by operator for the given CustomResource",
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.ManagedObjectsMetadata"
+    },
+    "paused": {
+      "description": "Paused If set to true all actions on the underlying managed objects are not going to be performed, except for delete actions.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "replicationFactor": {
+      "description": "ReplicationFactor defines how many copies of data make among distinct storage nodes",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32"
+    },
+    "requestsLoadBalancer": {
+      "description": "RequestsLoadBalancer configures load-balancing for vminsert and vmselect requests. It helps to evenly spread load across pods. Usually it's not possible with Kubernetes TCP-based services. See more [here](https://docs.victoriametrics.com/operator/resources/vmcluster/#requests-load-balancing)",
+      "default": {},
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.VMAuthLoadBalancer"
+    },
+    "retentionPeriod": {
+      "description": "RetentionPeriod defines how long to retain stored metrics, specified as a duration (e.g., \"1d\", \"1w\", \"1m\"). Data with timestamps outside the RetentionPeriod is automatically deleted. The minimum allowed value is 1d, or 24h. The default value is 1 (one month). See [retention](https://docs.victoriametrics.com/victoriametrics/single-server-victoriametrics/#retention) docs for details.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "serviceAccountName": {
+      "description": "ServiceAccountName is the name of the ServiceAccount to use to run the VMSelect, VMStorage and VMInsert Pods.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "useStrictSecurity": {
+      "description": "UseStrictSecurity enables strict security mode for component it restricts disk writes access uses non-root user out of the box drops not needed security permissions",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "vminsert": {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.VMInsert"
+    },
+    "vmselect": {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.VMSelect"
+    },
+    "vmstorage": {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.VMStorage"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

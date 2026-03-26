@@ -1,0 +1,132 @@
+{
+  "description": "OpenStackSDConfig allow retrieving scrape targets from OpenStack Nova instances. See https://prometheus.io/docs/prometheus/latest/configuration/configuration/#openstack_sd_config",
+  "type": "object",
+  "required": [
+    "role",
+    "region"
+  ],
+  "properties": {
+    "allTenants": {
+      "description": "allTenants defines whether the service discovery should list all instances for all projects. It is only relevant for the 'instance' role and usually requires admin permissions.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "applicationCredentialId": {
+      "description": "applicationCredentialId defines the OpenStack applicationCredentialId.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "applicationCredentialName": {
+      "description": "applicationCredentialName defines the ApplicationCredentialID or ApplicationCredentialName fields are required if using an application credential to authenticate. Some providers allow you to create an application credential to authenticate rather than a password.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "applicationCredentialSecret": {
+      "description": "applicationCredentialSecret defines the required field if using an application credential to authenticate.",
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SecretKeySelector"
+    },
+    "availability": {
+      "description": "availability defines the availability of the endpoint to connect to.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "domainID": {
+      "description": "domainID defines The OpenStack domainID.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "domainName": {
+      "description": "domainName defines at most one of domainId and domainName that must be provided if using username with Identity V3. Otherwise, either are optional.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "identityEndpoint": {
+      "description": "identityEndpoint defines the HTTP endpoint that is required to work with the Identity API of the appropriate version.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "password": {
+      "description": "password defines the password for the Identity V2 and V3 APIs. Consult with your provider's control panel to discover your account's preferred method of authentication.",
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SecretKeySelector"
+    },
+    "port": {
+      "description": "port defines the port to scrape metrics from. If using the public IP address, this must instead be specified in the relabeling rule.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32"
+    },
+    "projectID": {
+      "description": "projectID defines the OpenStack projectID.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "projectName": {
+      "description": "projectName defines an optional field for the Identity V2 API. Some providers allow you to specify a ProjectName instead of the ProjectId. Some require both. Your provider's authentication policies will determine how these fields influence authentication.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "refreshInterval": {
+      "description": "refreshInterval defines the time after which the provided names are refreshed. If not set, Prometheus uses its default value.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "region": {
+      "description": "region defines the OpenStack Region.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "role": {
+      "description": "role defines the OpenStack role of entities that should be discovered.\n\nNote: The `LoadBalancer` role requires Prometheus >= v3.2.0.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "tlsConfig": {
+      "description": "tlsConfig defines the TLS configuration applying to the target HTTP endpoint.",
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.SafeTLSConfig"
+    },
+    "userid": {
+      "description": "userid defines the OpenStack userid.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "username": {
+      "description": "username defines the username required if using Identity V2 API. Consult with your provider's control panel to discover your account's username. In Identity V3, either userid or a combination of username and domainId or domainName are needed",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

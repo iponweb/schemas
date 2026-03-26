@@ -1,0 +1,71 @@
+{
+  "description": "Rule describes an alerting or recording rule See Prometheus documentation: [alerting](https://www.prometheus.io/docs/prometheus/latest/configuration/alerting_rules/) or [recording](https://www.prometheus.io/docs/prometheus/latest/configuration/recording_rules/#recording-rules) rule",
+  "type": "object",
+  "required": [
+    "expr"
+  ],
+  "properties": {
+    "alert": {
+      "description": "alert defines the name of the alert. Must be a valid label value. Only one of `record` and `alert` must be set.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "annotations": {
+      "description": "annotations defines annotations to add to each alert. Only valid for alerting rules.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "expr": {
+      "description": "expr defines the PromQL expression to evaluate.",
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.util.intstr.IntOrString"
+    },
+    "for": {
+      "description": "for defines how alerts are considered firing once they have been returned for this long.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "keep_firing_for": {
+      "description": "keep_firing_for defines how long an alert will continue firing after the condition that triggered it has cleared.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "labels": {
+      "description": "labels defines labels to add or overwrite.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "record": {
+      "description": "record defines the name of the time series to output to. Must be a valid metric name. Only one of `record` and `alert` must be set.",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

@@ -1,0 +1,75 @@
+{
+  "description": "OAuth2 defines OAuth2 configuration",
+  "type": "object",
+  "required": [
+    "client_id",
+    "token_url"
+  ],
+  "properties": {
+    "client_id": {
+      "description": "The secret or configmap containing the OAuth2 client id",
+      "default": {},
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.SecretOrConfigMap"
+    },
+    "client_secret": {
+      "description": "The secret containing the OAuth2 client secret",
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SecretKeySelector"
+    },
+    "client_secret_file": {
+      "description": "ClientSecretFile defines path for client secret file.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "endpoint_params": {
+      "description": "Parameters to append to the token URL",
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "proxy_url": {
+      "description": "The proxy URL for token_url connection ( available from v0.55.0). Is only supported by Scrape objects family",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "scopes": {
+      "description": "OAuth2 scopes used for the token request",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "tls_config": {
+      "description": "TLSConfig for token_url connection ( available from v0.55.0). Is only supported by Scrape objects family",
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.TLSConfig"
+    },
+    "token_url": {
+      "description": "The URL to fetch the token from",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

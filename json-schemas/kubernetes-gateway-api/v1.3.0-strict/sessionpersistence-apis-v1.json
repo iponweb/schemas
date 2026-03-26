@@ -1,4 +1,5 @@
 {
+  "description": "SessionPersistence defines the desired state of SessionPersistence.",
   "type": "object",
   "properties": {
     "absoluteTimeout": {

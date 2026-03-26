@@ -1,0 +1,125 @@
+{
+  "description": "VMAnomalyReadersSpec defines reader configuration for VMAnomaly",
+  "type": "object",
+  "required": [
+    "datasourceURL",
+    "samplingPeriod"
+  ],
+  "properties": {
+    "basicAuth": {
+      "description": "Basic auth defines basic authorization configuration",
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.BasicAuth"
+    },
+    "bearer": {
+      "description": "BearerAuth defines authorization with Authorization: Bearer header",
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.BearerAuth"
+    },
+    "dataRange": {
+      "description": "Optional argumentallows defining valid data ranges for input of all the queries in queries",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "datasourceURL": {
+      "description": "DatasourceURL address datasource must serve /api/v1/query and /api/v1/query_range APIs",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "extraFilters": {
+      "description": "List of strings with series selector.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "healthPath": {
+      "description": "HealthPath defines absolute or relative URL address where to check availability of the remote webserver",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "latencyOffset": {
+      "description": "It allows overriding the default -search.latencyOffsetflag of VictoriaMetrics",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "maxPointsPerQuery": {
+      "description": "Optional argoverrides how search.maxPointsPerTimeseries flagimpacts vmanomaly on splitting long fitWindow queries into smaller sub-intervals",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32"
+    },
+    "queryFromLastSeenTimestamp": {
+      "description": "If True, then query will be performed from the last seen timestamp for a given series.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "queryRangePath": {
+      "description": "Performs PromQL/MetricsQL range query",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "samplingPeriod": {
+      "description": "Frequency of the points returned",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "tenantID": {
+      "description": "TenantID defines for VictoriaMetrics Cluster version only, tenants are identified by accountID, accountID:projectID or multitenant.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "timeout": {
+      "description": "Timeout for the requests, passed as a string",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "tlsConfig": {
+      "description": "TLSConfig defines tls connection configuration",
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.TLSConfig"
+    },
+    "tz": {
+      "description": "Optional argumentspecifies the IANA timezone to account for local shifts, like DST, in models sensitive to seasonal patterns",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

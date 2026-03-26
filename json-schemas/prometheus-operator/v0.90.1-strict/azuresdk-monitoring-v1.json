@@ -1,0 +1,15 @@
+{
+  "description": "AzureSDK is used to store azure SDK config values.",
+  "type": "object",
+  "properties": {
+    "tenantId": {
+      "description": "tenantId defines the tenant ID of the azure active directory application that is being used to authenticate.",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

@@ -1,0 +1,55 @@
+{
+  "description": "Condition represents the state of the resources associated with the Prometheus, Alertmanager or ThanosRuler resource.",
+  "type": "object",
+  "required": [
+    "type",
+    "status",
+    "lastTransitionTime"
+  ],
+  "properties": {
+    "lastTransitionTime": {
+      "description": "lastTransitionTime is the time of the last update to the current status property.",
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
+    },
+    "message": {
+      "description": "message defines human-readable message indicating details for the condition's last transition.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "observedGeneration": {
+      "description": "observedGeneration defines the .metadata.generation that the condition was set based upon. For instance, if `.metadata.generation` is currently 12, but the `.status.conditions[].observedGeneration` is 9, the condition is out of date with respect to the current state of the instance.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int64"
+    },
+    "reason": {
+      "description": "reason for the condition's last transition.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "status": {
+      "description": "status of the condition.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "type": {
+      "description": "type of the condition being reported.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

@@ -1,0 +1,15 @@
+{
+  "description": "Route53KubernetesAuth is a configuration to authenticate against Route53 using a bound Kubernetes ServiceAccount token.",
+  "type": "object",
+  "required": [
+    "serviceAccountRef"
+  ],
+  "properties": {
+    "serviceAccountRef": {
+      "description": "A reference to a service account that will be used to request a bound token (also known as \"projected token\"). To use this field, you must configure an RBAC rule to let cert-manager request a token.",
+      "$ref": "_definitions.json#/definitions/io.cert-manager.pkg.apis.acme.v1.ServiceAccountRef"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

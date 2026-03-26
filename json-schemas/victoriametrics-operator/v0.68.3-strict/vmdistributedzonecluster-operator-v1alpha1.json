@@ -1,0 +1,19 @@
+{
+  "description": "VMDistributedZoneCluster defines the name and specification of a VMCluster to be created or updated.",
+  "type": "object",
+  "properties": {
+    "name": {
+      "description": "Name specifies the static name to be used for the new VMCluster.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "spec": {
+      "description": "Spec defines the desired state of a new or update spec for existing VMCluster.",
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.VMClusterSpec"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

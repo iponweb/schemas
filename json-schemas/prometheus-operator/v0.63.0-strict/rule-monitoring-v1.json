@@ -28,7 +28,6 @@
     },
     "expr": {
       "description": "PromQL expression to evaluate.",
-      "default": {},
       "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.util.intstr.IntOrString"
     },
     "for": {

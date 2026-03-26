@@ -1,0 +1,39 @@
+{
+  "description": "EnforcementPointStatus represents the status of a single enforcement point.",
+  "type": "object",
+  "required": [
+    "enforcementPoint",
+    "state"
+  ],
+  "properties": {
+    "enforcementPoint": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "message": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "observedGeneration": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int64"
+    },
+    "state": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

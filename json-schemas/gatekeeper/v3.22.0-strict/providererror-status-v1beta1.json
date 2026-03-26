@@ -1,0 +1,39 @@
+{
+  "description": "ProviderError represents a single error caught while managing providers.",
+  "type": "object",
+  "required": [
+    "type",
+    "message",
+    "retryable",
+    "errorTimestamp"
+  ],
+  "properties": {
+    "errorTimestamp": {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
+    },
+    "message": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "retryable": {
+      "type": [
+        "boolean",
+        "null"
+      ],
+      "default": false
+    },
+    "type": {
+      "description": "Type indicates a specific class of error for use by controller code. If not present, the error should be treated as not matching any known type.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

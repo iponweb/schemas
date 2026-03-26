@@ -1,4 +1,5 @@
 {
+  "description": "RouteGroupKind indicates the group and kind of a Route resource.",
   "type": "object",
   "required": [
     "kind"

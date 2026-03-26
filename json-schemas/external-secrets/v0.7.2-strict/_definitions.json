@@ -454,7 +454,6 @@
         },
         "refreshTime": {
           "description": "refreshTime is the time and date the external secret was fetched and the target secret updated",
-          "default": {},
           "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
         },
         "syncedResourceVersion": {
@@ -472,7 +471,6 @@
       ],
       "properties": {
         "lastTransitionTime": {
-          "default": {},
           "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
         },
         "message": {
@@ -1053,7 +1051,6 @@
         },
         "refreshTime": {
           "description": "refreshTime is the time and date the external secret was fetched and the target secret updated",
-          "default": {},
           "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
         },
         "syncedPushSecrets": {
@@ -1083,7 +1080,6 @@
       ],
       "properties": {
         "lastTransitionTime": {
-          "default": {},
           "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
         },
         "message": {
@@ -1285,7 +1281,6 @@
       ],
       "properties": {
         "lastTransitionTime": {
-          "default": {},
           "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
         },
         "message": {
@@ -2539,7 +2534,6 @@
         },
         "refreshTime": {
           "description": "refreshTime is the time and date the external secret was fetched and the target secret updated",
-          "default": {},
           "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
         },
         "syncedResourceVersion": {
@@ -2557,7 +2551,6 @@
       ],
       "properties": {
         "lastTransitionTime": {
-          "default": {},
           "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
         },
         "message": {
@@ -3316,7 +3309,6 @@
       ],
       "properties": {
         "lastTransitionTime": {
-          "default": {},
           "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
         },
         "message": {
@@ -4475,7 +4467,6 @@
         },
         "creationTimestamp": {
           "description": "CreationTimestamp is a timestamp representing the server time when this object was created. It is not guaranteed to be set in happens-before order across separate operations. Clients may not set this value. It is represented in RFC3339 form and is in UTC.\n\nPopulated by the system. Read-only. Null for lists. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
-          "default": {},
           "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
         },
         "deletionGracePeriodSeconds": {

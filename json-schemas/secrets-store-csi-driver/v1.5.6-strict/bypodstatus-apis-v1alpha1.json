@@ -1,0 +1,22 @@
+{
+  "description": "ByPodStatus defines the state of SecretProviderClass as seen by an individual controller",
+  "type": "object",
+  "properties": {
+    "id": {
+      "description": "id of the pod that wrote the status",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "namespace": {
+      "description": "namespace of the pod that wrote the status",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

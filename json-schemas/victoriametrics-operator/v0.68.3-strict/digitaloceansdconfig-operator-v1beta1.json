@@ -1,0 +1,46 @@
+{
+  "description": "DigitalOceanSDConfig allow retrieving scrape targets from DigitalOcean's Droplets API. This service discovery uses the public IPv4 address by default, by that can be changed with relabeling. See [here](https://docs.victoriametrics.com/victoriametrics/sd_configs/#digitalocean_sd_configs)",
+  "type": "object",
+  "properties": {
+    "authorization": {
+      "description": "Authorization header to use on every scrape request.",
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.Authorization"
+    },
+    "followRedirects": {
+      "description": "Configure whether HTTP requests follow HTTP 3xx redirects.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "oauth2": {
+      "description": "OAuth2 defines auth configuration",
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.OAuth2"
+    },
+    "port": {
+      "description": "The port to scrape metrics from.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32"
+    },
+    "proxyURL": {
+      "description": "ProxyURL eg http://proxyserver:2195 Directs scrapes to proxy through this endpoint.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "proxy_client_config": {
+      "description": "ProxyClientConfig configures proxy auth settings for scraping See [feature description](https://docs.victoriametrics.com/victoriametrics/vmagent/#scraping-targets-via-a-proxy)",
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.ProxyAuth"
+    },
+    "tlsConfig": {
+      "description": "TLS configuration to use on every scrape request",
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.TLSConfig"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

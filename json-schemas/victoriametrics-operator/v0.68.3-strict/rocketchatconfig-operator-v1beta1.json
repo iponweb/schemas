@@ -1,0 +1,118 @@
+{
+  "description": "RocketchatConfig configures notifications via Rocketchat. https://prometheus.io/docs/alerting/latest/configuration/#rocketchat_config available from v0.55.0 operator version and v0.28.0 alertmanager version",
+  "type": "object",
+  "properties": {
+    "actions": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.RocketchatAttachmentAction"
+      }
+    },
+    "api_url": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "channel": {
+      "description": "RocketChat channel override, (like #other-channel or @username).",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "color": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "emoji": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "fields": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.RocketchatAttachmentField"
+      }
+    },
+    "http_config": {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.HTTPConfig"
+    },
+    "icon_url": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "image_url": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "link_names": {
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "send_resolved": {
+      "description": "SendResolved controls notify about resolved alerts.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "short_fields": {
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "text": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "thumb_url": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "title": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "title_link": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "token": {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SecretKeySelector"
+    },
+    "token_id": {
+      "description": "The sender token and token_id See https://docs.rocket.chat/use-rocket.chat/user-guides/user-panel/my-account#personal-access-tokens",
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SecretKeySelector"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

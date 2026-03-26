@@ -1,0 +1,25 @@
+{
+  "type": "object",
+  "required": [
+    "port",
+    "tls"
+  ],
+  "properties": {
+    "port": {
+      "description": "The Port indicates the Port Number to which the TLS configuration will be applied. This configuration will be applied to all Listeners handling HTTPS traffic that match this port.\n\nSupport: Core",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32",
+      "default": 0
+    },
+    "tls": {
+      "description": "TLS store the configuration that will be applied to all Listeners handling HTTPS traffic and matching given port.\n\nSupport: Core",
+      "default": {},
+      "$ref": "_definitions.json#/definitions/io.k8s.sigs.gateway-api.apis.v1.TLSConfig"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

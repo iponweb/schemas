@@ -1,0 +1,43 @@
+diff --git a/pkg/apis/monitoring/v1/doc.go b/pkg/apis/monitoring/v1/doc.go
+--- a/pkg/apis/monitoring/v1/doc.go
++++ b/pkg/apis/monitoring/v1/doc.go
+@@ -14,5 +14,6 @@
+
+ // +k8s:deepcopy-gen=package
+ // +groupName=monitoring.coreos.com
++// +k8s:openapi-gen=true
+
+ package v1
+diff --git a/pkg/apis/monitoring/v1alpha1/doc.go b/pkg/apis/monitoring/v1alpha1/doc.go
+--- a/pkg/apis/monitoring/v1alpha1/doc.go
++++ b/pkg/apis/monitoring/v1alpha1/doc.go
+@@ -14,5 +14,6 @@
+
+ // +k8s:deepcopy-gen=package
+ // +groupName=monitoring.coreos.com
++// +k8s:openapi-gen=true
+
+ package v1alpha1
+diff --git a/pkg/apis/monitoring/v1beta1/doc.go b/pkg/apis/monitoring/v1beta1/doc.go
+--- a/pkg/apis/monitoring/v1beta1/doc.go
++++ b/pkg/apis/monitoring/v1beta1/doc.go
+@@ -14,5 +14,6 @@
+
+ // +k8s:deepcopy-gen=package
+ // +groupName=monitoring.coreos.com
++// +k8s:openapi-gen=true
+
+ package v1beta1
+diff --git a/pkg/apis/monitoring/v1/probe_types.go b/pkg/apis/monitoring/v1/probe_types.go
+--- a/pkg/apis/monitoring/v1/probe_types.go
++++ b/pkg/apis/monitoring/v1/probe_types.go
+@@ -101,9 +101,6 @@
+ 	// metricRelabelings defines the RelabelConfig to apply to samples before ingestion.
+ 	// +optional
+ 	MetricRelabelConfigs []RelabelConfig `json:"metricRelabelings,omitempty"`
+-	// authorization section for this endpoint
+-	// +optional
+-	Authorization *SafeAuthorization `json:"authorization,omitempty"`
+ 	// sampleLimit defines per-scrape limit on number of scraped samples that will be accepted.
+ 	// +optional
+ 	SampleLimit *uint64 `json:"sampleLimit,omitempty"`

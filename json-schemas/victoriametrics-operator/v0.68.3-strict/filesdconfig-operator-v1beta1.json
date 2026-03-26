@@ -1,0 +1,25 @@
+{
+  "description": "FileSDConfig defines a file service discovery configuration. See [here](https://docs.victoriametrics.com/victoriametrics/sd_configs/#file_sd_configs)",
+  "type": "object",
+  "required": [
+    "files"
+  ],
+  "properties": {
+    "files": {
+      "description": "List of files to be used for file discovery.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

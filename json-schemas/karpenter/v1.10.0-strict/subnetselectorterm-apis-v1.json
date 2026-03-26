@@ -1,0 +1,29 @@
+{
+  "description": "SubnetSelectorTerm defines selection logic for a subnet used by Karpenter to launch nodes. If multiple fields are used for selection, the requirements are ANDed.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "description": "ID is the subnet id in EC2",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "tags": {
+      "description": "Tags is a map of key/value tags used to select subnets Specifying '*' for a value selects all values for a given tag key.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

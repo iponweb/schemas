@@ -1,0 +1,34 @@
+{
+  "description": "Image defines docker image settings",
+  "type": "object",
+  "properties": {
+    "pullPolicy": {
+      "description": "PullPolicy describes how to pull docker image\n\nPossible enum values:\n - `\"Always\"` means that kubelet always attempts to pull the latest image. Container will fail If the pull fails.\n - `\"IfNotPresent\"` means that kubelet pulls if the image isn't present on disk. Container will fail if the image isn't present and the pull fails.\n - `\"Never\"` means that kubelet never pulls an image, but only uses a local image. Container will fail if the image isn't present",
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "Always",
+        "IfNotPresent",
+        "Never"
+      ]
+    },
+    "repository": {
+      "description": "Repository contains name of docker image + it's repository if needed",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "tag": {
+      "description": "Tag contains desired docker image version",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

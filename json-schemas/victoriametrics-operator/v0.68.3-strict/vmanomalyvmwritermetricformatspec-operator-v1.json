@@ -1,0 +1,42 @@
+{
+  "description": "VMAnomalyVMWriterMetricFormatSpec defines the desired state of VMAnomalyVMWriterMetricFormat",
+  "type": "object",
+  "required": [
+    "__name__",
+    "for"
+  ],
+  "properties": {
+    "__name__": {
+      "description": "Name of result metric Must have a value with $VAR placeholder in it to distinguish between resulting metrics",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "extraLabels": {
+      "description": "ExtraLabels defines additional labels to be added to the resulting metrics",
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "for": {
+      "description": "For is a special label with $QUERY_KEY placeholder",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

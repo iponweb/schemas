@@ -1,0 +1,23 @@
+{
+  "description": "NameConstraints is a type to represent x509 NameConstraints",
+  "type": "object",
+  "properties": {
+    "critical": {
+      "description": "if true then the name constraints are marked critical.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "excluded": {
+      "description": "Excluded contains the constraints which must be disallowed. Any name matching a restriction in the excluded field is invalid regardless of information appearing in the permitted",
+      "$ref": "_definitions.json#/definitions/io.cert-manager.pkg.apis.certmanager.v1.NameConstraintItem"
+    },
+    "permitted": {
+      "description": "Permitted contains the constraints in which the names must be located.",
+      "$ref": "_definitions.json#/definitions/io.cert-manager.pkg.apis.certmanager.v1.NameConstraintItem"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

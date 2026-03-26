@@ -1,0 +1,22 @@
+{
+  "description": "ClusterTLSConfig defines the mutual TLS configuration for the Alertmanager cluster TLS protocol.",
+  "type": "object",
+  "required": [
+    "server",
+    "client"
+  ],
+  "properties": {
+    "client": {
+      "description": "client defines the client-side configuration for mutual TLS.",
+      "default": {},
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.SafeTLSConfig"
+    },
+    "server": {
+      "description": "server defines the server-side configuration for mutual TLS.",
+      "default": {},
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.WebTLSConfig"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

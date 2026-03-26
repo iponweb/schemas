@@ -1,0 +1,30 @@
+version: "v0.6.1"
+repository: "github.com/external-secrets/external-secrets"
+
+openapi_gen_packages:
+  - "github.com/external-secrets/external-secrets/apis/externalsecrets/v1alpha1"
+  - "github.com/external-secrets/external-secrets/apis/externalsecrets/v1beta1"
+  - "github.com/external-secrets/external-secrets/apis/meta/v1"
+  - "k8s.io/apimachinery/pkg/apis/meta/v1"
+  - "k8s.io/apimachinery/pkg/runtime"
+  - "k8s.io/apimachinery/pkg/version"
+
+go_dependencies:
+  k8s.io/apimachinery: "v0.33.2"
+  k8s.io/apiserver: "v0.33.2"
+  k8s.io/kube-openapi: "v0.0.0-20251125145642-4e65d59e963e"
+
+kubernetes_swagger_url: "https://raw.githubusercontent.com/kubernetes/kubernetes/v1.34.1/api/openapi-spec/swagger.json"
+title: "external-secrets CRD OpenAPI"
+
+crd_names:
+  - "github.com/external-secrets/external-secrets/apis/externalsecrets/v1alpha1.ExternalSecret"
+  - "github.com/external-secrets/external-secrets/apis/externalsecrets/v1alpha1.SecretStore"
+  - "github.com/external-secrets/external-secrets/apis/externalsecrets/v1alpha1.ClusterSecretStore"
+  - "github.com/external-secrets/external-secrets/apis/externalsecrets/v1beta1.ExternalSecret"
+  - "github.com/external-secrets/external-secrets/apis/externalsecrets/v1beta1.ClusterExternalSecret"
+  - "github.com/external-secrets/external-secrets/apis/externalsecrets/v1beta1.SecretStore"
+  - "github.com/external-secrets/external-secrets/apis/externalsecrets/v1beta1.ClusterSecretStore"
+
+host_conversion_rules:
+  "github.com/external-secrets/external-secrets": "external-secrets.io"

@@ -1,0 +1,40 @@
+{
+  "description": "ParentGatewayReference identifies an API object including its namespace, defaulting to Gateway.",
+  "type": "object",
+  "required": [
+    "name"
+  ],
+  "properties": {
+    "group": {
+      "description": "Group is the group of the referent.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "kind": {
+      "description": "Kind is kind of the referent. For example \"Gateway\".",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "name": {
+      "description": "Name is the name of the referent.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "namespace": {
+      "description": "Namespace is the namespace of the referent.  If not present, the namespace of the referent is assumed to be the same as the namespace of the referring object.",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

@@ -1,0 +1,33 @@
+{
+  "description": "K8SSelectorConfig is Kubernetes Selector Config",
+  "type": "object",
+  "required": [
+    "role"
+  ],
+  "properties": {
+    "field": {
+      "description": "field defines an optional field selector to limit the service discovery to resources which have fields with specific values. e.g: `metadata.name=foobar`",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "label": {
+      "description": "label defines an optional label selector to limit the service discovery to resources with specific labels and label values. e.g: `node.kubernetes.io/instance-type=master`",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "role": {
+      "description": "role defines the type of Kubernetes resource to limit the service discovery to. Accepted values are: Node, Pod, Endpoints, EndpointSlice, Service, Ingress.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

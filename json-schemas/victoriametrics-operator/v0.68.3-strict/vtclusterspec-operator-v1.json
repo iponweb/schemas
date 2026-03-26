@@ -1,0 +1,72 @@
+{
+  "description": "VTClusterSpec defines the desired state of VTCluster",
+  "type": "object",
+  "properties": {
+    "clusterDomainName": {
+      "description": "ClusterDomainName defines domain name suffix for in-cluster dns addresses aka .cluster.local used by vtinsert and vtselect to build vtstorage address",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "clusterVersion": {
+      "description": "ClusterVersion defines default images tag for all components. it can be overwritten with component specific image.tag value.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "imagePullSecrets": {
+      "description": "ImagePullSecrets An optional list of references to secrets in the same namespace to use for pulling images from registries see https://kubernetes.io/docs/concepts/containers/images/#referring-to-an-imagepullsecrets-on-a-pod",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.LocalObjectReference"
+      }
+    },
+    "insert": {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1.VTInsert"
+    },
+    "managedMetadata": {
+      "description": "ManagedMetadata defines metadata that will be added to the all objects created by operator for the given CustomResource",
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.ManagedObjectsMetadata"
+    },
+    "paused": {
+      "description": "Paused If set to true all actions on the underlying managed objects are not going to be performed, except for delete actions.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "requestsLoadBalancer": {
+      "description": "RequestsLoadBalancer configures load-balancing for vtinsert and vtselect requests. It helps to evenly spread load across pods. Usually it's not possible with Kubernetes TCP-based services.",
+      "default": {},
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.VMAuthLoadBalancer"
+    },
+    "select": {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1.VTSelect"
+    },
+    "serviceAccountName": {
+      "description": "ServiceAccountName is the name of the ServiceAccount to use to run the VTSelect, VTInsert and VTStorage Pods.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "storage": {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1.VTStorage"
+    },
+    "useStrictSecurity": {
+      "description": "UseStrictSecurity enables strict security mode for component it restricts disk writes access uses non-root user out of the box drops not needed security permissions",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

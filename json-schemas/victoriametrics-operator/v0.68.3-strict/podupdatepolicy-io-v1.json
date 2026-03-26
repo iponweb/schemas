@@ -1,0 +1,33 @@
+{
+  "description": "PodUpdatePolicy describes the rules on how changes are applied to the pods.",
+  "type": "object",
+  "properties": {
+    "evictionRequirements": {
+      "description": "EvictionRequirements is a list of EvictionRequirements that need to evaluate to true in order for a Pod to be evicted. If more than one EvictionRequirement is specified, all of them need to be fulfilled to allow eviction.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "$ref": "_definitions.json#/definitions/io.k8s.autoscaler.vertical-pod-autoscaler.pkg.apis.autoscaling.k8s.io.v1.EvictionRequirement"
+      }
+    },
+    "minReplicas": {
+      "description": "Minimal number of replicas which need to be alive for Updater to attempt pod eviction (pending other checks like PDB). Only positive values are allowed. Overrides global '--min-replicas' flag.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32"
+    },
+    "updateMode": {
+      "description": "Controls when autoscaler applies changes to the pod resources. The default is 'Auto'.",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

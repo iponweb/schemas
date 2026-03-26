@@ -1,0 +1,6 @@
+{
+  "description": "UUIDSpec controls the behavior of the uuid generator.",
+  "type": "object",
+  "$schema": "http://json-schema.org/schema#",
+  "additionalProperties": false
+}

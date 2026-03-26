@@ -1,0 +1,57 @@
+{
+  "description": "TLSConfig specifies TLSConfig configuration parameters.",
+  "type": "object",
+  "properties": {
+    "ca": {
+      "description": "Struct containing the CA cert to use for the targets.",
+      "default": {},
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.SecretOrConfigMap"
+    },
+    "caFile": {
+      "description": "Path to the CA cert in the container to use for the targets.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "cert": {
+      "description": "Struct containing the client cert file for the targets.",
+      "default": {},
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.SecretOrConfigMap"
+    },
+    "certFile": {
+      "description": "Path to the client cert file in the container for the targets.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "insecureSkipVerify": {
+      "description": "Disable target certificate validation.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "keyFile": {
+      "description": "Path to the client key file in the container for the targets.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "keySecret": {
+      "description": "Secret containing the client key file for the targets.",
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SecretKeySelector"
+    },
+    "serverName": {
+      "description": "Used to verify the hostname for the targets.",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

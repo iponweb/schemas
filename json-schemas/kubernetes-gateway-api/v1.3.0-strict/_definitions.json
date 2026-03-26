@@ -294,6 +294,7 @@
       "additionalProperties": false
     },
     "io.k8s.sigs.gateway-api.apis.v1.AllowedRoutes": {
+      "description": "AllowedRoutes defines which Routes may be attached to this Listener.",
       "type": "object",
       "properties": {
         "kinds": {
@@ -961,6 +962,7 @@
       "additionalProperties": false
     },
     "io.k8s.sigs.gateway-api.apis.v1.GatewayTLSConfig": {
+      "description": "GatewayTLSConfig describes a TLS configuration.",
       "type": "object",
       "properties": {
         "certificateRefs": {
@@ -1806,6 +1808,7 @@
       "additionalProperties": false
     },
     "io.k8s.sigs.gateway-api.apis.v1.RouteGroupKind": {
+      "description": "RouteGroupKind indicates the group and kind of a Route resource.",
       "type": "object",
       "required": [
         "kind"
@@ -1899,6 +1902,7 @@
       "additionalProperties": false
     },
     "io.k8s.sigs.gateway-api.apis.v1.SessionPersistence": {
+      "description": "SessionPersistence defines the desired state of SessionPersistence.",
       "type": "object",
       "properties": {
         "absoluteTimeout": {
@@ -2030,6 +2034,7 @@
       "additionalProperties": false
     },
     "io.k8s.sigs.gateway-api.apis.v1alpha2.PolicyStatus": {
+      "description": "PolicyStatus defines the common attributes that all Policies should include within their status.",
       "type": "object",
       "required": [
         "ancestors"

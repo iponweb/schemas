@@ -1,0 +1,46 @@
+{
+  "description": "CertificateRequestCondition contains condition information for a CertificateRequest.",
+  "type": "object",
+  "required": [
+    "type",
+    "status"
+  ],
+  "properties": {
+    "lastTransitionTime": {
+      "description": "LastTransitionTime is the timestamp corresponding to the last status change of this condition.",
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
+    },
+    "message": {
+      "description": "Message is a human readable description of the details of the last transition, complementing reason.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "reason": {
+      "description": "Reason is a brief machine readable explanation for the condition's last transition.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "status": {
+      "description": "Status of the condition, one of (`True`, `False`, `Unknown`).",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "type": {
+      "description": "Type of the condition, known values are (`Ready`, `InvalidRequest`, `Approved`, `Denied`).",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

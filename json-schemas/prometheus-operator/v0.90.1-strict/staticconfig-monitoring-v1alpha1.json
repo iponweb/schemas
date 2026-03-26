@@ -1,0 +1,40 @@
+{
+  "description": "StaticConfig defines a Prometheus static configuration. See https://prometheus.io/docs/prometheus/latest/configuration/configuration/#scrape_config",
+  "type": "object",
+  "required": [
+    "targets"
+  ],
+  "properties": {
+    "labels": {
+      "description": "labels defines labels assigned to all metrics scraped from the targets.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "targets": {
+      "description": "targets defines the list of targets for this static configuration.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      },
+      "x-kubernetes-list-type": "set"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

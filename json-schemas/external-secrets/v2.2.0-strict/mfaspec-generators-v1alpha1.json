@@ -1,0 +1,43 @@
+{
+  "description": "MFASpec controls the behavior of the mfa generator.",
+  "type": "object",
+  "required": [
+    "secret"
+  ],
+  "properties": {
+    "algorithm": {
+      "description": "Algorithm to use for encoding. Defaults to SHA1 as per the RFC.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "length": {
+      "description": "Length defines the token length. Defaults to 6 characters.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32"
+    },
+    "secret": {
+      "description": "Secret is a secret selector to a secret containing the seed secret to generate the TOTP value from.",
+      "default": {},
+      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.meta.v1.SecretKeySelector"
+    },
+    "timePeriod": {
+      "description": "TimePeriod defines how long the token can be active. Defaults to 30 seconds.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32"
+    },
+    "when": {
+      "description": "When defines a time parameter that can be used to pin the origin time of the generated token.",
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

@@ -1,4 +1,5 @@
 {
+  "description": "GatewayTLSConfig describes a TLS configuration.",
   "type": "object",
   "properties": {
     "certificateRefs": {

@@ -1,0 +1,11 @@
+diff --git a/vendor/sigs.k8s.io/gateway-api/apis/v1/doc.go b/vendor/sigs.k8s.io/gateway-api/apis/v1/doc.go
+index bd223cd..4e23af9 100644
+--- a/vendor/sigs.k8s.io/gateway-api/apis/v1/doc.go
++++ b/vendor/sigs.k8s.io/gateway-api/apis/v1/doc.go
+@@ -18,5 +18,6 @@ limitations under the License.
+ // API group.
+ //
+ // +kubebuilder:object:generate=true
++// +k8s:openapi-gen=true
+ // +groupName=gateway.networking.k8s.io
+ package v1

@@ -1,0 +1,47 @@
+{
+  "description": "DNSSDConfig allows specifying a set of DNS domain names which are periodically queried to discover a list of targets. The DNS servers to be contacted are read from /etc/resolv.conf. See https://prometheus.io/docs/prometheus/latest/configuration/configuration/#dns_sd_config",
+  "type": "object",
+  "required": [
+    "names"
+  ],
+  "properties": {
+    "names": {
+      "description": "names defines a list of DNS domain names to be queried.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "port": {
+      "description": "port defines the port to scrape metrics from. If using the public IP address, this must Ignored for SRV records",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32"
+    },
+    "refreshInterval": {
+      "description": "refreshInterval defines the time after which the provided names are refreshed. If not set, Prometheus uses its default value.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "type": {
+      "description": "type defines the type of DNS query to perform. One of SRV, A, AAAA, MX or NS. If not set, Prometheus uses its default value.\n\nWhen set to NS, it requires Prometheus >= v2.49.0. When set to MX, it requires Prometheus >= v2.38.0",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

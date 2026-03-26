@@ -1,0 +1,23 @@
+{
+  "description": "ProxyAuth represent proxy auth config Only VictoriaMetrics scrapers supports it. See https://github.com/VictoriaMetrics/VictoriaMetrics/commit/a6a71ef861444eb11fe8ec6d2387f0fc0c4aea87",
+  "type": "object",
+  "properties": {
+    "basic_auth": {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.BasicAuth"
+    },
+    "bearer_token": {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SecretKeySelector"
+    },
+    "bearer_token_file": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "tls_config": {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.TLSConfig"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

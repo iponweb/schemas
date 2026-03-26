@@ -50,7 +50,6 @@
     },
     "port": {
       "description": "Port the Alertmanager API is exposed on.",
-      "default": {},
       "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.util.intstr.IntOrString"
     },
     "scheme": {

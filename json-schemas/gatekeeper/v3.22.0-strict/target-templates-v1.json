@@ -1,0 +1,61 @@
+{
+  "description": "Target defines the target handler and policy for the constraint template.",
+  "type": "object",
+  "properties": {
+    "code": {
+      "description": "The source code options for the constraint template. \"Rego\" can only be specified in one place (either here or in the \"rego\" field)",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/sh.gatekeeper.frameworks.constraint.pkg.apis.templates.v1.Code"
+      },
+      "x-kubernetes-list-map-keys": [
+        "engine"
+      ],
+      "x-kubernetes-list-type": "map"
+    },
+    "libs": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "operations": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "rego": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "target": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

@@ -1,0 +1,18 @@
+{
+  "type": "object",
+  "properties": {
+    "syncOnly": {
+      "description": "If non-empty, only entries on this list will be replicated into OPA",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/sh.gatekeeper.apis.config.v1alpha1.SyncOnlyEntry"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

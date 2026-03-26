@@ -1,0 +1,28 @@
+{
+  "description": "ServiceSpec defines additional service for CRD with user-defined params. by default, some of fields can be inherited from default service definition for the CRD: labels,selector, ports. if metadata.name is not defined, service will have format {{CRD_TYPE}}-{{CRD_NAME}}-additional-service. if UseAsDefault is set to true, changes applied to the main service without additional service creation",
+  "type": "object",
+  "required": [
+    "spec"
+  ],
+  "properties": {
+    "metadata": {
+      "description": "EmbeddedObjectMetadata defines objectMeta for additional service.",
+      "default": {},
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.EmbeddedObjectMetadata"
+    },
+    "spec": {
+      "description": "ServiceSpec describes the attributes that a user creates on a service. More info: https://kubernetes.io/docs/concepts/services-networking/service/",
+      "default": {},
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ServiceSpec"
+    },
+    "useAsDefault": {
+      "description": "UseAsDefault applies changes from given service definition to the main object Service Changing from headless service to clusterIP or loadbalancer may break cross-component communication",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

@@ -1,0 +1,14 @@
+{
+  "type": "object",
+  "properties": {
+    "type": {
+      "description": "type defines the strategy used by AlertmanagerConfig objects to match alerts in the routes and inhibition rules.\n\nThe default value is `OnNamespace`.",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

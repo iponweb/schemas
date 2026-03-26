@@ -9,7 +9,6 @@
   "properties": {
     "lastTransitionTime": {
       "description": "lastTransitionTime is the time of the last update to the current status property.",
-      "default": {},
       "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
     },
     "message": {

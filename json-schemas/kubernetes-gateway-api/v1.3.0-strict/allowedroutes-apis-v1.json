@@ -1,4 +1,5 @@
 {
+  "description": "AllowedRoutes defines which Routes may be attached to this Listener.",
   "type": "object",
   "properties": {
     "kinds": {

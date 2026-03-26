@@ -1,0 +1,18 @@
+{
+  "description": "BasicAuth configures HTTP Basic Authentication settings.",
+  "type": "object",
+  "properties": {
+    "password": {
+      "description": "password defines a key of a Secret containing the password for authentication.",
+      "default": {},
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SecretKeySelector"
+    },
+    "username": {
+      "description": "username defines a key of a Secret containing the username for authentication.",
+      "default": {},
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SecretKeySelector"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

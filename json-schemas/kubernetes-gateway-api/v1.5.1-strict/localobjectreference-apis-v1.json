@@ -1,0 +1,36 @@
+{
+  "type": "object",
+  "required": [
+    "group",
+    "kind",
+    "name"
+  ],
+  "properties": {
+    "group": {
+      "description": "Group is the group of the referent. For example, \"gateway.networking.k8s.io\". When unspecified or empty string, core API group is inferred.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "kind": {
+      "description": "Kind is kind of the referent. For example \"HTTPRoute\" or \"Service\".",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "name": {
+      "description": "Name is the name of the referent.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

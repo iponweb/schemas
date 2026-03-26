@@ -1,0 +1,83 @@
+{
+  "description": "QueueConfig allows the tuning of remote write's queue_config parameters. This object is referenced in the RemoteWriteSpec object.",
+  "type": "object",
+  "properties": {
+    "batchSendDeadline": {
+      "description": "batchSendDeadline defines the maximum time a sample will wait in buffer.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "capacity": {
+      "description": "capacity defines the number of samples to buffer per shard before we start dropping them.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32"
+    },
+    "maxBackoff": {
+      "description": "maxBackoff defines the maximum retry delay.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "maxRetries": {
+      "description": "maxRetries defines the maximum number of times to retry a batch on recoverable errors.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32"
+    },
+    "maxSamplesPerSend": {
+      "description": "maxSamplesPerSend defines the maximum number of samples per send.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32"
+    },
+    "maxShards": {
+      "description": "maxShards defines the maximum number of shards, i.e. amount of concurrency.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32"
+    },
+    "minBackoff": {
+      "description": "minBackoff defines the initial retry delay. Gets doubled for every retry.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "minShards": {
+      "description": "minShards defines the minimum number of shards, i.e. amount of concurrency.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32"
+    },
+    "retryOnRateLimit": {
+      "description": "retryOnRateLimit defines the retry upon receiving a 429 status code from the remote-write storage.\n\nThis is an *experimental feature*, it may change in any upcoming release in a breaking way.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "sampleAgeLimit": {
+      "description": "sampleAgeLimit drops samples older than the limit. It requires Prometheus >= v2.50.0 or Thanos >= v0.32.0.",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

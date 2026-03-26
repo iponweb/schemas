@@ -1,0 +1,68 @@
+{
+  "type": "object",
+  "required": [
+    "endpoint"
+  ],
+  "properties": {
+    "clientType": {
+      "description": "clientType defines the client used to export the traces. Supported values are `HTTP` and `GRPC`.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "compression": {
+      "description": "compression key for supported compression types. The only supported value is `Gzip`.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "endpoint": {
+      "description": "endpoint to send the traces to. Should be provided in format <host>:<port>.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "headers": {
+      "description": "headers defines the key-value pairs to be used as headers associated with gRPC or HTTP requests.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "insecure": {
+      "description": "insecure if disabled, the client will use a secure connection.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "samplingFraction": {
+      "description": "samplingFraction defines the probability a given trace will be sampled. Must be a float from 0 through 1.",
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.api.resource.Quantity"
+    },
+    "timeout": {
+      "description": "timeout defines the maximum time the exporter will wait for each batch export.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "tlsConfig": {
+      "description": "tlsConfig to use when sending traces.",
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.TLSConfig"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

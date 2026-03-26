@@ -1,0 +1,87 @@
+{
+  "description": "StreamAggrConfig defines the stream aggregation config",
+  "type": "object",
+  "properties": {
+    "configmap": {
+      "description": "ConfigMap with stream aggregation rules",
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ConfigMapKeySelector"
+    },
+    "dedupInterval": {
+      "description": "Allows setting different de-duplication intervals per each configured remote storage",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "dropInput": {
+      "description": "Allow drop all the input samples after the aggregation",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "dropInputLabels": {
+      "description": "labels to drop from samples for aggregator before stream de-duplication and aggregation",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "enableWindows": {
+      "description": "EnableWindows enables aggregating data in separate windows ( available from v0.54.0).",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "ignoreFirstIntervals": {
+      "description": "IgnoreFirstIntervals instructs to ignore first interval",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32"
+    },
+    "ignoreFirstSampleInterval": {
+      "description": "IgnoreFirstSampleInterval sets interval for total and prometheus_total during which first samples will be ignored",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "ignoreOldSamples": {
+      "description": "IgnoreOldSamples instructs to ignore samples with old timestamps outside the current aggregation interval.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "keepInput": {
+      "description": "Allows writing both raw and aggregate data",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "rules": {
+      "description": "Stream aggregation rules",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.StreamAggrRule"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

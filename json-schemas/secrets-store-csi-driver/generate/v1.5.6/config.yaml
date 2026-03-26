@@ -1,0 +1,26 @@
+version: "v1.5.6"
+repository: "github.com/kubernetes-sigs/secrets-store-csi-driver"
+
+openapi_gen_packages:
+  - "sigs.k8s.io/secrets-store-csi-driver/apis/v1"
+  - "sigs.k8s.io/secrets-store-csi-driver/apis/v1alpha1"
+  - "k8s.io/apimachinery/pkg/apis/meta/v1"
+  - "k8s.io/apimachinery/pkg/runtime"
+  - "k8s.io/apimachinery/pkg/version"
+
+go_dependencies:
+  k8s.io/apimachinery: "v0.35.2"
+  k8s.io/apiserver: "v0.35.2"
+  k8s.io/kube-openapi: "v0.0.0-20260304202019-5b3e3fdb0acf"
+
+kubernetes_swagger_url: "https://raw.githubusercontent.com/kubernetes/kubernetes/v1.35.0/api/openapi-spec/swagger.json"
+title: "Secrets Store CSI Driver CRD OpenAPI"
+
+crd_names:
+  - "sigs.k8s.io/secrets-store-csi-driver/apis/v1.SecretProviderClass"
+  - "sigs.k8s.io/secrets-store-csi-driver/apis/v1.SecretProviderClassPodStatus"
+  - "sigs.k8s.io/secrets-store-csi-driver/apis/v1alpha1.SecretProviderClass"
+  - "sigs.k8s.io/secrets-store-csi-driver/apis/v1alpha1.SecretProviderClassPodStatus"
+
+host_conversion_rules:
+  "sigs.k8s.io/secrets-store-csi-driver": "secrets-store.csi.x-k8s.io"

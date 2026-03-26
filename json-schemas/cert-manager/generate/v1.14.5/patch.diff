@@ -1,12 +1,13 @@
 diff --git a/pkg/apis/acme/v1/doc.go b/pkg/apis/acme/v1/doc.go
-index 92b6583..199b29e 100644
+index 92b6583..5ba5e8f 100644
 --- a/pkg/apis/acme/v1/doc.go
 +++ b/pkg/apis/acme/v1/doc.go
-@@ -17,4 +17,5 @@ limitations under the License.
+@@ -16,5 +16,6 @@ limitations under the License.
+ 
  // Package v1 is the v1 version of the API.
  // +k8s:deepcopy-gen=package,register
- // +groupName=acme.cert-manager.io
 +// +k8s:openapi-gen=true
+ // +groupName=acme.cert-manager.io
  package v1
 diff --git a/pkg/apis/acme/v1/types_challenge.go b/pkg/apis/acme/v1/types_challenge.go
 index cfc4f24..1166424 100644
@@ -46,14 +47,16 @@ index e9a50a3..160acc2 100644
  	metav1.TypeMeta   `json:",inline"`
  	metav1.ObjectMeta `json:"metadata"`
 diff --git a/pkg/apis/certmanager/v1/doc.go b/pkg/apis/certmanager/v1/doc.go
-index 348211c..5826ddf 100644
+index 348211c..3830f7a 100644
 --- a/pkg/apis/certmanager/v1/doc.go
 +++ b/pkg/apis/certmanager/v1/doc.go
-@@ -18,4 +18,5 @@ limitations under the License.
+@@ -16,6 +16,7 @@ limitations under the License.
+ 
+ // Package v1 is the v1 version of the API.
  // +k8s:deepcopy-gen=package,register
++// +k8s:openapi-gen=true
  // +groupName=cert-manager.io
  // +groupGoName=Certmanager
-+// +k8s:openapi-gen=true
  package v1
 diff --git a/pkg/apis/certmanager/v1/types_certificaterequest.go b/pkg/apis/certmanager/v1/types_certificaterequest.go
 index 59797c7..2d17cb1 100644
@@ -68,7 +71,7 @@ index 59797c7..2d17cb1 100644
  	metav1.TypeMeta `json:",inline"`
  	// Standard object's metadata.
 diff --git a/pkg/apis/certmanager/v1/types_issuer.go b/pkg/apis/certmanager/v1/types_issuer.go
-index 4d5fc44..ce0dfc0 100644
+index 4d5fc44..f9243d0 100644
 --- a/pkg/apis/certmanager/v1/types_issuer.go
 +++ b/pkg/apis/certmanager/v1/types_issuer.go
 @@ -25,7 +25,6 @@ import (
@@ -79,23 +82,23 @@ index 4d5fc44..ce0dfc0 100644
  // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
  // +kubebuilder:storageversion
  
-@@ -56,8 +55,7 @@ type ClusterIssuerList struct {
- 	Items []ClusterIssuer `json:"items"`
+@@ -57,7 +56,6 @@ type ClusterIssuerList struct {
  }
  
--// +genclient
+ // +genclient
 -// +k8s:openapi-gen=true
-+// +genclientf
  // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
  // +kubebuilder:storageversion
  
 diff --git a/pkg/apis/meta/v1/doc.go b/pkg/apis/meta/v1/doc.go
-index 9a67368..c3a6e15 100644
+index 9a67368..3fbd578 100644
 --- a/pkg/apis/meta/v1/doc.go
 +++ b/pkg/apis/meta/v1/doc.go
-@@ -18,4 +18,5 @@ limitations under the License.
+@@ -16,6 +16,7 @@ limitations under the License.
+ 
+ // Package v1 contains meta types for cert-manager APIs
  // +k8s:deepcopy-gen=package
++// +k8s:openapi-gen=true
  // +gencrdrefdocs:force
  // +groupName=meta.cert-manager.io
-+// +k8s:openapi-gen=true
  package v1

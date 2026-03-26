@@ -1,0 +1,148 @@
+{
+  "description": "ConsulSDConfig defines a Consul service discovery configuration. See [here](https://docs.victoriametrics.com/victoriametrics/sd_configs/#consul_sd_configs)",
+  "type": "object",
+  "required": [
+    "server"
+  ],
+  "properties": {
+    "allowStale": {
+      "description": "Allow stale Consul results (see https://developer.hashicorp.com/consul/api-docs/features/consistency ). Will reduce load on Consul. If unset, use its default value.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "authorization": {
+      "description": "Authorization header to use on every scrape request.",
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.Authorization"
+    },
+    "basicAuth": {
+      "description": "BasicAuth information to use on every scrape request.",
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.BasicAuth"
+    },
+    "datacenter": {
+      "description": "Consul Datacenter name, if not provided it will use the local Consul Agent Datacenter.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "filter": {
+      "description": "Filter defines filter for /v1/catalog/services requests See https://developer.hashicorp.com/consul/api-docs/features/filtering",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "followRedirects": {
+      "description": "Configure whether HTTP requests follow HTTP 3xx redirects. If unset, use its default value.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "namespace": {
+      "description": "Namespaces are only supported in Consul Enterprise.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "nodeMeta": {
+      "description": "Node metadata key/value pairs to filter nodes for a given service.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "oauth2": {
+      "description": "OAuth2 defines auth configuration",
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.OAuth2"
+    },
+    "partition": {
+      "description": "Admin Partitions are only supported in Consul Enterprise.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "proxyURL": {
+      "description": "ProxyURL eg http://proxyserver:2195 Directs scrapes to proxy through this endpoint.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "proxy_client_config": {
+      "description": "ProxyClientConfig configures proxy auth settings for scraping See [feature description](https://docs.victoriametrics.com/victoriametrics/vmagent/#scraping-targets-via-a-proxy)",
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.ProxyAuth"
+    },
+    "scheme": {
+      "description": "HTTP Scheme default \"http\"",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "server": {
+      "description": "A valid string consisting of a hostname or IP followed by an optional port number.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "services": {
+      "description": "A list of services for which targets are retrieved. If omitted, all services are scraped.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "tagSeparator": {
+      "description": "The string by which Consul tags are joined into the tag label. If unset, use its default value.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "tags": {
+      "description": "An optional list of tags used to filter nodes for a given service. Services must contain all tags in the list.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "tlsConfig": {
+      "description": "TLS configuration to use on every scrape request",
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.TLSConfig"
+    },
+    "tokenRef": {
+      "description": "Consul ACL TokenRef, if not provided it will use the ACL from the local Consul Agent.",
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SecretKeySelector"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

@@ -15,7 +15,8 @@
         "type": [
           "string",
           "null"
-        ]
+        ],
+        "default": ""
       }
     },
     "command": {
@@ -28,7 +29,8 @@
         "type": [
           "string",
           "null"
-        ]
+        ],
+        "default": ""
       }
     },
     "env": {
@@ -38,6 +40,7 @@
         "null"
       ],
       "items": {
+        "default": {},
         "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.EnvVar"
       },
       "x-kubernetes-patch-merge-key": "name",
@@ -50,6 +53,7 @@
         "null"
       ],
       "items": {
+        "default": {},
         "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.EnvFromSource"
       }
     },
@@ -61,10 +65,15 @@
       ]
     },
     "imagePullPolicy": {
-      "description": "Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or IfNotPresent otherwise. Cannot be updated. More info: https://kubernetes.io/docs/concepts/containers/images#updating-images\n\n",
+      "description": "Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or IfNotPresent otherwise. Cannot be updated. More info: https://kubernetes.io/docs/concepts/containers/images#updating-images\n\nPossible enum values:\n - `\"Always\"` means that kubelet always attempts to pull the latest image. Container will fail If the pull fails.\n - `\"IfNotPresent\"` means that kubelet pulls if the image isn't present on disk. Container will fail if the image isn't present and the pull fails.\n - `\"Never\"` means that kubelet never pulls an image, but only uses a local image. Container will fail if the image isn't present",
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "Always",
+        "IfNotPresent",
+        "Never"
       ]
     },
     "lifecycle": {
@@ -80,7 +89,8 @@
       "type": [
         "string",
         "null"
-      ]
+      ],
+      "default": ""
     },
     "ports": {
       "description": "List of ports to expose from the container. Not specifying a port here DOES NOT prevent that port from being exposed. Any port which is listening on the default \"0.0.0.0\" address inside a container will be accessible from the network. Modifying this array with strategic merge patch may corrupt the data. For more information See https://github.com/kubernetes/kubernetes/issues/108255. Cannot be updated.",
@@ -89,6 +99,7 @@
         "null"
       ],
       "items": {
+        "default": {},
         "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ContainerPort"
       },
       "x-kubernetes-list-map-keys": [
@@ -105,6 +116,7 @@
     },
     "resources": {
       "description": "Compute Resources required by this container. Cannot be updated. More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/",
+      "default": {},
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ResourceRequirements"
     },
     "securityContext": {
@@ -137,10 +149,14 @@
       ]
     },
     "terminationMessagePolicy": {
-      "description": "Indicate how the termination message should be populated. File will use the contents of terminationMessagePath to populate the container status message on both success and failure. FallbackToLogsOnError will use the last chunk of container log output if the termination message file is empty and the container exited with an error. The log output is limited to 2048 bytes or 80 lines, whichever is smaller. Defaults to File. Cannot be updated.\n\n",
+      "description": "Indicate how the termination message should be populated. File will use the contents of terminationMessagePath to populate the container status message on both success and failure. FallbackToLogsOnError will use the last chunk of container log output if the termination message file is empty and the container exited with an error. The log output is limited to 2048 bytes or 80 lines, whichever is smaller. Defaults to File. Cannot be updated.\n\nPossible enum values:\n - `\"FallbackToLogsOnError\"` will read the most recent contents of the container logs for the container status message when the container exits with an error and the terminationMessagePath has no contents.\n - `\"File\"` is the default behavior and will set the container status message to the contents of the container's terminationMessagePath when the container exits.",
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "FallbackToLogsOnError",
+        "File"
       ]
     },
     "tty": {
@@ -157,6 +173,7 @@
         "null"
       ],
       "items": {
+        "default": {},
         "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.VolumeDevice"
       },
       "x-kubernetes-patch-merge-key": "devicePath",
@@ -169,6 +186,7 @@
         "null"
       ],
       "items": {
+        "default": {},
         "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.VolumeMount"
       },
       "x-kubernetes-patch-merge-key": "mountPath",

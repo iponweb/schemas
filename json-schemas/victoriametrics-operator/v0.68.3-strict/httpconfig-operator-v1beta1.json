@@ -1,0 +1,42 @@
+{
+  "description": "HTTPConfig defines a client HTTP configuration for VMAlertmanagerConfig objects See https://prometheus.io/docs/alerting/latest/configuration/#http_config",
+  "type": "object",
+  "properties": {
+    "authorization": {
+      "description": "Authorization header configuration for the client. This is mutually exclusive with BasicAuth and is only available starting from Alertmanager v0.22+.",
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.Authorization"
+    },
+    "basic_auth": {
+      "description": "BasicAuth for the client.",
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.BasicAuth"
+    },
+    "bearer_token_file": {
+      "description": "BearerTokenFile defines filename for bearer token, it must be mounted to pod.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "bearer_token_secret": {
+      "description": "The secret's key that contains the bearer token It must be at them same namespace as CRD",
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SecretKeySelector"
+    },
+    "oauth2": {
+      "description": "OAuth2 client credentials used to fetch a token for the targets.",
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.OAuth2"
+    },
+    "proxyURL": {
+      "description": "Optional proxy URL.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "tls_config": {
+      "description": "TLS configuration for the client.",
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.TLSConfig"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

@@ -1,0 +1,73 @@
+{
+  "description": "RuleGroup is a list of sequentially evaluated recording and alerting rules.",
+  "type": "object",
+  "required": [
+    "name"
+  ],
+  "properties": {
+    "interval": {
+      "description": "interval defines how often rules in the group are evaluated.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "labels": {
+      "description": "labels define the labels to add or overwrite before storing the result for its rules. The labels defined at the rule level take precedence.\n\nIt requires Prometheus >= 3.0.0. The field is ignored for Thanos Ruler.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "limit": {
+      "description": "limit defines the number of alerts an alerting rule and series a recording rule can produce. Limit is supported starting with Prometheus >= 2.31 and Thanos Ruler >= 0.24.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32"
+    },
+    "name": {
+      "description": "name defines the name of the rule group.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "partial_response_strategy": {
+      "description": "partial_response_strategy is only used by ThanosRuler and will be ignored by Prometheus instances. More info: https://github.com/thanos-io/thanos/blob/main/docs/components/rule.md#partial-response",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "query_offset": {
+      "description": "query_offset defines the offset the rule evaluation timestamp of this particular group by the specified duration into the past.\n\nIt requires Prometheus >= v2.53.0. It is not supported for ThanosRuler.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "rules": {
+      "description": "rules defines the list of alerting and recording rules.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.Rule"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

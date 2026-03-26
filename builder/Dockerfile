@@ -6,7 +6,7 @@ FROM golang:alpine AS builder
 #: - https://github.com/kubernetes/kube-openapi/tree/master/cmd/openapi-gen
 #:
 RUN set -x \
-    && go install 'k8s.io/kube-openapi/cmd/openapi-gen@589584f1c912f4367fe8954f649a59a98b912da5'
+    && go install 'k8s.io/kube-openapi/cmd/openapi-gen@5b3e3fdb0acf'
 
 FROM golang:alpine
 

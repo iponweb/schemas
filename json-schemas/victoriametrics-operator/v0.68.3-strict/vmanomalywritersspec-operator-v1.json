@@ -1,0 +1,57 @@
+{
+  "description": "VMAnomalyWritersSpec defines writer configuration for VMAnomaly",
+  "type": "object",
+  "required": [
+    "datasourceURL"
+  ],
+  "properties": {
+    "basicAuth": {
+      "description": "Basic auth defines basic authorization configuration",
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.BasicAuth"
+    },
+    "bearer": {
+      "description": "BearerAuth defines authorization with Authorization: Bearer header",
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.BearerAuth"
+    },
+    "datasourceURL": {
+      "description": "DatasourceURL defines remote write url for write requests provided endpoint must serve /api/v1/import path vmanomaly joins datasourceURL + \"/api/v1/import\"",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "healthPath": {
+      "description": "HealthPath defines absolute or relative URL address where to check availability of the remote webserver",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "metricFormat": {
+      "description": "Metrics to save the output (in metric names or labels)",
+      "default": {},
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1.VMAnomalyVMWriterMetricFormatSpec"
+    },
+    "tenantID": {
+      "description": "TenantID defines for VictoriaMetrics Cluster version only, tenants are identified by accountID, accountID:projectID or multitenant.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "timeout": {
+      "description": "Timeout for the requests, passed as a string",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "tlsConfig": {
+      "description": "TLSConfig defines tls connection configuration",
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.TLSConfig"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

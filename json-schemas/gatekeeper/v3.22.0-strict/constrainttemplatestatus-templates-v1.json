@@ -1,0 +1,24 @@
+{
+  "description": "ConstraintTemplateStatus defines the observed state of ConstraintTemplate.",
+  "type": "object",
+  "properties": {
+    "byPod": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/sh.gatekeeper.frameworks.constraint.pkg.apis.templates.v1.ByPodStatus"
+      }
+    },
+    "created": {
+      "type": [
+        "boolean",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

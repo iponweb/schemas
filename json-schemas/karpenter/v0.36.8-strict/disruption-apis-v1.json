@@ -1,0 +1,32 @@
+{
+  "type": "object",
+  "required": [
+    "consolidateAfter"
+  ],
+  "properties": {
+    "budgets": {
+      "description": "Budgets is a list of Budgets. If there are multiple active budgets, Karpenter uses the most restrictive value. If left undefined, this will default to one budget with a value to 10%.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/sh.karpenter.pkg.apis.v1.Budget"
+      }
+    },
+    "consolidateAfter": {
+      "description": "ConsolidateAfter is the duration the controller will wait before attempting to terminate nodes that are underutilized. Refer to ConsolidationPolicy for how underutilization is considered.",
+      "$ref": "_definitions.json#/definitions/sh.karpenter.pkg.apis.v1.NillableDuration"
+    },
+    "consolidationPolicy": {
+      "description": "ConsolidationPolicy describes which nodes Karpenter can disrupt through its consolidation algorithm. This policy defaults to \"WhenEmptyOrUnderutilized\" if not specified",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

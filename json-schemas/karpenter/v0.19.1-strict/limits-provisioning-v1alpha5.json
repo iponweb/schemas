@@ -9,7 +9,6 @@
         "null"
       ],
       "additionalProperties": {
-        "default": {},
         "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.api.resource.Quantity"
       }
     }

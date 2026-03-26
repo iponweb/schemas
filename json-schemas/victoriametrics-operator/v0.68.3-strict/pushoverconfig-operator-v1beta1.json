@@ -1,0 +1,90 @@
+{
+  "description": "PushoverConfig configures notifications via Pushover. See https://prometheus.io/docs/alerting/latest/configuration/#pushover_config",
+  "type": "object",
+  "properties": {
+    "expire": {
+      "description": "How long your notification will continue to be retried for, unless the user acknowledges the notification.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "html": {
+      "description": "Whether notification message is HTML or plain text.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "http_config": {
+      "description": "HTTP client configuration.",
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.HTTPConfig"
+    },
+    "message": {
+      "description": "Notification message.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "priority": {
+      "description": "Priority, see https://pushover.net/api#priority",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "retry": {
+      "description": "How often the Pushover servers will send the same notification to the user. Must be at least 30 seconds.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "send_resolved": {
+      "description": "SendResolved controls notify about resolved alerts.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "sound": {
+      "description": "The name of one of the sounds supported by device clients to override the user's default sound choice",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "title": {
+      "description": "Notification title.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "token": {
+      "description": "The secret's key that contains the registered application\u2019s API token, see https://pushover.net/apps. It must be at them same namespace as CRD",
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SecretKeySelector"
+    },
+    "url": {
+      "description": "A supplementary URL shown alongside the message.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "url_title": {
+      "description": "A title for supplementary URL, otherwise just the URL is shown",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "user_key": {
+      "description": "The secret's key that contains the recipient user\u2019s user key. It must be at them same namespace as CRD",
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SecretKeySelector"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

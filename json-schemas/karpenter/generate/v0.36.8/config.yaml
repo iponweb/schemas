@@ -1,0 +1,39 @@
+version: "v0.36.8"
+repository: "github.com/aws/karpenter-provider-aws"
+
+openapi_gen_packages:
+  - "github.com/aws/karpenter-provider-aws/pkg/apis/v1"
+  - "github.com/aws/karpenter-provider-aws/pkg/apis/v1beta1"
+  - "sigs.k8s.io/karpenter/pkg/apis/v1"
+  - "sigs.k8s.io/karpenter/pkg/apis/v1beta1"
+  - "knative.dev/pkg/apis"
+  - "k8s.io/apimachinery/pkg/apis/meta/v1"
+  - "k8s.io/apimachinery/pkg/runtime"
+  - "k8s.io/apimachinery/pkg/version"
+
+go_dependencies:
+  k8s.io/apimachinery: "v0.30.3"
+  k8s.io/apiserver: "v0.30.3"
+  k8s.io/kube-openapi: "v0.0.0-20240808142205-8e686545bdb8"
+
+kubernetes_swagger_url: "https://raw.githubusercontent.com/kubernetes/kubernetes/v1.30.3/api/openapi-spec/swagger.json"
+title: "karpenter CRD OpenAPI"
+
+crd_names:
+  - "github.com/aws/karpenter-provider-aws/pkg/apis/v1.EC2NodeClass"
+  - "github.com/aws/karpenter-provider-aws/pkg/apis/v1beta1.EC2NodeClass"
+  - "sigs.k8s.io/karpenter/pkg/apis/v1.NodePool"
+  - "sigs.k8s.io/karpenter/pkg/apis/v1.NodeClaim"
+  - "sigs.k8s.io/karpenter/pkg/apis/v1beta1.NodePool"
+  - "sigs.k8s.io/karpenter/pkg/apis/v1beta1.NodeClaim"
+
+host_conversion_rules:
+  "github.com/aws/karpenter-provider-aws": "karpenter.k8s.aws"
+  "sigs.k8s.io/karpenter": "karpenter.sh"
+
+# operatorpkg/status.Condition cannot be processed by openapi-gen directly
+# (its package also contains Controller[T] with a non-string map key).
+# Since Condition is defined as `type Condition metav1.Condition`, we reuse
+# the metav1.Condition schema.
+type_aliases:
+  "github.com/awslabs/operatorpkg/status.Condition": "k8s.io/apimachinery/pkg/apis/meta/v1.Condition"

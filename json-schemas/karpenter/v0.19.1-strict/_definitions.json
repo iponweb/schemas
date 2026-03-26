@@ -10,7 +10,6 @@
       "properties": {
         "lastTransitionTime": {
           "description": "LastTransitionTime is the last time the condition transitioned from one status to another. We use VolatileTime in place of metav1.Time to exclude this from creating equality.Semantic differences (all other things held constant).",
-          "default": {},
           "$ref": "#/definitions/dev.knative.pkg.apis.VolatileTime"
         },
         "message": {
@@ -47,8 +46,7 @@
       "properties": {
         "Time": {
           "type": "string",
-          "format": "date-time",
-          "default": {}
+          "format": "date-time"
         }
       },
       "additionalProperties": false
@@ -173,7 +171,6 @@
         },
         "creationTimestamp": {
           "description": "CreationTimestamp is a timestamp representing the server time when this object was created. It is not guaranteed to be set in happens-before order across separate operations. Clients may not set this value. It is represented in RFC3339 form and is in UTC.\n\nPopulated by the system. Read-only. Null for lists. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
-          "default": {},
           "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
         },
         "deletionGracePeriodSeconds": {
@@ -354,7 +351,6 @@
           "description": "EvictionSoftGracePeriod is the map of signal names to quantities that define grace periods for each eviction signal",
           "type": "object",
           "additionalProperties": {
-            "default": 0,
             "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Duration"
           }
         },
@@ -362,7 +358,6 @@
           "description": "KubeReserved contains resources reserved for Kubernetes system components.",
           "type": "object",
           "additionalProperties": {
-            "default": {},
             "$ref": "#/definitions/io.k8s.apimachinery.pkg.api.resource.Quantity"
           }
         },
@@ -380,7 +375,6 @@
           "description": "SystemReserved contains resources reserved for OS system daemons and kernel memory.",
           "type": "object",
           "additionalProperties": {
-            "default": {},
             "$ref": "#/definitions/io.k8s.apimachinery.pkg.api.resource.Quantity"
           }
         }
@@ -395,7 +389,6 @@
           "description": "Resources contains all the allocatable resources that Karpenter supports for limiting.",
           "type": "object",
           "additionalProperties": {
-            "default": {},
             "$ref": "#/definitions/io.k8s.apimachinery.pkg.api.resource.Quantity"
           }
         }
@@ -514,7 +507,6 @@
           "description": "Resources is the list of resources that have been provisioned.",
           "type": "object",
           "additionalProperties": {
-            "default": {},
             "$ref": "#/definitions/io.k8s.apimachinery.pkg.api.resource.Quantity"
           }
         }
@@ -722,7 +714,7 @@
         },
         "status": {
           "default": {},
-          "$ref": "#/definitions/sh-core.karpenter.pkg.apis.provisioning.v1alpha5.ProvisionerStatus"
+          "$ref": "#/definitions/sh.karpenter.core.pkg.apis.provisioning.v1alpha5.ProvisionerStatus"
         }
       },
       "additionalProperties": false

@@ -1,0 +1,33 @@
+{
+  "description": "ObjectReference is a reference to an object with a given name, kind and group.\n\nDeprecated: Use IssuerReference instead.",
+  "type": "object",
+  "required": [
+    "name"
+  ],
+  "properties": {
+    "group": {
+      "description": "Group of the issuer being referred to. Defaults to 'cert-manager.io'.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "kind": {
+      "description": "Kind of the issuer being referred to. Defaults to 'Issuer'.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "name": {
+      "description": "Name of the issuer being referred to.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

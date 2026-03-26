@@ -1,0 +1,147 @@
+{
+  "type": "object",
+  "properties": {
+    "checkpointsPath": {
+      "description": "CheckpointsPath configures path to file where logs checkpoints are stored. By default it's stored at host's /var/lib/vlagent-data/checkpoints.json.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "decolorizeFields": {
+      "description": "DecolorizeFields defines fields to remove ANSI color codes across logs ingested from Kubernetes",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "enabled": {
+      "description": "Enabled switches VLAgent to log collection mode. Note, for this purpose operator uses DaemonSet, while by default VLAgent uses StatefulSet. Switching this option will drop all persisted data.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "excludeFilter": {
+      "description": "ExcludeFilter defines logsql expression that allows to filter out containers to collect logs from",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "extraFields": {
+      "description": "ExtraFields defines extra fields as JSON string which should be added to each collected log line Example: '{\"env\":\"dev\",\"cluster\":\"staging\"}'",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "ignoreFields": {
+      "description": "IgnoreFields defines fields to ignore across logs ingested from Kubernetes",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "includeNodeAnnotations": {
+      "description": "IncludeNodeAnnotations enables attachment of node annotations to log entries",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "includeNodeLabels": {
+      "description": "IncludeNodeLabels enables attachment of node labels to log entries",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "includePodAnnotations": {
+      "description": "IncludePodAnnotations enables attachment of pod annotations to log entries",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "includePodLabels": {
+      "description": "IncludePodLabels enables attachment of pod labels to log entries",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "logsPath": {
+      "description": "LogsPath configures root for logs path By default VLAgent collects logs from /var/log/containers",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "msgFields": {
+      "description": "MsgField defines fields that may contain the _msg field",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "streamFields": {
+      "description": "StreamFields defines list of fields to use as log stream fields for logs ingested from Kubernetes Pods",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "tenantID": {
+      "description": "TenantID defines default tenant ID to use for logs collected from pods in format: <accountID>:<projectID>",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "timeFields": {
+      "description": "TimeFields defines fields that may contain the _time field",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

@@ -1,0 +1,184 @@
+{
+  "description": "RemoteWriteSpec defines the configuration to write samples from Prometheus to a remote endpoint.",
+  "type": "object",
+  "required": [
+    "url"
+  ],
+  "properties": {
+    "authorization": {
+      "description": "authorization section for the URL.\n\nIt requires Prometheus >= v2.26.0 or Thanos >= v0.24.0.\n\nCannot be set at the same time as `sigv4`, `basicAuth`, `oauth2`, or `azureAd`.",
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.Authorization"
+    },
+    "azureAd": {
+      "description": "azureAd for the URL.\n\nIt requires Prometheus >= v2.45.0 or Thanos >= v0.31.0.\n\nCannot be set at the same time as `authorization`, `basicAuth`, `oauth2`, or `sigv4`.",
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.AzureAD"
+    },
+    "basicAuth": {
+      "description": "basicAuth configuration for the URL.\n\nCannot be set at the same time as `sigv4`, `authorization`, `oauth2`, or `azureAd`.",
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.BasicAuth"
+    },
+    "bearerToken": {
+      "description": "bearerToken is deprecated: this will be removed in a future release. *Warning: this field shouldn't be used because the token value appears in clear-text. Prefer using `authorization`.*",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "bearerTokenFile": {
+      "description": "bearerTokenFile defines the file from which to read bearer token for the URL.\n\nDeprecated: this will be removed in a future release. Prefer using `authorization`.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "enableHTTP2": {
+      "description": "enableHTTP2 defines whether to enable HTTP2.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "followRedirects": {
+      "description": "followRedirects defines whether HTTP requests follow HTTP 3xx redirects.\n\nIt requires Prometheus >= v2.26.0 or Thanos >= v0.24.0.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "headers": {
+      "description": "headers defines the custom HTTP headers to be sent along with each remote write request. Be aware that headers that are set by Prometheus itself can't be overwritten.\n\nIt requires Prometheus >= v2.25.0 or Thanos >= v0.24.0.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "messageVersion": {
+      "description": "messageVersion defines the Remote Write message's version to use when writing to the endpoint.\n\n`Version1.0` corresponds to the `prometheus.WriteRequest` protobuf message introduced in Remote Write 1.0. `Version2.0` corresponds to the `io.prometheus.write.v2.Request` protobuf message introduced in Remote Write 2.0.\n\nWhen `Version2.0` is selected, Prometheus will automatically be configured to append the metadata of scraped metrics to the WAL.\n\nBefore setting this field, consult with your remote storage provider what message version it supports.\n\nIt requires Prometheus >= v2.54.0 or Thanos >= v0.37.0.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "metadataConfig": {
+      "description": "metadataConfig defines how to send a series metadata to the remote storage.\n\nWhen the field is empty, **no metadata** is sent. But when the field is null, metadata is sent.",
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.MetadataConfig"
+    },
+    "name": {
+      "description": "name of the remote write queue, it must be unique if specified. The name is used in metrics and logging in order to differentiate queues.\n\nIt requires Prometheus >= v2.15.0 or Thanos >= 0.24.0.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "noProxy": {
+      "description": "noProxy defines a comma-separated string that can contain IPs, CIDR notation, domain names that should be excluded from proxying. IP and domain names can contain port numbers.\n\nIt requires Prometheus >= v2.43.0, Alertmanager >= v0.25.0 or Thanos >= v0.32.0.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "oauth2": {
+      "description": "oauth2 configuration for the URL.\n\nIt requires Prometheus >= v2.27.0 or Thanos >= v0.24.0.\n\nCannot be set at the same time as `sigv4`, `authorization`, `basicAuth`, or `azureAd`.",
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.OAuth2"
+    },
+    "proxyConnectHeader": {
+      "description": "proxyConnectHeader optionally specifies headers to send to proxies during CONNECT requests.\n\nIt requires Prometheus >= v2.43.0, Alertmanager >= v0.25.0 or Thanos >= v0.32.0.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": {
+        "type": [
+          "array",
+          "null"
+        ],
+        "items": {
+          "default": {},
+          "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SecretKeySelector"
+        }
+      }
+    },
+    "proxyFromEnvironment": {
+      "description": "proxyFromEnvironment defines whether to use the proxy configuration defined by environment variables (HTTP_PROXY, HTTPS_PROXY, and NO_PROXY).\n\nIt requires Prometheus >= v2.43.0, Alertmanager >= v0.25.0 or Thanos >= v0.32.0.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "proxyUrl": {
+      "description": "proxyUrl defines the HTTP proxy server to use.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "queueConfig": {
+      "description": "queueConfig allows tuning of the remote write queue parameters.",
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.QueueConfig"
+    },
+    "remoteTimeout": {
+      "description": "remoteTimeout defines the timeout for requests to the remote write endpoint.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "roundRobinDNS": {
+      "description": "roundRobinDNS controls the DNS resolution behavior for remote-write connections. When enabled:\n  - The remote-write mechanism will resolve the hostname via DNS.\n  - It will randomly select one of the resolved IP addresses and connect to it.\n\nWhen disabled (default behavior):\n  - The Go standard library will handle hostname resolution.\n  - It will attempt connections to each resolved IP address sequentially.\n\nNote: The connection timeout applies to the entire resolution and connection process.\n\n\tIf disabled, the timeout is distributed across all connection attempts.\n\nIt requires Prometheus >= v3.1.0 or Thanos >= v0.38.0.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "sendExemplars": {
+      "description": "sendExemplars enables sending of exemplars over remote write. Note that exemplar-storage itself must be enabled using the `spec.enableFeatures` option for exemplars to be scraped in the first place.\n\nIt requires Prometheus >= v2.27.0 or Thanos >= v0.24.0.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "sendNativeHistograms": {
+      "description": "sendNativeHistograms enables sending of native histograms, also known as sparse histograms over remote write.\n\nIt requires Prometheus >= v2.40.0 or Thanos >= v0.30.0.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "sigv4": {
+      "description": "sigv4 defines the AWS's Signature Verification 4 for the URL.\n\nIt requires Prometheus >= v2.26.0 or Thanos >= v0.24.0.\n\nCannot be set at the same time as `authorization`, `basicAuth`, `oauth2`, or `azureAd`.",
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.Sigv4"
+    },
+    "tlsConfig": {
+      "description": "tlsConfig to use for the URL.",
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.TLSConfig"
+    },
+    "url": {
+      "description": "url defines the URL of the endpoint to send samples to.\n\nIt must use the HTTP or HTTPS scheme.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "writeRelabelConfigs": {
+      "description": "writeRelabelConfigs defines the list of remote write relabel configurations.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.RelabelConfig"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

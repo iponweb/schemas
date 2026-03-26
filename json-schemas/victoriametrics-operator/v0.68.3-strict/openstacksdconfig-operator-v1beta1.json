@@ -1,0 +1,125 @@
+{
+  "description": "OpenStackSDConfig allow retrieving scrape targets from OpenStack Nova instances. See [here](https://docs.victoriametrics.com/victoriametrics/sd_configs/#openstack_sd_configs)",
+  "type": "object",
+  "required": [
+    "role",
+    "region"
+  ],
+  "properties": {
+    "allTenants": {
+      "description": "Whether the service discovery should list all instances for all projects. It is only relevant for the 'instance' role and usually requires admin permissions.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "applicationCredentialId": {
+      "description": "ApplicationCredentialID",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "applicationCredentialName": {
+      "description": "The ApplicationCredentialID or ApplicationCredentialName fields are required if using an application credential to authenticate. Some providers allow you to create an application credential to authenticate rather than a password.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "applicationCredentialSecret": {
+      "description": "The applicationCredentialSecret field is required if using an application credential to authenticate.",
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SecretKeySelector"
+    },
+    "availability": {
+      "description": "Availability of the endpoint to connect to.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "domainID": {
+      "description": "DomainID",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "domainName": {
+      "description": "At most one of domainId and domainName must be provided if using username with Identity V3. Otherwise, either are optional.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "identityEndpoint": {
+      "description": "IdentityEndpoint specifies the HTTP endpoint that is required to work with the Identity API of the appropriate version.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "password": {
+      "description": "Password for the Identity V2 and V3 APIs. Consult with your provider's control panel to discover your account's preferred method of authentication.",
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SecretKeySelector"
+    },
+    "port": {
+      "description": "The port to scrape metrics from. If using the public IP address, this must instead be specified in the relabeling rule.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32"
+    },
+    "projectID": {
+      "description": "ProjectID",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "projectName": {
+      "description": "The ProjectId and ProjectName fields are optional for the Identity V2 API. Some providers allow you to specify a ProjectName instead of the ProjectId. Some require both. Your provider's authentication policies will determine how these fields influence authentication.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "region": {
+      "description": "The OpenStack Region.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "role": {
+      "description": "The OpenStack role of entities that should be discovered.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "tlsConfig": {
+      "description": "TLS configuration to use on every scrape request",
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.TLSConfig"
+    },
+    "userid": {
+      "description": "UserID",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "username": {
+      "description": "Username is required if using Identity V2 API. Consult with your provider's control panel to discover your account's username. In Identity V3, either userid or a combination of username and domainId or domainName are needed",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

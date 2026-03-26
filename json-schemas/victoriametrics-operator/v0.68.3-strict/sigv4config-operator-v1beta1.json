@@ -1,0 +1,43 @@
+{
+  "type": "object",
+  "properties": {
+    "access_key": {
+      "description": "The AWS API keys. Both access_key and secret_key must be supplied or both must be blank. If blank the environment variables `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` are used.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "access_key_selector": {
+      "description": "secret key selector to get the keys from a Kubernetes Secret",
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SecretKeySelector"
+    },
+    "profile": {
+      "description": "Named AWS profile used to authenticate",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "region": {
+      "description": "AWS region, if blank the region from the default credentials chain is used",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "role_arn": {
+      "description": "AWS Role ARN, an alternative to using AWS API keys",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "secret_key_selector": {
+      "description": "secret key selector to get the keys from a Kubernetes Secret",
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SecretKeySelector"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

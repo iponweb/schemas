@@ -1,0 +1,33 @@
+{
+  "description": "VMProberSpec contains specification parameters for the Prober used for probing.",
+  "type": "object",
+  "required": [
+    "url"
+  ],
+  "properties": {
+    "path": {
+      "description": "Path to collect metrics from. Defaults to `/probe`.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "scheme": {
+      "description": "HTTP scheme to use for scraping. Defaults to `http`.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "url": {
+      "description": "Mandatory URL of the prober.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

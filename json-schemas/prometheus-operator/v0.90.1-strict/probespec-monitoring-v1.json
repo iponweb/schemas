@@ -1,0 +1,216 @@
+{
+  "description": "ProbeSpec contains specification parameters for a Probe.",
+  "type": "object",
+  "properties": {
+    "authorization": {
+      "description": "authorization configures the Authorization header credentials used by the client.\n\nCannot be set at the same time as `basicAuth`, `bearerTokenSecret` or `oauth2`.",
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.SafeAuthorization"
+    },
+    "basicAuth": {
+      "description": "basicAuth defines the Basic Authentication credentials used by the client.\n\nCannot be set at the same time as `authorization`, `bearerTokenSecret` or `oauth2`.",
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.BasicAuth"
+    },
+    "bearerTokenSecret": {
+      "description": "bearerTokenSecret defines a key of a Secret containing the bearer token used by the client for authentication. The secret needs to be in the same namespace as the custom resource and readable by the Prometheus Operator.\n\nCannot be set at the same time as `authorization`, `basicAuth` or `oauth2`.\n\n\nDeprecated: use `authorization` instead.",
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SecretKeySelector"
+    },
+    "convertClassicHistogramsToNHCB": {
+      "description": "convertClassicHistogramsToNHCB defines whether to convert all scraped classic histograms into a native histogram with custom buckets. It requires Prometheus >= v3.0.0.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "enableHttp2": {
+      "description": "enableHttp2 can be used to disable HTTP2.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "fallbackScrapeProtocol": {
+      "description": "fallbackScrapeProtocol defines the protocol to use if a scrape returns blank, unparseable, or otherwise invalid Content-Type.\n\nIt requires Prometheus >= v3.0.0.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "followRedirects": {
+      "description": "followRedirects defines whether the client should follow HTTP 3xx redirects.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "interval": {
+      "description": "interval at which targets are probed using the configured prober. If not specified Prometheus' global scrape interval is used.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "jobName": {
+      "description": "jobName assigned to scraped metrics by default.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "keepDroppedTargets": {
+      "description": "keepDroppedTargets defines the per-scrape limit on the number of targets dropped by relabeling that will be kept in memory. 0 means no limit.\n\nIt requires Prometheus >= v2.47.0.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int64"
+    },
+    "labelLimit": {
+      "description": "labelLimit defines the per-scrape limit on number of labels that will be accepted for a sample. Only valid in Prometheus versions 2.27.0 and newer.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int64"
+    },
+    "labelNameLengthLimit": {
+      "description": "labelNameLengthLimit defines the per-scrape limit on length of labels name that will be accepted for a sample. Only valid in Prometheus versions 2.27.0 and newer.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int64"
+    },
+    "labelValueLengthLimit": {
+      "description": "labelValueLengthLimit defines the per-scrape limit on length of labels value that will be accepted for a sample. Only valid in Prometheus versions 2.27.0 and newer.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int64"
+    },
+    "metricRelabelings": {
+      "description": "metricRelabelings defines the RelabelConfig to apply to samples before ingestion.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.RelabelConfig"
+      }
+    },
+    "module": {
+      "description": "module to use for probing specifying how to probe the target. Example module configuring in the blackbox exporter: https://github.com/prometheus/blackbox_exporter/blob/master/example.yml",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "nativeHistogramBucketLimit": {
+      "description": "nativeHistogramBucketLimit defines ff there are more than this many buckets in a native histogram, buckets will be merged to stay within the limit. It requires Prometheus >= v2.45.0.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int64"
+    },
+    "nativeHistogramMinBucketFactor": {
+      "description": "nativeHistogramMinBucketFactor defines if the growth factor of one bucket to the next is smaller than this, buckets will be merged to increase the factor sufficiently. It requires Prometheus >= v2.50.0.",
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.api.resource.Quantity"
+    },
+    "oauth2": {
+      "description": "oauth2 defines the OAuth2 settings used by the client.\n\nIt requires Prometheus >= 2.27.0.\n\nCannot be set at the same time as `authorization`, `basicAuth` or `bearerTokenSecret`.",
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.OAuth2"
+    },
+    "params": {
+      "description": "params defines the list of HTTP query parameters for the scrape. Please note that the `.spec.module` field takes precedence over the `module` parameter from this list when both are defined. The module name must be added using Module under ProbeSpec.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.ProbeParam"
+      },
+      "x-kubernetes-list-map-keys": [
+        "name"
+      ],
+      "x-kubernetes-list-type": "map"
+    },
+    "prober": {
+      "description": "prober defines the specification for the prober to use for probing targets. The prober.URL parameter is required. Targets cannot be probed if left empty.",
+      "default": {},
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.ProberSpec"
+    },
+    "sampleLimit": {
+      "description": "sampleLimit defines per-scrape limit on number of scraped samples that will be accepted.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int64"
+    },
+    "scrapeClass": {
+      "description": "scrapeClass defines the scrape class to apply.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "scrapeClassicHistograms": {
+      "description": "scrapeClassicHistograms defines whether to scrape a classic histogram that is also exposed as a native histogram. It requires Prometheus >= v2.45.0.\n\nNotice: `scrapeClassicHistograms` corresponds to the `always_scrape_classic_histograms` field in the Prometheus configuration.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "scrapeNativeHistograms": {
+      "description": "scrapeNativeHistograms defines whether to enable scraping of native histograms. It requires Prometheus >= v3.8.0.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "scrapeProtocols": {
+      "description": "scrapeProtocols defines the protocols to negotiate during a scrape. It tells clients the protocols supported by Prometheus in order of preference (from most to least preferred).\n\nIf unset, Prometheus uses its default value.\n\nIt requires Prometheus >= v2.49.0.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      },
+      "x-kubernetes-list-type": "set"
+    },
+    "scrapeTimeout": {
+      "description": "scrapeTimeout defines the timeout for scraping metrics from the Prometheus exporter. If not specified, the Prometheus global scrape timeout is used. The value cannot be greater than the scrape interval otherwise the operator will reject the resource.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "targetLimit": {
+      "description": "targetLimit defines a limit on the number of scraped targets that will be accepted.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int64"
+    },
+    "targets": {
+      "description": "targets defines a set of static or dynamically discovered targets to probe.",
+      "default": {},
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.ProbeTargets"
+    },
+    "tlsConfig": {
+      "description": "tlsConfig defines the TLS configuration used by the client.",
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.SafeTLSConfig"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}
