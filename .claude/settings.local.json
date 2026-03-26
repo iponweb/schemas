@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(for controller:*)",
+      "Bash(git:*)",
+      "WebFetch(domain:api.github.com)",
+      "Bash(curl:*)",
+      "Bash(cd:*)",
+      "Bash(wait:*)"
+    ]
+  }
+}
