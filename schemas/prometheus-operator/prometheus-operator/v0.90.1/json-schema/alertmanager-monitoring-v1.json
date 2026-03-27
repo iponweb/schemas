@@ -27,12 +27,12 @@
     "spec": {
       "description": "spec defines the specification of the desired behavior of the Alertmanager cluster. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#spec-and-status",
       "default": {},
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.AlertmanagerSpec"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.AlertmanagerSpec"
     },
     "status": {
       "description": "status defines the most recent observed status of the Alertmanager cluster. Read-only. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#spec-and-status",
       "default": {},
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.AlertmanagerStatus"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.AlertmanagerStatus"
     }
   },
   "additionalProperties": false,

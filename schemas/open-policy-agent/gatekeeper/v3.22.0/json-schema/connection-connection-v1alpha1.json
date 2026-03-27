@@ -22,11 +22,11 @@
     },
     "spec": {
       "default": {},
-      "$ref": "_definitions.json#/definitions/sh.gatekeeper.apis.connection.v1alpha1.ConnectionSpec"
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.connection.v1alpha1.ConnectionSpec"
     },
     "status": {
       "default": {},
-      "$ref": "_definitions.json#/definitions/sh.gatekeeper.apis.connection.v1alpha1.ConnectionStatus"
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.connection.v1alpha1.ConnectionStatus"
     }
   },
   "additionalProperties": false,

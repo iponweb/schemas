@@ -22,7 +22,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/sh.gatekeeper.apis.status.v1beta1.Error"
+        "$ref": "_definitions.json#/definitions/sh.gatekeeper.status.v1beta1.Error"
       }
     },
     "id": {

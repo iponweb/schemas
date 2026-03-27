@@ -22,11 +22,11 @@
     },
     "spec": {
       "default": {},
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.VMUserSpec"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.VMUserSpec"
     },
     "status": {
       "default": {},
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.VMUserStatus"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.VMUserStatus"
     }
   },
   "additionalProperties": false,

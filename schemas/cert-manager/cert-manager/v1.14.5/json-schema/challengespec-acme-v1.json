@@ -30,7 +30,7 @@
     "issuerRef": {
       "description": "References a properly configured ACME-type Issuer which should be used to create this Challenge. If the Issuer does not exist, processing will be retried. If the Issuer is not an 'ACME' Issuer, an error will be returned and the Challenge will be marked as failed.",
       "default": {},
-      "$ref": "_definitions.json#/definitions/io.cert-manager.pkg.apis.meta.v1.ObjectReference"
+      "$ref": "_definitions.json#/definitions/io.cert-manager.v1.ObjectReference"
     },
     "key": {
       "description": "The ACME challenge key for this challenge For HTTP01 challenges, this is the value that must be responded with to complete the HTTP01 challenge in the format: `<private key JWK thumbprint>.<key from acme server for challenge>`. For DNS01 challenges, this is the base64 encoded SHA256 sum of the `<private key JWK thumbprint>.<key from acme server for challenge>` text that must be set as the TXT record content.",
@@ -43,7 +43,7 @@
     "solver": {
       "description": "Contains the domain solving configuration that should be used to solve this challenge resource.",
       "default": {},
-      "$ref": "_definitions.json#/definitions/io.cert-manager.pkg.apis.acme.v1.ACMEChallengeSolver"
+      "$ref": "_definitions.json#/definitions/io.cert-manager.acme.v1.ACMEChallengeSolver"
     },
     "token": {
       "description": "The ACME challenge token for this challenge. This is the raw value returned from the ACME server.",

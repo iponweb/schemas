@@ -5,12 +5,12 @@
     "ca": {
       "description": "ca defines the Certificate authority used when verifying server certificates.",
       "default": {},
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.SecretOrConfigMap"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.SecretOrConfigMap"
     },
     "cert": {
       "description": "cert defines the Client certificate to present when doing client-authentication.",
       "default": {},
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.SecretOrConfigMap"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.SecretOrConfigMap"
     },
     "insecureSkipVerify": {
       "description": "insecureSkipVerify defines how to disable target certificate validation.",

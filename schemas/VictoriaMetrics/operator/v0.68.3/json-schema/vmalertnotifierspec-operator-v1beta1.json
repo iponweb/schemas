@@ -3,7 +3,7 @@
   "type": "object",
   "properties": {
     "basicAuth": {
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.BasicAuth"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.BasicAuth"
     },
     "bearerTokenFile": {
       "description": "Path to bearer token file",
@@ -31,14 +31,14 @@
       }
     },
     "oauth2": {
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.OAuth2"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.OAuth2"
     },
     "selector": {
       "description": "Selector allows service discovery for alertmanager in this case all matched vmalertmanager replicas will be added into vmalert notifier.url as statefulset pod.fqdn",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.DiscoverySelector"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.DiscoverySelector"
     },
     "tlsConfig": {
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.TLSConfig"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.TLSConfig"
     },
     "url": {
       "description": "AlertManager url.  E.g. http://127.0.0.1:9093",

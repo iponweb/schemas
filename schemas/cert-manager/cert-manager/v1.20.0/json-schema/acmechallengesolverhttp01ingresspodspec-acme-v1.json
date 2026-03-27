@@ -45,11 +45,11 @@
     },
     "resources": {
       "description": "If specified, the pod's resource requirements. These values override the global resource configuration flags. Note that when only specifying resource limits, ensure they are greater than or equal to the corresponding global resource requests configured via controller flags (--acme-http01-solver-resource-request-cpu, --acme-http01-solver-resource-request-memory). Kubernetes will reject pod creation if limits are lower than requests, causing challenge failures.",
-      "$ref": "_definitions.json#/definitions/io.cert-manager.pkg.apis.acme.v1.ACMEChallengeSolverHTTP01IngressPodResources"
+      "$ref": "_definitions.json#/definitions/io.cert-manager.acme.v1.ACMEChallengeSolverHTTP01IngressPodResources"
     },
     "securityContext": {
       "description": "If specified, the pod's security context",
-      "$ref": "_definitions.json#/definitions/io.cert-manager.pkg.apis.acme.v1.ACMEChallengeSolverHTTP01IngressPodSecurityContext"
+      "$ref": "_definitions.json#/definitions/io.cert-manager.acme.v1.ACMEChallengeSolverHTTP01IngressPodSecurityContext"
     },
     "serviceAccountName": {
       "description": "If specified, the pod's service account",

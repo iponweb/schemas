@@ -6,11 +6,11 @@
   ],
   "properties": {
     "authorization": {
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.Authorization"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.Authorization"
     },
     "basicAuth": {
       "description": "BasicAuth allow an endpoint to authenticate over basic authentication",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.BasicAuth"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.BasicAuth"
     },
     "bearerToken": {
       "description": "Bearer token for accessing apiserver.",
@@ -36,7 +36,7 @@
     },
     "tlsConfig": {
       "description": "TLSConfig Config to use for accessing apiserver.",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.TLSConfig"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.TLSConfig"
     }
   },
   "additionalProperties": false,

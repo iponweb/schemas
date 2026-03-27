@@ -156,7 +156,7 @@
     "image": {
       "description": "Image - docker image settings if no specified operator uses default version from operator config",
       "default": {},
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.Image"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.Image"
     },
     "imagePullSecrets": {
       "description": "ImagePullSecrets An optional list of references to secrets in the same namespace to use for pulling images from registries see https://kubernetes.io/docs/concepts/containers/images/#referring-to-an-imagepullsecrets-on-a-pod",
@@ -182,7 +182,7 @@
     },
     "license": {
       "description": "License allows to configure license key to be used for enterprise features. Using license key is supported starting from VictoriaMetrics v1.94.0. See [here](https://docs.victoriametrics.com/victoriametrics/enterprise/)",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.License"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.License"
     },
     "livenessProbe": {
       "description": "LivenessProbe that will be added CRD pod",
@@ -197,7 +197,7 @@
     },
     "managedMetadata": {
       "description": "ManagedMetadata defines metadata that will be added to the all objects created by operator for the given CustomResource",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.ManagedObjectsMetadata"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.ManagedObjectsMetadata"
     },
     "minReadySeconds": {
       "description": "MinReadySeconds defines a minimum number of seconds to wait before starting update next pod if previous in healthy state Has no effect for VLogs and VMSingle",
@@ -209,7 +209,7 @@
     },
     "monitoring": {
       "description": "Monitoring configures how expose anomaly metrics See https://docs.victoriametrics.com/anomaly-detection/components/monitoring/",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1.VMAnomalyMonitoringSpec"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1.VMAnomalyMonitoringSpec"
     },
     "nodeSelector": {
       "description": "NodeSelector Define which Nodes the Pods are scheduled on.",
@@ -238,11 +238,11 @@
     },
     "podDisruptionBudget": {
       "description": "PodDisruptionBudget created by operator",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.EmbeddedPodDisruptionBudgetSpec"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.EmbeddedPodDisruptionBudgetSpec"
     },
     "podMetadata": {
       "description": "PodMetadata configures Labels and Annotations which are propagated to the vmanomaly pods.",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.EmbeddedObjectMetadata"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.EmbeddedObjectMetadata"
     },
     "port": {
       "description": "Port listen address",
@@ -260,7 +260,7 @@
     },
     "reader": {
       "description": "Metrics source for VMAnomaly See https://docs.victoriametrics.com/anomaly-detection/components/reader/",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1.VMAnomalyReadersSpec"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1.VMAnomalyReadersSpec"
     },
     "readinessGates": {
       "description": "ReadinessGates defines pod readiness gates",
@@ -339,7 +339,7 @@
     },
     "securityContext": {
       "description": "SecurityContext holds pod-level security attributes and common container settings. This defaults to the default PodSecurityContext.",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.SecurityContext"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.SecurityContext"
     },
     "serviceAccountName": {
       "description": "ServiceAccountName is the name of the ServiceAccount to use to run the pods",
@@ -350,7 +350,7 @@
     },
     "serviceScrapeSpec": {
       "description": "ServiceScrapeSpec that will be added to vmanomaly VMPodScrape spec",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.VMServiceScrapeSpec"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.VMServiceScrapeSpec"
     },
     "shardCount": {
       "description": "ShardCount - numbers of shards of VMAnomaly in this case operator will use 1 sts per shard with replicas count according to spec.replicas.",
@@ -366,7 +366,7 @@
     },
     "storage": {
       "description": "Storage configures storage for StatefulSet",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.StorageSpec"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.StorageSpec"
     },
     "terminationGracePeriodSeconds": {
       "description": "TerminationGracePeriodSeconds period for container graceful termination",
@@ -436,7 +436,7 @@
     },
     "writer": {
       "description": "Metrics destination for VMAnomaly See https://docs.victoriametrics.com/anomaly-detection/components/writer/",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1.VMAnomalyWritersSpec"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1.VMAnomalyWritersSpec"
     }
   },
   "additionalProperties": false,

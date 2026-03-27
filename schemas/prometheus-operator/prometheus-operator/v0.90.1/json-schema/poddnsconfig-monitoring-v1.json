@@ -24,7 +24,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.PodDNSConfigOption"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.PodDNSConfigOption"
       },
       "x-kubernetes-list-map-keys": [
         "name"

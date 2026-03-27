@@ -16,7 +16,7 @@
     },
     "source": {
       "description": "The source code for the template. Required.",
-      "$ref": "_definitions.json#/definitions/sh.gatekeeper.frameworks.constraint.pkg.core.templates.Anything"
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.frameworks.templates.Anything"
     }
   },
   "additionalProperties": false,

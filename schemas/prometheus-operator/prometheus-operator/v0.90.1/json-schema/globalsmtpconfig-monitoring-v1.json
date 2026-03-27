@@ -54,11 +54,11 @@
     },
     "smartHost": {
       "description": "smartHost defines the default SMTP smarthost used for sending emails.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.HostPort"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.HostPort"
     },
     "tlsConfig": {
       "description": "tlsConfig defines the default TLS configuration for SMTP receivers",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.SafeTLSConfig"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.SafeTLSConfig"
     }
   },
   "additionalProperties": false,

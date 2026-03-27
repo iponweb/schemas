@@ -45,7 +45,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.KeyValue"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.KeyValue"
       },
       "x-kubernetes-list-type": "atomic"
     },
@@ -58,7 +58,7 @@
     },
     "httpConfig": {
       "description": "httpConfig defines the HTTP client configuration.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.HTTPConfig"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.HTTPConfig"
     },
     "pagerDutyImageConfigs": {
       "description": "pagerDutyImageConfigs defines a list of image details to attach that provide further detail about an incident.",
@@ -68,7 +68,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.PagerDutyImageConfig"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.PagerDutyImageConfig"
       },
       "x-kubernetes-list-type": "atomic"
     },
@@ -80,7 +80,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.PagerDutyLinkConfig"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.PagerDutyLinkConfig"
       },
       "x-kubernetes-list-type": "atomic"
     },

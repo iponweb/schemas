@@ -1,0 +1,231 @@
+{
+  "description": "ExpansionTemplate is the Schema for the ExpansionTemplate API.",
+  "type": "object",
+  "properties": {
+    "apiVersion": {
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "expansion.gatekeeper.sh/v1beta1"
+      ]
+    },
+    "kind": {
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "ExpansionTemplate"
+      ]
+    },
+    "metadata": {
+      "description": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+    },
+    "spec": {
+      "description": "ExpansionTemplateSpec defines the desired state of ExpansionTemplate.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "applyTo": {
+          "description": "ApplyTo lists the specific groups, versions and kinds of generator resources\nwhich will be expanded.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "description": "ApplyTo determines what GVKs items the mutation should apply to.\nGlobs are not allowed.",
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "groups": {
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "kinds": {
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "versions": {
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "enforcementAction": {
+          "description": "EnforcementAction specifies the enforcement action to be used for resources\nmatching the ExpansionTemplate. Specifying an empty value will use the\nenforcement action specified by the Constraint in violation.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "generatedGVK": {
+          "description": "GeneratedGVK specifies the GVK of the resources which the generator\nresource creates.",
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "group": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "kind": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "version": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "additionalProperties": false
+        },
+        "templateSource": {
+          "description": "TemplateSource specifies the source field on the generator resource to\nuse as the base for expanded resource. For Pod-creating generators, this\nis usually spec.template",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "status": {
+      "description": "ExpansionTemplateStatus defines the observed state of ExpansionTemplate.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "byPod": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "description": "ExpansionTemplatePodStatusStatus defines the observed state of ExpansionTemplatePodStatus.",
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "errors": {
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "required": [
+                    "message"
+                  ],
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "type": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              },
+              "id": {
+                "description": "Important: Run \"make\" to regenerate code after modifying this file",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "observedGeneration": {
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int64"
+              },
+              "operations": {
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "templateUID": {
+                "description": "UID is a type that holds unique ID values, including UUIDs.  Because we\ndon't ONLY use UUIDs, this is an alias to string.  Being a type captures\nintent and helps make sure that UIDs and names do not get conflated.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "expansion.gatekeeper.sh",
+      "kind": "ExpansionTemplate",
+      "version": "v1beta1"
+    }
+  ],
+  "x-kubernetes-selectable-fields": [],
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

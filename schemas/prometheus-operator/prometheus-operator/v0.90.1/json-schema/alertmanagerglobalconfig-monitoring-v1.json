@@ -4,11 +4,11 @@
   "properties": {
     "httpConfig": {
       "description": "httpConfig defines the default HTTP configuration.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.HTTPConfigWithProxy"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.HTTPConfigWithProxy"
     },
     "jira": {
       "description": "jira defines the default configuration for Jira.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.GlobalJiraConfig"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.GlobalJiraConfig"
     },
     "opsGenieApiKey": {
       "description": "opsGenieApiKey defines the default OpsGenie API Key.",
@@ -34,7 +34,7 @@
     },
     "rocketChat": {
       "description": "rocketChat defines the default configuration for Rocket Chat.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.GlobalRocketChatConfig"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.GlobalRocketChatConfig"
     },
     "slackApiUrl": {
       "description": "slackApiUrl defines the default Slack API URL.",
@@ -42,23 +42,23 @@
     },
     "smtp": {
       "description": "smtp defines global SMTP parameters.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.GlobalSMTPConfig"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.GlobalSMTPConfig"
     },
     "telegram": {
       "description": "telegram defines the default Telegram config",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.GlobalTelegramConfig"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.GlobalTelegramConfig"
     },
     "victorops": {
       "description": "victorops defines the default configuration for VictorOps.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.GlobalVictorOpsConfig"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.GlobalVictorOpsConfig"
     },
     "webex": {
       "description": "webex defines the default configuration for Webex.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.GlobalWebexConfig"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.GlobalWebexConfig"
     },
     "wechat": {
       "description": "wechat defines the default WeChat Config",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.GlobalWeChatConfig"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.GlobalWeChatConfig"
     }
   },
   "additionalProperties": false,

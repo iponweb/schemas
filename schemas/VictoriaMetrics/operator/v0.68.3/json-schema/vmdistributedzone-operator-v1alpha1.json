@@ -16,17 +16,17 @@
     "remoteWrite": {
       "description": "RemoteWrite defines VMAgent remote write settings for given zone",
       "default": {},
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1alpha1.VMDistributedZoneRemoteWriteSpec"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1alpha1.VMDistributedZoneRemoteWriteSpec"
     },
     "vmagent": {
       "description": "VMAgent defines VMAgent to balance incoming traffic between VMClusters.",
       "default": {},
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1alpha1.VMDistributedZoneAgent"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1alpha1.VMDistributedZoneAgent"
     },
     "vmcluster": {
       "description": "VMCluster defines a new inline or referencing existing one VMCluster",
       "default": {},
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1alpha1.VMDistributedZoneCluster"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1alpha1.VMDistributedZoneCluster"
     }
   },
   "additionalProperties": false,

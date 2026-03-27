@@ -10,7 +10,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.InhibitRule"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.InhibitRule"
       }
     },
     "muteTimeIntervals": {
@@ -21,7 +21,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.MuteTimeInterval"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.MuteTimeInterval"
       }
     },
     "receivers": {
@@ -32,12 +32,12 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.Receiver"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.Receiver"
       }
     },
     "route": {
       "description": "The Alertmanager route definition for alerts matching the resource's namespace. If present, it will be added to the generated Alertmanager configuration as a first-level route.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.Route"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.Route"
     }
   },
   "additionalProperties": false,

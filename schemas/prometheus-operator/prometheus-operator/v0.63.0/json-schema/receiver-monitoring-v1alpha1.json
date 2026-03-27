@@ -13,7 +13,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.EmailConfig"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.EmailConfig"
       }
     },
     "name": {
@@ -32,7 +32,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.OpsGenieConfig"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.OpsGenieConfig"
       }
     },
     "pagerdutyConfigs": {
@@ -43,7 +43,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.PagerDutyConfig"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.PagerDutyConfig"
       }
     },
     "pushoverConfigs": {
@@ -54,7 +54,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.PushoverConfig"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.PushoverConfig"
       }
     },
     "slackConfigs": {
@@ -65,7 +65,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.SlackConfig"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.SlackConfig"
       }
     },
     "snsConfigs": {
@@ -76,7 +76,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.SNSConfig"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.SNSConfig"
       }
     },
     "telegramConfigs": {
@@ -87,7 +87,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.TelegramConfig"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.TelegramConfig"
       }
     },
     "victoropsConfigs": {
@@ -98,7 +98,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.VictorOpsConfig"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.VictorOpsConfig"
       }
     },
     "webhookConfigs": {
@@ -109,7 +109,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.WebhookConfig"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.WebhookConfig"
       }
     },
     "wechatConfigs": {
@@ -120,7 +120,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.WeChatConfig"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.WeChatConfig"
       }
     }
   },

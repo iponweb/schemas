@@ -1,0 +1,154 @@
+{
+  "description": "VLogs is fast, cost-effective and scalable logs database.\nVLogs is the Schema for the vlogs API",
+  "type": "object",
+  "properties": {
+    "apiVersion": {
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "operator.victoriametrics.com/v1beta1"
+      ]
+    },
+    "kind": {
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "VLogs"
+      ]
+    },
+    "metadata": {
+      "description": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+    },
+    "spec": {
+      "description": "VLogsSpec defines the desired state of VLogs\nVLogs is deprecated, migrate to the VLSingle",
+      "required": [
+        "retentionPeriod"
+      ],
+      "x-kubernetes-preserve-unknown-fields": true
+    },
+    "status": {
+      "description": "VLogsStatus defines the observed state of VLogs",
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "conditions": {
+          "description": "Known .status.conditions.type are: \"Available\", \"Progressing\", and \"Degraded\"",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "description": "Condition defines status condition of the resource",
+            "type": [
+              "object",
+              "null"
+            ],
+            "required": [
+              "lastTransitionTime",
+              "lastUpdateTime",
+              "reason",
+              "status",
+              "type"
+            ],
+            "properties": {
+              "lastTransitionTime": {
+                "description": "lastTransitionTime is the last time the condition transitioned from one status to another.",
+                "type": "string",
+                "format": "date-time"
+              },
+              "lastUpdateTime": {
+                "description": "LastUpdateTime is the last time of given type update.\nThis value is used for status TTL update and removal",
+                "type": "string",
+                "format": "date-time"
+              },
+              "message": {
+                "description": "message is a human readable message indicating details about the transition.\nThis may be an empty string.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "maxLength": 32768
+              },
+              "observedGeneration": {
+                "description": "observedGeneration represents the .metadata.generation that the condition was set based upon.\nFor instance, if .metadata.generation is currently 12, but the .status.conditions[x].observedGeneration is 9, the condition is out of date\nwith respect to the current state of the instance.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int64",
+                "minimum": 0
+              },
+              "reason": {
+                "description": "reason contains a programmatic identifier indicating the reason for the condition's last transition.\nProducers of specific condition types may define expected values and meanings for this field,\nand whether the values are considered a guaranteed API.\nThe value should be a CamelCase string.\nThis field may not be empty.",
+                "type": "string",
+                "maxLength": 1024,
+                "minLength": 1
+              },
+              "status": {
+                "description": "status of the condition, one of True, False, Unknown.",
+                "type": "string",
+                "enum": [
+                  "True",
+                  "False",
+                  "Unknown"
+                ]
+              },
+              "type": {
+                "description": "Type of condition in CamelCase or in name.namespace.resource.victoriametrics.com/CamelCase.",
+                "type": "string",
+                "maxLength": 316
+              }
+            },
+            "additionalProperties": false
+          },
+          "x-kubernetes-list-map-keys": [
+            "type"
+          ],
+          "x-kubernetes-list-type": "map"
+        },
+        "observedGeneration": {
+          "description": "ObservedGeneration defines current generation picked by operator for the\nreconcile",
+          "type": [
+            "integer",
+            "null"
+          ],
+          "format": "int64"
+        },
+        "reason": {
+          "description": "Reason defines human readable error reason",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "updateStatus": {
+          "description": "UpdateStatus defines a status for update rollout",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "operator.victoriametrics.com",
+      "kind": "VLogs",
+      "version": "v1beta1"
+    }
+  ],
+  "x-kubernetes-selectable-fields": [],
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

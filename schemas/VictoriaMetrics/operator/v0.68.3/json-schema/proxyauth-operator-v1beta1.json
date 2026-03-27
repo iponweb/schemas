@@ -3,7 +3,7 @@
   "type": "object",
   "properties": {
     "basic_auth": {
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.BasicAuth"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.BasicAuth"
     },
     "bearer_token": {
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SecretKeySelector"
@@ -15,7 +15,7 @@
       ]
     },
     "tls_config": {
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.TLSConfig"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.TLSConfig"
     }
   },
   "additionalProperties": false,

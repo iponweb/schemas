@@ -4,7 +4,7 @@
   "properties": {
     "authorization": {
       "description": "Authorization header to use on every scrape request.",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.Authorization"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.Authorization"
     },
     "followRedirects": {
       "description": "Configure whether HTTP requests follow HTTP 3xx redirects.",
@@ -15,7 +15,7 @@
     },
     "oauth2": {
       "description": "OAuth2 defines auth configuration",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.OAuth2"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.OAuth2"
     },
     "port": {
       "description": "The port to scrape metrics from.",
@@ -34,11 +34,11 @@
     },
     "proxy_client_config": {
       "description": "ProxyClientConfig configures proxy auth settings for scraping See [feature description](https://docs.victoriametrics.com/victoriametrics/vmagent/#scraping-targets-via-a-proxy)",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.ProxyAuth"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.ProxyAuth"
     },
     "tlsConfig": {
       "description": "TLS configuration to use on every scrape request",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.TLSConfig"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.TLSConfig"
     }
   },
   "additionalProperties": false,

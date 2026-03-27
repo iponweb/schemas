@@ -14,11 +14,11 @@
     },
     "authorization": {
       "description": "authorization defines the header configuration to authenticate against the Consul Server. Cannot be set at the same time as `basicAuth`, or `oauth2`.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.SafeAuthorization"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.SafeAuthorization"
     },
     "basicAuth": {
       "description": "basicAuth defines the information to authenticate against the Consul Server. More info: https://prometheus.io/docs/operating/configuration/#endpoints Cannot be set at the same time as `authorization`, or `oauth2`.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.BasicAuth"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.BasicAuth"
     },
     "datacenter": {
       "description": "datacenter defines the consul Datacenter name, if not provided it will use the local Consul Agent Datacenter.",
@@ -78,7 +78,7 @@
     },
     "oauth2": {
       "description": "oauth2 defines the optional OAuth 2.0 configuration to authenticate against the target HTTP endpoint. Cannot be set at the same time as `authorization`, or `basicAuth`.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.OAuth2"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.OAuth2"
     },
     "partition": {
       "description": "partition defines the admin Partitions are only supported in Consul Enterprise.",
@@ -184,7 +184,7 @@
     },
     "tlsConfig": {
       "description": "tlsConfig defines the TLS configuration to connect to the Consul API.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.SafeTLSConfig"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.SafeTLSConfig"
     },
     "tokenRef": {
       "description": "tokenRef defines the consul ACL TokenRef, if not provided it will use the ACL from the local Consul Agent.",

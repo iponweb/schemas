@@ -17,7 +17,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.TimeInterval"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.TimeInterval"
       }
     }
   },

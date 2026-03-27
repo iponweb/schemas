@@ -1,6 +1,6 @@
 {
   "definitions": {
-    "com.coreos.monitoring.pkg.apis.monitoring.v1.APIServerConfig": {
+    "com.coreos.monitoring.v1.APIServerConfig": {
       "description": "APIServerConfig defines a host and auth methods to access apiserver. More info: https://prometheus.io/docs/prometheus/latest/configuration/configuration/#kubernetes_sd_config",
       "type": "object",
       "required": [
@@ -9,11 +9,11 @@
       "properties": {
         "authorization": {
           "description": "Authorization section for accessing apiserver",
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.Authorization"
+          "$ref": "#/definitions/com.coreos.monitoring.v1.Authorization"
         },
         "basicAuth": {
           "description": "BasicAuth allow an endpoint to authenticate over basic authentication",
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.BasicAuth"
+          "$ref": "#/definitions/com.coreos.monitoring.v1.BasicAuth"
         },
         "bearerToken": {
           "description": "Bearer token for accessing apiserver.",
@@ -30,12 +30,12 @@
         },
         "tlsConfig": {
           "description": "TLS Config to use for accessing apiserver.",
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.TLSConfig"
+          "$ref": "#/definitions/com.coreos.monitoring.v1.TLSConfig"
         }
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1.AlertingSpec": {
+    "com.coreos.monitoring.v1.AlertingSpec": {
       "description": "AlertingSpec defines parameters for alerting configuration of Prometheus servers.",
       "type": "object",
       "required": [
@@ -47,13 +47,13 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.AlertmanagerEndpoints"
+            "$ref": "#/definitions/com.coreos.monitoring.v1.AlertmanagerEndpoints"
           }
         }
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1.Alertmanager": {
+    "com.coreos.monitoring.v1.Alertmanager": {
       "description": "Alertmanager describes an Alertmanager cluster.",
       "type": "object",
       "required": [
@@ -75,22 +75,22 @@
         "spec": {
           "description": "Specification of the desired behavior of the Alertmanager cluster. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#spec-and-status",
           "default": {},
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.AlertmanagerSpec"
+          "$ref": "#/definitions/com.coreos.monitoring.v1.AlertmanagerSpec"
         },
         "status": {
           "description": "Most recent observed status of the Alertmanager cluster. Read-only. Not included when requesting from the apiserver, only from the Prometheus Operator API itself. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#spec-and-status",
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.AlertmanagerStatus"
+          "$ref": "#/definitions/com.coreos.monitoring.v1.AlertmanagerStatus"
         }
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1.AlertmanagerConfiguration": {
+    "com.coreos.monitoring.v1.AlertmanagerConfiguration": {
       "description": "AlertmanagerConfiguration defines the Alertmanager configuration.",
       "type": "object",
       "properties": {
         "global": {
           "description": "Defines the global parameters of the Alertmanager configuration.",
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.AlertmanagerGlobalConfig"
+          "$ref": "#/definitions/com.coreos.monitoring.v1.AlertmanagerGlobalConfig"
         },
         "name": {
           "description": "The name of the AlertmanagerConfig resource which is used to generate the Alertmanager configuration. It must be defined in the same namespace as the Alertmanager object. The operator will not enforce a `namespace` label for routes and inhibition rules.",
@@ -101,13 +101,13 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.SecretOrConfigMap"
+            "$ref": "#/definitions/com.coreos.monitoring.v1.SecretOrConfigMap"
           }
         }
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1.AlertmanagerEndpoints": {
+    "com.coreos.monitoring.v1.AlertmanagerEndpoints": {
       "description": "AlertmanagerEndpoints defines a selection of a single Endpoints object containing alertmanager IPs to fire alerts against.",
       "type": "object",
       "required": [
@@ -122,7 +122,7 @@
         },
         "authorization": {
           "description": "Authorization section for this alertmanager endpoint",
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.SafeAuthorization"
+          "$ref": "#/definitions/com.coreos.monitoring.v1.SafeAuthorization"
         },
         "bearerTokenFile": {
           "description": "BearerTokenFile to read from filesystem to use when authenticating to Alertmanager.",
@@ -156,18 +156,18 @@
         },
         "tlsConfig": {
           "description": "TLS Config to use for alertmanager connection.",
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.TLSConfig"
+          "$ref": "#/definitions/com.coreos.monitoring.v1.TLSConfig"
         }
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1.AlertmanagerGlobalConfig": {
+    "com.coreos.monitoring.v1.AlertmanagerGlobalConfig": {
       "description": "AlertmanagerGlobalConfig configures parameters that are valid in all other configuration contexts. See https://prometheus.io/docs/alerting/latest/configuration/#configuration-file",
       "type": "object",
       "properties": {
         "httpConfig": {
           "description": "HTTP client configuration.",
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.HTTPConfig"
+          "$ref": "#/definitions/com.coreos.monitoring.v1.HTTPConfig"
         },
         "resolveTimeout": {
           "description": "ResolveTimeout is the default value used by alertmanager if the alert does not include EndsAt, after this time passes it can declare the alert as resolved if it has not been updated. This has no impact on alerts from Prometheus, as they always include EndsAt.",
@@ -176,7 +176,7 @@
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1.AlertmanagerList": {
+    "com.coreos.monitoring.v1.AlertmanagerList": {
       "description": "AlertmanagerList is a list of Alertmanagers.",
       "type": "object",
       "required": [
@@ -192,7 +192,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.Alertmanager"
+            "$ref": "#/definitions/com.coreos.monitoring.v1.Alertmanager"
           }
         },
         "kind": {
@@ -207,7 +207,7 @@
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1.AlertmanagerSpec": {
+    "com.coreos.monitoring.v1.AlertmanagerSpec": {
       "description": "AlertmanagerSpec is a specification of the desired behavior of the Alertmanager cluster. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#spec-and-status",
       "type": "object",
       "properties": {
@@ -233,7 +233,7 @@
         },
         "alertmanagerConfiguration": {
           "description": "EXPERIMENTAL: alertmanagerConfiguration specifies the configuration of Alertmanager. If defined, it takes precedence over the `configSecret` field. This field may change in future releases.",
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.AlertmanagerConfiguration"
+          "$ref": "#/definitions/com.coreos.monitoring.v1.AlertmanagerConfiguration"
         },
         "baseImage": {
           "description": "Base image that is used to deploy pods, without tag. Deprecated: use 'image' instead",
@@ -288,7 +288,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.HostAlias"
+            "$ref": "#/definitions/com.coreos.monitoring.v1.HostAlias"
           },
           "x-kubernetes-list-map-keys": [
             "ip"
@@ -346,7 +346,7 @@
         },
         "podMetadata": {
           "description": "PodMetadata configures Labels and Annotations which are propagated to the alertmanager pods.",
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.EmbeddedObjectMetadata"
+          "$ref": "#/definitions/com.coreos.monitoring.v1.EmbeddedObjectMetadata"
         },
         "portName": {
           "description": "Port name used for the pods and governing service. This defaults to web",
@@ -396,7 +396,7 @@
         },
         "storage": {
           "description": "Storage is the definition of how storage will be used by the Alertmanager instances.",
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.StorageSpec"
+          "$ref": "#/definitions/com.coreos.monitoring.v1.StorageSpec"
         },
         "tag": {
           "description": "Tag of Alertmanager container image to be deployed. Defaults to the value of `version`. Version is ignored if Tag is set. Deprecated: use 'image' instead.  The image tag can be specified as part of the image URL.",
@@ -440,12 +440,12 @@
         },
         "web": {
           "description": "Defines the web command line flags when starting Alertmanager.",
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.AlertmanagerWebSpec"
+          "$ref": "#/definitions/com.coreos.monitoring.v1.AlertmanagerWebSpec"
         }
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1.AlertmanagerStatus": {
+    "com.coreos.monitoring.v1.AlertmanagerStatus": {
       "description": "AlertmanagerStatus is the most recent observed status of the Alertmanager cluster. Read-only. Not included when requesting from the apiserver, only from the Prometheus Operator API itself. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#spec-and-status",
       "type": "object",
       "required": [
@@ -488,22 +488,22 @@
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1.AlertmanagerWebSpec": {
+    "com.coreos.monitoring.v1.AlertmanagerWebSpec": {
       "description": "AlertmanagerWebSpec defines the web command line flags when starting Alertmanager.",
       "type": "object",
       "properties": {
         "httpConfig": {
           "description": "Defines HTTP parameters for web server.",
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.WebHTTPConfig"
+          "$ref": "#/definitions/com.coreos.monitoring.v1.WebHTTPConfig"
         },
         "tlsConfig": {
           "description": "Defines the TLS parameters for HTTPS.",
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.WebTLSConfig"
+          "$ref": "#/definitions/com.coreos.monitoring.v1.WebTLSConfig"
         }
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1.ArbitraryFSAccessThroughSMsConfig": {
+    "com.coreos.monitoring.v1.ArbitraryFSAccessThroughSMsConfig": {
       "description": "ArbitraryFSAccessThroughSMsConfig enables users to configure, whether a service monitor selected by the Prometheus instance is allowed to use arbitrary files on the file system of the Prometheus container. This is the case when e.g. a service monitor specifies a BearerTokenFile in an endpoint. A malicious user could create a service monitor selecting arbitrary secret files in the Prometheus container. Those secrets would then be sent with a scrape request by Prometheus to a malicious target. Denying the above would prevent the attack, users can instead use the BearerTokenSecret field.",
       "type": "object",
       "properties": {
@@ -513,7 +513,7 @@
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1.Argument": {
+    "com.coreos.monitoring.v1.Argument": {
       "description": "Argument as part of the AdditionalArgs list.",
       "type": "object",
       "required": [
@@ -532,7 +532,7 @@
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1.AttachMetadata": {
+    "com.coreos.monitoring.v1.AttachMetadata": {
       "type": "object",
       "properties": {
         "node": {
@@ -542,7 +542,7 @@
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1.Authorization": {
+    "com.coreos.monitoring.v1.Authorization": {
       "description": "Authorization contains optional `Authorization` header configuration. This section is only understood by versions of Prometheus >= 2.26.0.",
       "type": "object",
       "properties": {
@@ -561,7 +561,7 @@
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1.BasicAuth": {
+    "com.coreos.monitoring.v1.BasicAuth": {
       "description": "BasicAuth allow an endpoint to authenticate over basic authentication More info: https://prometheus.io/docs/operating/configuration/#endpoints",
       "type": "object",
       "properties": {
@@ -578,7 +578,7 @@
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1.EmbeddedObjectMetadata": {
+    "com.coreos.monitoring.v1.EmbeddedObjectMetadata": {
       "description": "EmbeddedObjectMetadata contains a subset of the fields included in k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta Only fields which are relevant to embedded resources are included.",
       "type": "object",
       "properties": {
@@ -605,7 +605,7 @@
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1.EmbeddedPersistentVolumeClaim": {
+    "com.coreos.monitoring.v1.EmbeddedPersistentVolumeClaim": {
       "description": "EmbeddedPersistentVolumeClaim is an embedded version of k8s.io/api/core/v1.PersistentVolumeClaim. It contains TypeMeta and a reduced ObjectMeta.",
       "type": "object",
       "properties": {
@@ -620,7 +620,7 @@
         "metadata": {
           "description": "EmbeddedMetadata contains metadata relevant to an EmbeddedResource.",
           "default": {},
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.EmbeddedObjectMetadata"
+          "$ref": "#/definitions/com.coreos.monitoring.v1.EmbeddedObjectMetadata"
         },
         "spec": {
           "description": "Spec defines the desired characteristics of a volume requested by a pod author. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#persistentvolumeclaims",
@@ -635,17 +635,17 @@
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1.Endpoint": {
+    "com.coreos.monitoring.v1.Endpoint": {
       "description": "Endpoint defines a scrapeable endpoint serving Prometheus metrics.",
       "type": "object",
       "properties": {
         "authorization": {
           "description": "Authorization section for this endpoint",
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.SafeAuthorization"
+          "$ref": "#/definitions/com.coreos.monitoring.v1.SafeAuthorization"
         },
         "basicAuth": {
           "description": "BasicAuth allow an endpoint to authenticate over basic authentication More info: https://prometheus.io/docs/operating/configuration/#endpoints",
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.BasicAuth"
+          "$ref": "#/definitions/com.coreos.monitoring.v1.BasicAuth"
         },
         "bearerTokenFile": {
           "description": "File to read bearer token for scraping targets.",
@@ -680,12 +680,12 @@
           "description": "MetricRelabelConfigs to apply to samples before ingestion.",
           "type": "array",
           "items": {
-            "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.RelabelConfig"
+            "$ref": "#/definitions/com.coreos.monitoring.v1.RelabelConfig"
           }
         },
         "oauth2": {
           "description": "OAuth2 for the URL. Only valid in Prometheus versions 2.27.0 and newer.",
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.OAuth2"
+          "$ref": "#/definitions/com.coreos.monitoring.v1.OAuth2"
         },
         "params": {
           "description": "Optional HTTP URL parameters",
@@ -714,7 +714,7 @@
           "description": "RelabelConfigs to apply to samples before scraping. Prometheus Operator automatically adds relabelings for a few standard Kubernetes fields. The original scrape job's name is available via the `__tmp_prometheus_job_name` label. More info: https://prometheus.io/docs/prometheus/latest/configuration/configuration/#relabel_config",
           "type": "array",
           "items": {
-            "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.RelabelConfig"
+            "$ref": "#/definitions/com.coreos.monitoring.v1.RelabelConfig"
           }
         },
         "scheme": {
@@ -731,12 +731,12 @@
         },
         "tlsConfig": {
           "description": "TLS configuration to use when scraping the endpoint",
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.TLSConfig"
+          "$ref": "#/definitions/com.coreos.monitoring.v1.TLSConfig"
         }
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1.Exemplars": {
+    "com.coreos.monitoring.v1.Exemplars": {
       "type": "object",
       "properties": {
         "maxSize": {
@@ -747,17 +747,17 @@
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1.HTTPConfig": {
+    "com.coreos.monitoring.v1.HTTPConfig": {
       "description": "HTTPConfig defines a client HTTP configuration. See https://prometheus.io/docs/alerting/latest/configuration/#http_config",
       "type": "object",
       "properties": {
         "authorization": {
           "description": "Authorization header configuration for the client. This is mutually exclusive with BasicAuth and is only available starting from Alertmanager v0.22+.",
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.SafeAuthorization"
+          "$ref": "#/definitions/com.coreos.monitoring.v1.SafeAuthorization"
         },
         "basicAuth": {
           "description": "BasicAuth for the client. This is mutually exclusive with Authorization. If both are defined, BasicAuth takes precedence.",
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.BasicAuth"
+          "$ref": "#/definitions/com.coreos.monitoring.v1.BasicAuth"
         },
         "bearerTokenSecret": {
           "description": "The secret's key that contains the bearer token to be used by the client for authentication. The secret needs to be in the same namespace as the Alertmanager object and accessible by the Prometheus Operator.",
@@ -769,7 +769,7 @@
         },
         "oauth2": {
           "description": "OAuth2 client credentials used to fetch a token for the targets.",
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.OAuth2"
+          "$ref": "#/definitions/com.coreos.monitoring.v1.OAuth2"
         },
         "proxyURL": {
           "description": "Optional proxy URL.",
@@ -777,12 +777,12 @@
         },
         "tlsConfig": {
           "description": "TLS configuration for the client.",
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.SafeTLSConfig"
+          "$ref": "#/definitions/com.coreos.monitoring.v1.SafeTLSConfig"
         }
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1.HostAlias": {
+    "com.coreos.monitoring.v1.HostAlias": {
       "description": "HostAlias holds the mapping between IP and hostnames that will be injected as an entry in the pod's hosts file.",
       "type": "object",
       "required": [
@@ -806,7 +806,7 @@
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1.MetadataConfig": {
+    "com.coreos.monitoring.v1.MetadataConfig": {
       "description": "MetadataConfig configures the sending of series metadata to the remote storage.",
       "type": "object",
       "properties": {
@@ -821,7 +821,7 @@
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1.NamespaceSelector": {
+    "com.coreos.monitoring.v1.NamespaceSelector": {
       "description": "NamespaceSelector is a selector for selecting either all namespaces or a list of namespaces. If `any` is true, it takes precedence over `matchNames`. If `matchNames` is empty and `any` is false, it means that the objects are selected from the current namespace.",
       "type": "object",
       "properties": {
@@ -840,7 +840,7 @@
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1.OAuth2": {
+    "com.coreos.monitoring.v1.OAuth2": {
       "description": "OAuth2 allows an endpoint to authenticate with OAuth2. More info: https://prometheus.io/docs/prometheus/latest/configuration/configuration/#oauth2",
       "type": "object",
       "required": [
@@ -852,7 +852,7 @@
         "clientId": {
           "description": "The secret or configmap containing the OAuth2 client id",
           "default": {},
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.SecretOrConfigMap"
+          "$ref": "#/definitions/com.coreos.monitoring.v1.SecretOrConfigMap"
         },
         "clientSecret": {
           "description": "The secret containing the OAuth2 client secret",
@@ -883,7 +883,7 @@
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1.ObjectReference": {
+    "com.coreos.monitoring.v1.ObjectReference": {
       "description": "ObjectReference references a PodMonitor, ServiceMonitor, Probe or PrometheusRule object.",
       "type": "object",
       "required": [
@@ -913,17 +913,17 @@
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1.PodMetricsEndpoint": {
+    "com.coreos.monitoring.v1.PodMetricsEndpoint": {
       "description": "PodMetricsEndpoint defines a scrapeable endpoint of a Kubernetes Pod serving Prometheus metrics.",
       "type": "object",
       "properties": {
         "authorization": {
           "description": "Authorization section for this endpoint",
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.SafeAuthorization"
+          "$ref": "#/definitions/com.coreos.monitoring.v1.SafeAuthorization"
         },
         "basicAuth": {
           "description": "BasicAuth allow an endpoint to authenticate over basic authentication. More info: https://prometheus.io/docs/operating/configuration/#endpoint",
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.BasicAuth"
+          "$ref": "#/definitions/com.coreos.monitoring.v1.BasicAuth"
         },
         "bearerTokenSecret": {
           "description": "Secret to mount to read bearer token for scraping targets. The secret needs to be in the same namespace as the pod monitor and accessible by the Prometheus Operator.",
@@ -958,12 +958,12 @@
           "description": "MetricRelabelConfigs to apply to samples before ingestion.",
           "type": "array",
           "items": {
-            "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.RelabelConfig"
+            "$ref": "#/definitions/com.coreos.monitoring.v1.RelabelConfig"
           }
         },
         "oauth2": {
           "description": "OAuth2 for the URL. Only valid in Prometheus versions 2.27.0 and newer.",
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.OAuth2"
+          "$ref": "#/definitions/com.coreos.monitoring.v1.OAuth2"
         },
         "params": {
           "description": "Optional HTTP URL parameters",
@@ -992,7 +992,7 @@
           "description": "RelabelConfigs to apply to samples before scraping. Prometheus Operator automatically adds relabelings for a few standard Kubernetes fields. The original scrape job's name is available via the `__tmp_prometheus_job_name` label. More info: https://prometheus.io/docs/prometheus/latest/configuration/configuration/#relabel_config",
           "type": "array",
           "items": {
-            "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.RelabelConfig"
+            "$ref": "#/definitions/com.coreos.monitoring.v1.RelabelConfig"
           }
         },
         "scheme": {
@@ -1009,24 +1009,24 @@
         },
         "tlsConfig": {
           "description": "TLS configuration to use when scraping the endpoint.",
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.PodMetricsEndpointTLSConfig"
+          "$ref": "#/definitions/com.coreos.monitoring.v1.PodMetricsEndpointTLSConfig"
         }
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1.PodMetricsEndpointTLSConfig": {
+    "com.coreos.monitoring.v1.PodMetricsEndpointTLSConfig": {
       "description": "PodMetricsEndpointTLSConfig specifies TLS configuration parameters.",
       "type": "object",
       "properties": {
         "ca": {
           "description": "Struct containing the CA cert to use for the targets.",
           "default": {},
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.SecretOrConfigMap"
+          "$ref": "#/definitions/com.coreos.monitoring.v1.SecretOrConfigMap"
         },
         "cert": {
           "description": "Struct containing the client cert file for the targets.",
           "default": {},
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.SecretOrConfigMap"
+          "$ref": "#/definitions/com.coreos.monitoring.v1.SecretOrConfigMap"
         },
         "insecureSkipVerify": {
           "description": "Disable target certificate validation.",
@@ -1043,7 +1043,7 @@
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1.PodMonitor": {
+    "com.coreos.monitoring.v1.PodMonitor": {
       "description": "PodMonitor defines monitoring for a set of pods.",
       "type": "object",
       "required": [
@@ -1065,12 +1065,12 @@
         "spec": {
           "description": "Specification of desired Pod selection for target discovery by Prometheus.",
           "default": {},
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.PodMonitorSpec"
+          "$ref": "#/definitions/com.coreos.monitoring.v1.PodMonitorSpec"
         }
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1.PodMonitorList": {
+    "com.coreos.monitoring.v1.PodMonitorList": {
       "description": "PodMonitorList is a list of PodMonitors.",
       "type": "object",
       "required": [
@@ -1085,7 +1085,7 @@
           "description": "List of PodMonitors",
           "type": "array",
           "items": {
-            "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.PodMonitor"
+            "$ref": "#/definitions/com.coreos.monitoring.v1.PodMonitor"
           }
         },
         "kind": {
@@ -1100,7 +1100,7 @@
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1.PodMonitorSpec": {
+    "com.coreos.monitoring.v1.PodMonitorSpec": {
       "description": "PodMonitorSpec contains specification parameters for a PodMonitor.",
       "type": "object",
       "required": [
@@ -1110,7 +1110,7 @@
       "properties": {
         "attachMetadata": {
           "description": "Attaches node metadata to discovered targets. Only valid for role: pod. Only valid in Prometheus versions 2.35.0 and newer.",
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.AttachMetadata"
+          "$ref": "#/definitions/com.coreos.monitoring.v1.AttachMetadata"
         },
         "jobLabel": {
           "description": "The label to use to retrieve the job name from.",
@@ -1134,14 +1134,14 @@
         "namespaceSelector": {
           "description": "Selector to select which namespaces the Endpoints objects are discovered from.",
           "default": {},
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.NamespaceSelector"
+          "$ref": "#/definitions/com.coreos.monitoring.v1.NamespaceSelector"
         },
         "podMetricsEndpoints": {
           "description": "A list of endpoints allowed as part of this PodMonitor.",
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.PodMetricsEndpoint"
+            "$ref": "#/definitions/com.coreos.monitoring.v1.PodMetricsEndpoint"
           }
         },
         "podTargetLabels": {
@@ -1170,7 +1170,7 @@
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1.Probe": {
+    "com.coreos.monitoring.v1.Probe": {
       "description": "Probe defines monitoring for a set of static targets or ingresses.",
       "type": "object",
       "required": [
@@ -1192,12 +1192,12 @@
         "spec": {
           "description": "Specification of desired Ingress selection for target discovery by Prometheus.",
           "default": {},
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.ProbeSpec"
+          "$ref": "#/definitions/com.coreos.monitoring.v1.ProbeSpec"
         }
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1.ProbeList": {
+    "com.coreos.monitoring.v1.ProbeList": {
       "description": "ProbeList is a list of Probes.",
       "type": "object",
       "required": [
@@ -1212,7 +1212,7 @@
           "description": "List of Probes",
           "type": "array",
           "items": {
-            "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.Probe"
+            "$ref": "#/definitions/com.coreos.monitoring.v1.Probe"
           }
         },
         "kind": {
@@ -1227,17 +1227,17 @@
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1.ProbeSpec": {
+    "com.coreos.monitoring.v1.ProbeSpec": {
       "description": "ProbeSpec contains specification parameters for a Probe.",
       "type": "object",
       "properties": {
         "authorization": {
           "description": "Authorization section for this endpoint",
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.SafeAuthorization"
+          "$ref": "#/definitions/com.coreos.monitoring.v1.SafeAuthorization"
         },
         "basicAuth": {
           "description": "BasicAuth allow an endpoint to authenticate over basic authentication. More info: https://prometheus.io/docs/operating/configuration/#endpoint",
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.BasicAuth"
+          "$ref": "#/definitions/com.coreos.monitoring.v1.BasicAuth"
         },
         "bearerTokenSecret": {
           "description": "Secret to mount to read bearer token for scraping targets. The secret needs to be in the same namespace as the probe and accessible by the Prometheus Operator.",
@@ -1271,7 +1271,7 @@
           "description": "MetricRelabelConfigs to apply to samples before ingestion.",
           "type": "array",
           "items": {
-            "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.RelabelConfig"
+            "$ref": "#/definitions/com.coreos.monitoring.v1.RelabelConfig"
           }
         },
         "module": {
@@ -1280,12 +1280,12 @@
         },
         "oauth2": {
           "description": "OAuth2 for the URL. Only valid in Prometheus versions 2.27.0 and newer.",
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.OAuth2"
+          "$ref": "#/definitions/com.coreos.monitoring.v1.OAuth2"
         },
         "prober": {
           "description": "Specification for the prober to use for probing targets. The prober.URL parameter is required. Targets cannot be probed if left empty.",
           "default": {},
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.ProberSpec"
+          "$ref": "#/definitions/com.coreos.monitoring.v1.ProberSpec"
         },
         "sampleLimit": {
           "description": "SampleLimit defines per-scrape limit on number of scraped samples that will be accepted.",
@@ -1304,28 +1304,28 @@
         "targets": {
           "description": "Targets defines a set of static or dynamically discovered targets to probe.",
           "default": {},
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.ProbeTargets"
+          "$ref": "#/definitions/com.coreos.monitoring.v1.ProbeTargets"
         },
         "tlsConfig": {
           "description": "TLS configuration to use when scraping the endpoint.",
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.ProbeTLSConfig"
+          "$ref": "#/definitions/com.coreos.monitoring.v1.ProbeTLSConfig"
         }
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1.ProbeTLSConfig": {
+    "com.coreos.monitoring.v1.ProbeTLSConfig": {
       "description": "ProbeTLSConfig specifies TLS configuration parameters.",
       "type": "object",
       "properties": {
         "ca": {
           "description": "Struct containing the CA cert to use for the targets.",
           "default": {},
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.SecretOrConfigMap"
+          "$ref": "#/definitions/com.coreos.monitoring.v1.SecretOrConfigMap"
         },
         "cert": {
           "description": "Struct containing the client cert file for the targets.",
           "default": {},
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.SecretOrConfigMap"
+          "$ref": "#/definitions/com.coreos.monitoring.v1.SecretOrConfigMap"
         },
         "insecureSkipVerify": {
           "description": "Disable target certificate validation.",
@@ -1342,20 +1342,20 @@
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1.ProbeTargetIngress": {
+    "com.coreos.monitoring.v1.ProbeTargetIngress": {
       "description": "ProbeTargetIngress defines the set of Ingress objects considered for probing. The operator configures a target for each host/path combination of each ingress object.",
       "type": "object",
       "properties": {
         "namespaceSelector": {
           "description": "From which namespaces to select Ingress objects.",
           "default": {},
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.NamespaceSelector"
+          "$ref": "#/definitions/com.coreos.monitoring.v1.NamespaceSelector"
         },
         "relabelingConfigs": {
           "description": "RelabelConfigs to apply to the label set of the target before it gets scraped. The original ingress address is available via the `__tmp_prometheus_ingress_address` label. It can be used to customize the probed URL. The original scrape job's name is available via the `__tmp_prometheus_job_name` label. More info: https://prometheus.io/docs/prometheus/latest/configuration/configuration/#relabel_config",
           "type": "array",
           "items": {
-            "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.RelabelConfig"
+            "$ref": "#/definitions/com.coreos.monitoring.v1.RelabelConfig"
           }
         },
         "selector": {
@@ -1366,7 +1366,7 @@
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1.ProbeTargetStaticConfig": {
+    "com.coreos.monitoring.v1.ProbeTargetStaticConfig": {
       "description": "ProbeTargetStaticConfig defines the set of static targets considered for probing.",
       "type": "object",
       "properties": {
@@ -1382,7 +1382,7 @@
           "description": "RelabelConfigs to apply to the label set of the targets before it gets scraped. More info: https://prometheus.io/docs/prometheus/latest/configuration/configuration/#relabel_config",
           "type": "array",
           "items": {
-            "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.RelabelConfig"
+            "$ref": "#/definitions/com.coreos.monitoring.v1.RelabelConfig"
           }
         },
         "static": {
@@ -1396,22 +1396,22 @@
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1.ProbeTargets": {
+    "com.coreos.monitoring.v1.ProbeTargets": {
       "description": "ProbeTargets defines how to discover the probed targets. One of the `staticConfig` or `ingress` must be defined. If both are defined, `staticConfig` takes precedence.",
       "type": "object",
       "properties": {
         "ingress": {
           "description": "ingress defines the Ingress objects to probe and the relabeling configuration. If `staticConfig` is also defined, `staticConfig` takes precedence.",
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.ProbeTargetIngress"
+          "$ref": "#/definitions/com.coreos.monitoring.v1.ProbeTargetIngress"
         },
         "staticConfig": {
           "description": "staticConfig defines the static list of targets to probe and the relabeling configuration. If `ingress` is also defined, `staticConfig` takes precedence. More info: https://prometheus.io/docs/prometheus/latest/configuration/configuration/#static_config.",
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.ProbeTargetStaticConfig"
+          "$ref": "#/definitions/com.coreos.monitoring.v1.ProbeTargetStaticConfig"
         }
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1.ProberSpec": {
+    "com.coreos.monitoring.v1.ProberSpec": {
       "description": "ProberSpec contains specification parameters for the Prober used for probing.",
       "type": "object",
       "required": [
@@ -1438,7 +1438,7 @@
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1.Prometheus": {
+    "com.coreos.monitoring.v1.Prometheus": {
       "description": "Prometheus defines a Prometheus deployment.",
       "type": "object",
       "required": [
@@ -1460,17 +1460,17 @@
         "spec": {
           "description": "Specification of the desired behavior of the Prometheus cluster. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#spec-and-status",
           "default": {},
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.PrometheusSpec"
+          "$ref": "#/definitions/com.coreos.monitoring.v1.PrometheusSpec"
         },
         "status": {
           "description": "Most recent observed status of the Prometheus cluster. Read-only. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#spec-and-status",
           "default": {},
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.PrometheusStatus"
+          "$ref": "#/definitions/com.coreos.monitoring.v1.PrometheusStatus"
         }
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1.PrometheusCondition": {
+    "com.coreos.monitoring.v1.PrometheusCondition": {
       "description": "PrometheusCondition represents the state of the resources associated with the Prometheus resource.",
       "type": "object",
       "required": [
@@ -1509,7 +1509,7 @@
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1.PrometheusList": {
+    "com.coreos.monitoring.v1.PrometheusList": {
       "description": "PrometheusList is a list of Prometheuses.",
       "type": "object",
       "required": [
@@ -1524,7 +1524,7 @@
           "description": "List of Prometheuses",
           "type": "array",
           "items": {
-            "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.Prometheus"
+            "$ref": "#/definitions/com.coreos.monitoring.v1.Prometheus"
           }
         },
         "kind": {
@@ -1539,7 +1539,7 @@
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1.PrometheusRule": {
+    "com.coreos.monitoring.v1.PrometheusRule": {
       "description": "PrometheusRule defines recording and alerting rules for a Prometheus instance",
       "type": "object",
       "required": [
@@ -1561,12 +1561,12 @@
         "spec": {
           "description": "Specification of desired alerting rule definitions for Prometheus.",
           "default": {},
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.PrometheusRuleSpec"
+          "$ref": "#/definitions/com.coreos.monitoring.v1.PrometheusRuleSpec"
         }
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1.PrometheusRuleExcludeConfig": {
+    "com.coreos.monitoring.v1.PrometheusRuleExcludeConfig": {
       "description": "PrometheusRuleExcludeConfig enables users to configure excluded PrometheusRule names and their namespaces to be ignored while enforcing namespace label for alerts and metrics.",
       "type": "object",
       "required": [
@@ -1587,7 +1587,7 @@
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1.PrometheusRuleList": {
+    "com.coreos.monitoring.v1.PrometheusRuleList": {
       "description": "PrometheusRuleList is a list of PrometheusRules.",
       "type": "object",
       "required": [
@@ -1602,7 +1602,7 @@
           "description": "List of Rules",
           "type": "array",
           "items": {
-            "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.PrometheusRule"
+            "$ref": "#/definitions/com.coreos.monitoring.v1.PrometheusRule"
           }
         },
         "kind": {
@@ -1617,7 +1617,7 @@
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1.PrometheusRuleSpec": {
+    "com.coreos.monitoring.v1.PrometheusRuleSpec": {
       "description": "PrometheusRuleSpec contains specification parameters for a Rule.",
       "type": "object",
       "properties": {
@@ -1626,13 +1626,13 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.RuleGroup"
+            "$ref": "#/definitions/com.coreos.monitoring.v1.RuleGroup"
           }
         }
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1.PrometheusSpec": {
+    "com.coreos.monitoring.v1.PrometheusSpec": {
       "description": "PrometheusSpec is a specification of the desired behavior of the Prometheus cluster. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#spec-and-status",
       "type": "object",
       "properties": {
@@ -1649,7 +1649,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.Argument"
+            "$ref": "#/definitions/com.coreos.monitoring.v1.Argument"
           }
         },
         "additionalScrapeConfigs": {
@@ -1662,7 +1662,7 @@
         },
         "alerting": {
           "description": "Define details regarding alerting.",
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.AlertingSpec"
+          "$ref": "#/definitions/com.coreos.monitoring.v1.AlertingSpec"
         },
         "allowOverlappingBlocks": {
           "description": "AllowOverlappingBlocks enables vertical compaction and vertical query merge in Prometheus. This is still experimental in Prometheus so it may change in any upcoming release.",
@@ -1670,12 +1670,12 @@
         },
         "apiserverConfig": {
           "description": "APIServerConfig allows specifying a host and auth methods to access apiserver. If left empty, Prometheus is assumed to run inside of the cluster and will discover API servers automatically and use the pod's CA certificate and bearer token file at /var/run/secrets/kubernetes.io/serviceaccount/.",
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.APIServerConfig"
+          "$ref": "#/definitions/com.coreos.monitoring.v1.APIServerConfig"
         },
         "arbitraryFSAccessThroughSMs": {
           "description": "ArbitraryFSAccessThroughSMs configures whether configuration based on a service monitor can access arbitrary files on the file system of the Prometheus container e.g. bearer token files.",
           "default": {},
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.ArbitraryFSAccessThroughSMsConfig"
+          "$ref": "#/definitions/com.coreos.monitoring.v1.ArbitraryFSAccessThroughSMsConfig"
         },
         "baseImage": {
           "description": "Base image to use for a Prometheus deployment. Deprecated: use 'image' instead",
@@ -1759,12 +1759,12 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.ObjectReference"
+            "$ref": "#/definitions/com.coreos.monitoring.v1.ObjectReference"
           }
         },
         "exemplars": {
           "description": "Exemplars related settings that are runtime reloadable. It requires to enable the exemplar storage feature to be effective.",
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.Exemplars"
+          "$ref": "#/definitions/com.coreos.monitoring.v1.Exemplars"
         },
         "externalLabels": {
           "description": "The labels to add to any time series or alerts when communicating with external systems (federation, remote storage, Alertmanager).",
@@ -1783,7 +1783,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.HostAlias"
+            "$ref": "#/definitions/com.coreos.monitoring.v1.HostAlias"
           },
           "x-kubernetes-list-map-keys": [
             "ip"
@@ -1857,7 +1857,7 @@
         },
         "podMetadata": {
           "description": "PodMetadata configures Labels and Annotations which are propagated to the prometheus pods.",
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.EmbeddedObjectMetadata"
+          "$ref": "#/definitions/com.coreos.monitoring.v1.EmbeddedObjectMetadata"
         },
         "podMonitorNamespaceSelector": {
           "description": "Namespace's labels to match for PodMonitor discovery. If nil, only check own namespace.",
@@ -1892,12 +1892,12 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.PrometheusRuleExcludeConfig"
+            "$ref": "#/definitions/com.coreos.monitoring.v1.PrometheusRuleExcludeConfig"
           }
         },
         "query": {
           "description": "QuerySpec defines the query command line flags when starting Prometheus.",
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.QuerySpec"
+          "$ref": "#/definitions/com.coreos.monitoring.v1.QuerySpec"
         },
         "queryLogFile": {
           "description": "QueryLogFile specifies the file to which PromQL queries are logged. If the filename has an empty path, e.g. 'query.log', prometheus-operator will mount the file into an emptyDir volume at `/var/log/prometheus`. If a full path is provided, e.g. /var/log/prometheus/query.log, you must mount a volume in the specified directory and it must be writable. This is because the prometheus container runs with a read-only root filesystem for security reasons. Alternatively, the location can be set to a stdout location such as `/dev/stdout` to log query information to the default Prometheus log stream. This is only available in versions of Prometheus >= 2.16.0. For more details, see the Prometheus docs (https://prometheus.io/docs/guides/query-log/)",
@@ -1908,7 +1908,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.RemoteReadSpec"
+            "$ref": "#/definitions/com.coreos.monitoring.v1.RemoteReadSpec"
           }
         },
         "remoteWrite": {
@@ -1916,7 +1916,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.RemoteWriteSpec"
+            "$ref": "#/definitions/com.coreos.monitoring.v1.RemoteWriteSpec"
           }
         },
         "replicaExternalLabelName": {
@@ -1956,7 +1956,7 @@
         "rules": {
           "description": "/--rules.*/ command-line arguments.",
           "default": {},
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.Rules"
+          "$ref": "#/definitions/com.coreos.monitoring.v1.Rules"
         },
         "scrapeInterval": {
           "description": "Interval between consecutive scrapes. Default: `30s`",
@@ -2001,7 +2001,7 @@
         },
         "storage": {
           "description": "Storage spec to specify how storage shall be used.",
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.StorageSpec"
+          "$ref": "#/definitions/com.coreos.monitoring.v1.StorageSpec"
         },
         "tag": {
           "description": "Tag of Prometheus container image to be deployed. Defaults to the value of `version`. Version is ignored if Tag is set. Deprecated: use 'image' instead.  The image tag can be specified as part of the image URL.",
@@ -2009,7 +2009,7 @@
         },
         "thanos": {
           "description": "Thanos configuration allows configuring various aspects of a Prometheus server in a Thanos environment.\n\nThis section is experimental, it may change significantly without deprecation notice in any release.\n\nThis is experimental and may change significantly without backward compatibility in any release.",
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.ThanosSpec"
+          "$ref": "#/definitions/com.coreos.monitoring.v1.ThanosSpec"
         },
         "tolerations": {
           "description": "If specified, the pod's tolerations.",
@@ -2030,7 +2030,7 @@
         "tsdb": {
           "description": "Defines the runtime reloadable configuration of the timeseries database (TSDB).",
           "default": {},
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.TSDBSpec"
+          "$ref": "#/definitions/com.coreos.monitoring.v1.TSDBSpec"
         },
         "version": {
           "description": "Version of Prometheus to be deployed.",
@@ -2058,12 +2058,12 @@
         },
         "web": {
           "description": "Defines the web command line flags when starting Prometheus.",
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.PrometheusWebSpec"
+          "$ref": "#/definitions/com.coreos.monitoring.v1.PrometheusWebSpec"
         }
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1.PrometheusStatus": {
+    "com.coreos.monitoring.v1.PrometheusStatus": {
       "description": "PrometheusStatus is the most recent observed status of the Prometheus cluster. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#spec-and-status",
       "type": "object",
       "required": [
@@ -2085,7 +2085,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.PrometheusCondition"
+            "$ref": "#/definitions/com.coreos.monitoring.v1.PrometheusCondition"
           },
           "x-kubernetes-list-map-keys": [
             "type"
@@ -2108,7 +2108,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.ShardStatus"
+            "$ref": "#/definitions/com.coreos.monitoring.v1.ShardStatus"
           },
           "x-kubernetes-list-map-keys": [
             "shardID"
@@ -2130,13 +2130,13 @@
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1.PrometheusWebSpec": {
+    "com.coreos.monitoring.v1.PrometheusWebSpec": {
       "description": "PrometheusWebSpec defines the web command line flags when starting Prometheus.",
       "type": "object",
       "properties": {
         "httpConfig": {
           "description": "Defines HTTP parameters for web server.",
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.WebHTTPConfig"
+          "$ref": "#/definitions/com.coreos.monitoring.v1.WebHTTPConfig"
         },
         "pageTitle": {
           "description": "The prometheus web page title",
@@ -2144,12 +2144,12 @@
         },
         "tlsConfig": {
           "description": "Defines the TLS parameters for HTTPS.",
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.WebTLSConfig"
+          "$ref": "#/definitions/com.coreos.monitoring.v1.WebTLSConfig"
         }
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1.QuerySpec": {
+    "com.coreos.monitoring.v1.QuerySpec": {
       "description": "QuerySpec defines the query command line flags when starting Prometheus.",
       "type": "object",
       "properties": {
@@ -2174,7 +2174,7 @@
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1.QueueConfig": {
+    "com.coreos.monitoring.v1.QueueConfig": {
       "description": "QueueConfig allows the tuning of remote write's queue_config parameters. This object is referenced in the RemoteWriteSpec object.",
       "type": "object",
       "properties": {
@@ -2222,7 +2222,7 @@
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1.RelabelConfig": {
+    "com.coreos.monitoring.v1.RelabelConfig": {
       "description": "RelabelConfig allows dynamic rewriting of the label set, being applied to samples before ingestion. It defines `<metric_relabel_configs>`-section of Prometheus configuration. More info: https://prometheus.io/docs/prometheus/latest/configuration/configuration/#metric_relabel_configs",
       "type": "object",
       "properties": {
@@ -2262,7 +2262,7 @@
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1.RemoteReadSpec": {
+    "com.coreos.monitoring.v1.RemoteReadSpec": {
       "description": "RemoteReadSpec defines the configuration for Prometheus to read back samples from a remote endpoint.",
       "type": "object",
       "required": [
@@ -2271,11 +2271,11 @@
       "properties": {
         "authorization": {
           "description": "Authorization section for remote read",
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.Authorization"
+          "$ref": "#/definitions/com.coreos.monitoring.v1.Authorization"
         },
         "basicAuth": {
           "description": "BasicAuth for the URL.",
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.BasicAuth"
+          "$ref": "#/definitions/com.coreos.monitoring.v1.BasicAuth"
         },
         "bearerToken": {
           "description": "Bearer token for remote read.",
@@ -2299,7 +2299,7 @@
         },
         "oauth2": {
           "description": "OAuth2 for the URL. Only valid in Prometheus versions 2.27.0 and newer.",
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.OAuth2"
+          "$ref": "#/definitions/com.coreos.monitoring.v1.OAuth2"
         },
         "proxyUrl": {
           "description": "Optional ProxyURL.",
@@ -2323,7 +2323,7 @@
         },
         "tlsConfig": {
           "description": "TLS Config to use for remote read.",
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.TLSConfig"
+          "$ref": "#/definitions/com.coreos.monitoring.v1.TLSConfig"
         },
         "url": {
           "description": "The URL of the endpoint to query from.",
@@ -2333,7 +2333,7 @@
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1.RemoteWriteSpec": {
+    "com.coreos.monitoring.v1.RemoteWriteSpec": {
       "description": "RemoteWriteSpec defines the configuration to write samples from Prometheus to a remote endpoint.",
       "type": "object",
       "required": [
@@ -2342,11 +2342,11 @@
       "properties": {
         "authorization": {
           "description": "Authorization section for remote write",
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.Authorization"
+          "$ref": "#/definitions/com.coreos.monitoring.v1.Authorization"
         },
         "basicAuth": {
           "description": "BasicAuth for the URL.",
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.BasicAuth"
+          "$ref": "#/definitions/com.coreos.monitoring.v1.BasicAuth"
         },
         "bearerToken": {
           "description": "Bearer token for remote write.",
@@ -2366,7 +2366,7 @@
         },
         "metadataConfig": {
           "description": "MetadataConfig configures the sending of series metadata to the remote storage.",
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.MetadataConfig"
+          "$ref": "#/definitions/com.coreos.monitoring.v1.MetadataConfig"
         },
         "name": {
           "description": "The name of the remote write queue, it must be unique if specified. The name is used in metrics and logging in order to differentiate queues. Only valid in Prometheus versions 2.15.0 and newer.",
@@ -2374,7 +2374,7 @@
         },
         "oauth2": {
           "description": "OAuth2 for the URL. Only valid in Prometheus versions 2.27.0 and newer.",
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.OAuth2"
+          "$ref": "#/definitions/com.coreos.monitoring.v1.OAuth2"
         },
         "proxyUrl": {
           "description": "Optional ProxyURL.",
@@ -2382,7 +2382,7 @@
         },
         "queueConfig": {
           "description": "QueueConfig allows tuning of the remote write queue parameters.",
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.QueueConfig"
+          "$ref": "#/definitions/com.coreos.monitoring.v1.QueueConfig"
         },
         "remoteTimeout": {
           "description": "Timeout for requests to the remote write endpoint.",
@@ -2394,11 +2394,11 @@
         },
         "sigv4": {
           "description": "Sigv4 allows to configures AWS's Signature Verification 4",
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.Sigv4"
+          "$ref": "#/definitions/com.coreos.monitoring.v1.Sigv4"
         },
         "tlsConfig": {
           "description": "TLS Config to use for remote write.",
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.TLSConfig"
+          "$ref": "#/definitions/com.coreos.monitoring.v1.TLSConfig"
         },
         "url": {
           "description": "The URL of the endpoint to send samples to.",
@@ -2410,13 +2410,13 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.RelabelConfig"
+            "$ref": "#/definitions/com.coreos.monitoring.v1.RelabelConfig"
           }
         }
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1.Rule": {
+    "com.coreos.monitoring.v1.Rule": {
       "description": "Rule describes an alerting or recording rule See Prometheus documentation: [alerting](https://www.prometheus.io/docs/prometheus/latest/configuration/alerting_rules/) or [recording](https://www.prometheus.io/docs/prometheus/latest/configuration/recording_rules/#recording-rules) rule",
       "type": "object",
       "required": [
@@ -2452,7 +2452,7 @@
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1.RuleGroup": {
+    "com.coreos.monitoring.v1.RuleGroup": {
       "description": "RuleGroup is a list of sequentially evaluated recording and alerting rules. Note: PartialResponseStrategy is only used by ThanosRuler and will be ignored by Prometheus instances.  Valid values for this field are 'warn' or 'abort'.  More info: https://github.com/thanos-io/thanos/blob/main/docs/components/rule.md#partial-response",
       "type": "object",
       "required": [
@@ -2474,24 +2474,24 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.Rule"
+            "$ref": "#/definitions/com.coreos.monitoring.v1.Rule"
           }
         }
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1.Rules": {
+    "com.coreos.monitoring.v1.Rules": {
       "description": "/--rules.*/ command-line arguments",
       "type": "object",
       "properties": {
         "alert": {
           "default": {},
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.RulesAlert"
+          "$ref": "#/definitions/com.coreos.monitoring.v1.RulesAlert"
         }
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1.RulesAlert": {
+    "com.coreos.monitoring.v1.RulesAlert": {
       "description": "/--rules.alert.*/ command-line arguments",
       "type": "object",
       "properties": {
@@ -2510,7 +2510,7 @@
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1.SafeAuthorization": {
+    "com.coreos.monitoring.v1.SafeAuthorization": {
       "description": "SafeAuthorization specifies a subset of the Authorization struct, that is safe for use in Endpoints (no CredentialsFile field)",
       "type": "object",
       "properties": {
@@ -2525,19 +2525,19 @@
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1.SafeTLSConfig": {
+    "com.coreos.monitoring.v1.SafeTLSConfig": {
       "description": "SafeTLSConfig specifies safe TLS configuration parameters.",
       "type": "object",
       "properties": {
         "ca": {
           "description": "Struct containing the CA cert to use for the targets.",
           "default": {},
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.SecretOrConfigMap"
+          "$ref": "#/definitions/com.coreos.monitoring.v1.SecretOrConfigMap"
         },
         "cert": {
           "description": "Struct containing the client cert file for the targets.",
           "default": {},
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.SecretOrConfigMap"
+          "$ref": "#/definitions/com.coreos.monitoring.v1.SecretOrConfigMap"
         },
         "insecureSkipVerify": {
           "description": "Disable target certificate validation.",
@@ -2554,7 +2554,7 @@
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1.SecretOrConfigMap": {
+    "com.coreos.monitoring.v1.SecretOrConfigMap": {
       "description": "SecretOrConfigMap allows to specify data as a Secret or ConfigMap. Fields are mutually exclusive.",
       "type": "object",
       "properties": {
@@ -2569,7 +2569,7 @@
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1.ServiceMonitor": {
+    "com.coreos.monitoring.v1.ServiceMonitor": {
       "description": "ServiceMonitor defines monitoring for a set of services.",
       "type": "object",
       "required": [
@@ -2591,12 +2591,12 @@
         "spec": {
           "description": "Specification of desired Service selection for target discovery by Prometheus.",
           "default": {},
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.ServiceMonitorSpec"
+          "$ref": "#/definitions/com.coreos.monitoring.v1.ServiceMonitorSpec"
         }
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1.ServiceMonitorList": {
+    "com.coreos.monitoring.v1.ServiceMonitorList": {
       "description": "ServiceMonitorList is a list of ServiceMonitors.",
       "type": "object",
       "required": [
@@ -2611,7 +2611,7 @@
           "description": "List of ServiceMonitors",
           "type": "array",
           "items": {
-            "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.ServiceMonitor"
+            "$ref": "#/definitions/com.coreos.monitoring.v1.ServiceMonitor"
           }
         },
         "kind": {
@@ -2626,7 +2626,7 @@
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1.ServiceMonitorSpec": {
+    "com.coreos.monitoring.v1.ServiceMonitorSpec": {
       "description": "ServiceMonitorSpec contains specification parameters for a ServiceMonitor.",
       "type": "object",
       "required": [
@@ -2639,7 +2639,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.Endpoint"
+            "$ref": "#/definitions/com.coreos.monitoring.v1.Endpoint"
           }
         },
         "jobLabel": {
@@ -2664,7 +2664,7 @@
         "namespaceSelector": {
           "description": "Selector to select which namespaces the Kubernetes Endpoints objects are discovered from.",
           "default": {},
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.NamespaceSelector"
+          "$ref": "#/definitions/com.coreos.monitoring.v1.NamespaceSelector"
         },
         "podTargetLabels": {
           "description": "PodTargetLabels transfers labels on the Kubernetes `Pod` onto the created metrics.",
@@ -2700,7 +2700,7 @@
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1.ShardStatus": {
+    "com.coreos.monitoring.v1.ShardStatus": {
       "type": "object",
       "required": [
         "shardID",
@@ -2742,7 +2742,7 @@
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1.Sigv4": {
+    "com.coreos.monitoring.v1.Sigv4": {
       "description": "Sigv4 optionally configures AWS's Signature Verification 4 signing process to sign requests. Cannot be set at the same time as basic_auth or authorization.",
       "type": "object",
       "properties": {
@@ -2769,7 +2769,7 @@
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1.StorageSpec": {
+    "com.coreos.monitoring.v1.StorageSpec": {
       "description": "StorageSpec defines the configured storage for a group Prometheus servers. If no storage option is specified, then by default an [EmptyDir](https://kubernetes.io/docs/concepts/storage/volumes/#emptydir) will be used. If multiple storage options are specified, priority will be given as follows: EmptyDir, Ephemeral, and lastly VolumeClaimTemplate.",
       "type": "object",
       "properties": {
@@ -2788,19 +2788,19 @@
         "volumeClaimTemplate": {
           "description": "A PVC spec to be used by the Prometheus StatefulSets.",
           "default": {},
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.EmbeddedPersistentVolumeClaim"
+          "$ref": "#/definitions/com.coreos.monitoring.v1.EmbeddedPersistentVolumeClaim"
         }
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1.TLSConfig": {
+    "com.coreos.monitoring.v1.TLSConfig": {
       "description": "TLSConfig extends the safe TLS configuration with file parameters.",
       "type": "object",
       "properties": {
         "ca": {
           "description": "Struct containing the CA cert to use for the targets.",
           "default": {},
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.SecretOrConfigMap"
+          "$ref": "#/definitions/com.coreos.monitoring.v1.SecretOrConfigMap"
         },
         "caFile": {
           "description": "Path to the CA cert in the Prometheus container to use for the targets.",
@@ -2809,7 +2809,7 @@
         "cert": {
           "description": "Struct containing the client cert file for the targets.",
           "default": {},
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.SecretOrConfigMap"
+          "$ref": "#/definitions/com.coreos.monitoring.v1.SecretOrConfigMap"
         },
         "certFile": {
           "description": "Path to the client cert file in the Prometheus container for the targets.",
@@ -2834,7 +2834,7 @@
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1.TSDBSpec": {
+    "com.coreos.monitoring.v1.TSDBSpec": {
       "type": "object",
       "properties": {
         "outOfOrderTimeWindow": {
@@ -2844,7 +2844,7 @@
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1.ThanosRuler": {
+    "com.coreos.monitoring.v1.ThanosRuler": {
       "description": "ThanosRuler defines a ThanosRuler deployment.",
       "type": "object",
       "required": [
@@ -2866,16 +2866,16 @@
         "spec": {
           "description": "Specification of the desired behavior of the ThanosRuler cluster. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#spec-and-status",
           "default": {},
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.ThanosRulerSpec"
+          "$ref": "#/definitions/com.coreos.monitoring.v1.ThanosRulerSpec"
         },
         "status": {
           "description": "Most recent observed status of the ThanosRuler cluster. Read-only. Not included when requesting from the apiserver, only from the ThanosRuler Operator API itself. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#spec-and-status",
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.ThanosRulerStatus"
+          "$ref": "#/definitions/com.coreos.monitoring.v1.ThanosRulerStatus"
         }
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1.ThanosRulerList": {
+    "com.coreos.monitoring.v1.ThanosRulerList": {
       "description": "ThanosRulerList is a list of ThanosRulers.",
       "type": "object",
       "required": [
@@ -2890,7 +2890,7 @@
           "description": "List of Prometheuses",
           "type": "array",
           "items": {
-            "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.ThanosRuler"
+            "$ref": "#/definitions/com.coreos.monitoring.v1.ThanosRuler"
           }
         },
         "kind": {
@@ -2905,7 +2905,7 @@
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1.ThanosRulerSpec": {
+    "com.coreos.monitoring.v1.ThanosRulerSpec": {
       "description": "ThanosRulerSpec is a specification of the desired behavior of the ThanosRuler. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#spec-and-status",
       "type": "object",
       "properties": {
@@ -2966,7 +2966,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.ObjectReference"
+            "$ref": "#/definitions/com.coreos.monitoring.v1.ObjectReference"
           }
         },
         "externalPrefix": {
@@ -2975,14 +2975,14 @@
         },
         "grpcServerTlsConfig": {
           "description": "GRPCServerTLSConfig configures the gRPC server from which Thanos Querier reads recorded rule data. Note: Currently only the CAFile, CertFile, and KeyFile fields are supported. Maps to the '--grpc-server-tls-*' CLI args.",
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.TLSConfig"
+          "$ref": "#/definitions/com.coreos.monitoring.v1.TLSConfig"
         },
         "hostAliases": {
           "description": "Pods' hostAliases configuration",
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.HostAlias"
+            "$ref": "#/definitions/com.coreos.monitoring.v1.HostAlias"
           },
           "x-kubernetes-list-map-keys": [
             "ip"
@@ -3056,7 +3056,7 @@
         },
         "podMetadata": {
           "description": "PodMetadata contains Labels and Annotations gets propagated to the thanos ruler pods.",
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.EmbeddedObjectMetadata"
+          "$ref": "#/definitions/com.coreos.monitoring.v1.EmbeddedObjectMetadata"
         },
         "portName": {
           "description": "Port name used for the pods and governing service. This defaults to web",
@@ -3071,7 +3071,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.PrometheusRuleExcludeConfig"
+            "$ref": "#/definitions/com.coreos.monitoring.v1.PrometheusRuleExcludeConfig"
           }
         },
         "queryConfig": {
@@ -3122,7 +3122,7 @@
         },
         "storage": {
           "description": "Storage spec to specify how storage shall be used.",
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.StorageSpec"
+          "$ref": "#/definitions/com.coreos.monitoring.v1.StorageSpec"
         },
         "tolerations": {
           "description": "If specified, the pod's tolerations.",
@@ -3159,7 +3159,7 @@
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1.ThanosRulerStatus": {
+    "com.coreos.monitoring.v1.ThanosRulerStatus": {
       "description": "ThanosRulerStatus is the most recent observed status of the ThanosRuler. Read-only. Not included when requesting from the apiserver, only from the Prometheus Operator API itself. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#spec-and-status",
       "type": "object",
       "required": [
@@ -3202,7 +3202,7 @@
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1.ThanosSpec": {
+    "com.coreos.monitoring.v1.ThanosSpec": {
       "description": "ThanosSpec defines parameters for a Prometheus server within a Thanos deployment.",
       "type": "object",
       "properties": {
@@ -3211,7 +3211,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.Argument"
+            "$ref": "#/definitions/com.coreos.monitoring.v1.Argument"
           }
         },
         "baseImage": {
@@ -3224,7 +3224,7 @@
         },
         "grpcServerTlsConfig": {
           "description": "GRPCServerTLSConfig configures the TLS parameters for the gRPC server providing the StoreAPI. Note: Currently only the CAFile, CertFile, and KeyFile fields are supported. Maps to the '--grpc-server-tls-*' CLI args.",
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.TLSConfig"
+          "$ref": "#/definitions/com.coreos.monitoring.v1.TLSConfig"
         },
         "httpListenLocal": {
           "description": "If true, the Thanos sidecar listens on the loopback interface for the HTTP endpoints. It has no effect if `listenLocal` is true.",
@@ -3298,13 +3298,13 @@
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1.WebHTTPConfig": {
+    "com.coreos.monitoring.v1.WebHTTPConfig": {
       "description": "WebHTTPConfig defines HTTP parameters for web server.",
       "type": "object",
       "properties": {
         "headers": {
           "description": "List of headers that can be added to HTTP responses.",
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.WebHTTPHeaders"
+          "$ref": "#/definitions/com.coreos.monitoring.v1.WebHTTPHeaders"
         },
         "http2": {
           "description": "Enable HTTP/2 support. Note that HTTP/2 is only supported with TLS. When TLSConfig is not configured, HTTP/2 will be disabled. Whenever the value of the field changes, a rolling update will be triggered.",
@@ -3313,7 +3313,7 @@
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1.WebHTTPHeaders": {
+    "com.coreos.monitoring.v1.WebHTTPHeaders": {
       "description": "WebHTTPHeaders defines the list of headers that can be added to HTTP responses.",
       "type": "object",
       "properties": {
@@ -3340,7 +3340,7 @@
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1.WebTLSConfig": {
+    "com.coreos.monitoring.v1.WebTLSConfig": {
       "description": "WebTLSConfig defines the TLS parameters for HTTPS.",
       "type": "object",
       "required": [
@@ -3351,7 +3351,7 @@
         "cert": {
           "description": "Contains the TLS certificate for the server.",
           "default": {},
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.SecretOrConfigMap"
+          "$ref": "#/definitions/com.coreos.monitoring.v1.SecretOrConfigMap"
         },
         "cipherSuites": {
           "description": "List of supported cipher suites for TLS versions up to TLS 1.2. If empty, Go default cipher suites are used. Available cipher suites are documented in the go documentation: https://golang.org/pkg/crypto/tls/#pkg-constants",
@@ -3368,7 +3368,7 @@
         "client_ca": {
           "description": "Contains the CA certificate for client certificate authentication to the server.",
           "default": {},
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.SecretOrConfigMap"
+          "$ref": "#/definitions/com.coreos.monitoring.v1.SecretOrConfigMap"
         },
         "curvePreferences": {
           "description": "Elliptic curves that will be used in an ECDHE handshake, in preference order. Available curves are documented in the go documentation: https://golang.org/pkg/crypto/tls/#CurveID",
@@ -3398,7 +3398,7 @@
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.AlertmanagerConfig": {
+    "com.coreos.monitoring.v1alpha1.AlertmanagerConfig": {
       "description": "AlertmanagerConfig defines a namespaced AlertmanagerConfig to be aggregated across multiple namespaces configuring one Alertmanager cluster.",
       "type": "object",
       "required": [
@@ -3419,12 +3419,12 @@
         },
         "spec": {
           "default": {},
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.AlertmanagerConfigSpec"
+          "$ref": "#/definitions/com.coreos.monitoring.v1alpha1.AlertmanagerConfigSpec"
         }
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.AlertmanagerConfigList": {
+    "com.coreos.monitoring.v1alpha1.AlertmanagerConfigList": {
       "description": "AlertmanagerConfigList is a list of AlertmanagerConfig.",
       "type": "object",
       "required": [
@@ -3439,7 +3439,7 @@
           "description": "List of AlertmanagerConfig",
           "type": "array",
           "items": {
-            "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.AlertmanagerConfig"
+            "$ref": "#/definitions/com.coreos.monitoring.v1alpha1.AlertmanagerConfig"
           }
         },
         "kind": {
@@ -3454,7 +3454,7 @@
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.AlertmanagerConfigSpec": {
+    "com.coreos.monitoring.v1alpha1.AlertmanagerConfigSpec": {
       "description": "AlertmanagerConfigSpec is a specification of the desired behavior of the Alertmanager configuration. By definition, the Alertmanager configuration only applies to alerts for which the `namespace` label is equal to the namespace of the AlertmanagerConfig resource.",
       "type": "object",
       "properties": {
@@ -3463,7 +3463,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.InhibitRule"
+            "$ref": "#/definitions/com.coreos.monitoring.v1alpha1.InhibitRule"
           }
         },
         "muteTimeIntervals": {
@@ -3471,7 +3471,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.MuteTimeInterval"
+            "$ref": "#/definitions/com.coreos.monitoring.v1alpha1.MuteTimeInterval"
           }
         },
         "receivers": {
@@ -3479,17 +3479,17 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.Receiver"
+            "$ref": "#/definitions/com.coreos.monitoring.v1alpha1.Receiver"
           }
         },
         "route": {
           "description": "The Alertmanager route definition for alerts matching the resource's namespace. If present, it will be added to the generated Alertmanager configuration as a first-level route.",
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.Route"
+          "$ref": "#/definitions/com.coreos.monitoring.v1alpha1.Route"
         }
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.DayOfMonthRange": {
+    "com.coreos.monitoring.v1alpha1.DayOfMonthRange": {
       "description": "DayOfMonthRange is an inclusive range of days of the month beginning at 1",
       "type": "object",
       "properties": {
@@ -3506,7 +3506,7 @@
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.EmailConfig": {
+    "com.coreos.monitoring.v1alpha1.EmailConfig": {
       "description": "EmailConfig configures notifications via Email.",
       "type": "object",
       "properties": {
@@ -3535,7 +3535,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.KeyValue"
+            "$ref": "#/definitions/com.coreos.monitoring.v1alpha1.KeyValue"
           }
         },
         "hello": {
@@ -3564,7 +3564,7 @@
         },
         "tlsConfig": {
           "description": "TLS configuration",
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.SafeTLSConfig"
+          "$ref": "#/definitions/com.coreos.monitoring.v1.SafeTLSConfig"
         },
         "to": {
           "description": "The email address to send notifications to.",
@@ -3573,17 +3573,17 @@
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.HTTPConfig": {
+    "com.coreos.monitoring.v1alpha1.HTTPConfig": {
       "description": "HTTPConfig defines a client HTTP configuration. See https://prometheus.io/docs/alerting/latest/configuration/#http_config",
       "type": "object",
       "properties": {
         "authorization": {
           "description": "Authorization header configuration for the client. This is mutually exclusive with BasicAuth and is only available starting from Alertmanager v0.22+.",
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.SafeAuthorization"
+          "$ref": "#/definitions/com.coreos.monitoring.v1.SafeAuthorization"
         },
         "basicAuth": {
           "description": "BasicAuth for the client. This is mutually exclusive with Authorization. If both are defined, BasicAuth takes precedence.",
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.BasicAuth"
+          "$ref": "#/definitions/com.coreos.monitoring.v1.BasicAuth"
         },
         "bearerTokenSecret": {
           "description": "The secret's key that contains the bearer token to be used by the client for authentication. The secret needs to be in the same namespace as the AlertmanagerConfig object and accessible by the Prometheus Operator.",
@@ -3595,7 +3595,7 @@
         },
         "oauth2": {
           "description": "OAuth2 client credentials used to fetch a token for the targets.",
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.OAuth2"
+          "$ref": "#/definitions/com.coreos.monitoring.v1.OAuth2"
         },
         "proxyURL": {
           "description": "Optional proxy URL.",
@@ -3603,12 +3603,12 @@
         },
         "tlsConfig": {
           "description": "TLS configuration for the client.",
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.SafeTLSConfig"
+          "$ref": "#/definitions/com.coreos.monitoring.v1.SafeTLSConfig"
         }
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.InhibitRule": {
+    "com.coreos.monitoring.v1alpha1.InhibitRule": {
       "description": "InhibitRule defines an inhibition rule that allows to mute alerts when other alerts are already firing. See https://prometheus.io/docs/alerting/latest/configuration/#inhibit_rule",
       "type": "object",
       "properties": {
@@ -3625,7 +3625,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.Matcher"
+            "$ref": "#/definitions/com.coreos.monitoring.v1alpha1.Matcher"
           }
         },
         "targetMatch": {
@@ -3633,13 +3633,13 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.Matcher"
+            "$ref": "#/definitions/com.coreos.monitoring.v1alpha1.Matcher"
           }
         }
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.KeyValue": {
+    "com.coreos.monitoring.v1alpha1.KeyValue": {
       "description": "KeyValue defines a (key, value) tuple.",
       "type": "object",
       "required": [
@@ -3660,7 +3660,7 @@
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.Matcher": {
+    "com.coreos.monitoring.v1alpha1.Matcher": {
       "description": "Matcher defines how to match on alert's labels.",
       "type": "object",
       "required": [
@@ -3688,7 +3688,7 @@
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.MuteTimeInterval": {
+    "com.coreos.monitoring.v1alpha1.MuteTimeInterval": {
       "description": "MuteTimeInterval specifies the periods in time when notifications will be muted",
       "type": "object",
       "properties": {
@@ -3701,13 +3701,13 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.TimeInterval"
+            "$ref": "#/definitions/com.coreos.monitoring.v1alpha1.TimeInterval"
           }
         }
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.OpsGenieConfig": {
+    "com.coreos.monitoring.v1alpha1.OpsGenieConfig": {
       "description": "OpsGenieConfig configures notifications via OpsGenie. See https://prometheus.io/docs/alerting/latest/configuration/#opsgenie_config",
       "type": "object",
       "properties": {
@@ -3732,7 +3732,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.KeyValue"
+            "$ref": "#/definitions/com.coreos.monitoring.v1alpha1.KeyValue"
           }
         },
         "entity": {
@@ -3741,7 +3741,7 @@
         },
         "httpConfig": {
           "description": "HTTP client configuration.",
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.HTTPConfig"
+          "$ref": "#/definitions/com.coreos.monitoring.v1alpha1.HTTPConfig"
         },
         "message": {
           "description": "Alert text limited to 130 characters.",
@@ -3760,7 +3760,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.OpsGenieConfigResponder"
+            "$ref": "#/definitions/com.coreos.monitoring.v1alpha1.OpsGenieConfigResponder"
           }
         },
         "sendResolved": {
@@ -3782,7 +3782,7 @@
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.OpsGenieConfigResponder": {
+    "com.coreos.monitoring.v1alpha1.OpsGenieConfigResponder": {
       "description": "OpsGenieConfigResponder defines a responder to an incident. One of `id`, `name` or `username` has to be defined.",
       "type": "object",
       "required": [
@@ -3809,7 +3809,7 @@
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.PagerDutyConfig": {
+    "com.coreos.monitoring.v1alpha1.PagerDutyConfig": {
       "description": "PagerDutyConfig configures notifications via PagerDuty. See https://prometheus.io/docs/alerting/latest/configuration/#pagerduty_config",
       "type": "object",
       "properties": {
@@ -3838,7 +3838,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.KeyValue"
+            "$ref": "#/definitions/com.coreos.monitoring.v1alpha1.KeyValue"
           }
         },
         "group": {
@@ -3847,14 +3847,14 @@
         },
         "httpConfig": {
           "description": "HTTP client configuration.",
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.HTTPConfig"
+          "$ref": "#/definitions/com.coreos.monitoring.v1alpha1.HTTPConfig"
         },
         "pagerDutyImageConfigs": {
           "description": "A list of image details to attach that provide further detail about an incident.",
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.PagerDutyImageConfig"
+            "$ref": "#/definitions/com.coreos.monitoring.v1alpha1.PagerDutyImageConfig"
           }
         },
         "pagerDutyLinkConfigs": {
@@ -3862,7 +3862,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.PagerDutyLinkConfig"
+            "$ref": "#/definitions/com.coreos.monitoring.v1alpha1.PagerDutyLinkConfig"
           }
         },
         "routingKey": {
@@ -3888,7 +3888,7 @@
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.PagerDutyImageConfig": {
+    "com.coreos.monitoring.v1alpha1.PagerDutyImageConfig": {
       "description": "PagerDutyImageConfig attaches images to an incident",
       "type": "object",
       "properties": {
@@ -3907,7 +3907,7 @@
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.PagerDutyLinkConfig": {
+    "com.coreos.monitoring.v1alpha1.PagerDutyLinkConfig": {
       "description": "PagerDutyLinkConfig attaches text links to an incident",
       "type": "object",
       "properties": {
@@ -3922,7 +3922,7 @@
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.PushoverConfig": {
+    "com.coreos.monitoring.v1alpha1.PushoverConfig": {
       "description": "PushoverConfig configures notifications via Pushover. See https://prometheus.io/docs/alerting/latest/configuration/#pushover_config",
       "type": "object",
       "properties": {
@@ -3936,7 +3936,7 @@
         },
         "httpConfig": {
           "description": "HTTP client configuration.",
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.HTTPConfig"
+          "$ref": "#/definitions/com.coreos.monitoring.v1alpha1.HTTPConfig"
         },
         "message": {
           "description": "Notification message.",
@@ -3981,7 +3981,7 @@
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.Receiver": {
+    "com.coreos.monitoring.v1alpha1.Receiver": {
       "description": "Receiver defines one or more notification integrations.",
       "type": "object",
       "required": [
@@ -3993,7 +3993,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.EmailConfig"
+            "$ref": "#/definitions/com.coreos.monitoring.v1alpha1.EmailConfig"
           }
         },
         "name": {
@@ -4006,7 +4006,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.OpsGenieConfig"
+            "$ref": "#/definitions/com.coreos.monitoring.v1alpha1.OpsGenieConfig"
           }
         },
         "pagerdutyConfigs": {
@@ -4014,7 +4014,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.PagerDutyConfig"
+            "$ref": "#/definitions/com.coreos.monitoring.v1alpha1.PagerDutyConfig"
           }
         },
         "pushoverConfigs": {
@@ -4022,7 +4022,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.PushoverConfig"
+            "$ref": "#/definitions/com.coreos.monitoring.v1alpha1.PushoverConfig"
           }
         },
         "slackConfigs": {
@@ -4030,7 +4030,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.SlackConfig"
+            "$ref": "#/definitions/com.coreos.monitoring.v1alpha1.SlackConfig"
           }
         },
         "snsConfigs": {
@@ -4038,7 +4038,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.SNSConfig"
+            "$ref": "#/definitions/com.coreos.monitoring.v1alpha1.SNSConfig"
           }
         },
         "telegramConfigs": {
@@ -4046,7 +4046,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.TelegramConfig"
+            "$ref": "#/definitions/com.coreos.monitoring.v1alpha1.TelegramConfig"
           }
         },
         "victoropsConfigs": {
@@ -4054,7 +4054,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.VictorOpsConfig"
+            "$ref": "#/definitions/com.coreos.monitoring.v1alpha1.VictorOpsConfig"
           }
         },
         "webhookConfigs": {
@@ -4062,7 +4062,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.WebhookConfig"
+            "$ref": "#/definitions/com.coreos.monitoring.v1alpha1.WebhookConfig"
           }
         },
         "wechatConfigs": {
@@ -4070,13 +4070,13 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.WeChatConfig"
+            "$ref": "#/definitions/com.coreos.monitoring.v1alpha1.WeChatConfig"
           }
         }
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.Route": {
+    "com.coreos.monitoring.v1alpha1.Route": {
       "description": "Route defines a node in the routing tree.",
       "type": "object",
       "properties": {
@@ -4105,7 +4105,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.Matcher"
+            "$ref": "#/definitions/com.coreos.monitoring.v1alpha1.Matcher"
           }
         },
         "muteTimeIntervals": {
@@ -4135,7 +4135,7 @@
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.SNSConfig": {
+    "com.coreos.monitoring.v1alpha1.SNSConfig": {
       "description": "SNSConfig configures notifications via AWS SNS. See https://prometheus.io/docs/alerting/latest/configuration/#sns_configs",
       "type": "object",
       "properties": {
@@ -4153,7 +4153,7 @@
         },
         "httpConfig": {
           "description": "HTTP client configuration.",
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.HTTPConfig"
+          "$ref": "#/definitions/com.coreos.monitoring.v1alpha1.HTTPConfig"
         },
         "message": {
           "description": "The message content of the SNS notification.",
@@ -4169,7 +4169,7 @@
         },
         "sigv4": {
           "description": "Configures AWS's Signature Verification 4 signing process to sign requests.",
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.Sigv4"
+          "$ref": "#/definitions/com.coreos.monitoring.v1.Sigv4"
         },
         "subject": {
           "description": "Subject line when the message is delivered to email endpoints.",
@@ -4186,7 +4186,7 @@
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.SlackAction": {
+    "com.coreos.monitoring.v1alpha1.SlackAction": {
       "description": "SlackAction configures a single Slack action that is sent with each notification. See https://api.slack.com/docs/message-attachments#action_fields and https://api.slack.com/docs/message-buttons for more information.",
       "type": "object",
       "required": [
@@ -4195,7 +4195,7 @@
       ],
       "properties": {
         "confirm": {
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.SlackConfirmationField"
+          "$ref": "#/definitions/com.coreos.monitoring.v1alpha1.SlackConfirmationField"
         },
         "name": {
           "type": "string"
@@ -4220,7 +4220,7 @@
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.SlackConfig": {
+    "com.coreos.monitoring.v1alpha1.SlackConfig": {
       "description": "SlackConfig configures notifications via Slack. See https://prometheus.io/docs/alerting/latest/configuration/#slack_config",
       "type": "object",
       "properties": {
@@ -4229,7 +4229,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.SlackAction"
+            "$ref": "#/definitions/com.coreos.monitoring.v1alpha1.SlackAction"
           }
         },
         "apiURL": {
@@ -4254,7 +4254,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.SlackField"
+            "$ref": "#/definitions/com.coreos.monitoring.v1alpha1.SlackField"
           }
         },
         "footer": {
@@ -4262,7 +4262,7 @@
         },
         "httpConfig": {
           "description": "HTTP client configuration.",
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.HTTPConfig"
+          "$ref": "#/definitions/com.coreos.monitoring.v1alpha1.HTTPConfig"
         },
         "iconEmoji": {
           "type": "string"
@@ -4311,7 +4311,7 @@
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.SlackConfirmationField": {
+    "com.coreos.monitoring.v1alpha1.SlackConfirmationField": {
       "description": "SlackConfirmationField protect users from destructive actions or particularly distinguished decisions by asking them to confirm their button click one more time. See https://api.slack.com/docs/interactive-message-field-guide#confirmation_fields for more information.",
       "type": "object",
       "required": [
@@ -4334,7 +4334,7 @@
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.SlackField": {
+    "com.coreos.monitoring.v1alpha1.SlackField": {
       "description": "SlackField configures a single Slack field that is sent with each notification. Each field must contain a title, value, and optionally, a boolean value to indicate if the field is short enough to be displayed next to other fields designated as short. See https://api.slack.com/docs/message-attachments#fields for more information.",
       "type": "object",
       "required": [
@@ -4356,7 +4356,7 @@
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.TelegramConfig": {
+    "com.coreos.monitoring.v1alpha1.TelegramConfig": {
       "description": "TelegramConfig configures notifications via Telegram. See https://prometheus.io/docs/alerting/latest/configuration/#telegram_config",
       "type": "object",
       "properties": {
@@ -4379,7 +4379,7 @@
         },
         "httpConfig": {
           "description": "HTTP client configuration.",
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.HTTPConfig"
+          "$ref": "#/definitions/com.coreos.monitoring.v1alpha1.HTTPConfig"
         },
         "message": {
           "description": "Message template",
@@ -4396,7 +4396,7 @@
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.TimeInterval": {
+    "com.coreos.monitoring.v1alpha1.TimeInterval": {
       "description": "TimeInterval describes intervals of time",
       "type": "object",
       "properties": {
@@ -4405,7 +4405,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.DayOfMonthRange"
+            "$ref": "#/definitions/com.coreos.monitoring.v1alpha1.DayOfMonthRange"
           }
         },
         "months": {
@@ -4421,7 +4421,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.TimeRange"
+            "$ref": "#/definitions/com.coreos.monitoring.v1alpha1.TimeRange"
           }
         },
         "weekdays": {
@@ -4443,7 +4443,7 @@
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.TimeRange": {
+    "com.coreos.monitoring.v1alpha1.TimeRange": {
       "description": "TimeRange defines a start and end time in 24hr format",
       "type": "object",
       "properties": {
@@ -4458,7 +4458,7 @@
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.VictorOpsConfig": {
+    "com.coreos.monitoring.v1alpha1.VictorOpsConfig": {
       "description": "VictorOpsConfig configures notifications via VictorOps. See https://prometheus.io/docs/alerting/latest/configuration/#victorops_config",
       "type": "object",
       "properties": {
@@ -4475,7 +4475,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.KeyValue"
+            "$ref": "#/definitions/com.coreos.monitoring.v1alpha1.KeyValue"
           }
         },
         "entityDisplayName": {
@@ -4484,7 +4484,7 @@
         },
         "httpConfig": {
           "description": "The HTTP client's configuration.",
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.HTTPConfig"
+          "$ref": "#/definitions/com.coreos.monitoring.v1alpha1.HTTPConfig"
         },
         "messageType": {
           "description": "Describes the behavior of the alert (CRITICAL, WARNING, INFO).",
@@ -4510,7 +4510,7 @@
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.WeChatConfig": {
+    "com.coreos.monitoring.v1alpha1.WeChatConfig": {
       "description": "WeChatConfig configures notifications via WeChat. See https://prometheus.io/docs/alerting/latest/configuration/#wechat_config",
       "type": "object",
       "properties": {
@@ -4531,7 +4531,7 @@
         },
         "httpConfig": {
           "description": "HTTP client configuration.",
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.HTTPConfig"
+          "$ref": "#/definitions/com.coreos.monitoring.v1alpha1.HTTPConfig"
         },
         "message": {
           "description": "API request data as defined by the WeChat API.",
@@ -4556,13 +4556,13 @@
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.WebhookConfig": {
+    "com.coreos.monitoring.v1alpha1.WebhookConfig": {
       "description": "WebhookConfig configures notifications via a generic receiver supporting the webhook payload. See https://prometheus.io/docs/alerting/latest/configuration/#webhook_config",
       "type": "object",
       "properties": {
         "httpConfig": {
           "description": "HTTP client configuration.",
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.HTTPConfig"
+          "$ref": "#/definitions/com.coreos.monitoring.v1alpha1.HTTPConfig"
         },
         "maxAlerts": {
           "description": "Maximum number of alerts to be sent per webhook message. When 0, all alerts are included.",
@@ -4584,7 +4584,7 @@
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1beta1.AlertmanagerConfig": {
+    "com.coreos.monitoring.v1beta1.AlertmanagerConfig": {
       "description": "AlertmanagerConfig defines a namespaced AlertmanagerConfig to be aggregated across multiple namespaces configuring one Alertmanager cluster.",
       "type": "object",
       "required": [
@@ -4605,12 +4605,12 @@
         },
         "spec": {
           "default": {},
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.AlertmanagerConfigSpec"
+          "$ref": "#/definitions/com.coreos.monitoring.v1beta1.AlertmanagerConfigSpec"
         }
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1beta1.AlertmanagerConfigList": {
+    "com.coreos.monitoring.v1beta1.AlertmanagerConfigList": {
       "description": "AlertmanagerConfigList is a list of AlertmanagerConfig.",
       "type": "object",
       "required": [
@@ -4625,7 +4625,7 @@
           "description": "List of AlertmanagerConfig",
           "type": "array",
           "items": {
-            "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.AlertmanagerConfig"
+            "$ref": "#/definitions/com.coreos.monitoring.v1beta1.AlertmanagerConfig"
           }
         },
         "kind": {
@@ -4640,7 +4640,7 @@
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1beta1.AlertmanagerConfigSpec": {
+    "com.coreos.monitoring.v1beta1.AlertmanagerConfigSpec": {
       "description": "AlertmanagerConfigSpec is a specification of the desired behavior of the Alertmanager configuration. By definition, the Alertmanager configuration only applies to alerts for which the `namespace` label is equal to the namespace of the AlertmanagerConfig resource.",
       "type": "object",
       "properties": {
@@ -4649,7 +4649,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.InhibitRule"
+            "$ref": "#/definitions/com.coreos.monitoring.v1beta1.InhibitRule"
           }
         },
         "receivers": {
@@ -4657,25 +4657,25 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.Receiver"
+            "$ref": "#/definitions/com.coreos.monitoring.v1beta1.Receiver"
           }
         },
         "route": {
           "description": "The Alertmanager route definition for alerts matching the resource's namespace. If present, it will be added to the generated Alertmanager configuration as a first-level route.",
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.Route"
+          "$ref": "#/definitions/com.coreos.monitoring.v1beta1.Route"
         },
         "timeIntervals": {
           "description": "List of TimeInterval specifying when the routes should be muted or active.",
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.TimeInterval"
+            "$ref": "#/definitions/com.coreos.monitoring.v1beta1.TimeInterval"
           }
         }
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1beta1.DayOfMonthRange": {
+    "com.coreos.monitoring.v1beta1.DayOfMonthRange": {
       "description": "DayOfMonthRange is an inclusive range of days of the month beginning at 1",
       "type": "object",
       "properties": {
@@ -4692,7 +4692,7 @@
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1beta1.EmailConfig": {
+    "com.coreos.monitoring.v1beta1.EmailConfig": {
       "description": "EmailConfig configures notifications via Email.",
       "type": "object",
       "properties": {
@@ -4702,11 +4702,11 @@
         },
         "authPassword": {
           "description": "The secret's key that contains the password to use for authentication. The secret needs to be in the same namespace as the AlertmanagerConfig object and accessible by the Prometheus Operator.",
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.SecretKeySelector"
+          "$ref": "#/definitions/com.coreos.monitoring.v1beta1.SecretKeySelector"
         },
         "authSecret": {
           "description": "The secret's key that contains the CRAM-MD5 secret. The secret needs to be in the same namespace as the AlertmanagerConfig object and accessible by the Prometheus Operator.",
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.SecretKeySelector"
+          "$ref": "#/definitions/com.coreos.monitoring.v1beta1.SecretKeySelector"
         },
         "authUsername": {
           "description": "The username to use for authentication.",
@@ -4721,7 +4721,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.KeyValue"
+            "$ref": "#/definitions/com.coreos.monitoring.v1beta1.KeyValue"
           }
         },
         "hello": {
@@ -4750,7 +4750,7 @@
         },
         "tlsConfig": {
           "description": "TLS configuration",
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.SafeTLSConfig"
+          "$ref": "#/definitions/com.coreos.monitoring.v1.SafeTLSConfig"
         },
         "to": {
           "description": "The email address to send notifications to.",
@@ -4759,21 +4759,21 @@
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1beta1.HTTPConfig": {
+    "com.coreos.monitoring.v1beta1.HTTPConfig": {
       "description": "HTTPConfig defines a client HTTP configuration. See https://prometheus.io/docs/alerting/latest/configuration/#http_config",
       "type": "object",
       "properties": {
         "authorization": {
           "description": "Authorization header configuration for the client. This is mutually exclusive with BasicAuth and is only available starting from Alertmanager v0.22+.",
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.SafeAuthorization"
+          "$ref": "#/definitions/com.coreos.monitoring.v1.SafeAuthorization"
         },
         "basicAuth": {
           "description": "BasicAuth for the client. This is mutually exclusive with Authorization. If both are defined, BasicAuth takes precedence.",
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.BasicAuth"
+          "$ref": "#/definitions/com.coreos.monitoring.v1.BasicAuth"
         },
         "bearerTokenSecret": {
           "description": "The secret's key that contains the bearer token to be used by the client for authentication. The secret needs to be in the same namespace as the AlertmanagerConfig object and accessible by the Prometheus Operator.",
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.SecretKeySelector"
+          "$ref": "#/definitions/com.coreos.monitoring.v1beta1.SecretKeySelector"
         },
         "followRedirects": {
           "description": "FollowRedirects specifies whether the client should follow HTTP 3xx redirects.",
@@ -4781,7 +4781,7 @@
         },
         "oauth2": {
           "description": "OAuth2 client credentials used to fetch a token for the targets.",
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.OAuth2"
+          "$ref": "#/definitions/com.coreos.monitoring.v1.OAuth2"
         },
         "proxyURL": {
           "description": "Optional proxy URL.",
@@ -4789,12 +4789,12 @@
         },
         "tlsConfig": {
           "description": "TLS configuration for the client.",
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.SafeTLSConfig"
+          "$ref": "#/definitions/com.coreos.monitoring.v1.SafeTLSConfig"
         }
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1beta1.InhibitRule": {
+    "com.coreos.monitoring.v1beta1.InhibitRule": {
       "description": "InhibitRule defines an inhibition rule that allows to mute alerts when other alerts are already firing. See https://prometheus.io/docs/alerting/latest/configuration/#inhibit_rule",
       "type": "object",
       "properties": {
@@ -4811,7 +4811,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.Matcher"
+            "$ref": "#/definitions/com.coreos.monitoring.v1beta1.Matcher"
           }
         },
         "targetMatch": {
@@ -4819,13 +4819,13 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.Matcher"
+            "$ref": "#/definitions/com.coreos.monitoring.v1beta1.Matcher"
           }
         }
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1beta1.KeyValue": {
+    "com.coreos.monitoring.v1beta1.KeyValue": {
       "description": "KeyValue defines a (key, value) tuple.",
       "type": "object",
       "required": [
@@ -4846,7 +4846,7 @@
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1beta1.Matcher": {
+    "com.coreos.monitoring.v1beta1.Matcher": {
       "description": "Matcher defines how to match on alert's labels.",
       "type": "object",
       "required": [
@@ -4870,7 +4870,7 @@
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1beta1.OpsGenieConfig": {
+    "com.coreos.monitoring.v1beta1.OpsGenieConfig": {
       "description": "OpsGenieConfig configures notifications via OpsGenie. See https://prometheus.io/docs/alerting/latest/configuration/#opsgenie_config",
       "type": "object",
       "properties": {
@@ -4880,7 +4880,7 @@
         },
         "apiKey": {
           "description": "The secret's key that contains the OpsGenie API key. The secret needs to be in the same namespace as the AlertmanagerConfig object and accessible by the Prometheus Operator.",
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.SecretKeySelector"
+          "$ref": "#/definitions/com.coreos.monitoring.v1beta1.SecretKeySelector"
         },
         "apiURL": {
           "description": "The URL to send OpsGenie API requests to.",
@@ -4895,7 +4895,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.KeyValue"
+            "$ref": "#/definitions/com.coreos.monitoring.v1beta1.KeyValue"
           }
         },
         "entity": {
@@ -4904,7 +4904,7 @@
         },
         "httpConfig": {
           "description": "HTTP client configuration.",
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.HTTPConfig"
+          "$ref": "#/definitions/com.coreos.monitoring.v1beta1.HTTPConfig"
         },
         "message": {
           "description": "Alert text limited to 130 characters.",
@@ -4923,7 +4923,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.OpsGenieConfigResponder"
+            "$ref": "#/definitions/com.coreos.monitoring.v1beta1.OpsGenieConfigResponder"
           }
         },
         "sendResolved": {
@@ -4941,7 +4941,7 @@
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1beta1.OpsGenieConfigResponder": {
+    "com.coreos.monitoring.v1beta1.OpsGenieConfigResponder": {
       "description": "OpsGenieConfigResponder defines a responder to an incident. One of `id`, `name` or `username` has to be defined.",
       "type": "object",
       "required": [
@@ -4968,7 +4968,7 @@
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1beta1.PagerDutyConfig": {
+    "com.coreos.monitoring.v1beta1.PagerDutyConfig": {
       "description": "PagerDutyConfig configures notifications via PagerDuty. See https://prometheus.io/docs/alerting/latest/configuration/#pagerduty_config",
       "type": "object",
       "properties": {
@@ -4997,7 +4997,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.KeyValue"
+            "$ref": "#/definitions/com.coreos.monitoring.v1beta1.KeyValue"
           }
         },
         "group": {
@@ -5006,14 +5006,14 @@
         },
         "httpConfig": {
           "description": "HTTP client configuration.",
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.HTTPConfig"
+          "$ref": "#/definitions/com.coreos.monitoring.v1beta1.HTTPConfig"
         },
         "pagerDutyImageConfigs": {
           "description": "A list of image details to attach that provide further detail about an incident.",
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.PagerDutyImageConfig"
+            "$ref": "#/definitions/com.coreos.monitoring.v1beta1.PagerDutyImageConfig"
           }
         },
         "pagerDutyLinkConfigs": {
@@ -5021,12 +5021,12 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.PagerDutyLinkConfig"
+            "$ref": "#/definitions/com.coreos.monitoring.v1beta1.PagerDutyLinkConfig"
           }
         },
         "routingKey": {
           "description": "The secret's key that contains the PagerDuty integration key (when using Events API v2). Either this field or `serviceKey` needs to be defined. The secret needs to be in the same namespace as the AlertmanagerConfig object and accessible by the Prometheus Operator.",
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.SecretKeySelector"
+          "$ref": "#/definitions/com.coreos.monitoring.v1beta1.SecretKeySelector"
         },
         "sendResolved": {
           "description": "Whether or not to notify about resolved alerts.",
@@ -5034,7 +5034,7 @@
         },
         "serviceKey": {
           "description": "The secret's key that contains the PagerDuty service key (when using integration type \"Prometheus\"). Either this field or `routingKey` needs to be defined. The secret needs to be in the same namespace as the AlertmanagerConfig object and accessible by the Prometheus Operator.",
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.SecretKeySelector"
+          "$ref": "#/definitions/com.coreos.monitoring.v1beta1.SecretKeySelector"
         },
         "severity": {
           "description": "Severity of the incident.",
@@ -5047,7 +5047,7 @@
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1beta1.PagerDutyImageConfig": {
+    "com.coreos.monitoring.v1beta1.PagerDutyImageConfig": {
       "description": "PagerDutyImageConfig attaches images to an incident",
       "type": "object",
       "properties": {
@@ -5066,7 +5066,7 @@
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1beta1.PagerDutyLinkConfig": {
+    "com.coreos.monitoring.v1beta1.PagerDutyLinkConfig": {
       "description": "PagerDutyLinkConfig attaches text links to an incident",
       "type": "object",
       "properties": {
@@ -5081,7 +5081,7 @@
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1beta1.PushoverConfig": {
+    "com.coreos.monitoring.v1beta1.PushoverConfig": {
       "description": "PushoverConfig configures notifications via Pushover. See https://prometheus.io/docs/alerting/latest/configuration/#pushover_config",
       "type": "object",
       "properties": {
@@ -5095,7 +5095,7 @@
         },
         "httpConfig": {
           "description": "HTTP client configuration.",
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.HTTPConfig"
+          "$ref": "#/definitions/com.coreos.monitoring.v1beta1.HTTPConfig"
         },
         "message": {
           "description": "Notification message.",
@@ -5123,7 +5123,7 @@
         },
         "token": {
           "description": "The secret's key that contains the registered application's API token, see https://pushover.net/apps. The secret needs to be in the same namespace as the AlertmanagerConfig object and accessible by the Prometheus Operator.",
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.SecretKeySelector"
+          "$ref": "#/definitions/com.coreos.monitoring.v1beta1.SecretKeySelector"
         },
         "url": {
           "description": "A supplementary URL shown alongside the message.",
@@ -5135,12 +5135,12 @@
         },
         "userKey": {
           "description": "The secret's key that contains the recipient user's user key. The secret needs to be in the same namespace as the AlertmanagerConfig object and accessible by the Prometheus Operator.",
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.SecretKeySelector"
+          "$ref": "#/definitions/com.coreos.monitoring.v1beta1.SecretKeySelector"
         }
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1beta1.Receiver": {
+    "com.coreos.monitoring.v1beta1.Receiver": {
       "description": "Receiver defines one or more notification integrations.",
       "type": "object",
       "required": [
@@ -5152,7 +5152,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.EmailConfig"
+            "$ref": "#/definitions/com.coreos.monitoring.v1beta1.EmailConfig"
           }
         },
         "name": {
@@ -5165,7 +5165,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.OpsGenieConfig"
+            "$ref": "#/definitions/com.coreos.monitoring.v1beta1.OpsGenieConfig"
           }
         },
         "pagerdutyConfigs": {
@@ -5173,7 +5173,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.PagerDutyConfig"
+            "$ref": "#/definitions/com.coreos.monitoring.v1beta1.PagerDutyConfig"
           }
         },
         "pushoverConfigs": {
@@ -5181,7 +5181,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.PushoverConfig"
+            "$ref": "#/definitions/com.coreos.monitoring.v1beta1.PushoverConfig"
           }
         },
         "slackConfigs": {
@@ -5189,7 +5189,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.SlackConfig"
+            "$ref": "#/definitions/com.coreos.monitoring.v1beta1.SlackConfig"
           }
         },
         "snsConfigs": {
@@ -5197,7 +5197,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.SNSConfig"
+            "$ref": "#/definitions/com.coreos.monitoring.v1beta1.SNSConfig"
           }
         },
         "telegramConfigs": {
@@ -5205,7 +5205,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.TelegramConfig"
+            "$ref": "#/definitions/com.coreos.monitoring.v1beta1.TelegramConfig"
           }
         },
         "victoropsConfigs": {
@@ -5213,7 +5213,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.VictorOpsConfig"
+            "$ref": "#/definitions/com.coreos.monitoring.v1beta1.VictorOpsConfig"
           }
         },
         "webhookConfigs": {
@@ -5221,7 +5221,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.WebhookConfig"
+            "$ref": "#/definitions/com.coreos.monitoring.v1beta1.WebhookConfig"
           }
         },
         "wechatConfigs": {
@@ -5229,13 +5229,13 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.WeChatConfig"
+            "$ref": "#/definitions/com.coreos.monitoring.v1beta1.WeChatConfig"
           }
         }
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1beta1.Route": {
+    "com.coreos.monitoring.v1beta1.Route": {
       "description": "Route defines a node in the routing tree.",
       "type": "object",
       "properties": {
@@ -5264,7 +5264,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.Matcher"
+            "$ref": "#/definitions/com.coreos.monitoring.v1beta1.Matcher"
           }
         },
         "muteTimeIntervals": {
@@ -5294,7 +5294,7 @@
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1beta1.SNSConfig": {
+    "com.coreos.monitoring.v1beta1.SNSConfig": {
       "description": "SNSConfig configures notifications via AWS SNS. See https://prometheus.io/docs/alerting/latest/configuration/#sns_configs",
       "type": "object",
       "properties": {
@@ -5312,7 +5312,7 @@
         },
         "httpConfig": {
           "description": "HTTP client configuration.",
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.HTTPConfig"
+          "$ref": "#/definitions/com.coreos.monitoring.v1beta1.HTTPConfig"
         },
         "message": {
           "description": "The message content of the SNS notification.",
@@ -5328,7 +5328,7 @@
         },
         "sigv4": {
           "description": "Configures AWS's Signature Verification 4 signing process to sign requests.",
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.Sigv4"
+          "$ref": "#/definitions/com.coreos.monitoring.v1.Sigv4"
         },
         "subject": {
           "description": "Subject line when the message is delivered to email endpoints.",
@@ -5345,7 +5345,7 @@
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1beta1.SecretKeySelector": {
+    "com.coreos.monitoring.v1beta1.SecretKeySelector": {
       "description": "SecretKeySelector selects a key of a Secret.",
       "type": "object",
       "required": [
@@ -5366,7 +5366,7 @@
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1beta1.SlackAction": {
+    "com.coreos.monitoring.v1beta1.SlackAction": {
       "description": "SlackAction configures a single Slack action that is sent with each notification. See https://api.slack.com/docs/message-attachments#action_fields and https://api.slack.com/docs/message-buttons for more information.",
       "type": "object",
       "required": [
@@ -5375,7 +5375,7 @@
       ],
       "properties": {
         "confirm": {
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.SlackConfirmationField"
+          "$ref": "#/definitions/com.coreos.monitoring.v1beta1.SlackConfirmationField"
         },
         "name": {
           "type": "string"
@@ -5400,7 +5400,7 @@
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1beta1.SlackConfig": {
+    "com.coreos.monitoring.v1beta1.SlackConfig": {
       "description": "SlackConfig configures notifications via Slack. See https://prometheus.io/docs/alerting/latest/configuration/#slack_config",
       "type": "object",
       "properties": {
@@ -5409,12 +5409,12 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.SlackAction"
+            "$ref": "#/definitions/com.coreos.monitoring.v1beta1.SlackAction"
           }
         },
         "apiURL": {
           "description": "The secret's key that contains the Slack webhook URL. The secret needs to be in the same namespace as the AlertmanagerConfig object and accessible by the Prometheus Operator.",
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.SecretKeySelector"
+          "$ref": "#/definitions/com.coreos.monitoring.v1beta1.SecretKeySelector"
         },
         "callbackId": {
           "type": "string"
@@ -5434,7 +5434,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.SlackField"
+            "$ref": "#/definitions/com.coreos.monitoring.v1beta1.SlackField"
           }
         },
         "footer": {
@@ -5442,7 +5442,7 @@
         },
         "httpConfig": {
           "description": "HTTP client configuration.",
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.HTTPConfig"
+          "$ref": "#/definitions/com.coreos.monitoring.v1beta1.HTTPConfig"
         },
         "iconEmoji": {
           "type": "string"
@@ -5491,7 +5491,7 @@
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1beta1.SlackConfirmationField": {
+    "com.coreos.monitoring.v1beta1.SlackConfirmationField": {
       "description": "SlackConfirmationField protect users from destructive actions or particularly distinguished decisions by asking them to confirm their button click one more time. See https://api.slack.com/docs/interactive-message-field-guide#confirmation_fields for more information.",
       "type": "object",
       "required": [
@@ -5514,7 +5514,7 @@
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1beta1.SlackField": {
+    "com.coreos.monitoring.v1beta1.SlackField": {
       "description": "SlackField configures a single Slack field that is sent with each notification. Each field must contain a title, value, and optionally, a boolean value to indicate if the field is short enough to be displayed next to other fields designated as short. See https://api.slack.com/docs/message-attachments#fields for more information.",
       "type": "object",
       "required": [
@@ -5536,7 +5536,7 @@
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1beta1.TelegramConfig": {
+    "com.coreos.monitoring.v1beta1.TelegramConfig": {
       "description": "TelegramConfig configures notifications via Telegram. See https://prometheus.io/docs/alerting/latest/configuration/#telegram_config",
       "type": "object",
       "properties": {
@@ -5546,7 +5546,7 @@
         },
         "botToken": {
           "description": "Telegram bot token The secret needs to be in the same namespace as the AlertmanagerConfig object and accessible by the Prometheus Operator.",
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.SecretKeySelector"
+          "$ref": "#/definitions/com.coreos.monitoring.v1beta1.SecretKeySelector"
         },
         "chatID": {
           "description": "The Telegram chat ID.",
@@ -5559,7 +5559,7 @@
         },
         "httpConfig": {
           "description": "HTTP client configuration.",
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.HTTPConfig"
+          "$ref": "#/definitions/com.coreos.monitoring.v1beta1.HTTPConfig"
         },
         "message": {
           "description": "Message template",
@@ -5576,7 +5576,7 @@
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1beta1.TimeInterval": {
+    "com.coreos.monitoring.v1beta1.TimeInterval": {
       "description": "TimeInterval specifies the periods in time when notifications will be muted or active.",
       "type": "object",
       "properties": {
@@ -5589,13 +5589,13 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.TimePeriod"
+            "$ref": "#/definitions/com.coreos.monitoring.v1beta1.TimePeriod"
           }
         }
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1beta1.TimePeriod": {
+    "com.coreos.monitoring.v1beta1.TimePeriod": {
       "description": "TimePeriod describes periods of time.",
       "type": "object",
       "properties": {
@@ -5604,7 +5604,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.DayOfMonthRange"
+            "$ref": "#/definitions/com.coreos.monitoring.v1beta1.DayOfMonthRange"
           }
         },
         "months": {
@@ -5620,7 +5620,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.TimeRange"
+            "$ref": "#/definitions/com.coreos.monitoring.v1beta1.TimeRange"
           }
         },
         "weekdays": {
@@ -5642,7 +5642,7 @@
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1beta1.TimeRange": {
+    "com.coreos.monitoring.v1beta1.TimeRange": {
       "description": "TimeRange defines a start and end time in 24hr format",
       "type": "object",
       "properties": {
@@ -5657,13 +5657,13 @@
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1beta1.VictorOpsConfig": {
+    "com.coreos.monitoring.v1beta1.VictorOpsConfig": {
       "description": "VictorOpsConfig configures notifications via VictorOps. See https://prometheus.io/docs/alerting/latest/configuration/#victorops_config",
       "type": "object",
       "properties": {
         "apiKey": {
           "description": "The secret's key that contains the API key to use when talking to the VictorOps API. The secret needs to be in the same namespace as the AlertmanagerConfig object and accessible by the Prometheus Operator.",
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.SecretKeySelector"
+          "$ref": "#/definitions/com.coreos.monitoring.v1beta1.SecretKeySelector"
         },
         "apiUrl": {
           "description": "The VictorOps API URL.",
@@ -5674,7 +5674,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.KeyValue"
+            "$ref": "#/definitions/com.coreos.monitoring.v1beta1.KeyValue"
           }
         },
         "entityDisplayName": {
@@ -5683,7 +5683,7 @@
         },
         "httpConfig": {
           "description": "The HTTP client's configuration.",
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.HTTPConfig"
+          "$ref": "#/definitions/com.coreos.monitoring.v1beta1.HTTPConfig"
         },
         "messageType": {
           "description": "Describes the behavior of the alert (CRITICAL, WARNING, INFO).",
@@ -5709,7 +5709,7 @@
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1beta1.WeChatConfig": {
+    "com.coreos.monitoring.v1beta1.WeChatConfig": {
       "description": "WeChatConfig configures notifications via WeChat. See https://prometheus.io/docs/alerting/latest/configuration/#wechat_config",
       "type": "object",
       "properties": {
@@ -5718,7 +5718,7 @@
         },
         "apiSecret": {
           "description": "The secret's key that contains the WeChat API key. The secret needs to be in the same namespace as the AlertmanagerConfig object and accessible by the Prometheus Operator.",
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.SecretKeySelector"
+          "$ref": "#/definitions/com.coreos.monitoring.v1beta1.SecretKeySelector"
         },
         "apiURL": {
           "description": "The WeChat API URL.",
@@ -5730,7 +5730,7 @@
         },
         "httpConfig": {
           "description": "HTTP client configuration.",
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.HTTPConfig"
+          "$ref": "#/definitions/com.coreos.monitoring.v1beta1.HTTPConfig"
         },
         "message": {
           "description": "API request data as defined by the WeChat API.",
@@ -5755,13 +5755,13 @@
       },
       "additionalProperties": false
     },
-    "com.coreos.monitoring.pkg.apis.monitoring.v1beta1.WebhookConfig": {
+    "com.coreos.monitoring.v1beta1.WebhookConfig": {
       "description": "WebhookConfig configures notifications via a generic receiver supporting the webhook payload. See https://prometheus.io/docs/alerting/latest/configuration/#webhook_config",
       "type": "object",
       "properties": {
         "httpConfig": {
           "description": "HTTP client configuration.",
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.HTTPConfig"
+          "$ref": "#/definitions/com.coreos.monitoring.v1beta1.HTTPConfig"
         },
         "maxAlerts": {
           "description": "Maximum number of alerts to be sent per webhook message. When 0, all alerts are included.",
@@ -5778,7 +5778,7 @@
         },
         "urlSecret": {
           "description": "The secret's key that contains the webhook URL to send HTTP requests to. `urlSecret` takes precedence over `url`. One of `urlSecret` and `url` should be defined. The secret needs to be in the same namespace as the AlertmanagerConfig object and accessible by the Prometheus Operator.",
-          "$ref": "#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.SecretKeySelector"
+          "$ref": "#/definitions/com.coreos.monitoring.v1beta1.SecretKeySelector"
         }
       },
       "additionalProperties": false

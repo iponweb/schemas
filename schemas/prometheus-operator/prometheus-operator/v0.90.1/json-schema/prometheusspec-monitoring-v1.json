@@ -18,7 +18,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.Argument"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.Argument"
       }
     },
     "additionalScrapeConfigs": {
@@ -31,7 +31,7 @@
     },
     "alerting": {
       "description": "alerting defines the settings related to Alertmanager.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.AlertingSpec"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.AlertingSpec"
     },
     "allowOverlappingBlocks": {
       "description": "allowOverlappingBlocks enables vertical compaction and vertical query merge in Prometheus.\n\nDeprecated: this flag has no effect for Prometheus >= 2.39.0 where overlapping blocks are enabled by default.",
@@ -42,12 +42,12 @@
     },
     "apiserverConfig": {
       "description": "apiserverConfig allows specifying a host and auth methods to access the Kuberntees API server. If null, Prometheus is assumed to run inside of the cluster: it will discover the API servers automatically and use the Pod's CA certificate and bearer token file at /var/run/secrets/kubernetes.io/serviceaccount/.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.APIServerConfig"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.APIServerConfig"
     },
     "arbitraryFSAccessThroughSMs": {
       "description": "arbitraryFSAccessThroughSMs when true, ServiceMonitor, PodMonitor and Probe object are forbidden to reference arbitrary files on the file system of the 'prometheus' container. When a ServiceMonitor's endpoint specifies a `bearerTokenFile` value (e.g.  '/var/run/secrets/kubernetes.io/serviceaccount/token'), a malicious target can get access to the Prometheus service account's token in the Prometheus' scrape request. Setting `spec.arbitraryFSAccessThroughSM` to 'true' would prevent the attack. Users should instead provide the credentials using the `spec.bearerTokenSecret` field.",
       "default": {},
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.ArbitraryFSAccessThroughSMsConfig"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.ArbitraryFSAccessThroughSMsConfig"
     },
     "automountServiceAccountToken": {
       "description": "automountServiceAccountToken defines whether a service account token should be automatically mounted in the pod. If the field isn't set, the operator mounts the service account token by default.\n\n**Warning:** be aware that by default, Prometheus requires the service account token for Kubernetes service discovery. It is possible to use strategic merge patch to project the service account token into the 'prometheus' container.",
@@ -111,7 +111,7 @@
     },
     "dnsConfig": {
       "description": "dnsConfig defines the DNS configuration for the pods.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.PodDNSConfig"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.PodDNSConfig"
     },
     "dnsPolicy": {
       "description": "dnsPolicy defines the DNS policy for the pods.",
@@ -239,12 +239,12 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.ObjectReference"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.ObjectReference"
       }
     },
     "exemplars": {
       "description": "exemplars related settings that are runtime reloadable. It requires to enable the `exemplar-storage` feature flag to be effective.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.Exemplars"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.Exemplars"
     },
     "externalLabels": {
       "description": "externalLabels defines the labels to add to any time series or alerts when communicating with external systems (federation, remote storage, Alertmanager). Labels defined by `spec.replicaExternalLabelName` and `spec.prometheusExternalLabelName` take precedence over this list.",
@@ -275,7 +275,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.HostAlias"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.HostAlias"
       },
       "x-kubernetes-list-map-keys": [
         "ip"
@@ -443,7 +443,7 @@
     },
     "otlp": {
       "description": "otlp defines the settings related to the OTLP receiver feature. It requires Prometheus >= v2.55.0.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.OTLPConfig"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.OTLPConfig"
     },
     "overrideHonorLabels": {
       "description": "overrideHonorLabels when true, Prometheus resolves label conflicts by renaming the labels in the scraped data\n to \u201cexported_\u201d for all targets created from ServiceMonitor, PodMonitor and\nScrapeConfig objects. Otherwise the HonorLabels field of the service or pod monitor applies. In practice,`OverrideHonorLabels:true` enforces `honorLabels:false` for all ServiceMonitor, PodMonitor and ScrapeConfig objects.",
@@ -479,7 +479,7 @@
     },
     "podMetadata": {
       "description": "podMetadata defines labels and annotations which are propagated to the Prometheus pods.\n\nThe following items are reserved and cannot be overridden: * \"prometheus\" label, set to the name of the Prometheus object. * \"app.kubernetes.io/instance\" label, set to the name of the Prometheus object. * \"app.kubernetes.io/managed-by\" label, set to \"prometheus-operator\". * \"app.kubernetes.io/name\" label, set to \"prometheus\". * \"app.kubernetes.io/version\" label, set to the Prometheus version. * \"operator.prometheus.io/name\" label, set to the name of the Prometheus object. * \"operator.prometheus.io/shard\" label, set to the shard number of the Prometheus object. * \"kubectl.kubernetes.io/default-container\" annotation, set to \"prometheus\".",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.EmbeddedObjectMetadata"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.EmbeddedObjectMetadata"
     },
     "podMonitorNamespaceSelector": {
       "description": "podMonitorNamespaceSelector defines the namespaces to match for PodMonitors discovery. An empty label selector matches all namespaces. A null label selector (default value) matches the current namespace only.",
@@ -540,12 +540,12 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.PrometheusRuleExcludeConfig"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.PrometheusRuleExcludeConfig"
       }
     },
     "query": {
       "description": "query defines the configuration of the Prometheus query service.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.QuerySpec"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.QuerySpec"
     },
     "queryLogFile": {
       "description": "queryLogFile specifies where the file to which PromQL queries are logged.\n\nIf the filename has an empty path, e.g. 'query.log', The Prometheus Pods will mount the file into an emptyDir volume at `/var/log/prometheus`. If a full path is provided, e.g. '/var/log/prometheus/query.log', you must mount a volume in the specified directory and it must be writable. This is because the prometheus container runs with a read-only root filesystem for security reasons. Alternatively, the location can be set to a standard I/O stream, e.g. `/dev/stdout`, to log query information to the default Prometheus log stream.",
@@ -569,7 +569,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.RemoteReadSpec"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.RemoteReadSpec"
       }
     },
     "remoteWrite": {
@@ -580,7 +580,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.RemoteWriteSpec"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.RemoteWriteSpec"
       }
     },
     "remoteWriteReceiverMessageVersions": {
@@ -656,11 +656,11 @@
     "rules": {
       "description": "rules defines the configuration of the Prometheus rules' engine.",
       "default": {},
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.Rules"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.Rules"
     },
     "runtime": {
       "description": "runtime defines the values for the Prometheus process behavior",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.RuntimeConfig"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.RuntimeConfig"
     },
     "sampleLimit": {
       "description": "sampleLimit defines per-scrape limit on number of scraped samples that will be accepted. Only valid in Prometheus versions 2.45.0 and newer.\n\nNote that the global limit only applies to scrape objects that don't specify an explicit limit value. If you want to enforce a maximum limit for all scrape objects, refer to enforcedSampleLimit.",
@@ -685,7 +685,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.ScrapeClass"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.ScrapeClass"
       },
       "x-kubernetes-list-map-keys": [
         "name"
@@ -806,7 +806,7 @@
     },
     "shardRetentionPolicy": {
       "description": "shardRetentionPolicy defines the retention policy for the Prometheus shards. (Alpha) Using this field requires the 'PrometheusShardRetentionPolicy' feature gate to be enabled.\n\nThe final goals for this feature can be seen at https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/proposals/202310-shard-autoscaling.md#graceful-scale-down-of-prometheus-servers, however, the feature is not yet fully implemented in this PR. The limitation being: * Retention duration is not settable, for now, shards are retained forever.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.ShardRetentionPolicy"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.ShardRetentionPolicy"
     },
     "shards": {
       "description": "shards defines the number of shards to distribute the scraped targets onto.\n\n`spec.replicas` multiplied by `spec.shards` is the total number of Pods being created.\n\nWhen not defined, the operator assumes only one shard.\n\nNote that scaling down shards will not reshard data onto the remaining instances, it must be manually moved. Increasing shards will not reshard data either but it will continue to be available from the same instances. To query globally, use either * Thanos sidecar + querier for query federation and Thanos Ruler for rules. * Remote-write to send metrics to a central location.\n\nBy default, the sharding of targets is performed on: * The `__address__` target's metadata label for PodMonitor, ServiceMonitor and ScrapeConfig resources. * The `__param_target__` label for Probe resources.\n\nUsers can define their own sharding implementation by setting the `__tmp_hash` label during the target discovery with relabeling configuration (either in the monitoring resources or via scrape class).\n\nYou can also disable sharding on a specific target by setting the `__tmp_disable_sharding` label with relabeling configuration. When the label value isn't empty, all Prometheus shards will scrape the target.",
@@ -818,7 +818,7 @@
     },
     "storage": {
       "description": "storage defines the storage used by Prometheus.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.StorageSpec"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.StorageSpec"
     },
     "tag": {
       "description": "tag is deprecated: use 'spec.image' instead. The image's tag can be specified as part of the image name.",
@@ -845,7 +845,7 @@
     },
     "thanos": {
       "description": "thanos defines the configuration of the optional Thanos sidecar.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.ThanosSpec"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.ThanosSpec"
     },
     "tolerations": {
       "description": "tolerations defines the Pods' tolerations if specified.",
@@ -866,20 +866,20 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.TopologySpreadConstraint"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.TopologySpreadConstraint"
       }
     },
     "tracingConfig": {
       "description": "tracingConfig defines tracing in Prometheus.\n\nThis is an *experimental feature*, it may change in any upcoming release in a breaking way.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.TracingConfig"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.TracingConfig"
     },
     "tsdb": {
       "description": "tsdb defines the runtime reloadable configuration of the timeseries database(TSDB). It requires Prometheus >= v2.39.0 or PrometheusAgent >= v2.54.0.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.TSDBSpec"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.TSDBSpec"
     },
     "updateStrategy": {
       "description": "updateStrategy indicates the strategy that will be employed to update Pods in the StatefulSet when a revision is made to statefulset's Pod Template.\n\nThe default strategy is RollingUpdate.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.StatefulSetUpdateStrategy"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.StatefulSetUpdateStrategy"
     },
     "version": {
       "description": "version of Prometheus being deployed. The operator uses this information to generate the Prometheus StatefulSet + configuration files.\n\nIf not specified, the operator assumes the latest upstream version of Prometheus available at the time when the version of the operator was released.",
@@ -919,7 +919,7 @@
     },
     "web": {
       "description": "web defines the configuration of the Prometheus web server.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.PrometheusWebSpec"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.PrometheusWebSpec"
     }
   },
   "additionalProperties": false,

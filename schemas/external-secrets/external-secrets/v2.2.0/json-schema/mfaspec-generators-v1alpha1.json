@@ -23,7 +23,7 @@
     "secret": {
       "description": "Secret is a secret selector to a secret containing the seed secret to generate the TOTP value from.",
       "default": {},
-      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.meta.v1.SecretKeySelector"
+      "$ref": "_definitions.json#/definitions/io.external-secrets.v1.SecretKeySelector"
     },
     "timePeriod": {
       "description": "TimePeriod defines how long the token can be active. Defaults to 30 seconds.",

@@ -6,11 +6,11 @@
   "properties": {
     "attachMetadata": {
       "description": "attachMetadata defines additional metadata to the discovered targets. When the scrape object defines its own configuration, it takes precedence over the scrape class configuration.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.AttachMetadata"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.AttachMetadata"
     },
     "authorization": {
       "description": "authorization section for the ScrapeClass. It will only apply if the scrape resource doesn't specify any Authorization.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.Authorization"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.Authorization"
     },
     "default": {
       "description": "default defines that the scrape applies to all scrape objects that don't configure an explicit scrape class name.\n\nOnly one scrape class can be set as the default.",
@@ -34,7 +34,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.RelabelConfig"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.RelabelConfig"
       }
     },
     "name": {
@@ -53,12 +53,12 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.RelabelConfig"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.RelabelConfig"
       }
     },
     "tlsConfig": {
       "description": "tlsConfig defines the TLS settings to use for the scrape. When the scrape objects define their own CA, certificate and/or key, they take precedence over the corresponding scrape class fields.\n\nFor now only the `caFile`, `certFile` and `keyFile` fields are supported.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.TLSConfig"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.TLSConfig"
     }
   },
   "additionalProperties": false,

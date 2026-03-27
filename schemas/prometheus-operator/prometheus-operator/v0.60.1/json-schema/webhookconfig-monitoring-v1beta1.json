@@ -4,7 +4,7 @@
   "properties": {
     "httpConfig": {
       "description": "HTTP client configuration.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.HTTPConfig"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1beta1.HTTPConfig"
     },
     "maxAlerts": {
       "description": "Maximum number of alerts to be sent per webhook message. When 0, all alerts are included.",
@@ -30,7 +30,7 @@
     },
     "urlSecret": {
       "description": "The secret's key that contains the webhook URL to send HTTP requests to. `urlSecret` takes precedence over `url`. One of `urlSecret` and `url` should be defined. The secret needs to be in the same namespace as the AlertmanagerConfig object and accessible by the Prometheus Operator.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.SecretKeySelector"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1beta1.SecretKeySelector"
     }
   },
   "additionalProperties": false,

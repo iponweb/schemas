@@ -11,7 +11,7 @@
     },
     "botToken": {
       "description": "Telegram bot token The secret needs to be in the same namespace as the AlertmanagerConfig object and accessible by the Prometheus Operator.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.SecretKeySelector"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1beta1.SecretKeySelector"
     },
     "chatID": {
       "description": "The Telegram chat ID.",
@@ -30,7 +30,7 @@
     },
     "httpConfig": {
       "description": "HTTP client configuration.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.HTTPConfig"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1beta1.HTTPConfig"
     },
     "message": {
       "description": "Message template",

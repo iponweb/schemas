@@ -4,11 +4,11 @@
   "properties": {
     "apiKeySecretRef": {
       "description": "API key to use to authenticate with Cloudflare. Note: using an API token to authenticate is now the recommended method as it allows greater control of permissions.",
-      "$ref": "_definitions.json#/definitions/io.cert-manager.pkg.apis.meta.v1.SecretKeySelector"
+      "$ref": "_definitions.json#/definitions/io.cert-manager.v1.SecretKeySelector"
     },
     "apiTokenSecretRef": {
       "description": "API token used to authenticate with Cloudflare.",
-      "$ref": "_definitions.json#/definitions/io.cert-manager.pkg.apis.meta.v1.SecretKeySelector"
+      "$ref": "_definitions.json#/definitions/io.cert-manager.v1.SecretKeySelector"
     },
     "email": {
       "description": "Email of the account, only required when using API key based authentication.",

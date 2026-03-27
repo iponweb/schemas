@@ -4,10 +4,10 @@
   "groupVersion": "mutations.gatekeeper.sh/v1beta1",
   "resources": [
     {
-      "name": "assign",
-      "singularName": "assign",
+      "name": "assignmetadata",
+      "singularName": "assignmetadata",
       "namespaced": false,
-      "kind": "Assign",
+      "kind": "AssignMetadata",
       "verbs": [
         "delete",
         "deletecollection",
@@ -18,13 +18,13 @@
         "update",
         "watch"
       ],
-      "storageVersionHash": "0zKAFLXWTw8="
+      "storageVersionHash": "h9Kp6KoBtC4="
     },
     {
-      "name": "assign/status",
+      "name": "assignmetadata/status",
       "singularName": "",
       "namespaced": false,
-      "kind": "Assign",
+      "kind": "AssignMetadata",
       "verbs": [
         "get",
         "patch",
@@ -60,10 +60,10 @@
       ]
     },
     {
-      "name": "assignmetadata",
-      "singularName": "assignmetadata",
+      "name": "assign",
+      "singularName": "assign",
       "namespaced": false,
-      "kind": "AssignMetadata",
+      "kind": "Assign",
       "verbs": [
         "delete",
         "deletecollection",
@@ -74,13 +74,13 @@
         "update",
         "watch"
       ],
-      "storageVersionHash": "h9Kp6KoBtC4="
+      "storageVersionHash": "0zKAFLXWTw8="
     },
     {
-      "name": "assignmetadata/status",
+      "name": "assign/status",
       "singularName": "",
       "namespaced": false,
-      "kind": "AssignMetadata",
+      "kind": "Assign",
       "verbs": [
         "get",
         "patch",

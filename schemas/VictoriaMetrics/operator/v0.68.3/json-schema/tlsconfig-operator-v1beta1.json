@@ -5,7 +5,7 @@
     "ca": {
       "description": "Struct containing the CA cert to use for the targets.",
       "default": {},
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.SecretOrConfigMap"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.SecretOrConfigMap"
     },
     "caFile": {
       "description": "Path to the CA cert in the container to use for the targets.",
@@ -17,7 +17,7 @@
     "cert": {
       "description": "Struct containing the client cert file for the targets.",
       "default": {},
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.SecretOrConfigMap"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.SecretOrConfigMap"
     },
     "certFile": {
       "description": "Path to the client cert file in the container for the targets.",

@@ -10,7 +10,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.SlackAction"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.SlackAction"
       }
     },
     "apiURL": {
@@ -50,7 +50,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.SlackField"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.SlackField"
       }
     },
     "footer": {
@@ -61,7 +61,7 @@
     },
     "httpConfig": {
       "description": "HTTP client configuration.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.HTTPConfig"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.HTTPConfig"
     },
     "iconEmoji": {
       "type": [

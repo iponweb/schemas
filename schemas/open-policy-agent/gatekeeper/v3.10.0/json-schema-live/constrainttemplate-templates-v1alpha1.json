@@ -1,0 +1,178 @@
+{
+  "description": "ConstraintTemplate is the Schema for the constrainttemplates API",
+  "type": "object",
+  "properties": {
+    "apiVersion": {
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "templates.gatekeeper.sh/v1alpha1"
+      ]
+    },
+    "kind": {
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "ConstraintTemplate"
+      ]
+    },
+    "metadata": {
+      "description": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+    },
+    "spec": {
+      "description": "ConstraintTemplateSpec defines the desired state of ConstraintTemplate.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "crd": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "spec": {
+              "type": [
+                "object",
+                "null"
+              ],
+              "properties": {
+                "names": {
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "properties": {
+                    "kind": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "shortNames": {
+                      "type": [
+                        "array",
+                        "null"
+                      ],
+                      "items": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "validation": {
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "properties": {
+                    "legacySchema": {
+                      "type": [
+                        "boolean",
+                        "null"
+                      ]
+                    },
+                    "openAPIV3Schema": {
+                      "x-kubernetes-preserve-unknown-fields": true
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "additionalProperties": false
+        },
+        "targets": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "libs": {
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "rego": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "target": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "status": {
+      "description": "ConstraintTemplateStatus defines the observed state of ConstraintTemplate.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "byPod": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "description": "ByPodStatus defines the observed state of ConstraintTemplate as seen by an individual controller",
+            "x-kubernetes-preserve-unknown-fields": true
+          }
+        },
+        "created": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "templates.gatekeeper.sh",
+      "kind": "ConstraintTemplate",
+      "version": "v1alpha1"
+    }
+  ],
+  "x-kubernetes-selectable-fields": [],
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

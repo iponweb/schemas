@@ -23,7 +23,7 @@
     "status": {
       "description": "No spec field is defined here, as this is a status-only resource.",
       "default": {},
-      "$ref": "_definitions.json#/definitions/sh.gatekeeper.apis.status.v1beta1.ProviderPodStatusStatus"
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.status.v1beta1.ProviderPodStatusStatus"
     }
   },
   "additionalProperties": false,

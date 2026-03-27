@@ -514,7 +514,7 @@
       "type": "string",
       "format": "date-time"
     },
-    "sh.gatekeeper.apis.config.v1alpha1.Config": {
+    "sh.gatekeeper.config.v1alpha1.Config": {
       "description": "Config is the Schema for the configs API.",
       "type": "object",
       "properties": {
@@ -532,15 +532,15 @@
         },
         "spec": {
           "default": {},
-          "$ref": "#/definitions/sh.gatekeeper.apis.config.v1alpha1.ConfigSpec"
+          "$ref": "#/definitions/sh.gatekeeper.config.v1alpha1.ConfigSpec"
         },
         "status": {
           "default": {},
-          "$ref": "#/definitions/sh.gatekeeper.apis.config.v1alpha1.ConfigStatus"
+          "$ref": "#/definitions/sh.gatekeeper.config.v1alpha1.ConfigStatus"
         }
       }
     },
-    "sh.gatekeeper.apis.config.v1alpha1.ConfigSpec": {
+    "sh.gatekeeper.config.v1alpha1.ConfigSpec": {
       "description": "ConfigSpec defines the desired state of Config.",
       "type": "object",
       "properties": {
@@ -549,27 +549,27 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/sh.gatekeeper.apis.config.v1alpha1.MatchEntry"
+            "$ref": "#/definitions/sh.gatekeeper.config.v1alpha1.MatchEntry"
           }
         },
         "readiness": {
           "description": "Configuration for readiness tracker",
           "default": {},
-          "$ref": "#/definitions/sh.gatekeeper.apis.config.v1alpha1.ReadinessSpec"
+          "$ref": "#/definitions/sh.gatekeeper.config.v1alpha1.ReadinessSpec"
         },
         "sync": {
           "description": "Configuration for syncing k8s objects",
           "default": {},
-          "$ref": "#/definitions/sh.gatekeeper.apis.config.v1alpha1.Sync"
+          "$ref": "#/definitions/sh.gatekeeper.config.v1alpha1.Sync"
         },
         "validation": {
           "description": "Configuration for validation",
           "default": {},
-          "$ref": "#/definitions/sh.gatekeeper.apis.config.v1alpha1.Validation"
+          "$ref": "#/definitions/sh.gatekeeper.config.v1alpha1.Validation"
         }
       }
     },
-    "sh.gatekeeper.apis.config.v1alpha1.ConfigStatus": {
+    "sh.gatekeeper.config.v1alpha1.ConfigStatus": {
       "description": "ConfigStatus defines the observed state of Config.",
       "type": "object",
       "properties": {
@@ -578,12 +578,12 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/sh.gatekeeper.apis.status.v1beta1.ConfigPodStatusStatus"
+            "$ref": "#/definitions/sh.gatekeeper.status.v1beta1.ConfigPodStatusStatus"
           }
         }
       }
     },
-    "sh.gatekeeper.apis.config.v1alpha1.GVK": {
+    "sh.gatekeeper.config.v1alpha1.GVK": {
       "type": "object",
       "properties": {
         "group": {
@@ -597,7 +597,7 @@
         }
       }
     },
-    "sh.gatekeeper.apis.config.v1alpha1.MatchEntry": {
+    "sh.gatekeeper.config.v1alpha1.MatchEntry": {
       "type": "object",
       "properties": {
         "excludedNamespaces": {
@@ -616,7 +616,7 @@
         }
       }
     },
-    "sh.gatekeeper.apis.config.v1alpha1.ReadinessSpec": {
+    "sh.gatekeeper.config.v1alpha1.ReadinessSpec": {
       "type": "object",
       "properties": {
         "statsEnabled": {
@@ -624,7 +624,7 @@
         }
       }
     },
-    "sh.gatekeeper.apis.config.v1alpha1.Sync": {
+    "sh.gatekeeper.config.v1alpha1.Sync": {
       "type": "object",
       "properties": {
         "syncOnly": {
@@ -632,12 +632,12 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/sh.gatekeeper.apis.config.v1alpha1.SyncOnlyEntry"
+            "$ref": "#/definitions/sh.gatekeeper.config.v1alpha1.SyncOnlyEntry"
           }
         }
       }
     },
-    "sh.gatekeeper.apis.config.v1alpha1.SyncOnlyEntry": {
+    "sh.gatekeeper.config.v1alpha1.SyncOnlyEntry": {
       "type": "object",
       "properties": {
         "group": {
@@ -651,7 +651,7 @@
         }
       }
     },
-    "sh.gatekeeper.apis.config.v1alpha1.Trace": {
+    "sh.gatekeeper.config.v1alpha1.Trace": {
       "type": "object",
       "properties": {
         "dump": {
@@ -661,7 +661,7 @@
         "kind": {
           "description": "Only trace requests of the following GroupVersionKind",
           "default": {},
-          "$ref": "#/definitions/sh.gatekeeper.apis.config.v1alpha1.GVK"
+          "$ref": "#/definitions/sh.gatekeeper.config.v1alpha1.GVK"
         },
         "user": {
           "description": "Only trace requests from the specified user",
@@ -669,7 +669,7 @@
         }
       }
     },
-    "sh.gatekeeper.apis.config.v1alpha1.Validation": {
+    "sh.gatekeeper.config.v1alpha1.Validation": {
       "type": "object",
       "properties": {
         "traces": {
@@ -677,12 +677,12 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/sh.gatekeeper.apis.config.v1alpha1.Trace"
+            "$ref": "#/definitions/sh.gatekeeper.config.v1alpha1.Trace"
           }
         }
       }
     },
-    "sh.gatekeeper.apis.connection.v1alpha1.Connection": {
+    "sh.gatekeeper.connection.v1alpha1.Connection": {
       "description": "Connection is the Schema for the connections API.",
       "type": "object",
       "properties": {
@@ -700,15 +700,15 @@
         },
         "spec": {
           "default": {},
-          "$ref": "#/definitions/sh.gatekeeper.apis.connection.v1alpha1.ConnectionSpec"
+          "$ref": "#/definitions/sh.gatekeeper.connection.v1alpha1.ConnectionSpec"
         },
         "status": {
           "default": {},
-          "$ref": "#/definitions/sh.gatekeeper.apis.connection.v1alpha1.ConnectionStatus"
+          "$ref": "#/definitions/sh.gatekeeper.connection.v1alpha1.ConnectionStatus"
         }
       }
     },
-    "sh.gatekeeper.apis.connection.v1alpha1.ConnectionSpec": {
+    "sh.gatekeeper.connection.v1alpha1.ConnectionSpec": {
       "description": "ConnectionSpec defines the desired state of Connection.",
       "type": "object",
       "required": [
@@ -717,7 +717,7 @@
       ],
       "properties": {
         "config": {
-          "$ref": "#/definitions/sh.gatekeeper.pkg.mutation.types.Anything"
+          "$ref": "#/definitions/sh.gatekeeper.types.Anything"
         },
         "driver": {
           "description": "Driver is the name of one of the expected drivers i.e. dapr, disk",
@@ -726,7 +726,7 @@
         }
       }
     },
-    "sh.gatekeeper.apis.connection.v1alpha1.ConnectionStatus": {
+    "sh.gatekeeper.connection.v1alpha1.ConnectionStatus": {
       "description": "ConnectionStatus defines the observed state of Connection.",
       "type": "object",
       "properties": {
@@ -734,12 +734,12 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/sh.gatekeeper.apis.status.v1alpha1.ConnectionPodStatusStatus"
+            "$ref": "#/definitions/sh.gatekeeper.status.v1alpha1.ConnectionPodStatusStatus"
           }
         }
       }
     },
-    "sh.gatekeeper.apis.expansion.v1alpha1.ExpansionTemplate": {
+    "sh.gatekeeper.expansion.v1alpha1.ExpansionTemplate": {
       "description": "ExpansionTemplate is the Schema for the ExpansionTemplate API.",
       "type": "object",
       "properties": {
@@ -757,15 +757,15 @@
         },
         "spec": {
           "default": {},
-          "$ref": "#/definitions/sh.gatekeeper.apis.expansion.v1alpha1.ExpansionTemplateSpec"
+          "$ref": "#/definitions/sh.gatekeeper.expansion.v1alpha1.ExpansionTemplateSpec"
         },
         "status": {
           "default": {},
-          "$ref": "#/definitions/sh.gatekeeper.apis.expansion.v1alpha1.ExpansionTemplateStatus"
+          "$ref": "#/definitions/sh.gatekeeper.expansion.v1alpha1.ExpansionTemplateStatus"
         }
       }
     },
-    "sh.gatekeeper.apis.expansion.v1alpha1.ExpansionTemplateSpec": {
+    "sh.gatekeeper.expansion.v1alpha1.ExpansionTemplateSpec": {
       "description": "ExpansionTemplateSpec defines the desired state of ExpansionTemplate.",
       "type": "object",
       "properties": {
@@ -774,7 +774,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/sh.gatekeeper.pkg.mutation.match.ApplyTo"
+            "$ref": "#/definitions/sh.gatekeeper.match.ApplyTo"
           }
         },
         "enforcementAction": {
@@ -784,7 +784,7 @@
         "generatedGVK": {
           "description": "GeneratedGVK specifies the GVK of the resources which the generator resource creates.",
           "default": {},
-          "$ref": "#/definitions/sh.gatekeeper.apis.expansion.v1alpha1.GeneratedGVK"
+          "$ref": "#/definitions/sh.gatekeeper.expansion.v1alpha1.GeneratedGVK"
         },
         "templateSource": {
           "description": "TemplateSource specifies the source field on the generator resource to use as the base for expanded resource. For Pod-creating generators, this is usually spec.template",
@@ -792,7 +792,7 @@
         }
       }
     },
-    "sh.gatekeeper.apis.expansion.v1alpha1.ExpansionTemplateStatus": {
+    "sh.gatekeeper.expansion.v1alpha1.ExpansionTemplateStatus": {
       "description": "ExpansionTemplateStatus defines the observed state of ExpansionTemplate.",
       "type": "object",
       "properties": {
@@ -800,12 +800,12 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/sh.gatekeeper.apis.status.v1beta1.ExpansionTemplatePodStatusStatus"
+            "$ref": "#/definitions/sh.gatekeeper.status.v1beta1.ExpansionTemplatePodStatusStatus"
           }
         }
       }
     },
-    "sh.gatekeeper.apis.expansion.v1alpha1.GeneratedGVK": {
+    "sh.gatekeeper.expansion.v1alpha1.GeneratedGVK": {
       "type": "object",
       "properties": {
         "group": {
@@ -819,7 +819,7 @@
         }
       }
     },
-    "sh.gatekeeper.apis.expansion.v1beta1.ExpansionTemplate": {
+    "sh.gatekeeper.expansion.v1beta1.ExpansionTemplate": {
       "description": "ExpansionTemplate is the Schema for the ExpansionTemplate API.",
       "type": "object",
       "properties": {
@@ -837,15 +837,15 @@
         },
         "spec": {
           "default": {},
-          "$ref": "#/definitions/sh.gatekeeper.apis.expansion.v1beta1.ExpansionTemplateSpec"
+          "$ref": "#/definitions/sh.gatekeeper.expansion.v1beta1.ExpansionTemplateSpec"
         },
         "status": {
           "default": {},
-          "$ref": "#/definitions/sh.gatekeeper.apis.expansion.v1beta1.ExpansionTemplateStatus"
+          "$ref": "#/definitions/sh.gatekeeper.expansion.v1beta1.ExpansionTemplateStatus"
         }
       }
     },
-    "sh.gatekeeper.apis.expansion.v1beta1.ExpansionTemplateSpec": {
+    "sh.gatekeeper.expansion.v1beta1.ExpansionTemplateSpec": {
       "description": "ExpansionTemplateSpec defines the desired state of ExpansionTemplate.",
       "type": "object",
       "properties": {
@@ -854,7 +854,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/sh.gatekeeper.pkg.mutation.match.ApplyTo"
+            "$ref": "#/definitions/sh.gatekeeper.match.ApplyTo"
           }
         },
         "enforcementAction": {
@@ -864,7 +864,7 @@
         "generatedGVK": {
           "description": "GeneratedGVK specifies the GVK of the resources which the generator resource creates.",
           "default": {},
-          "$ref": "#/definitions/sh.gatekeeper.apis.expansion.v1beta1.GeneratedGVK"
+          "$ref": "#/definitions/sh.gatekeeper.expansion.v1beta1.GeneratedGVK"
         },
         "templateSource": {
           "description": "TemplateSource specifies the source field on the generator resource to use as the base for expanded resource. For Pod-creating generators, this is usually spec.template",
@@ -872,7 +872,7 @@
         }
       }
     },
-    "sh.gatekeeper.apis.expansion.v1beta1.ExpansionTemplateStatus": {
+    "sh.gatekeeper.expansion.v1beta1.ExpansionTemplateStatus": {
       "description": "ExpansionTemplateStatus defines the observed state of ExpansionTemplate.",
       "type": "object",
       "properties": {
@@ -880,12 +880,12 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/sh.gatekeeper.apis.status.v1beta1.ExpansionTemplatePodStatusStatus"
+            "$ref": "#/definitions/sh.gatekeeper.status.v1beta1.ExpansionTemplatePodStatusStatus"
           }
         }
       }
     },
-    "sh.gatekeeper.apis.expansion.v1beta1.GeneratedGVK": {
+    "sh.gatekeeper.expansion.v1beta1.GeneratedGVK": {
       "type": "object",
       "properties": {
         "group": {
@@ -899,1586 +899,7 @@
         }
       }
     },
-    "sh.gatekeeper.apis.mutations.v1.Assign": {
-      "description": "Assign is the Schema for the assign API.",
-      "type": "object",
-      "properties": {
-        "apiVersion": {
-          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
-          "type": "string"
-        },
-        "kind": {
-          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
-          "type": "string"
-        },
-        "metadata": {
-          "default": {},
-          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
-        },
-        "spec": {
-          "default": {},
-          "$ref": "#/definitions/sh.gatekeeper.apis.mutations.v1.AssignSpec"
-        },
-        "status": {
-          "default": {},
-          "$ref": "#/definitions/sh.gatekeeper.apis.mutations.v1.AssignStatus"
-        }
-      }
-    },
-    "sh.gatekeeper.apis.mutations.v1.AssignField": {
-      "type": "object",
-      "properties": {
-        "externalData": {
-          "description": "ExternalData describes the external data provider to be used for mutation.",
-          "$ref": "#/definitions/sh.gatekeeper.apis.mutations.v1.ExternalData"
-        },
-        "fromMetadata": {
-          "description": "FromMetadata assigns a value from the specified metadata field.",
-          "$ref": "#/definitions/sh.gatekeeper.apis.mutations.v1.FromMetadata"
-        },
-        "value": {
-          "description": "Value is a constant value that will be assigned to `location`",
-          "$ref": "#/definitions/sh.gatekeeper.pkg.mutation.types.Anything"
-        }
-      }
-    },
-    "sh.gatekeeper.apis.mutations.v1.AssignMetadata": {
-      "description": "AssignMetadata is the Schema for the assignmetadata API.",
-      "type": "object",
-      "properties": {
-        "apiVersion": {
-          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
-          "type": "string"
-        },
-        "kind": {
-          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
-          "type": "string"
-        },
-        "metadata": {
-          "default": {},
-          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
-        },
-        "spec": {
-          "default": {},
-          "$ref": "#/definitions/sh.gatekeeper.apis.mutations.v1.AssignMetadataSpec"
-        },
-        "status": {
-          "default": {},
-          "$ref": "#/definitions/sh.gatekeeper.apis.mutations.v1.AssignMetadataStatus"
-        }
-      }
-    },
-    "sh.gatekeeper.apis.mutations.v1.AssignMetadataSpec": {
-      "description": "AssignMetadataSpec defines the desired state of AssignMetadata.",
-      "type": "object",
-      "properties": {
-        "location": {
-          "type": "string"
-        },
-        "match": {
-          "default": {},
-          "$ref": "#/definitions/sh.gatekeeper.pkg.mutation.match.Match"
-        },
-        "parameters": {
-          "default": {},
-          "$ref": "#/definitions/sh.gatekeeper.apis.mutations.v1.MetadataParameters"
-        }
-      }
-    },
-    "sh.gatekeeper.apis.mutations.v1.AssignMetadataStatus": {
-      "description": "AssignMetadataStatus defines the observed state of AssignMetadata.",
-      "type": "object",
-      "properties": {
-        "byPod": {
-          "description": "INSERT ADDITIONAL STATUS FIELD - define observed state of cluster Important: Run \"make\" to regenerate code after modifying this file",
-          "type": "array",
-          "items": {
-            "default": {},
-            "$ref": "#/definitions/sh.gatekeeper.apis.status.v1beta1.MutatorPodStatusStatus"
-          }
-        }
-      }
-    },
-    "sh.gatekeeper.apis.mutations.v1.AssignSpec": {
-      "description": "AssignSpec defines the desired state of Assign.",
-      "type": "object",
-      "properties": {
-        "applyTo": {
-          "description": "ApplyTo lists the specific groups, versions and kinds a mutation will be applied to. This is necessary because every mutation implies part of an object schema and object schemas are associated with specific GVKs.",
-          "type": "array",
-          "items": {
-            "default": {},
-            "$ref": "#/definitions/sh.gatekeeper.pkg.mutation.match.ApplyTo"
-          }
-        },
-        "location": {
-          "description": "Location describes the path to be mutated, for example: `spec.containers[name: main]`.",
-          "type": "string"
-        },
-        "match": {
-          "description": "Match allows the user to limit which resources get mutated. Individual match criteria are AND-ed together. An undefined match criteria matches everything.",
-          "default": {},
-          "$ref": "#/definitions/sh.gatekeeper.pkg.mutation.match.Match"
-        },
-        "parameters": {
-          "description": "Parameters define the behavior of the mutator.",
-          "default": {},
-          "$ref": "#/definitions/sh.gatekeeper.apis.mutations.v1.Parameters"
-        }
-      }
-    },
-    "sh.gatekeeper.apis.mutations.v1.AssignStatus": {
-      "description": "AssignStatus defines the observed state of Assign.",
-      "type": "object",
-      "properties": {
-        "byPod": {
-          "type": "array",
-          "items": {
-            "default": {},
-            "$ref": "#/definitions/sh.gatekeeper.apis.status.v1beta1.MutatorPodStatusStatus"
-          }
-        }
-      }
-    },
-    "sh.gatekeeper.apis.mutations.v1.ExternalData": {
-      "description": "ExternalData describes the external data source to use for the mutation.",
-      "type": "object",
-      "properties": {
-        "dataSource": {
-          "description": "DataSource specifies where to extract the data that will be sent to the external data provider as parameters.",
-          "type": "string"
-        },
-        "default": {
-          "description": "Default specifies the default value to use when the external data provider returns an error and the failure policy is set to \"UseDefault\".",
-          "type": "string"
-        },
-        "failurePolicy": {
-          "description": "FailurePolicy specifies the policy to apply when the external data provider returns an error.",
-          "type": "string"
-        },
-        "provider": {
-          "description": "Provider is the name of the external data provider.",
-          "type": "string"
-        }
-      }
-    },
-    "sh.gatekeeper.apis.mutations.v1.FromMetadata": {
-      "type": "object",
-      "properties": {
-        "field": {
-          "description": "Field specifies which metadata field provides the assigned value. Valid fields are `namespace` and `name`.",
-          "type": "string"
-        }
-      }
-    },
-    "sh.gatekeeper.apis.mutations.v1.MetadataParameters": {
-      "type": "object",
-      "properties": {
-        "assign": {
-          "description": "Assign.value holds the value to be assigned",
-          "default": {},
-          "$ref": "#/definitions/sh.gatekeeper.apis.mutations.v1.AssignField"
-        }
-      }
-    },
-    "sh.gatekeeper.apis.mutations.v1.ModifySet": {
-      "description": "ModifySet allows the user to modify non-keyed lists, such as the list of arguments to a container.",
-      "type": "object",
-      "properties": {
-        "apiVersion": {
-          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
-          "type": "string"
-        },
-        "kind": {
-          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
-          "type": "string"
-        },
-        "metadata": {
-          "default": {},
-          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
-        },
-        "spec": {
-          "default": {},
-          "$ref": "#/definitions/sh.gatekeeper.apis.mutations.v1.ModifySetSpec"
-        },
-        "status": {
-          "default": {},
-          "$ref": "#/definitions/sh.gatekeeper.apis.mutations.v1.ModifySetStatus"
-        }
-      }
-    },
-    "sh.gatekeeper.apis.mutations.v1.ModifySetParameters": {
-      "type": "object",
-      "properties": {
-        "operation": {
-          "description": "Operation describes whether values should be merged in (\"merge\"), or pruned (\"prune\"). Default value is \"merge\"",
-          "type": "string"
-        },
-        "pathTests": {
-          "description": "PathTests are a series of existence tests that can be checked before a mutation is applied",
-          "type": "array",
-          "items": {
-            "default": {},
-            "$ref": "#/definitions/sh.gatekeeper.apis.mutations.v1.PathTest"
-          }
-        },
-        "values": {
-          "description": "Values describes the values provided to the operation as `values.fromList`.",
-          "default": {},
-          "$ref": "#/definitions/sh.gatekeeper.apis.mutations.v1.Values"
-        }
-      }
-    },
-    "sh.gatekeeper.apis.mutations.v1.ModifySetSpec": {
-      "description": "ModifySetSpec defines the desired state of ModifySet.",
-      "type": "object",
-      "properties": {
-        "applyTo": {
-          "description": "ApplyTo lists the specific groups, versions and kinds a mutation will be applied to. This is necessary because every mutation implies part of an object schema and object schemas are associated with specific GVKs.",
-          "type": "array",
-          "items": {
-            "default": {},
-            "$ref": "#/definitions/sh.gatekeeper.pkg.mutation.match.ApplyTo"
-          }
-        },
-        "location": {
-          "description": "Location describes the path to be mutated, for example: `spec.containers[name: main].args`.",
-          "type": "string"
-        },
-        "match": {
-          "description": "Match allows the user to limit which resources get mutated. Individual match criteria are AND-ed together. An undefined match criteria matches everything.",
-          "default": {},
-          "$ref": "#/definitions/sh.gatekeeper.pkg.mutation.match.Match"
-        },
-        "parameters": {
-          "description": "Parameters define the behavior of the mutator.",
-          "default": {},
-          "$ref": "#/definitions/sh.gatekeeper.apis.mutations.v1.ModifySetParameters"
-        }
-      }
-    },
-    "sh.gatekeeper.apis.mutations.v1.ModifySetStatus": {
-      "description": "ModifySetStatus defines the observed state of ModifySet.",
-      "type": "object",
-      "properties": {
-        "byPod": {
-          "type": "array",
-          "items": {
-            "default": {},
-            "$ref": "#/definitions/sh.gatekeeper.apis.status.v1beta1.MutatorPodStatusStatus"
-          }
-        }
-      }
-    },
-    "sh.gatekeeper.apis.mutations.v1.Parameters": {
-      "type": "object",
-      "properties": {
-        "assign": {
-          "description": "Assign.value holds the value to be assigned",
-          "default": {},
-          "$ref": "#/definitions/sh.gatekeeper.apis.mutations.v1.AssignField"
-        },
-        "pathTests": {
-          "type": "array",
-          "items": {
-            "default": {},
-            "$ref": "#/definitions/sh.gatekeeper.apis.mutations.v1.PathTest"
-          }
-        }
-      }
-    },
-    "sh.gatekeeper.apis.mutations.v1.PathTest": {
-      "description": "PathTest allows the user to customize how the mutation works if parent paths are missing. It traverses the list in order. All sub paths are tested against the provided condition, if the test fails, the mutation is not applied. All `subPath` entries must be a prefix of `location`. Any glob characters will take on the same value as was used to expand the matching glob in `location`.\n\nAvailable Tests: * MustExist    - the path must exist or do not mutate * MustNotExist - the path must not exist or do not mutate.",
-      "type": "object",
-      "properties": {
-        "condition": {
-          "type": "string"
-        },
-        "subPath": {
-          "type": "string"
-        }
-      }
-    },
-    "sh.gatekeeper.apis.mutations.v1.Values": {
-      "description": "Values describes the values provided to the operation.",
-      "type": "object",
-      "properties": {
-        "fromList": {
-          "type": "array",
-          "items": {
-            "type": "object"
-          }
-        }
-      }
-    },
-    "sh.gatekeeper.apis.mutations.v1alpha1.Assign": {
-      "description": "Assign is the Schema for the assign API.",
-      "type": "object",
-      "properties": {
-        "apiVersion": {
-          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
-          "type": "string"
-        },
-        "kind": {
-          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
-          "type": "string"
-        },
-        "metadata": {
-          "default": {},
-          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
-        },
-        "spec": {
-          "default": {},
-          "$ref": "#/definitions/sh.gatekeeper.apis.mutations.v1alpha1.AssignSpec"
-        },
-        "status": {
-          "default": {},
-          "$ref": "#/definitions/sh.gatekeeper.apis.mutations.v1alpha1.AssignStatus"
-        }
-      }
-    },
-    "sh.gatekeeper.apis.mutations.v1alpha1.AssignField": {
-      "type": "object",
-      "properties": {
-        "externalData": {
-          "description": "ExternalData describes the external data provider to be used for mutation.",
-          "$ref": "#/definitions/sh.gatekeeper.apis.mutations.v1alpha1.ExternalData"
-        },
-        "fromMetadata": {
-          "description": "FromMetadata assigns a value from the specified metadata field.",
-          "$ref": "#/definitions/sh.gatekeeper.apis.mutations.v1alpha1.FromMetadata"
-        },
-        "value": {
-          "description": "Value is a constant value that will be assigned to `location`",
-          "$ref": "#/definitions/sh.gatekeeper.pkg.mutation.types.Anything"
-        }
-      }
-    },
-    "sh.gatekeeper.apis.mutations.v1alpha1.AssignImage": {
-      "description": "AssignImage is the Schema for the assignimage API.",
-      "type": "object",
-      "properties": {
-        "apiVersion": {
-          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
-          "type": "string"
-        },
-        "kind": {
-          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
-          "type": "string"
-        },
-        "metadata": {
-          "default": {},
-          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
-        },
-        "spec": {
-          "default": {},
-          "$ref": "#/definitions/sh.gatekeeper.apis.mutations.v1alpha1.AssignImageSpec"
-        },
-        "status": {
-          "default": {},
-          "$ref": "#/definitions/sh.gatekeeper.apis.mutations.v1alpha1.AssignImageStatus"
-        }
-      }
-    },
-    "sh.gatekeeper.apis.mutations.v1alpha1.AssignImageParameters": {
-      "type": "object",
-      "properties": {
-        "assignDomain": {
-          "description": "AssignDomain sets the domain component on an image string. The trailing slash should not be included.",
-          "type": "string"
-        },
-        "assignPath": {
-          "description": "AssignPath sets the domain component on an image string.",
-          "type": "string"
-        },
-        "assignTag": {
-          "description": "AssignImage sets the image component on an image string. It must start with a `:` or `@`.",
-          "type": "string"
-        },
-        "pathTests": {
-          "type": "array",
-          "items": {
-            "default": {},
-            "$ref": "#/definitions/sh.gatekeeper.apis.mutations.v1alpha1.PathTest"
-          }
-        }
-      }
-    },
-    "sh.gatekeeper.apis.mutations.v1alpha1.AssignImageSpec": {
-      "description": "AssignImageSpec defines the desired state of AssignImage.",
-      "type": "object",
-      "properties": {
-        "applyTo": {
-          "description": "ApplyTo lists the specific groups, versions and kinds a mutation will be applied to. This is necessary because every mutation implies part of an object schema and object schemas are associated with specific GVKs.",
-          "type": "array",
-          "items": {
-            "default": {},
-            "$ref": "#/definitions/sh.gatekeeper.pkg.mutation.match.ApplyTo"
-          }
-        },
-        "location": {
-          "description": "Location describes the path to be mutated, for example: `spec.containers[name: main].image`.",
-          "type": "string"
-        },
-        "match": {
-          "description": "Match allows the user to limit which resources get mutated. Individual match criteria are AND-ed together. An undefined match criteria matches everything.",
-          "default": {},
-          "$ref": "#/definitions/sh.gatekeeper.pkg.mutation.match.Match"
-        },
-        "parameters": {
-          "description": "Parameters define the behavior of the mutator.",
-          "default": {},
-          "$ref": "#/definitions/sh.gatekeeper.apis.mutations.v1alpha1.AssignImageParameters"
-        }
-      }
-    },
-    "sh.gatekeeper.apis.mutations.v1alpha1.AssignImageStatus": {
-      "description": "AssignImageStatus defines the observed state of AssignImage.",
-      "type": "object",
-      "properties": {
-        "byPod": {
-          "type": "array",
-          "items": {
-            "default": {},
-            "$ref": "#/definitions/sh.gatekeeper.apis.status.v1beta1.MutatorPodStatusStatus"
-          }
-        }
-      }
-    },
-    "sh.gatekeeper.apis.mutations.v1alpha1.AssignMetadata": {
-      "description": "AssignMetadata is the Schema for the assignmetadata API.",
-      "type": "object",
-      "properties": {
-        "apiVersion": {
-          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
-          "type": "string"
-        },
-        "kind": {
-          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
-          "type": "string"
-        },
-        "metadata": {
-          "default": {},
-          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
-        },
-        "spec": {
-          "default": {},
-          "$ref": "#/definitions/sh.gatekeeper.apis.mutations.v1alpha1.AssignMetadataSpec"
-        },
-        "status": {
-          "default": {},
-          "$ref": "#/definitions/sh.gatekeeper.apis.mutations.v1alpha1.AssignMetadataStatus"
-        }
-      }
-    },
-    "sh.gatekeeper.apis.mutations.v1alpha1.AssignMetadataSpec": {
-      "description": "AssignMetadataSpec defines the desired state of AssignMetadata.",
-      "type": "object",
-      "properties": {
-        "location": {
-          "type": "string"
-        },
-        "match": {
-          "default": {},
-          "$ref": "#/definitions/sh.gatekeeper.pkg.mutation.match.Match"
-        },
-        "parameters": {
-          "default": {},
-          "$ref": "#/definitions/sh.gatekeeper.apis.mutations.v1alpha1.MetadataParameters"
-        }
-      }
-    },
-    "sh.gatekeeper.apis.mutations.v1alpha1.AssignMetadataStatus": {
-      "description": "AssignMetadataStatus defines the observed state of AssignMetadata.",
-      "type": "object",
-      "properties": {
-        "byPod": {
-          "description": "INSERT ADDITIONAL STATUS FIELD - define observed state of cluster Important: Run \"make\" to regenerate code after modifying this file",
-          "type": "array",
-          "items": {
-            "default": {},
-            "$ref": "#/definitions/sh.gatekeeper.apis.status.v1beta1.MutatorPodStatusStatus"
-          }
-        }
-      }
-    },
-    "sh.gatekeeper.apis.mutations.v1alpha1.AssignSpec": {
-      "description": "AssignSpec defines the desired state of Assign.",
-      "type": "object",
-      "properties": {
-        "applyTo": {
-          "description": "ApplyTo lists the specific groups, versions and kinds a mutation will be applied to. This is necessary because every mutation implies part of an object schema and object schemas are associated with specific GVKs.",
-          "type": "array",
-          "items": {
-            "default": {},
-            "$ref": "#/definitions/sh.gatekeeper.pkg.mutation.match.ApplyTo"
-          }
-        },
-        "location": {
-          "description": "Location describes the path to be mutated, for example: `spec.containers[name: main]`.",
-          "type": "string"
-        },
-        "match": {
-          "description": "Match allows the user to limit which resources get mutated. Individual match criteria are AND-ed together. An undefined match criteria matches everything.",
-          "default": {},
-          "$ref": "#/definitions/sh.gatekeeper.pkg.mutation.match.Match"
-        },
-        "parameters": {
-          "description": "Parameters define the behavior of the mutator.",
-          "default": {},
-          "$ref": "#/definitions/sh.gatekeeper.apis.mutations.v1alpha1.Parameters"
-        }
-      }
-    },
-    "sh.gatekeeper.apis.mutations.v1alpha1.AssignStatus": {
-      "description": "AssignStatus defines the observed state of Assign.",
-      "type": "object",
-      "properties": {
-        "byPod": {
-          "type": "array",
-          "items": {
-            "default": {},
-            "$ref": "#/definitions/sh.gatekeeper.apis.status.v1beta1.MutatorPodStatusStatus"
-          }
-        }
-      }
-    },
-    "sh.gatekeeper.apis.mutations.v1alpha1.ExternalData": {
-      "description": "ExternalData describes the external data source to use for the mutation.",
-      "type": "object",
-      "properties": {
-        "dataSource": {
-          "description": "DataSource specifies where to extract the data that will be sent to the external data provider as parameters.",
-          "type": "string"
-        },
-        "default": {
-          "description": "Default specifies the default value to use when the external data provider returns an error and the failure policy is set to \"UseDefault\".",
-          "type": "string"
-        },
-        "failurePolicy": {
-          "description": "FailurePolicy specifies the policy to apply when the external data provider returns an error.",
-          "type": "string"
-        },
-        "provider": {
-          "description": "Provider is the name of the external data provider.",
-          "type": "string"
-        }
-      }
-    },
-    "sh.gatekeeper.apis.mutations.v1alpha1.FromMetadata": {
-      "type": "object",
-      "properties": {
-        "field": {
-          "description": "Field specifies which metadata field provides the assigned value. Valid fields are `namespace` and `name`.",
-          "type": "string"
-        }
-      }
-    },
-    "sh.gatekeeper.apis.mutations.v1alpha1.MetadataParameters": {
-      "type": "object",
-      "properties": {
-        "assign": {
-          "description": "Assign.value holds the value to be assigned",
-          "default": {},
-          "$ref": "#/definitions/sh.gatekeeper.apis.mutations.v1alpha1.AssignField"
-        }
-      }
-    },
-    "sh.gatekeeper.apis.mutations.v1alpha1.ModifySet": {
-      "description": "ModifySet allows the user to modify non-keyed lists, such as the list of arguments to a container.",
-      "type": "object",
-      "properties": {
-        "apiVersion": {
-          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
-          "type": "string"
-        },
-        "kind": {
-          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
-          "type": "string"
-        },
-        "metadata": {
-          "default": {},
-          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
-        },
-        "spec": {
-          "default": {},
-          "$ref": "#/definitions/sh.gatekeeper.apis.mutations.v1alpha1.ModifySetSpec"
-        },
-        "status": {
-          "default": {},
-          "$ref": "#/definitions/sh.gatekeeper.apis.mutations.v1alpha1.ModifySetStatus"
-        }
-      }
-    },
-    "sh.gatekeeper.apis.mutations.v1alpha1.ModifySetParameters": {
-      "type": "object",
-      "properties": {
-        "operation": {
-          "description": "Operation describes whether values should be merged in (\"merge\"), or pruned (\"prune\"). Default value is \"merge\"",
-          "type": "string"
-        },
-        "pathTests": {
-          "description": "PathTests are a series of existence tests that can be checked before a mutation is applied",
-          "type": "array",
-          "items": {
-            "default": {},
-            "$ref": "#/definitions/sh.gatekeeper.apis.mutations.v1alpha1.PathTest"
-          }
-        },
-        "values": {
-          "description": "Values describes the values provided to the operation as `values.fromList`.",
-          "default": {},
-          "$ref": "#/definitions/sh.gatekeeper.apis.mutations.v1alpha1.Values"
-        }
-      }
-    },
-    "sh.gatekeeper.apis.mutations.v1alpha1.ModifySetSpec": {
-      "description": "ModifySetSpec defines the desired state of ModifySet.",
-      "type": "object",
-      "properties": {
-        "applyTo": {
-          "description": "ApplyTo lists the specific groups, versions and kinds a mutation will be applied to. This is necessary because every mutation implies part of an object schema and object schemas are associated with specific GVKs.",
-          "type": "array",
-          "items": {
-            "default": {},
-            "$ref": "#/definitions/sh.gatekeeper.pkg.mutation.match.ApplyTo"
-          }
-        },
-        "location": {
-          "description": "Location describes the path to be mutated, for example: `spec.containers[name: main].args`.",
-          "type": "string"
-        },
-        "match": {
-          "description": "Match allows the user to limit which resources get mutated. Individual match criteria are AND-ed together. An undefined match criteria matches everything.",
-          "default": {},
-          "$ref": "#/definitions/sh.gatekeeper.pkg.mutation.match.Match"
-        },
-        "parameters": {
-          "description": "Parameters define the behavior of the mutator.",
-          "default": {},
-          "$ref": "#/definitions/sh.gatekeeper.apis.mutations.v1alpha1.ModifySetParameters"
-        }
-      }
-    },
-    "sh.gatekeeper.apis.mutations.v1alpha1.ModifySetStatus": {
-      "description": "ModifySetStatus defines the observed state of ModifySet.",
-      "type": "object",
-      "properties": {
-        "byPod": {
-          "type": "array",
-          "items": {
-            "default": {},
-            "$ref": "#/definitions/sh.gatekeeper.apis.status.v1beta1.MutatorPodStatusStatus"
-          }
-        }
-      }
-    },
-    "sh.gatekeeper.apis.mutations.v1alpha1.Parameters": {
-      "type": "object",
-      "properties": {
-        "assign": {
-          "description": "Assign.value holds the value to be assigned",
-          "default": {},
-          "$ref": "#/definitions/sh.gatekeeper.apis.mutations.v1alpha1.AssignField"
-        },
-        "pathTests": {
-          "type": "array",
-          "items": {
-            "default": {},
-            "$ref": "#/definitions/sh.gatekeeper.apis.mutations.v1alpha1.PathTest"
-          }
-        }
-      }
-    },
-    "sh.gatekeeper.apis.mutations.v1alpha1.PathTest": {
-      "description": "PathTest allows the user to customize how the mutation works if parent paths are missing. It traverses the list in order. All sub paths are tested against the provided condition, if the test fails, the mutation is not applied. All `subPath` entries must be a prefix of `location`. Any glob characters will take on the same value as was used to expand the matching glob in `location`.\n\nAvailable Tests: * MustExist    - the path must exist or do not mutate * MustNotExist - the path must not exist or do not mutate.",
-      "type": "object",
-      "properties": {
-        "condition": {
-          "type": "string"
-        },
-        "subPath": {
-          "type": "string"
-        }
-      }
-    },
-    "sh.gatekeeper.apis.mutations.v1alpha1.Values": {
-      "description": "Values describes the values provided to the operation.",
-      "type": "object",
-      "properties": {
-        "fromList": {
-          "type": "array",
-          "items": {
-            "type": "object"
-          }
-        }
-      }
-    },
-    "sh.gatekeeper.apis.mutations.v1beta1.Assign": {
-      "description": "Assign is the Schema for the assign API.",
-      "type": "object",
-      "properties": {
-        "apiVersion": {
-          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
-          "type": "string"
-        },
-        "kind": {
-          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
-          "type": "string"
-        },
-        "metadata": {
-          "default": {},
-          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
-        },
-        "spec": {
-          "default": {},
-          "$ref": "#/definitions/sh.gatekeeper.apis.mutations.v1beta1.AssignSpec"
-        },
-        "status": {
-          "default": {},
-          "$ref": "#/definitions/sh.gatekeeper.apis.mutations.v1beta1.AssignStatus"
-        }
-      }
-    },
-    "sh.gatekeeper.apis.mutations.v1beta1.AssignField": {
-      "type": "object",
-      "properties": {
-        "externalData": {
-          "description": "ExternalData describes the external data provider to be used for mutation.",
-          "$ref": "#/definitions/sh.gatekeeper.apis.mutations.v1beta1.ExternalData"
-        },
-        "fromMetadata": {
-          "description": "FromMetadata assigns a value from the specified metadata field.",
-          "$ref": "#/definitions/sh.gatekeeper.apis.mutations.v1beta1.FromMetadata"
-        },
-        "value": {
-          "description": "Value is a constant value that will be assigned to `location`",
-          "$ref": "#/definitions/sh.gatekeeper.pkg.mutation.types.Anything"
-        }
-      }
-    },
-    "sh.gatekeeper.apis.mutations.v1beta1.AssignMetadata": {
-      "description": "AssignMetadata is the Schema for the assignmetadata API.",
-      "type": "object",
-      "properties": {
-        "apiVersion": {
-          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
-          "type": "string"
-        },
-        "kind": {
-          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
-          "type": "string"
-        },
-        "metadata": {
-          "default": {},
-          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
-        },
-        "spec": {
-          "default": {},
-          "$ref": "#/definitions/sh.gatekeeper.apis.mutations.v1beta1.AssignMetadataSpec"
-        },
-        "status": {
-          "default": {},
-          "$ref": "#/definitions/sh.gatekeeper.apis.mutations.v1beta1.AssignMetadataStatus"
-        }
-      }
-    },
-    "sh.gatekeeper.apis.mutations.v1beta1.AssignMetadataSpec": {
-      "description": "AssignMetadataSpec defines the desired state of AssignMetadata.",
-      "type": "object",
-      "properties": {
-        "location": {
-          "type": "string"
-        },
-        "match": {
-          "default": {},
-          "$ref": "#/definitions/sh.gatekeeper.pkg.mutation.match.Match"
-        },
-        "parameters": {
-          "default": {},
-          "$ref": "#/definitions/sh.gatekeeper.apis.mutations.v1beta1.MetadataParameters"
-        }
-      }
-    },
-    "sh.gatekeeper.apis.mutations.v1beta1.AssignMetadataStatus": {
-      "description": "AssignMetadataStatus defines the observed state of AssignMetadata.",
-      "type": "object",
-      "properties": {
-        "byPod": {
-          "description": "INSERT ADDITIONAL STATUS FIELD - define observed state of cluster Important: Run \"make\" to regenerate code after modifying this file",
-          "type": "array",
-          "items": {
-            "default": {},
-            "$ref": "#/definitions/sh.gatekeeper.apis.status.v1beta1.MutatorPodStatusStatus"
-          }
-        }
-      }
-    },
-    "sh.gatekeeper.apis.mutations.v1beta1.AssignSpec": {
-      "description": "AssignSpec defines the desired state of Assign.",
-      "type": "object",
-      "properties": {
-        "applyTo": {
-          "description": "ApplyTo lists the specific groups, versions and kinds a mutation will be applied to. This is necessary because every mutation implies part of an object schema and object schemas are associated with specific GVKs.",
-          "type": "array",
-          "items": {
-            "default": {},
-            "$ref": "#/definitions/sh.gatekeeper.pkg.mutation.match.ApplyTo"
-          }
-        },
-        "location": {
-          "description": "Location describes the path to be mutated, for example: `spec.containers[name: main]`.",
-          "type": "string"
-        },
-        "match": {
-          "description": "Match allows the user to limit which resources get mutated. Individual match criteria are AND-ed together. An undefined match criteria matches everything.",
-          "default": {},
-          "$ref": "#/definitions/sh.gatekeeper.pkg.mutation.match.Match"
-        },
-        "parameters": {
-          "description": "Parameters define the behavior of the mutator.",
-          "default": {},
-          "$ref": "#/definitions/sh.gatekeeper.apis.mutations.v1beta1.Parameters"
-        }
-      }
-    },
-    "sh.gatekeeper.apis.mutations.v1beta1.AssignStatus": {
-      "description": "AssignStatus defines the observed state of Assign.",
-      "type": "object",
-      "properties": {
-        "byPod": {
-          "type": "array",
-          "items": {
-            "default": {},
-            "$ref": "#/definitions/sh.gatekeeper.apis.status.v1beta1.MutatorPodStatusStatus"
-          }
-        }
-      }
-    },
-    "sh.gatekeeper.apis.mutations.v1beta1.ExternalData": {
-      "description": "ExternalData describes the external data source to use for the mutation.",
-      "type": "object",
-      "properties": {
-        "dataSource": {
-          "description": "DataSource specifies where to extract the data that will be sent to the external data provider as parameters.",
-          "type": "string"
-        },
-        "default": {
-          "description": "Default specifies the default value to use when the external data provider returns an error and the failure policy is set to \"UseDefault\".",
-          "type": "string"
-        },
-        "failurePolicy": {
-          "description": "FailurePolicy specifies the policy to apply when the external data provider returns an error.",
-          "type": "string"
-        },
-        "provider": {
-          "description": "Provider is the name of the external data provider.",
-          "type": "string"
-        }
-      }
-    },
-    "sh.gatekeeper.apis.mutations.v1beta1.FromMetadata": {
-      "type": "object",
-      "properties": {
-        "field": {
-          "description": "Field specifies which metadata field provides the assigned value. Valid fields are `namespace` and `name`.",
-          "type": "string"
-        }
-      }
-    },
-    "sh.gatekeeper.apis.mutations.v1beta1.MetadataParameters": {
-      "type": "object",
-      "properties": {
-        "assign": {
-          "description": "Assign.value holds the value to be assigned",
-          "default": {},
-          "$ref": "#/definitions/sh.gatekeeper.apis.mutations.v1beta1.AssignField"
-        }
-      }
-    },
-    "sh.gatekeeper.apis.mutations.v1beta1.ModifySet": {
-      "description": "ModifySet allows the user to modify non-keyed lists, such as the list of arguments to a container.",
-      "type": "object",
-      "properties": {
-        "apiVersion": {
-          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
-          "type": "string"
-        },
-        "kind": {
-          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
-          "type": "string"
-        },
-        "metadata": {
-          "default": {},
-          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
-        },
-        "spec": {
-          "default": {},
-          "$ref": "#/definitions/sh.gatekeeper.apis.mutations.v1beta1.ModifySetSpec"
-        },
-        "status": {
-          "default": {},
-          "$ref": "#/definitions/sh.gatekeeper.apis.mutations.v1beta1.ModifySetStatus"
-        }
-      }
-    },
-    "sh.gatekeeper.apis.mutations.v1beta1.ModifySetParameters": {
-      "type": "object",
-      "properties": {
-        "operation": {
-          "description": "Operation describes whether values should be merged in (\"merge\"), or pruned (\"prune\"). Default value is \"merge\"",
-          "type": "string"
-        },
-        "pathTests": {
-          "description": "PathTests are a series of existence tests that can be checked before a mutation is applied",
-          "type": "array",
-          "items": {
-            "default": {},
-            "$ref": "#/definitions/sh.gatekeeper.apis.mutations.v1beta1.PathTest"
-          }
-        },
-        "values": {
-          "description": "Values describes the values provided to the operation as `values.fromList`.",
-          "default": {},
-          "$ref": "#/definitions/sh.gatekeeper.apis.mutations.v1beta1.Values"
-        }
-      }
-    },
-    "sh.gatekeeper.apis.mutations.v1beta1.ModifySetSpec": {
-      "description": "ModifySetSpec defines the desired state of ModifySet.",
-      "type": "object",
-      "properties": {
-        "applyTo": {
-          "description": "ApplyTo lists the specific groups, versions and kinds a mutation will be applied to. This is necessary because every mutation implies part of an object schema and object schemas are associated with specific GVKs.",
-          "type": "array",
-          "items": {
-            "default": {},
-            "$ref": "#/definitions/sh.gatekeeper.pkg.mutation.match.ApplyTo"
-          }
-        },
-        "location": {
-          "description": "Location describes the path to be mutated, for example: `spec.containers[name: main].args`.",
-          "type": "string"
-        },
-        "match": {
-          "description": "Match allows the user to limit which resources get mutated. Individual match criteria are AND-ed together. An undefined match criteria matches everything.",
-          "default": {},
-          "$ref": "#/definitions/sh.gatekeeper.pkg.mutation.match.Match"
-        },
-        "parameters": {
-          "description": "Parameters define the behavior of the mutator.",
-          "default": {},
-          "$ref": "#/definitions/sh.gatekeeper.apis.mutations.v1beta1.ModifySetParameters"
-        }
-      }
-    },
-    "sh.gatekeeper.apis.mutations.v1beta1.ModifySetStatus": {
-      "description": "ModifySetStatus defines the observed state of ModifySet.",
-      "type": "object",
-      "properties": {
-        "byPod": {
-          "type": "array",
-          "items": {
-            "default": {},
-            "$ref": "#/definitions/sh.gatekeeper.apis.status.v1beta1.MutatorPodStatusStatus"
-          }
-        }
-      }
-    },
-    "sh.gatekeeper.apis.mutations.v1beta1.Parameters": {
-      "type": "object",
-      "properties": {
-        "assign": {
-          "description": "Assign.value holds the value to be assigned",
-          "default": {},
-          "$ref": "#/definitions/sh.gatekeeper.apis.mutations.v1beta1.AssignField"
-        },
-        "pathTests": {
-          "type": "array",
-          "items": {
-            "default": {},
-            "$ref": "#/definitions/sh.gatekeeper.apis.mutations.v1beta1.PathTest"
-          }
-        }
-      }
-    },
-    "sh.gatekeeper.apis.mutations.v1beta1.PathTest": {
-      "description": "PathTest allows the user to customize how the mutation works if parent paths are missing. It traverses the list in order. All sub paths are tested against the provided condition, if the test fails, the mutation is not applied. All `subPath` entries must be a prefix of `location`. Any glob characters will take on the same value as was used to expand the matching glob in `location`.\n\nAvailable Tests: * MustExist    - the path must exist or do not mutate * MustNotExist - the path must not exist or do not mutate.",
-      "type": "object",
-      "properties": {
-        "condition": {
-          "type": "string"
-        },
-        "subPath": {
-          "type": "string"
-        }
-      }
-    },
-    "sh.gatekeeper.apis.mutations.v1beta1.Values": {
-      "description": "Values describes the values provided to the operation.",
-      "type": "object",
-      "properties": {
-        "fromList": {
-          "type": "array",
-          "items": {
-            "type": "object"
-          }
-        }
-      }
-    },
-    "sh.gatekeeper.apis.status.v1alpha1.ConnectionError": {
-      "type": "object",
-      "required": [
-        "type",
-        "message"
-      ],
-      "properties": {
-        "message": {
-          "type": "string",
-          "default": ""
-        },
-        "type": {
-          "type": "string",
-          "default": ""
-        }
-      }
-    },
-    "sh.gatekeeper.apis.status.v1alpha1.ConnectionPodStatusStatus": {
-      "description": "ConnectionPodStatusStatus defines the observed state of ConnectionPodStatus.",
-      "type": "object",
-      "properties": {
-        "active": {
-          "description": "Indicator for alive connection with at least one successful publish",
-          "type": "boolean"
-        },
-        "connectionUID": {
-          "type": "string"
-        },
-        "errors": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/sh.gatekeeper.apis.status.v1alpha1.ConnectionError"
-          }
-        },
-        "id": {
-          "description": "ID is the unique identifier for the pod that wrote the status",
-          "type": "string"
-        },
-        "observedGeneration": {
-          "type": "integer",
-          "format": "int64"
-        },
-        "operations": {
-          "type": "array",
-          "items": {
-            "type": "string",
-            "default": ""
-          }
-        }
-      }
-    },
-    "sh.gatekeeper.apis.status.v1beta1.ConfigError": {
-      "type": "object",
-      "required": [
-        "message"
-      ],
-      "properties": {
-        "message": {
-          "type": "string",
-          "default": ""
-        },
-        "type": {
-          "type": "string"
-        }
-      }
-    },
-    "sh.gatekeeper.apis.status.v1beta1.ConfigPodStatusStatus": {
-      "type": "object",
-      "properties": {
-        "configUID": {
-          "type": "string"
-        },
-        "errors": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/sh.gatekeeper.apis.status.v1beta1.ConfigError"
-          }
-        },
-        "id": {
-          "type": "string"
-        },
-        "observedGeneration": {
-          "type": "integer",
-          "format": "int64"
-        },
-        "operations": {
-          "type": "array",
-          "items": {
-            "type": "string",
-            "default": ""
-          }
-        }
-      }
-    },
-    "sh.gatekeeper.apis.status.v1beta1.ConstraintPodStatus": {
-      "description": "ConstraintPodStatus is the Schema for the constraintpodstatuses API.",
-      "type": "object",
-      "properties": {
-        "apiVersion": {
-          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
-          "type": "string"
-        },
-        "kind": {
-          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
-          "type": "string"
-        },
-        "metadata": {
-          "default": {},
-          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
-        },
-        "status": {
-          "default": {},
-          "$ref": "#/definitions/sh.gatekeeper.apis.status.v1beta1.ConstraintPodStatusStatus"
-        }
-      }
-    },
-    "sh.gatekeeper.apis.status.v1beta1.ConstraintPodStatusStatus": {
-      "description": "ConstraintPodStatusStatus defines the observed state of ConstraintPodStatus.",
-      "type": "object",
-      "properties": {
-        "constraintUID": {
-          "description": "Storing the constraint UID allows us to detect drift, such as when a constraint has been recreated after its CRD was deleted out from under it, interrupting the watch",
-          "type": "string"
-        },
-        "enforced": {
-          "type": "boolean"
-        },
-        "enforcementPointsStatus": {
-          "type": "array",
-          "items": {
-            "default": {},
-            "$ref": "#/definitions/sh.gatekeeper.apis.status.v1beta1.EnforcementPointStatus"
-          }
-        },
-        "errors": {
-          "type": "array",
-          "items": {
-            "default": {},
-            "$ref": "#/definitions/sh.gatekeeper.apis.status.v1beta1.Error"
-          }
-        },
-        "id": {
-          "type": "string"
-        },
-        "observedGeneration": {
-          "type": "integer",
-          "format": "int64"
-        },
-        "operations": {
-          "type": "array",
-          "items": {
-            "type": "string",
-            "default": ""
-          }
-        }
-      }
-    },
-    "sh.gatekeeper.apis.status.v1beta1.ConstraintTemplatePodStatus": {
-      "description": "ConstraintTemplatePodStatus is the Schema for the constrainttemplatepodstatuses API.",
-      "type": "object",
-      "properties": {
-        "apiVersion": {
-          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
-          "type": "string"
-        },
-        "kind": {
-          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
-          "type": "string"
-        },
-        "metadata": {
-          "default": {},
-          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
-        },
-        "status": {
-          "default": {},
-          "$ref": "#/definitions/sh.gatekeeper.apis.status.v1beta1.ConstraintTemplatePodStatusStatus"
-        }
-      }
-    },
-    "sh.gatekeeper.apis.status.v1beta1.ConstraintTemplatePodStatusStatus": {
-      "description": "ConstraintTemplatePodStatusStatus defines the observed state of ConstraintTemplatePodStatus.",
-      "type": "object",
-      "properties": {
-        "errors": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/sh.gatekeeper.frameworks.constraint.pkg.apis.templates.v1beta1.CreateCRDError"
-          }
-        },
-        "id": {
-          "description": "Important: Run \"make\" to regenerate code after modifying this file",
-          "type": "string"
-        },
-        "observedGeneration": {
-          "type": "integer",
-          "format": "int64"
-        },
-        "operations": {
-          "type": "array",
-          "items": {
-            "type": "string",
-            "default": ""
-          }
-        },
-        "templateUID": {
-          "type": "string"
-        },
-        "vapGenerationStatus": {
-          "$ref": "#/definitions/sh.gatekeeper.apis.status.v1beta1.VAPGenerationStatus"
-        }
-      }
-    },
-    "sh.gatekeeper.apis.status.v1beta1.EnforcementPointStatus": {
-      "description": "EnforcementPointStatus represents the status of a single enforcement point.",
-      "type": "object",
-      "required": [
-        "enforcementPoint",
-        "state"
-      ],
-      "properties": {
-        "enforcementPoint": {
-          "type": "string",
-          "default": ""
-        },
-        "message": {
-          "type": "string"
-        },
-        "observedGeneration": {
-          "type": "integer",
-          "format": "int64"
-        },
-        "state": {
-          "type": "string",
-          "default": ""
-        }
-      }
-    },
-    "sh.gatekeeper.apis.status.v1beta1.Error": {
-      "description": "Error represents a single error caught while adding a constraint to engine.",
-      "type": "object",
-      "required": [
-        "code",
-        "message"
-      ],
-      "properties": {
-        "code": {
-          "type": "string",
-          "default": ""
-        },
-        "location": {
-          "type": "string"
-        },
-        "message": {
-          "type": "string",
-          "default": ""
-        }
-      }
-    },
-    "sh.gatekeeper.apis.status.v1beta1.ExpansionTemplateError": {
-      "type": "object",
-      "required": [
-        "message"
-      ],
-      "properties": {
-        "message": {
-          "type": "string",
-          "default": ""
-        },
-        "type": {
-          "type": "string"
-        }
-      }
-    },
-    "sh.gatekeeper.apis.status.v1beta1.ExpansionTemplatePodStatus": {
-      "description": "ExpansionTemplatePodStatus is the Schema for the expansiontemplatepodstatuses API.",
-      "type": "object",
-      "properties": {
-        "apiVersion": {
-          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
-          "type": "string"
-        },
-        "kind": {
-          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
-          "type": "string"
-        },
-        "metadata": {
-          "default": {},
-          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
-        },
-        "status": {
-          "default": {},
-          "$ref": "#/definitions/sh.gatekeeper.apis.status.v1beta1.ExpansionTemplatePodStatusStatus"
-        }
-      }
-    },
-    "sh.gatekeeper.apis.status.v1beta1.ExpansionTemplatePodStatusStatus": {
-      "description": "ExpansionTemplatePodStatusStatus defines the observed state of ExpansionTemplatePodStatus.",
-      "type": "object",
-      "properties": {
-        "errors": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/sh.gatekeeper.apis.status.v1beta1.ExpansionTemplateError"
-          }
-        },
-        "id": {
-          "description": "Important: Run \"make\" to regenerate code after modifying this file",
-          "type": "string"
-        },
-        "observedGeneration": {
-          "type": "integer",
-          "format": "int64"
-        },
-        "operations": {
-          "type": "array",
-          "items": {
-            "type": "string",
-            "default": ""
-          }
-        },
-        "templateUID": {
-          "type": "string"
-        }
-      }
-    },
-    "sh.gatekeeper.apis.status.v1beta1.MutatorError": {
-      "description": "MutatorError represents a single error caught while adding a mutator to a system.",
-      "type": "object",
-      "required": [
-        "message"
-      ],
-      "properties": {
-        "message": {
-          "type": "string",
-          "default": ""
-        },
-        "type": {
-          "description": "Type indicates a specific class of error for use by controller code. If not present, the error should be treated as not matching any known type.",
-          "type": "string"
-        }
-      }
-    },
-    "sh.gatekeeper.apis.status.v1beta1.MutatorPodStatus": {
-      "description": "MutatorPodStatus is the Schema for the mutationpodstatuses API.",
-      "type": "object",
-      "properties": {
-        "apiVersion": {
-          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
-          "type": "string"
-        },
-        "kind": {
-          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
-          "type": "string"
-        },
-        "metadata": {
-          "default": {},
-          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
-        },
-        "status": {
-          "default": {},
-          "$ref": "#/definitions/sh.gatekeeper.apis.status.v1beta1.MutatorPodStatusStatus"
-        }
-      }
-    },
-    "sh.gatekeeper.apis.status.v1beta1.MutatorPodStatusStatus": {
-      "description": "MutatorPodStatusStatus defines the observed state of MutatorPodStatus.",
-      "type": "object",
-      "properties": {
-        "enforced": {
-          "type": "boolean"
-        },
-        "errors": {
-          "type": "array",
-          "items": {
-            "default": {},
-            "$ref": "#/definitions/sh.gatekeeper.apis.status.v1beta1.MutatorError"
-          }
-        },
-        "id": {
-          "type": "string"
-        },
-        "mutatorUID": {
-          "description": "Storing the mutator UID allows us to detect drift, such as when a mutator has been recreated after its CRD was deleted out from under it, interrupting the watch",
-          "type": "string"
-        },
-        "observedGeneration": {
-          "type": "integer",
-          "format": "int64"
-        },
-        "operations": {
-          "type": "array",
-          "items": {
-            "type": "string",
-            "default": ""
-          }
-        }
-      }
-    },
-    "sh.gatekeeper.apis.status.v1beta1.ProviderError": {
-      "description": "ProviderError represents a single error caught while managing providers.",
-      "type": "object",
-      "required": [
-        "type",
-        "message",
-        "retryable",
-        "errorTimestamp"
-      ],
-      "properties": {
-        "errorTimestamp": {
-          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
-        },
-        "message": {
-          "type": "string",
-          "default": ""
-        },
-        "retryable": {
-          "type": "boolean",
-          "default": false
-        },
-        "type": {
-          "description": "Type indicates a specific class of error for use by controller code. If not present, the error should be treated as not matching any known type.",
-          "type": "string",
-          "default": ""
-        }
-      }
-    },
-    "sh.gatekeeper.apis.status.v1beta1.ProviderPodStatus": {
-      "description": "ProviderPodStatus is the Schema for the providerpodstatuses API.",
-      "type": "object",
-      "properties": {
-        "apiVersion": {
-          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
-          "type": "string"
-        },
-        "kind": {
-          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
-          "type": "string"
-        },
-        "metadata": {
-          "default": {},
-          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
-        },
-        "status": {
-          "description": "No spec field is defined here, as this is a status-only resource.",
-          "default": {},
-          "$ref": "#/definitions/sh.gatekeeper.apis.status.v1beta1.ProviderPodStatusStatus"
-        }
-      }
-    },
-    "sh.gatekeeper.apis.status.v1beta1.ProviderPodStatusStatus": {
-      "description": "ProviderPodStatusStatus defines the observed state of ProviderPodStatus.",
-      "type": "object",
-      "properties": {
-        "active": {
-          "type": "boolean"
-        },
-        "errors": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/sh.gatekeeper.apis.status.v1beta1.ProviderError"
-          }
-        },
-        "id": {
-          "type": "string"
-        },
-        "lastCacheUpdateTime": {
-          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
-        },
-        "lastTransitionTime": {
-          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
-        },
-        "observedGeneration": {
-          "type": "integer",
-          "format": "int64"
-        },
-        "operations": {
-          "type": "array",
-          "items": {
-            "type": "string",
-            "default": ""
-          }
-        },
-        "providerUID": {
-          "description": "Storing the provider UID allows us to detect drift, such as when a provider has been recreated after its CRD was deleted out from under it, interrupting the watch",
-          "type": "string"
-        }
-      }
-    },
-    "sh.gatekeeper.apis.status.v1beta1.VAPGenerationStatus": {
-      "description": "VAPGenerationStatus represents the status of VAP generation.",
-      "type": "object",
-      "properties": {
-        "observedGeneration": {
-          "type": "integer",
-          "format": "int64"
-        },
-        "state": {
-          "type": "string"
-        },
-        "warning": {
-          "type": "string"
-        }
-      }
-    },
-    "sh.gatekeeper.apis.syncset.v1alpha1.GVKEntry": {
-      "type": "object",
-      "properties": {
-        "group": {
-          "type": "string"
-        },
-        "kind": {
-          "type": "string"
-        },
-        "version": {
-          "type": "string"
-        }
-      }
-    },
-    "sh.gatekeeper.apis.syncset.v1alpha1.SyncSet": {
-      "description": "SyncSet defines which resources Gatekeeper will cache. The union of all SyncSets plus the syncOnly field of Gatekeeper's Config resource defines the sets of resources that will be synced.",
-      "type": "object",
-      "properties": {
-        "apiVersion": {
-          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
-          "type": "string"
-        },
-        "kind": {
-          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
-          "type": "string"
-        },
-        "metadata": {
-          "default": {},
-          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
-        },
-        "spec": {
-          "default": {},
-          "$ref": "#/definitions/sh.gatekeeper.apis.syncset.v1alpha1.SyncSetSpec"
-        }
-      }
-    },
-    "sh.gatekeeper.apis.syncset.v1alpha1.SyncSetSpec": {
-      "type": "object",
-      "properties": {
-        "gvks": {
-          "type": "array",
-          "items": {
-            "default": {},
-            "$ref": "#/definitions/sh.gatekeeper.apis.syncset.v1alpha1.GVKEntry"
-          }
-        }
-      }
-    },
-    "sh.gatekeeper.frameworks.constraint.pkg.apis.externaldata.v1alpha1.Provider": {
+    "sh.gatekeeper.externaldata.v1alpha1.Provider": {
       "description": "Provider is the Schema for the Provider API",
       "type": "object",
       "properties": {
@@ -2497,15 +918,15 @@
         "spec": {
           "description": "Spec defines the Provider specifications.",
           "default": {},
-          "$ref": "#/definitions/sh.gatekeeper.frameworks.constraint.pkg.apis.externaldata.v1alpha1.ProviderSpec"
+          "$ref": "#/definitions/sh.gatekeeper.externaldata.v1alpha1.ProviderSpec"
         },
         "status": {
           "default": {},
-          "$ref": "#/definitions/sh.gatekeeper.frameworks.constraint.pkg.apis.externaldata.v1alpha1.ProviderStatus"
+          "$ref": "#/definitions/sh.gatekeeper.externaldata.v1alpha1.ProviderStatus"
         }
       }
     },
-    "sh.gatekeeper.frameworks.constraint.pkg.apis.externaldata.v1alpha1.ProviderError": {
+    "sh.gatekeeper.externaldata.v1alpha1.ProviderError": {
       "description": "ProviderError represents a single error caught while managing providers.",
       "type": "object",
       "required": [
@@ -2528,7 +949,7 @@
         }
       }
     },
-    "sh.gatekeeper.frameworks.constraint.pkg.apis.externaldata.v1alpha1.ProviderPodStatusStatus": {
+    "sh.gatekeeper.externaldata.v1alpha1.ProviderPodStatusStatus": {
       "description": "ProviderPodStatusStatus defines the observed state of ProviderPodStatus.",
       "type": "object",
       "properties": {
@@ -2539,7 +960,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/sh.gatekeeper.frameworks.constraint.pkg.apis.externaldata.v1alpha1.ProviderError"
+            "$ref": "#/definitions/sh.gatekeeper.externaldata.v1alpha1.ProviderError"
           }
         },
         "id": {
@@ -2568,7 +989,7 @@
         }
       }
     },
-    "sh.gatekeeper.frameworks.constraint.pkg.apis.externaldata.v1alpha1.ProviderSpec": {
+    "sh.gatekeeper.externaldata.v1alpha1.ProviderSpec": {
       "description": "ProviderSpec defines the desired state of Provider.",
       "type": "object",
       "properties": {
@@ -2587,7 +1008,7 @@
         }
       }
     },
-    "sh.gatekeeper.frameworks.constraint.pkg.apis.externaldata.v1alpha1.ProviderStatus": {
+    "sh.gatekeeper.externaldata.v1alpha1.ProviderStatus": {
       "description": "ProviderStatus defines the observed state of Provider.",
       "type": "object",
       "properties": {
@@ -2596,76 +1017,13 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/sh.gatekeeper.frameworks.constraint.pkg.apis.externaldata.v1alpha1.ProviderPodStatusStatus"
+            "$ref": "#/definitions/sh.gatekeeper.externaldata.v1alpha1.ProviderPodStatusStatus"
           }
         }
       }
     },
-    "sh.gatekeeper.frameworks.constraint.pkg.apis.templates.v1.ByPodStatus": {
-      "description": "ByPodStatus defines the observed state of ConstraintTemplate as seen by an individual controller",
-      "type": "object",
-      "properties": {
-        "errors": {
-          "type": "array",
-          "items": {
-            "default": {},
-            "$ref": "#/definitions/sh.gatekeeper.frameworks.constraint.pkg.apis.templates.v1.CreateCRDError"
-          }
-        },
-        "id": {
-          "description": "a unique identifier for the pod that wrote the status",
-          "type": "string"
-        },
-        "observedGeneration": {
-          "type": "integer",
-          "format": "int64"
-        }
-      }
-    },
-    "sh.gatekeeper.frameworks.constraint.pkg.apis.templates.v1.CRD": {
-      "description": "CRD defines the custom resource definition specification for the constraint.",
-      "type": "object",
-      "properties": {
-        "spec": {
-          "default": {},
-          "$ref": "#/definitions/sh.gatekeeper.frameworks.constraint.pkg.apis.templates.v1.CRDSpec"
-        }
-      }
-    },
-    "sh.gatekeeper.frameworks.constraint.pkg.apis.templates.v1.CRDSpec": {
-      "description": "CRDSpec defines the spec for the CRD.",
-      "type": "object",
-      "properties": {
-        "names": {
-          "default": {},
-          "$ref": "#/definitions/sh.gatekeeper.frameworks.constraint.pkg.apis.templates.v1.Names"
-        },
-        "validation": {
-          "$ref": "#/definitions/sh.gatekeeper.frameworks.constraint.pkg.apis.templates.v1.Validation"
-        }
-      }
-    },
-    "sh.gatekeeper.frameworks.constraint.pkg.apis.templates.v1.Code": {
-      "description": "Code defines the policy source code for a specific engine.",
-      "type": "object",
-      "required": [
-        "engine",
-        "source"
-      ],
-      "properties": {
-        "engine": {
-          "description": "The engine used to evaluate the code. Example: \"Rego\". Required.",
-          "type": "string",
-          "default": ""
-        },
-        "source": {
-          "description": "The source code for the template. Required.",
-          "$ref": "#/definitions/sh.gatekeeper.frameworks.constraint.pkg.core.templates.Anything"
-        }
-      }
-    },
-    "sh.gatekeeper.frameworks.constraint.pkg.apis.templates.v1.ConstraintTemplate": {
-      "description": "ConstraintTemplate is the Schema for the constrainttemplates API",
+    "sh.gatekeeper.externaldata.v1beta1.Provider": {
+      "description": "Provider is the Schema for the providers API.",
       "type": "object",
       "properties": {
         "apiVersion": {
@@ -2681,316 +1039,65 @@
           "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
         },
         "spec": {
+          "description": "Spec defines the Provider specifications.",
           "default": {},
-          "$ref": "#/definitions/sh.gatekeeper.frameworks.constraint.pkg.apis.templates.v1.ConstraintTemplateSpec"
+          "$ref": "#/definitions/sh.gatekeeper.externaldata.v1beta1.ProviderSpec"
         },
         "status": {
           "default": {},
-          "$ref": "#/definitions/sh.gatekeeper.frameworks.constraint.pkg.apis.templates.v1.ConstraintTemplateStatus"
+          "$ref": "#/definitions/sh.gatekeeper.externaldata.v1beta1.ProviderStatus"
         }
       }
     },
-    "sh.gatekeeper.frameworks.constraint.pkg.apis.templates.v1.ConstraintTemplateSpec": {
-      "description": "ConstraintTemplateSpec defines the desired state of ConstraintTemplate.",
-      "type": "object",
-      "properties": {
-        "crd": {
-          "default": {},
-          "$ref": "#/definitions/sh.gatekeeper.frameworks.constraint.pkg.apis.templates.v1.CRD"
-        },
-        "targets": {
-          "type": "array",
-          "items": {
-            "default": {},
-            "$ref": "#/definitions/sh.gatekeeper.frameworks.constraint.pkg.apis.templates.v1.Target"
-          }
-        }
-      }
-    },
-    "sh.gatekeeper.frameworks.constraint.pkg.apis.templates.v1.ConstraintTemplateStatus": {
-      "description": "ConstraintTemplateStatus defines the observed state of ConstraintTemplate.",
-      "type": "object",
-      "properties": {
-        "byPod": {
-          "type": "array",
-          "items": {
-            "default": {},
-            "$ref": "#/definitions/sh.gatekeeper.frameworks.constraint.pkg.apis.templates.v1.ByPodStatus"
-          }
-        },
-        "created": {
-          "type": "boolean"
-        }
-      }
-    },
-    "sh.gatekeeper.frameworks.constraint.pkg.apis.templates.v1.CreateCRDError": {
-      "description": "CreateCRDError represents a single error caught during parsing, compiling, etc.",
+    "sh.gatekeeper.externaldata.v1beta1.ProviderError": {
+      "description": "ProviderError represents a single error caught while managing providers.",
       "type": "object",
       "required": [
-        "code",
         "message"
       ],
       "properties": {
-        "code": {
-          "type": "string",
-          "default": ""
-        },
-        "location": {
-          "type": "string"
+        "errorTimestamp": {
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
         },
         "message": {
           "type": "string",
           "default": ""
-        }
-      }
-    },
-    "sh.gatekeeper.frameworks.constraint.pkg.apis.templates.v1.Names": {
-      "description": "Names defines the naming conventions for the constraint kind.",
-      "type": "object",
-      "properties": {
-        "kind": {
-          "type": "string"
         },
-        "shortNames": {
-          "type": "array",
-          "items": {
-            "type": "string",
-            "default": ""
-          }
-        }
-      }
-    },
-    "sh.gatekeeper.frameworks.constraint.pkg.apis.templates.v1.Target": {
-      "description": "Target defines the target handler and policy for the constraint template.",
-      "type": "object",
-      "properties": {
-        "code": {
-          "description": "The source code options for the constraint template. \"Rego\" can only be specified in one place (either here or in the \"rego\" field)",
-          "type": "array",
-          "items": {
-            "default": {},
-            "$ref": "#/definitions/sh.gatekeeper.frameworks.constraint.pkg.apis.templates.v1.Code"
-          },
-          "x-kubernetes-list-map-keys": [
-            "engine"
-          ],
-          "x-kubernetes-list-type": "map"
-        },
-        "libs": {
-          "type": "array",
-          "items": {
-            "type": "string",
-            "default": ""
-          }
-        },
-        "operations": {
-          "type": "array",
-          "items": {
-            "type": "string",
-            "default": ""
-          }
-        },
-        "rego": {
-          "type": "string"
-        },
-        "target": {
-          "type": "string"
-        }
-      }
-    },
-    "sh.gatekeeper.frameworks.constraint.pkg.apis.templates.v1.Validation": {
-      "description": "Validation defines the schema for constraint parameters.",
-      "type": "object",
-      "properties": {
-        "legacySchema": {
+        "retryable": {
           "type": "boolean"
         },
-        "openAPIV3Schema": {
-          "$ref": "#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.JSONSchemaProps"
+        "type": {
+          "description": "Type indicates a specific class of error for use by controller code. If not present, the error should be treated as not matching any known type.",
+          "type": "string"
         }
       }
     },
-    "sh.gatekeeper.frameworks.constraint.pkg.apis.templates.v1beta1.ByPodStatus": {
-      "description": "ByPodStatus defines the observed state of ConstraintTemplate as seen by an individual controller",
+    "sh.gatekeeper.externaldata.v1beta1.ProviderPodStatusStatus": {
+      "description": "ProviderPodStatusStatus defines the observed state of ProviderPodStatus.",
       "type": "object",
       "properties": {
+        "active": {
+          "type": "boolean"
+        },
         "errors": {
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/sh.gatekeeper.frameworks.constraint.pkg.apis.templates.v1beta1.CreateCRDError"
+            "$ref": "#/definitions/sh.gatekeeper.externaldata.v1beta1.ProviderError"
           }
         },
         "id": {
-          "description": "a unique identifier for the pod that wrote the status",
           "type": "string"
+        },
+        "lastCacheUpdateTime": {
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
+        },
+        "lastTransitionTime": {
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
         },
         "observedGeneration": {
           "type": "integer",
           "format": "int64"
-        }
-      }
-    },
-    "sh.gatekeeper.frameworks.constraint.pkg.apis.templates.v1beta1.CRD": {
-      "description": "CRD defines the custom resource definition specification for the constraint.",
-      "type": "object",
-      "properties": {
-        "spec": {
-          "default": {},
-          "$ref": "#/definitions/sh.gatekeeper.frameworks.constraint.pkg.apis.templates.v1beta1.CRDSpec"
-        }
-      }
-    },
-    "sh.gatekeeper.frameworks.constraint.pkg.apis.templates.v1beta1.CRDSpec": {
-      "description": "CRDSpec defines the spec for the CRD.",
-      "type": "object",
-      "properties": {
-        "names": {
-          "default": {},
-          "$ref": "#/definitions/sh.gatekeeper.frameworks.constraint.pkg.apis.templates.v1beta1.Names"
-        },
-        "validation": {
-          "$ref": "#/definitions/sh.gatekeeper.frameworks.constraint.pkg.apis.templates.v1beta1.Validation"
-        }
-      }
-    },
-    "sh.gatekeeper.frameworks.constraint.pkg.apis.templates.v1beta1.Code": {
-      "description": "Code defines the policy source code for a specific engine.",
-      "type": "object",
-      "required": [
-        "engine",
-        "source"
-      ],
-      "properties": {
-        "engine": {
-          "description": "The engine used to evaluate the code. Example: \"Rego\". Required.",
-          "type": "string",
-          "default": ""
-        },
-        "source": {
-          "description": "The source code for the template. Required.",
-          "$ref": "#/definitions/sh.gatekeeper.frameworks.constraint.pkg.core.templates.Anything"
-        }
-      }
-    },
-    "sh.gatekeeper.frameworks.constraint.pkg.apis.templates.v1beta1.ConstraintTemplate": {
-      "description": "ConstraintTemplate is the Schema for the constrainttemplates API",
-      "type": "object",
-      "properties": {
-        "apiVersion": {
-          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
-          "type": "string"
-        },
-        "kind": {
-          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
-          "type": "string"
-        },
-        "metadata": {
-          "default": {},
-          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
-        },
-        "spec": {
-          "default": {},
-          "$ref": "#/definitions/sh.gatekeeper.frameworks.constraint.pkg.apis.templates.v1beta1.ConstraintTemplateSpec"
-        },
-        "status": {
-          "default": {},
-          "$ref": "#/definitions/sh.gatekeeper.frameworks.constraint.pkg.apis.templates.v1beta1.ConstraintTemplateStatus"
-        }
-      }
-    },
-    "sh.gatekeeper.frameworks.constraint.pkg.apis.templates.v1beta1.ConstraintTemplateSpec": {
-      "description": "ConstraintTemplateSpec defines the desired state of ConstraintTemplate.",
-      "type": "object",
-      "properties": {
-        "crd": {
-          "default": {},
-          "$ref": "#/definitions/sh.gatekeeper.frameworks.constraint.pkg.apis.templates.v1beta1.CRD"
-        },
-        "targets": {
-          "type": "array",
-          "items": {
-            "default": {},
-            "$ref": "#/definitions/sh.gatekeeper.frameworks.constraint.pkg.apis.templates.v1beta1.Target"
-          }
-        }
-      }
-    },
-    "sh.gatekeeper.frameworks.constraint.pkg.apis.templates.v1beta1.ConstraintTemplateStatus": {
-      "description": "ConstraintTemplateStatus defines the observed state of ConstraintTemplate.",
-      "type": "object",
-      "properties": {
-        "byPod": {
-          "type": "array",
-          "items": {
-            "default": {},
-            "$ref": "#/definitions/sh.gatekeeper.frameworks.constraint.pkg.apis.templates.v1beta1.ByPodStatus"
-          }
-        },
-        "created": {
-          "type": "boolean"
-        }
-      }
-    },
-    "sh.gatekeeper.frameworks.constraint.pkg.apis.templates.v1beta1.CreateCRDError": {
-      "description": "CreateCRDError represents a single error caught during parsing, compiling, etc.",
-      "type": "object",
-      "required": [
-        "code",
-        "message"
-      ],
-      "properties": {
-        "code": {
-          "type": "string",
-          "default": ""
-        },
-        "location": {
-          "type": "string"
-        },
-        "message": {
-          "type": "string",
-          "default": ""
-        }
-      }
-    },
-    "sh.gatekeeper.frameworks.constraint.pkg.apis.templates.v1beta1.Names": {
-      "description": "Names defines the naming conventions for the constraint kind.",
-      "type": "object",
-      "properties": {
-        "kind": {
-          "type": "string"
-        },
-        "shortNames": {
-          "type": "array",
-          "items": {
-            "type": "string",
-            "default": ""
-          }
-        }
-      }
-    },
-    "sh.gatekeeper.frameworks.constraint.pkg.apis.templates.v1beta1.Target": {
-      "description": "Target defines the target handler and policy for the constraint template.",
-      "type": "object",
-      "properties": {
-        "code": {
-          "description": "The source code options for the constraint template. \"Rego\" can only be specified in one place (either here or in the \"rego\" field)",
-          "type": "array",
-          "items": {
-            "default": {},
-            "$ref": "#/definitions/sh.gatekeeper.frameworks.constraint.pkg.apis.templates.v1beta1.Code"
-          },
-          "x-kubernetes-list-map-keys": [
-            "engine"
-          ],
-          "x-kubernetes-list-type": "map"
-        },
-        "libs": {
-          "type": "array",
-          "items": {
-            "type": "string",
-            "default": ""
-          }
         },
         "operations": {
           "type": "array",
@@ -2999,31 +1106,50 @@
             "default": ""
           }
         },
-        "rego": {
-          "type": "string"
-        },
-        "target": {
+        "providerUID": {
+          "description": "Storing the provider UID allows us to detect drift, such as when a provider has been recreated after its CRD was deleted out from under it, interrupting the watch",
           "type": "string"
         }
       }
     },
-    "sh.gatekeeper.frameworks.constraint.pkg.apis.templates.v1beta1.Validation": {
-      "description": "Validation defines the schema for constraint parameters.",
+    "sh.gatekeeper.externaldata.v1beta1.ProviderSpec": {
+      "description": "ProviderSpec defines the desired state of Provider.",
       "type": "object",
       "properties": {
-        "legacySchema": {
-          "type": "boolean"
+        "caBundle": {
+          "description": "CABundle is a base64-encoded string that contains the TLS CA bundle in PEM format. It is used to verify the signature of the provider's certificate.",
+          "type": "string"
         },
-        "openAPIV3Schema": {
-          "$ref": "#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.JSONSchemaProps"
+        "timeout": {
+          "description": "Timeout is the timeout when querying the provider.",
+          "type": "integer",
+          "format": "int32"
+        },
+        "url": {
+          "description": "URL is the url for the provider. URL is prefixed with https://.",
+          "type": "string"
         }
       }
     },
-    "sh.gatekeeper.frameworks.constraint.pkg.core.templates.Anything": {
+    "sh.gatekeeper.externaldata.v1beta1.ProviderStatus": {
+      "description": "ProviderStatus defines the observed state of Provider.",
+      "type": "object",
+      "properties": {
+        "byPod": {
+          "description": "ByPod is the status of the provider by pod",
+          "type": "array",
+          "items": {
+            "default": {},
+            "$ref": "#/definitions/sh.gatekeeper.externaldata.v1beta1.ProviderPodStatusStatus"
+          }
+        }
+      }
+    },
+    "sh.gatekeeper.frameworks.templates.Anything": {
       "description": "Anything is a struct wrapper around a field of type `interface{}` that plays nicely with controller-gen",
       "type": "object"
     },
-    "sh.gatekeeper.pkg.mutation.match.ApplyTo": {
+    "sh.gatekeeper.match.ApplyTo": {
       "description": "ApplyTo determines what GVKs items the mutation should apply to. Globs are not allowed.",
       "type": "object",
       "properties": {
@@ -3050,7 +1176,7 @@
         }
       }
     },
-    "sh.gatekeeper.pkg.mutation.match.Kinds": {
+    "sh.gatekeeper.match.Kinds": {
       "description": "Kinds accepts a list of objects with apiGroups and kinds fields that list the groups/kinds of objects to which the mutation will apply. If multiple groups/kinds objects are specified, only one match is needed for the resource to be in scope.",
       "type": "object",
       "properties": {
@@ -3071,7 +1197,7 @@
         }
       }
     },
-    "sh.gatekeeper.pkg.mutation.match.Match": {
+    "sh.gatekeeper.match.Match": {
       "description": "Match selects which objects are in scope.",
       "type": "object",
       "properties": {
@@ -3087,7 +1213,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/sh.gatekeeper.pkg.mutation.match.Kinds"
+            "$ref": "#/definitions/sh.gatekeeper.match.Kinds"
           }
         },
         "labelSelector": {
@@ -3120,7 +1246,2257 @@
         }
       }
     },
-    "sh.gatekeeper.pkg.mutation.types.Anything": {
+    "sh.gatekeeper.mutations.v1.Assign": {
+      "description": "Assign is the Schema for the assign API.",
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+          "type": "string"
+        },
+        "kind": {
+          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+          "type": "string"
+        },
+        "metadata": {
+          "default": {},
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+        },
+        "spec": {
+          "default": {},
+          "$ref": "#/definitions/sh.gatekeeper.mutations.v1.AssignSpec"
+        },
+        "status": {
+          "default": {},
+          "$ref": "#/definitions/sh.gatekeeper.mutations.v1.AssignStatus"
+        }
+      }
+    },
+    "sh.gatekeeper.mutations.v1.AssignField": {
+      "type": "object",
+      "properties": {
+        "externalData": {
+          "description": "ExternalData describes the external data provider to be used for mutation.",
+          "$ref": "#/definitions/sh.gatekeeper.mutations.v1.ExternalData"
+        },
+        "fromMetadata": {
+          "description": "FromMetadata assigns a value from the specified metadata field.",
+          "$ref": "#/definitions/sh.gatekeeper.mutations.v1.FromMetadata"
+        },
+        "value": {
+          "description": "Value is a constant value that will be assigned to `location`",
+          "$ref": "#/definitions/sh.gatekeeper.types.Anything"
+        }
+      }
+    },
+    "sh.gatekeeper.mutations.v1.AssignMetadata": {
+      "description": "AssignMetadata is the Schema for the assignmetadata API.",
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+          "type": "string"
+        },
+        "kind": {
+          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+          "type": "string"
+        },
+        "metadata": {
+          "default": {},
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+        },
+        "spec": {
+          "default": {},
+          "$ref": "#/definitions/sh.gatekeeper.mutations.v1.AssignMetadataSpec"
+        },
+        "status": {
+          "default": {},
+          "$ref": "#/definitions/sh.gatekeeper.mutations.v1.AssignMetadataStatus"
+        }
+      }
+    },
+    "sh.gatekeeper.mutations.v1.AssignMetadataSpec": {
+      "description": "AssignMetadataSpec defines the desired state of AssignMetadata.",
+      "type": "object",
+      "properties": {
+        "location": {
+          "type": "string"
+        },
+        "match": {
+          "default": {},
+          "$ref": "#/definitions/sh.gatekeeper.match.Match"
+        },
+        "parameters": {
+          "default": {},
+          "$ref": "#/definitions/sh.gatekeeper.mutations.v1.MetadataParameters"
+        }
+      }
+    },
+    "sh.gatekeeper.mutations.v1.AssignMetadataStatus": {
+      "description": "AssignMetadataStatus defines the observed state of AssignMetadata.",
+      "type": "object",
+      "properties": {
+        "byPod": {
+          "description": "INSERT ADDITIONAL STATUS FIELD - define observed state of cluster Important: Run \"make\" to regenerate code after modifying this file",
+          "type": "array",
+          "items": {
+            "default": {},
+            "$ref": "#/definitions/sh.gatekeeper.status.v1beta1.MutatorPodStatusStatus"
+          }
+        }
+      }
+    },
+    "sh.gatekeeper.mutations.v1.AssignSpec": {
+      "description": "AssignSpec defines the desired state of Assign.",
+      "type": "object",
+      "properties": {
+        "applyTo": {
+          "description": "ApplyTo lists the specific groups, versions and kinds a mutation will be applied to. This is necessary because every mutation implies part of an object schema and object schemas are associated with specific GVKs.",
+          "type": "array",
+          "items": {
+            "default": {},
+            "$ref": "#/definitions/sh.gatekeeper.match.ApplyTo"
+          }
+        },
+        "location": {
+          "description": "Location describes the path to be mutated, for example: `spec.containers[name: main]`.",
+          "type": "string"
+        },
+        "match": {
+          "description": "Match allows the user to limit which resources get mutated. Individual match criteria are AND-ed together. An undefined match criteria matches everything.",
+          "default": {},
+          "$ref": "#/definitions/sh.gatekeeper.match.Match"
+        },
+        "parameters": {
+          "description": "Parameters define the behavior of the mutator.",
+          "default": {},
+          "$ref": "#/definitions/sh.gatekeeper.mutations.v1.Parameters"
+        }
+      }
+    },
+    "sh.gatekeeper.mutations.v1.AssignStatus": {
+      "description": "AssignStatus defines the observed state of Assign.",
+      "type": "object",
+      "properties": {
+        "byPod": {
+          "type": "array",
+          "items": {
+            "default": {},
+            "$ref": "#/definitions/sh.gatekeeper.status.v1beta1.MutatorPodStatusStatus"
+          }
+        }
+      }
+    },
+    "sh.gatekeeper.mutations.v1.ExternalData": {
+      "description": "ExternalData describes the external data source to use for the mutation.",
+      "type": "object",
+      "properties": {
+        "dataSource": {
+          "description": "DataSource specifies where to extract the data that will be sent to the external data provider as parameters.",
+          "type": "string"
+        },
+        "default": {
+          "description": "Default specifies the default value to use when the external data provider returns an error and the failure policy is set to \"UseDefault\".",
+          "type": "string"
+        },
+        "failurePolicy": {
+          "description": "FailurePolicy specifies the policy to apply when the external data provider returns an error.",
+          "type": "string"
+        },
+        "provider": {
+          "description": "Provider is the name of the external data provider.",
+          "type": "string"
+        }
+      }
+    },
+    "sh.gatekeeper.mutations.v1.FromMetadata": {
+      "type": "object",
+      "properties": {
+        "field": {
+          "description": "Field specifies which metadata field provides the assigned value. Valid fields are `namespace` and `name`.",
+          "type": "string"
+        }
+      }
+    },
+    "sh.gatekeeper.mutations.v1.MetadataParameters": {
+      "type": "object",
+      "properties": {
+        "assign": {
+          "description": "Assign.value holds the value to be assigned",
+          "default": {},
+          "$ref": "#/definitions/sh.gatekeeper.mutations.v1.AssignField"
+        }
+      }
+    },
+    "sh.gatekeeper.mutations.v1.ModifySet": {
+      "description": "ModifySet allows the user to modify non-keyed lists, such as the list of arguments to a container.",
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+          "type": "string"
+        },
+        "kind": {
+          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+          "type": "string"
+        },
+        "metadata": {
+          "default": {},
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+        },
+        "spec": {
+          "default": {},
+          "$ref": "#/definitions/sh.gatekeeper.mutations.v1.ModifySetSpec"
+        },
+        "status": {
+          "default": {},
+          "$ref": "#/definitions/sh.gatekeeper.mutations.v1.ModifySetStatus"
+        }
+      }
+    },
+    "sh.gatekeeper.mutations.v1.ModifySetParameters": {
+      "type": "object",
+      "properties": {
+        "operation": {
+          "description": "Operation describes whether values should be merged in (\"merge\"), or pruned (\"prune\"). Default value is \"merge\"",
+          "type": "string"
+        },
+        "pathTests": {
+          "description": "PathTests are a series of existence tests that can be checked before a mutation is applied",
+          "type": "array",
+          "items": {
+            "default": {},
+            "$ref": "#/definitions/sh.gatekeeper.mutations.v1.PathTest"
+          }
+        },
+        "values": {
+          "description": "Values describes the values provided to the operation as `values.fromList`.",
+          "default": {},
+          "$ref": "#/definitions/sh.gatekeeper.mutations.v1.Values"
+        }
+      }
+    },
+    "sh.gatekeeper.mutations.v1.ModifySetSpec": {
+      "description": "ModifySetSpec defines the desired state of ModifySet.",
+      "type": "object",
+      "properties": {
+        "applyTo": {
+          "description": "ApplyTo lists the specific groups, versions and kinds a mutation will be applied to. This is necessary because every mutation implies part of an object schema and object schemas are associated with specific GVKs.",
+          "type": "array",
+          "items": {
+            "default": {},
+            "$ref": "#/definitions/sh.gatekeeper.match.ApplyTo"
+          }
+        },
+        "location": {
+          "description": "Location describes the path to be mutated, for example: `spec.containers[name: main].args`.",
+          "type": "string"
+        },
+        "match": {
+          "description": "Match allows the user to limit which resources get mutated. Individual match criteria are AND-ed together. An undefined match criteria matches everything.",
+          "default": {},
+          "$ref": "#/definitions/sh.gatekeeper.match.Match"
+        },
+        "parameters": {
+          "description": "Parameters define the behavior of the mutator.",
+          "default": {},
+          "$ref": "#/definitions/sh.gatekeeper.mutations.v1.ModifySetParameters"
+        }
+      }
+    },
+    "sh.gatekeeper.mutations.v1.ModifySetStatus": {
+      "description": "ModifySetStatus defines the observed state of ModifySet.",
+      "type": "object",
+      "properties": {
+        "byPod": {
+          "type": "array",
+          "items": {
+            "default": {},
+            "$ref": "#/definitions/sh.gatekeeper.status.v1beta1.MutatorPodStatusStatus"
+          }
+        }
+      }
+    },
+    "sh.gatekeeper.mutations.v1.Parameters": {
+      "type": "object",
+      "properties": {
+        "assign": {
+          "description": "Assign.value holds the value to be assigned",
+          "default": {},
+          "$ref": "#/definitions/sh.gatekeeper.mutations.v1.AssignField"
+        },
+        "pathTests": {
+          "type": "array",
+          "items": {
+            "default": {},
+            "$ref": "#/definitions/sh.gatekeeper.mutations.v1.PathTest"
+          }
+        }
+      }
+    },
+    "sh.gatekeeper.mutations.v1.PathTest": {
+      "description": "PathTest allows the user to customize how the mutation works if parent paths are missing. It traverses the list in order. All sub paths are tested against the provided condition, if the test fails, the mutation is not applied. All `subPath` entries must be a prefix of `location`. Any glob characters will take on the same value as was used to expand the matching glob in `location`.\n\nAvailable Tests: * MustExist    - the path must exist or do not mutate * MustNotExist - the path must not exist or do not mutate.",
+      "type": "object",
+      "properties": {
+        "condition": {
+          "type": "string"
+        },
+        "subPath": {
+          "type": "string"
+        }
+      }
+    },
+    "sh.gatekeeper.mutations.v1.Values": {
+      "description": "Values describes the values provided to the operation.",
+      "type": "object",
+      "properties": {
+        "fromList": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        }
+      }
+    },
+    "sh.gatekeeper.mutations.v1alpha1.Assign": {
+      "description": "Assign is the Schema for the assign API.",
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+          "type": "string"
+        },
+        "kind": {
+          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+          "type": "string"
+        },
+        "metadata": {
+          "default": {},
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+        },
+        "spec": {
+          "default": {},
+          "$ref": "#/definitions/sh.gatekeeper.mutations.v1alpha1.AssignSpec"
+        },
+        "status": {
+          "default": {},
+          "$ref": "#/definitions/sh.gatekeeper.mutations.v1alpha1.AssignStatus"
+        }
+      }
+    },
+    "sh.gatekeeper.mutations.v1alpha1.AssignField": {
+      "type": "object",
+      "properties": {
+        "externalData": {
+          "description": "ExternalData describes the external data provider to be used for mutation.",
+          "$ref": "#/definitions/sh.gatekeeper.mutations.v1alpha1.ExternalData"
+        },
+        "fromMetadata": {
+          "description": "FromMetadata assigns a value from the specified metadata field.",
+          "$ref": "#/definitions/sh.gatekeeper.mutations.v1alpha1.FromMetadata"
+        },
+        "value": {
+          "description": "Value is a constant value that will be assigned to `location`",
+          "$ref": "#/definitions/sh.gatekeeper.types.Anything"
+        }
+      }
+    },
+    "sh.gatekeeper.mutations.v1alpha1.AssignImage": {
+      "description": "AssignImage is the Schema for the assignimage API.",
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+          "type": "string"
+        },
+        "kind": {
+          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+          "type": "string"
+        },
+        "metadata": {
+          "default": {},
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+        },
+        "spec": {
+          "default": {},
+          "$ref": "#/definitions/sh.gatekeeper.mutations.v1alpha1.AssignImageSpec"
+        },
+        "status": {
+          "default": {},
+          "$ref": "#/definitions/sh.gatekeeper.mutations.v1alpha1.AssignImageStatus"
+        }
+      }
+    },
+    "sh.gatekeeper.mutations.v1alpha1.AssignImageParameters": {
+      "type": "object",
+      "properties": {
+        "assignDomain": {
+          "description": "AssignDomain sets the domain component on an image string. The trailing slash should not be included.",
+          "type": "string"
+        },
+        "assignPath": {
+          "description": "AssignPath sets the domain component on an image string.",
+          "type": "string"
+        },
+        "assignTag": {
+          "description": "AssignImage sets the image component on an image string. It must start with a `:` or `@`.",
+          "type": "string"
+        },
+        "pathTests": {
+          "type": "array",
+          "items": {
+            "default": {},
+            "$ref": "#/definitions/sh.gatekeeper.mutations.v1alpha1.PathTest"
+          }
+        }
+      }
+    },
+    "sh.gatekeeper.mutations.v1alpha1.AssignImageSpec": {
+      "description": "AssignImageSpec defines the desired state of AssignImage.",
+      "type": "object",
+      "properties": {
+        "applyTo": {
+          "description": "ApplyTo lists the specific groups, versions and kinds a mutation will be applied to. This is necessary because every mutation implies part of an object schema and object schemas are associated with specific GVKs.",
+          "type": "array",
+          "items": {
+            "default": {},
+            "$ref": "#/definitions/sh.gatekeeper.match.ApplyTo"
+          }
+        },
+        "location": {
+          "description": "Location describes the path to be mutated, for example: `spec.containers[name: main].image`.",
+          "type": "string"
+        },
+        "match": {
+          "description": "Match allows the user to limit which resources get mutated. Individual match criteria are AND-ed together. An undefined match criteria matches everything.",
+          "default": {},
+          "$ref": "#/definitions/sh.gatekeeper.match.Match"
+        },
+        "parameters": {
+          "description": "Parameters define the behavior of the mutator.",
+          "default": {},
+          "$ref": "#/definitions/sh.gatekeeper.mutations.v1alpha1.AssignImageParameters"
+        }
+      }
+    },
+    "sh.gatekeeper.mutations.v1alpha1.AssignImageStatus": {
+      "description": "AssignImageStatus defines the observed state of AssignImage.",
+      "type": "object",
+      "properties": {
+        "byPod": {
+          "type": "array",
+          "items": {
+            "default": {},
+            "$ref": "#/definitions/sh.gatekeeper.status.v1beta1.MutatorPodStatusStatus"
+          }
+        }
+      }
+    },
+    "sh.gatekeeper.mutations.v1alpha1.AssignMetadata": {
+      "description": "AssignMetadata is the Schema for the assignmetadata API.",
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+          "type": "string"
+        },
+        "kind": {
+          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+          "type": "string"
+        },
+        "metadata": {
+          "default": {},
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+        },
+        "spec": {
+          "default": {},
+          "$ref": "#/definitions/sh.gatekeeper.mutations.v1alpha1.AssignMetadataSpec"
+        },
+        "status": {
+          "default": {},
+          "$ref": "#/definitions/sh.gatekeeper.mutations.v1alpha1.AssignMetadataStatus"
+        }
+      }
+    },
+    "sh.gatekeeper.mutations.v1alpha1.AssignMetadataSpec": {
+      "description": "AssignMetadataSpec defines the desired state of AssignMetadata.",
+      "type": "object",
+      "properties": {
+        "location": {
+          "type": "string"
+        },
+        "match": {
+          "default": {},
+          "$ref": "#/definitions/sh.gatekeeper.match.Match"
+        },
+        "parameters": {
+          "default": {},
+          "$ref": "#/definitions/sh.gatekeeper.mutations.v1alpha1.MetadataParameters"
+        }
+      }
+    },
+    "sh.gatekeeper.mutations.v1alpha1.AssignMetadataStatus": {
+      "description": "AssignMetadataStatus defines the observed state of AssignMetadata.",
+      "type": "object",
+      "properties": {
+        "byPod": {
+          "description": "INSERT ADDITIONAL STATUS FIELD - define observed state of cluster Important: Run \"make\" to regenerate code after modifying this file",
+          "type": "array",
+          "items": {
+            "default": {},
+            "$ref": "#/definitions/sh.gatekeeper.status.v1beta1.MutatorPodStatusStatus"
+          }
+        }
+      }
+    },
+    "sh.gatekeeper.mutations.v1alpha1.AssignSpec": {
+      "description": "AssignSpec defines the desired state of Assign.",
+      "type": "object",
+      "properties": {
+        "applyTo": {
+          "description": "ApplyTo lists the specific groups, versions and kinds a mutation will be applied to. This is necessary because every mutation implies part of an object schema and object schemas are associated with specific GVKs.",
+          "type": "array",
+          "items": {
+            "default": {},
+            "$ref": "#/definitions/sh.gatekeeper.match.ApplyTo"
+          }
+        },
+        "location": {
+          "description": "Location describes the path to be mutated, for example: `spec.containers[name: main]`.",
+          "type": "string"
+        },
+        "match": {
+          "description": "Match allows the user to limit which resources get mutated. Individual match criteria are AND-ed together. An undefined match criteria matches everything.",
+          "default": {},
+          "$ref": "#/definitions/sh.gatekeeper.match.Match"
+        },
+        "parameters": {
+          "description": "Parameters define the behavior of the mutator.",
+          "default": {},
+          "$ref": "#/definitions/sh.gatekeeper.mutations.v1alpha1.Parameters"
+        }
+      }
+    },
+    "sh.gatekeeper.mutations.v1alpha1.AssignStatus": {
+      "description": "AssignStatus defines the observed state of Assign.",
+      "type": "object",
+      "properties": {
+        "byPod": {
+          "type": "array",
+          "items": {
+            "default": {},
+            "$ref": "#/definitions/sh.gatekeeper.status.v1beta1.MutatorPodStatusStatus"
+          }
+        }
+      }
+    },
+    "sh.gatekeeper.mutations.v1alpha1.ExternalData": {
+      "description": "ExternalData describes the external data source to use for the mutation.",
+      "type": "object",
+      "properties": {
+        "dataSource": {
+          "description": "DataSource specifies where to extract the data that will be sent to the external data provider as parameters.",
+          "type": "string"
+        },
+        "default": {
+          "description": "Default specifies the default value to use when the external data provider returns an error and the failure policy is set to \"UseDefault\".",
+          "type": "string"
+        },
+        "failurePolicy": {
+          "description": "FailurePolicy specifies the policy to apply when the external data provider returns an error.",
+          "type": "string"
+        },
+        "provider": {
+          "description": "Provider is the name of the external data provider.",
+          "type": "string"
+        }
+      }
+    },
+    "sh.gatekeeper.mutations.v1alpha1.FromMetadata": {
+      "type": "object",
+      "properties": {
+        "field": {
+          "description": "Field specifies which metadata field provides the assigned value. Valid fields are `namespace` and `name`.",
+          "type": "string"
+        }
+      }
+    },
+    "sh.gatekeeper.mutations.v1alpha1.MetadataParameters": {
+      "type": "object",
+      "properties": {
+        "assign": {
+          "description": "Assign.value holds the value to be assigned",
+          "default": {},
+          "$ref": "#/definitions/sh.gatekeeper.mutations.v1alpha1.AssignField"
+        }
+      }
+    },
+    "sh.gatekeeper.mutations.v1alpha1.ModifySet": {
+      "description": "ModifySet allows the user to modify non-keyed lists, such as the list of arguments to a container.",
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+          "type": "string"
+        },
+        "kind": {
+          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+          "type": "string"
+        },
+        "metadata": {
+          "default": {},
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+        },
+        "spec": {
+          "default": {},
+          "$ref": "#/definitions/sh.gatekeeper.mutations.v1alpha1.ModifySetSpec"
+        },
+        "status": {
+          "default": {},
+          "$ref": "#/definitions/sh.gatekeeper.mutations.v1alpha1.ModifySetStatus"
+        }
+      }
+    },
+    "sh.gatekeeper.mutations.v1alpha1.ModifySetParameters": {
+      "type": "object",
+      "properties": {
+        "operation": {
+          "description": "Operation describes whether values should be merged in (\"merge\"), or pruned (\"prune\"). Default value is \"merge\"",
+          "type": "string"
+        },
+        "pathTests": {
+          "description": "PathTests are a series of existence tests that can be checked before a mutation is applied",
+          "type": "array",
+          "items": {
+            "default": {},
+            "$ref": "#/definitions/sh.gatekeeper.mutations.v1alpha1.PathTest"
+          }
+        },
+        "values": {
+          "description": "Values describes the values provided to the operation as `values.fromList`.",
+          "default": {},
+          "$ref": "#/definitions/sh.gatekeeper.mutations.v1alpha1.Values"
+        }
+      }
+    },
+    "sh.gatekeeper.mutations.v1alpha1.ModifySetSpec": {
+      "description": "ModifySetSpec defines the desired state of ModifySet.",
+      "type": "object",
+      "properties": {
+        "applyTo": {
+          "description": "ApplyTo lists the specific groups, versions and kinds a mutation will be applied to. This is necessary because every mutation implies part of an object schema and object schemas are associated with specific GVKs.",
+          "type": "array",
+          "items": {
+            "default": {},
+            "$ref": "#/definitions/sh.gatekeeper.match.ApplyTo"
+          }
+        },
+        "location": {
+          "description": "Location describes the path to be mutated, for example: `spec.containers[name: main].args`.",
+          "type": "string"
+        },
+        "match": {
+          "description": "Match allows the user to limit which resources get mutated. Individual match criteria are AND-ed together. An undefined match criteria matches everything.",
+          "default": {},
+          "$ref": "#/definitions/sh.gatekeeper.match.Match"
+        },
+        "parameters": {
+          "description": "Parameters define the behavior of the mutator.",
+          "default": {},
+          "$ref": "#/definitions/sh.gatekeeper.mutations.v1alpha1.ModifySetParameters"
+        }
+      }
+    },
+    "sh.gatekeeper.mutations.v1alpha1.ModifySetStatus": {
+      "description": "ModifySetStatus defines the observed state of ModifySet.",
+      "type": "object",
+      "properties": {
+        "byPod": {
+          "type": "array",
+          "items": {
+            "default": {},
+            "$ref": "#/definitions/sh.gatekeeper.status.v1beta1.MutatorPodStatusStatus"
+          }
+        }
+      }
+    },
+    "sh.gatekeeper.mutations.v1alpha1.Parameters": {
+      "type": "object",
+      "properties": {
+        "assign": {
+          "description": "Assign.value holds the value to be assigned",
+          "default": {},
+          "$ref": "#/definitions/sh.gatekeeper.mutations.v1alpha1.AssignField"
+        },
+        "pathTests": {
+          "type": "array",
+          "items": {
+            "default": {},
+            "$ref": "#/definitions/sh.gatekeeper.mutations.v1alpha1.PathTest"
+          }
+        }
+      }
+    },
+    "sh.gatekeeper.mutations.v1alpha1.PathTest": {
+      "description": "PathTest allows the user to customize how the mutation works if parent paths are missing. It traverses the list in order. All sub paths are tested against the provided condition, if the test fails, the mutation is not applied. All `subPath` entries must be a prefix of `location`. Any glob characters will take on the same value as was used to expand the matching glob in `location`.\n\nAvailable Tests: * MustExist    - the path must exist or do not mutate * MustNotExist - the path must not exist or do not mutate.",
+      "type": "object",
+      "properties": {
+        "condition": {
+          "type": "string"
+        },
+        "subPath": {
+          "type": "string"
+        }
+      }
+    },
+    "sh.gatekeeper.mutations.v1alpha1.Values": {
+      "description": "Values describes the values provided to the operation.",
+      "type": "object",
+      "properties": {
+        "fromList": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        }
+      }
+    },
+    "sh.gatekeeper.mutations.v1beta1.Assign": {
+      "description": "Assign is the Schema for the assign API.",
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+          "type": "string"
+        },
+        "kind": {
+          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+          "type": "string"
+        },
+        "metadata": {
+          "default": {},
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+        },
+        "spec": {
+          "default": {},
+          "$ref": "#/definitions/sh.gatekeeper.mutations.v1beta1.AssignSpec"
+        },
+        "status": {
+          "default": {},
+          "$ref": "#/definitions/sh.gatekeeper.mutations.v1beta1.AssignStatus"
+        }
+      }
+    },
+    "sh.gatekeeper.mutations.v1beta1.AssignField": {
+      "type": "object",
+      "properties": {
+        "externalData": {
+          "description": "ExternalData describes the external data provider to be used for mutation.",
+          "$ref": "#/definitions/sh.gatekeeper.mutations.v1beta1.ExternalData"
+        },
+        "fromMetadata": {
+          "description": "FromMetadata assigns a value from the specified metadata field.",
+          "$ref": "#/definitions/sh.gatekeeper.mutations.v1beta1.FromMetadata"
+        },
+        "value": {
+          "description": "Value is a constant value that will be assigned to `location`",
+          "$ref": "#/definitions/sh.gatekeeper.types.Anything"
+        }
+      }
+    },
+    "sh.gatekeeper.mutations.v1beta1.AssignMetadata": {
+      "description": "AssignMetadata is the Schema for the assignmetadata API.",
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+          "type": "string"
+        },
+        "kind": {
+          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+          "type": "string"
+        },
+        "metadata": {
+          "default": {},
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+        },
+        "spec": {
+          "default": {},
+          "$ref": "#/definitions/sh.gatekeeper.mutations.v1beta1.AssignMetadataSpec"
+        },
+        "status": {
+          "default": {},
+          "$ref": "#/definitions/sh.gatekeeper.mutations.v1beta1.AssignMetadataStatus"
+        }
+      }
+    },
+    "sh.gatekeeper.mutations.v1beta1.AssignMetadataSpec": {
+      "description": "AssignMetadataSpec defines the desired state of AssignMetadata.",
+      "type": "object",
+      "properties": {
+        "location": {
+          "type": "string"
+        },
+        "match": {
+          "default": {},
+          "$ref": "#/definitions/sh.gatekeeper.match.Match"
+        },
+        "parameters": {
+          "default": {},
+          "$ref": "#/definitions/sh.gatekeeper.mutations.v1beta1.MetadataParameters"
+        }
+      }
+    },
+    "sh.gatekeeper.mutations.v1beta1.AssignMetadataStatus": {
+      "description": "AssignMetadataStatus defines the observed state of AssignMetadata.",
+      "type": "object",
+      "properties": {
+        "byPod": {
+          "description": "INSERT ADDITIONAL STATUS FIELD - define observed state of cluster Important: Run \"make\" to regenerate code after modifying this file",
+          "type": "array",
+          "items": {
+            "default": {},
+            "$ref": "#/definitions/sh.gatekeeper.status.v1beta1.MutatorPodStatusStatus"
+          }
+        }
+      }
+    },
+    "sh.gatekeeper.mutations.v1beta1.AssignSpec": {
+      "description": "AssignSpec defines the desired state of Assign.",
+      "type": "object",
+      "properties": {
+        "applyTo": {
+          "description": "ApplyTo lists the specific groups, versions and kinds a mutation will be applied to. This is necessary because every mutation implies part of an object schema and object schemas are associated with specific GVKs.",
+          "type": "array",
+          "items": {
+            "default": {},
+            "$ref": "#/definitions/sh.gatekeeper.match.ApplyTo"
+          }
+        },
+        "location": {
+          "description": "Location describes the path to be mutated, for example: `spec.containers[name: main]`.",
+          "type": "string"
+        },
+        "match": {
+          "description": "Match allows the user to limit which resources get mutated. Individual match criteria are AND-ed together. An undefined match criteria matches everything.",
+          "default": {},
+          "$ref": "#/definitions/sh.gatekeeper.match.Match"
+        },
+        "parameters": {
+          "description": "Parameters define the behavior of the mutator.",
+          "default": {},
+          "$ref": "#/definitions/sh.gatekeeper.mutations.v1beta1.Parameters"
+        }
+      }
+    },
+    "sh.gatekeeper.mutations.v1beta1.AssignStatus": {
+      "description": "AssignStatus defines the observed state of Assign.",
+      "type": "object",
+      "properties": {
+        "byPod": {
+          "type": "array",
+          "items": {
+            "default": {},
+            "$ref": "#/definitions/sh.gatekeeper.status.v1beta1.MutatorPodStatusStatus"
+          }
+        }
+      }
+    },
+    "sh.gatekeeper.mutations.v1beta1.ExternalData": {
+      "description": "ExternalData describes the external data source to use for the mutation.",
+      "type": "object",
+      "properties": {
+        "dataSource": {
+          "description": "DataSource specifies where to extract the data that will be sent to the external data provider as parameters.",
+          "type": "string"
+        },
+        "default": {
+          "description": "Default specifies the default value to use when the external data provider returns an error and the failure policy is set to \"UseDefault\".",
+          "type": "string"
+        },
+        "failurePolicy": {
+          "description": "FailurePolicy specifies the policy to apply when the external data provider returns an error.",
+          "type": "string"
+        },
+        "provider": {
+          "description": "Provider is the name of the external data provider.",
+          "type": "string"
+        }
+      }
+    },
+    "sh.gatekeeper.mutations.v1beta1.FromMetadata": {
+      "type": "object",
+      "properties": {
+        "field": {
+          "description": "Field specifies which metadata field provides the assigned value. Valid fields are `namespace` and `name`.",
+          "type": "string"
+        }
+      }
+    },
+    "sh.gatekeeper.mutations.v1beta1.MetadataParameters": {
+      "type": "object",
+      "properties": {
+        "assign": {
+          "description": "Assign.value holds the value to be assigned",
+          "default": {},
+          "$ref": "#/definitions/sh.gatekeeper.mutations.v1beta1.AssignField"
+        }
+      }
+    },
+    "sh.gatekeeper.mutations.v1beta1.ModifySet": {
+      "description": "ModifySet allows the user to modify non-keyed lists, such as the list of arguments to a container.",
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+          "type": "string"
+        },
+        "kind": {
+          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+          "type": "string"
+        },
+        "metadata": {
+          "default": {},
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+        },
+        "spec": {
+          "default": {},
+          "$ref": "#/definitions/sh.gatekeeper.mutations.v1beta1.ModifySetSpec"
+        },
+        "status": {
+          "default": {},
+          "$ref": "#/definitions/sh.gatekeeper.mutations.v1beta1.ModifySetStatus"
+        }
+      }
+    },
+    "sh.gatekeeper.mutations.v1beta1.ModifySetParameters": {
+      "type": "object",
+      "properties": {
+        "operation": {
+          "description": "Operation describes whether values should be merged in (\"merge\"), or pruned (\"prune\"). Default value is \"merge\"",
+          "type": "string"
+        },
+        "pathTests": {
+          "description": "PathTests are a series of existence tests that can be checked before a mutation is applied",
+          "type": "array",
+          "items": {
+            "default": {},
+            "$ref": "#/definitions/sh.gatekeeper.mutations.v1beta1.PathTest"
+          }
+        },
+        "values": {
+          "description": "Values describes the values provided to the operation as `values.fromList`.",
+          "default": {},
+          "$ref": "#/definitions/sh.gatekeeper.mutations.v1beta1.Values"
+        }
+      }
+    },
+    "sh.gatekeeper.mutations.v1beta1.ModifySetSpec": {
+      "description": "ModifySetSpec defines the desired state of ModifySet.",
+      "type": "object",
+      "properties": {
+        "applyTo": {
+          "description": "ApplyTo lists the specific groups, versions and kinds a mutation will be applied to. This is necessary because every mutation implies part of an object schema and object schemas are associated with specific GVKs.",
+          "type": "array",
+          "items": {
+            "default": {},
+            "$ref": "#/definitions/sh.gatekeeper.match.ApplyTo"
+          }
+        },
+        "location": {
+          "description": "Location describes the path to be mutated, for example: `spec.containers[name: main].args`.",
+          "type": "string"
+        },
+        "match": {
+          "description": "Match allows the user to limit which resources get mutated. Individual match criteria are AND-ed together. An undefined match criteria matches everything.",
+          "default": {},
+          "$ref": "#/definitions/sh.gatekeeper.match.Match"
+        },
+        "parameters": {
+          "description": "Parameters define the behavior of the mutator.",
+          "default": {},
+          "$ref": "#/definitions/sh.gatekeeper.mutations.v1beta1.ModifySetParameters"
+        }
+      }
+    },
+    "sh.gatekeeper.mutations.v1beta1.ModifySetStatus": {
+      "description": "ModifySetStatus defines the observed state of ModifySet.",
+      "type": "object",
+      "properties": {
+        "byPod": {
+          "type": "array",
+          "items": {
+            "default": {},
+            "$ref": "#/definitions/sh.gatekeeper.status.v1beta1.MutatorPodStatusStatus"
+          }
+        }
+      }
+    },
+    "sh.gatekeeper.mutations.v1beta1.Parameters": {
+      "type": "object",
+      "properties": {
+        "assign": {
+          "description": "Assign.value holds the value to be assigned",
+          "default": {},
+          "$ref": "#/definitions/sh.gatekeeper.mutations.v1beta1.AssignField"
+        },
+        "pathTests": {
+          "type": "array",
+          "items": {
+            "default": {},
+            "$ref": "#/definitions/sh.gatekeeper.mutations.v1beta1.PathTest"
+          }
+        }
+      }
+    },
+    "sh.gatekeeper.mutations.v1beta1.PathTest": {
+      "description": "PathTest allows the user to customize how the mutation works if parent paths are missing. It traverses the list in order. All sub paths are tested against the provided condition, if the test fails, the mutation is not applied. All `subPath` entries must be a prefix of `location`. Any glob characters will take on the same value as was used to expand the matching glob in `location`.\n\nAvailable Tests: * MustExist    - the path must exist or do not mutate * MustNotExist - the path must not exist or do not mutate.",
+      "type": "object",
+      "properties": {
+        "condition": {
+          "type": "string"
+        },
+        "subPath": {
+          "type": "string"
+        }
+      }
+    },
+    "sh.gatekeeper.mutations.v1beta1.Values": {
+      "description": "Values describes the values provided to the operation.",
+      "type": "object",
+      "properties": {
+        "fromList": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        }
+      }
+    },
+    "sh.gatekeeper.status.v1alpha1.ConnectionError": {
+      "type": "object",
+      "required": [
+        "type",
+        "message"
+      ],
+      "properties": {
+        "message": {
+          "type": "string",
+          "default": ""
+        },
+        "type": {
+          "type": "string",
+          "default": ""
+        }
+      }
+    },
+    "sh.gatekeeper.status.v1alpha1.ConnectionPodStatus": {
+      "description": "ConnectionPodStatus is the Schema for the connectionpodstatuses API.",
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+          "type": "string"
+        },
+        "kind": {
+          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+          "type": "string"
+        },
+        "metadata": {
+          "default": {},
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+        },
+        "status": {
+          "description": "No spec field is defined here, as this is a status-only resource.",
+          "default": {},
+          "$ref": "#/definitions/sh.gatekeeper.status.v1alpha1.ConnectionPodStatusStatus"
+        }
+      }
+    },
+    "sh.gatekeeper.status.v1alpha1.ConnectionPodStatusStatus": {
+      "description": "ConnectionPodStatusStatus defines the observed state of ConnectionPodStatus.",
+      "type": "object",
+      "properties": {
+        "active": {
+          "description": "Indicator for alive connection with at least one successful publish",
+          "type": "boolean"
+        },
+        "connectionUID": {
+          "type": "string"
+        },
+        "errors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/sh.gatekeeper.status.v1alpha1.ConnectionError"
+          }
+        },
+        "id": {
+          "description": "ID is the unique identifier for the pod that wrote the status",
+          "type": "string"
+        },
+        "observedGeneration": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "operations": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "default": ""
+          }
+        }
+      }
+    },
+    "sh.gatekeeper.status.v1beta1.ConfigError": {
+      "type": "object",
+      "required": [
+        "message"
+      ],
+      "properties": {
+        "message": {
+          "type": "string",
+          "default": ""
+        },
+        "type": {
+          "type": "string"
+        }
+      }
+    },
+    "sh.gatekeeper.status.v1beta1.ConfigPodStatus": {
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+          "type": "string"
+        },
+        "kind": {
+          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+          "type": "string"
+        },
+        "metadata": {
+          "default": {},
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+        },
+        "status": {
+          "default": {},
+          "$ref": "#/definitions/sh.gatekeeper.status.v1beta1.ConfigPodStatusStatus"
+        }
+      }
+    },
+    "sh.gatekeeper.status.v1beta1.ConfigPodStatusStatus": {
+      "type": "object",
+      "properties": {
+        "configUID": {
+          "type": "string"
+        },
+        "errors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/sh.gatekeeper.status.v1beta1.ConfigError"
+          }
+        },
+        "id": {
+          "type": "string"
+        },
+        "observedGeneration": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "operations": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "default": ""
+          }
+        }
+      }
+    },
+    "sh.gatekeeper.status.v1beta1.ConstraintPodStatus": {
+      "description": "ConstraintPodStatus is the Schema for the constraintpodstatuses API.",
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+          "type": "string"
+        },
+        "kind": {
+          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+          "type": "string"
+        },
+        "metadata": {
+          "default": {},
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+        },
+        "status": {
+          "default": {},
+          "$ref": "#/definitions/sh.gatekeeper.status.v1beta1.ConstraintPodStatusStatus"
+        }
+      }
+    },
+    "sh.gatekeeper.status.v1beta1.ConstraintPodStatusStatus": {
+      "description": "ConstraintPodStatusStatus defines the observed state of ConstraintPodStatus.",
+      "type": "object",
+      "properties": {
+        "constraintUID": {
+          "description": "Storing the constraint UID allows us to detect drift, such as when a constraint has been recreated after its CRD was deleted out from under it, interrupting the watch",
+          "type": "string"
+        },
+        "enforced": {
+          "type": "boolean"
+        },
+        "enforcementPointsStatus": {
+          "type": "array",
+          "items": {
+            "default": {},
+            "$ref": "#/definitions/sh.gatekeeper.status.v1beta1.EnforcementPointStatus"
+          }
+        },
+        "errors": {
+          "type": "array",
+          "items": {
+            "default": {},
+            "$ref": "#/definitions/sh.gatekeeper.status.v1beta1.Error"
+          }
+        },
+        "id": {
+          "type": "string"
+        },
+        "observedGeneration": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "operations": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "default": ""
+          }
+        }
+      }
+    },
+    "sh.gatekeeper.status.v1beta1.ConstraintTemplatePodStatus": {
+      "description": "ConstraintTemplatePodStatus is the Schema for the constrainttemplatepodstatuses API.",
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+          "type": "string"
+        },
+        "kind": {
+          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+          "type": "string"
+        },
+        "metadata": {
+          "default": {},
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+        },
+        "status": {
+          "default": {},
+          "$ref": "#/definitions/sh.gatekeeper.status.v1beta1.ConstraintTemplatePodStatusStatus"
+        }
+      }
+    },
+    "sh.gatekeeper.status.v1beta1.ConstraintTemplatePodStatusStatus": {
+      "description": "ConstraintTemplatePodStatusStatus defines the observed state of ConstraintTemplatePodStatus.",
+      "type": "object",
+      "properties": {
+        "errors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/sh.gatekeeper.templates.v1beta1.CreateCRDError"
+          }
+        },
+        "id": {
+          "description": "Important: Run \"make\" to regenerate code after modifying this file",
+          "type": "string"
+        },
+        "observedGeneration": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "operations": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "default": ""
+          }
+        },
+        "templateUID": {
+          "type": "string"
+        },
+        "vapGenerationStatus": {
+          "$ref": "#/definitions/sh.gatekeeper.status.v1beta1.VAPGenerationStatus"
+        }
+      }
+    },
+    "sh.gatekeeper.status.v1beta1.EnforcementPointStatus": {
+      "description": "EnforcementPointStatus represents the status of a single enforcement point.",
+      "type": "object",
+      "required": [
+        "enforcementPoint",
+        "state"
+      ],
+      "properties": {
+        "enforcementPoint": {
+          "type": "string",
+          "default": ""
+        },
+        "message": {
+          "type": "string"
+        },
+        "observedGeneration": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "state": {
+          "type": "string",
+          "default": ""
+        }
+      }
+    },
+    "sh.gatekeeper.status.v1beta1.Error": {
+      "description": "Error represents a single error caught while adding a constraint to engine.",
+      "type": "object",
+      "required": [
+        "code",
+        "message"
+      ],
+      "properties": {
+        "code": {
+          "type": "string",
+          "default": ""
+        },
+        "location": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string",
+          "default": ""
+        }
+      }
+    },
+    "sh.gatekeeper.status.v1beta1.ExpansionTemplateError": {
+      "type": "object",
+      "required": [
+        "message"
+      ],
+      "properties": {
+        "message": {
+          "type": "string",
+          "default": ""
+        },
+        "type": {
+          "type": "string"
+        }
+      }
+    },
+    "sh.gatekeeper.status.v1beta1.ExpansionTemplatePodStatus": {
+      "description": "ExpansionTemplatePodStatus is the Schema for the expansiontemplatepodstatuses API.",
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+          "type": "string"
+        },
+        "kind": {
+          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+          "type": "string"
+        },
+        "metadata": {
+          "default": {},
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+        },
+        "status": {
+          "default": {},
+          "$ref": "#/definitions/sh.gatekeeper.status.v1beta1.ExpansionTemplatePodStatusStatus"
+        }
+      }
+    },
+    "sh.gatekeeper.status.v1beta1.ExpansionTemplatePodStatusStatus": {
+      "description": "ExpansionTemplatePodStatusStatus defines the observed state of ExpansionTemplatePodStatus.",
+      "type": "object",
+      "properties": {
+        "errors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/sh.gatekeeper.status.v1beta1.ExpansionTemplateError"
+          }
+        },
+        "id": {
+          "description": "Important: Run \"make\" to regenerate code after modifying this file",
+          "type": "string"
+        },
+        "observedGeneration": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "operations": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "default": ""
+          }
+        },
+        "templateUID": {
+          "type": "string"
+        }
+      }
+    },
+    "sh.gatekeeper.status.v1beta1.MutatorError": {
+      "description": "MutatorError represents a single error caught while adding a mutator to a system.",
+      "type": "object",
+      "required": [
+        "message"
+      ],
+      "properties": {
+        "message": {
+          "type": "string",
+          "default": ""
+        },
+        "type": {
+          "description": "Type indicates a specific class of error for use by controller code. If not present, the error should be treated as not matching any known type.",
+          "type": "string"
+        }
+      }
+    },
+    "sh.gatekeeper.status.v1beta1.MutatorPodStatus": {
+      "description": "MutatorPodStatus is the Schema for the mutationpodstatuses API.",
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+          "type": "string"
+        },
+        "kind": {
+          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+          "type": "string"
+        },
+        "metadata": {
+          "default": {},
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+        },
+        "status": {
+          "default": {},
+          "$ref": "#/definitions/sh.gatekeeper.status.v1beta1.MutatorPodStatusStatus"
+        }
+      }
+    },
+    "sh.gatekeeper.status.v1beta1.MutatorPodStatusStatus": {
+      "description": "MutatorPodStatusStatus defines the observed state of MutatorPodStatus.",
+      "type": "object",
+      "properties": {
+        "enforced": {
+          "type": "boolean"
+        },
+        "errors": {
+          "type": "array",
+          "items": {
+            "default": {},
+            "$ref": "#/definitions/sh.gatekeeper.status.v1beta1.MutatorError"
+          }
+        },
+        "id": {
+          "type": "string"
+        },
+        "mutatorUID": {
+          "description": "Storing the mutator UID allows us to detect drift, such as when a mutator has been recreated after its CRD was deleted out from under it, interrupting the watch",
+          "type": "string"
+        },
+        "observedGeneration": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "operations": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "default": ""
+          }
+        }
+      }
+    },
+    "sh.gatekeeper.status.v1beta1.ProviderError": {
+      "description": "ProviderError represents a single error caught while managing providers.",
+      "type": "object",
+      "required": [
+        "type",
+        "message",
+        "retryable",
+        "errorTimestamp"
+      ],
+      "properties": {
+        "errorTimestamp": {
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
+        },
+        "message": {
+          "type": "string",
+          "default": ""
+        },
+        "retryable": {
+          "type": "boolean",
+          "default": false
+        },
+        "type": {
+          "description": "Type indicates a specific class of error for use by controller code. If not present, the error should be treated as not matching any known type.",
+          "type": "string",
+          "default": ""
+        }
+      }
+    },
+    "sh.gatekeeper.status.v1beta1.ProviderPodStatus": {
+      "description": "ProviderPodStatus is the Schema for the providerpodstatuses API.",
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+          "type": "string"
+        },
+        "kind": {
+          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+          "type": "string"
+        },
+        "metadata": {
+          "default": {},
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+        },
+        "status": {
+          "description": "No spec field is defined here, as this is a status-only resource.",
+          "default": {},
+          "$ref": "#/definitions/sh.gatekeeper.status.v1beta1.ProviderPodStatusStatus"
+        }
+      }
+    },
+    "sh.gatekeeper.status.v1beta1.ProviderPodStatusStatus": {
+      "description": "ProviderPodStatusStatus defines the observed state of ProviderPodStatus.",
+      "type": "object",
+      "properties": {
+        "active": {
+          "type": "boolean"
+        },
+        "errors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/sh.gatekeeper.status.v1beta1.ProviderError"
+          }
+        },
+        "id": {
+          "type": "string"
+        },
+        "lastCacheUpdateTime": {
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
+        },
+        "lastTransitionTime": {
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
+        },
+        "observedGeneration": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "operations": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "default": ""
+          }
+        },
+        "providerUID": {
+          "description": "Storing the provider UID allows us to detect drift, such as when a provider has been recreated after its CRD was deleted out from under it, interrupting the watch",
+          "type": "string"
+        }
+      }
+    },
+    "sh.gatekeeper.status.v1beta1.VAPGenerationStatus": {
+      "description": "VAPGenerationStatus represents the status of VAP generation.",
+      "type": "object",
+      "properties": {
+        "observedGeneration": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "state": {
+          "type": "string"
+        },
+        "warning": {
+          "type": "string"
+        }
+      }
+    },
+    "sh.gatekeeper.syncset.v1alpha1.GVKEntry": {
+      "type": "object",
+      "properties": {
+        "group": {
+          "type": "string"
+        },
+        "kind": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        }
+      }
+    },
+    "sh.gatekeeper.syncset.v1alpha1.SyncSet": {
+      "description": "SyncSet defines which resources Gatekeeper will cache. The union of all SyncSets plus the syncOnly field of Gatekeeper's Config resource defines the sets of resources that will be synced.",
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+          "type": "string"
+        },
+        "kind": {
+          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+          "type": "string"
+        },
+        "metadata": {
+          "default": {},
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+        },
+        "spec": {
+          "default": {},
+          "$ref": "#/definitions/sh.gatekeeper.syncset.v1alpha1.SyncSetSpec"
+        }
+      }
+    },
+    "sh.gatekeeper.syncset.v1alpha1.SyncSetSpec": {
+      "type": "object",
+      "properties": {
+        "gvks": {
+          "type": "array",
+          "items": {
+            "default": {},
+            "$ref": "#/definitions/sh.gatekeeper.syncset.v1alpha1.GVKEntry"
+          }
+        }
+      }
+    },
+    "sh.gatekeeper.templates.v1.ByPodStatus": {
+      "description": "ByPodStatus defines the observed state of ConstraintTemplate as seen by an individual controller",
+      "type": "object",
+      "properties": {
+        "errors": {
+          "type": "array",
+          "items": {
+            "default": {},
+            "$ref": "#/definitions/sh.gatekeeper.templates.v1.CreateCRDError"
+          }
+        },
+        "id": {
+          "description": "a unique identifier for the pod that wrote the status",
+          "type": "string"
+        },
+        "observedGeneration": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "sh.gatekeeper.templates.v1.CRD": {
+      "description": "CRD defines the custom resource definition specification for the constraint.",
+      "type": "object",
+      "properties": {
+        "spec": {
+          "default": {},
+          "$ref": "#/definitions/sh.gatekeeper.templates.v1.CRDSpec"
+        }
+      }
+    },
+    "sh.gatekeeper.templates.v1.CRDSpec": {
+      "description": "CRDSpec defines the spec for the CRD.",
+      "type": "object",
+      "properties": {
+        "names": {
+          "default": {},
+          "$ref": "#/definitions/sh.gatekeeper.templates.v1.Names"
+        },
+        "validation": {
+          "$ref": "#/definitions/sh.gatekeeper.templates.v1.Validation"
+        }
+      }
+    },
+    "sh.gatekeeper.templates.v1.Code": {
+      "description": "Code defines the policy source code for a specific engine.",
+      "type": "object",
+      "required": [
+        "engine",
+        "source"
+      ],
+      "properties": {
+        "engine": {
+          "description": "The engine used to evaluate the code. Example: \"Rego\". Required.",
+          "type": "string",
+          "default": ""
+        },
+        "source": {
+          "description": "The source code for the template. Required.",
+          "$ref": "#/definitions/sh.gatekeeper.frameworks.templates.Anything"
+        }
+      }
+    },
+    "sh.gatekeeper.templates.v1.ConstraintTemplate": {
+      "description": "ConstraintTemplate is the Schema for the constrainttemplates API",
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+          "type": "string"
+        },
+        "kind": {
+          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+          "type": "string"
+        },
+        "metadata": {
+          "default": {},
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+        },
+        "spec": {
+          "default": {},
+          "$ref": "#/definitions/sh.gatekeeper.templates.v1.ConstraintTemplateSpec"
+        },
+        "status": {
+          "default": {},
+          "$ref": "#/definitions/sh.gatekeeper.templates.v1.ConstraintTemplateStatus"
+        }
+      }
+    },
+    "sh.gatekeeper.templates.v1.ConstraintTemplateSpec": {
+      "description": "ConstraintTemplateSpec defines the desired state of ConstraintTemplate.",
+      "type": "object",
+      "properties": {
+        "crd": {
+          "default": {},
+          "$ref": "#/definitions/sh.gatekeeper.templates.v1.CRD"
+        },
+        "targets": {
+          "type": "array",
+          "items": {
+            "default": {},
+            "$ref": "#/definitions/sh.gatekeeper.templates.v1.Target"
+          }
+        }
+      }
+    },
+    "sh.gatekeeper.templates.v1.ConstraintTemplateStatus": {
+      "description": "ConstraintTemplateStatus defines the observed state of ConstraintTemplate.",
+      "type": "object",
+      "properties": {
+        "byPod": {
+          "type": "array",
+          "items": {
+            "default": {},
+            "$ref": "#/definitions/sh.gatekeeper.templates.v1.ByPodStatus"
+          }
+        },
+        "created": {
+          "type": "boolean"
+        }
+      }
+    },
+    "sh.gatekeeper.templates.v1.CreateCRDError": {
+      "description": "CreateCRDError represents a single error caught during parsing, compiling, etc.",
+      "type": "object",
+      "required": [
+        "code",
+        "message"
+      ],
+      "properties": {
+        "code": {
+          "type": "string",
+          "default": ""
+        },
+        "location": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string",
+          "default": ""
+        }
+      }
+    },
+    "sh.gatekeeper.templates.v1.Names": {
+      "description": "Names defines the naming conventions for the constraint kind.",
+      "type": "object",
+      "properties": {
+        "kind": {
+          "type": "string"
+        },
+        "shortNames": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "default": ""
+          }
+        }
+      }
+    },
+    "sh.gatekeeper.templates.v1.Target": {
+      "description": "Target defines the target handler and policy for the constraint template.",
+      "type": "object",
+      "properties": {
+        "code": {
+          "description": "The source code options for the constraint template. \"Rego\" can only be specified in one place (either here or in the \"rego\" field)",
+          "type": "array",
+          "items": {
+            "default": {},
+            "$ref": "#/definitions/sh.gatekeeper.templates.v1.Code"
+          },
+          "x-kubernetes-list-map-keys": [
+            "engine"
+          ],
+          "x-kubernetes-list-type": "map"
+        },
+        "libs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "default": ""
+          }
+        },
+        "operations": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "default": ""
+          }
+        },
+        "rego": {
+          "type": "string"
+        },
+        "target": {
+          "type": "string"
+        }
+      }
+    },
+    "sh.gatekeeper.templates.v1.Validation": {
+      "description": "Validation defines the schema for constraint parameters.",
+      "type": "object",
+      "properties": {
+        "legacySchema": {
+          "type": "boolean"
+        },
+        "openAPIV3Schema": {
+          "$ref": "#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.JSONSchemaProps"
+        }
+      }
+    },
+    "sh.gatekeeper.templates.v1alpha1.ByPodStatus": {
+      "description": "ByPodStatus defines the observed state of ConstraintTemplate as seen by an individual controller",
+      "type": "object",
+      "properties": {
+        "errors": {
+          "type": "array",
+          "items": {
+            "default": {},
+            "$ref": "#/definitions/sh.gatekeeper.templates.v1alpha1.CreateCRDError"
+          }
+        },
+        "id": {
+          "description": "a unique identifier for the pod that wrote the status",
+          "type": "string"
+        },
+        "observedGeneration": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "sh.gatekeeper.templates.v1alpha1.CRD": {
+      "description": "CRD defines the custom resource definition specification for the constraint.",
+      "type": "object",
+      "properties": {
+        "spec": {
+          "default": {},
+          "$ref": "#/definitions/sh.gatekeeper.templates.v1alpha1.CRDSpec"
+        }
+      }
+    },
+    "sh.gatekeeper.templates.v1alpha1.CRDSpec": {
+      "description": "CRDSpec defines the spec for the CRD.",
+      "type": "object",
+      "properties": {
+        "names": {
+          "default": {},
+          "$ref": "#/definitions/sh.gatekeeper.templates.v1alpha1.Names"
+        },
+        "validation": {
+          "$ref": "#/definitions/sh.gatekeeper.templates.v1alpha1.Validation"
+        }
+      }
+    },
+    "sh.gatekeeper.templates.v1alpha1.Code": {
+      "description": "Code defines the policy source code for a specific engine.",
+      "type": "object",
+      "required": [
+        "engine",
+        "source"
+      ],
+      "properties": {
+        "engine": {
+          "description": "The engine used to evaluate the code. Example: \"Rego\". Required.",
+          "type": "string",
+          "default": ""
+        },
+        "source": {
+          "description": "The source code for the template. Required.",
+          "$ref": "#/definitions/sh.gatekeeper.frameworks.templates.Anything"
+        }
+      }
+    },
+    "sh.gatekeeper.templates.v1alpha1.ConstraintTemplate": {
+      "description": "ConstraintTemplate is the Schema for the constrainttemplates API",
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+          "type": "string"
+        },
+        "kind": {
+          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+          "type": "string"
+        },
+        "metadata": {
+          "default": {},
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+        },
+        "spec": {
+          "default": {},
+          "$ref": "#/definitions/sh.gatekeeper.templates.v1alpha1.ConstraintTemplateSpec"
+        },
+        "status": {
+          "default": {},
+          "$ref": "#/definitions/sh.gatekeeper.templates.v1alpha1.ConstraintTemplateStatus"
+        }
+      }
+    },
+    "sh.gatekeeper.templates.v1alpha1.ConstraintTemplateSpec": {
+      "description": "ConstraintTemplateSpec defines the desired state of ConstraintTemplate.",
+      "type": "object",
+      "properties": {
+        "crd": {
+          "default": {},
+          "$ref": "#/definitions/sh.gatekeeper.templates.v1alpha1.CRD"
+        },
+        "targets": {
+          "type": "array",
+          "items": {
+            "default": {},
+            "$ref": "#/definitions/sh.gatekeeper.templates.v1alpha1.Target"
+          }
+        }
+      }
+    },
+    "sh.gatekeeper.templates.v1alpha1.ConstraintTemplateStatus": {
+      "description": "ConstraintTemplateStatus defines the observed state of ConstraintTemplate.",
+      "type": "object",
+      "properties": {
+        "byPod": {
+          "type": "array",
+          "items": {
+            "default": {},
+            "$ref": "#/definitions/sh.gatekeeper.templates.v1alpha1.ByPodStatus"
+          }
+        },
+        "created": {
+          "type": "boolean"
+        }
+      }
+    },
+    "sh.gatekeeper.templates.v1alpha1.CreateCRDError": {
+      "description": "CreateCRDError represents a single error caught during parsing, compiling, etc.",
+      "type": "object",
+      "required": [
+        "code",
+        "message"
+      ],
+      "properties": {
+        "code": {
+          "type": "string",
+          "default": ""
+        },
+        "location": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string",
+          "default": ""
+        }
+      }
+    },
+    "sh.gatekeeper.templates.v1alpha1.Names": {
+      "description": "Names defines the naming conventions for the constraint kind.",
+      "type": "object",
+      "properties": {
+        "kind": {
+          "type": "string"
+        },
+        "shortNames": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "default": ""
+          }
+        }
+      }
+    },
+    "sh.gatekeeper.templates.v1alpha1.Target": {
+      "description": "Target defines the target handler and policy for the constraint template.",
+      "type": "object",
+      "properties": {
+        "code": {
+          "description": "The source code options for the constraint template. \"Rego\" can only be specified in one place (either here or in the \"rego\" field)",
+          "type": "array",
+          "items": {
+            "default": {},
+            "$ref": "#/definitions/sh.gatekeeper.templates.v1alpha1.Code"
+          },
+          "x-kubernetes-list-map-keys": [
+            "engine"
+          ],
+          "x-kubernetes-list-type": "map"
+        },
+        "libs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "default": ""
+          }
+        },
+        "operations": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "default": ""
+          }
+        },
+        "rego": {
+          "type": "string"
+        },
+        "target": {
+          "type": "string"
+        }
+      }
+    },
+    "sh.gatekeeper.templates.v1alpha1.Validation": {
+      "description": "Validation defines the schema for constraint parameters.",
+      "type": "object",
+      "properties": {
+        "legacySchema": {
+          "type": "boolean"
+        },
+        "openAPIV3Schema": {
+          "$ref": "#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.JSONSchemaProps"
+        }
+      }
+    },
+    "sh.gatekeeper.templates.v1beta1.ByPodStatus": {
+      "description": "ByPodStatus defines the observed state of ConstraintTemplate as seen by an individual controller",
+      "type": "object",
+      "properties": {
+        "errors": {
+          "type": "array",
+          "items": {
+            "default": {},
+            "$ref": "#/definitions/sh.gatekeeper.templates.v1beta1.CreateCRDError"
+          }
+        },
+        "id": {
+          "description": "a unique identifier for the pod that wrote the status",
+          "type": "string"
+        },
+        "observedGeneration": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "sh.gatekeeper.templates.v1beta1.CRD": {
+      "description": "CRD defines the custom resource definition specification for the constraint.",
+      "type": "object",
+      "properties": {
+        "spec": {
+          "default": {},
+          "$ref": "#/definitions/sh.gatekeeper.templates.v1beta1.CRDSpec"
+        }
+      }
+    },
+    "sh.gatekeeper.templates.v1beta1.CRDSpec": {
+      "description": "CRDSpec defines the spec for the CRD.",
+      "type": "object",
+      "properties": {
+        "names": {
+          "default": {},
+          "$ref": "#/definitions/sh.gatekeeper.templates.v1beta1.Names"
+        },
+        "validation": {
+          "$ref": "#/definitions/sh.gatekeeper.templates.v1beta1.Validation"
+        }
+      }
+    },
+    "sh.gatekeeper.templates.v1beta1.Code": {
+      "description": "Code defines the policy source code for a specific engine.",
+      "type": "object",
+      "required": [
+        "engine",
+        "source"
+      ],
+      "properties": {
+        "engine": {
+          "description": "The engine used to evaluate the code. Example: \"Rego\". Required.",
+          "type": "string",
+          "default": ""
+        },
+        "source": {
+          "description": "The source code for the template. Required.",
+          "$ref": "#/definitions/sh.gatekeeper.frameworks.templates.Anything"
+        }
+      }
+    },
+    "sh.gatekeeper.templates.v1beta1.ConstraintTemplate": {
+      "description": "ConstraintTemplate is the Schema for the constrainttemplates API",
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+          "type": "string"
+        },
+        "kind": {
+          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+          "type": "string"
+        },
+        "metadata": {
+          "default": {},
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+        },
+        "spec": {
+          "default": {},
+          "$ref": "#/definitions/sh.gatekeeper.templates.v1beta1.ConstraintTemplateSpec"
+        },
+        "status": {
+          "default": {},
+          "$ref": "#/definitions/sh.gatekeeper.templates.v1beta1.ConstraintTemplateStatus"
+        }
+      }
+    },
+    "sh.gatekeeper.templates.v1beta1.ConstraintTemplateSpec": {
+      "description": "ConstraintTemplateSpec defines the desired state of ConstraintTemplate.",
+      "type": "object",
+      "properties": {
+        "crd": {
+          "default": {},
+          "$ref": "#/definitions/sh.gatekeeper.templates.v1beta1.CRD"
+        },
+        "targets": {
+          "type": "array",
+          "items": {
+            "default": {},
+            "$ref": "#/definitions/sh.gatekeeper.templates.v1beta1.Target"
+          }
+        }
+      }
+    },
+    "sh.gatekeeper.templates.v1beta1.ConstraintTemplateStatus": {
+      "description": "ConstraintTemplateStatus defines the observed state of ConstraintTemplate.",
+      "type": "object",
+      "properties": {
+        "byPod": {
+          "type": "array",
+          "items": {
+            "default": {},
+            "$ref": "#/definitions/sh.gatekeeper.templates.v1beta1.ByPodStatus"
+          }
+        },
+        "created": {
+          "type": "boolean"
+        }
+      }
+    },
+    "sh.gatekeeper.templates.v1beta1.CreateCRDError": {
+      "description": "CreateCRDError represents a single error caught during parsing, compiling, etc.",
+      "type": "object",
+      "required": [
+        "code",
+        "message"
+      ],
+      "properties": {
+        "code": {
+          "type": "string",
+          "default": ""
+        },
+        "location": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string",
+          "default": ""
+        }
+      }
+    },
+    "sh.gatekeeper.templates.v1beta1.Names": {
+      "description": "Names defines the naming conventions for the constraint kind.",
+      "type": "object",
+      "properties": {
+        "kind": {
+          "type": "string"
+        },
+        "shortNames": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "default": ""
+          }
+        }
+      }
+    },
+    "sh.gatekeeper.templates.v1beta1.Target": {
+      "description": "Target defines the target handler and policy for the constraint template.",
+      "type": "object",
+      "properties": {
+        "code": {
+          "description": "The source code options for the constraint template. \"Rego\" can only be specified in one place (either here or in the \"rego\" field)",
+          "type": "array",
+          "items": {
+            "default": {},
+            "$ref": "#/definitions/sh.gatekeeper.templates.v1beta1.Code"
+          },
+          "x-kubernetes-list-map-keys": [
+            "engine"
+          ],
+          "x-kubernetes-list-type": "map"
+        },
+        "libs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "default": ""
+          }
+        },
+        "operations": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "default": ""
+          }
+        },
+        "rego": {
+          "type": "string"
+        },
+        "target": {
+          "type": "string"
+        }
+      }
+    },
+    "sh.gatekeeper.templates.v1beta1.Validation": {
+      "description": "Validation defines the schema for constraint parameters.",
+      "type": "object",
+      "properties": {
+        "legacySchema": {
+          "type": "boolean"
+        },
+        "openAPIV3Schema": {
+          "$ref": "#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.JSONSchemaProps"
+        }
+      }
+    },
+    "sh.gatekeeper.types.Anything": {
       "description": "Anything is a struct wrapper around a field of type `interface{}` that plays nicely with controller-gen",
       "type": "object"
     }

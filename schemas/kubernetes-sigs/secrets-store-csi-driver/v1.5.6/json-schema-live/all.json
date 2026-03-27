@@ -1,0 +1,34 @@
+{
+  "oneOf": [
+    {
+      "$ref": "_definitions.json#/definitions/io.x-k8s.csi.secrets-store.v1.SecretProviderClass"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.x-k8s.csi.secrets-store.v1.SecretProviderClassList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.x-k8s.csi.secrets-store.v1.SecretProviderClassPodStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.x-k8s.csi.secrets-store.v1.SecretProviderClassPodStatusList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.x-k8s.csi.secrets-store.v1alpha1.SecretProviderClass"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.x-k8s.csi.secrets-store.v1alpha1.SecretProviderClassList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.x-k8s.csi.secrets-store.v1alpha1.SecretProviderClassPodStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.x-k8s.csi.secrets-store.v1alpha1.SecretProviderClassPodStatusList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.util.intstr.IntOrString"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.api.resource.Quantity"
+    }
+  ]
+}

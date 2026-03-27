@@ -9,7 +9,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/io.cert-manager.pkg.apis.acme.v1.ACMEAuthorization"
+        "$ref": "_definitions.json#/definitions/io.cert-manager.acme.v1.ACMEAuthorization"
       },
       "x-kubernetes-list-type": "atomic"
     },

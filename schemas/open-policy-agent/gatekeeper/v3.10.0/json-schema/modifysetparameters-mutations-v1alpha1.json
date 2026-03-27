@@ -16,13 +16,13 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/sh.gatekeeper.apis.mutations.v1alpha1.PathTest"
+        "$ref": "_definitions.json#/definitions/sh.gatekeeper.mutations.v1alpha1.PathTest"
       }
     },
     "values": {
       "description": "Values describes the values provided to the operation as `values.fromList`.",
       "default": {},
-      "$ref": "_definitions.json#/definitions/sh.gatekeeper.apis.mutations.v1alpha1.Values"
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.mutations.v1alpha1.Values"
     }
   },
   "additionalProperties": false,

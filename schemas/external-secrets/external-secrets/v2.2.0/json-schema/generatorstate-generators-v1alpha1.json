@@ -22,11 +22,11 @@
     },
     "spec": {
       "default": {},
-      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.generators.v1alpha1.GeneratorStateSpec"
+      "$ref": "_definitions.json#/definitions/io.external-secrets.generators.v1alpha1.GeneratorStateSpec"
     },
     "status": {
       "default": {},
-      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.generators.v1alpha1.GeneratorStateStatus"
+      "$ref": "_definitions.json#/definitions/io.external-secrets.generators.v1alpha1.GeneratorStateStatus"
     }
   },
   "additionalProperties": false,

@@ -10,7 +10,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.DayOfMonthRange"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.DayOfMonthRange"
       },
       "x-kubernetes-list-type": "atomic"
     },
@@ -37,7 +37,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.TimeRange"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.TimeRange"
       },
       "x-kubernetes-list-type": "atomic"
     },

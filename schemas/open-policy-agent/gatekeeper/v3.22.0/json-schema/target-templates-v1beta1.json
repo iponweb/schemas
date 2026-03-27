@@ -10,7 +10,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/sh.gatekeeper.frameworks.constraint.pkg.apis.templates.v1beta1.Code"
+        "$ref": "_definitions.json#/definitions/sh.gatekeeper.templates.v1beta1.Code"
       },
       "x-kubernetes-list-map-keys": [
         "engine"

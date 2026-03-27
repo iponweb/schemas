@@ -4,118 +4,6 @@
   "groupVersion": "operator.victoriametrics.com/v1beta1",
   "resources": [
     {
-      "name": "vmauths",
-      "singularName": "vmauth",
-      "namespaced": true,
-      "kind": "VMAuth",
-      "verbs": [
-        "delete",
-        "deletecollection",
-        "get",
-        "list",
-        "patch",
-        "create",
-        "update",
-        "watch"
-      ],
-      "storageVersionHash": "yOzStm967cQ="
-    },
-    {
-      "name": "vmauths/status",
-      "singularName": "",
-      "namespaced": true,
-      "kind": "VMAuth",
-      "verbs": [
-        "get",
-        "patch",
-        "update"
-      ]
-    },
-    {
-      "name": "vmusers",
-      "singularName": "vmuser",
-      "namespaced": true,
-      "kind": "VMUser",
-      "verbs": [
-        "delete",
-        "deletecollection",
-        "get",
-        "list",
-        "patch",
-        "create",
-        "update",
-        "watch"
-      ],
-      "storageVersionHash": "LGuNrK66ZRQ="
-    },
-    {
-      "name": "vmusers/status",
-      "singularName": "",
-      "namespaced": true,
-      "kind": "VMUser",
-      "verbs": [
-        "get",
-        "patch",
-        "update"
-      ]
-    },
-    {
-      "name": "vmclusters",
-      "singularName": "vmcluster",
-      "namespaced": true,
-      "kind": "VMCluster",
-      "verbs": [
-        "delete",
-        "deletecollection",
-        "get",
-        "list",
-        "patch",
-        "create",
-        "update",
-        "watch"
-      ],
-      "storageVersionHash": "bJgMoom8PW0="
-    },
-    {
-      "name": "vmclusters/status",
-      "singularName": "",
-      "namespaced": true,
-      "kind": "VMCluster",
-      "verbs": [
-        "get",
-        "patch",
-        "update"
-      ]
-    },
-    {
-      "name": "vmrules",
-      "singularName": "vmrule",
-      "namespaced": true,
-      "kind": "VMRule",
-      "verbs": [
-        "delete",
-        "deletecollection",
-        "get",
-        "list",
-        "patch",
-        "create",
-        "update",
-        "watch"
-      ],
-      "storageVersionHash": "/EwWS0dKScA="
-    },
-    {
-      "name": "vmrules/status",
-      "singularName": "",
-      "namespaced": true,
-      "kind": "VMRule",
-      "verbs": [
-        "get",
-        "patch",
-        "update"
-      ]
-    },
-    {
       "name": "vlogs",
       "singularName": "vlogs",
       "namespaced": true,
@@ -172,10 +60,10 @@
       ]
     },
     {
-      "name": "vmnodescrapes",
-      "singularName": "vmnodescrape",
+      "name": "vmrules",
+      "singularName": "vmrule",
       "namespaced": true,
-      "kind": "VMNodeScrape",
+      "kind": "VMRule",
       "verbs": [
         "delete",
         "deletecollection",
@@ -186,69 +74,13 @@
         "update",
         "watch"
       ],
-      "storageVersionHash": "TzcqOaXtWOk="
+      "storageVersionHash": "/EwWS0dKScA="
     },
     {
-      "name": "vmnodescrapes/status",
+      "name": "vmrules/status",
       "singularName": "",
       "namespaced": true,
-      "kind": "VMNodeScrape",
-      "verbs": [
-        "get",
-        "patch",
-        "update"
-      ]
-    },
-    {
-      "name": "vmprobes",
-      "singularName": "vmprobe",
-      "namespaced": true,
-      "kind": "VMProbe",
-      "verbs": [
-        "delete",
-        "deletecollection",
-        "get",
-        "list",
-        "patch",
-        "create",
-        "update",
-        "watch"
-      ],
-      "storageVersionHash": "vqRwqlerEL4="
-    },
-    {
-      "name": "vmprobes/status",
-      "singularName": "",
-      "namespaced": true,
-      "kind": "VMProbe",
-      "verbs": [
-        "get",
-        "patch",
-        "update"
-      ]
-    },
-    {
-      "name": "vmservicescrapes",
-      "singularName": "vmservicescrape",
-      "namespaced": true,
-      "kind": "VMServiceScrape",
-      "verbs": [
-        "delete",
-        "deletecollection",
-        "get",
-        "list",
-        "patch",
-        "create",
-        "update",
-        "watch"
-      ],
-      "storageVersionHash": "+5mT+osFXlk="
-    },
-    {
-      "name": "vmservicescrapes/status",
-      "singularName": "",
-      "namespaced": true,
-      "kind": "VMServiceScrape",
+      "kind": "VMRule",
       "verbs": [
         "get",
         "patch",
@@ -284,6 +116,37 @@
       ]
     },
     {
+      "name": "vmalertmanagers",
+      "singularName": "vmalertmanager",
+      "namespaced": true,
+      "kind": "VMAlertmanager",
+      "verbs": [
+        "delete",
+        "deletecollection",
+        "get",
+        "list",
+        "patch",
+        "create",
+        "update",
+        "watch"
+      ],
+      "shortNames": [
+        "vma"
+      ],
+      "storageVersionHash": "M2MKrCCzz94="
+    },
+    {
+      "name": "vmalertmanagers/status",
+      "singularName": "",
+      "namespaced": true,
+      "kind": "VMAlertmanager",
+      "verbs": [
+        "get",
+        "patch",
+        "update"
+      ]
+    },
+    {
       "name": "vmalerts",
       "singularName": "vmalert",
       "namespaced": true,
@@ -312,10 +175,10 @@
       ]
     },
     {
-      "name": "vmpodscrapes",
-      "singularName": "vmpodscrape",
+      "name": "vmnodescrapes",
+      "singularName": "vmnodescrape",
       "namespaced": true,
-      "kind": "VMPodScrape",
+      "kind": "VMNodeScrape",
       "verbs": [
         "delete",
         "deletecollection",
@@ -326,13 +189,13 @@
         "update",
         "watch"
       ],
-      "storageVersionHash": "KVlCMk73db0="
+      "storageVersionHash": "TzcqOaXtWOk="
     },
     {
-      "name": "vmpodscrapes/status",
+      "name": "vmnodescrapes/status",
       "singularName": "",
       "namespaced": true,
-      "kind": "VMPodScrape",
+      "kind": "VMNodeScrape",
       "verbs": [
         "get",
         "patch",
@@ -361,34 +224,6 @@
       "singularName": "",
       "namespaced": true,
       "kind": "VMScrapeConfig",
-      "verbs": [
-        "get",
-        "patch",
-        "update"
-      ]
-    },
-    {
-      "name": "vmstaticscrapes",
-      "singularName": "vmstaticscrape",
-      "namespaced": true,
-      "kind": "VMStaticScrape",
-      "verbs": [
-        "delete",
-        "deletecollection",
-        "get",
-        "list",
-        "patch",
-        "create",
-        "update",
-        "watch"
-      ],
-      "storageVersionHash": "PWToqkPU7Uo="
-    },
-    {
-      "name": "vmstaticscrapes/status",
-      "singularName": "",
-      "namespaced": true,
-      "kind": "VMStaticScrape",
       "verbs": [
         "get",
         "patch",
@@ -437,10 +272,10 @@
       ]
     },
     {
-      "name": "vmalertmanagers",
-      "singularName": "vmalertmanager",
+      "name": "vmpodscrapes",
+      "singularName": "vmpodscrape",
       "namespaced": true,
-      "kind": "VMAlertmanager",
+      "kind": "VMPodScrape",
       "verbs": [
         "delete",
         "deletecollection",
@@ -451,16 +286,181 @@
         "update",
         "watch"
       ],
-      "shortNames": [
-        "vma"
-      ],
-      "storageVersionHash": "M2MKrCCzz94="
+      "storageVersionHash": "KVlCMk73db0="
     },
     {
-      "name": "vmalertmanagers/status",
+      "name": "vmpodscrapes/status",
       "singularName": "",
       "namespaced": true,
-      "kind": "VMAlertmanager",
+      "kind": "VMPodScrape",
+      "verbs": [
+        "get",
+        "patch",
+        "update"
+      ]
+    },
+    {
+      "name": "vmservicescrapes",
+      "singularName": "vmservicescrape",
+      "namespaced": true,
+      "kind": "VMServiceScrape",
+      "verbs": [
+        "delete",
+        "deletecollection",
+        "get",
+        "list",
+        "patch",
+        "create",
+        "update",
+        "watch"
+      ],
+      "storageVersionHash": "+5mT+osFXlk="
+    },
+    {
+      "name": "vmservicescrapes/status",
+      "singularName": "",
+      "namespaced": true,
+      "kind": "VMServiceScrape",
+      "verbs": [
+        "get",
+        "patch",
+        "update"
+      ]
+    },
+    {
+      "name": "vmusers",
+      "singularName": "vmuser",
+      "namespaced": true,
+      "kind": "VMUser",
+      "verbs": [
+        "delete",
+        "deletecollection",
+        "get",
+        "list",
+        "patch",
+        "create",
+        "update",
+        "watch"
+      ],
+      "storageVersionHash": "LGuNrK66ZRQ="
+    },
+    {
+      "name": "vmusers/status",
+      "singularName": "",
+      "namespaced": true,
+      "kind": "VMUser",
+      "verbs": [
+        "get",
+        "patch",
+        "update"
+      ]
+    },
+    {
+      "name": "vmstaticscrapes",
+      "singularName": "vmstaticscrape",
+      "namespaced": true,
+      "kind": "VMStaticScrape",
+      "verbs": [
+        "delete",
+        "deletecollection",
+        "get",
+        "list",
+        "patch",
+        "create",
+        "update",
+        "watch"
+      ],
+      "storageVersionHash": "PWToqkPU7Uo="
+    },
+    {
+      "name": "vmstaticscrapes/status",
+      "singularName": "",
+      "namespaced": true,
+      "kind": "VMStaticScrape",
+      "verbs": [
+        "get",
+        "patch",
+        "update"
+      ]
+    },
+    {
+      "name": "vmauths",
+      "singularName": "vmauth",
+      "namespaced": true,
+      "kind": "VMAuth",
+      "verbs": [
+        "delete",
+        "deletecollection",
+        "get",
+        "list",
+        "patch",
+        "create",
+        "update",
+        "watch"
+      ],
+      "storageVersionHash": "yOzStm967cQ="
+    },
+    {
+      "name": "vmauths/status",
+      "singularName": "",
+      "namespaced": true,
+      "kind": "VMAuth",
+      "verbs": [
+        "get",
+        "patch",
+        "update"
+      ]
+    },
+    {
+      "name": "vmclusters",
+      "singularName": "vmcluster",
+      "namespaced": true,
+      "kind": "VMCluster",
+      "verbs": [
+        "delete",
+        "deletecollection",
+        "get",
+        "list",
+        "patch",
+        "create",
+        "update",
+        "watch"
+      ],
+      "storageVersionHash": "bJgMoom8PW0="
+    },
+    {
+      "name": "vmclusters/status",
+      "singularName": "",
+      "namespaced": true,
+      "kind": "VMCluster",
+      "verbs": [
+        "get",
+        "patch",
+        "update"
+      ]
+    },
+    {
+      "name": "vmprobes",
+      "singularName": "vmprobe",
+      "namespaced": true,
+      "kind": "VMProbe",
+      "verbs": [
+        "delete",
+        "deletecollection",
+        "get",
+        "list",
+        "patch",
+        "create",
+        "update",
+        "watch"
+      ],
+      "storageVersionHash": "vqRwqlerEL4="
+    },
+    {
+      "name": "vmprobes/status",
+      "singularName": "",
+      "namespaced": true,
+      "kind": "VMProbe",
       "verbs": [
         "get",
         "patch",

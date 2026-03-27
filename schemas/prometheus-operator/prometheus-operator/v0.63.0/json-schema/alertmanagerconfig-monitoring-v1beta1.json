@@ -25,7 +25,7 @@
     },
     "spec": {
       "default": {},
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.AlertmanagerConfigSpec"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1beta1.AlertmanagerConfigSpec"
     }
   },
   "additionalProperties": false,

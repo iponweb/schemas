@@ -15,15 +15,15 @@
     "attach_metadata": {
       "description": "AttachMetadata configures metadata attaching from service discovery",
       "default": {},
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.AttachMetadata"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.AttachMetadata"
     },
     "authorization": {
       "description": "Authorization header to use on every scrape request.",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.Authorization"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.Authorization"
     },
     "basicAuth": {
       "description": "BasicAuth information to use on every scrape request.",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.BasicAuth"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.BasicAuth"
     },
     "followRedirects": {
       "description": "Configure whether HTTP requests follow HTTP 3xx redirects.",
@@ -34,11 +34,11 @@
     },
     "namespaces": {
       "description": "Optional namespace discovery. If omitted, discover targets across all namespaces.",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.NamespaceDiscovery"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.NamespaceDiscovery"
     },
     "oauth2": {
       "description": "OAuth2 defines auth configuration",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.OAuth2"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.OAuth2"
     },
     "proxyURL": {
       "description": "ProxyURL eg http://proxyserver:2195 Directs scrapes to proxy through this endpoint.",
@@ -49,7 +49,7 @@
     },
     "proxy_client_config": {
       "description": "ProxyClientConfig configures proxy auth settings for scraping See [feature description](https://docs.victoriametrics.com/victoriametrics/vmagent/#scraping-targets-via-a-proxy)",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.ProxyAuth"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.ProxyAuth"
     },
     "role": {
       "description": "Role of the Kubernetes entities that should be discovered.",
@@ -67,7 +67,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.K8SSelectorConfig"
+        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.K8SSelectorConfig"
       },
       "x-kubernetes-list-map-keys": [
         "role"
@@ -76,7 +76,7 @@
     },
     "tlsConfig": {
       "description": "TLS configuration to use on every scrape request",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.TLSConfig"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.TLSConfig"
     }
   },
   "additionalProperties": false,

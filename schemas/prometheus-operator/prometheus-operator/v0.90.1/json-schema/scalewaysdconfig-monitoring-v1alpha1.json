@@ -135,7 +135,7 @@
     },
     "tlsConfig": {
       "description": "tlsConfig defines the TLS configuration to connect to the Scaleway API.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.SafeTLSConfig"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.SafeTLSConfig"
     },
     "zone": {
       "description": "zone defines the availability zone of your targets (e.g. fr-par-1).",

@@ -44,8 +44,10 @@ crd_names:
   - "github.com/external-secrets/external-secrets/apis/generators/v1alpha1.Grafana"
   - "github.com/external-secrets/external-secrets/apis/generators/v1alpha1.MFA"
   - "github.com/external-secrets/external-secrets/apis/generators/v1alpha1.ClusterGenerator"
+  - "github.com/external-secrets/external-secrets/apis/generators/v1alpha1.GeneratorState"
 
 crd_path: "config/crds/bases"
 
 host_conversion_rules:
+  "github.com/external-secrets/external-secrets/apis/generators": "generators.external-secrets.io"
   "github.com/external-secrets/external-secrets": "external-secrets.io"

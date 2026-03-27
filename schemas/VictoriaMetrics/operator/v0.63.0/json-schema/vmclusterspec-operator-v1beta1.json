@@ -29,11 +29,11 @@
     },
     "license": {
       "description": "License allows to configure license key to be used for enterprise features. Using license key is supported starting from VictoriaMetrics v1.94.0. See [here](https://docs.victoriametrics.com/victoriametrics/enterprise/)",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.License"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.License"
     },
     "managedMetadata": {
       "description": "ManagedMetadata defines metadata that will be added to the all objects created by operator for the given CustomResource",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.ManagedObjectsMetadata"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.ManagedObjectsMetadata"
     },
     "paused": {
       "description": "Paused If set to true all actions on the underlying managed objects are not going to be performed, except for delete actions.",
@@ -53,7 +53,7 @@
     "requestsLoadBalancer": {
       "description": "RequestsLoadBalancer configures load-balancing for vminsert and vmselect requests. It helps to evenly spread load across pods. Usually it's not possible with Kubernetes TCP-based services. See more [here](https://docs.victoriametrics.com/operator/resources/vmcluster/#requests-load-balancing)",
       "default": {},
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.VMAuthLoadBalancer"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.VMAuthLoadBalancer"
     },
     "retentionPeriod": {
       "description": "RetentionPeriod defines how long to retain stored metrics, specified as a duration (e.g., \"1d\", \"1w\", \"1m\"). Data with timestamps outside the RetentionPeriod is automatically deleted. The minimum allowed value is 1d, or 24h. The default value is 1 (one month). See [retention](https://docs.victoriametrics.com/victoriametrics/single-server-victoriametrics/#retention) docs for details.",
@@ -77,13 +77,13 @@
       ]
     },
     "vminsert": {
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.VMInsert"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.VMInsert"
     },
     "vmselect": {
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.VMSelect"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.VMSelect"
     },
     "vmstorage": {
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.VMStorage"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.VMStorage"
     }
   },
   "additionalProperties": false,

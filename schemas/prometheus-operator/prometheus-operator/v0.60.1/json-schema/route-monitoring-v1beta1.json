@@ -45,7 +45,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.Matcher"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1beta1.Matcher"
       }
     },
     "muteTimeIntervals": {

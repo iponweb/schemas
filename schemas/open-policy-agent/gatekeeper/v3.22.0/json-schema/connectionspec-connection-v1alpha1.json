@@ -7,7 +7,7 @@
   ],
   "properties": {
     "config": {
-      "$ref": "_definitions.json#/definitions/sh.gatekeeper.pkg.mutation.types.Anything"
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.types.Anything"
     },
     "driver": {
       "description": "Driver is the name of one of the expected drivers i.e. dapr, disk",

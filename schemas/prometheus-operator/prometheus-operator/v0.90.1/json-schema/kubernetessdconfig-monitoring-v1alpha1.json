@@ -14,15 +14,15 @@
     },
     "attachMetadata": {
       "description": "attachMetadata defines the metadata to attach to discovered targets. It requires Prometheus >= v2.35.0 when using the `Pod` role and Prometheus >= v2.37.0 for `Endpoints` and `Endpointslice` roles.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.AttachMetadata"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.AttachMetadata"
     },
     "authorization": {
       "description": "authorization defines the authorization header to use on every scrape request. Cannot be set at the same time as `basicAuth`, or `oauth2`.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.SafeAuthorization"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.SafeAuthorization"
     },
     "basicAuth": {
       "description": "basicAuth defines information to use on every scrape request. Cannot be set at the same time as `authorization`, or `oauth2`.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.BasicAuth"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.BasicAuth"
     },
     "enableHTTP2": {
       "description": "enableHTTP2 defines whether to enable HTTP2.",
@@ -40,7 +40,7 @@
     },
     "namespaces": {
       "description": "namespaces defines the namespace discovery. If omitted, Prometheus discovers targets across all namespaces.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.NamespaceDiscovery"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.NamespaceDiscovery"
     },
     "noProxy": {
       "description": "noProxy defines a comma-separated string that can contain IPs, CIDR notation, domain names that should be excluded from proxying. IP and domain names can contain port numbers.\n\nIt requires Prometheus >= v2.43.0, Alertmanager >= v0.25.0 or Thanos >= v0.32.0.",
@@ -51,7 +51,7 @@
     },
     "oauth2": {
       "description": "oauth2 defines the optional OAuth 2.0 configuration to authenticate against the target HTTP endpoint. Cannot be set at the same time as `authorization`, or `basicAuth`.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.OAuth2"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.OAuth2"
     },
     "proxyConnectHeader": {
       "description": "proxyConnectHeader optionally specifies headers to send to proxies during CONNECT requests.\n\nIt requires Prometheus >= v2.43.0, Alertmanager >= v0.25.0 or Thanos >= v0.32.0.",
@@ -100,7 +100,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.K8SSelectorConfig"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.K8SSelectorConfig"
       },
       "x-kubernetes-list-map-keys": [
         "role"
@@ -109,7 +109,7 @@
     },
     "tlsConfig": {
       "description": "tlsConfig defines the TLS configuration to connect to the Kubernetes API.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.SafeTLSConfig"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.SafeTLSConfig"
     }
   },
   "additionalProperties": false,

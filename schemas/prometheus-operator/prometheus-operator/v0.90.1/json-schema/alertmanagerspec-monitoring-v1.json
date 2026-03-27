@@ -10,7 +10,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.Argument"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.Argument"
       }
     },
     "additionalPeers": {
@@ -34,7 +34,7 @@
     "alertmanagerConfigMatcherStrategy": {
       "description": "alertmanagerConfigMatcherStrategy defines how AlertmanagerConfig objects process incoming alerts.",
       "default": {},
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.AlertmanagerConfigMatcherStrategy"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.AlertmanagerConfigMatcherStrategy"
     },
     "alertmanagerConfigNamespaceSelector": {
       "description": "alertmanagerConfigNamespaceSelector defines the namespaces to be selected for AlertmanagerConfig discovery. If nil, only check own namespace.",
@@ -46,7 +46,7 @@
     },
     "alertmanagerConfiguration": {
       "description": "alertmanagerConfiguration defines the configuration of Alertmanager.\n\nIf defined, it takes precedence over the `configSecret` field.\n\nThis is an *experimental feature*, it may change in any upcoming release in a breaking way.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.AlertmanagerConfiguration"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.AlertmanagerConfiguration"
     },
     "automountServiceAccountToken": {
       "description": "automountServiceAccountToken defines whether a service account token should be automatically mounted in the pod. If the service account has `automountServiceAccountToken: true`, set the field to `false` to opt out of automounting API credentials.",
@@ -99,7 +99,7 @@
     },
     "clusterTLS": {
       "description": "clusterTLS defines the mutual TLS configuration for the Alertmanager cluster's gossip protocol.\n\nIt requires Alertmanager >= 0.24.0.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.ClusterTLSConfig"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.ClusterTLSConfig"
     },
     "configMaps": {
       "description": "configMaps defines a list of ConfigMaps in the same namespace as the Alertmanager object, which shall be mounted into the Alertmanager Pods. Each ConfigMap is added to the StatefulSet definition as a volume named `configmap-<configmap-name>`. The ConfigMaps are mounted into `/etc/alertmanager/configmaps/<configmap-name>` in the 'alertmanager' container.",
@@ -135,7 +135,7 @@
     },
     "dnsConfig": {
       "description": "dnsConfig defines the DNS configuration for the pods.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.PodDNSConfig"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.PodDNSConfig"
     },
     "dnsPolicy": {
       "description": "dnsPolicy defines the DNS policy for the pods.",
@@ -187,7 +187,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.HostAlias"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.HostAlias"
       },
       "x-kubernetes-list-map-keys": [
         "ip"
@@ -251,7 +251,7 @@
     },
     "limits": {
       "description": "limits defines the limits command line flags when starting Alertmanager.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.AlertmanagerLimitsSpec"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.AlertmanagerLimitsSpec"
     },
     "listenLocal": {
       "description": "listenLocal defines the Alertmanager server listen on loopback, so that it does not bind against the Pod IP. Note this is only for the Alertmanager UI, not the gossip communication.",
@@ -316,7 +316,7 @@
     },
     "podMetadata": {
       "description": "podMetadata defines labels and annotations which are propagated to the Alertmanager pods.\n\nThe following items are reserved and cannot be overridden: * \"alertmanager\" label, set to the name of the Alertmanager instance. * \"app.kubernetes.io/instance\" label, set to the name of the Alertmanager instance. * \"app.kubernetes.io/managed-by\" label, set to \"prometheus-operator\". * \"app.kubernetes.io/name\" label, set to \"alertmanager\". * \"app.kubernetes.io/version\" label, set to the Alertmanager version. * \"kubectl.kubernetes.io/default-container\" annotation, set to \"alertmanager\".",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.EmbeddedObjectMetadata"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.EmbeddedObjectMetadata"
     },
     "portName": {
       "description": "portName defines the port's name for the pods and governing service. Defaults to `web`.",
@@ -407,7 +407,7 @@
     },
     "storage": {
       "description": "storage defines the definition of how storage will be used by the Alertmanager instances.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.StorageSpec"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.StorageSpec"
     },
     "tag": {
       "description": "tag of Alertmanager container image to be deployed. Defaults to the value of `version`. Version is ignored if Tag is set. Deprecated: use 'image' instead. The image tag can be specified as part of the image URL.",
@@ -448,7 +448,7 @@
     },
     "updateStrategy": {
       "description": "updateStrategy indicates the strategy that will be employed to update Pods in the StatefulSet when a revision is made to statefulset's Pod Template.\n\nThe default strategy is RollingUpdate.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.StatefulSetUpdateStrategy"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.StatefulSetUpdateStrategy"
     },
     "version": {
       "description": "version the cluster should be on.",
@@ -481,7 +481,7 @@
     },
     "web": {
       "description": "web defines the web command line flags when starting Alertmanager.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.AlertmanagerWebSpec"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.AlertmanagerWebSpec"
     }
   },
   "additionalProperties": false,

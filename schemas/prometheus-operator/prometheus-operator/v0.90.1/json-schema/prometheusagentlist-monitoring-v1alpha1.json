@@ -20,7 +20,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.PrometheusAgent"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.PrometheusAgent"
       }
     },
     "kind": {

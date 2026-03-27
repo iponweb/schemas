@@ -27,12 +27,12 @@
     "spec": {
       "description": "spec defines the specification of desired Ingress selection for target discovery by Prometheus.",
       "default": {},
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.ProbeSpec"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.ProbeSpec"
     },
     "status": {
       "description": "status defines the status subresource. It is under active development and is updated only when the \"StatusForConfigurationResources\" feature gate is enabled.\n\nMost recent observed status of the Probe. Read-only. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#spec-and-status",
       "default": {},
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.ConfigResourceStatus"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.ConfigResourceStatus"
     }
   },
   "additionalProperties": false,

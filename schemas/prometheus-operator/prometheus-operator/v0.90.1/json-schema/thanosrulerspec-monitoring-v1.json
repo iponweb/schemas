@@ -10,7 +10,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.Argument"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.Argument"
       }
     },
     "affinity": {
@@ -80,7 +80,7 @@
     },
     "dnsConfig": {
       "description": "dnsConfig defines Defines the DNS configuration for the pods.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.PodDNSConfig"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.PodDNSConfig"
     },
     "dnsPolicy": {
       "description": "dnsPolicy defines the DNS policy for the pods.",
@@ -132,7 +132,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.ObjectReference"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.ObjectReference"
       }
     },
     "externalPrefix": {
@@ -144,7 +144,7 @@
     },
     "grpcServerTlsConfig": {
       "description": "grpcServerTlsConfig defines the gRPC server from which Thanos Querier reads recorded rule data.\n\nNote: Currently only the `minVersion`, `caFile`, `certFile`, and `keyFile` fields are supported.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.TLSConfig"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.TLSConfig"
     },
     "hostAliases": {
       "description": "hostAliases defines pods' hostAliases configuration",
@@ -154,7 +154,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.HostAlias"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.HostAlias"
       },
       "x-kubernetes-list-map-keys": [
         "ip"
@@ -293,7 +293,7 @@
     },
     "podMetadata": {
       "description": "podMetadata defines labels and annotations which are propagated to the ThanosRuler pods.\n\nThe following items are reserved and cannot be overridden: * \"app.kubernetes.io/name\" label, set to \"thanos-ruler\". * \"app.kubernetes.io/managed-by\" label, set to \"prometheus-operator\". * \"app.kubernetes.io/instance\" label, set to the name of the ThanosRuler instance. * \"thanos-ruler\" label, set to the name of the ThanosRuler instance. * \"kubectl.kubernetes.io/default-container\" annotation, set to \"thanos-ruler\".",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.EmbeddedObjectMetadata"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.EmbeddedObjectMetadata"
     },
     "portName": {
       "description": "portName defines the port name used for the pods and governing service. Defaults to `web`.",
@@ -317,7 +317,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.PrometheusRuleExcludeConfig"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.PrometheusRuleExcludeConfig"
       }
     },
     "queryConfig": {
@@ -346,7 +346,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.RemoteWriteSpec"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.RemoteWriteSpec"
       }
     },
     "replicas": {
@@ -447,7 +447,7 @@
     },
     "storage": {
       "description": "storage defines the specification of how storage shall be used.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.StorageSpec"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.StorageSpec"
     },
     "terminationGracePeriodSeconds": {
       "description": "terminationGracePeriodSeconds defines the optional duration in seconds the pod needs to terminate gracefully. Value must be non-negative integer. The value zero indicates stop immediately via the kill signal (no opportunity to shut down) which may lead to data corruption.\n\nDefaults to 120 seconds.",
@@ -492,7 +492,7 @@
     },
     "updateStrategy": {
       "description": "updateStrategy indicates the strategy that will be employed to update Pods in the StatefulSet when a revision is made to statefulset's Pod Template.\n\nThe default strategy is RollingUpdate.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.StatefulSetUpdateStrategy"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.StatefulSetUpdateStrategy"
     },
     "version": {
       "description": "version of Thanos to be deployed.",
@@ -525,7 +525,7 @@
     },
     "web": {
       "description": "web defines the configuration of the ThanosRuler web server.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.ThanosRulerWebSpec"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.ThanosRulerWebSpec"
     }
   },
   "additionalProperties": false,

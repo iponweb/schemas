@@ -4,11 +4,11 @@
   "properties": {
     "httpConfig": {
       "description": "httpConfig defines HTTP parameters for web server.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.WebHTTPConfig"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.WebHTTPConfig"
     },
     "tlsConfig": {
       "description": "tlsConfig defines the TLS parameters for HTTPS.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.WebTLSConfig"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.WebTLSConfig"
     }
   },
   "additionalProperties": false,

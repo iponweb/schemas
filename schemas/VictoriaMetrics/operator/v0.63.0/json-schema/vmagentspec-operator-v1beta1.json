@@ -7,7 +7,7 @@
   "properties": {
     "aPIServerConfig": {
       "description": "APIServerConfig allows specifying a host and auth methods to access apiserver. If left empty, VMAgent is assumed to run inside of the cluster and will discover API servers automatically and use the pod's CA certificate and bearer token file at /var/run/secrets/kubernetes.io/serviceaccount/. aPIServerConfig is deprecated use apiServerConfig instead",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.APIServerConfig"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.APIServerConfig"
     },
     "additionalScrapeConfigs": {
       "description": "AdditionalScrapeConfigs As scrape configs are appended, the user is responsible to make sure it is valid. Note that using this feature may expose the possibility to break upgrades of VMAgent. It is advised to review VMAgent release notes to ensure that no incompatible scrape configs are going to break VMAgent after the upgrade.",
@@ -19,12 +19,12 @@
     },
     "apiServerConfig": {
       "description": "APIServerConfig allows specifying a host and auth methods to access apiserver. If left empty, VMAgent is assumed to run inside of the cluster and will discover API servers automatically and use the pod's CA certificate and bearer token file at /var/run/secrets/kubernetes.io/serviceaccount/.",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.APIServerConfig"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.APIServerConfig"
     },
     "arbitraryFSAccessThroughSMs": {
       "description": "ArbitraryFSAccessThroughSMs configures whether configuration based on EndpointAuth can access arbitrary files on the file system of the VMAgent container e.g. bearer token files, basic auth, tls certs",
       "default": {},
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.ArbitraryFSAccessThroughSMsConfig"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.ArbitraryFSAccessThroughSMsConfig"
     },
     "claimTemplates": {
       "description": "ClaimTemplates allows adding additional VolumeClaimTemplates for VMAgent in StatefulMode",
@@ -201,7 +201,7 @@
         "null"
       ],
       "items": {
-        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.RelabelConfig"
+        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.RelabelConfig"
       }
     },
     "globalScrapeRelabelConfigs": {
@@ -211,7 +211,7 @@
         "null"
       ],
       "items": {
-        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.RelabelConfig"
+        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.RelabelConfig"
       }
     },
     "hostAliases": {
@@ -253,7 +253,7 @@
     "image": {
       "description": "Image - docker image settings if no specified operator uses default version from operator config",
       "default": {},
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.Image"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.Image"
     },
     "imagePullSecrets": {
       "description": "ImagePullSecrets An optional list of references to secrets in the same namespace to use for pulling images from registries see https://kubernetes.io/docs/concepts/containers/images/#referring-to-an-imagepullsecrets-on-a-pod",
@@ -291,7 +291,7 @@
         "null"
       ],
       "items": {
-        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.RelabelConfig"
+        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.RelabelConfig"
       }
     },
     "inlineScrapeConfig": {
@@ -303,11 +303,11 @@
     },
     "insertPorts": {
       "description": "InsertPorts - additional listen ports for data ingestion.",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.InsertPorts"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.InsertPorts"
     },
     "license": {
       "description": "License allows to configure license key to be used for enterprise features. Using license key is supported starting from VictoriaMetrics v1.94.0. See [here](https://docs.victoriametrics.com/victoriametrics/enterprise/)",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.License"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.License"
     },
     "livenessProbe": {
       "description": "LivenessProbe that will be added CRD pod",
@@ -329,7 +329,7 @@
     },
     "managedMetadata": {
       "description": "ManagedMetadata defines metadata that will be added to the all objects created by operator for the given CustomResource",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.ManagedObjectsMetadata"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.ManagedObjectsMetadata"
     },
     "maxScrapeInterval": {
       "description": "MaxScrapeInterval allows limiting maximum scrape interval for VMServiceScrape, VMPodScrape and other scrapes If interval is higher than defined limit, `maxScrapeInterval` will be used.",
@@ -364,7 +364,7 @@
         "null"
       ],
       "items": {
-        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.RelabelConfig"
+        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.RelabelConfig"
       }
     },
     "nodeScrapeSelector": {
@@ -412,11 +412,11 @@
     },
     "podDisruptionBudget": {
       "description": "PodDisruptionBudget created by operator",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.EmbeddedPodDisruptionBudgetSpec"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.EmbeddedPodDisruptionBudgetSpec"
     },
     "podMetadata": {
       "description": "PodMetadata configures Labels and Annotations which are propagated to the vmagent pods.",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.EmbeddedObjectMetadata"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.EmbeddedObjectMetadata"
     },
     "podScrapeNamespaceSelector": {
       "description": "PodScrapeNamespaceSelector defines Namespaces to be selected for VMPodScrape discovery. Works in combination with Selector. NamespaceSelector nil - only objects at VMAgent namespace. Selector nil - only objects at NamespaceSelector namespaces. If both nil - behaviour controlled by selectAllByDefault",
@@ -429,7 +429,7 @@
         "null"
       ],
       "items": {
-        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.RelabelConfig"
+        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.RelabelConfig"
       }
     },
     "podScrapeSelector": {
@@ -461,7 +461,7 @@
         "null"
       ],
       "items": {
-        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.RelabelConfig"
+        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.RelabelConfig"
       }
     },
     "probeSelector": {
@@ -495,12 +495,12 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.VMAgentRemoteWriteSpec"
+        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.VMAgentRemoteWriteSpec"
       }
     },
     "remoteWriteSettings": {
       "description": "RemoteWriteSettings defines global settings for all remoteWrite urls.",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.VMAgentRemoteWriteSettings"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.VMAgentRemoteWriteSettings"
     },
     "replicaCount": {
       "description": "ReplicaCount is the expected size of the Application.",
@@ -552,7 +552,7 @@
         "null"
       ],
       "items": {
-        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.RelabelConfig"
+        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.RelabelConfig"
       }
     },
     "scrapeConfigSelector": {
@@ -589,7 +589,7 @@
     },
     "securityContext": {
       "description": "SecurityContext holds pod-level security attributes and common container settings. This defaults to the default PodSecurityContext.",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.SecurityContext"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.SecurityContext"
     },
     "selectAllByDefault": {
       "description": "SelectAllByDefault changes default behavior for empty CRD selectors, such ServiceScrapeSelector. with selectAllByDefault: true and empty serviceScrapeSelector and ServiceScrapeNamespaceSelector Operator selects all exist serviceScrapes with selectAllByDefault: false - selects nothing",
@@ -616,7 +616,7 @@
         "null"
       ],
       "items": {
-        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.RelabelConfig"
+        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.RelabelConfig"
       }
     },
     "serviceScrapeSelector": {
@@ -625,11 +625,11 @@
     },
     "serviceScrapeSpec": {
       "description": "ServiceScrapeSpec that will be added to vmagent VMServiceScrape spec",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.VMServiceScrapeSpec"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.VMServiceScrapeSpec"
     },
     "serviceSpec": {
       "description": "ServiceSpec that will be added to vmagent service spec",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.AdditionalServiceSpec"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.AdditionalServiceSpec"
     },
     "shardCount": {
       "description": "ShardCount - numbers of shards of VMAgent in this case operator will use 1 deployment/sts per shard with replicas count according to spec.replicas, see [here](https://docs.victoriametrics.com/victoriametrics/vmagent/#scraping-big-number-of-targets)",
@@ -663,7 +663,7 @@
     },
     "statefulStorage": {
       "description": "StatefulStorage configures storage for StatefulSet",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.StorageSpec"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.StorageSpec"
     },
     "staticScrapeNamespaceSelector": {
       "description": "StaticScrapeNamespaceSelector defines Namespaces to be selected for VMStaticScrape discovery. Works in combination with NamespaceSelector. NamespaceSelector nil - only objects at VMAgent namespace. Selector nil - only objects at NamespaceSelector namespaces. If both nil - behaviour controlled by selectAllByDefault",
@@ -676,7 +676,7 @@
         "null"
       ],
       "items": {
-        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.RelabelConfig"
+        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.RelabelConfig"
       }
     },
     "staticScrapeSelector": {
@@ -685,7 +685,7 @@
     },
     "streamAggrConfig": {
       "description": "StreamAggrConfig defines global stream aggregation configuration for VMAgent",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.StreamAggrConfig"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.StreamAggrConfig"
     },
     "terminationGracePeriodSeconds": {
       "description": "TerminationGracePeriodSeconds period for container graceful termination",

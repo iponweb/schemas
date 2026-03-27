@@ -7,7 +7,7 @@
   "properties": {
     "rollingUpdate": {
       "description": "rollingUpdate is used to communicate parameters when type is RollingUpdate.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.RollingUpdateStatefulSetStrategy"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.RollingUpdateStatefulSetStrategy"
     },
     "type": {
       "description": "type indicates the type of the StatefulSetUpdateStrategy.\n\nDefault is RollingUpdate.",

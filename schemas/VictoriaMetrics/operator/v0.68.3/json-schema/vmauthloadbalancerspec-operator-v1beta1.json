@@ -167,7 +167,7 @@
     "image": {
       "description": "Image - docker image settings if no specified operator uses default version from operator config",
       "default": {},
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.Image"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.Image"
     },
     "imagePullSecrets": {
       "description": "ImagePullSecrets An optional list of references to secrets in the same namespace to use for pulling images from registries see https://kubernetes.io/docs/concepts/containers/images/#referring-to-an-imagepullsecrets-on-a-pod",
@@ -193,7 +193,7 @@
     },
     "license": {
       "description": "License configures enterprise features license key",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.License"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.License"
     },
     "livenessProbe": {
       "description": "LivenessProbe that will be added CRD pod",
@@ -244,11 +244,11 @@
     },
     "podDisruptionBudget": {
       "description": "PodDisruptionBudget created by operator",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.EmbeddedPodDisruptionBudgetSpec"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.EmbeddedPodDisruptionBudgetSpec"
     },
     "podMetadata": {
       "description": "Common params for scheduling PodMetadata configures Labels and Annotations which are propagated to the vmauth lb pods.",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.EmbeddedObjectMetadata"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.EmbeddedObjectMetadata"
     },
     "port": {
       "description": "Port listen address",
@@ -334,15 +334,15 @@
     },
     "securityContext": {
       "description": "SecurityContext holds pod-level security attributes and common container settings. This defaults to the default PodSecurityContext.",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.SecurityContext"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.SecurityContext"
     },
     "serviceScrapeSpec": {
       "description": "ServiceScrapeSpec that will be added to vmauthlb VMServiceScrape spec",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.VMServiceScrapeSpec"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.VMServiceScrapeSpec"
     },
     "serviceSpec": {
       "description": "AdditionalServiceSpec defines service override configuration for vmauth lb deployment it'll be only applied to vmclusterlb- service",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.AdditionalServiceSpec"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.AdditionalServiceSpec"
     },
     "startupProbe": {
       "description": "StartupProbe that will be added to CRD pod",

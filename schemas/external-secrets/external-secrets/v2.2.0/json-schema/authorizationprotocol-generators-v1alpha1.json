@@ -4,7 +4,7 @@
   "properties": {
     "ntlm": {
       "description": "NTLMProtocol configures the store to use NTLM for auth",
-      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.generators.v1alpha1.NTLMProtocol"
+      "$ref": "_definitions.json#/definitions/io.external-secrets.generators.v1alpha1.NTLMProtocol"
     }
   },
   "additionalProperties": false,

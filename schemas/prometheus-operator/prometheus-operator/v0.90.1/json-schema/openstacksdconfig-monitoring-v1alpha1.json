@@ -110,7 +110,7 @@
     },
     "tlsConfig": {
       "description": "tlsConfig defines the TLS configuration applying to the target HTTP endpoint.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.SafeTLSConfig"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.SafeTLSConfig"
     },
     "userid": {
       "description": "userid defines the OpenStack userid.",

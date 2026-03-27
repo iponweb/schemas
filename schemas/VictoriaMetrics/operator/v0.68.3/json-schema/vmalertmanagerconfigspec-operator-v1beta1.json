@@ -10,7 +10,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.InhibitRule"
+        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.InhibitRule"
       }
     },
     "receivers": {
@@ -21,12 +21,12 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.Receiver"
+        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.Receiver"
       }
     },
     "route": {
       "description": "Route definition for alertmanager, may include nested routes.",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.Route"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.Route"
     },
     "time_intervals": {
       "description": "TimeIntervals defines named interval for active/mute notifications interval See https://prometheus.io/docs/alerting/latest/configuration/#time_interval",
@@ -36,7 +36,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.TimeIntervals"
+        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.TimeIntervals"
       }
     }
   },

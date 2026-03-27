@@ -9,7 +9,7 @@
     "client_id": {
       "description": "The secret or configmap containing the OAuth2 client id",
       "default": {},
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.SecretOrConfigMap"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.SecretOrConfigMap"
     },
     "client_secret": {
       "description": "The secret containing the OAuth2 client secret",
@@ -59,7 +59,7 @@
     },
     "tls_config": {
       "description": "TLSConfig for token_url connection ( available from v0.55.0). Is only supported by Scrape objects family",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.TLSConfig"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.TLSConfig"
     },
     "token_url": {
       "description": "The URL to fetch the token from",

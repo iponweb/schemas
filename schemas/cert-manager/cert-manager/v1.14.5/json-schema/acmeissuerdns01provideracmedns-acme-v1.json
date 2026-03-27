@@ -8,7 +8,7 @@
   "properties": {
     "accountSecretRef": {
       "default": {},
-      "$ref": "_definitions.json#/definitions/io.cert-manager.pkg.apis.meta.v1.SecretKeySelector"
+      "$ref": "_definitions.json#/definitions/io.cert-manager.v1.SecretKeySelector"
     },
     "host": {
       "type": [

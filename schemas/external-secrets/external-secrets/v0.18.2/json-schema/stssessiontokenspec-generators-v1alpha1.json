@@ -7,7 +7,7 @@
     "auth": {
       "description": "Auth defines how to authenticate with AWS",
       "default": {},
-      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.generators.v1alpha1.AWSAuth"
+      "$ref": "_definitions.json#/definitions/io.external-secrets.generators.v1alpha1.AWSAuth"
     },
     "region": {
       "description": "Region specifies the region to operate in.",
@@ -19,7 +19,7 @@
     },
     "requestParameters": {
       "description": "RequestParameters contains parameters that can be passed to the STS service.",
-      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.generators.v1alpha1.RequestParameters"
+      "$ref": "_definitions.json#/definitions/io.external-secrets.generators.v1alpha1.RequestParameters"
     },
     "role": {
       "description": "You can assume a role before making calls to the desired AWS service.",

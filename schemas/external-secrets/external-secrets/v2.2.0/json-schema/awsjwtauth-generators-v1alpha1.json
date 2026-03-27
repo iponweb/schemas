@@ -3,7 +3,7 @@
   "type": "object",
   "properties": {
     "serviceAccountRef": {
-      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.meta.v1.ServiceAccountSelector"
+      "$ref": "_definitions.json#/definitions/io.external-secrets.v1.ServiceAccountSelector"
     }
   },
   "additionalProperties": false,

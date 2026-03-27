@@ -28,11 +28,11 @@
       }
     },
     "insert": {
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1.VTInsert"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1.VTInsert"
     },
     "managedMetadata": {
       "description": "ManagedMetadata defines metadata that will be added to the all objects created by operator for the given CustomResource",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.ManagedObjectsMetadata"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.ManagedObjectsMetadata"
     },
     "paused": {
       "description": "Paused If set to true all actions on the underlying managed objects are not going to be performed, except for delete actions.",
@@ -44,10 +44,10 @@
     "requestsLoadBalancer": {
       "description": "RequestsLoadBalancer configures load-balancing for vtinsert and vtselect requests. It helps to evenly spread load across pods. Usually it's not possible with Kubernetes TCP-based services.",
       "default": {},
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.VMAuthLoadBalancer"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.VMAuthLoadBalancer"
     },
     "select": {
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1.VTSelect"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1.VTSelect"
     },
     "serviceAccountName": {
       "description": "ServiceAccountName is the name of the ServiceAccount to use to run the VTSelect, VTInsert and VTStorage Pods.",
@@ -57,7 +57,7 @@
       ]
     },
     "storage": {
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1.VTStorage"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1.VTStorage"
     },
     "useStrictSecurity": {
       "description": "UseStrictSecurity enables strict security mode for component it restricts disk writes access uses non-root user out of the box drops not needed security permissions",

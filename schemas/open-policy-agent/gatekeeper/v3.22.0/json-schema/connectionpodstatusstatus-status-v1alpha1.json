@@ -21,7 +21,7 @@
         "null"
       ],
       "items": {
-        "$ref": "_definitions.json#/definitions/sh.gatekeeper.apis.status.v1alpha1.ConnectionError"
+        "$ref": "_definitions.json#/definitions/sh.gatekeeper.status.v1alpha1.ConnectionError"
       }
     },
     "id": {

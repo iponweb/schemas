@@ -8,7 +8,7 @@
     "auth": {
       "description": "Auth defines how to authenticate with AWS",
       "default": {},
-      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.generators.v1alpha1.AWSAuth"
+      "$ref": "_definitions.json#/definitions/io.external-secrets.generators.v1alpha1.AWSAuth"
     },
     "region": {
       "description": "Region specifies the region to operate in.",

@@ -8,7 +8,7 @@
         "null"
       ],
       "items": {
-        "$ref": "_definitions.json#/definitions/sh.gatekeeper.frameworks.constraint.pkg.apis.templates.v1beta1.CreateCRDError"
+        "$ref": "_definitions.json#/definitions/sh.gatekeeper.templates.v1beta1.CreateCRDError"
       }
     },
     "id": {
@@ -45,7 +45,7 @@
       ]
     },
     "vapGenerationStatus": {
-      "$ref": "_definitions.json#/definitions/sh.gatekeeper.apis.status.v1beta1.VAPGenerationStatus"
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.status.v1beta1.VAPGenerationStatus"
     }
   },
   "additionalProperties": false,

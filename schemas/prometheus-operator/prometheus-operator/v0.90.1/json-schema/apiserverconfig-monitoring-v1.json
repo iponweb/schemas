@@ -7,11 +7,11 @@
   "properties": {
     "authorization": {
       "description": "authorization section for the API server.\n\nCannot be set at the same time as `basicAuth`, `bearerToken`, or `bearerTokenFile`.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.Authorization"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.Authorization"
     },
     "basicAuth": {
       "description": "basicAuth configuration for the API server.\n\nCannot be set at the same time as `authorization`, `bearerToken`, or `bearerTokenFile`.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.BasicAuth"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.BasicAuth"
     },
     "bearerToken": {
       "description": "bearerToken is deprecated: this will be removed in a future release.\n *Warning: this field shouldn't be used because the token value appears\nin clear-text. Prefer using `authorization`.*",
@@ -75,7 +75,7 @@
     },
     "tlsConfig": {
       "description": "tlsConfig to use for the API server.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.TLSConfig"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.TLSConfig"
     }
   },
   "additionalProperties": false,

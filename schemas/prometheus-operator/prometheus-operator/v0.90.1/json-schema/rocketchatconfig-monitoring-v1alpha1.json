@@ -14,7 +14,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.RocketChatActionConfig"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.RocketChatActionConfig"
       },
       "x-kubernetes-list-type": "atomic"
     },
@@ -54,13 +54,13 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.RocketChatFieldConfig"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.RocketChatFieldConfig"
       },
       "x-kubernetes-list-type": "atomic"
     },
     "httpConfig": {
       "description": "httpConfig defines the HTTP client configuration for RocketChat API requests.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.HTTPConfig"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.HTTPConfig"
     },
     "iconURL": {
       "description": "iconURL defines the icon URL for the message avatar. This displays a custom image as the message sender's avatar.",

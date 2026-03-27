@@ -3,7 +3,7 @@
   "properties": {
     "spec": {
       "default": {},
-      "$ref": "_definitions.json#/definitions/sh.gatekeeper.frameworks.constraint.pkg.apis.templates.v1beta1.CRDSpec"
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.templates.v1beta1.CRDSpec"
     }
   },
   "additionalProperties": false,

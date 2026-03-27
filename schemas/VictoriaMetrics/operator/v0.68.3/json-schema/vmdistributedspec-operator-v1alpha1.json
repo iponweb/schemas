@@ -4,7 +4,7 @@
   "properties": {
     "license": {
       "description": "License configures license key for enterprise features. If not nil, it will be passed to VMAgent, VMAuth and VMClusters.",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.License"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.License"
     },
     "paused": {
       "description": "Paused If set to true all actions on the underlying managed objects are not going to be performed, except for delete actions.",
@@ -23,12 +23,12 @@
     "vmauth": {
       "description": "VMAuth is a VMAuth definition (name + optional spec) that acts as a proxy for the VMUsers created by the operator. Use an inline spec to define a VMAuth object in-place or provide a name to reference an existing VMAuth.",
       "default": {},
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1alpha1.VMDistributedAuth"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1alpha1.VMDistributedAuth"
     },
     "zoneCommon": {
       "description": "ZoneCommon defines common properties for all zones",
       "default": {},
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1alpha1.VMDistributedZoneCommon"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1alpha1.VMDistributedZoneCommon"
     },
     "zones": {
       "description": "Zones is a list of zones to update. Each item in the list represents a \"zone\" within the distributed setup.",
@@ -38,7 +38,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1alpha1.VMDistributedZone"
+        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1alpha1.VMDistributedZone"
       }
     }
   },

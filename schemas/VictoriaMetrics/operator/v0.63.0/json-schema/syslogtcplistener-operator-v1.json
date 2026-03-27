@@ -50,7 +50,7 @@
       ]
     },
     "tlsConfig": {
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1.TLSServerConfig"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1.TLSServerConfig"
     }
   },
   "additionalProperties": false,

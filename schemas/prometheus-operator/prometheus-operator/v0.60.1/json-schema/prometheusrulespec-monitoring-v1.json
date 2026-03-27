@@ -10,7 +10,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.RuleGroup"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.RuleGroup"
       }
     }
   },

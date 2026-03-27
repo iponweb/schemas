@@ -25,7 +25,7 @@
     "serviceAccountRef": {
       "description": "Name of the service account you are federating with",
       "default": {},
-      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.meta.v1.ServiceAccountSelector"
+      "$ref": "_definitions.json#/definitions/io.external-secrets.v1.ServiceAccountSelector"
     },
     "serviceSlug": {
       "description": "ServiceSlug is the service slug in Cloudsmith for OIDC authentication",

@@ -14,7 +14,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.Endpoint"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.Endpoint"
       }
     },
     "jobLabel": {
@@ -51,7 +51,7 @@
     "namespaceSelector": {
       "description": "Selector to select which namespaces the Kubernetes Endpoints objects are discovered from.",
       "default": {},
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.NamespaceSelector"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.NamespaceSelector"
     },
     "podTargetLabels": {
       "description": "PodTargetLabels transfers labels on the Kubernetes `Pod` onto the created metrics.",

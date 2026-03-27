@@ -30,7 +30,7 @@
     },
     "podTemplate": {
       "description": "Optional pod template used to configure the ACME challenge solver pods used for HTTP01 challenges.",
-      "$ref": "_definitions.json#/definitions/io.cert-manager.pkg.apis.acme.v1.ACMEChallengeSolverHTTP01IngressPodTemplate"
+      "$ref": "_definitions.json#/definitions/io.cert-manager.acme.v1.ACMEChallengeSolverHTTP01IngressPodTemplate"
     },
     "serviceType": {
       "description": "Optional service type for Kubernetes solver service. Supported values are NodePort or ClusterIP. If unset, defaults to NodePort.\n\nPossible enum values:\n - `\"ClusterIP\"` means a service will only be accessible inside the cluster, via the cluster IP.\n - `\"ExternalName\"` means a service consists of only a reference to an external name that kubedns or equivalent will return as a CNAME record, with no exposing or proxying of any pods involved.\n - `\"LoadBalancer\"` means a service will be exposed via an external load balancer (if the cloud provider supports it), in addition to 'NodePort' type.\n - `\"NodePort\"` means a service will be exposed on one port of every node, in addition to 'ClusterIP' type.",

@@ -24,7 +24,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.KeyValue"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.KeyValue"
       },
       "x-kubernetes-list-type": "atomic"
     },
@@ -37,7 +37,7 @@
     },
     "httpConfig": {
       "description": "httpConfig defines the HTTP client's configuration for VictorOps API requests.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.HTTPConfig"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.HTTPConfig"
     },
     "messageType": {
       "description": "messageType describes the behavior of the alert. Valid values are \"CRITICAL\", \"WARNING\", and \"INFO\".",

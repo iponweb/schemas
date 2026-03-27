@@ -79,7 +79,7 @@
     "ip_filters": {
       "description": "IPFilters defines per target src ip filters supported only with enterprise version of [vmauth](https://docs.victoriametrics.com/victoriametrics/vmauth/#ip-filters)",
       "default": {},
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.VMUserIPFilters"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.VMUserIPFilters"
     },
     "load_balancing_policy": {
       "description": "LoadBalancingPolicy defines load balancing policy to use for backend urls. Supported policies: least_loaded, first_available. See [here](https://docs.victoriametrics.com/victoriametrics/vmauth/#load-balancing) for more details (default \"least_loaded\")",
@@ -90,7 +90,7 @@
     },
     "managedMetadata": {
       "description": "ManagedMetadata defines metadata that will be added to the all objects created by operator for the given CustomResource",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.ManagedObjectsMetadata"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.ManagedObjectsMetadata"
     },
     "max_concurrent_requests": {
       "description": "MaxConcurrentRequests defines max concurrent requests per user 300 is default value for vmauth",
@@ -169,12 +169,12 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.TargetRef"
+        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.TargetRef"
       }
     },
     "tlsConfig": {
       "description": "TLSConfig defines tls configuration for the backend connection",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.TLSConfig"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.TLSConfig"
     },
     "tokenRef": {
       "description": "TokenRef allows fetching token from user-created secrets by its name and key.",

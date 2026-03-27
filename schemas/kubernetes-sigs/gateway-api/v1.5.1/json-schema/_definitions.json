@@ -282,18 +282,18 @@
       "type": "string",
       "format": "date-time"
     },
-    "io.k8s.sigs.gateway-api.apis.v1.AllowedListeners": {
+    "io.k8s.networking.gateway.v1.AllowedListeners": {
       "description": "AllowedListeners defines which ListenerSets can be attached to this Gateway.",
       "type": "object",
       "properties": {
         "namespaces": {
           "description": "Namespaces defines which namespaces ListenerSets can be attached to this Gateway. The default value is to allow no ListenerSets.",
-          "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.ListenerNamespaces"
+          "$ref": "#/definitions/io.k8s.networking.gateway.v1.ListenerNamespaces"
         }
       },
       "additionalProperties": false
     },
-    "io.k8s.sigs.gateway-api.apis.v1.AllowedRoutes": {
+    "io.k8s.networking.gateway.v1.AllowedRoutes": {
       "type": "object",
       "properties": {
         "kinds": {
@@ -301,18 +301,18 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.RouteGroupKind"
+            "$ref": "#/definitions/io.k8s.networking.gateway.v1.RouteGroupKind"
           },
           "x-kubernetes-list-type": "atomic"
         },
         "namespaces": {
           "description": "Namespaces indicates namespaces from which Routes may be attached to this Listener. This is restricted to the namespace of this Gateway by default.\n\nSupport: Core",
-          "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.RouteNamespaces"
+          "$ref": "#/definitions/io.k8s.networking.gateway.v1.RouteNamespaces"
         }
       },
       "additionalProperties": false
     },
-    "io.k8s.sigs.gateway-api.apis.v1.BackendObjectReference": {
+    "io.k8s.networking.gateway.v1.BackendObjectReference": {
       "type": "object",
       "required": [
         "name"
@@ -343,7 +343,7 @@
       },
       "additionalProperties": false
     },
-    "io.k8s.sigs.gateway-api.apis.v1.BackendRef": {
+    "io.k8s.networking.gateway.v1.BackendRef": {
       "type": "object",
       "required": [
         "name"
@@ -379,7 +379,7 @@
       },
       "additionalProperties": false
     },
-    "io.k8s.sigs.gateway-api.apis.v1.BackendTLSPolicy": {
+    "io.k8s.networking.gateway.v1.BackendTLSPolicy": {
       "description": "BackendTLSPolicy provides a way to configure how a Gateway connects to a Backend via TLS.",
       "type": "object",
       "required": [
@@ -401,17 +401,17 @@
         "spec": {
           "description": "Spec defines the desired state of BackendTLSPolicy.",
           "default": {},
-          "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.BackendTLSPolicySpec"
+          "$ref": "#/definitions/io.k8s.networking.gateway.v1.BackendTLSPolicySpec"
         },
         "status": {
           "description": "Status defines the current state of BackendTLSPolicy.",
           "default": {},
-          "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.PolicyStatus"
+          "$ref": "#/definitions/io.k8s.networking.gateway.v1.PolicyStatus"
         }
       },
       "additionalProperties": false
     },
-    "io.k8s.sigs.gateway-api.apis.v1.BackendTLSPolicySpec": {
+    "io.k8s.networking.gateway.v1.BackendTLSPolicySpec": {
       "description": "BackendTLSPolicySpec defines the desired state of BackendTLSPolicy.\n\nSupport: Extended",
       "type": "object",
       "required": [
@@ -432,19 +432,19 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.LocalPolicyTargetReferenceWithSectionName"
+            "$ref": "#/definitions/io.k8s.networking.gateway.v1.LocalPolicyTargetReferenceWithSectionName"
           },
           "x-kubernetes-list-type": "atomic"
         },
         "validation": {
           "description": "Validation contains backend TLS validation configuration.",
           "default": {},
-          "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.BackendTLSPolicyValidation"
+          "$ref": "#/definitions/io.k8s.networking.gateway.v1.BackendTLSPolicyValidation"
         }
       },
       "additionalProperties": false
     },
-    "io.k8s.sigs.gateway-api.apis.v1.BackendTLSPolicyValidation": {
+    "io.k8s.networking.gateway.v1.BackendTLSPolicyValidation": {
       "description": "BackendTLSPolicyValidation contains backend TLS validation configuration.",
       "type": "object",
       "required": [
@@ -456,7 +456,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.LocalObjectReference"
+            "$ref": "#/definitions/io.k8s.networking.gateway.v1.LocalObjectReference"
           },
           "x-kubernetes-list-type": "atomic"
         },
@@ -470,7 +470,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.SubjectAltName"
+            "$ref": "#/definitions/io.k8s.networking.gateway.v1.SubjectAltName"
           },
           "x-kubernetes-list-type": "atomic"
         },
@@ -481,7 +481,7 @@
       },
       "additionalProperties": false
     },
-    "io.k8s.sigs.gateway-api.apis.v1.CookieConfig": {
+    "io.k8s.networking.gateway.v1.CookieConfig": {
       "description": "CookieConfig defines the configuration for cookie-based session persistence.",
       "type": "object",
       "properties": {
@@ -492,7 +492,7 @@
       },
       "additionalProperties": false
     },
-    "io.k8s.sigs.gateway-api.apis.v1.ForwardBodyConfig": {
+    "io.k8s.networking.gateway.v1.ForwardBodyConfig": {
       "description": "ForwardBody configures if requests to the authorization server should include the body of the client request; and if so, how big that body is allowed to be.\n\nIf empty or unset, do not forward the body.",
       "type": "object",
       "properties": {
@@ -504,7 +504,7 @@
       },
       "additionalProperties": false
     },
-    "io.k8s.sigs.gateway-api.apis.v1.Fraction": {
+    "io.k8s.networking.gateway.v1.Fraction": {
       "type": "object",
       "required": [
         "numerator"
@@ -522,7 +522,7 @@
       },
       "additionalProperties": false
     },
-    "io.k8s.sigs.gateway-api.apis.v1.FrontendTLSConfig": {
+    "io.k8s.networking.gateway.v1.FrontendTLSConfig": {
       "description": "FrontendTLSConfig specifies frontend tls configuration for gateway.",
       "type": "object",
       "required": [
@@ -532,14 +532,14 @@
         "default": {
           "description": "Default specifies the default client certificate validation configuration for all Listeners handling HTTPS traffic, unless a per-port configuration is defined.\n\nsupport: Core",
           "default": {},
-          "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.TLSConfig"
+          "$ref": "#/definitions/io.k8s.networking.gateway.v1.TLSConfig"
         },
         "perPort": {
           "description": "PerPort specifies tls configuration assigned per port. Per port configuration is optional. Once set this configuration overrides the default configuration for all Listeners handling HTTPS traffic that match this port. Each override port requires a unique TLS configuration.\n\nsupport: Core",
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.TLSPortConfig"
+            "$ref": "#/definitions/io.k8s.networking.gateway.v1.TLSPortConfig"
           },
           "x-kubernetes-list-map-keys": [
             "port"
@@ -549,7 +549,7 @@
       },
       "additionalProperties": false
     },
-    "io.k8s.sigs.gateway-api.apis.v1.FrontendTLSValidation": {
+    "io.k8s.networking.gateway.v1.FrontendTLSValidation": {
       "description": "FrontendTLSValidation holds configuration information that can be used to validate the frontend initiating the TLS connection",
       "type": "object",
       "required": [
@@ -561,7 +561,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.ObjectReference"
+            "$ref": "#/definitions/io.k8s.networking.gateway.v1.ObjectReference"
           },
           "x-kubernetes-list-type": "atomic"
         },
@@ -572,7 +572,7 @@
       },
       "additionalProperties": false
     },
-    "io.k8s.sigs.gateway-api.apis.v1.GRPCAuthConfig": {
+    "io.k8s.networking.gateway.v1.GRPCAuthConfig": {
       "description": "GRPCAuthConfig contains configuration for communication with Auth server backends that speak Envoy's ext_authz gRPC protocol.\n\nRequests and responses are defined in the protobufs explained at: https://www.envoyproxy.io/docs/envoy/latest/api-v3/service/auth/v3/external_auth.proto",
       "type": "object",
       "properties": {
@@ -588,7 +588,7 @@
       },
       "additionalProperties": false
     },
-    "io.k8s.sigs.gateway-api.apis.v1.GRPCBackendRef": {
+    "io.k8s.networking.gateway.v1.GRPCBackendRef": {
       "description": "GRPCBackendRef defines how a GRPCRoute forwards a gRPC request.\n\nNote that when a namespace different than the local namespace is specified, a ReferenceGrant object is required in the referent namespace to allow that namespace's owner to accept the reference. See the ReferenceGrant documentation for details.\n\n<gateway:experimental:description>\n\nWhen the BackendRef points to a Kubernetes Service, implementations SHOULD honor the appProtocol field if it is set for the target Service Port.\n\nImplementations supporting appProtocol SHOULD recognize the Kubernetes Standard Application Protocols defined in KEP-3726.\n\nIf a Service appProtocol isn't specified, an implementation MAY infer the backend protocol through its own means. Implementations MAY infer the protocol from the Route type referring to the backend Service.\n\nIf a Route is not able to send traffic to the backend using the specified protocol then the backend is considered invalid. Implementations MUST set the \"ResolvedRefs\" condition to \"False\" with the \"UnsupportedProtocol\" reason.\n\n</gateway:experimental:description>",
       "type": "object",
       "required": [
@@ -600,7 +600,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.GRPCRouteFilter"
+            "$ref": "#/definitions/io.k8s.networking.gateway.v1.GRPCRouteFilter"
           },
           "x-kubernetes-list-type": "atomic"
         },
@@ -634,7 +634,7 @@
       },
       "additionalProperties": false
     },
-    "io.k8s.sigs.gateway-api.apis.v1.GRPCHeaderMatch": {
+    "io.k8s.networking.gateway.v1.GRPCHeaderMatch": {
       "description": "GRPCHeaderMatch describes how to select a gRPC route by matching gRPC request headers.",
       "type": "object",
       "required": [
@@ -659,7 +659,7 @@
       },
       "additionalProperties": false
     },
-    "io.k8s.sigs.gateway-api.apis.v1.GRPCMethodMatch": {
+    "io.k8s.networking.gateway.v1.GRPCMethodMatch": {
       "description": "GRPCMethodMatch describes how to select a gRPC route by matching the gRPC request service and/or method.\n\nAt least one of Service and Method MUST be a non-empty string.",
       "type": "object",
       "properties": {
@@ -678,7 +678,7 @@
       },
       "additionalProperties": false
     },
-    "io.k8s.sigs.gateway-api.apis.v1.GRPCRoute": {
+    "io.k8s.networking.gateway.v1.GRPCRoute": {
       "description": "GRPCRoute provides a way to route gRPC requests. This includes the capability to match requests by hostname, gRPC service, gRPC method, or HTTP/2 header. Filters can be used to specify additional processing steps. Backends specify where matching requests will be routed.\n\nGRPCRoute falls under extended support within the Gateway API. Within the following specification, the word \"MUST\" indicates that an implementation supporting GRPCRoute must conform to the indicated requirement, but an implementation not supporting this route type need not follow the requirement unless explicitly indicated.\n\nImplementations supporting `GRPCRoute` with the `HTTPS` `ProtocolType` MUST accept HTTP/2 connections without an initial upgrade from HTTP/1.1, i.e. via ALPN. If the implementation does not support this, then it MUST set the \"Accepted\" condition to \"False\" for the affected listener with a reason of \"UnsupportedProtocol\".  Implementations MAY also accept HTTP/2 connections with an upgrade from HTTP/1.\n\nImplementations supporting `GRPCRoute` with the `HTTP` `ProtocolType` MUST support HTTP/2 over cleartext TCP (h2c, https://www.rfc-editor.org/rfc/rfc7540#section-3.1) without an initial upgrade from HTTP/1.1, i.e. with prior knowledge (https://www.rfc-editor.org/rfc/rfc7540#section-3.4). If the implementation does not support this, then it MUST set the \"Accepted\" condition to \"False\" for the affected listener with a reason of \"UnsupportedProtocol\". Implementations MAY also accept HTTP/2 connections with an upgrade from HTTP/1, i.e. without prior knowledge.",
       "type": "object",
       "required": [
@@ -700,17 +700,17 @@
         "spec": {
           "description": "Spec defines the desired state of GRPCRoute.",
           "default": {},
-          "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.GRPCRouteSpec"
+          "$ref": "#/definitions/io.k8s.networking.gateway.v1.GRPCRouteSpec"
         },
         "status": {
           "description": "Status defines the current state of GRPCRoute.",
           "default": {},
-          "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.GRPCRouteStatus"
+          "$ref": "#/definitions/io.k8s.networking.gateway.v1.GRPCRouteStatus"
         }
       },
       "additionalProperties": false
     },
-    "io.k8s.sigs.gateway-api.apis.v1.GRPCRouteFilter": {
+    "io.k8s.networking.gateway.v1.GRPCRouteFilter": {
       "description": "GRPCRouteFilter defines processing steps that must be completed during the request or response lifecycle. GRPCRouteFilters are meant as an extension point to express processing that may be done in Gateway implementations. Some examples include request or response modification, implementing authentication strategies, rate-limiting, and traffic shaping. API guarantee/conformance is defined based on the type of the filter.",
       "type": "object",
       "required": [
@@ -719,19 +719,19 @@
       "properties": {
         "extensionRef": {
           "description": "ExtensionRef is an optional, implementation-specific extension to the \"filter\" behavior.  For example, resource \"myroutefilter\" in group \"networking.example.net\"). ExtensionRef MUST NOT be used for core and extended filters.\n\nSupport: Implementation-specific\n\nThis filter can be used multiple times within the same rule.",
-          "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.LocalObjectReference"
+          "$ref": "#/definitions/io.k8s.networking.gateway.v1.LocalObjectReference"
         },
         "requestHeaderModifier": {
           "description": "RequestHeaderModifier defines a schema for a filter that modifies request headers.\n\nSupport: Core",
-          "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.HTTPHeaderFilter"
+          "$ref": "#/definitions/io.k8s.networking.gateway.v1.HTTPHeaderFilter"
         },
         "requestMirror": {
           "description": "RequestMirror defines a schema for a filter that mirrors requests. Requests are sent to the specified destination, but responses from that destination are ignored.\n\nThis filter can be used multiple times within the same rule. Note that not all implementations will be able to support mirroring to multiple backends.\n\nSupport: Extended",
-          "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.HTTPRequestMirrorFilter"
+          "$ref": "#/definitions/io.k8s.networking.gateway.v1.HTTPRequestMirrorFilter"
         },
         "responseHeaderModifier": {
           "description": "ResponseHeaderModifier defines a schema for a filter that modifies response headers.\n\nSupport: Extended",
-          "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.HTTPHeaderFilter"
+          "$ref": "#/definitions/io.k8s.networking.gateway.v1.HTTPHeaderFilter"
         },
         "type": {
           "description": "Type identifies the type of filter to apply. As with other API fields, types are classified into three conformance levels:\n\n- Core: Filter types and their corresponding configuration defined by\n  \"Support: Core\" in this package, e.g. \"RequestHeaderModifier\". All\n  implementations supporting GRPCRoute MUST support core filters.\n\n- Extended: Filter types and their corresponding configuration defined by\n  \"Support: Extended\" in this package, e.g. \"RequestMirror\". Implementers\n  are encouraged to support extended filters.\n\n- Implementation-specific: Filters that are defined and supported by specific vendors.\n  In the future, filters showing convergence in behavior across multiple\n  implementations will be considered for inclusion in extended or core\n  conformance levels. Filter-specific configuration for such filters\n  is specified using the ExtensionRef field. `Type` MUST be set to\n  \"ExtensionRef\" for custom filters.\n\nImplementers are encouraged to define custom implementation types to extend the core API with implementation-specific behavior.\n\nIf a reference to a custom filter type cannot be resolved, the filter MUST NOT be skipped. Instead, requests that would have been processed by that filter MUST receive a HTTP error response.\n\n<gateway:experimental:validation:Enum=ResponseHeaderModifier;RequestHeaderModifier;RequestMirror;ExtensionRef>",
@@ -741,7 +741,7 @@
       },
       "additionalProperties": false
     },
-    "io.k8s.sigs.gateway-api.apis.v1.GRPCRouteMatch": {
+    "io.k8s.networking.gateway.v1.GRPCRouteMatch": {
       "description": "GRPCRouteMatch defines the predicate used to match requests to a given action. Multiple match types are ANDed together, i.e. the match will evaluate to true only if all conditions are satisfied.\n\nFor example, the match below will match a gRPC request only if its service is `foo` AND it contains the `version: v1` header:\n\n``` matches:\n  - method:\n    type: Exact\n    service: \"foo\"\n  - headers:\n    name: \"version\"\n    value \"v1\"\n\n```",
       "type": "object",
       "properties": {
@@ -750,7 +750,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.GRPCHeaderMatch"
+            "$ref": "#/definitions/io.k8s.networking.gateway.v1.GRPCHeaderMatch"
           },
           "x-kubernetes-list-map-keys": [
             "name"
@@ -759,12 +759,12 @@
         },
         "method": {
           "description": "Method specifies a gRPC request service/method matcher. If this field is not specified, all services and methods will match.",
-          "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.GRPCMethodMatch"
+          "$ref": "#/definitions/io.k8s.networking.gateway.v1.GRPCMethodMatch"
         }
       },
       "additionalProperties": false
     },
-    "io.k8s.sigs.gateway-api.apis.v1.GRPCRouteRule": {
+    "io.k8s.networking.gateway.v1.GRPCRouteRule": {
       "description": "GRPCRouteRule defines the semantics for matching a gRPC request based on conditions (matches), processing it (filters), and forwarding the request to an API object (backendRefs).",
       "type": "object",
       "properties": {
@@ -773,7 +773,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.GRPCBackendRef"
+            "$ref": "#/definitions/io.k8s.networking.gateway.v1.GRPCBackendRef"
           },
           "x-kubernetes-list-type": "atomic"
         },
@@ -782,7 +782,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.GRPCRouteFilter"
+            "$ref": "#/definitions/io.k8s.networking.gateway.v1.GRPCRouteFilter"
           },
           "x-kubernetes-list-type": "atomic"
         },
@@ -791,7 +791,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.GRPCRouteMatch"
+            "$ref": "#/definitions/io.k8s.networking.gateway.v1.GRPCRouteMatch"
           },
           "x-kubernetes-list-type": "atomic"
         },
@@ -801,12 +801,12 @@
         },
         "sessionPersistence": {
           "description": "SessionPersistence defines and configures session persistence for the route rule.\n\nSupport: Extended\n\n<gateway:experimental>",
-          "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.SessionPersistence"
+          "$ref": "#/definitions/io.k8s.networking.gateway.v1.SessionPersistence"
         }
       },
       "additionalProperties": false
     },
-    "io.k8s.sigs.gateway-api.apis.v1.GRPCRouteSpec": {
+    "io.k8s.networking.gateway.v1.GRPCRouteSpec": {
       "description": "GRPCRouteSpec defines the desired state of GRPCRoute",
       "type": "object",
       "properties": {
@@ -824,7 +824,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.ParentReference"
+            "$ref": "#/definitions/io.k8s.networking.gateway.v1.ParentReference"
           },
           "x-kubernetes-list-type": "atomic"
         },
@@ -833,7 +833,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.GRPCRouteRule"
+            "$ref": "#/definitions/io.k8s.networking.gateway.v1.GRPCRouteRule"
           },
           "x-kubernetes-list-type": "atomic"
         },
@@ -844,7 +844,7 @@
       },
       "additionalProperties": false
     },
-    "io.k8s.sigs.gateway-api.apis.v1.GRPCRouteStatus": {
+    "io.k8s.networking.gateway.v1.GRPCRouteStatus": {
       "description": "GRPCRouteStatus defines the observed state of GRPCRoute.",
       "type": "object",
       "required": [
@@ -856,14 +856,14 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.RouteParentStatus"
+            "$ref": "#/definitions/io.k8s.networking.gateway.v1.RouteParentStatus"
           },
           "x-kubernetes-list-type": "atomic"
         }
       },
       "additionalProperties": false
     },
-    "io.k8s.sigs.gateway-api.apis.v1.Gateway": {
+    "io.k8s.networking.gateway.v1.Gateway": {
       "description": "Gateway represents an instance of a service-traffic handling infrastructure by binding Listeners to a set of IP addresses.",
       "type": "object",
       "required": [
@@ -885,28 +885,28 @@
         "spec": {
           "description": "Spec defines the desired state of Gateway.",
           "default": {},
-          "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.GatewaySpec"
+          "$ref": "#/definitions/io.k8s.networking.gateway.v1.GatewaySpec"
         },
         "status": {
           "description": "Status defines the current state of Gateway.",
           "default": {},
-          "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.GatewayStatus"
+          "$ref": "#/definitions/io.k8s.networking.gateway.v1.GatewayStatus"
         }
       },
       "additionalProperties": false
     },
-    "io.k8s.sigs.gateway-api.apis.v1.GatewayBackendTLS": {
+    "io.k8s.networking.gateway.v1.GatewayBackendTLS": {
       "description": "GatewayBackendTLS describes backend TLS configuration for gateway.",
       "type": "object",
       "properties": {
         "clientCertificateRef": {
           "description": "ClientCertificateRef references an object that contains a client certificate and its associated private key. It can reference standard Kubernetes resources, i.e., Secret, or implementation-specific custom resources.\n\nA ClientCertificateRef is considered invalid if:\n\n* It refers to a resource that cannot be resolved (e.g., the referenced resource\n  does not exist) or is misconfigured (e.g., a Secret does not contain the keys\n  named `tls.crt` and `tls.key`). In this case, the `ResolvedRefs` condition\n  on the Gateway MUST be set to False with the Reason `InvalidClientCertificateRef`\n  and the Message of the Condition MUST indicate why the reference is invalid.\n\n* It refers to a resource in another namespace UNLESS there is a ReferenceGrant\n  in the target namespace that allows the certificate to be attached.\n  If a ReferenceGrant does not allow this reference, the `ResolvedRefs` condition\n  on the Gateway MUST be set to False with the Reason `RefNotPermitted`.\n\nImplementations MAY choose to perform further validation of the certificate content (e.g., checking expiry or enforcing specific formats). In such cases, an implementation-specific Reason and Message MUST be set.\n\nSupport: Core - Reference to a Kubernetes TLS Secret (with the type `kubernetes.io/tls`). Support: Implementation-specific - Other resource kinds or Secrets with a different type (e.g., `Opaque`).",
-          "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.SecretObjectReference"
+          "$ref": "#/definitions/io.k8s.networking.gateway.v1.SecretObjectReference"
         }
       },
       "additionalProperties": false
     },
-    "io.k8s.sigs.gateway-api.apis.v1.GatewayClass": {
+    "io.k8s.networking.gateway.v1.GatewayClass": {
       "description": "GatewayClass describes a class of Gateways available to the user for creating Gateway resources.\n\nIt is recommended that this resource be used as a template for Gateways. This means that a Gateway is based on the state of the GatewayClass at the time it was created and changes to the GatewayClass or associated parameters are not propagated down to existing Gateways. This recommendation is intended to limit the blast radius of changes to GatewayClass or associated parameters. If implementations choose to propagate GatewayClass changes to existing Gateways, that MUST be clearly documented by the implementation.\n\nWhenever one or more Gateways are using a GatewayClass, implementations SHOULD add the `gateway-exists-finalizer.gateway.networking.k8s.io` finalizer on the associated GatewayClass. This ensures that a GatewayClass associated with a Gateway is not deleted while in use.\n\nGatewayClass is a Cluster level resource.",
       "type": "object",
       "required": [
@@ -928,17 +928,17 @@
         "spec": {
           "description": "Spec defines the desired state of GatewayClass.",
           "default": {},
-          "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.GatewayClassSpec"
+          "$ref": "#/definitions/io.k8s.networking.gateway.v1.GatewayClassSpec"
         },
         "status": {
           "description": "Status defines the current state of GatewayClass.\n\nImplementations MUST populate status on all GatewayClass resources which specify their controller name.",
           "default": {},
-          "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.GatewayClassStatus"
+          "$ref": "#/definitions/io.k8s.networking.gateway.v1.GatewayClassStatus"
         }
       },
       "additionalProperties": false
     },
-    "io.k8s.sigs.gateway-api.apis.v1.GatewayClassSpec": {
+    "io.k8s.networking.gateway.v1.GatewayClassSpec": {
       "type": "object",
       "required": [
         "controllerName"
@@ -955,12 +955,12 @@
         },
         "parametersRef": {
           "description": "ParametersRef is a reference to a resource that contains the configuration parameters corresponding to the GatewayClass. This is optional if the controller does not require any additional configuration.\n\nParametersRef can reference a standard Kubernetes resource, i.e. ConfigMap, or an implementation-specific custom resource. The resource can be cluster-scoped or namespace-scoped.\n\nIf the referent cannot be found, refers to an unsupported kind, or when the data within that resource is malformed, the GatewayClass SHOULD be rejected with the \"Accepted\" status condition set to \"False\" and an \"InvalidParameters\" reason.\n\nA Gateway for this GatewayClass may provide its own `parametersRef`. When both are specified, the merging behavior is implementation specific. It is generally recommended that GatewayClass provides defaults that can be overridden by a Gateway.\n\nSupport: Implementation-specific",
-          "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.ParametersReference"
+          "$ref": "#/definitions/io.k8s.networking.gateway.v1.ParametersReference"
         }
       },
       "additionalProperties": false
     },
-    "io.k8s.sigs.gateway-api.apis.v1.GatewayClassStatus": {
+    "io.k8s.networking.gateway.v1.GatewayClassStatus": {
       "type": "object",
       "properties": {
         "conditions": {
@@ -979,7 +979,7 @@
           "description": "SupportedFeatures is the set of features the GatewayClass support. It MUST be sorted in ascending alphabetical order by the Name key.",
           "type": "array",
           "items": {
-            "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.SupportedFeature"
+            "$ref": "#/definitions/io.k8s.networking.gateway.v1.SupportedFeature"
           },
           "x-kubernetes-list-map-keys": [
             "name"
@@ -989,7 +989,7 @@
       },
       "additionalProperties": false
     },
-    "io.k8s.sigs.gateway-api.apis.v1.GatewayInfrastructure": {
+    "io.k8s.networking.gateway.v1.GatewayInfrastructure": {
       "description": "GatewayInfrastructure defines infrastructure level attributes about a Gateway instance.",
       "type": "object",
       "properties": {
@@ -1011,12 +1011,12 @@
         },
         "parametersRef": {
           "description": "ParametersRef is a reference to a resource that contains the configuration parameters corresponding to the Gateway. This is optional if the controller does not require any additional configuration.\n\nThis follows the same semantics as GatewayClass's `parametersRef`, but on a per-Gateway basis\n\nThe Gateway's GatewayClass may provide its own `parametersRef`. When both are specified, the merging behavior is implementation specific. It is generally recommended that GatewayClass provides defaults that can be overridden by a Gateway.\n\nIf the referent cannot be found, refers to an unsupported kind, or when the data within that resource is malformed, the Gateway SHOULD be rejected with the \"Accepted\" status condition set to \"False\" and an \"InvalidParameters\" reason.\n\nSupport: Implementation-specific",
-          "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.LocalParametersReference"
+          "$ref": "#/definitions/io.k8s.networking.gateway.v1.LocalParametersReference"
         }
       },
       "additionalProperties": false
     },
-    "io.k8s.sigs.gateway-api.apis.v1.GatewaySpec": {
+    "io.k8s.networking.gateway.v1.GatewaySpec": {
       "type": "object",
       "required": [
         "gatewayClassName",
@@ -1028,13 +1028,13 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.GatewaySpecAddress"
+            "$ref": "#/definitions/io.k8s.networking.gateway.v1.GatewaySpecAddress"
           },
           "x-kubernetes-list-type": "atomic"
         },
         "allowedListeners": {
           "description": "AllowedListeners defines which ListenerSets can be attached to this Gateway. The default value is to allow no ListenerSets.",
-          "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.AllowedListeners"
+          "$ref": "#/definitions/io.k8s.networking.gateway.v1.AllowedListeners"
         },
         "defaultScope": {
           "description": "DefaultScope, when set, configures the Gateway as a default Gateway, meaning it will dynamically and implicitly have Routes (e.g. HTTPRoute) attached to it, according to the scope configured here.\n\nIf unset (the default) or set to None, the Gateway will not act as a default Gateway; if set, the Gateway will claim any Route with a matching scope set in its UseDefaultGateway field, subject to the usual rules about which routes the Gateway can attach to.\n\nThink carefully before using this functionality! While the normal rules about which Route can apply are still enforced, it is simply easier for the wrong Route to be accidentally attached to this Gateway in this configuration. If the Gateway operator is not also the operator in control of the scope (e.g. namespace) with tight controls and checks on what kind of workloads and Routes get added in that scope, we strongly recommend not using this just because it seems convenient, and instead stick to direct Route attachment.\n\n<gateway:experimental>",
@@ -1047,14 +1047,14 @@
         },
         "infrastructure": {
           "description": "Infrastructure defines infrastructure level attributes about this Gateway instance.\n\nSupport: Extended",
-          "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.GatewayInfrastructure"
+          "$ref": "#/definitions/io.k8s.networking.gateway.v1.GatewayInfrastructure"
         },
         "listeners": {
           "description": "Listeners associated with this Gateway. Listeners define logical endpoints that are bound on this Gateway's addresses. At least one Listener MUST be specified.\n\n## Distinct Listeners\n\nEach Listener in a set of Listeners (for example, in a single Gateway) MUST be _distinct_, in that a traffic flow MUST be able to be assigned to exactly one listener. (This section uses \"set of Listeners\" rather than \"Listeners in a single Gateway\" because implementations MAY merge configuration from multiple Gateways onto a single data plane, and these rules _also_ apply in that case).\n\nPractically, this means that each listener in a set MUST have a unique combination of Port, Protocol, and, if supported by the protocol, Hostname.\n\nSome combinations of port, protocol, and TLS settings are considered Core support and MUST be supported by implementations based on the objects they support:\n\nHTTPRoute\n\n1. HTTPRoute, Port: 80, Protocol: HTTP 2. HTTPRoute, Port: 443, Protocol: HTTPS, TLS Mode: Terminate, TLS keypair provided\n\nTLSRoute\n\n1. TLSRoute, Port: 443, Protocol: TLS, TLS Mode: Passthrough\n\n\"Distinct\" Listeners have the following property:\n\n**The implementation can match inbound requests to a single distinct Listener**.\n\nWhen multiple Listeners share values for fields (for example, two Listeners with the same Port value), the implementation can match requests to only one of the Listeners using other Listener fields.\n\nWhen multiple listeners have the same value for the Protocol field, then each of the Listeners with matching Protocol values MUST have different values for other fields.\n\nThe set of fields that MUST be different for a Listener differs per protocol. The following rules define the rules for what fields MUST be considered for Listeners to be distinct with each protocol currently defined in the Gateway API spec.\n\nThe set of listeners that all share a protocol value MUST have _different_ values for _at least one_ of these fields to be distinct:\n\n* **HTTP, HTTPS, TLS**: Port, Hostname * **TCP, UDP**: Port\n\nOne **very** important rule to call out involves what happens when an implementation:\n\n* Supports TCP protocol Listeners, as well as HTTP, HTTPS, or TLS protocol\n  Listeners, and\n* sees HTTP, HTTPS, or TLS protocols with the same `port` as one with TCP\n  Protocol.\n\nIn this case all the Listeners that share a port with the TCP Listener are not distinct and so MUST NOT be accepted.\n\nIf an implementation does not support TCP Protocol Listeners, then the previous rule does not apply, and the TCP Listeners SHOULD NOT be accepted.\n\nNote that the `tls` field is not used for determining if a listener is distinct, because Listeners that _only_ differ on TLS config will still conflict in all cases.\n\n### Listeners that are distinct only by Hostname\n\nWhen the Listeners are distinct based only on Hostname, inbound request hostnames MUST match from the most specific to least specific Hostname values to choose the correct Listener and its associated set of Routes.\n\nExact matches MUST be processed before wildcard matches, and wildcard matches MUST be processed before fallback (empty Hostname value) matches. For example, `\"foo.example.com\"` takes precedence over `\"*.example.com\"`, and `\"*.example.com\"` takes precedence over `\"\"`.\n\nAdditionally, if there are multiple wildcard entries, more specific wildcard entries must be processed before less specific wildcard entries. For example, `\"*.foo.example.com\"` takes precedence over `\"*.example.com\"`.\n\nThe precise definition here is that the higher the number of dots in the hostname to the right of the wildcard character, the higher the precedence.\n\nThe wildcard character will match any number of characters _and dots_ to the left, however, so `\"*.example.com\"` will match both `\"foo.bar.example.com\"` _and_ `\"bar.example.com\"`.\n\n## Handling indistinct Listeners\n\nIf a set of Listeners contains Listeners that are not distinct, then those Listeners are _Conflicted_, and the implementation MUST set the \"Conflicted\" condition in the Listener Status to \"True\".\n\nThe words \"indistinct\" and \"conflicted\" are considered equivalent for the purpose of this documentation.\n\nImplementations MAY choose to accept a Gateway with some Conflicted Listeners only if they only accept the partial Listener set that contains no Conflicted Listeners.\n\nSpecifically, an implementation MAY accept a partial Listener set subject to the following rules:\n\n* The implementation MUST NOT pick one conflicting Listener as the winner.\n  ALL indistinct Listeners must not be accepted for processing.\n* At least one distinct Listener MUST be present, or else the Gateway effectively\n  contains _no_ Listeners, and must be rejected from processing as a whole.\n\nThe implementation MUST set a \"ListenersNotValid\" condition on the Gateway Status when the Gateway contains Conflicted Listeners whether or not they accept the Gateway. That Condition SHOULD clearly indicate in the Message which Listeners are conflicted, and which are Accepted. Additionally, the Listener status for those listeners SHOULD indicate which Listeners are conflicted and not Accepted.\n\n## General Listener behavior\n\nNote that, for all distinct Listeners, requests SHOULD match at most one Listener. For example, if Listeners are defined for \"foo.example.com\" and \"*.example.com\", a request to \"foo.example.com\" SHOULD only be routed using routes attached to the \"foo.example.com\" Listener (and not the \"*.example.com\" Listener).\n\nThis concept is known as \"Listener Isolation\", and it is an Extended feature of Gateway API. Implementations that do not support Listener Isolation MUST clearly document this, and MUST NOT claim support for the `GatewayHTTPListenerIsolation` feature.\n\nImplementations that _do_ support Listener Isolation SHOULD claim support for the Extended `GatewayHTTPListenerIsolation` feature and pass the associated conformance tests.\n\n## Compatible Listeners\n\nA Gateway's Listeners are considered _compatible_ if:\n\n1. They are distinct. 2. The implementation can serve them in compliance with the Addresses\n   requirement that all Listeners are available on all assigned\n   addresses.\n\nCompatible combinations in Extended support are expected to vary across implementations. A combination that is compatible for one implementation may not be compatible for another.\n\nFor example, an implementation that cannot serve both TCP and UDP listeners on the same address, or cannot mix HTTPS and generic TLS listens on the same port would not consider those cases compatible, even though they are distinct.\n\nImplementations MAY merge separate Gateways onto a single set of Addresses if all Listeners across all Gateways are compatible.\n\nIn a future release the MinItems=1 requirement MAY be dropped.\n\nSupport: Core",
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.Listener"
+            "$ref": "#/definitions/io.k8s.networking.gateway.v1.Listener"
           },
           "x-kubernetes-list-map-keys": [
             "name"
@@ -1063,12 +1063,12 @@
         },
         "tls": {
           "description": "TLS specifies frontend and backend tls configuration for entire gateway.\n\nSupport: Extended",
-          "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.GatewayTLSConfig"
+          "$ref": "#/definitions/io.k8s.networking.gateway.v1.GatewayTLSConfig"
         }
       },
       "additionalProperties": false
     },
-    "io.k8s.sigs.gateway-api.apis.v1.GatewaySpecAddress": {
+    "io.k8s.networking.gateway.v1.GatewaySpecAddress": {
       "type": "object",
       "properties": {
         "type": {
@@ -1082,7 +1082,7 @@
       },
       "additionalProperties": false
     },
-    "io.k8s.sigs.gateway-api.apis.v1.GatewayStatus": {
+    "io.k8s.networking.gateway.v1.GatewayStatus": {
       "type": "object",
       "properties": {
         "addresses": {
@@ -1090,7 +1090,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.GatewayStatusAddress"
+            "$ref": "#/definitions/io.k8s.networking.gateway.v1.GatewayStatusAddress"
           },
           "x-kubernetes-list-type": "atomic"
         },
@@ -1116,7 +1116,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.ListenerStatus"
+            "$ref": "#/definitions/io.k8s.networking.gateway.v1.ListenerStatus"
           },
           "x-kubernetes-list-map-keys": [
             "name"
@@ -1126,7 +1126,7 @@
       },
       "additionalProperties": false
     },
-    "io.k8s.sigs.gateway-api.apis.v1.GatewayStatusAddress": {
+    "io.k8s.networking.gateway.v1.GatewayStatusAddress": {
       "description": "GatewayStatusAddress describes a network address that is bound to a Gateway.",
       "type": "object",
       "required": [
@@ -1145,22 +1145,22 @@
       },
       "additionalProperties": false
     },
-    "io.k8s.sigs.gateway-api.apis.v1.GatewayTLSConfig": {
+    "io.k8s.networking.gateway.v1.GatewayTLSConfig": {
       "description": "GatewayTLSConfig specifies frontend and backend tls configuration for gateway.",
       "type": "object",
       "properties": {
         "backend": {
           "description": "Backend describes TLS configuration for gateway when connecting to backends.\n\nNote that this contains only details for the Gateway as a TLS client, and does _not_ imply behavior about how to choose which backend should get a TLS connection. That is determined by the presence of a BackendTLSPolicy.\n\nSupport: Core",
-          "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.GatewayBackendTLS"
+          "$ref": "#/definitions/io.k8s.networking.gateway.v1.GatewayBackendTLS"
         },
         "frontend": {
           "description": "Frontend describes TLS config when client connects to Gateway. Support: Core",
-          "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.FrontendTLSConfig"
+          "$ref": "#/definitions/io.k8s.networking.gateway.v1.FrontendTLSConfig"
         }
       },
       "additionalProperties": false
     },
-    "io.k8s.sigs.gateway-api.apis.v1.HTTPAuthConfig": {
+    "io.k8s.networking.gateway.v1.HTTPAuthConfig": {
       "description": "HTTPAuthConfig contains configuration for communication with HTTP-speaking backends.",
       "type": "object",
       "properties": {
@@ -1189,7 +1189,7 @@
       },
       "additionalProperties": false
     },
-    "io.k8s.sigs.gateway-api.apis.v1.HTTPBackendRef": {
+    "io.k8s.networking.gateway.v1.HTTPBackendRef": {
       "type": "object",
       "required": [
         "name"
@@ -1200,7 +1200,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.HTTPRouteFilter"
+            "$ref": "#/definitions/io.k8s.networking.gateway.v1.HTTPRouteFilter"
           },
           "x-kubernetes-list-type": "atomic"
         },
@@ -1234,7 +1234,7 @@
       },
       "additionalProperties": false
     },
-    "io.k8s.sigs.gateway-api.apis.v1.HTTPCORSFilter": {
+    "io.k8s.networking.gateway.v1.HTTPCORSFilter": {
       "description": "HTTPCORSFilter defines a filter that that configures Cross-Origin Request Sharing (CORS).",
       "type": "object",
       "properties": {
@@ -1286,7 +1286,7 @@
       },
       "additionalProperties": false
     },
-    "io.k8s.sigs.gateway-api.apis.v1.HTTPExternalAuthFilter": {
+    "io.k8s.networking.gateway.v1.HTTPExternalAuthFilter": {
       "description": "HTTPExternalAuthFilter defines a filter that modifies requests by sending request details to an external authorization server.\n\nSupport: Extended Feature Name: HTTPRouteExternalAuth",
       "type": "object",
       "required": [
@@ -1297,19 +1297,19 @@
         "backendRef": {
           "description": "BackendRef is a reference to a backend to send authorization requests to.\n\nThe backend must speak the selected protocol (GRPC or HTTP) on the referenced port.\n\nIf the backend service requires TLS, use BackendTLSPolicy to tell the implementation to supply the TLS details to be used to connect to that backend.",
           "default": {},
-          "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.BackendObjectReference"
+          "$ref": "#/definitions/io.k8s.networking.gateway.v1.BackendObjectReference"
         },
         "forwardBody": {
           "description": "ForwardBody controls if requests to the authorization server should include the body of the client request; and if so, how big that body is allowed to be.\n\nIt is expected that implementations will buffer the request body up to `forwardBody.maxSize` bytes. Bodies over that size must be rejected with a 4xx series error (413 or 403 are common examples), and fail processing of the filter.\n\nIf unset, or `forwardBody.maxSize` is set to `0`, then the body will not be forwarded.\n\nFeature Name: HTTPRouteExternalAuthForwardBody",
-          "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.ForwardBodyConfig"
+          "$ref": "#/definitions/io.k8s.networking.gateway.v1.ForwardBodyConfig"
         },
         "grpc": {
           "description": "GRPCAuthConfig contains configuration for communication with ext_authz protocol-speaking backends.\n\nIf unset, implementations must assume the default behavior for each included field is intended.",
-          "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.GRPCAuthConfig"
+          "$ref": "#/definitions/io.k8s.networking.gateway.v1.GRPCAuthConfig"
         },
         "http": {
           "description": "HTTPAuthConfig contains configuration for communication with HTTP-speaking backends.\n\nIf unset, implementations must assume the default behavior for each included field is intended.",
-          "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.HTTPAuthConfig"
+          "$ref": "#/definitions/io.k8s.networking.gateway.v1.HTTPAuthConfig"
         },
         "protocol": {
           "description": "ExternalAuthProtocol describes which protocol to use when communicating with an ext_authz authorization server.\n\nWhen this is set to GRPC, each backend must use the Envoy ext_authz protocol on the port specified in `backendRefs`. Requests and responses are defined in the protobufs explained at: https://www.envoyproxy.io/docs/envoy/latest/api-v3/service/auth/v3/external_auth.proto\n\nWhen this is set to HTTP, each backend must respond with a `200` status code in on a successful authorization. Any other code is considered an authorization failure.\n\nFeature Names: GRPC Support - HTTPRouteExternalAuthGRPC HTTP Support - HTTPRouteExternalAuthHTTP",
@@ -1318,7 +1318,7 @@
       },
       "additionalProperties": false
     },
-    "io.k8s.sigs.gateway-api.apis.v1.HTTPHeader": {
+    "io.k8s.networking.gateway.v1.HTTPHeader": {
       "type": "object",
       "required": [
         "name",
@@ -1338,7 +1338,7 @@
       },
       "additionalProperties": false
     },
-    "io.k8s.sigs.gateway-api.apis.v1.HTTPHeaderFilter": {
+    "io.k8s.networking.gateway.v1.HTTPHeaderFilter": {
       "type": "object",
       "properties": {
         "add": {
@@ -1346,7 +1346,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.HTTPHeader"
+            "$ref": "#/definitions/io.k8s.networking.gateway.v1.HTTPHeader"
           },
           "x-kubernetes-list-map-keys": [
             "name"
@@ -1367,7 +1367,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.HTTPHeader"
+            "$ref": "#/definitions/io.k8s.networking.gateway.v1.HTTPHeader"
           },
           "x-kubernetes-list-map-keys": [
             "name"
@@ -1377,7 +1377,7 @@
       },
       "additionalProperties": false
     },
-    "io.k8s.sigs.gateway-api.apis.v1.HTTPHeaderMatch": {
+    "io.k8s.networking.gateway.v1.HTTPHeaderMatch": {
       "type": "object",
       "required": [
         "name",
@@ -1401,7 +1401,7 @@
       },
       "additionalProperties": false
     },
-    "io.k8s.sigs.gateway-api.apis.v1.HTTPPathMatch": {
+    "io.k8s.networking.gateway.v1.HTTPPathMatch": {
       "type": "object",
       "properties": {
         "type": {
@@ -1415,7 +1415,7 @@
       },
       "additionalProperties": false
     },
-    "io.k8s.sigs.gateway-api.apis.v1.HTTPPathModifier": {
+    "io.k8s.networking.gateway.v1.HTTPPathModifier": {
       "type": "object",
       "required": [
         "type"
@@ -1437,7 +1437,7 @@
       },
       "additionalProperties": false
     },
-    "io.k8s.sigs.gateway-api.apis.v1.HTTPQueryParamMatch": {
+    "io.k8s.networking.gateway.v1.HTTPQueryParamMatch": {
       "type": "object",
       "required": [
         "name",
@@ -1461,7 +1461,7 @@
       },
       "additionalProperties": false
     },
-    "io.k8s.sigs.gateway-api.apis.v1.HTTPRequestMirrorFilter": {
+    "io.k8s.networking.gateway.v1.HTTPRequestMirrorFilter": {
       "type": "object",
       "required": [
         "backendRef"
@@ -1470,11 +1470,11 @@
         "backendRef": {
           "description": "BackendRef references a resource where mirrored requests are sent.\n\nMirrored requests must be sent only to a single destination endpoint within this BackendRef, irrespective of how many endpoints are present within this BackendRef.\n\nIf the referent cannot be found, this BackendRef is invalid and must be dropped from the Gateway. The controller must ensure the \"ResolvedRefs\" condition on the Route status is set to `status: False` and not configure this backend in the underlying implementation.\n\nIf there is a cross-namespace reference to an *existing* object that is not allowed by a ReferenceGrant, the controller must ensure the \"ResolvedRefs\"  condition on the Route is set to `status: False`, with the \"RefNotPermitted\" reason and not configure this backend in the underlying implementation.\n\nIn either error case, the Message of the `ResolvedRefs` Condition should be used to provide more detail about the problem.\n\nSupport: Extended for Kubernetes Service\n\nSupport: Implementation-specific for any other resource",
           "default": {},
-          "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.BackendObjectReference"
+          "$ref": "#/definitions/io.k8s.networking.gateway.v1.BackendObjectReference"
         },
         "fraction": {
           "description": "Fraction represents the fraction of requests that should be mirrored to BackendRef.\n\nOnly one of Fraction or Percent may be specified. If neither field is specified, 100% of requests will be mirrored.",
-          "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.Fraction"
+          "$ref": "#/definitions/io.k8s.networking.gateway.v1.Fraction"
         },
         "percent": {
           "description": "Percent represents the percentage of requests that should be mirrored to BackendRef. Its minimum value is 0 (indicating 0% of requests) and its maximum value is 100 (indicating 100% of requests).\n\nOnly one of Fraction or Percent may be specified. If neither field is specified, 100% of requests will be mirrored.",
@@ -1484,7 +1484,7 @@
       },
       "additionalProperties": false
     },
-    "io.k8s.sigs.gateway-api.apis.v1.HTTPRequestRedirectFilter": {
+    "io.k8s.networking.gateway.v1.HTTPRequestRedirectFilter": {
       "type": "object",
       "properties": {
         "hostname": {
@@ -1493,7 +1493,7 @@
         },
         "path": {
           "description": "Path defines parameters used to modify the path of the incoming request. The modified path is then used to construct the `Location` header. When empty, the request path is used as-is.\n\nSupport: Extended",
-          "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.HTTPPathModifier"
+          "$ref": "#/definitions/io.k8s.networking.gateway.v1.HTTPPathModifier"
         },
         "port": {
           "description": "Port is the port to be used in the value of the `Location` header in the response.\n\nIf no port is specified, the redirect port MUST be derived using the following rules:\n\n* If redirect scheme is not-empty, the redirect port MUST be the well-known\n  port associated with the redirect scheme. Specifically \"http\" to port 80\n  and \"https\" to port 443. If the redirect scheme does not have a\n  well-known port, the listener port of the Gateway SHOULD be used.\n* If redirect scheme is empty, the redirect port MUST be the Gateway\n  Listener port.\n\nImplementations SHOULD NOT add the port number in the 'Location' header in the following cases:\n\n* A Location header that will use HTTP (whether that is determined via\n  the Listener protocol or the Scheme field) _and_ use port 80.\n* A Location header that will use HTTPS (whether that is determined via\n  the Listener protocol or the Scheme field) _and_ use port 443.\n\nSupport: Extended",
@@ -1512,7 +1512,7 @@
       },
       "additionalProperties": false
     },
-    "io.k8s.sigs.gateway-api.apis.v1.HTTPRoute": {
+    "io.k8s.networking.gateway.v1.HTTPRoute": {
       "description": "HTTPRoute provides a way to route HTTP requests. This includes the capability to match requests by hostname, path, header, or query param. Filters can be used to specify additional processing steps. Backends specify where matching requests should be routed.",
       "type": "object",
       "required": [
@@ -1534,17 +1534,17 @@
         "spec": {
           "description": "Spec defines the desired state of HTTPRoute.",
           "default": {},
-          "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.HTTPRouteSpec"
+          "$ref": "#/definitions/io.k8s.networking.gateway.v1.HTTPRouteSpec"
         },
         "status": {
           "description": "Status defines the current state of HTTPRoute.",
           "default": {},
-          "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.HTTPRouteStatus"
+          "$ref": "#/definitions/io.k8s.networking.gateway.v1.HTTPRouteStatus"
         }
       },
       "additionalProperties": false
     },
-    "io.k8s.sigs.gateway-api.apis.v1.HTTPRouteFilter": {
+    "io.k8s.networking.gateway.v1.HTTPRouteFilter": {
       "type": "object",
       "required": [
         "type"
@@ -1552,31 +1552,31 @@
       "properties": {
         "cors": {
           "description": "CORS defines a schema for a filter that responds to the cross-origin request based on HTTP response header.\n\nSupport: Extended",
-          "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.HTTPCORSFilter"
+          "$ref": "#/definitions/io.k8s.networking.gateway.v1.HTTPCORSFilter"
         },
         "extensionRef": {
           "description": "ExtensionRef is an optional, implementation-specific extension to the \"filter\" behavior.  For example, resource \"myroutefilter\" in group \"networking.example.net\"). ExtensionRef MUST NOT be used for core and extended filters.\n\nThis filter can be used multiple times within the same rule.\n\nSupport: Implementation-specific",
-          "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.LocalObjectReference"
+          "$ref": "#/definitions/io.k8s.networking.gateway.v1.LocalObjectReference"
         },
         "externalAuth": {
           "description": "ExternalAuth configures settings related to sending request details to an external auth service. The external service MUST authenticate the request, and MAY authorize the request as well.\n\nIf there is any problem communicating with the external service, this filter MUST fail closed.\n\nSupport: Extended\n\n<gateway:experimental>",
-          "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.HTTPExternalAuthFilter"
+          "$ref": "#/definitions/io.k8s.networking.gateway.v1.HTTPExternalAuthFilter"
         },
         "requestHeaderModifier": {
           "description": "RequestHeaderModifier defines a schema for a filter that modifies request headers.\n\nSupport: Core",
-          "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.HTTPHeaderFilter"
+          "$ref": "#/definitions/io.k8s.networking.gateway.v1.HTTPHeaderFilter"
         },
         "requestMirror": {
           "description": "RequestMirror defines a schema for a filter that mirrors requests. Requests are sent to the specified destination, but responses from that destination are ignored.\n\nThis filter can be used multiple times within the same rule. Note that not all implementations will be able to support mirroring to multiple backends.\n\nSupport: Extended",
-          "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.HTTPRequestMirrorFilter"
+          "$ref": "#/definitions/io.k8s.networking.gateway.v1.HTTPRequestMirrorFilter"
         },
         "requestRedirect": {
           "description": "RequestRedirect defines a schema for a filter that responds to the request with an HTTP redirection.\n\nSupport: Core",
-          "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.HTTPRequestRedirectFilter"
+          "$ref": "#/definitions/io.k8s.networking.gateway.v1.HTTPRequestRedirectFilter"
         },
         "responseHeaderModifier": {
           "description": "ResponseHeaderModifier defines a schema for a filter that modifies response headers.\n\nSupport: Extended",
-          "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.HTTPHeaderFilter"
+          "$ref": "#/definitions/io.k8s.networking.gateway.v1.HTTPHeaderFilter"
         },
         "type": {
           "description": "Type identifies the type of filter to apply. As with other API fields, types are classified into three conformance levels:\n\n- Core: Filter types and their corresponding configuration defined by\n  \"Support: Core\" in this package, e.g. \"RequestHeaderModifier\". All\n  implementations must support core filters.\n\n- Extended: Filter types and their corresponding configuration defined by\n  \"Support: Extended\" in this package, e.g. \"RequestMirror\". Implementers\n  are encouraged to support extended filters.\n\n- Implementation-specific: Filters that are defined and supported by\n  specific vendors.\n  In the future, filters showing convergence in behavior across multiple\n  implementations will be considered for inclusion in extended or core\n  conformance levels. Filter-specific configuration for such filters\n  is specified using the ExtensionRef field. `Type` should be set to\n  \"ExtensionRef\" for custom filters.\n\nImplementers are encouraged to define custom implementation types to extend the core API with implementation-specific behavior.\n\nIf a reference to a custom filter type cannot be resolved, the filter MUST NOT be skipped. Instead, requests that would have been processed by that filter MUST receive a HTTP error response.\n\nNote that values may be added to this enum, implementations must ensure that unknown values will not cause a crash.\n\nUnknown values here must result in the implementation setting the Accepted Condition for the Route to `status: False`, with a Reason of `UnsupportedValue`.\n\n<gateway:experimental:validation:Enum=RequestHeaderModifier;ResponseHeaderModifier;RequestMirror;RequestRedirect;URLRewrite;ExtensionRef;CORS;ExternalAuth>",
@@ -1585,12 +1585,12 @@
         },
         "urlRewrite": {
           "description": "URLRewrite defines a schema for a filter that modifies a request during forwarding.\n\nSupport: Extended",
-          "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.HTTPURLRewriteFilter"
+          "$ref": "#/definitions/io.k8s.networking.gateway.v1.HTTPURLRewriteFilter"
         }
       },
       "additionalProperties": false
     },
-    "io.k8s.sigs.gateway-api.apis.v1.HTTPRouteMatch": {
+    "io.k8s.networking.gateway.v1.HTTPRouteMatch": {
       "type": "object",
       "properties": {
         "headers": {
@@ -1598,7 +1598,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.HTTPHeaderMatch"
+            "$ref": "#/definitions/io.k8s.networking.gateway.v1.HTTPHeaderMatch"
           },
           "x-kubernetes-list-map-keys": [
             "name"
@@ -1611,14 +1611,14 @@
         },
         "path": {
           "description": "Path specifies a HTTP request path matcher. If this field is not specified, a default prefix match on the \"/\" path is provided.",
-          "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.HTTPPathMatch"
+          "$ref": "#/definitions/io.k8s.networking.gateway.v1.HTTPPathMatch"
         },
         "queryParams": {
           "description": "QueryParams specifies HTTP query parameter matchers. Multiple match values are ANDed together, meaning, a request must match all the specified query parameters to select the route.\n\nSupport: Extended",
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.HTTPQueryParamMatch"
+            "$ref": "#/definitions/io.k8s.networking.gateway.v1.HTTPQueryParamMatch"
           },
           "x-kubernetes-list-map-keys": [
             "name"
@@ -1628,7 +1628,7 @@
       },
       "additionalProperties": false
     },
-    "io.k8s.sigs.gateway-api.apis.v1.HTTPRouteRetry": {
+    "io.k8s.networking.gateway.v1.HTTPRouteRetry": {
       "description": "HTTPRouteRetry defines retry configuration for an HTTPRoute.\n\nImplementations SHOULD retry on connection errors (disconnect, reset, timeout, TCP failure) if a retry stanza is configured.",
       "type": "object",
       "properties": {
@@ -1654,7 +1654,7 @@
       },
       "additionalProperties": false
     },
-    "io.k8s.sigs.gateway-api.apis.v1.HTTPRouteRule": {
+    "io.k8s.networking.gateway.v1.HTTPRouteRule": {
       "type": "object",
       "properties": {
         "backendRefs": {
@@ -1662,7 +1662,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.HTTPBackendRef"
+            "$ref": "#/definitions/io.k8s.networking.gateway.v1.HTTPBackendRef"
           },
           "x-kubernetes-list-type": "atomic"
         },
@@ -1671,7 +1671,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.HTTPRouteFilter"
+            "$ref": "#/definitions/io.k8s.networking.gateway.v1.HTTPRouteFilter"
           },
           "x-kubernetes-list-type": "atomic"
         },
@@ -1680,7 +1680,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.HTTPRouteMatch"
+            "$ref": "#/definitions/io.k8s.networking.gateway.v1.HTTPRouteMatch"
           },
           "x-kubernetes-list-type": "atomic"
         },
@@ -1690,20 +1690,20 @@
         },
         "retry": {
           "description": "Retry defines the configuration for when to retry an HTTP request.\n\nSupport: Extended\n\n<gateway:experimental>",
-          "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.HTTPRouteRetry"
+          "$ref": "#/definitions/io.k8s.networking.gateway.v1.HTTPRouteRetry"
         },
         "sessionPersistence": {
           "description": "SessionPersistence defines and configures session persistence for the route rule.\n\nSupport: Extended\n\n<gateway:experimental>",
-          "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.SessionPersistence"
+          "$ref": "#/definitions/io.k8s.networking.gateway.v1.SessionPersistence"
         },
         "timeouts": {
           "description": "Timeouts defines the timeouts that can be configured for an HTTP request.\n\nSupport: Extended",
-          "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.HTTPRouteTimeouts"
+          "$ref": "#/definitions/io.k8s.networking.gateway.v1.HTTPRouteTimeouts"
         }
       },
       "additionalProperties": false
     },
-    "io.k8s.sigs.gateway-api.apis.v1.HTTPRouteSpec": {
+    "io.k8s.networking.gateway.v1.HTTPRouteSpec": {
       "type": "object",
       "properties": {
         "hostnames": {
@@ -1720,7 +1720,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.ParentReference"
+            "$ref": "#/definitions/io.k8s.networking.gateway.v1.ParentReference"
           },
           "x-kubernetes-list-type": "atomic"
         },
@@ -1729,7 +1729,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.HTTPRouteRule"
+            "$ref": "#/definitions/io.k8s.networking.gateway.v1.HTTPRouteRule"
           },
           "x-kubernetes-list-type": "atomic"
         },
@@ -1740,7 +1740,7 @@
       },
       "additionalProperties": false
     },
-    "io.k8s.sigs.gateway-api.apis.v1.HTTPRouteStatus": {
+    "io.k8s.networking.gateway.v1.HTTPRouteStatus": {
       "type": "object",
       "required": [
         "parents"
@@ -1751,14 +1751,14 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.RouteParentStatus"
+            "$ref": "#/definitions/io.k8s.networking.gateway.v1.RouteParentStatus"
           },
           "x-kubernetes-list-type": "atomic"
         }
       },
       "additionalProperties": false
     },
-    "io.k8s.sigs.gateway-api.apis.v1.HTTPRouteTimeouts": {
+    "io.k8s.networking.gateway.v1.HTTPRouteTimeouts": {
       "type": "object",
       "properties": {
         "backendRequest": {
@@ -1772,7 +1772,7 @@
       },
       "additionalProperties": false
     },
-    "io.k8s.sigs.gateway-api.apis.v1.HTTPURLRewriteFilter": {
+    "io.k8s.networking.gateway.v1.HTTPURLRewriteFilter": {
       "type": "object",
       "properties": {
         "hostname": {
@@ -1781,12 +1781,12 @@
         },
         "path": {
           "description": "Path defines a path rewrite.\n\nSupport: Extended",
-          "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.HTTPPathModifier"
+          "$ref": "#/definitions/io.k8s.networking.gateway.v1.HTTPPathModifier"
         }
       },
       "additionalProperties": false
     },
-    "io.k8s.sigs.gateway-api.apis.v1.Listener": {
+    "io.k8s.networking.gateway.v1.Listener": {
       "type": "object",
       "required": [
         "name",
@@ -1796,7 +1796,7 @@
       "properties": {
         "allowedRoutes": {
           "description": "AllowedRoutes defines the types of routes that MAY be attached to a Listener and the trusted namespaces where those Route resources MAY be present.\n\nAlthough a client request may match multiple route rules, only one rule may ultimately receive the request. Matching precedence MUST be determined in order of the following criteria:\n\n* The most specific match as defined by the Route type. * The oldest Route based on creation timestamp. For example, a Route with\n  a creation timestamp of \"2020-09-08 01:02:03\" is given precedence over\n  a Route with a creation timestamp of \"2020-09-08 01:02:04\".\n* If everything else is equivalent, the Route appearing first in\n  alphabetical order (namespace/name) should be given precedence. For\n  example, foo/bar is given precedence over foo/baz.\n\nAll valid rules within a Route attached to this Listener should be implemented. Invalid Route rules can be ignored (sometimes that will mean the full Route). If a Route rule transitions from valid to invalid, support for that Route rule should be dropped to ensure consistency. For example, even if a filter specified by a Route rule is invalid, the rest of the rules within that Route should still be supported.\n\nSupport: Core",
-          "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.AllowedRoutes"
+          "$ref": "#/definitions/io.k8s.networking.gateway.v1.AllowedRoutes"
         },
         "hostname": {
           "description": "Hostname specifies the virtual hostname to match for protocol types that define this concept. When unspecified, all hostnames are matched. This field is ignored for protocols that don't require hostname based matching.\n\nImplementations MUST apply Hostname matching appropriately for each of the following protocols:\n\n* TLS: The Listener Hostname MUST match the SNI. * HTTP: The Listener Hostname MUST match the Host header of the request. * HTTPS: The Listener Hostname SHOULD match both the SNI and Host header.\n  Note that this does not require the SNI and Host header to be the same.\n  The semantics of this are described in more detail below.\n\nTo ensure security, Section 11.1 of RFC-6066 emphasizes that server implementations that rely on SNI hostname matching MUST also verify hostnames within the application protocol.\n\nSection 9.1.2 of RFC-7540 provides a mechanism for servers to reject the reuse of a connection by responding with the HTTP 421 Misdirected Request status code. This indicates that the origin server has rejected the request because it appears to have been misdirected.\n\nTo detect misdirected requests, Gateways SHOULD match the authority of the requests with all the SNI hostname(s) configured across all the Gateway Listeners on the same port and protocol:\n\n* If another Listener has an exact match or more specific wildcard entry,\n  the Gateway SHOULD return a 421.\n* If the current Listener (selected by SNI matching during ClientHello)\n  does not match the Host:\n    * If another Listener does match the Host, the Gateway SHOULD return a\n      421.\n    * If no other Listener matches the Host, the Gateway MUST return a\n      404.\n\nFor HTTPRoute and TLSRoute resources, there is an interaction with the `spec.hostnames` array. When both listener and route specify hostnames, there MUST be an intersection between the values for a Route to be accepted. For more information, refer to the Route specific Hostnames documentation.\n\nHostnames that are prefixed with a wildcard label (`*.`) are interpreted as a suffix match. That means that a match for `*.example.com` would match both `test.example.com`, and `foo.test.example.com`, but not `example.com`.\n\nSupport: Core",
@@ -1820,12 +1820,12 @@
         },
         "tls": {
           "description": "TLS is the TLS configuration for the Listener. This field is required if the Protocol field is \"HTTPS\" or \"TLS\". It is invalid to set this field if the Protocol field is \"HTTP\", \"TCP\", or \"UDP\".\n\nThe association of SNIs to Certificate defined in ListenerTLSConfig is defined based on the Hostname field for this listener.\n\nThe GatewayClass MUST use the longest matching SNI out of all available certificates for any TLS handshake.\n\nSupport: Core",
-          "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.ListenerTLSConfig"
+          "$ref": "#/definitions/io.k8s.networking.gateway.v1.ListenerTLSConfig"
         }
       },
       "additionalProperties": false
     },
-    "io.k8s.sigs.gateway-api.apis.v1.ListenerEntry": {
+    "io.k8s.networking.gateway.v1.ListenerEntry": {
       "type": "object",
       "required": [
         "name",
@@ -1835,7 +1835,7 @@
       "properties": {
         "allowedRoutes": {
           "description": "AllowedRoutes defines the types of routes that MAY be attached to a Listener and the trusted namespaces where those Route resources MAY be present.\n\nAlthough a client request may match multiple route rules, only one rule may ultimately receive the request. Matching precedence MUST be determined in order of the following criteria:\n\n* The most specific match as defined by the Route type. * The oldest Route based on creation timestamp. For example, a Route with\n  a creation timestamp of \"2020-09-08 01:02:03\" is given precedence over\n  a Route with a creation timestamp of \"2020-09-08 01:02:04\".\n* If everything else is equivalent, the Route appearing first in\n  alphabetical order (namespace/name) should be given precedence. For\n  example, foo/bar is given precedence over foo/baz.\n\nAll valid rules within a Route attached to this Listener should be implemented. Invalid Route rules can be ignored (sometimes that will mean the full Route). If a Route rule transitions from valid to invalid, support for that Route rule should be dropped to ensure consistency. For example, even if a filter specified by a Route rule is invalid, the rest of the rules within that Route should still be supported.",
-          "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.AllowedRoutes"
+          "$ref": "#/definitions/io.k8s.networking.gateway.v1.AllowedRoutes"
         },
         "hostname": {
           "description": "Hostname specifies the virtual hostname to match for protocol types that define this concept. When unspecified, all hostnames are matched. This field is ignored for protocols that don't require hostname based matching.\n\nImplementations MUST apply Hostname matching appropriately for each of the following protocols:\n\n* TLS: The Listener Hostname MUST match the SNI. * HTTP: The Listener Hostname MUST match the Host header of the request. * HTTPS: The Listener Hostname SHOULD match at both the TLS and HTTP\n  protocol layers as described above. If an implementation does not\n  ensure that both the SNI and Host header match the Listener hostname,\n  it MUST clearly document that.\n\nFor HTTPRoute and TLSRoute resources, there is an interaction with the `spec.hostnames` array. When both listener and route specify hostnames, there MUST be an intersection between the values for a Route to be accepted. For more information, refer to the Route specific Hostnames documentation.\n\nHostnames that are prefixed with a wildcard label (`*.`) are interpreted as a suffix match. That means that a match for `*.example.com` would match both `test.example.com`, and `foo.test.example.com`, but not `example.com`.",
@@ -1856,12 +1856,12 @@
         },
         "tls": {
           "description": "TLS is the TLS configuration for the Listener. This field is required if the Protocol field is \"HTTPS\" or \"TLS\". It is invalid to set this field if the Protocol field is \"HTTP\", \"TCP\", or \"UDP\".\n\nThe association of SNIs to Certificate defined in ListenerTLSConfig is defined based on the Hostname field for this listener.\n\nThe GatewayClass MUST use the longest matching SNI out of all available certificates for any TLS handshake.",
-          "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.ListenerTLSConfig"
+          "$ref": "#/definitions/io.k8s.networking.gateway.v1.ListenerTLSConfig"
         }
       },
       "additionalProperties": false
     },
-    "io.k8s.sigs.gateway-api.apis.v1.ListenerEntryStatus": {
+    "io.k8s.networking.gateway.v1.ListenerEntryStatus": {
       "description": "ListenerStatus is the status associated with a Listener.",
       "type": "object",
       "required": [
@@ -1897,14 +1897,14 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.RouteGroupKind"
+            "$ref": "#/definitions/io.k8s.networking.gateway.v1.RouteGroupKind"
           },
           "x-kubernetes-list-type": "atomic"
         }
       },
       "additionalProperties": false
     },
-    "io.k8s.sigs.gateway-api.apis.v1.ListenerNamespaces": {
+    "io.k8s.networking.gateway.v1.ListenerNamespaces": {
       "description": "ListenerNamespaces indicate which namespaces ListenerSets should be selected from.",
       "type": "object",
       "properties": {
@@ -1919,7 +1919,7 @@
       },
       "additionalProperties": false
     },
-    "io.k8s.sigs.gateway-api.apis.v1.ListenerSet": {
+    "io.k8s.networking.gateway.v1.ListenerSet": {
       "description": "ListenerSet defines a set of additional listeners to attach to an existing Gateway. This resource provides a mechanism to merge multiple listeners into a single Gateway.\n\nThe parent Gateway must explicitly allow ListenerSet attachment through its AllowedListeners configuration. By default, Gateways do not allow ListenerSet attachment.\n\nRoutes can attach to a ListenerSet by specifying it as a parentRef, and can optionally target specific listeners using the sectionName field.\n\nPolicy Attachment: - Policies that attach to a ListenerSet apply to all listeners defined in that resource - Policies do not impact listeners in the parent Gateway - Different ListenerSets attached to the same Gateway can have different policies - If an implementation cannot apply a policy to specific listeners, it should reject the policy\n\nReferenceGrant Semantics: - ReferenceGrants applied to a Gateway are not inherited by child ListenerSets - ReferenceGrants applied to a ListenerSet do not grant permission to the parent Gateway's listeners - A ListenerSet can reference secrets/backends in its own namespace without a ReferenceGrant\n\nGateway Integration:\n  - The parent Gateway's status will include \"AttachedListenerSets\"\n    which is the count of ListenerSets that have successfully attached to a Gateway\n    A ListenerSet is successfully attached to a Gateway when all the following conditions are met:\n  - The ListenerSet is selected by the Gateway's AllowedListeners field\n  - The ListenerSet has a valid ParentRef selecting the Gateway\n  - The ListenerSet's status has the condition \"Accepted: true\"",
       "type": "object",
       "required": [
@@ -1941,17 +1941,17 @@
         "spec": {
           "description": "Spec defines the desired state of ListenerSet.",
           "default": {},
-          "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.ListenerSetSpec"
+          "$ref": "#/definitions/io.k8s.networking.gateway.v1.ListenerSetSpec"
         },
         "status": {
           "description": "Status defines the current state of ListenerSet.",
           "default": {},
-          "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.ListenerSetStatus"
+          "$ref": "#/definitions/io.k8s.networking.gateway.v1.ListenerSetStatus"
         }
       },
       "additionalProperties": false
     },
-    "io.k8s.sigs.gateway-api.apis.v1.ListenerSetSpec": {
+    "io.k8s.networking.gateway.v1.ListenerSetSpec": {
       "description": "ListenerSetSpec defines the desired state of a ListenerSet.",
       "type": "object",
       "required": [
@@ -1964,7 +1964,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.ListenerEntry"
+            "$ref": "#/definitions/io.k8s.networking.gateway.v1.ListenerEntry"
           },
           "x-kubernetes-list-map-keys": [
             "name"
@@ -1974,12 +1974,12 @@
         "parentRef": {
           "description": "ParentRef references the Gateway that the listeners are attached to.",
           "default": {},
-          "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.ParentGatewayReference"
+          "$ref": "#/definitions/io.k8s.networking.gateway.v1.ParentGatewayReference"
         }
       },
       "additionalProperties": false
     },
-    "io.k8s.sigs.gateway-api.apis.v1.ListenerSetStatus": {
+    "io.k8s.networking.gateway.v1.ListenerSetStatus": {
       "type": "object",
       "properties": {
         "conditions": {
@@ -1999,7 +1999,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.ListenerEntryStatus"
+            "$ref": "#/definitions/io.k8s.networking.gateway.v1.ListenerEntryStatus"
           },
           "x-kubernetes-list-map-keys": [
             "name"
@@ -2009,7 +2009,7 @@
       },
       "additionalProperties": false
     },
-    "io.k8s.sigs.gateway-api.apis.v1.ListenerStatus": {
+    "io.k8s.networking.gateway.v1.ListenerStatus": {
       "type": "object",
       "required": [
         "name",
@@ -2045,14 +2045,14 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.RouteGroupKind"
+            "$ref": "#/definitions/io.k8s.networking.gateway.v1.RouteGroupKind"
           },
           "x-kubernetes-list-type": "atomic"
         }
       },
       "additionalProperties": false
     },
-    "io.k8s.sigs.gateway-api.apis.v1.ListenerTLSConfig": {
+    "io.k8s.networking.gateway.v1.ListenerTLSConfig": {
       "type": "object",
       "properties": {
         "certificateRefs": {
@@ -2060,7 +2060,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.SecretObjectReference"
+            "$ref": "#/definitions/io.k8s.networking.gateway.v1.SecretObjectReference"
           },
           "x-kubernetes-list-type": "atomic"
         },
@@ -2079,7 +2079,7 @@
       },
       "additionalProperties": false
     },
-    "io.k8s.sigs.gateway-api.apis.v1.LocalObjectReference": {
+    "io.k8s.networking.gateway.v1.LocalObjectReference": {
       "type": "object",
       "required": [
         "group",
@@ -2105,7 +2105,7 @@
       },
       "additionalProperties": false
     },
-    "io.k8s.sigs.gateway-api.apis.v1.LocalParametersReference": {
+    "io.k8s.networking.gateway.v1.LocalParametersReference": {
       "description": "LocalParametersReference identifies an API object containing controller-specific configuration resource within the namespace.",
       "type": "object",
       "required": [
@@ -2132,7 +2132,7 @@
       },
       "additionalProperties": false
     },
-    "io.k8s.sigs.gateway-api.apis.v1.LocalPolicyTargetReferenceWithSectionName": {
+    "io.k8s.networking.gateway.v1.LocalPolicyTargetReferenceWithSectionName": {
       "description": "LocalPolicyTargetReferenceWithSectionName identifies an API object to apply a direct policy to. This should be used as part of Policy resources that can target single resources. For more information on how this policy attachment mode works, and a sample Policy resource, refer to the policy attachment documentation for Gateway API.\n\nNote: This should only be used for direct policy attachment when references to SectionName are actually needed. In all other cases, LocalPolicyTargetReference should be used.",
       "type": "object",
       "required": [
@@ -2163,7 +2163,7 @@
       },
       "additionalProperties": false
     },
-    "io.k8s.sigs.gateway-api.apis.v1.ObjectReference": {
+    "io.k8s.networking.gateway.v1.ObjectReference": {
       "description": "ObjectReference identifies an API object including its namespace.\n\nThe API object must be valid in the cluster; the Group and Kind must be registered in the cluster for this reference to be valid.\n\nReferences to objects with invalid Group and Kind are not valid, and must be rejected by the implementation, with appropriate Conditions set on the containing object.",
       "type": "object",
       "required": [
@@ -2194,7 +2194,7 @@
       },
       "additionalProperties": false
     },
-    "io.k8s.sigs.gateway-api.apis.v1.ParametersReference": {
+    "io.k8s.networking.gateway.v1.ParametersReference": {
       "type": "object",
       "required": [
         "group",
@@ -2224,7 +2224,7 @@
       },
       "additionalProperties": false
     },
-    "io.k8s.sigs.gateway-api.apis.v1.ParentGatewayReference": {
+    "io.k8s.networking.gateway.v1.ParentGatewayReference": {
       "description": "ParentGatewayReference identifies an API object including its namespace, defaulting to Gateway.",
       "type": "object",
       "required": [
@@ -2251,7 +2251,7 @@
       },
       "additionalProperties": false
     },
-    "io.k8s.sigs.gateway-api.apis.v1.ParentReference": {
+    "io.k8s.networking.gateway.v1.ParentReference": {
       "type": "object",
       "required": [
         "name"
@@ -2286,7 +2286,7 @@
       },
       "additionalProperties": false
     },
-    "io.k8s.sigs.gateway-api.apis.v1.PolicyAncestorStatus": {
+    "io.k8s.networking.gateway.v1.PolicyAncestorStatus": {
       "description": "PolicyAncestorStatus describes the status of a route with respect to an associated Ancestor.\n\nAncestors refer to objects that are either the Target of a policy or above it in terms of object hierarchy. For example, if a policy targets a Service, the Policy's Ancestors are, in order, the Service, the HTTPRoute, the Gateway, and the GatewayClass. Almost always, in this hierarchy, the Gateway will be the most useful object to place Policy status on, so we recommend that implementations SHOULD use Gateway as the PolicyAncestorStatus object unless the designers have a _very_ good reason otherwise.\n\nIn the context of policy attachment, the Ancestor is used to distinguish which resource results in a distinct application of this policy. For example, if a policy targets a Service, it may have a distinct result per attached Gateway.\n\nPolicies targeting the same resource may have different effects depending on the ancestors of those resources. For example, different Gateways targeting the same Service may have different capabilities, especially if they have different underlying implementations.\n\nFor example, in BackendTLSPolicy, the Policy attaches to a Service that is used as a backend in a HTTPRoute that is itself attached to a Gateway. In this case, the relevant object for status is the Gateway, and that is the ancestor object referred to in this status.\n\nNote that a parent is also an ancestor, so for objects where the parent is the relevant object for status, this struct SHOULD still be used.\n\nThis struct is intended to be used in a slice that's effectively a map, with a composite key made up of the AncestorRef and the ControllerName.",
       "type": "object",
       "required": [
@@ -2298,7 +2298,7 @@
         "ancestorRef": {
           "description": "AncestorRef corresponds with a ParentRef in the spec that this PolicyAncestorStatus struct describes the status of.",
           "default": {},
-          "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.ParentReference"
+          "$ref": "#/definitions/io.k8s.networking.gateway.v1.ParentReference"
         },
         "conditions": {
           "description": "Conditions describes the status of the Policy with respect to the given Ancestor.\n\n<gateway:util:excludeFromCRD>\n\nNotes for implementors:\n\nConditions are a listType `map`, which means that they function like a map with a key of the `type` field _in the k8s apiserver_.\n\nThis means that implementations must obey some rules when updating this section.\n\n* Implementations MUST perform a read-modify-write cycle on this field\n  before modifying it. That is, when modifying this field, implementations\n  must be confident they have fetched the most recent version of this field,\n  and ensure that changes they make are on that recent version.\n* Implementations MUST NOT remove or reorder Conditions that they are not\n  directly responsible for. For example, if an implementation sees a Condition\n  with type `special.io/SomeField`, it MUST NOT remove, change or update that\n  Condition.\n* Implementations MUST always _merge_ changes into Conditions of the same Type,\n  rather than creating more than one Condition of the same Type.\n* Implementations MUST always update the `observedGeneration` field of the\n  Condition to the `metadata.generation` of the Gateway at the time of update creation.\n* If the `observedGeneration` of a Condition is _greater than_ the value the\n  implementation knows about, then it MUST NOT perform the update on that Condition,\n  but must wait for a future reconciliation and status update. (The assumption is that\n  the implementation's copy of the object is stale and an update will be re-triggered\n  if relevant.)\n\n</gateway:util:excludeFromCRD>",
@@ -2320,7 +2320,7 @@
       },
       "additionalProperties": false
     },
-    "io.k8s.sigs.gateway-api.apis.v1.PolicyStatus": {
+    "io.k8s.networking.gateway.v1.PolicyStatus": {
       "description": "PolicyStatus defines the common attributes that all Policies should include within their status.",
       "type": "object",
       "required": [
@@ -2332,14 +2332,14 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.PolicyAncestorStatus"
+            "$ref": "#/definitions/io.k8s.networking.gateway.v1.PolicyAncestorStatus"
           },
           "x-kubernetes-list-type": "atomic"
         }
       },
       "additionalProperties": false
     },
-    "io.k8s.sigs.gateway-api.apis.v1.ReferenceGrant": {
+    "io.k8s.networking.gateway.v1.ReferenceGrant": {
       "description": "ReferenceGrant identifies kinds of resources in other namespaces that are trusted to reference the specified kinds of resources in the same namespace as the policy.\n\nEach ReferenceGrant can be used to represent a unique trust relationship. Additional Reference Grants can be used to add to the set of trusted sources of inbound references for the namespace they are defined within.\n\nAll cross-namespace references in Gateway API (with the exception of cross-namespace Gateway-route attachment) require a ReferenceGrant.\n\nReferenceGrant is a form of runtime verification allowing users to assert which cross-namespace object references are permitted. Implementations that support ReferenceGrant MUST NOT permit cross-namespace references which have no grant, and MUST respond to the removal of a grant by revoking the access that the grant allowed.",
       "type": "object",
       "properties": {
@@ -2358,12 +2358,12 @@
         "spec": {
           "description": "Spec defines the desired state of ReferenceGrant.",
           "default": {},
-          "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.ReferenceGrantSpec"
+          "$ref": "#/definitions/io.k8s.networking.gateway.v1.ReferenceGrantSpec"
         }
       },
       "additionalProperties": false
     },
-    "io.k8s.sigs.gateway-api.apis.v1.ReferenceGrantFrom": {
+    "io.k8s.networking.gateway.v1.ReferenceGrantFrom": {
       "type": "object",
       "required": [
         "group",
@@ -2389,7 +2389,7 @@
       },
       "additionalProperties": false
     },
-    "io.k8s.sigs.gateway-api.apis.v1.ReferenceGrantSpec": {
+    "io.k8s.networking.gateway.v1.ReferenceGrantSpec": {
       "type": "object",
       "required": [
         "from",
@@ -2401,7 +2401,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.ReferenceGrantFrom"
+            "$ref": "#/definitions/io.k8s.networking.gateway.v1.ReferenceGrantFrom"
           },
           "x-kubernetes-list-type": "atomic"
         },
@@ -2410,14 +2410,14 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.ReferenceGrantTo"
+            "$ref": "#/definitions/io.k8s.networking.gateway.v1.ReferenceGrantTo"
           },
           "x-kubernetes-list-type": "atomic"
         }
       },
       "additionalProperties": false
     },
-    "io.k8s.sigs.gateway-api.apis.v1.ReferenceGrantTo": {
+    "io.k8s.networking.gateway.v1.ReferenceGrantTo": {
       "type": "object",
       "required": [
         "group",
@@ -2441,7 +2441,7 @@
       },
       "additionalProperties": false
     },
-    "io.k8s.sigs.gateway-api.apis.v1.RouteGroupKind": {
+    "io.k8s.networking.gateway.v1.RouteGroupKind": {
       "type": "object",
       "required": [
         "kind"
@@ -2459,7 +2459,7 @@
       },
       "additionalProperties": false
     },
-    "io.k8s.sigs.gateway-api.apis.v1.RouteNamespaces": {
+    "io.k8s.networking.gateway.v1.RouteNamespaces": {
       "type": "object",
       "properties": {
         "from": {
@@ -2473,7 +2473,7 @@
       },
       "additionalProperties": false
     },
-    "io.k8s.sigs.gateway-api.apis.v1.RouteParentStatus": {
+    "io.k8s.networking.gateway.v1.RouteParentStatus": {
       "type": "object",
       "required": [
         "parentRef",
@@ -2501,12 +2501,12 @@
         "parentRef": {
           "description": "ParentRef corresponds with a ParentRef in the spec that this RouteParentStatus struct describes the status of.",
           "default": {},
-          "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.ParentReference"
+          "$ref": "#/definitions/io.k8s.networking.gateway.v1.ParentReference"
         }
       },
       "additionalProperties": false
     },
-    "io.k8s.sigs.gateway-api.apis.v1.SecretObjectReference": {
+    "io.k8s.networking.gateway.v1.SecretObjectReference": {
       "type": "object",
       "required": [
         "name"
@@ -2532,7 +2532,7 @@
       },
       "additionalProperties": false
     },
-    "io.k8s.sigs.gateway-api.apis.v1.SessionPersistence": {
+    "io.k8s.networking.gateway.v1.SessionPersistence": {
       "type": "object",
       "properties": {
         "absoluteTimeout": {
@@ -2541,7 +2541,7 @@
         },
         "cookieConfig": {
           "description": "CookieConfig provides configuration settings that are specific to cookie-based session persistence.\n\nSupport: Core",
-          "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.CookieConfig"
+          "$ref": "#/definitions/io.k8s.networking.gateway.v1.CookieConfig"
         },
         "idleTimeout": {
           "description": "IdleTimeout defines the idle timeout of the persistent session. Once the session has been idle for more than the specified IdleTimeout duration, the session becomes invalid.\n\nSupport: Extended",
@@ -2558,7 +2558,7 @@
       },
       "additionalProperties": false
     },
-    "io.k8s.sigs.gateway-api.apis.v1.SubjectAltName": {
+    "io.k8s.networking.gateway.v1.SubjectAltName": {
       "description": "SubjectAltName represents Subject Alternative Name.",
       "type": "object",
       "required": [
@@ -2581,7 +2581,7 @@
       },
       "additionalProperties": false
     },
-    "io.k8s.sigs.gateway-api.apis.v1.SupportedFeature": {
+    "io.k8s.networking.gateway.v1.SupportedFeature": {
       "type": "object",
       "required": [
         "name"
@@ -2594,18 +2594,18 @@
       },
       "additionalProperties": false
     },
-    "io.k8s.sigs.gateway-api.apis.v1.TLSConfig": {
+    "io.k8s.networking.gateway.v1.TLSConfig": {
       "description": "TLSConfig describes TLS configuration that can apply to multiple Listeners within this Gateway. Currently, it stores only the client certificate validation configuration, but this may be extended in the future.",
       "type": "object",
       "properties": {
         "validation": {
           "description": "Validation holds configuration information for validating the frontend (client). Setting this field will result in mutual authentication when connecting to the gateway. In browsers this may result in a dialog appearing that requests a user to specify the client certificate. The maximum depth of a certificate chain accepted in verification is Implementation specific.\n\nSupport: Core",
-          "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.FrontendTLSValidation"
+          "$ref": "#/definitions/io.k8s.networking.gateway.v1.FrontendTLSValidation"
         }
       },
       "additionalProperties": false
     },
-    "io.k8s.sigs.gateway-api.apis.v1.TLSPortConfig": {
+    "io.k8s.networking.gateway.v1.TLSPortConfig": {
       "type": "object",
       "required": [
         "port",
@@ -2621,12 +2621,12 @@
         "tls": {
           "description": "TLS store the configuration that will be applied to all Listeners handling HTTPS traffic and matching given port.\n\nSupport: Core",
           "default": {},
-          "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.TLSConfig"
+          "$ref": "#/definitions/io.k8s.networking.gateway.v1.TLSConfig"
         }
       },
       "additionalProperties": false
     },
-    "io.k8s.sigs.gateway-api.apis.v1.TLSRoute": {
+    "io.k8s.networking.gateway.v1.TLSRoute": {
       "description": "The TLSRoute resource is similar to TCPRoute, but can be configured to match against TLS-specific metadata. This allows more flexibility in matching streams for a given TLS listener.\n\nIf you need to forward traffic to a single target for a TLS listener, you could choose to use a TCPRoute with a TLS listener.",
       "type": "object",
       "required": [
@@ -2648,17 +2648,17 @@
         "spec": {
           "description": "Spec defines the desired state of TLSRoute.",
           "default": {},
-          "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.TLSRouteSpec"
+          "$ref": "#/definitions/io.k8s.networking.gateway.v1.TLSRouteSpec"
         },
         "status": {
           "description": "Status defines the current state of TLSRoute.",
           "default": {},
-          "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.TLSRouteStatus"
+          "$ref": "#/definitions/io.k8s.networking.gateway.v1.TLSRouteStatus"
         }
       },
       "additionalProperties": false
     },
-    "io.k8s.sigs.gateway-api.apis.v1.TLSRouteRule": {
+    "io.k8s.networking.gateway.v1.TLSRouteRule": {
       "description": "TLSRouteRule is the configuration for a given rule.",
       "type": "object",
       "required": [
@@ -2670,7 +2670,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.BackendRef"
+            "$ref": "#/definitions/io.k8s.networking.gateway.v1.BackendRef"
           },
           "x-kubernetes-list-type": "atomic"
         },
@@ -2681,7 +2681,7 @@
       },
       "additionalProperties": false
     },
-    "io.k8s.sigs.gateway-api.apis.v1.TLSRouteSpec": {
+    "io.k8s.networking.gateway.v1.TLSRouteSpec": {
       "description": "TLSRouteSpec defines the expected behavior of a TLSRoute. A TLSRoute MUST be attached to a Listener of protocol TLS. Core: The listener CAN be of type Passthrough Extended: The listener CAN be of type Terminate",
       "type": "object",
       "required": [
@@ -2703,7 +2703,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.ParentReference"
+            "$ref": "#/definitions/io.k8s.networking.gateway.v1.ParentReference"
           },
           "x-kubernetes-list-type": "atomic"
         },
@@ -2712,7 +2712,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.TLSRouteRule"
+            "$ref": "#/definitions/io.k8s.networking.gateway.v1.TLSRouteRule"
           },
           "x-kubernetes-list-type": "atomic"
         },
@@ -2723,7 +2723,7 @@
       },
       "additionalProperties": false
     },
-    "io.k8s.sigs.gateway-api.apis.v1.TLSRouteStatus": {
+    "io.k8s.networking.gateway.v1.TLSRouteStatus": {
       "description": "TLSRouteStatus defines the observed state of TLSRoute",
       "type": "object",
       "required": [
@@ -2735,14 +2735,14 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.RouteParentStatus"
+            "$ref": "#/definitions/io.k8s.networking.gateway.v1.RouteParentStatus"
           },
           "x-kubernetes-list-type": "atomic"
         }
       },
       "additionalProperties": false
     },
-    "io.k8s.sigs.gateway-api.apis.v1alpha2.GRPCRoute": {
+    "io.k8s.networking.gateway.v1alpha2.GRPCRoute": {
       "type": "object",
       "required": [
         "spec"
@@ -2763,17 +2763,17 @@
         "spec": {
           "description": "Spec defines the desired state of GRPCRoute.",
           "default": {},
-          "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.GRPCRouteSpec"
+          "$ref": "#/definitions/io.k8s.networking.gateway.v1.GRPCRouteSpec"
         },
         "status": {
           "description": "Status defines the current state of GRPCRoute.",
           "default": {},
-          "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.GRPCRouteStatus"
+          "$ref": "#/definitions/io.k8s.networking.gateway.v1.GRPCRouteStatus"
         }
       },
       "additionalProperties": false
     },
-    "io.k8s.sigs.gateway-api.apis.v1alpha2.ReferenceGrant": {
+    "io.k8s.networking.gateway.v1alpha2.ReferenceGrant": {
       "description": "ReferenceGrant identifies kinds of resources in other namespaces that are trusted to reference the specified kinds of resources in the same namespace as the policy.\n\nEach ReferenceGrant can be used to represent a unique trust relationship. Additional Reference Grants can be used to add to the set of trusted sources of inbound references for the namespace they are defined within.\n\nA ReferenceGrant is required for all cross-namespace references in Gateway API (with the exception of cross-namespace Route-Gateway attachment, which is governed by the AllowedRoutes configuration on the Gateway, and cross-namespace Service ParentRefs on a \"consumer\" mesh Route, which defines routing rules applicable only to workloads in the Route namespace). ReferenceGrants allowing a reference from a Route to a Service are only applicable to BackendRefs.\n\nReferenceGrant is a form of runtime verification allowing users to assert which cross-namespace object references are permitted. Implementations that support ReferenceGrant MUST NOT permit cross-namespace references which have no grant, and MUST respond to the removal of a grant by revoking the access that the grant allowed.",
       "type": "object",
       "properties": {
@@ -2792,12 +2792,12 @@
         "spec": {
           "description": "Spec defines the desired state of ReferenceGrant.",
           "default": {},
-          "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.ReferenceGrantSpec"
+          "$ref": "#/definitions/io.k8s.networking.gateway.v1.ReferenceGrantSpec"
         }
       },
       "additionalProperties": false
     },
-    "io.k8s.sigs.gateway-api.apis.v1alpha2.TCPRoute": {
+    "io.k8s.networking.gateway.v1alpha2.TCPRoute": {
       "description": "TCPRoute provides a way to route TCP requests. When combined with a Gateway listener, it can be used to forward connections on the port specified by the listener to a set of backends specified by the TCPRoute.",
       "type": "object",
       "required": [
@@ -2819,17 +2819,17 @@
         "spec": {
           "description": "Spec defines the desired state of TCPRoute.",
           "default": {},
-          "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1alpha2.TCPRouteSpec"
+          "$ref": "#/definitions/io.k8s.networking.gateway.v1alpha2.TCPRouteSpec"
         },
         "status": {
           "description": "Status defines the current state of TCPRoute.",
           "default": {},
-          "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1alpha2.TCPRouteStatus"
+          "$ref": "#/definitions/io.k8s.networking.gateway.v1alpha2.TCPRouteStatus"
         }
       },
       "additionalProperties": false
     },
-    "io.k8s.sigs.gateway-api.apis.v1alpha2.TCPRouteRule": {
+    "io.k8s.networking.gateway.v1alpha2.TCPRouteRule": {
       "description": "TCPRouteRule is the configuration for a given rule.",
       "type": "object",
       "required": [
@@ -2841,7 +2841,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.BackendRef"
+            "$ref": "#/definitions/io.k8s.networking.gateway.v1.BackendRef"
           },
           "x-kubernetes-list-type": "atomic"
         },
@@ -2852,7 +2852,7 @@
       },
       "additionalProperties": false
     },
-    "io.k8s.sigs.gateway-api.apis.v1alpha2.TCPRouteSpec": {
+    "io.k8s.networking.gateway.v1alpha2.TCPRouteSpec": {
       "description": "TCPRouteSpec defines the desired state of TCPRoute",
       "type": "object",
       "required": [
@@ -2864,7 +2864,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.ParentReference"
+            "$ref": "#/definitions/io.k8s.networking.gateway.v1.ParentReference"
           },
           "x-kubernetes-list-type": "atomic"
         },
@@ -2873,7 +2873,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1alpha2.TCPRouteRule"
+            "$ref": "#/definitions/io.k8s.networking.gateway.v1alpha2.TCPRouteRule"
           },
           "x-kubernetes-list-type": "atomic"
         },
@@ -2884,7 +2884,7 @@
       },
       "additionalProperties": false
     },
-    "io.k8s.sigs.gateway-api.apis.v1alpha2.TCPRouteStatus": {
+    "io.k8s.networking.gateway.v1alpha2.TCPRouteStatus": {
       "description": "TCPRouteStatus defines the observed state of TCPRoute",
       "type": "object",
       "required": [
@@ -2896,14 +2896,14 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.RouteParentStatus"
+            "$ref": "#/definitions/io.k8s.networking.gateway.v1.RouteParentStatus"
           },
           "x-kubernetes-list-type": "atomic"
         }
       },
       "additionalProperties": false
     },
-    "io.k8s.sigs.gateway-api.apis.v1alpha2.TLSRoute": {
+    "io.k8s.networking.gateway.v1alpha2.TLSRoute": {
       "description": "The TLSRoute resource is similar to TCPRoute, but can be configured to match against TLS-specific metadata. This allows more flexibility in matching streams for a given TLS listener.",
       "type": "object",
       "required": [
@@ -2925,17 +2925,17 @@
         "spec": {
           "description": "Spec defines the desired state of TLSRoute.",
           "default": {},
-          "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1alpha2.TLSRouteSpec"
+          "$ref": "#/definitions/io.k8s.networking.gateway.v1alpha2.TLSRouteSpec"
         },
         "status": {
           "description": "Status defines the current state of TLSRoute.",
           "default": {},
-          "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1alpha2.TLSRouteStatus"
+          "$ref": "#/definitions/io.k8s.networking.gateway.v1alpha2.TLSRouteStatus"
         }
       },
       "additionalProperties": false
     },
-    "io.k8s.sigs.gateway-api.apis.v1alpha2.TLSRouteRule": {
+    "io.k8s.networking.gateway.v1alpha2.TLSRouteRule": {
       "description": "TLSRouteRule is the configuration for a given rule.",
       "type": "object",
       "required": [
@@ -2947,7 +2947,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.BackendRef"
+            "$ref": "#/definitions/io.k8s.networking.gateway.v1.BackendRef"
           },
           "x-kubernetes-list-type": "atomic"
         },
@@ -2958,7 +2958,7 @@
       },
       "additionalProperties": false
     },
-    "io.k8s.sigs.gateway-api.apis.v1alpha2.TLSRouteSpec": {
+    "io.k8s.networking.gateway.v1alpha2.TLSRouteSpec": {
       "description": "TLSRouteSpec defines the desired state of a TLSRoute resource.",
       "type": "object",
       "required": [
@@ -2979,7 +2979,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.ParentReference"
+            "$ref": "#/definitions/io.k8s.networking.gateway.v1.ParentReference"
           },
           "x-kubernetes-list-type": "atomic"
         },
@@ -2988,7 +2988,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1alpha2.TLSRouteRule"
+            "$ref": "#/definitions/io.k8s.networking.gateway.v1alpha2.TLSRouteRule"
           },
           "x-kubernetes-list-type": "atomic"
         },
@@ -2999,7 +2999,7 @@
       },
       "additionalProperties": false
     },
-    "io.k8s.sigs.gateway-api.apis.v1alpha2.TLSRouteStatus": {
+    "io.k8s.networking.gateway.v1alpha2.TLSRouteStatus": {
       "description": "TLSRouteStatus defines the observed state of TLSRoute",
       "type": "object",
       "required": [
@@ -3011,14 +3011,14 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.RouteParentStatus"
+            "$ref": "#/definitions/io.k8s.networking.gateway.v1.RouteParentStatus"
           },
           "x-kubernetes-list-type": "atomic"
         }
       },
       "additionalProperties": false
     },
-    "io.k8s.sigs.gateway-api.apis.v1alpha2.UDPRoute": {
+    "io.k8s.networking.gateway.v1alpha2.UDPRoute": {
       "description": "UDPRoute provides a way to route UDP traffic. When combined with a Gateway listener, it can be used to forward traffic on the port specified by the listener to a set of backends specified by the UDPRoute.",
       "type": "object",
       "required": [
@@ -3040,17 +3040,17 @@
         "spec": {
           "description": "Spec defines the desired state of UDPRoute.",
           "default": {},
-          "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1alpha2.UDPRouteSpec"
+          "$ref": "#/definitions/io.k8s.networking.gateway.v1alpha2.UDPRouteSpec"
         },
         "status": {
           "description": "Status defines the current state of UDPRoute.",
           "default": {},
-          "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1alpha2.UDPRouteStatus"
+          "$ref": "#/definitions/io.k8s.networking.gateway.v1alpha2.UDPRouteStatus"
         }
       },
       "additionalProperties": false
     },
-    "io.k8s.sigs.gateway-api.apis.v1alpha2.UDPRouteRule": {
+    "io.k8s.networking.gateway.v1alpha2.UDPRouteRule": {
       "description": "UDPRouteRule is the configuration for a given rule.",
       "type": "object",
       "required": [
@@ -3062,7 +3062,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.BackendRef"
+            "$ref": "#/definitions/io.k8s.networking.gateway.v1.BackendRef"
           },
           "x-kubernetes-list-type": "atomic"
         },
@@ -3073,7 +3073,7 @@
       },
       "additionalProperties": false
     },
-    "io.k8s.sigs.gateway-api.apis.v1alpha2.UDPRouteSpec": {
+    "io.k8s.networking.gateway.v1alpha2.UDPRouteSpec": {
       "description": "UDPRouteSpec defines the desired state of UDPRoute.",
       "type": "object",
       "required": [
@@ -3085,7 +3085,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.ParentReference"
+            "$ref": "#/definitions/io.k8s.networking.gateway.v1.ParentReference"
           },
           "x-kubernetes-list-type": "atomic"
         },
@@ -3094,7 +3094,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1alpha2.UDPRouteRule"
+            "$ref": "#/definitions/io.k8s.networking.gateway.v1alpha2.UDPRouteRule"
           },
           "x-kubernetes-list-type": "atomic"
         },
@@ -3105,7 +3105,7 @@
       },
       "additionalProperties": false
     },
-    "io.k8s.sigs.gateway-api.apis.v1alpha2.UDPRouteStatus": {
+    "io.k8s.networking.gateway.v1alpha2.UDPRouteStatus": {
       "description": "UDPRouteStatus defines the observed state of UDPRoute.",
       "type": "object",
       "required": [
@@ -3117,14 +3117,14 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.RouteParentStatus"
+            "$ref": "#/definitions/io.k8s.networking.gateway.v1.RouteParentStatus"
           },
           "x-kubernetes-list-type": "atomic"
         }
       },
       "additionalProperties": false
     },
-    "io.k8s.sigs.gateway-api.apis.v1alpha3.BackendTLSPolicy": {
+    "io.k8s.networking.gateway.v1alpha3.BackendTLSPolicy": {
       "type": "object",
       "required": [
         "spec"
@@ -3145,17 +3145,17 @@
         "spec": {
           "description": "Spec defines the desired state of BackendTLSPolicy.",
           "default": {},
-          "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.BackendTLSPolicySpec"
+          "$ref": "#/definitions/io.k8s.networking.gateway.v1.BackendTLSPolicySpec"
         },
         "status": {
           "description": "Status defines the current state of BackendTLSPolicy.",
           "default": {},
-          "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.PolicyStatus"
+          "$ref": "#/definitions/io.k8s.networking.gateway.v1.PolicyStatus"
         }
       },
       "additionalProperties": false
     },
-    "io.k8s.sigs.gateway-api.apis.v1beta1.Gateway": {
+    "io.k8s.networking.gateway.v1beta1.Gateway": {
       "description": "Gateway represents an instance of a service-traffic handling infrastructure by binding Listeners to a set of IP addresses.",
       "type": "object",
       "required": [
@@ -3177,17 +3177,17 @@
         "spec": {
           "description": "Spec defines the desired state of Gateway.",
           "default": {},
-          "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.GatewaySpec"
+          "$ref": "#/definitions/io.k8s.networking.gateway.v1.GatewaySpec"
         },
         "status": {
           "description": "Status defines the current state of Gateway.",
           "default": {},
-          "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.GatewayStatus"
+          "$ref": "#/definitions/io.k8s.networking.gateway.v1.GatewayStatus"
         }
       },
       "additionalProperties": false
     },
-    "io.k8s.sigs.gateway-api.apis.v1beta1.GatewayClass": {
+    "io.k8s.networking.gateway.v1beta1.GatewayClass": {
       "description": "GatewayClass describes a class of Gateways available to the user for creating Gateway resources.\n\nIt is recommended that this resource be used as a template for Gateways. This means that a Gateway is based on the state of the GatewayClass at the time it was created and changes to the GatewayClass or associated parameters are not propagated down to existing Gateways. This recommendation is intended to limit the blast radius of changes to GatewayClass or associated parameters. If implementations choose to propagate GatewayClass changes to existing Gateways, that MUST be clearly documented by the implementation.\n\nWhenever one or more Gateways are using a GatewayClass, implementations SHOULD add the `gateway-exists-finalizer.gateway.networking.k8s.io` finalizer on the associated GatewayClass. This ensures that a GatewayClass associated with a Gateway is not deleted while in use.\n\nGatewayClass is a Cluster level resource.",
       "type": "object",
       "required": [
@@ -3209,17 +3209,17 @@
         "spec": {
           "description": "Spec defines the desired state of GatewayClass.",
           "default": {},
-          "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.GatewayClassSpec"
+          "$ref": "#/definitions/io.k8s.networking.gateway.v1.GatewayClassSpec"
         },
         "status": {
           "description": "Status defines the current state of GatewayClass.\n\nImplementations MUST populate status on all GatewayClass resources which specify their controller name.",
           "default": {},
-          "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.GatewayClassStatus"
+          "$ref": "#/definitions/io.k8s.networking.gateway.v1.GatewayClassStatus"
         }
       },
       "additionalProperties": false
     },
-    "io.k8s.sigs.gateway-api.apis.v1beta1.HTTPRoute": {
+    "io.k8s.networking.gateway.v1beta1.HTTPRoute": {
       "description": "HTTPRoute provides a way to route HTTP requests. This includes the capability to match requests by hostname, path, header, or query param. Filters can be used to specify additional processing steps. Backends specify where matching requests should be routed.",
       "type": "object",
       "required": [
@@ -3241,17 +3241,17 @@
         "spec": {
           "description": "Spec defines the desired state of HTTPRoute.",
           "default": {},
-          "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.HTTPRouteSpec"
+          "$ref": "#/definitions/io.k8s.networking.gateway.v1.HTTPRouteSpec"
         },
         "status": {
           "description": "Status defines the current state of HTTPRoute.",
           "default": {},
-          "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.HTTPRouteStatus"
+          "$ref": "#/definitions/io.k8s.networking.gateway.v1.HTTPRouteStatus"
         }
       },
       "additionalProperties": false
     },
-    "io.k8s.sigs.gateway-api.apis.v1beta1.ReferenceGrant": {
+    "io.k8s.networking.gateway.v1beta1.ReferenceGrant": {
       "description": "ReferenceGrant identifies kinds of resources in other namespaces that are trusted to reference the specified kinds of resources in the same namespace as the policy.\n\nEach ReferenceGrant can be used to represent a unique trust relationship. Additional Reference Grants can be used to add to the set of trusted sources of inbound references for the namespace they are defined within.\n\nAll cross-namespace references in Gateway API (with the exception of cross-namespace Gateway-route attachment) require a ReferenceGrant.\n\nReferenceGrant is a form of runtime verification allowing users to assert which cross-namespace object references are permitted. Implementations that support ReferenceGrant MUST NOT permit cross-namespace references which have no grant, and MUST respond to the removal of a grant by revoking the access that the grant allowed.",
       "type": "object",
       "properties": {
@@ -3270,7 +3270,7 @@
         "spec": {
           "description": "Spec defines the desired state of ReferenceGrant.",
           "default": {},
-          "$ref": "#/definitions/io.k8s.sigs.gateway-api.apis.v1.ReferenceGrantSpec"
+          "$ref": "#/definitions/io.k8s.networking.gateway.v1.ReferenceGrantSpec"
         }
       },
       "additionalProperties": false

@@ -22,11 +22,11 @@
     },
     "spec": {
       "default": {},
-      "$ref": "_definitions.json#/definitions/sh.gatekeeper.apis.expansion.v1alpha1.ExpansionTemplateSpec"
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.expansion.v1alpha1.ExpansionTemplateSpec"
     },
     "status": {
       "default": {},
-      "$ref": "_definitions.json#/definitions/sh.gatekeeper.apis.expansion.v1alpha1.ExpansionTemplateStatus"
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.expansion.v1alpha1.ExpansionTemplateStatus"
     }
   },
   "additionalProperties": false,

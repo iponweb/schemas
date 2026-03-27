@@ -4,7 +4,7 @@
   "properties": {
     "httpConfig": {
       "description": "Defines HTTP parameters for web server.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.WebHTTPConfig"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.WebHTTPConfig"
     },
     "pageTitle": {
       "description": "The prometheus web page title",
@@ -15,7 +15,7 @@
     },
     "tlsConfig": {
       "description": "Defines the TLS parameters for HTTPS.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.WebTLSConfig"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.WebTLSConfig"
     }
   },
   "additionalProperties": false,

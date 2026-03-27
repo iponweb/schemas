@@ -1,0 +1,164 @@
+{
+  "description": "GCRAccessToken generates an GCP access token that can be used to authenticate with GCR.",
+  "type": "object",
+  "properties": {
+    "apiVersion": {
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "generators.external-secrets.io/v1alpha1"
+      ]
+    },
+    "kind": {
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "GCRAccessToken"
+      ]
+    },
+    "metadata": {
+      "description": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+    },
+    "spec": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "auth",
+        "projectID"
+      ],
+      "properties": {
+        "auth": {
+          "description": "Auth defines the means for authenticating with GCP",
+          "type": "object",
+          "properties": {
+            "secretRef": {
+              "type": [
+                "object",
+                "null"
+              ],
+              "properties": {
+                "secretAccessKeySecretRef": {
+                  "description": "The SecretAccessKey is used for authentication",
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "properties": {
+                    "key": {
+                      "description": "The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be defaulted, in others it may be required.",
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "name": {
+                      "description": "The name of the Secret resource being referred to.",
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "namespace": {
+                      "description": "Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults to the namespace of the referent.",
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              },
+              "additionalProperties": false
+            },
+            "workloadIdentity": {
+              "type": [
+                "object",
+                "null"
+              ],
+              "required": [
+                "clusterLocation",
+                "clusterName",
+                "serviceAccountRef"
+              ],
+              "properties": {
+                "clusterLocation": {
+                  "type": "string"
+                },
+                "clusterName": {
+                  "type": "string"
+                },
+                "clusterProjectID": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "serviceAccountRef": {
+                  "description": "A reference to a ServiceAccount resource.",
+                  "type": "object",
+                  "required": [
+                    "name"
+                  ],
+                  "properties": {
+                    "audiences": {
+                      "description": "Audience specifies the `aud` claim for the service account token If the service account uses a well-known annotation for e.g. IRSA or GCP Workload Identity then this audiences will be appended to the list",
+                      "type": [
+                        "array",
+                        "null"
+                      ],
+                      "items": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    },
+                    "name": {
+                      "description": "The name of the ServiceAccount resource being referred to.",
+                      "type": "string"
+                    },
+                    "namespace": {
+                      "description": "Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults to the namespace of the referent.",
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "additionalProperties": false
+        },
+        "projectID": {
+          "description": "ProjectID defines which project to use to authenticate with",
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "generators.external-secrets.io",
+      "kind": "GCRAccessToken",
+      "version": "v1alpha1"
+    }
+  ],
+  "x-kubernetes-selectable-fields": [],
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

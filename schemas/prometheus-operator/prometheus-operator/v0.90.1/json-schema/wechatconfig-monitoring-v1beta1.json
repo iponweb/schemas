@@ -11,7 +11,7 @@
     },
     "apiSecret": {
       "description": "apiSecret defines the secret's key that contains the WeChat API key. The secret needs to be in the same namespace as the AlertmanagerConfig object and accessible by the Prometheus Operator.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.SecretKeySelector"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1beta1.SecretKeySelector"
     },
     "apiURL": {
       "description": "apiURL defines the WeChat API URL. When not specified, defaults to the standard WeChat Work API endpoint.",
@@ -29,7 +29,7 @@
     },
     "httpConfig": {
       "description": "httpConfig defines the HTTP client configuration for WeChat API requests.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.HTTPConfig"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1beta1.HTTPConfig"
     },
     "message": {
       "description": "message defines the API request data as defined by the WeChat API. This contains the actual notification content to be sent.",

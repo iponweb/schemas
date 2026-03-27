@@ -83,7 +83,7 @@
         "null"
       ],
       "items": {
-        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.RelabelConfig"
+        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.RelabelConfig"
       }
     },
     "interval": {
@@ -129,7 +129,7 @@
         "null"
       ],
       "items": {
-        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.RelabelConfig"
+        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.RelabelConfig"
       }
     },
     "outputs": {

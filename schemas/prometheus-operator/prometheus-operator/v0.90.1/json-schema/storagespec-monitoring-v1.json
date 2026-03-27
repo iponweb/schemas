@@ -20,7 +20,7 @@
     "volumeClaimTemplate": {
       "description": "volumeClaimTemplate defines the PVC spec to be used by the Prometheus StatefulSets. The easiest way to use a volume that cannot be automatically provisioned is to use a label selector alongside manually created PersistentVolumes.",
       "default": {},
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.EmbeddedPersistentVolumeClaim"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.EmbeddedPersistentVolumeClaim"
     }
   },
   "additionalProperties": false,

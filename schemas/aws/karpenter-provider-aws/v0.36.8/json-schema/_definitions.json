@@ -1,6 +1,6 @@
 {
   "definitions": {
-    "aws.k8s.karpenter.pkg.apis.v1.AMI": {
+    "aws.k8s.karpenter.v1.AMI": {
       "description": "AMI contains resolved AMI selector values utilized for node launch",
       "type": "object",
       "required": [
@@ -28,7 +28,7 @@
       },
       "additionalProperties": false
     },
-    "aws.k8s.karpenter.pkg.apis.v1.AMISelectorTerm": {
+    "aws.k8s.karpenter.v1.AMISelectorTerm": {
       "description": "AMISelectorTerm defines selection logic for an ami used by Karpenter to launch nodes. If multiple fields are used for selection, the requirements are ANDed.",
       "type": "object",
       "properties": {
@@ -59,7 +59,7 @@
       },
       "additionalProperties": false
     },
-    "aws.k8s.karpenter.pkg.apis.v1.BlockDevice": {
+    "aws.k8s.karpenter.v1.BlockDevice": {
       "type": "object",
       "properties": {
         "deleteOnTermination": {
@@ -99,7 +99,7 @@
       },
       "additionalProperties": false
     },
-    "aws.k8s.karpenter.pkg.apis.v1.BlockDeviceMapping": {
+    "aws.k8s.karpenter.v1.BlockDeviceMapping": {
       "type": "object",
       "properties": {
         "deviceName": {
@@ -108,7 +108,7 @@
         },
         "ebs": {
           "description": "EBS contains parameters used to automatically set up EBS volumes when an instance is launched.",
-          "$ref": "#/definitions/aws.k8s.karpenter.pkg.apis.v1.BlockDevice"
+          "$ref": "#/definitions/aws.k8s.karpenter.v1.BlockDevice"
         },
         "rootVolume": {
           "description": "RootVolume is a flag indicating if this device is mounted as kubelet root dir. You can configure at most one root volume in BlockDeviceMappings.",
@@ -117,7 +117,7 @@
       },
       "additionalProperties": false
     },
-    "aws.k8s.karpenter.pkg.apis.v1.EC2NodeClass": {
+    "aws.k8s.karpenter.v1.EC2NodeClass": {
       "description": "EC2NodeClass is the Schema for the EC2NodeClass API",
       "type": "object",
       "properties": {
@@ -135,16 +135,16 @@
         },
         "spec": {
           "default": {},
-          "$ref": "#/definitions/aws.k8s.karpenter.pkg.apis.v1.EC2NodeClassSpec"
+          "$ref": "#/definitions/aws.k8s.karpenter.v1.EC2NodeClassSpec"
         },
         "status": {
           "default": {},
-          "$ref": "#/definitions/aws.k8s.karpenter.pkg.apis.v1.EC2NodeClassStatus"
+          "$ref": "#/definitions/aws.k8s.karpenter.v1.EC2NodeClassStatus"
         }
       },
       "additionalProperties": false
     },
-    "aws.k8s.karpenter.pkg.apis.v1.EC2NodeClassSpec": {
+    "aws.k8s.karpenter.v1.EC2NodeClassSpec": {
       "description": "EC2NodeClassSpec is the top level specification for the AWS Karpenter Provider. This will contain configuration necessary to launch instances in AWS.",
       "type": "object",
       "required": [
@@ -162,7 +162,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/aws.k8s.karpenter.pkg.apis.v1.AMISelectorTerm"
+            "$ref": "#/definitions/aws.k8s.karpenter.v1.AMISelectorTerm"
           }
         },
         "associatePublicIPAddress": {
@@ -173,7 +173,7 @@
           "description": "BlockDeviceMappings to be applied to provisioned nodes.",
           "type": "array",
           "items": {
-            "$ref": "#/definitions/aws.k8s.karpenter.pkg.apis.v1.BlockDeviceMapping"
+            "$ref": "#/definitions/aws.k8s.karpenter.v1.BlockDeviceMapping"
           }
         },
         "context": {
@@ -194,11 +194,11 @@
         },
         "kubelet": {
           "description": "Kubelet defines args to be used when configuring kubelet on provisioned nodes. They are a subset of the upstream types, recognizing not all options may be supported. Wherever possible, the types and names should reflect the upstream kubelet types.",
-          "$ref": "#/definitions/aws.k8s.karpenter.pkg.apis.v1.KubeletConfiguration"
+          "$ref": "#/definitions/aws.k8s.karpenter.v1.KubeletConfiguration"
         },
         "metadataOptions": {
           "description": "MetadataOptions for the generated launch template of provisioned nodes.\n\nThis specifies the exposure of the Instance Metadata Service to provisioned EC2 nodes. For more information, see Instance Metadata and User Data (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html) in the Amazon Elastic Compute Cloud User Guide.\n\nRefer to recommended, security best practices (https://aws.github.io/aws-eks-best-practices/security/docs/iam/#restrict-access-to-the-instance-profile-assigned-to-the-worker-node) for limiting exposure of Instance Metadata and User Data to pods. If omitted, defaults to httpEndpoint enabled, with httpProtocolIPv6 disabled, with httpPutResponseLimit of 1, and with httpTokens required.",
-          "$ref": "#/definitions/aws.k8s.karpenter.pkg.apis.v1.MetadataOptions"
+          "$ref": "#/definitions/aws.k8s.karpenter.v1.MetadataOptions"
         },
         "role": {
           "description": "Role is the AWS identity that nodes use. This field is immutable. This field is mutually exclusive from instanceProfile. Marking this field as immutable avoids concerns around terminating managed instance profiles from running instances. This field may be made mutable in the future, assuming the correct garbage collection and drift handling is implemented for the old instance profiles on an update.",
@@ -209,7 +209,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/aws.k8s.karpenter.pkg.apis.v1.SecurityGroupSelectorTerm"
+            "$ref": "#/definitions/aws.k8s.karpenter.v1.SecurityGroupSelectorTerm"
           }
         },
         "subnetSelectorTerms": {
@@ -217,7 +217,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/aws.k8s.karpenter.pkg.apis.v1.SubnetSelectorTerm"
+            "$ref": "#/definitions/aws.k8s.karpenter.v1.SubnetSelectorTerm"
           }
         },
         "tags": {
@@ -235,7 +235,7 @@
       },
       "additionalProperties": false
     },
-    "aws.k8s.karpenter.pkg.apis.v1.EC2NodeClassStatus": {
+    "aws.k8s.karpenter.v1.EC2NodeClassStatus": {
       "description": "EC2NodeClassStatus contains the resolved state of the EC2NodeClass",
       "type": "object",
       "properties": {
@@ -244,7 +244,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/aws.k8s.karpenter.pkg.apis.v1.AMI"
+            "$ref": "#/definitions/aws.k8s.karpenter.v1.AMI"
           }
         },
         "conditions": {
@@ -264,7 +264,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/aws.k8s.karpenter.pkg.apis.v1.SecurityGroup"
+            "$ref": "#/definitions/aws.k8s.karpenter.v1.SecurityGroup"
           }
         },
         "subnets": {
@@ -272,13 +272,13 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/aws.k8s.karpenter.pkg.apis.v1.Subnet"
+            "$ref": "#/definitions/aws.k8s.karpenter.v1.Subnet"
           }
         }
       },
       "additionalProperties": false
     },
-    "aws.k8s.karpenter.pkg.apis.v1.KubeletConfiguration": {
+    "aws.k8s.karpenter.v1.KubeletConfiguration": {
       "description": "KubeletConfiguration defines args to be used when configuring kubelet on provisioned nodes. They are a subset of the upstream types, recognizing not all options may be supported. Wherever possible, the types and names should reflect the upstream kubelet types. https://pkg.go.dev/k8s.io/kubelet/config/v1beta1#KubeletConfiguration https://github.com/kubernetes/kubernetes/blob/9f82d81e55cafdedab619ea25cabf5d42736dacf/cmd/kubelet/app/options/options.go#L53",
       "type": "object",
       "properties": {
@@ -361,7 +361,7 @@
       },
       "additionalProperties": false
     },
-    "aws.k8s.karpenter.pkg.apis.v1.MetadataOptions": {
+    "aws.k8s.karpenter.v1.MetadataOptions": {
       "description": "MetadataOptions contains parameters for specifying the exposure of the Instance Metadata Service to provisioned EC2 nodes.",
       "type": "object",
       "properties": {
@@ -385,7 +385,7 @@
       },
       "additionalProperties": false
     },
-    "aws.k8s.karpenter.pkg.apis.v1.SecurityGroup": {
+    "aws.k8s.karpenter.v1.SecurityGroup": {
       "description": "SecurityGroup contains resolved SecurityGroup selector values utilized for node launch",
       "type": "object",
       "required": [
@@ -404,7 +404,7 @@
       },
       "additionalProperties": false
     },
-    "aws.k8s.karpenter.pkg.apis.v1.SecurityGroupSelectorTerm": {
+    "aws.k8s.karpenter.v1.SecurityGroupSelectorTerm": {
       "description": "SecurityGroupSelectorTerm defines selection logic for a security group used by Karpenter to launch nodes. If multiple fields are used for selection, the requirements are ANDed.",
       "type": "object",
       "properties": {
@@ -427,7 +427,7 @@
       },
       "additionalProperties": false
     },
-    "aws.k8s.karpenter.pkg.apis.v1.Subnet": {
+    "aws.k8s.karpenter.v1.Subnet": {
       "description": "Subnet contains resolved Subnet selector values utilized for node launch",
       "type": "object",
       "required": [
@@ -452,7 +452,7 @@
       },
       "additionalProperties": false
     },
-    "aws.k8s.karpenter.pkg.apis.v1.SubnetSelectorTerm": {
+    "aws.k8s.karpenter.v1.SubnetSelectorTerm": {
       "description": "SubnetSelectorTerm defines selection logic for a subnet used by Karpenter to launch nodes. If multiple fields are used for selection, the requirements are ANDed.",
       "type": "object",
       "properties": {
@@ -471,7 +471,7 @@
       },
       "additionalProperties": false
     },
-    "aws.k8s.karpenter.pkg.apis.v1beta1.AMI": {
+    "aws.k8s.karpenter.v1beta1.AMI": {
       "description": "AMI contains resolved AMI selector values utilized for node launch",
       "type": "object",
       "required": [
@@ -493,13 +493,13 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/sh.karpenter.pkg.apis.v1beta1.NodeSelectorRequirementWithMinValues"
+            "$ref": "#/definitions/sh.karpenter.v1beta1.NodeSelectorRequirementWithMinValues"
           }
         }
       },
       "additionalProperties": false
     },
-    "aws.k8s.karpenter.pkg.apis.v1beta1.AMISelectorTerm": {
+    "aws.k8s.karpenter.v1beta1.AMISelectorTerm": {
       "description": "AMISelectorTerm defines selection logic for an ami used by Karpenter to launch nodes. If multiple fields are used for selection, the requirements are ANDed.",
       "type": "object",
       "properties": {
@@ -526,7 +526,7 @@
       },
       "additionalProperties": false
     },
-    "aws.k8s.karpenter.pkg.apis.v1beta1.BlockDevice": {
+    "aws.k8s.karpenter.v1beta1.BlockDevice": {
       "type": "object",
       "properties": {
         "deleteOnTermination": {
@@ -566,7 +566,7 @@
       },
       "additionalProperties": false
     },
-    "aws.k8s.karpenter.pkg.apis.v1beta1.BlockDeviceMapping": {
+    "aws.k8s.karpenter.v1beta1.BlockDeviceMapping": {
       "type": "object",
       "properties": {
         "deviceName": {
@@ -575,7 +575,7 @@
         },
         "ebs": {
           "description": "EBS contains parameters used to automatically set up EBS volumes when an instance is launched.",
-          "$ref": "#/definitions/aws.k8s.karpenter.pkg.apis.v1beta1.BlockDevice"
+          "$ref": "#/definitions/aws.k8s.karpenter.v1beta1.BlockDevice"
         },
         "rootVolume": {
           "description": "RootVolume is a flag indicating if this device is mounted as kubelet root dir. You can configure at most one root volume in BlockDeviceMappings.",
@@ -584,7 +584,7 @@
       },
       "additionalProperties": false
     },
-    "aws.k8s.karpenter.pkg.apis.v1beta1.EC2NodeClass": {
+    "aws.k8s.karpenter.v1beta1.EC2NodeClass": {
       "description": "EC2NodeClass is the Schema for the EC2NodeClass API",
       "type": "object",
       "properties": {
@@ -602,16 +602,16 @@
         },
         "spec": {
           "default": {},
-          "$ref": "#/definitions/aws.k8s.karpenter.pkg.apis.v1beta1.EC2NodeClassSpec"
+          "$ref": "#/definitions/aws.k8s.karpenter.v1beta1.EC2NodeClassSpec"
         },
         "status": {
           "default": {},
-          "$ref": "#/definitions/aws.k8s.karpenter.pkg.apis.v1beta1.EC2NodeClassStatus"
+          "$ref": "#/definitions/aws.k8s.karpenter.v1beta1.EC2NodeClassStatus"
         }
       },
       "additionalProperties": false
     },
-    "aws.k8s.karpenter.pkg.apis.v1beta1.EC2NodeClassSpec": {
+    "aws.k8s.karpenter.v1beta1.EC2NodeClassSpec": {
       "description": "EC2NodeClassSpec is the top level specification for the AWS Karpenter Provider. This will contain configuration necessary to launch instances in AWS.",
       "type": "object",
       "required": [
@@ -629,7 +629,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/aws.k8s.karpenter.pkg.apis.v1beta1.AMISelectorTerm"
+            "$ref": "#/definitions/aws.k8s.karpenter.v1beta1.AMISelectorTerm"
           }
         },
         "associatePublicIPAddress": {
@@ -640,7 +640,7 @@
           "description": "BlockDeviceMappings to be applied to provisioned nodes.",
           "type": "array",
           "items": {
-            "$ref": "#/definitions/aws.k8s.karpenter.pkg.apis.v1beta1.BlockDeviceMapping"
+            "$ref": "#/definitions/aws.k8s.karpenter.v1beta1.BlockDeviceMapping"
           }
         },
         "context": {
@@ -661,7 +661,7 @@
         },
         "metadataOptions": {
           "description": "MetadataOptions for the generated launch template of provisioned nodes.\n\nThis specifies the exposure of the Instance Metadata Service to provisioned EC2 nodes. For more information, see Instance Metadata and User Data (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html) in the Amazon Elastic Compute Cloud User Guide.\n\nRefer to recommended, security best practices (https://aws.github.io/aws-eks-best-practices/security/docs/iam/#restrict-access-to-the-instance-profile-assigned-to-the-worker-node) for limiting exposure of Instance Metadata and User Data to pods. If omitted, defaults to httpEndpoint enabled, with httpProtocolIPv6 disabled, with httpPutResponseLimit of 2, and with httpTokens required.",
-          "$ref": "#/definitions/aws.k8s.karpenter.pkg.apis.v1beta1.MetadataOptions"
+          "$ref": "#/definitions/aws.k8s.karpenter.v1beta1.MetadataOptions"
         },
         "role": {
           "description": "Role is the AWS identity that nodes use. This field is immutable. This field is mutually exclusive from instanceProfile. Marking this field as immutable avoids concerns around terminating managed instance profiles from running instances. This field may be made mutable in the future, assuming the correct garbage collection and drift handling is implemented for the old instance profiles on an update.",
@@ -672,7 +672,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/aws.k8s.karpenter.pkg.apis.v1beta1.SecurityGroupSelectorTerm"
+            "$ref": "#/definitions/aws.k8s.karpenter.v1beta1.SecurityGroupSelectorTerm"
           }
         },
         "subnetSelectorTerms": {
@@ -680,7 +680,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/aws.k8s.karpenter.pkg.apis.v1beta1.SubnetSelectorTerm"
+            "$ref": "#/definitions/aws.k8s.karpenter.v1beta1.SubnetSelectorTerm"
           }
         },
         "tags": {
@@ -698,7 +698,7 @@
       },
       "additionalProperties": false
     },
-    "aws.k8s.karpenter.pkg.apis.v1beta1.EC2NodeClassStatus": {
+    "aws.k8s.karpenter.v1beta1.EC2NodeClassStatus": {
       "description": "EC2NodeClassStatus contains the resolved state of the EC2NodeClass",
       "type": "object",
       "properties": {
@@ -707,7 +707,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/aws.k8s.karpenter.pkg.apis.v1beta1.AMI"
+            "$ref": "#/definitions/aws.k8s.karpenter.v1beta1.AMI"
           }
         },
         "instanceProfile": {
@@ -719,7 +719,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/aws.k8s.karpenter.pkg.apis.v1beta1.SecurityGroup"
+            "$ref": "#/definitions/aws.k8s.karpenter.v1beta1.SecurityGroup"
           }
         },
         "subnets": {
@@ -727,13 +727,13 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/aws.k8s.karpenter.pkg.apis.v1beta1.Subnet"
+            "$ref": "#/definitions/aws.k8s.karpenter.v1beta1.Subnet"
           }
         }
       },
       "additionalProperties": false
     },
-    "aws.k8s.karpenter.pkg.apis.v1beta1.MetadataOptions": {
+    "aws.k8s.karpenter.v1beta1.MetadataOptions": {
       "description": "MetadataOptions contains parameters for specifying the exposure of the Instance Metadata Service to provisioned EC2 nodes.",
       "type": "object",
       "properties": {
@@ -757,7 +757,7 @@
       },
       "additionalProperties": false
     },
-    "aws.k8s.karpenter.pkg.apis.v1beta1.SecurityGroup": {
+    "aws.k8s.karpenter.v1beta1.SecurityGroup": {
       "description": "SecurityGroup contains resolved SecurityGroup selector values utilized for node launch",
       "type": "object",
       "required": [
@@ -776,7 +776,7 @@
       },
       "additionalProperties": false
     },
-    "aws.k8s.karpenter.pkg.apis.v1beta1.SecurityGroupSelectorTerm": {
+    "aws.k8s.karpenter.v1beta1.SecurityGroupSelectorTerm": {
       "description": "SecurityGroupSelectorTerm defines selection logic for a security group used by Karpenter to launch nodes. If multiple fields are used for selection, the requirements are ANDed.",
       "type": "object",
       "properties": {
@@ -799,7 +799,7 @@
       },
       "additionalProperties": false
     },
-    "aws.k8s.karpenter.pkg.apis.v1beta1.Subnet": {
+    "aws.k8s.karpenter.v1beta1.Subnet": {
       "description": "Subnet contains resolved Subnet selector values utilized for node launch",
       "type": "object",
       "required": [
@@ -820,7 +820,7 @@
       },
       "additionalProperties": false
     },
-    "aws.k8s.karpenter.pkg.apis.v1beta1.SubnetSelectorTerm": {
+    "aws.k8s.karpenter.v1beta1.SubnetSelectorTerm": {
       "description": "SubnetSelectorTerm defines selection logic for a subnet used by Karpenter to launch nodes. If multiple fields are used for selection, the requirements are ANDed.",
       "type": "object",
       "properties": {
@@ -1185,7 +1185,7 @@
       "type": "string",
       "format": "date-time"
     },
-    "sh.karpenter.pkg.apis.v1.Budget": {
+    "sh.karpenter.v1.Budget": {
       "description": "Budget defines when Karpenter will restrict the number of Node Claims that can be terminating simultaneously.",
       "type": "object",
       "required": [
@@ -1216,7 +1216,7 @@
       },
       "additionalProperties": false
     },
-    "sh.karpenter.pkg.apis.v1.Disruption": {
+    "sh.karpenter.v1.Disruption": {
       "type": "object",
       "required": [
         "consolidateAfter"
@@ -1227,12 +1227,12 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/sh.karpenter.pkg.apis.v1.Budget"
+            "$ref": "#/definitions/sh.karpenter.v1.Budget"
           }
         },
         "consolidateAfter": {
           "description": "ConsolidateAfter is the duration the controller will wait before attempting to terminate nodes that are underutilized. Refer to ConsolidationPolicy for how underutilization is considered.",
-          "$ref": "#/definitions/sh.karpenter.pkg.apis.v1.NillableDuration"
+          "$ref": "#/definitions/sh.karpenter.v1.NillableDuration"
         },
         "consolidationPolicy": {
           "description": "ConsolidationPolicy describes which nodes Karpenter can disrupt through its consolidation algorithm. This policy defaults to \"WhenEmptyOrUnderutilized\" if not specified",
@@ -1241,7 +1241,7 @@
       },
       "additionalProperties": false
     },
-    "sh.karpenter.pkg.apis.v1.NillableDuration": {
+    "sh.karpenter.v1.NillableDuration": {
       "description": "NillableDuration is a wrapper around time.Duration which supports correct marshaling to YAML and JSON. It uses the value \"Never\" to signify that the duration is disabled and sets the inner duration as nil",
       "type": "object",
       "required": [
@@ -1261,7 +1261,7 @@
       },
       "additionalProperties": false
     },
-    "sh.karpenter.pkg.apis.v1.NodeClaim": {
+    "sh.karpenter.v1.NodeClaim": {
       "description": "NodeClaim is the Schema for the NodeClaims API",
       "type": "object",
       "required": [
@@ -1282,16 +1282,16 @@
         },
         "spec": {
           "default": {},
-          "$ref": "#/definitions/sh.karpenter.pkg.apis.v1.NodeClaimSpec"
+          "$ref": "#/definitions/sh.karpenter.v1.NodeClaimSpec"
         },
         "status": {
           "default": {},
-          "$ref": "#/definitions/sh.karpenter.pkg.apis.v1.NodeClaimStatus"
+          "$ref": "#/definitions/sh.karpenter.v1.NodeClaimStatus"
         }
       },
       "additionalProperties": false
     },
-    "sh.karpenter.pkg.apis.v1.NodeClaimSpec": {
+    "sh.karpenter.v1.NodeClaimSpec": {
       "description": "NodeClaimSpec describes the desired state of the NodeClaim",
       "type": "object",
       "required": [
@@ -1301,24 +1301,24 @@
       "properties": {
         "expireAfter": {
           "description": "ExpireAfter is the duration the controller will wait before terminating a node, measured from when the node is created. This is useful to implement features like eventually consistent node upgrade, memory leak protection, and disruption testing.",
-          "$ref": "#/definitions/sh.karpenter.pkg.apis.v1.NillableDuration"
+          "$ref": "#/definitions/sh.karpenter.v1.NillableDuration"
         },
         "nodeClassRef": {
           "description": "NodeClassRef is a reference to an object that defines provider specific configuration",
-          "$ref": "#/definitions/sh.karpenter.pkg.apis.v1.NodeClassReference"
+          "$ref": "#/definitions/sh.karpenter.v1.NodeClassReference"
         },
         "requirements": {
           "description": "Requirements are layered with GetLabels and applied to every node.",
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/sh.karpenter.pkg.apis.v1.NodeSelectorRequirementWithMinValues"
+            "$ref": "#/definitions/sh.karpenter.v1.NodeSelectorRequirementWithMinValues"
           }
         },
         "resources": {
           "description": "Resources models the resource requirements for the NodeClaim to launch",
           "default": {},
-          "$ref": "#/definitions/sh.karpenter.pkg.apis.v1.ResourceRequirements"
+          "$ref": "#/definitions/sh.karpenter.v1.ResourceRequirements"
         },
         "startupTaints": {
           "description": "StartupTaints are taints that are applied to nodes upon startup which are expected to be removed automatically within a short period of time, typically by a DaemonSet that tolerates the taint. These are commonly used by daemonsets to allow initialization and enforce startup ordering.  StartupTaints are ignored for provisioning purposes in that pods are not required to tolerate a StartupTaint in order to have nodes provisioned for them.",
@@ -1343,7 +1343,7 @@
       },
       "additionalProperties": false
     },
-    "sh.karpenter.pkg.apis.v1.NodeClaimStatus": {
+    "sh.karpenter.v1.NodeClaimStatus": {
       "description": "NodeClaimStatus defines the observed state of NodeClaim",
       "type": "object",
       "properties": {
@@ -1388,7 +1388,7 @@
       },
       "additionalProperties": false
     },
-    "sh.karpenter.pkg.apis.v1.NodeClaimTemplate": {
+    "sh.karpenter.v1.NodeClaimTemplate": {
       "type": "object",
       "required": [
         "spec"
@@ -1396,16 +1396,16 @@
       "properties": {
         "metadata": {
           "default": {},
-          "$ref": "#/definitions/sh.karpenter.pkg.apis.v1.ObjectMeta"
+          "$ref": "#/definitions/sh.karpenter.v1.ObjectMeta"
         },
         "spec": {
           "default": {},
-          "$ref": "#/definitions/sh.karpenter.pkg.apis.v1.NodeClaimTemplateSpec"
+          "$ref": "#/definitions/sh.karpenter.v1.NodeClaimTemplateSpec"
         }
       },
       "additionalProperties": false
     },
-    "sh.karpenter.pkg.apis.v1.NodeClaimTemplateSpec": {
+    "sh.karpenter.v1.NodeClaimTemplateSpec": {
       "description": "NodeClaimTemplateSpec describes the desired state of the NodeClaim in the Nodepool NodeClaimTemplateSpec is used in the NodePool's NodeClaimTemplate, with the resource requests omitted since users are not able to set resource requests in the NodePool.",
       "type": "object",
       "required": [
@@ -1415,18 +1415,18 @@
       "properties": {
         "expireAfter": {
           "description": "ExpireAfter is the duration the controller will wait before terminating a node, measured from when the node is created. This is useful to implement features like eventually consistent node upgrade, memory leak protection, and disruption testing.",
-          "$ref": "#/definitions/sh.karpenter.pkg.apis.v1.NillableDuration"
+          "$ref": "#/definitions/sh.karpenter.v1.NillableDuration"
         },
         "nodeClassRef": {
           "description": "NodeClassRef is a reference to an object that defines provider specific configuration",
-          "$ref": "#/definitions/sh.karpenter.pkg.apis.v1.NodeClassReference"
+          "$ref": "#/definitions/sh.karpenter.v1.NodeClassReference"
         },
         "requirements": {
           "description": "Requirements are layered with GetLabels and applied to every node.",
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/sh.karpenter.pkg.apis.v1.NodeSelectorRequirementWithMinValues"
+            "$ref": "#/definitions/sh.karpenter.v1.NodeSelectorRequirementWithMinValues"
           }
         },
         "startupTaints": {
@@ -1452,7 +1452,7 @@
       },
       "additionalProperties": false
     },
-    "sh.karpenter.pkg.apis.v1.NodeClassReference": {
+    "sh.karpenter.v1.NodeClassReference": {
       "type": "object",
       "required": [
         "kind",
@@ -1478,7 +1478,7 @@
       },
       "additionalProperties": false
     },
-    "sh.karpenter.pkg.apis.v1.NodePool": {
+    "sh.karpenter.v1.NodePool": {
       "description": "NodePool is the Schema for the NodePools API",
       "type": "object",
       "required": [
@@ -1499,16 +1499,16 @@
         },
         "spec": {
           "default": {},
-          "$ref": "#/definitions/sh.karpenter.pkg.apis.v1.NodePoolSpec"
+          "$ref": "#/definitions/sh.karpenter.v1.NodePoolSpec"
         },
         "status": {
           "default": {},
-          "$ref": "#/definitions/sh.karpenter.pkg.apis.v1.NodePoolStatus"
+          "$ref": "#/definitions/sh.karpenter.v1.NodePoolStatus"
         }
       },
       "additionalProperties": false
     },
-    "sh.karpenter.pkg.apis.v1.NodePoolSpec": {
+    "sh.karpenter.v1.NodePoolSpec": {
       "description": "NodePoolSpec is the top level nodepool specification. Nodepools launch nodes in response to pods that are unschedulable. A single nodepool is capable of managing a diverse set of nodes. Node properties are determined from a combination of nodepool and pod scheduling constraints.",
       "type": "object",
       "required": [
@@ -1518,7 +1518,7 @@
         "disruption": {
           "description": "Disruption contains the parameters that relate to Karpenter's disruption logic",
           "default": {},
-          "$ref": "#/definitions/sh.karpenter.pkg.apis.v1.Disruption"
+          "$ref": "#/definitions/sh.karpenter.v1.Disruption"
         },
         "limits": {
           "description": "Limits define a set of bounds for provisioning capacity.",
@@ -1530,7 +1530,7 @@
         "template": {
           "description": "Template contains the template of possibilities for the provisioning logic to launch a NodeClaim with. NodeClaims launched from this NodePool will often be further constrained than the template specifies.",
           "default": {},
-          "$ref": "#/definitions/sh.karpenter.pkg.apis.v1.NodeClaimTemplate"
+          "$ref": "#/definitions/sh.karpenter.v1.NodeClaimTemplate"
         },
         "weight": {
           "description": "Weight is the priority given to the nodepool during scheduling. A higher numerical weight indicates that this nodepool will be ordered ahead of other nodepools with lower weights. A nodepool with no weight will be treated as if it is a nodepool with a weight of 0.",
@@ -1540,7 +1540,7 @@
       },
       "additionalProperties": false
     },
-    "sh.karpenter.pkg.apis.v1.NodePoolStatus": {
+    "sh.karpenter.v1.NodePoolStatus": {
       "description": "NodePoolStatus defines the observed state of NodePool",
       "type": "object",
       "properties": {
@@ -1562,7 +1562,7 @@
       },
       "additionalProperties": false
     },
-    "sh.karpenter.pkg.apis.v1.NodeSelectorRequirementWithMinValues": {
+    "sh.karpenter.v1.NodeSelectorRequirementWithMinValues": {
       "description": "A node selector requirement with min values is a selector that contains values, a key, an operator that relates the key and values and minValues that represent the requirement to have at least that many values.",
       "type": "object",
       "required": [
@@ -1597,7 +1597,7 @@
       },
       "additionalProperties": false
     },
-    "sh.karpenter.pkg.apis.v1.ObjectMeta": {
+    "sh.karpenter.v1.ObjectMeta": {
       "type": "object",
       "properties": {
         "annotations": {
@@ -1619,7 +1619,7 @@
       },
       "additionalProperties": false
     },
-    "sh.karpenter.pkg.apis.v1.ResourceRequirements": {
+    "sh.karpenter.v1.ResourceRequirements": {
       "description": "ResourceRequirements models the required resources for the NodeClaim to launch Ths will eventually be transformed into v1.ResourceRequirements when we support resources.limits",
       "type": "object",
       "properties": {
@@ -1633,7 +1633,7 @@
       },
       "additionalProperties": false
     },
-    "sh.karpenter.pkg.apis.v1beta1.Budget": {
+    "sh.karpenter.v1beta1.Budget": {
       "description": "Budget defines when Karpenter will restrict the number of Node Claims that can be terminating simultaneously.",
       "type": "object",
       "required": [
@@ -1656,7 +1656,7 @@
       },
       "additionalProperties": false
     },
-    "sh.karpenter.pkg.apis.v1beta1.Disruption": {
+    "sh.karpenter.v1beta1.Disruption": {
       "type": "object",
       "properties": {
         "budgets": {
@@ -1664,12 +1664,12 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/sh.karpenter.pkg.apis.v1beta1.Budget"
+            "$ref": "#/definitions/sh.karpenter.v1beta1.Budget"
           }
         },
         "consolidateAfter": {
           "description": "ConsolidateAfter is the duration the controller will wait before attempting to terminate nodes that are underutilized. Refer to ConsolidationPolicy for how underutilization is considered.",
-          "$ref": "#/definitions/sh.karpenter.pkg.apis.v1beta1.NillableDuration"
+          "$ref": "#/definitions/sh.karpenter.v1beta1.NillableDuration"
         },
         "consolidationPolicy": {
           "description": "ConsolidationPolicy describes which nodes Karpenter can disrupt through its consolidation algorithm. This policy defaults to \"WhenUnderutilized\" if not specified",
@@ -1677,12 +1677,12 @@
         },
         "expireAfter": {
           "description": "ExpireAfter is the duration the controller will wait before terminating a node, measured from when the node is created. This is useful to implement features like eventually consistent node upgrade, memory leak protection, and disruption testing.",
-          "$ref": "#/definitions/sh.karpenter.pkg.apis.v1beta1.NillableDuration"
+          "$ref": "#/definitions/sh.karpenter.v1beta1.NillableDuration"
         }
       },
       "additionalProperties": false
     },
-    "sh.karpenter.pkg.apis.v1beta1.KubeletConfiguration": {
+    "sh.karpenter.v1beta1.KubeletConfiguration": {
       "description": "KubeletConfiguration defines args to be used when configuring kubelet on provisioned nodes. They are a subset of the upstream types, recognizing not all options may be supported. Wherever possible, the types and names should reflect the upstream kubelet types. https://pkg.go.dev/k8s.io/kubelet/config/v1beta1#KubeletConfiguration https://github.com/kubernetes/kubernetes/blob/9f82d81e55cafdedab619ea25cabf5d42736dacf/cmd/kubelet/app/options/options.go#L53",
       "type": "object",
       "properties": {
@@ -1765,7 +1765,7 @@
       },
       "additionalProperties": false
     },
-    "sh.karpenter.pkg.apis.v1beta1.NillableDuration": {
+    "sh.karpenter.v1beta1.NillableDuration": {
       "description": "NillableDuration is a wrapper around time.Duration which supports correct marshaling to YAML and JSON. It uses the value \"Never\" to signify that the duration is disabled and sets the inner duration as nil",
       "type": "object",
       "required": [
@@ -1785,7 +1785,7 @@
       },
       "additionalProperties": false
     },
-    "sh.karpenter.pkg.apis.v1beta1.NodeClaim": {
+    "sh.karpenter.v1beta1.NodeClaim": {
       "description": "NodeClaim is the Schema for the NodeClaims API",
       "type": "object",
       "required": [
@@ -1806,16 +1806,16 @@
         },
         "spec": {
           "default": {},
-          "$ref": "#/definitions/sh.karpenter.pkg.apis.v1beta1.NodeClaimSpec"
+          "$ref": "#/definitions/sh.karpenter.v1beta1.NodeClaimSpec"
         },
         "status": {
           "default": {},
-          "$ref": "#/definitions/sh.karpenter.pkg.apis.v1beta1.NodeClaimStatus"
+          "$ref": "#/definitions/sh.karpenter.v1beta1.NodeClaimStatus"
         }
       },
       "additionalProperties": false
     },
-    "sh.karpenter.pkg.apis.v1beta1.NodeClaimSpec": {
+    "sh.karpenter.v1beta1.NodeClaimSpec": {
       "description": "NodeClaimSpec describes the desired state of the NodeClaim",
       "type": "object",
       "required": [
@@ -1825,24 +1825,24 @@
       "properties": {
         "kubelet": {
           "description": "Kubelet defines args to be used when configuring kubelet on provisioned nodes. They are a subset of the upstream types, recognizing not all options may be supported. Wherever possible, the types and names should reflect the upstream kubelet types.",
-          "$ref": "#/definitions/sh.karpenter.pkg.apis.v1beta1.KubeletConfiguration"
+          "$ref": "#/definitions/sh.karpenter.v1beta1.KubeletConfiguration"
         },
         "nodeClassRef": {
           "description": "NodeClassRef is a reference to an object that defines provider specific configuration",
-          "$ref": "#/definitions/sh.karpenter.pkg.apis.v1beta1.NodeClassReference"
+          "$ref": "#/definitions/sh.karpenter.v1beta1.NodeClassReference"
         },
         "requirements": {
           "description": "Requirements are layered with GetLabels and applied to every node.",
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/sh.karpenter.pkg.apis.v1beta1.NodeSelectorRequirementWithMinValues"
+            "$ref": "#/definitions/sh.karpenter.v1beta1.NodeSelectorRequirementWithMinValues"
           }
         },
         "resources": {
           "description": "Resources models the resource requirements for the NodeClaim to launch",
           "default": {},
-          "$ref": "#/definitions/sh.karpenter.pkg.apis.v1beta1.ResourceRequirements"
+          "$ref": "#/definitions/sh.karpenter.v1beta1.ResourceRequirements"
         },
         "startupTaints": {
           "description": "StartupTaints are taints that are applied to nodes upon startup which are expected to be removed automatically within a short period of time, typically by a DaemonSet that tolerates the taint. These are commonly used by daemonsets to allow initialization and enforce startup ordering.  StartupTaints are ignored for provisioning purposes in that pods are not required to tolerate a StartupTaint in order to have nodes provisioned for them.",
@@ -1863,7 +1863,7 @@
       },
       "additionalProperties": false
     },
-    "sh.karpenter.pkg.apis.v1beta1.NodeClaimStatus": {
+    "sh.karpenter.v1beta1.NodeClaimStatus": {
       "description": "NodeClaimStatus defines the observed state of NodeClaim",
       "type": "object",
       "properties": {
@@ -1904,7 +1904,7 @@
       },
       "additionalProperties": false
     },
-    "sh.karpenter.pkg.apis.v1beta1.NodeClaimTemplate": {
+    "sh.karpenter.v1beta1.NodeClaimTemplate": {
       "type": "object",
       "required": [
         "spec"
@@ -1912,16 +1912,16 @@
       "properties": {
         "metadata": {
           "default": {},
-          "$ref": "#/definitions/sh.karpenter.pkg.apis.v1beta1.ObjectMeta"
+          "$ref": "#/definitions/sh.karpenter.v1beta1.ObjectMeta"
         },
         "spec": {
           "default": {},
-          "$ref": "#/definitions/sh.karpenter.pkg.apis.v1beta1.NodeClaimSpec"
+          "$ref": "#/definitions/sh.karpenter.v1beta1.NodeClaimSpec"
         }
       },
       "additionalProperties": false
     },
-    "sh.karpenter.pkg.apis.v1beta1.NodeClassReference": {
+    "sh.karpenter.v1beta1.NodeClassReference": {
       "type": "object",
       "required": [
         "name"
@@ -1943,7 +1943,7 @@
       },
       "additionalProperties": false
     },
-    "sh.karpenter.pkg.apis.v1beta1.NodePool": {
+    "sh.karpenter.v1beta1.NodePool": {
       "description": "NodePool is the Schema for the NodePools API",
       "type": "object",
       "required": [
@@ -1964,16 +1964,16 @@
         },
         "spec": {
           "default": {},
-          "$ref": "#/definitions/sh.karpenter.pkg.apis.v1beta1.NodePoolSpec"
+          "$ref": "#/definitions/sh.karpenter.v1beta1.NodePoolSpec"
         },
         "status": {
           "default": {},
-          "$ref": "#/definitions/sh.karpenter.pkg.apis.v1beta1.NodePoolStatus"
+          "$ref": "#/definitions/sh.karpenter.v1beta1.NodePoolStatus"
         }
       },
       "additionalProperties": false
     },
-    "sh.karpenter.pkg.apis.v1beta1.NodePoolSpec": {
+    "sh.karpenter.v1beta1.NodePoolSpec": {
       "description": "NodePoolSpec is the top level nodepool specification. Nodepools launch nodes in response to pods that are unschedulable. A single nodepool is capable of managing a diverse set of nodes. Node properties are determined from a combination of nodepool and pod scheduling constraints.",
       "type": "object",
       "required": [
@@ -1983,7 +1983,7 @@
         "disruption": {
           "description": "Disruption contains the parameters that relate to Karpenter's disruption logic",
           "default": {},
-          "$ref": "#/definitions/sh.karpenter.pkg.apis.v1beta1.Disruption"
+          "$ref": "#/definitions/sh.karpenter.v1beta1.Disruption"
         },
         "limits": {
           "description": "Limits define a set of bounds for provisioning capacity.",
@@ -1995,7 +1995,7 @@
         "template": {
           "description": "Template contains the template of possibilities for the provisioning logic to launch a NodeClaim with. NodeClaims launched from this NodePool will often be further constrained than the template specifies.",
           "default": {},
-          "$ref": "#/definitions/sh.karpenter.pkg.apis.v1beta1.NodeClaimTemplate"
+          "$ref": "#/definitions/sh.karpenter.v1beta1.NodeClaimTemplate"
         },
         "weight": {
           "description": "Weight is the priority given to the nodepool during scheduling. A higher numerical weight indicates that this nodepool will be ordered ahead of other nodepools with lower weights. A nodepool with no weight will be treated as if it is a nodepool with a weight of 0.",
@@ -2005,7 +2005,7 @@
       },
       "additionalProperties": false
     },
-    "sh.karpenter.pkg.apis.v1beta1.NodePoolStatus": {
+    "sh.karpenter.v1beta1.NodePoolStatus": {
       "description": "NodePoolStatus defines the observed state of NodePool",
       "type": "object",
       "properties": {
@@ -2019,7 +2019,7 @@
       },
       "additionalProperties": false
     },
-    "sh.karpenter.pkg.apis.v1beta1.NodeSelectorRequirementWithMinValues": {
+    "sh.karpenter.v1beta1.NodeSelectorRequirementWithMinValues": {
       "description": "A node selector requirement with min values is a selector that contains values, a key, an operator that relates the key and values and minValues that represent the requirement to have at least that many values.",
       "type": "object",
       "required": [
@@ -2054,7 +2054,7 @@
       },
       "additionalProperties": false
     },
-    "sh.karpenter.pkg.apis.v1beta1.ObjectMeta": {
+    "sh.karpenter.v1beta1.ObjectMeta": {
       "type": "object",
       "properties": {
         "annotations": {
@@ -2076,7 +2076,7 @@
       },
       "additionalProperties": false
     },
-    "sh.karpenter.pkg.apis.v1beta1.ResourceRequirements": {
+    "sh.karpenter.v1beta1.ResourceRequirements": {
       "description": "ResourceRequirements models the required resources for the NodeClaim to launch Ths will eventually be transformed into v1.ResourceRequirements when we support resources.limits",
       "type": "object",
       "properties": {

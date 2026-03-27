@@ -13,7 +13,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.DiscordConfig"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.DiscordConfig"
       },
       "x-kubernetes-list-type": "atomic"
     },
@@ -25,7 +25,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.EmailConfig"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.EmailConfig"
       },
       "x-kubernetes-list-type": "atomic"
     },
@@ -37,7 +37,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.MSTeamsConfig"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.MSTeamsConfig"
       },
       "x-kubernetes-list-type": "atomic"
     },
@@ -49,7 +49,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.MSTeamsV2Config"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.MSTeamsV2Config"
       },
       "x-kubernetes-list-type": "atomic"
     },
@@ -69,7 +69,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.OpsGenieConfig"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.OpsGenieConfig"
       },
       "x-kubernetes-list-type": "atomic"
     },
@@ -81,7 +81,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.PagerDutyConfig"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.PagerDutyConfig"
       },
       "x-kubernetes-list-type": "atomic"
     },
@@ -93,7 +93,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.PushoverConfig"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.PushoverConfig"
       },
       "x-kubernetes-list-type": "atomic"
     },
@@ -105,7 +105,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.RocketChatConfig"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.RocketChatConfig"
       },
       "x-kubernetes-list-type": "atomic"
     },
@@ -117,7 +117,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.SlackConfig"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.SlackConfig"
       },
       "x-kubernetes-list-type": "atomic"
     },
@@ -129,7 +129,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.SNSConfig"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.SNSConfig"
       },
       "x-kubernetes-list-type": "atomic"
     },
@@ -141,7 +141,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.TelegramConfig"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.TelegramConfig"
       },
       "x-kubernetes-list-type": "atomic"
     },
@@ -153,7 +153,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.VictorOpsConfig"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.VictorOpsConfig"
       },
       "x-kubernetes-list-type": "atomic"
     },
@@ -165,7 +165,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.WebexConfig"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.WebexConfig"
       },
       "x-kubernetes-list-type": "atomic"
     },
@@ -177,7 +177,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.WebhookConfig"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.WebhookConfig"
       },
       "x-kubernetes-list-type": "atomic"
     },
@@ -189,7 +189,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.WeChatConfig"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.WeChatConfig"
       },
       "x-kubernetes-list-type": "atomic"
     }

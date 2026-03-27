@@ -7,11 +7,11 @@
   "properties": {
     "authorization": {
       "description": "Authorization section for remote read",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.Authorization"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.Authorization"
     },
     "basicAuth": {
       "description": "BasicAuth for the URL.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.BasicAuth"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.BasicAuth"
     },
     "bearerToken": {
       "description": "Bearer token for remote read.",
@@ -50,7 +50,7 @@
     },
     "oauth2": {
       "description": "OAuth2 for the URL. Only valid in Prometheus versions 2.27.0 and newer.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.OAuth2"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.OAuth2"
     },
     "proxyUrl": {
       "description": "Optional ProxyURL.",
@@ -89,7 +89,7 @@
     },
     "tlsConfig": {
       "description": "TLS Config to use for remote read.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.TLSConfig"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.TLSConfig"
     },
     "url": {
       "description": "The URL of the endpoint to query from.",

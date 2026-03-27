@@ -10,7 +10,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.Argument"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.Argument"
       }
     },
     "baseImage": {
@@ -50,7 +50,7 @@
     },
     "grpcServerTlsConfig": {
       "description": "grpcServerTlsConfig defines the TLS parameters for the gRPC server providing the StoreAPI.\n\nNote: Currently only the `minVersion`, `caFile`, `certFile`, and `keyFile` fields are supported.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.TLSConfig"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.TLSConfig"
     },
     "httpListenLocal": {
       "description": "httpListenLocal when true, the Thanos sidecar listens on the loopback interface instead of the Pod IP's address for the HTTP endpoints.\n\nIt has no effect if `listenLocal` is true.",

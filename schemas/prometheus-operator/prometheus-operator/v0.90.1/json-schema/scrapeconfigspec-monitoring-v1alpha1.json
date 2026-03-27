@@ -4,7 +4,7 @@
   "properties": {
     "authorization": {
       "description": "authorization defines the header to use on every scrape request.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.SafeAuthorization"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.SafeAuthorization"
     },
     "azureSDConfigs": {
       "description": "azureSDConfigs defines a list of Azure service discovery configurations.",
@@ -14,12 +14,12 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.AzureSDConfig"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.AzureSDConfig"
       }
     },
     "basicAuth": {
       "description": "basicAuth defines information to use on every scrape request.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.BasicAuth"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.BasicAuth"
     },
     "bodySizeLimit": {
       "description": "bodySizeLimit defines a per-scrape limit on the size of the uncompressed response body that will be accepted by Prometheus. Targets responding with a body larger than this many bytes will cause the scrape to fail.\n\nIt requires Prometheus >= v2.28.0.",
@@ -36,7 +36,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.ConsulSDConfig"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.ConsulSDConfig"
       }
     },
     "convertClassicHistogramsToNHCB": {
@@ -54,7 +54,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.DigitalOceanSDConfig"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.DigitalOceanSDConfig"
       }
     },
     "dnsSDConfigs": {
@@ -65,7 +65,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.DNSSDConfig"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.DNSSDConfig"
       }
     },
     "dockerSDConfigs": {
@@ -76,7 +76,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.DockerSDConfig"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.DockerSDConfig"
       }
     },
     "dockerSwarmSDConfigs": {
@@ -87,7 +87,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.DockerSwarmSDConfig"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.DockerSwarmSDConfig"
       }
     },
     "ec2SDConfigs": {
@@ -98,7 +98,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.EC2SDConfig"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.EC2SDConfig"
       }
     },
     "enableCompression": {
@@ -123,7 +123,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.EurekaSDConfig"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.EurekaSDConfig"
       }
     },
     "fallbackScrapeProtocol": {
@@ -141,7 +141,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.FileSDConfig"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.FileSDConfig"
       }
     },
     "gceSDConfigs": {
@@ -152,7 +152,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.GCESDConfig"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.GCESDConfig"
       }
     },
     "hetznerSDConfigs": {
@@ -163,7 +163,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.HetznerSDConfig"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.HetznerSDConfig"
       }
     },
     "honorLabels": {
@@ -188,7 +188,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.HTTPSDConfig"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.HTTPSDConfig"
       }
     },
     "ionosSDConfigs": {
@@ -199,7 +199,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.IonosSDConfig"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.IonosSDConfig"
       }
     },
     "jobName": {
@@ -225,7 +225,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.KubernetesSDConfig"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.KubernetesSDConfig"
       }
     },
     "kumaSDConfigs": {
@@ -236,7 +236,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.KumaSDConfig"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.KumaSDConfig"
       }
     },
     "labelLimit": {
@@ -271,7 +271,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.LightSailSDConfig"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.LightSailSDConfig"
       }
     },
     "linodeSDConfigs": {
@@ -282,7 +282,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.LinodeSDConfig"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.LinodeSDConfig"
       }
     },
     "metricRelabelings": {
@@ -293,7 +293,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.RelabelConfig"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.RelabelConfig"
       }
     },
     "metricsPath": {
@@ -344,12 +344,12 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.NomadSDConfig"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.NomadSDConfig"
       }
     },
     "oauth2": {
       "description": "oauth2 defines the configuration to use on every scrape request.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.OAuth2"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.OAuth2"
     },
     "openstackSDConfigs": {
       "description": "openstackSDConfigs defines a list of OpenStack service discovery configurations.",
@@ -359,7 +359,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.OpenStackSDConfig"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.OpenStackSDConfig"
       }
     },
     "ovhcloudSDConfigs": {
@@ -370,7 +370,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.OVHCloudSDConfig"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.OVHCloudSDConfig"
       }
     },
     "params": {
@@ -432,7 +432,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.PuppetDBSDConfig"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.PuppetDBSDConfig"
       }
     },
     "relabelings": {
@@ -443,7 +443,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.RelabelConfig"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.RelabelConfig"
       }
     },
     "sampleLimit": {
@@ -462,7 +462,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.ScalewaySDConfig"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.ScalewaySDConfig"
       }
     },
     "scheme": {
@@ -530,7 +530,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.StaticConfig"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.StaticConfig"
       }
     },
     "targetLimit": {
@@ -543,7 +543,7 @@
     },
     "tlsConfig": {
       "description": "tlsConfig defines the TLS configuration to use on every scrape request",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.SafeTLSConfig"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.SafeTLSConfig"
     },
     "trackTimestampsStaleness": {
       "description": "trackTimestampsStaleness defines whether Prometheus tracks staleness of the metrics that have an explicit timestamp present in scraped data. Has no effect if `honorTimestamps` is false. It requires Prometheus >= v2.48.0.",

@@ -38,7 +38,7 @@
     },
     "proxy_client_config": {
       "description": "ProxyClientConfig configures proxy auth settings for scraping See feature description https://docs.victoriametrics.com/victoriametrics/vmagent/#scraping-targets-via-a-proxy",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.ProxyAuth"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.ProxyAuth"
     },
     "scrape_align_interval": {
       "type": [

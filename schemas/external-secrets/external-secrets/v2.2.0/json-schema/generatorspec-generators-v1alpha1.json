@@ -3,49 +3,49 @@
   "type": "object",
   "properties": {
     "acrAccessTokenSpec": {
-      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.generators.v1alpha1.ACRAccessTokenSpec"
+      "$ref": "_definitions.json#/definitions/io.external-secrets.generators.v1alpha1.ACRAccessTokenSpec"
     },
     "cloudsmithAccessTokenSpec": {
-      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.generators.v1alpha1.CloudsmithAccessTokenSpec"
+      "$ref": "_definitions.json#/definitions/io.external-secrets.generators.v1alpha1.CloudsmithAccessTokenSpec"
     },
     "ecrAuthorizationTokenSpec": {
-      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.generators.v1alpha1.ECRAuthorizationTokenSpec"
+      "$ref": "_definitions.json#/definitions/io.external-secrets.generators.v1alpha1.ECRAuthorizationTokenSpec"
     },
     "fakeSpec": {
-      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.generators.v1alpha1.FakeSpec"
+      "$ref": "_definitions.json#/definitions/io.external-secrets.generators.v1alpha1.FakeSpec"
     },
     "gcrAccessTokenSpec": {
-      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.generators.v1alpha1.GCRAccessTokenSpec"
+      "$ref": "_definitions.json#/definitions/io.external-secrets.generators.v1alpha1.GCRAccessTokenSpec"
     },
     "githubAccessTokenSpec": {
-      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.generators.v1alpha1.GithubAccessTokenSpec"
+      "$ref": "_definitions.json#/definitions/io.external-secrets.generators.v1alpha1.GithubAccessTokenSpec"
     },
     "grafanaSpec": {
-      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.generators.v1alpha1.GrafanaSpec"
+      "$ref": "_definitions.json#/definitions/io.external-secrets.generators.v1alpha1.GrafanaSpec"
     },
     "mfaSpec": {
-      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.generators.v1alpha1.MFASpec"
+      "$ref": "_definitions.json#/definitions/io.external-secrets.generators.v1alpha1.MFASpec"
     },
     "passwordSpec": {
-      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.generators.v1alpha1.PasswordSpec"
+      "$ref": "_definitions.json#/definitions/io.external-secrets.generators.v1alpha1.PasswordSpec"
     },
     "quayAccessTokenSpec": {
-      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.generators.v1alpha1.QuayAccessTokenSpec"
+      "$ref": "_definitions.json#/definitions/io.external-secrets.generators.v1alpha1.QuayAccessTokenSpec"
     },
     "sshKeySpec": {
-      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.generators.v1alpha1.SSHKeySpec"
+      "$ref": "_definitions.json#/definitions/io.external-secrets.generators.v1alpha1.SSHKeySpec"
     },
     "stsSessionTokenSpec": {
-      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.generators.v1alpha1.STSSessionTokenSpec"
+      "$ref": "_definitions.json#/definitions/io.external-secrets.generators.v1alpha1.STSSessionTokenSpec"
     },
     "uuidSpec": {
-      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.generators.v1alpha1.UUIDSpec"
+      "$ref": "_definitions.json#/definitions/io.external-secrets.generators.v1alpha1.UUIDSpec"
     },
     "vaultDynamicSecretSpec": {
-      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.generators.v1alpha1.VaultDynamicSecretSpec"
+      "$ref": "_definitions.json#/definitions/io.external-secrets.generators.v1alpha1.VaultDynamicSecretSpec"
     },
     "webhookSpec": {
-      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.generators.v1alpha1.WebhookSpec"
+      "$ref": "_definitions.json#/definitions/io.external-secrets.generators.v1alpha1.WebhookSpec"
     }
   },
   "additionalProperties": false,

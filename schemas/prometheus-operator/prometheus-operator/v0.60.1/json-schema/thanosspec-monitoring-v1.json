@@ -10,7 +10,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.Argument"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.Argument"
       }
     },
     "baseImage": {
@@ -29,7 +29,7 @@
     },
     "grpcServerTlsConfig": {
       "description": "GRPCServerTLSConfig configures the TLS parameters for the gRPC server providing the StoreAPI. Note: Currently only the CAFile, CertFile, and KeyFile fields are supported. Maps to the '--grpc-server-tls-*' CLI args.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.TLSConfig"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.TLSConfig"
     },
     "httpListenLocal": {
       "description": "If true, the Thanos sidecar listens on the loopback interface for the HTTP endpoints. It has no effect if `listenLocal` is true.",

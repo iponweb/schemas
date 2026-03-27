@@ -16,7 +16,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.ConfigResourceCondition"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.ConfigResourceCondition"
       },
       "x-kubernetes-list-map-keys": [
         "type"

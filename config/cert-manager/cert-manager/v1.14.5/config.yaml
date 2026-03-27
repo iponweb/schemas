@@ -31,4 +31,5 @@ crd_names:
 crd_path: "deploy/crds"
 
 host_conversion_rules:
+  "github.com/cert-manager/cert-manager/pkg/apis/acme": "acme.cert-manager.io"
   "github.com/cert-manager/cert-manager": "cert-manager.io"

@@ -25,5 +25,8 @@ crd_names:
 crd_path: "pkg/apis/crds"
 
 host_conversion_rules:
-  "github.com/aws/karpenter-core": "core.karpenter.sh"
+  # v1alpha1 types (AWSNodeTemplate) belong to karpenter.k8s.aws group
+  "github.com/aws/karpenter/pkg/apis/v1alpha1": "karpenter.k8s.aws"
+  # v1alpha5 types (Provisioner) and karpenter-core helper types belong to karpenter.sh
   "github.com/aws/karpenter": "karpenter.sh"
+  "github.com/aws/karpenter-core": "karpenter.sh"

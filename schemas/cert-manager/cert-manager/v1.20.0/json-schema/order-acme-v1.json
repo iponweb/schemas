@@ -26,11 +26,11 @@
     },
     "spec": {
       "default": {},
-      "$ref": "_definitions.json#/definitions/io.cert-manager.pkg.apis.acme.v1.OrderSpec"
+      "$ref": "_definitions.json#/definitions/io.cert-manager.acme.v1.OrderSpec"
     },
     "status": {
       "default": {},
-      "$ref": "_definitions.json#/definitions/io.cert-manager.pkg.apis.acme.v1.OrderStatus"
+      "$ref": "_definitions.json#/definitions/io.cert-manager.acme.v1.OrderStatus"
     }
   },
   "additionalProperties": false,

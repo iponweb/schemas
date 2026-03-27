@@ -27,12 +27,12 @@
     "spec": {
       "description": "spec defines the specification of the desired behavior of the ThanosRuler cluster. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#spec-and-status",
       "default": {},
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.ThanosRulerSpec"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.ThanosRulerSpec"
     },
     "status": {
       "description": "status defines the most recent observed status of the ThanosRuler cluster. Read-only. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#spec-and-status",
       "default": {},
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.ThanosRulerStatus"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.ThanosRulerStatus"
     }
   },
   "additionalProperties": false,

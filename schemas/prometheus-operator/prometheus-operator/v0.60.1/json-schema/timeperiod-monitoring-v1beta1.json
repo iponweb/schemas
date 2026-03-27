@@ -10,7 +10,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.DayOfMonthRange"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1beta1.DayOfMonthRange"
       }
     },
     "months": {
@@ -35,7 +35,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.TimeRange"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1beta1.TimeRange"
       }
     },
     "weekdays": {

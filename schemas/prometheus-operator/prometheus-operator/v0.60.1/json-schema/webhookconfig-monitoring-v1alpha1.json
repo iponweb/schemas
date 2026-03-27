@@ -4,7 +4,7 @@
   "properties": {
     "httpConfig": {
       "description": "HTTP client configuration.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.HTTPConfig"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.HTTPConfig"
     },
     "maxAlerts": {
       "description": "Maximum number of alerts to be sent per webhook message. When 0, all alerts are included.",

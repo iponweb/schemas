@@ -3,10 +3,10 @@
   "type": "object",
   "properties": {
     "jwt": {
-      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.generators.v1alpha1.AWSJWTAuth"
+      "$ref": "_definitions.json#/definitions/io.external-secrets.generators.v1alpha1.AWSJWTAuth"
     },
     "secretRef": {
-      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.generators.v1alpha1.AWSAuthSecretRef"
+      "$ref": "_definitions.json#/definitions/io.external-secrets.generators.v1alpha1.AWSAuthSecretRef"
     }
   },
   "additionalProperties": false,

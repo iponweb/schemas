@@ -7,11 +7,11 @@
   "properties": {
     "authorization": {
       "description": "Authorization section for remote write",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.Authorization"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.Authorization"
     },
     "basicAuth": {
       "description": "BasicAuth for the URL.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.BasicAuth"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.BasicAuth"
     },
     "bearerToken": {
       "description": "Bearer token for remote write.",
@@ -43,7 +43,7 @@
     },
     "metadataConfig": {
       "description": "MetadataConfig configures the sending of series metadata to the remote storage.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.MetadataConfig"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.MetadataConfig"
     },
     "name": {
       "description": "The name of the remote write queue, it must be unique if specified. The name is used in metrics and logging in order to differentiate queues. Only valid in Prometheus versions 2.15.0 and newer.",
@@ -54,7 +54,7 @@
     },
     "oauth2": {
       "description": "OAuth2 for the URL. Only valid in Prometheus versions 2.27.0 and newer.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.OAuth2"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.OAuth2"
     },
     "proxyUrl": {
       "description": "Optional ProxyURL.",
@@ -65,7 +65,7 @@
     },
     "queueConfig": {
       "description": "QueueConfig allows tuning of the remote write queue parameters.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.QueueConfig"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.QueueConfig"
     },
     "remoteTimeout": {
       "description": "Timeout for requests to the remote write endpoint.",
@@ -83,11 +83,11 @@
     },
     "sigv4": {
       "description": "Sigv4 allows to configures AWS's Signature Verification 4",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.Sigv4"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.Sigv4"
     },
     "tlsConfig": {
       "description": "TLS Config to use for remote write.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.TLSConfig"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.TLSConfig"
     },
     "url": {
       "description": "The URL of the endpoint to send samples to.",
@@ -105,7 +105,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.RelabelConfig"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.RelabelConfig"
       }
     }
   },

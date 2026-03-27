@@ -18,7 +18,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.Argument"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.Argument"
       }
     },
     "additionalScrapeConfigs": {
@@ -31,7 +31,7 @@
     },
     "alerting": {
       "description": "Define details regarding alerting.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.AlertingSpec"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.AlertingSpec"
     },
     "allowOverlappingBlocks": {
       "description": "AllowOverlappingBlocks enables vertical compaction and vertical query merge in Prometheus. This is still experimental in Prometheus so it may change in any upcoming release.",
@@ -42,12 +42,12 @@
     },
     "apiserverConfig": {
       "description": "APIServerConfig allows specifying a host and auth methods to access apiserver. If left empty, Prometheus is assumed to run inside of the cluster and will discover API servers automatically and use the pod's CA certificate and bearer token file at /var/run/secrets/kubernetes.io/serviceaccount/.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.APIServerConfig"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.APIServerConfig"
     },
     "arbitraryFSAccessThroughSMs": {
       "description": "ArbitraryFSAccessThroughSMs configures whether configuration based on a service monitor can access arbitrary files on the file system of the Prometheus container e.g. bearer token files.",
       "default": {},
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.ArbitraryFSAccessThroughSMsConfig"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.ArbitraryFSAccessThroughSMsConfig"
     },
     "baseImage": {
       "description": "Base image to use for a Prometheus deployment. Deprecated: use 'image' instead",
@@ -185,12 +185,12 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.ObjectReference"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.ObjectReference"
       }
     },
     "exemplars": {
       "description": "Exemplars related settings that are runtime reloadable. It requires to enable the exemplar storage feature to be effective.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.Exemplars"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.Exemplars"
     },
     "externalLabels": {
       "description": "The labels to add to any time series or alerts when communicating with external systems (federation, remote storage, Alertmanager).",
@@ -221,7 +221,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.HostAlias"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.HostAlias"
       },
       "x-kubernetes-list-map-keys": [
         "ip"
@@ -349,7 +349,7 @@
     },
     "podMetadata": {
       "description": "PodMetadata configures Labels and Annotations which are propagated to the prometheus pods.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.EmbeddedObjectMetadata"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.EmbeddedObjectMetadata"
     },
     "podMonitorNamespaceSelector": {
       "description": "Namespace's labels to match for PodMonitor discovery. If nil, only check own namespace.",
@@ -410,12 +410,12 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.PrometheusRuleExcludeConfig"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.PrometheusRuleExcludeConfig"
       }
     },
     "query": {
       "description": "QuerySpec defines the query command line flags when starting Prometheus.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.QuerySpec"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.QuerySpec"
     },
     "queryLogFile": {
       "description": "QueryLogFile specifies the file to which PromQL queries are logged. If the filename has an empty path, e.g. 'query.log', prometheus-operator will mount the file into an emptyDir volume at `/var/log/prometheus`. If a full path is provided, e.g. /var/log/prometheus/query.log, you must mount a volume in the specified directory and it must be writable. This is because the prometheus container runs with a read-only root filesystem for security reasons. Alternatively, the location can be set to a stdout location such as `/dev/stdout` to log query information to the default Prometheus log stream. This is only available in versions of Prometheus >= 2.16.0. For more details, see the Prometheus docs (https://prometheus.io/docs/guides/query-log/)",
@@ -432,7 +432,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.RemoteReadSpec"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.RemoteReadSpec"
       }
     },
     "remoteWrite": {
@@ -443,7 +443,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.RemoteWriteSpec"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.RemoteWriteSpec"
       }
     },
     "replicaExternalLabelName": {
@@ -498,7 +498,7 @@
     "rules": {
       "description": "/--rules.*/ command-line arguments.",
       "default": {},
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.Rules"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.Rules"
     },
     "scrapeInterval": {
       "description": "Interval between consecutive scrapes. Default: `30s`",
@@ -564,7 +564,7 @@
     },
     "storage": {
       "description": "Storage spec to specify how storage shall be used.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.StorageSpec"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.StorageSpec"
     },
     "tag": {
       "description": "Tag of Prometheus container image to be deployed. Defaults to the value of `version`. Version is ignored if Tag is set. Deprecated: use 'image' instead.  The image tag can be specified as part of the image URL.",
@@ -575,7 +575,7 @@
     },
     "thanos": {
       "description": "Thanos configuration allows configuring various aspects of a Prometheus server in a Thanos environment.\n\nThis section is experimental, it may change significantly without deprecation notice in any release.\n\nThis is experimental and may change significantly without backward compatibility in any release.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.ThanosSpec"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.ThanosSpec"
     },
     "tolerations": {
       "description": "If specified, the pod's tolerations.",
@@ -602,7 +602,7 @@
     "tsdb": {
       "description": "Defines the runtime reloadable configuration of the timeseries database (TSDB).",
       "default": {},
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.TSDBSpec"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.TSDBSpec"
     },
     "version": {
       "description": "Version of Prometheus to be deployed.",
@@ -642,7 +642,7 @@
     },
     "web": {
       "description": "Defines the web command line flags when starting Prometheus.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.PrometheusWebSpec"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.PrometheusWebSpec"
     }
   },
   "additionalProperties": false,

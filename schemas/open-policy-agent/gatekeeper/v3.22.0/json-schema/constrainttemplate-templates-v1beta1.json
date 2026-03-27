@@ -22,11 +22,11 @@
     },
     "spec": {
       "default": {},
-      "$ref": "_definitions.json#/definitions/sh.gatekeeper.frameworks.constraint.pkg.apis.templates.v1beta1.ConstraintTemplateSpec"
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.templates.v1beta1.ConstraintTemplateSpec"
     },
     "status": {
       "default": {},
-      "$ref": "_definitions.json#/definitions/sh.gatekeeper.frameworks.constraint.pkg.apis.templates.v1beta1.ConstraintTemplateStatus"
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.templates.v1beta1.ConstraintTemplateStatus"
     }
   },
   "additionalProperties": false,

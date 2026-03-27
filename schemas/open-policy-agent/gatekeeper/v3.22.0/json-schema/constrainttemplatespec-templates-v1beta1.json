@@ -4,7 +4,7 @@
   "properties": {
     "crd": {
       "default": {},
-      "$ref": "_definitions.json#/definitions/sh.gatekeeper.frameworks.constraint.pkg.apis.templates.v1beta1.CRD"
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.templates.v1beta1.CRD"
     },
     "targets": {
       "type": [
@@ -13,7 +13,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/sh.gatekeeper.frameworks.constraint.pkg.apis.templates.v1beta1.Target"
+        "$ref": "_definitions.json#/definitions/sh.gatekeeper.templates.v1beta1.Target"
       }
     }
   },

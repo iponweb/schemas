@@ -22,7 +22,7 @@
     },
     "spec": {
       "default": {},
-      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.generators.v1alpha1.ClusterGeneratorSpec"
+      "$ref": "_definitions.json#/definitions/io.external-secrets.generators.v1alpha1.ClusterGeneratorSpec"
     }
   },
   "additionalProperties": false,

@@ -7,7 +7,7 @@
   "properties": {
     "secretRef": {
       "default": {},
-      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.generators.v1alpha1.AzureACRServicePrincipalAuthSecretRef"
+      "$ref": "_definitions.json#/definitions/io.external-secrets.generators.v1alpha1.AzureACRServicePrincipalAuthSecretRef"
     }
   },
   "additionalProperties": false,

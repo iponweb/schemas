@@ -29,7 +29,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/sh.gatekeeper.apis.mutations.v1alpha1.PathTest"
+        "$ref": "_definitions.json#/definitions/sh.gatekeeper.mutations.v1alpha1.PathTest"
       }
     }
   },

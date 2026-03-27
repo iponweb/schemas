@@ -23,7 +23,7 @@
     "alertmanagerConfigMatcherStrategy": {
       "description": "The AlertmanagerConfigMatcherStrategy defines how AlertmanagerConfig objects match the alerts. In the future more options may be added.",
       "default": {},
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.AlertmanagerConfigMatcherStrategy"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.AlertmanagerConfigMatcherStrategy"
     },
     "alertmanagerConfigNamespaceSelector": {
       "description": "Namespaces to be selected for AlertmanagerConfig discovery. If nil, only check own namespace.",
@@ -35,7 +35,7 @@
     },
     "alertmanagerConfiguration": {
       "description": "EXPERIMENTAL: alertmanagerConfiguration specifies the configuration of Alertmanager. If defined, it takes precedence over the `configSecret` field. This field may change in future releases.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.AlertmanagerConfiguration"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.AlertmanagerConfiguration"
     },
     "baseImage": {
       "description": "Base image that is used to deploy pods, without tag. Deprecated: use 'image' instead",
@@ -126,7 +126,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.HostAlias"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.HostAlias"
       },
       "x-kubernetes-list-map-keys": [
         "ip"
@@ -226,7 +226,7 @@
     },
     "podMetadata": {
       "description": "PodMetadata configures Labels and Annotations which are propagated to the alertmanager pods.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.EmbeddedObjectMetadata"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.EmbeddedObjectMetadata"
     },
     "portName": {
       "description": "Port name used for the pods and governing service. This defaults to web",
@@ -303,7 +303,7 @@
     },
     "storage": {
       "description": "Storage is the definition of how storage will be used by the Alertmanager instances.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.StorageSpec"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.StorageSpec"
     },
     "tag": {
       "description": "Tag of Alertmanager container image to be deployed. Defaults to the value of `version`. Version is ignored if Tag is set. Deprecated: use 'image' instead.  The image tag can be specified as part of the image URL.",
@@ -365,7 +365,7 @@
     },
     "web": {
       "description": "Defines the web command line flags when starting Alertmanager.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.AlertmanagerWebSpec"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.AlertmanagerWebSpec"
     }
   },
   "additionalProperties": false,

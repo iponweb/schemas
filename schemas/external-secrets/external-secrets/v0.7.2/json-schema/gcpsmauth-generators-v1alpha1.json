@@ -2,10 +2,10 @@
   "type": "object",
   "properties": {
     "secretRef": {
-      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.generators.v1alpha1.GCPSMAuthSecretRef"
+      "$ref": "_definitions.json#/definitions/io.external-secrets.generators.v1alpha1.GCPSMAuthSecretRef"
     },
     "workloadIdentity": {
-      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.generators.v1alpha1.GCPWorkloadIdentity"
+      "$ref": "_definitions.json#/definitions/io.external-secrets.generators.v1alpha1.GCPWorkloadIdentity"
     }
   },
   "additionalProperties": false,

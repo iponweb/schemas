@@ -1,0 +1,19 @@
+{
+  "description": "ProviderStatus defines the observed state of Provider.",
+  "type": "object",
+  "properties": {
+    "byPod": {
+      "description": "ByPod is the status of the provider by pod",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/sh.gatekeeper.externaldata.v1beta1.ProviderPodStatusStatus"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

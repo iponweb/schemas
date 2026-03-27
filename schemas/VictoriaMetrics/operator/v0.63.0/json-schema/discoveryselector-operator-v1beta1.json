@@ -6,7 +6,7 @@
       "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.LabelSelector"
     },
     "namespaceSelector": {
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.NamespaceSelector"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.NamespaceSelector"
     }
   },
   "additionalProperties": false,

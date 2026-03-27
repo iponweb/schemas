@@ -4,10 +4,10 @@
   "groupVersion": "mutations.gatekeeper.sh/v1alpha1",
   "resources": [
     {
-      "name": "assign",
-      "singularName": "assign",
+      "name": "assignmetadata",
+      "singularName": "assignmetadata",
       "namespaced": false,
-      "kind": "Assign",
+      "kind": "AssignMetadata",
       "verbs": [
         "delete",
         "deletecollection",
@@ -18,41 +18,13 @@
         "update",
         "watch"
       ],
-      "storageVersionHash": "0zKAFLXWTw8="
+      "storageVersionHash": "h9Kp6KoBtC4="
     },
     {
-      "name": "assign/status",
+      "name": "assignmetadata/status",
       "singularName": "",
       "namespaced": false,
-      "kind": "Assign",
-      "verbs": [
-        "get",
-        "patch",
-        "update"
-      ]
-    },
-    {
-      "name": "assignimage",
-      "singularName": "assignimage",
-      "namespaced": false,
-      "kind": "AssignImage",
-      "verbs": [
-        "delete",
-        "deletecollection",
-        "get",
-        "list",
-        "patch",
-        "create",
-        "update",
-        "watch"
-      ],
-      "storageVersionHash": "Qpl/cmzoQxY="
-    },
-    {
-      "name": "assignimage/status",
-      "singularName": "",
-      "namespaced": false,
-      "kind": "AssignImage",
+      "kind": "AssignMetadata",
       "verbs": [
         "get",
         "patch",
@@ -88,10 +60,10 @@
       ]
     },
     {
-      "name": "assignmetadata",
-      "singularName": "assignmetadata",
+      "name": "assignimage",
+      "singularName": "assignimage",
       "namespaced": false,
-      "kind": "AssignMetadata",
+      "kind": "AssignImage",
       "verbs": [
         "delete",
         "deletecollection",
@@ -102,13 +74,41 @@
         "update",
         "watch"
       ],
-      "storageVersionHash": "h9Kp6KoBtC4="
+      "storageVersionHash": "Qpl/cmzoQxY="
     },
     {
-      "name": "assignmetadata/status",
+      "name": "assignimage/status",
       "singularName": "",
       "namespaced": false,
-      "kind": "AssignMetadata",
+      "kind": "AssignImage",
+      "verbs": [
+        "get",
+        "patch",
+        "update"
+      ]
+    },
+    {
+      "name": "assign",
+      "singularName": "assign",
+      "namespaced": false,
+      "kind": "Assign",
+      "verbs": [
+        "delete",
+        "deletecollection",
+        "get",
+        "list",
+        "patch",
+        "create",
+        "update",
+        "watch"
+      ],
+      "storageVersionHash": "0zKAFLXWTw8="
+    },
+    {
+      "name": "assign/status",
+      "singularName": "",
+      "namespaced": false,
+      "kind": "Assign",
       "verbs": [
         "get",
         "patch",

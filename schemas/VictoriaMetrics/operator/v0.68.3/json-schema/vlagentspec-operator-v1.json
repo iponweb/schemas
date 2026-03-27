@@ -144,7 +144,7 @@
     "image": {
       "description": "Image - docker image settings if no specified operator uses default version from operator config",
       "default": {},
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.Image"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.Image"
     },
     "imagePullSecrets": {
       "description": "ImagePullSecrets An optional list of references to secrets in the same namespace to use for pulling images from registries see https://kubernetes.io/docs/concepts/containers/images/#referring-to-an-imagepullsecrets-on-a-pod",
@@ -171,11 +171,11 @@
     "k8sCollector": {
       "description": "K8sCollector configures VLAgent logs collection from K8s pods",
       "default": {},
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1.VLAgentK8sCollector"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1.VLAgentK8sCollector"
     },
     "license": {
       "description": "License allows to configure license key to be used for enterprise features. See [here](https://docs.victoriametrics.com/victoriametrics/enterprise/#victorialogs-enterprise-features)",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.License"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.License"
     },
     "livenessProbe": {
       "description": "LivenessProbe that will be added CRD pod",
@@ -197,7 +197,7 @@
     },
     "managedMetadata": {
       "description": "ManagedMetadata defines metadata that will be added to the all objects created by operator for the given CustomResource",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.ManagedObjectsMetadata"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.ManagedObjectsMetadata"
     },
     "minReadySeconds": {
       "description": "MinReadySeconds defines a minimum number of seconds to wait before starting update next pod if previous in healthy state Has no effect for VLogs and VMSingle",
@@ -234,11 +234,11 @@
     },
     "podDisruptionBudget": {
       "description": "PodDisruptionBudget created by operator",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.EmbeddedPodDisruptionBudgetSpec"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.EmbeddedPodDisruptionBudgetSpec"
     },
     "podMetadata": {
       "description": "PodMetadata configures Labels and Annotations which are propagated to the vlagent pods.",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.EmbeddedObjectMetadata"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.EmbeddedObjectMetadata"
     },
     "port": {
       "description": "Port listen address",
@@ -277,12 +277,12 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1.VLAgentRemoteWriteSpec"
+        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1.VLAgentRemoteWriteSpec"
       }
     },
     "remoteWriteSettings": {
       "description": "RemoteWriteSettings defines global settings for all remoteWrite urls.",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1.VLAgentRemoteWriteSettings"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1.VLAgentRemoteWriteSettings"
     },
     "replicaCount": {
       "description": "ReplicaCount is the expected size of the Application.",
@@ -346,7 +346,7 @@
     },
     "securityContext": {
       "description": "SecurityContext holds pod-level security attributes and common container settings. This defaults to the default PodSecurityContext.",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.SecurityContext"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.SecurityContext"
     },
     "serviceAccountName": {
       "description": "ServiceAccountName is the name of the ServiceAccount to use to run the pods",
@@ -357,11 +357,11 @@
     },
     "serviceScrapeSpec": {
       "description": "ServiceScrapeSpec that will be added to vlagent VMServiceScrape spec",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.VMServiceScrapeSpec"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.VMServiceScrapeSpec"
     },
     "serviceSpec": {
       "description": "ServiceSpec that will be added to vlagent service spec",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.AdditionalServiceSpec"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.AdditionalServiceSpec"
     },
     "startupProbe": {
       "description": "StartupProbe that will be added to CRD pod",
@@ -369,11 +369,11 @@
     },
     "storage": {
       "description": "Storage configures storage for StatefulSet",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.StorageSpec"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.StorageSpec"
     },
     "syslogSpec": {
       "description": "SyslogSpec defines syslog listener configuration",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1.SyslogServerSpec"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1.SyslogServerSpec"
     },
     "terminationGracePeriodSeconds": {
       "description": "TerminationGracePeriodSeconds period for container graceful termination",

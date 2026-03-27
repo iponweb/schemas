@@ -37,7 +37,7 @@
     "tsigSecretSecretRef": {
       "description": "The name of the secret containing the TSIG value. If ``tsigKeyName`` is defined, this field is required.",
       "default": {},
-      "$ref": "_definitions.json#/definitions/io.cert-manager.pkg.apis.meta.v1.SecretKeySelector"
+      "$ref": "_definitions.json#/definitions/io.cert-manager.v1.SecretKeySelector"
     }
   },
   "additionalProperties": false,

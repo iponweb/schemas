@@ -178,7 +178,7 @@
       "type": "string",
       "format": "date-time"
     },
-    "io.x-k8s.csi.secrets-store.apis.v1.SecretObject": {
+    "io.x-k8s.csi.secrets-store.v1.SecretObject": {
       "description": "SecretObject defines the desired state of synced K8s secret objects",
       "type": "object",
       "properties": {
@@ -193,7 +193,7 @@
         "data": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/io.x-k8s.csi.secrets-store.apis.v1.SecretObjectData"
+            "$ref": "#/definitions/io.x-k8s.csi.secrets-store.v1.SecretObjectData"
           }
         },
         "labels": {
@@ -215,7 +215,7 @@
       },
       "additionalProperties": false
     },
-    "io.x-k8s.csi.secrets-store.apis.v1.SecretObjectData": {
+    "io.x-k8s.csi.secrets-store.v1.SecretObjectData": {
       "description": "SecretObjectData defines the desired state of synced K8s secret object data",
       "type": "object",
       "properties": {
@@ -230,7 +230,7 @@
       },
       "additionalProperties": false
     },
-    "io.x-k8s.csi.secrets-store.apis.v1.SecretProviderClass": {
+    "io.x-k8s.csi.secrets-store.v1.SecretProviderClass": {
       "description": "SecretProviderClass is the Schema for the secretproviderclasses API",
       "type": "object",
       "properties": {
@@ -248,16 +248,16 @@
         },
         "spec": {
           "default": {},
-          "$ref": "#/definitions/io.x-k8s.csi.secrets-store.apis.v1.SecretProviderClassSpec"
+          "$ref": "#/definitions/io.x-k8s.csi.secrets-store.v1.SecretProviderClassSpec"
         },
         "status": {
           "default": {},
-          "$ref": "#/definitions/io.x-k8s.csi.secrets-store.apis.v1.SecretProviderClassStatus"
+          "$ref": "#/definitions/io.x-k8s.csi.secrets-store.v1.SecretProviderClassStatus"
         }
       },
       "additionalProperties": false
     },
-    "io.x-k8s.csi.secrets-store.apis.v1.SecretProviderClassObject": {
+    "io.x-k8s.csi.secrets-store.v1.SecretProviderClassObject": {
       "description": "SecretProviderClassObject defines the object fetched from external secrets store",
       "type": "object",
       "properties": {
@@ -270,7 +270,7 @@
       },
       "additionalProperties": false
     },
-    "io.x-k8s.csi.secrets-store.apis.v1.SecretProviderClassPodStatus": {
+    "io.x-k8s.csi.secrets-store.v1.SecretProviderClassPodStatus": {
       "description": "SecretProviderClassPodStatus is the Schema for the secretproviderclassespodstatus API",
       "type": "object",
       "properties": {
@@ -288,12 +288,12 @@
         },
         "status": {
           "default": {},
-          "$ref": "#/definitions/io.x-k8s.csi.secrets-store.apis.v1.SecretProviderClassPodStatusStatus"
+          "$ref": "#/definitions/io.x-k8s.csi.secrets-store.v1.SecretProviderClassPodStatusStatus"
         }
       },
       "additionalProperties": false
     },
-    "io.x-k8s.csi.secrets-store.apis.v1.SecretProviderClassPodStatusStatus": {
+    "io.x-k8s.csi.secrets-store.v1.SecretProviderClassPodStatusStatus": {
       "description": "SecretProviderClassPodStatusStatus defines the observed state of SecretProviderClassPodStatus",
       "type": "object",
       "properties": {
@@ -304,7 +304,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/io.x-k8s.csi.secrets-store.apis.v1.SecretProviderClassObject"
+            "$ref": "#/definitions/io.x-k8s.csi.secrets-store.v1.SecretProviderClassObject"
           }
         },
         "podName": {
@@ -319,7 +319,7 @@
       },
       "additionalProperties": false
     },
-    "io.x-k8s.csi.secrets-store.apis.v1.SecretProviderClassSpec": {
+    "io.x-k8s.csi.secrets-store.v1.SecretProviderClassSpec": {
       "description": "SecretProviderClassSpec defines the desired state of SecretProviderClass",
       "type": "object",
       "properties": {
@@ -338,17 +338,17 @@
         "secretObjects": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/io.x-k8s.csi.secrets-store.apis.v1.SecretObject"
+            "$ref": "#/definitions/io.x-k8s.csi.secrets-store.v1.SecretObject"
           }
         }
       },
       "additionalProperties": false
     },
-    "io.x-k8s.csi.secrets-store.apis.v1.SecretProviderClassStatus": {
+    "io.x-k8s.csi.secrets-store.v1.SecretProviderClassStatus": {
       "description": "SecretProviderClassStatus defines the observed state of SecretProviderClass",
       "type": "object"
     },
-    "io.x-k8s.csi.secrets-store.apis.v1alpha1.ByPodStatus": {
+    "io.x-k8s.csi.secrets-store.v1alpha1.ByPodStatus": {
       "description": "ByPodStatus defines the state of SecretProviderClass as seen by an individual controller",
       "type": "object",
       "properties": {
@@ -363,7 +363,7 @@
       },
       "additionalProperties": false
     },
-    "io.x-k8s.csi.secrets-store.apis.v1alpha1.SecretObject": {
+    "io.x-k8s.csi.secrets-store.v1alpha1.SecretObject": {
       "description": "SecretObject defines the desired state of synced K8s secret objects",
       "type": "object",
       "properties": {
@@ -378,7 +378,7 @@
         "data": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/io.x-k8s.csi.secrets-store.apis.v1alpha1.SecretObjectData"
+            "$ref": "#/definitions/io.x-k8s.csi.secrets-store.v1alpha1.SecretObjectData"
           }
         },
         "labels": {
@@ -400,7 +400,7 @@
       },
       "additionalProperties": false
     },
-    "io.x-k8s.csi.secrets-store.apis.v1alpha1.SecretObjectData": {
+    "io.x-k8s.csi.secrets-store.v1alpha1.SecretObjectData": {
       "description": "SecretObjectData defines the desired state of synced K8s secret object data",
       "type": "object",
       "properties": {
@@ -415,7 +415,7 @@
       },
       "additionalProperties": false
     },
-    "io.x-k8s.csi.secrets-store.apis.v1alpha1.SecretProviderClass": {
+    "io.x-k8s.csi.secrets-store.v1alpha1.SecretProviderClass": {
       "description": "SecretProviderClass is the Schema for the secretproviderclasses API",
       "type": "object",
       "properties": {
@@ -433,16 +433,16 @@
         },
         "spec": {
           "default": {},
-          "$ref": "#/definitions/io.x-k8s.csi.secrets-store.apis.v1alpha1.SecretProviderClassSpec"
+          "$ref": "#/definitions/io.x-k8s.csi.secrets-store.v1alpha1.SecretProviderClassSpec"
         },
         "status": {
           "default": {},
-          "$ref": "#/definitions/io.x-k8s.csi.secrets-store.apis.v1alpha1.SecretProviderClassStatus"
+          "$ref": "#/definitions/io.x-k8s.csi.secrets-store.v1alpha1.SecretProviderClassStatus"
         }
       },
       "additionalProperties": false
     },
-    "io.x-k8s.csi.secrets-store.apis.v1alpha1.SecretProviderClassObject": {
+    "io.x-k8s.csi.secrets-store.v1alpha1.SecretProviderClassObject": {
       "description": "SecretProviderClassObject defines the object fetched from external secrets store",
       "type": "object",
       "properties": {
@@ -455,7 +455,7 @@
       },
       "additionalProperties": false
     },
-    "io.x-k8s.csi.secrets-store.apis.v1alpha1.SecretProviderClassPodStatus": {
+    "io.x-k8s.csi.secrets-store.v1alpha1.SecretProviderClassPodStatus": {
       "description": "SecretProviderClassPodStatus is the Schema for the secretproviderclassespodstatus API",
       "type": "object",
       "properties": {
@@ -473,12 +473,12 @@
         },
         "status": {
           "default": {},
-          "$ref": "#/definitions/io.x-k8s.csi.secrets-store.apis.v1alpha1.SecretProviderClassPodStatusStatus"
+          "$ref": "#/definitions/io.x-k8s.csi.secrets-store.v1alpha1.SecretProviderClassPodStatusStatus"
         }
       },
       "additionalProperties": false
     },
-    "io.x-k8s.csi.secrets-store.apis.v1alpha1.SecretProviderClassPodStatusStatus": {
+    "io.x-k8s.csi.secrets-store.v1alpha1.SecretProviderClassPodStatusStatus": {
       "description": "SecretProviderClassPodStatusStatus defines the observed state of SecretProviderClassPodStatus",
       "type": "object",
       "properties": {
@@ -489,7 +489,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/io.x-k8s.csi.secrets-store.apis.v1alpha1.SecretProviderClassObject"
+            "$ref": "#/definitions/io.x-k8s.csi.secrets-store.v1alpha1.SecretProviderClassObject"
           }
         },
         "podName": {
@@ -504,7 +504,7 @@
       },
       "additionalProperties": false
     },
-    "io.x-k8s.csi.secrets-store.apis.v1alpha1.SecretProviderClassSpec": {
+    "io.x-k8s.csi.secrets-store.v1alpha1.SecretProviderClassSpec": {
       "description": "SecretProviderClassSpec defines the desired state of SecretProviderClass",
       "type": "object",
       "properties": {
@@ -523,20 +523,20 @@
         "secretObjects": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/io.x-k8s.csi.secrets-store.apis.v1alpha1.SecretObject"
+            "$ref": "#/definitions/io.x-k8s.csi.secrets-store.v1alpha1.SecretObject"
           }
         }
       },
       "additionalProperties": false
     },
-    "io.x-k8s.csi.secrets-store.apis.v1alpha1.SecretProviderClassStatus": {
+    "io.x-k8s.csi.secrets-store.v1alpha1.SecretProviderClassStatus": {
       "description": "SecretProviderClassStatus defines the observed state of SecretProviderClass",
       "type": "object",
       "properties": {
         "byPod": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/io.x-k8s.csi.secrets-store.apis.v1alpha1.ByPodStatus"
+            "$ref": "#/definitions/io.x-k8s.csi.secrets-store.v1alpha1.ByPodStatus"
           }
         }
       },

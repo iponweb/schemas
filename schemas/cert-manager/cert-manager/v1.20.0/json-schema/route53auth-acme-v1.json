@@ -7,7 +7,7 @@
   "properties": {
     "kubernetes": {
       "description": "Kubernetes authenticates with Route53 using AssumeRoleWithWebIdentity by passing a bound ServiceAccount token.",
-      "$ref": "_definitions.json#/definitions/io.cert-manager.pkg.apis.acme.v1.Route53KubernetesAuth"
+      "$ref": "_definitions.json#/definitions/io.cert-manager.acme.v1.Route53KubernetesAuth"
     }
   },
   "additionalProperties": false,

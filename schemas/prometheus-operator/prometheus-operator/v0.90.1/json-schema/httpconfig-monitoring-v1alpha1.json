@@ -4,11 +4,11 @@
   "properties": {
     "authorization": {
       "description": "authorization defines the authorization header configuration for the client. This is mutually exclusive with BasicAuth and is only available starting from Alertmanager v0.22+.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.SafeAuthorization"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.SafeAuthorization"
     },
     "basicAuth": {
       "description": "basicAuth defines the basic authentication credentials for the client. This is mutually exclusive with Authorization. If both are defined, BasicAuth takes precedence.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.BasicAuth"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.BasicAuth"
     },
     "bearerTokenSecret": {
       "description": "bearerTokenSecret defines the secret's key that contains the bearer token to be used by the client for authentication. The secret needs to be in the same namespace as the AlertmanagerConfig object and accessible by the Prometheus Operator.",
@@ -37,7 +37,7 @@
     },
     "oauth2": {
       "description": "oauth2 defines the OAuth2 client credentials used to fetch a token for the targets. This enables OAuth2 authentication flow for HTTP requests.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.OAuth2"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.OAuth2"
     },
     "proxyConnectHeader": {
       "description": "proxyConnectHeader optionally specifies headers to send to proxies during CONNECT requests.\n\nIt requires Prometheus >= v2.43.0, Alertmanager >= v0.25.0 or Thanos >= v0.32.0.",
@@ -79,7 +79,7 @@
     },
     "tlsConfig": {
       "description": "tlsConfig defines the TLS configuration for the client. This includes settings for certificates, CA validation, and TLS protocol options.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.SafeTLSConfig"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.SafeTLSConfig"
     }
   },
   "additionalProperties": false,

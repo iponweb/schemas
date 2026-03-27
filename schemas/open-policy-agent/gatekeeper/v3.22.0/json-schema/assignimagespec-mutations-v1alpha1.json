@@ -10,7 +10,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/sh.gatekeeper.pkg.mutation.match.ApplyTo"
+        "$ref": "_definitions.json#/definitions/sh.gatekeeper.match.ApplyTo"
       }
     },
     "location": {
@@ -23,12 +23,12 @@
     "match": {
       "description": "Match allows the user to limit which resources get mutated. Individual match criteria are AND-ed together. An undefined match criteria matches everything.",
       "default": {},
-      "$ref": "_definitions.json#/definitions/sh.gatekeeper.pkg.mutation.match.Match"
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.match.Match"
     },
     "parameters": {
       "description": "Parameters define the behavior of the mutator.",
       "default": {},
-      "$ref": "_definitions.json#/definitions/sh.gatekeeper.apis.mutations.v1alpha1.AssignImageParameters"
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.mutations.v1alpha1.AssignImageParameters"
     }
   },
   "additionalProperties": false,

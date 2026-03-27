@@ -4,128 +4,6 @@
   "groupVersion": "gateway.networking.k8s.io/v1",
   "resources": [
     {
-      "name": "listenersets",
-      "singularName": "listenerset",
-      "namespaced": true,
-      "kind": "ListenerSet",
-      "verbs": [
-        "delete",
-        "deletecollection",
-        "get",
-        "list",
-        "patch",
-        "create",
-        "update",
-        "watch"
-      ],
-      "shortNames": [
-        "lset"
-      ],
-      "categories": [
-        "gateway-api"
-      ],
-      "storageVersionHash": "9mXHAG7LfMo="
-    },
-    {
-      "name": "listenersets/status",
-      "singularName": "",
-      "namespaced": true,
-      "kind": "ListenerSet",
-      "verbs": [
-        "get",
-        "patch",
-        "update"
-      ]
-    },
-    {
-      "name": "referencegrants",
-      "singularName": "referencegrant",
-      "namespaced": true,
-      "kind": "ReferenceGrant",
-      "verbs": [
-        "delete",
-        "deletecollection",
-        "get",
-        "list",
-        "patch",
-        "create",
-        "update",
-        "watch"
-      ],
-      "shortNames": [
-        "refgrant"
-      ],
-      "categories": [
-        "gateway-api"
-      ],
-      "storageVersionHash": "yiMy9EZI11Y="
-    },
-    {
-      "name": "tlsroutes",
-      "singularName": "tlsroute",
-      "namespaced": true,
-      "kind": "TLSRoute",
-      "verbs": [
-        "delete",
-        "deletecollection",
-        "get",
-        "list",
-        "patch",
-        "create",
-        "update",
-        "watch"
-      ],
-      "categories": [
-        "gateway-api"
-      ],
-      "storageVersionHash": "d8x5gH+GwdI="
-    },
-    {
-      "name": "tlsroutes/status",
-      "singularName": "",
-      "namespaced": true,
-      "kind": "TLSRoute",
-      "verbs": [
-        "get",
-        "patch",
-        "update"
-      ]
-    },
-    {
-      "name": "backendtlspolicies",
-      "singularName": "backendtlspolicy",
-      "namespaced": true,
-      "kind": "BackendTLSPolicy",
-      "verbs": [
-        "delete",
-        "deletecollection",
-        "get",
-        "list",
-        "patch",
-        "create",
-        "update",
-        "watch"
-      ],
-      "shortNames": [
-        "btlspolicy"
-      ],
-      "categories": [
-        "gateway-api"
-      ],
-      "storageVersionHash": "vsBTDJQ6XLo="
-    },
-    {
-      "name": "backendtlspolicies/status",
-      "singularName": "",
-      "namespaced": true,
-      "kind": "BackendTLSPolicy",
-      "verbs": [
-        "get",
-        "patch",
-        "update"
-      ]
-    },
-    {
       "name": "gatewayclasses",
       "singularName": "gatewayclass",
       "namespaced": false,
@@ -249,6 +127,128 @@
       "singularName": "",
       "namespaced": true,
       "kind": "HTTPRoute",
+      "verbs": [
+        "get",
+        "patch",
+        "update"
+      ]
+    },
+    {
+      "name": "listenersets",
+      "singularName": "listenerset",
+      "namespaced": true,
+      "kind": "ListenerSet",
+      "verbs": [
+        "delete",
+        "deletecollection",
+        "get",
+        "list",
+        "patch",
+        "create",
+        "update",
+        "watch"
+      ],
+      "shortNames": [
+        "lset"
+      ],
+      "categories": [
+        "gateway-api"
+      ],
+      "storageVersionHash": "9mXHAG7LfMo="
+    },
+    {
+      "name": "listenersets/status",
+      "singularName": "",
+      "namespaced": true,
+      "kind": "ListenerSet",
+      "verbs": [
+        "get",
+        "patch",
+        "update"
+      ]
+    },
+    {
+      "name": "referencegrants",
+      "singularName": "referencegrant",
+      "namespaced": true,
+      "kind": "ReferenceGrant",
+      "verbs": [
+        "delete",
+        "deletecollection",
+        "get",
+        "list",
+        "patch",
+        "create",
+        "update",
+        "watch"
+      ],
+      "shortNames": [
+        "refgrant"
+      ],
+      "categories": [
+        "gateway-api"
+      ],
+      "storageVersionHash": "yiMy9EZI11Y="
+    },
+    {
+      "name": "tlsroutes",
+      "singularName": "tlsroute",
+      "namespaced": true,
+      "kind": "TLSRoute",
+      "verbs": [
+        "delete",
+        "deletecollection",
+        "get",
+        "list",
+        "patch",
+        "create",
+        "update",
+        "watch"
+      ],
+      "categories": [
+        "gateway-api"
+      ],
+      "storageVersionHash": "d8x5gH+GwdI="
+    },
+    {
+      "name": "tlsroutes/status",
+      "singularName": "",
+      "namespaced": true,
+      "kind": "TLSRoute",
+      "verbs": [
+        "get",
+        "patch",
+        "update"
+      ]
+    },
+    {
+      "name": "backendtlspolicies",
+      "singularName": "backendtlspolicy",
+      "namespaced": true,
+      "kind": "BackendTLSPolicy",
+      "verbs": [
+        "delete",
+        "deletecollection",
+        "get",
+        "list",
+        "patch",
+        "create",
+        "update",
+        "watch"
+      ],
+      "shortNames": [
+        "btlspolicy"
+      ],
+      "categories": [
+        "gateway-api"
+      ],
+      "storageVersionHash": "vsBTDJQ6XLo="
+    },
+    {
+      "name": "backendtlspolicies/status",
+      "singularName": "",
+      "namespaced": true,
+      "kind": "BackendTLSPolicy",
       "verbs": [
         "get",
         "patch",

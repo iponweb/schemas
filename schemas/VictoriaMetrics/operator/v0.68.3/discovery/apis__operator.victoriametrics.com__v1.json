@@ -4,6 +4,34 @@
   "groupVersion": "operator.victoriametrics.com/v1",
   "resources": [
     {
+      "name": "vtclusters",
+      "singularName": "vtcluster",
+      "namespaced": true,
+      "kind": "VTCluster",
+      "verbs": [
+        "delete",
+        "deletecollection",
+        "get",
+        "list",
+        "patch",
+        "create",
+        "update",
+        "watch"
+      ],
+      "storageVersionHash": "9JC+KGUGkTQ="
+    },
+    {
+      "name": "vtclusters/status",
+      "singularName": "",
+      "namespaced": true,
+      "kind": "VTCluster",
+      "verbs": [
+        "get",
+        "patch",
+        "update"
+      ]
+    },
+    {
       "name": "vlclusters",
       "singularName": "vlcluster",
       "namespaced": true,
@@ -114,10 +142,10 @@
       ]
     },
     {
-      "name": "vtclusters",
-      "singularName": "vtcluster",
+      "name": "vlsingles",
+      "singularName": "vlsingle",
       "namespaced": true,
-      "kind": "VTCluster",
+      "kind": "VLSingle",
       "verbs": [
         "delete",
         "deletecollection",
@@ -128,13 +156,13 @@
         "update",
         "watch"
       ],
-      "storageVersionHash": "9JC+KGUGkTQ="
+      "storageVersionHash": "kWtXgnzXWtY="
     },
     {
-      "name": "vtclusters/status",
+      "name": "vlsingles/status",
       "singularName": "",
       "namespaced": true,
-      "kind": "VTCluster",
+      "kind": "VLSingle",
       "verbs": [
         "get",
         "patch",
@@ -163,34 +191,6 @@
       "singularName": "",
       "namespaced": true,
       "kind": "VTSingle",
-      "verbs": [
-        "get",
-        "patch",
-        "update"
-      ]
-    },
-    {
-      "name": "vlsingles",
-      "singularName": "vlsingle",
-      "namespaced": true,
-      "kind": "VLSingle",
-      "verbs": [
-        "delete",
-        "deletecollection",
-        "get",
-        "list",
-        "patch",
-        "create",
-        "update",
-        "watch"
-      ],
-      "storageVersionHash": "kWtXgnzXWtY="
-    },
-    {
-      "name": "vlsingles/status",
-      "singularName": "",
-      "namespaced": true,
-      "kind": "VLSingle",
       "verbs": [
         "get",
         "patch",

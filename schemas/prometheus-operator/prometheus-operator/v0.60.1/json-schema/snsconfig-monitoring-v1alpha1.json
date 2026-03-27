@@ -25,7 +25,7 @@
     },
     "httpConfig": {
       "description": "HTTP client configuration.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.HTTPConfig"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.HTTPConfig"
     },
     "message": {
       "description": "The message content of the SNS notification.",
@@ -50,7 +50,7 @@
     },
     "sigv4": {
       "description": "Configures AWS's Signature Verification 4 signing process to sign requests.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.Sigv4"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.Sigv4"
     },
     "subject": {
       "description": "Subject line when the message is delivered to email endpoints.",

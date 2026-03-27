@@ -10,7 +10,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/sh.gatekeeper.pkg.mutation.match.ApplyTo"
+        "$ref": "_definitions.json#/definitions/sh.gatekeeper.match.ApplyTo"
       }
     },
     "enforcementAction": {
@@ -23,7 +23,7 @@
     "generatedGVK": {
       "description": "GeneratedGVK specifies the GVK of the resources which the generator resource creates.",
       "default": {},
-      "$ref": "_definitions.json#/definitions/sh.gatekeeper.apis.expansion.v1beta1.GeneratedGVK"
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.expansion.v1beta1.GeneratedGVK"
     },
     "templateSource": {
       "description": "TemplateSource specifies the source field on the generator resource to use as the base for expanded resource. For Pod-creating generators, this is usually spec.template",

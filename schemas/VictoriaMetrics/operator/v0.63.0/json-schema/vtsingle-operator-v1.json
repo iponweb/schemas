@@ -21,11 +21,11 @@
       "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
     },
     "spec": {
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1.VTSingleSpec"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1.VTSingleSpec"
     },
     "status": {
       "default": {},
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1.VTSingleStatus"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1.VTSingleStatus"
     }
   },
   "additionalProperties": false,

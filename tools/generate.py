@@ -9,6 +9,7 @@ Output is written to schemas/ORG/REPO/VERSION/json-schema/ derived from the conf
 All pipeline parameters are read from config.yaml.
 """
 
+import json
 import os
 import shutil
 import subprocess
@@ -180,6 +181,75 @@ def collect_crds(sources_root: Path, crd_path: str, crd_dir: Path, index_yaml: P
     )
     print(f"  CRDs: copied {copied} files, {len(resources)} resource entries → {index_yaml}",
           flush=True)
+
+
+# ---------------------------------------------------------------------------
+# Schema comparison
+# ---------------------------------------------------------------------------
+
+def compare_schemas(source_dir: Path, live_dir: Path, index_yaml: Path) -> bool:
+    """
+    Compare root CRD definition names between source-generated and live schemas.
+
+    Loads _definitions.json from both dirs, then uses index.yaml to derive the
+    expected live definition name ({reversed-group}.{version}.{Kind}) for each
+    CRD and checks it exists in BOTH outputs.
+
+    Returns True if all root CRD names match, False if any discrepancy found.
+    """
+    src_defs_file  = source_dir / "_definitions.json"
+    live_defs_file = live_dir   / "_definitions.json"
+
+    if not src_defs_file.exists() or not live_defs_file.exists():
+        return True  # nothing to compare
+
+    with open(src_defs_file)  as f: src_defs  = set(json.load(f).get("definitions", {}).keys())
+    with open(live_defs_file) as f: live_defs = set(json.load(f).get("definitions", {}).keys())
+
+    if not index_yaml.exists():
+        return True
+
+    with open(index_yaml) as f:
+        idx = yaml.safe_load(f) or {}
+
+    resources = idx.get("resources", [])
+    if not resources:
+        return True
+
+    ok = True
+    mismatches = []
+    for r in resources:
+        group   = r.get("group", "")
+        version = r.get("version", "")
+        kind    = r.get("kind", "")
+        if not (group and version and kind):
+            continue
+
+        # Live kube-apiserver definition name: reversed group + version + Kind
+        rev_group = ".".join(reversed(group.split(".")))
+        expected = f"{rev_group}.{version}.{kind}"
+
+        in_src  = expected in src_defs
+        in_live = expected in live_defs
+
+        if not in_src or not in_live:
+            mismatches.append((expected, in_src, in_live))
+            ok = False
+
+    if mismatches:
+        print("\n  compare-schemas: MISMATCH — root CRD definition names differ:", flush=True)
+        print(f"  {'Definition name':<60}  {'source':>6}  {'live':>6}", flush=True)
+        print(f"  {'-'*60}  {'------':>6}  {'------':>6}", flush=True)
+        for name, in_src, in_live in sorted(mismatches):
+            src_mark  = "OK"   if in_src  else "MISS"
+            live_mark = "OK"   if in_live else "MISS"
+            print(f"  {name:<60}  {src_mark:>6}  {live_mark:>6}", flush=True)
+    else:
+        n = len(resources)
+        print(f"  compare-schemas: OK — all {n} root CRD names match between source and live.",
+              flush=True)
+
+    return ok
 
 
 # ---------------------------------------------------------------------------
@@ -355,14 +425,42 @@ def main():
         # -------------------------------------------------------------------
         envtest_bin_dir = Path(os.environ.get("ENVTEST_BIN_DIR", "/usr/local/kubebuilder/bin"))
         if crd_path_cfg and (envtest_bin_dir / "kube-apiserver").exists():
-            crd_dir   = REPO_ROOT / "schemas" / rel / "crd"
+            crd_dir    = REPO_ROOT / "schemas" / rel / "crd"
             index_yaml = REPO_ROOT / "schemas" / rel / "index.yaml"
+
+            # Step 12 — Live resource discovery (overwrites index.yaml)
             run([
                 "python3", TOOLS_DIR / "envtest.py",
                 "--crd-dir", crd_dir,
                 "--output",  index_yaml,
                 "--envtest-bin-dir", envtest_bin_dir,
             ])
+
+            # -------------------------------------------------------------------
+            # Step 13 — Live JSON Schema from /openapi/v2 (optional)
+            #           Fetches the OpenAPI spec served by the real API server
+            #           for the controller groups and converts it to JSON Schema.
+            #           Output is separate from the source-generated schemas so
+            #           both can be compared / used independently.
+            # -------------------------------------------------------------------
+            openapi_live_out = REPO_ROOT / "schemas" / rel / "openapi" / "openapi-live.json"
+            json_schema_live_dir = REPO_ROOT / "schemas" / rel / "json-schema-live"
+            run([
+                "python3", TOOLS_DIR / "envtest_openapi.py",
+                "--crd-dir",     crd_dir,
+                "--openapi-out", openapi_live_out,
+                "--output-dir",  json_schema_live_dir,
+                "--envtest-bin-dir", envtest_bin_dir,
+            ])
+
+            # -------------------------------------------------------------------
+            # Step 14 — Compare source vs live definition names
+            #           Checks that every root CRD kind appears under the same
+            #           definition key in both json-schema/ and json-schema-live/.
+            #           A MISS in source means host_conversion_rules is wrong.
+            # -------------------------------------------------------------------
+            index_yaml = REPO_ROOT / "schemas" / rel / "index.yaml"
+            compare_schemas(output_dir, json_schema_live_dir, index_yaml)
 
         print(f"\nDone. Schemas written to {output_dir}", flush=True)
         print(f"      OpenAPI written to  {openapi_out}", flush=True)

@@ -17,7 +17,7 @@
     "auth": {
       "description": "Auth configures how ESO authenticates with a Github instance.",
       "default": {},
-      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.generators.v1alpha1.GithubAuth"
+      "$ref": "_definitions.json#/definitions/io.external-secrets.generators.v1alpha1.GithubAuth"
     },
     "installID": {
       "type": [

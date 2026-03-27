@@ -6,15 +6,15 @@
   "properties": {
     "attachMetadata": {
       "description": "AttachMetadata defines additional metadata to the discovered targets. When the scrape object defines its own configuration, it takes precedence over the scrape class configuration.",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.AttachMetadata"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.AttachMetadata"
     },
     "authorization": {
       "description": "Authorization with http header Authorization",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.Authorization"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.Authorization"
     },
     "basicAuth": {
       "description": "BasicAuth allow an endpoint to authenticate over basic authentication",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.BasicAuth"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.BasicAuth"
     },
     "bearerTokenFile": {
       "description": "File to read bearer token for scraping targets.",
@@ -41,7 +41,7 @@
         "null"
       ],
       "items": {
-        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.RelabelConfig"
+        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.RelabelConfig"
       }
     },
     "name": {
@@ -54,7 +54,7 @@
     },
     "oauth2": {
       "description": "OAuth2 defines auth configuration",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.OAuth2"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.OAuth2"
     },
     "relabelConfigs": {
       "description": "RelabelConfigs to apply to samples during service discovery.",
@@ -63,12 +63,12 @@
         "null"
       ],
       "items": {
-        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.RelabelConfig"
+        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.RelabelConfig"
       }
     },
     "tlsConfig": {
       "description": "TLSConfig configuration to use when scraping the endpoint",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.TLSConfig"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.TLSConfig"
     }
   },
   "additionalProperties": false,

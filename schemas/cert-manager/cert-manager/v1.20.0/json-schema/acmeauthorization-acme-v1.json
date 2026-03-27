@@ -13,7 +13,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/io.cert-manager.pkg.apis.acme.v1.ACMEChallenge"
+        "$ref": "_definitions.json#/definitions/io.cert-manager.acme.v1.ACMEChallenge"
       },
       "x-kubernetes-list-type": "atomic"
     },

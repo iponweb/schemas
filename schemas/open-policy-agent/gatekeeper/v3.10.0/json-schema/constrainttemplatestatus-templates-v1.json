@@ -9,7 +9,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/sh.gatekeeper.frameworks.constraint.pkg.apis.templates.v1.ByPodStatus"
+        "$ref": "_definitions.json#/definitions/sh.gatekeeper.templates.v1.ByPodStatus"
       }
     },
     "created": {

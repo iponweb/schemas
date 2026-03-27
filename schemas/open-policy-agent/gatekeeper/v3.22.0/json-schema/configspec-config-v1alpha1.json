@@ -10,23 +10,23 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/sh.gatekeeper.apis.config.v1alpha1.MatchEntry"
+        "$ref": "_definitions.json#/definitions/sh.gatekeeper.config.v1alpha1.MatchEntry"
       }
     },
     "readiness": {
       "description": "Configuration for readiness tracker",
       "default": {},
-      "$ref": "_definitions.json#/definitions/sh.gatekeeper.apis.config.v1alpha1.ReadinessSpec"
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.config.v1alpha1.ReadinessSpec"
     },
     "sync": {
       "description": "Configuration for syncing k8s objects",
       "default": {},
-      "$ref": "_definitions.json#/definitions/sh.gatekeeper.apis.config.v1alpha1.Sync"
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.config.v1alpha1.Sync"
     },
     "validation": {
       "description": "Configuration for validation",
       "default": {},
-      "$ref": "_definitions.json#/definitions/sh.gatekeeper.apis.config.v1alpha1.Validation"
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.config.v1alpha1.Validation"
     }
   },
   "additionalProperties": false,

@@ -14,11 +14,11 @@
     },
     "authorization": {
       "description": "authorization defines the header configuration to authenticate against the Nomad API. Cannot be set at the same time as `oauth2`.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.SafeAuthorization"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.SafeAuthorization"
     },
     "basicAuth": {
       "description": "basicAuth defines information to use on every scrape request.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.BasicAuth"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.BasicAuth"
     },
     "enableHTTP2": {
       "description": "enableHTTP2 defines whether to enable HTTP2.",
@@ -50,7 +50,7 @@
     },
     "oauth2": {
       "description": "oauth2 defines the configuration to use on every scrape request.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.OAuth2"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.OAuth2"
     },
     "proxyConnectHeader": {
       "description": "proxyConnectHeader optionally specifies headers to send to proxies during CONNECT requests.\n\nIt requires Prometheus >= v2.43.0, Alertmanager >= v0.25.0 or Thanos >= v0.32.0.",
@@ -114,7 +114,7 @@
     },
     "tlsConfig": {
       "description": "tlsConfig defines the TLS configuration to connect to the Nomad API.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.SafeTLSConfig"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.SafeTLSConfig"
     }
   },
   "additionalProperties": false,

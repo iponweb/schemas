@@ -10,7 +10,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.WorkloadBinding"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.WorkloadBinding"
       },
       "x-kubernetes-list-map-keys": [
         "group",

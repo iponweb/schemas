@@ -8,7 +8,7 @@
   "properties": {
     "attachMetadata": {
       "description": "Attaches node metadata to discovered targets. Requires Prometheus v2.37.0 and above.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.AttachMetadata"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.AttachMetadata"
     },
     "endpoints": {
       "description": "A list of endpoints allowed as part of this ServiceMonitor.",
@@ -18,7 +18,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.Endpoint"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.Endpoint"
       }
     },
     "jobLabel": {
@@ -55,7 +55,7 @@
     "namespaceSelector": {
       "description": "Selector to select which namespaces the Kubernetes Endpoints objects are discovered from.",
       "default": {},
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.NamespaceSelector"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.NamespaceSelector"
     },
     "podTargetLabels": {
       "description": "PodTargetLabels transfers labels on the Kubernetes `Pod` onto the created metrics.",

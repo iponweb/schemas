@@ -3,7 +3,7 @@
   "type": "object",
   "properties": {
     "http_config": {
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.HTTPConfig"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.HTTPConfig"
     },
     "send_resolved": {
       "description": "SendResolved controls notify about resolved alerts.",

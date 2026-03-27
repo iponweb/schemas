@@ -8,7 +8,7 @@
   "properties": {
     "auth": {
       "description": "Auth specifies a authorization protocol. Only one protocol may be set.",
-      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.generators.v1alpha1.AuthorizationProtocol"
+      "$ref": "_definitions.json#/definitions/io.external-secrets.generators.v1alpha1.AuthorizationProtocol"
     },
     "body": {
       "description": "Body",
@@ -27,7 +27,7 @@
     },
     "caProvider": {
       "description": "The provider for the CA bundle to use to validate webhook server certificate.",
-      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.generators.v1alpha1.WebhookCAProvider"
+      "$ref": "_definitions.json#/definitions/io.external-secrets.generators.v1alpha1.WebhookCAProvider"
     },
     "headers": {
       "description": "Headers",
@@ -53,7 +53,7 @@
     "result": {
       "description": "Result formatting",
       "default": {},
-      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.generators.v1alpha1.WebhookResult"
+      "$ref": "_definitions.json#/definitions/io.external-secrets.generators.v1alpha1.WebhookResult"
     },
     "secrets": {
       "description": "Secrets to fill in templates These secrets will be passed to the templating function as key value pairs under the given name",
@@ -63,7 +63,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/io.external-secrets.apis.generators.v1alpha1.WebhookSecret"
+        "$ref": "_definitions.json#/definitions/io.external-secrets.generators.v1alpha1.WebhookSecret"
       }
     },
     "timeout": {

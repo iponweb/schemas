@@ -13,7 +13,7 @@
     },
     "http_config": {
       "description": "HTTP client configuration. You must use this configuration to supply the bot token as part of the HTTP `Authorization` header.",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.HTTPConfig"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.HTTPConfig"
     },
     "message": {
       "description": "The message body template",

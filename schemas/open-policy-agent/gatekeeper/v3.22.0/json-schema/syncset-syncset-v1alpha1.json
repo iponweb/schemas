@@ -22,7 +22,7 @@
     },
     "spec": {
       "default": {},
-      "$ref": "_definitions.json#/definitions/sh.gatekeeper.apis.syncset.v1alpha1.SyncSetSpec"
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.syncset.v1alpha1.SyncSetSpec"
     }
   },
   "additionalProperties": false,

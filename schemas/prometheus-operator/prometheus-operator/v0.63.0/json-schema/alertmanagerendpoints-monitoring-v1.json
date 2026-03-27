@@ -16,11 +16,11 @@
     },
     "authorization": {
       "description": "Authorization section for this alertmanager endpoint",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.SafeAuthorization"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.SafeAuthorization"
     },
     "basicAuth": {
       "description": "BasicAuth allow an endpoint to authenticate over basic authentication",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.BasicAuth"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.BasicAuth"
     },
     "bearerTokenFile": {
       "description": "BearerTokenFile to read from filesystem to use when authenticating to Alertmanager.",
@@ -79,7 +79,7 @@
     },
     "tlsConfig": {
       "description": "TLS Config to use for alertmanager connection.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.TLSConfig"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.TLSConfig"
     }
   },
   "additionalProperties": false,

@@ -7,7 +7,7 @@
   ],
   "properties": {
     "confirm": {
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.SlackConfirmationField"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.SlackConfirmationField"
     },
     "name": {
       "type": [

@@ -10,7 +10,7 @@
     "clientId": {
       "description": "The secret or configmap containing the OAuth2 client id",
       "default": {},
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.SecretOrConfigMap"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.SecretOrConfigMap"
     },
     "clientSecret": {
       "description": "The secret containing the OAuth2 client secret",

@@ -64,7 +64,7 @@
     },
     "tls_config": {
       "description": "TLSConfig defines tracing TLS config",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.TLSClientConfig"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.TLSClientConfig"
     }
   },
   "additionalProperties": false,

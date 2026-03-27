@@ -5,7 +5,7 @@
     "namespaceSelector": {
       "description": "Select k8s objects by namespace.",
       "default": {},
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.NamespaceSelector"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.NamespaceSelector"
     },
     "relabelingConfigs": {
       "description": "RelabelConfigs to apply to samples during service discovery.",
@@ -14,7 +14,7 @@
         "null"
       ],
       "items": {
-        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.RelabelConfig"
+        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.RelabelConfig"
       }
     },
     "role": {

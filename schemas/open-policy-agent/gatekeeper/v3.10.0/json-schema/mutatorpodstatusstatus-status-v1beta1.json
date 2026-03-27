@@ -15,7 +15,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/sh.gatekeeper.apis.status.v1beta1.MutatorError"
+        "$ref": "_definitions.json#/definitions/sh.gatekeeper.status.v1beta1.MutatorError"
       }
     },
     "id": {

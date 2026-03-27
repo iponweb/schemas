@@ -7,11 +7,11 @@
   "properties": {
     "basicAuth": {
       "description": "Basic auth defines basic authorization configuration",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.BasicAuth"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.BasicAuth"
     },
     "bearer": {
       "description": "BearerAuth defines authorization with Authorization: Bearer header",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.BearerAuth"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.BearerAuth"
     },
     "datasourceURL": {
       "description": "DatasourceURL defines remote write url for write requests provided endpoint must serve /api/v1/import path vmanomaly joins datasourceURL + \"/api/v1/import\"",
@@ -31,7 +31,7 @@
     "metricFormat": {
       "description": "Metrics to save the output (in metric names or labels)",
       "default": {},
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1.VMAnomalyVMWriterMetricFormatSpec"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1.VMAnomalyVMWriterMetricFormatSpec"
     },
     "tenantID": {
       "description": "TenantID defines for VictoriaMetrics Cluster version only, tenants are identified by accountID, accountID:projectID or multitenant.",
@@ -49,7 +49,7 @@
     },
     "tlsConfig": {
       "description": "TLSConfig defines tls connection configuration",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.TLSConfig"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.TLSConfig"
     }
   },
   "additionalProperties": false,

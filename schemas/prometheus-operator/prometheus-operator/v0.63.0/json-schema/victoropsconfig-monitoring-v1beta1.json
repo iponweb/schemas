@@ -4,7 +4,7 @@
   "properties": {
     "apiKey": {
       "description": "The secret's key that contains the API key to use when talking to the VictorOps API. The secret needs to be in the same namespace as the AlertmanagerConfig object and accessible by the Prometheus Operator.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.SecretKeySelector"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1beta1.SecretKeySelector"
     },
     "apiUrl": {
       "description": "The VictorOps API URL.",
@@ -21,7 +21,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.KeyValue"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1beta1.KeyValue"
       }
     },
     "entityDisplayName": {
@@ -33,7 +33,7 @@
     },
     "httpConfig": {
       "description": "The HTTP client's configuration.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.HTTPConfig"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1beta1.HTTPConfig"
     },
     "messageType": {
       "description": "Describes the behavior of the alert (CRITICAL, WARNING, INFO).",

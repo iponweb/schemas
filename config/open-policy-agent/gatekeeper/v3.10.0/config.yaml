@@ -43,6 +43,7 @@ crd_names:
   - "github.com/open-policy-agent/gatekeeper/apis/status/v1beta1.ConstraintPodStatus"
   - "github.com/open-policy-agent/gatekeeper/apis/status/v1beta1.ConstraintTemplatePodStatus"
   - "github.com/open-policy-agent/gatekeeper/apis/status/v1beta1.MutatorPodStatus"
+  - "github.com/open-policy-agent/frameworks/constraint/pkg/apis/templates/v1alpha1.ConstraintTemplate"
   - "github.com/open-policy-agent/frameworks/constraint/pkg/apis/templates/v1.ConstraintTemplate"
   - "github.com/open-policy-agent/frameworks/constraint/pkg/apis/templates/v1beta1.ConstraintTemplate"
   - "github.com/open-policy-agent/gatekeeper/apis/expansion/v1alpha1.ExpansionTemplate"
@@ -51,5 +52,11 @@ crd_names:
 crd_path: "charts/gatekeeper/crds"
 
 host_conversion_rules:
+  "github.com/open-policy-agent/gatekeeper/apis/config": "config.gatekeeper.sh"
+  "github.com/open-policy-agent/gatekeeper/apis/expansion": "expansion.gatekeeper.sh"
+  "github.com/open-policy-agent/gatekeeper/apis/mutations": "mutations.gatekeeper.sh"
+  "github.com/open-policy-agent/gatekeeper/apis/status": "status.gatekeeper.sh"
+  "github.com/open-policy-agent/frameworks/constraint/pkg/apis/templates": "templates.gatekeeper.sh"
+  "github.com/open-policy-agent/frameworks/constraint/pkg/apis/externaldata": "externaldata.gatekeeper.sh"
   "github.com/open-policy-agent/gatekeeper": "gatekeeper.sh"
   "github.com/open-policy-agent/frameworks": "frameworks.gatekeeper.sh"

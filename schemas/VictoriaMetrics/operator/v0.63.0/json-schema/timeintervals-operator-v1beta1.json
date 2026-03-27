@@ -21,7 +21,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.TimeInterval"
+        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.TimeInterval"
       }
     }
   },

@@ -1,0 +1,481 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Kubernetes",
+    "version": "1.32"
+  },
+  "paths": {},
+  "definitions": {
+    "io.x-k8s.csi.secrets-store.v1.SecretProviderClass": {
+      "description": "SecretProviderClass is the Schema for the secretproviderclasses API",
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+          "type": "string"
+        },
+        "kind": {
+          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+          "type": "string"
+        },
+        "metadata": {
+          "description": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+        },
+        "spec": {
+          "description": "SecretProviderClassSpec defines the desired state of SecretProviderClass",
+          "type": "object",
+          "properties": {
+            "parameters": {
+              "description": "Configuration for specific provider",
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            },
+            "provider": {
+              "description": "Configuration for provider name",
+              "type": "string"
+            },
+            "secretObjects": {
+              "type": "array",
+              "items": {
+                "description": "SecretObject defines the desired state of synced K8s secret objects",
+                "type": "object",
+                "properties": {
+                  "annotations": {
+                    "description": "annotations of k8s secret object",
+                    "type": "object",
+                    "additionalProperties": {
+                      "type": "string"
+                    }
+                  },
+                  "data": {
+                    "type": "array",
+                    "items": {
+                      "description": "SecretObjectData defines the desired state of synced K8s secret object data",
+                      "type": "object",
+                      "properties": {
+                        "key": {
+                          "description": "data field to populate",
+                          "type": "string"
+                        },
+                        "objectName": {
+                          "description": "name of the object to sync",
+                          "type": "string"
+                        }
+                      }
+                    }
+                  },
+                  "labels": {
+                    "description": "labels of K8s secret object",
+                    "type": "object",
+                    "additionalProperties": {
+                      "type": "string"
+                    }
+                  },
+                  "secretName": {
+                    "description": "name of the K8s secret object",
+                    "type": "string"
+                  },
+                  "type": {
+                    "description": "type of K8s secret object",
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "status": {
+          "description": "SecretProviderClassStatus defines the observed state of SecretProviderClass",
+          "type": "object"
+        }
+      },
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "secrets-store.csi.x-k8s.io",
+          "kind": "SecretProviderClass",
+          "version": "v1"
+        }
+      ],
+      "x-kubernetes-selectable-fields": []
+    },
+    "io.x-k8s.csi.secrets-store.v1.SecretProviderClassList": {
+      "description": "SecretProviderClassList is a list of SecretProviderClass",
+      "type": "object",
+      "required": [
+        "items"
+      ],
+      "properties": {
+        "apiVersion": {
+          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+          "type": "string"
+        },
+        "items": {
+          "description": "List of secretproviderclasses. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/io.x-k8s.csi.secrets-store.v1.SecretProviderClass"
+          }
+        },
+        "kind": {
+          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+          "type": "string"
+        },
+        "metadata": {
+          "description": "Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta"
+        }
+      },
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "secrets-store.csi.x-k8s.io",
+          "kind": "SecretProviderClassList",
+          "version": "v1"
+        }
+      ],
+      "x-kubernetes-selectable-fields": []
+    },
+    "io.x-k8s.csi.secrets-store.v1.SecretProviderClassPodStatus": {
+      "description": "SecretProviderClassPodStatus is the Schema for the secretproviderclassespodstatus API",
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+          "type": "string"
+        },
+        "kind": {
+          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+          "type": "string"
+        },
+        "metadata": {
+          "description": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+        },
+        "status": {
+          "description": "SecretProviderClassPodStatusStatus defines the observed state of SecretProviderClassPodStatus",
+          "type": "object",
+          "properties": {
+            "mounted": {
+              "type": "boolean"
+            },
+            "objects": {
+              "type": "array",
+              "items": {
+                "description": "SecretProviderClassObject defines the object fetched from external secrets store",
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "version": {
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "podName": {
+              "type": "string"
+            },
+            "secretProviderClassName": {
+              "type": "string"
+            },
+            "targetPath": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "secrets-store.csi.x-k8s.io",
+          "kind": "SecretProviderClassPodStatus",
+          "version": "v1"
+        }
+      ],
+      "x-kubernetes-selectable-fields": []
+    },
+    "io.x-k8s.csi.secrets-store.v1.SecretProviderClassPodStatusList": {
+      "description": "SecretProviderClassPodStatusList is a list of SecretProviderClassPodStatus",
+      "type": "object",
+      "required": [
+        "items"
+      ],
+      "properties": {
+        "apiVersion": {
+          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+          "type": "string"
+        },
+        "items": {
+          "description": "List of secretproviderclasspodstatuses. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/io.x-k8s.csi.secrets-store.v1.SecretProviderClassPodStatus"
+          }
+        },
+        "kind": {
+          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+          "type": "string"
+        },
+        "metadata": {
+          "description": "Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta"
+        }
+      },
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "secrets-store.csi.x-k8s.io",
+          "kind": "SecretProviderClassPodStatusList",
+          "version": "v1"
+        }
+      ],
+      "x-kubernetes-selectable-fields": []
+    },
+    "io.x-k8s.csi.secrets-store.v1alpha1.SecretProviderClass": {
+      "description": "SecretProviderClass is the Schema for the secretproviderclasses API",
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+          "type": "string"
+        },
+        "kind": {
+          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+          "type": "string"
+        },
+        "metadata": {
+          "description": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+        },
+        "spec": {
+          "description": "SecretProviderClassSpec defines the desired state of SecretProviderClass",
+          "type": "object",
+          "properties": {
+            "parameters": {
+              "description": "Configuration for specific provider",
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              }
+            },
+            "provider": {
+              "description": "Configuration for provider name",
+              "type": "string"
+            },
+            "secretObjects": {
+              "type": "array",
+              "items": {
+                "description": "SecretObject defines the desired state of synced K8s secret objects",
+                "type": "object",
+                "properties": {
+                  "annotations": {
+                    "description": "annotations of k8s secret object",
+                    "type": "object",
+                    "additionalProperties": {
+                      "type": "string"
+                    }
+                  },
+                  "data": {
+                    "type": "array",
+                    "items": {
+                      "description": "SecretObjectData defines the desired state of synced K8s secret object data",
+                      "type": "object",
+                      "properties": {
+                        "key": {
+                          "description": "data field to populate",
+                          "type": "string"
+                        },
+                        "objectName": {
+                          "description": "name of the object to sync",
+                          "type": "string"
+                        }
+                      }
+                    }
+                  },
+                  "labels": {
+                    "description": "labels of K8s secret object",
+                    "type": "object",
+                    "additionalProperties": {
+                      "type": "string"
+                    }
+                  },
+                  "secretName": {
+                    "description": "name of the K8s secret object",
+                    "type": "string"
+                  },
+                  "type": {
+                    "description": "type of K8s secret object",
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "status": {
+          "description": "SecretProviderClassStatus defines the observed state of SecretProviderClass",
+          "type": "object",
+          "properties": {
+            "byPod": {
+              "type": "array",
+              "items": {
+                "description": "ByPodStatus defines the state of SecretProviderClass as seen by\nan individual controller",
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "description": "id of the pod that wrote the status",
+                    "type": "string"
+                  },
+                  "namespace": {
+                    "description": "namespace of the pod that wrote the status",
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "secrets-store.csi.x-k8s.io",
+          "kind": "SecretProviderClass",
+          "version": "v1alpha1"
+        }
+      ],
+      "x-kubernetes-selectable-fields": []
+    },
+    "io.x-k8s.csi.secrets-store.v1alpha1.SecretProviderClassList": {
+      "description": "SecretProviderClassList is a list of SecretProviderClass",
+      "type": "object",
+      "required": [
+        "items"
+      ],
+      "properties": {
+        "apiVersion": {
+          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+          "type": "string"
+        },
+        "items": {
+          "description": "List of secretproviderclasses. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/io.x-k8s.csi.secrets-store.v1alpha1.SecretProviderClass"
+          }
+        },
+        "kind": {
+          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+          "type": "string"
+        },
+        "metadata": {
+          "description": "Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta"
+        }
+      },
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "secrets-store.csi.x-k8s.io",
+          "kind": "SecretProviderClassList",
+          "version": "v1alpha1"
+        }
+      ],
+      "x-kubernetes-selectable-fields": []
+    },
+    "io.x-k8s.csi.secrets-store.v1alpha1.SecretProviderClassPodStatus": {
+      "description": "SecretProviderClassPodStatus is the Schema for the secretproviderclassespodstatus API",
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+          "type": "string"
+        },
+        "kind": {
+          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+          "type": "string"
+        },
+        "metadata": {
+          "description": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+        },
+        "status": {
+          "description": "SecretProviderClassPodStatusStatus defines the observed state of SecretProviderClassPodStatus",
+          "type": "object",
+          "properties": {
+            "mounted": {
+              "type": "boolean"
+            },
+            "objects": {
+              "type": "array",
+              "items": {
+                "description": "SecretProviderClassObject defines the object fetched from external secrets store",
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "version": {
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "podName": {
+              "type": "string"
+            },
+            "secretProviderClassName": {
+              "type": "string"
+            },
+            "targetPath": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "secrets-store.csi.x-k8s.io",
+          "kind": "SecretProviderClassPodStatus",
+          "version": "v1alpha1"
+        }
+      ],
+      "x-kubernetes-selectable-fields": []
+    },
+    "io.x-k8s.csi.secrets-store.v1alpha1.SecretProviderClassPodStatusList": {
+      "description": "SecretProviderClassPodStatusList is a list of SecretProviderClassPodStatus",
+      "type": "object",
+      "required": [
+        "items"
+      ],
+      "properties": {
+        "apiVersion": {
+          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+          "type": "string"
+        },
+        "items": {
+          "description": "List of secretproviderclasspodstatuses. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/io.x-k8s.csi.secrets-store.v1alpha1.SecretProviderClassPodStatus"
+          }
+        },
+        "kind": {
+          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+          "type": "string"
+        },
+        "metadata": {
+          "description": "Standard list metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ListMeta"
+        }
+      },
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "secrets-store.csi.x-k8s.io",
+          "kind": "SecretProviderClassPodStatusList",
+          "version": "v1alpha1"
+        }
+      ],
+      "x-kubernetes-selectable-fields": []
+    }
+  }
+}

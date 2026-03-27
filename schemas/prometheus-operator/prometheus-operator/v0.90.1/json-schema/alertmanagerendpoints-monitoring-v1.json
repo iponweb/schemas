@@ -14,7 +14,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.RelabelConfig"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.RelabelConfig"
       }
     },
     "apiVersion": {
@@ -26,11 +26,11 @@
     },
     "authorization": {
       "description": "authorization section for Alertmanager.\n\nCannot be set at the same time as `basicAuth`, `bearerTokenFile` or `sigv4`.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.SafeAuthorization"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.SafeAuthorization"
     },
     "basicAuth": {
       "description": "basicAuth configuration for Alertmanager.\n\nCannot be set at the same time as `bearerTokenFile`, `authorization` or `sigv4`.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.BasicAuth"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.BasicAuth"
     },
     "bearerTokenFile": {
       "description": "bearerTokenFile defines the file to read bearer token for Alertmanager.\n\nCannot be set at the same time as `basicAuth`, `authorization`, or `sigv4`.\n\nDeprecated: this will be removed in a future release. Prefer using `authorization`.",
@@ -118,7 +118,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.RelabelConfig"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.RelabelConfig"
       }
     },
     "scheme": {
@@ -130,7 +130,7 @@
     },
     "sigv4": {
       "description": "sigv4 defines AWS's Signature Verification 4 for the URL.\n\nIt requires Prometheus >= v2.48.0.\n\nCannot be set at the same time as `basicAuth`, `bearerTokenFile` or `authorization`.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.Sigv4"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.Sigv4"
     },
     "timeout": {
       "description": "timeout defines a per-target Alertmanager timeout when pushing alerts.",
@@ -141,7 +141,7 @@
     },
     "tlsConfig": {
       "description": "tlsConfig to use for Alertmanager.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.TLSConfig"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.TLSConfig"
     }
   },
   "additionalProperties": false,

@@ -12,7 +12,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.DiscordConfig"
+        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.DiscordConfig"
       }
     },
     "email_configs": {
@@ -23,7 +23,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.EmailConfig"
+        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.EmailConfig"
       }
     },
     "incidentio_configs": {
@@ -33,7 +33,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.IncidentIOConfig"
+        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.IncidentIOConfig"
       }
     },
     "jira_configs": {
@@ -43,7 +43,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.JiraConfig"
+        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.JiraConfig"
       }
     },
     "msteams_configs": {
@@ -53,7 +53,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.MSTeamsConfig"
+        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.MSTeamsConfig"
       }
     },
     "msteamsv2_configs": {
@@ -63,7 +63,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.MSTeamsV2Config"
+        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.MSTeamsV2Config"
       }
     },
     "name": {
@@ -82,7 +82,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.OpsGenieConfig"
+        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.OpsGenieConfig"
       }
     },
     "pagerduty_configs": {
@@ -93,7 +93,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.PagerDutyConfig"
+        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.PagerDutyConfig"
       }
     },
     "pushover_configs": {
@@ -104,7 +104,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.PushoverConfig"
+        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.PushoverConfig"
       }
     },
     "rocketchat_configs": {
@@ -114,7 +114,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.RocketchatConfig"
+        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.RocketchatConfig"
       }
     },
     "slack_configs": {
@@ -125,7 +125,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.SlackConfig"
+        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.SlackConfig"
       }
     },
     "sns_configs": {
@@ -135,7 +135,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.SnsConfig"
+        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.SnsConfig"
       }
     },
     "telegram_configs": {
@@ -145,7 +145,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.TelegramConfig"
+        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.TelegramConfig"
       }
     },
     "victorops_configs": {
@@ -156,7 +156,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.VictorOpsConfig"
+        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.VictorOpsConfig"
       }
     },
     "webex_configs": {
@@ -166,7 +166,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.WebexConfig"
+        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.WebexConfig"
       }
     },
     "webhook_configs": {
@@ -177,7 +177,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.WebhookConfig"
+        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.WebhookConfig"
       }
     },
     "wechat_configs": {
@@ -188,7 +188,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.WeChatConfig"
+        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.WeChatConfig"
       }
     }
   },

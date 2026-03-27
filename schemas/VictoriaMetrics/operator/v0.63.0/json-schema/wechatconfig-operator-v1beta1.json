@@ -28,7 +28,7 @@
     },
     "http_config": {
       "description": "HTTP client configuration.",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.HTTPConfig"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.HTTPConfig"
     },
     "message": {
       "description": "API request data as defined by the WeChat API.",

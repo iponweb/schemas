@@ -4,11 +4,11 @@
   "properties": {
     "aws": {
       "description": "AWS describes params specific to AWS cloud",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.AWS"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.AWS"
     },
     "basicAuth": {
       "description": "BasicAuth allow an endpoint to authenticate over basic authentication",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.BasicAuth"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.BasicAuth"
     },
     "bearerTokenSecret": {
       "description": "Optional bearer auth token to use for -remoteWrite.url",
@@ -44,7 +44,7 @@
     },
     "oauth2": {
       "description": "OAuth2 defines auth configuration",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.OAuth2"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.OAuth2"
     },
     "proxyURL": {
       "description": "ProxyURL for -remoteWrite.url. Supported proxies: http, https, socks5. Example: socks5://proxy:1234",
@@ -62,7 +62,7 @@
     },
     "tlsConfig": {
       "description": "TLSConfig describes tls configuration for remote write target",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.TLSConfig"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.TLSConfig"
     }
   },
   "additionalProperties": false,

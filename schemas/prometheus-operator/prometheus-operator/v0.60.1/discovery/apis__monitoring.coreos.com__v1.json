@@ -4,29 +4,6 @@
   "groupVersion": "monitoring.coreos.com/v1",
   "resources": [
     {
-      "name": "thanosrulers",
-      "singularName": "thanosruler",
-      "namespaced": true,
-      "kind": "ThanosRuler",
-      "verbs": [
-        "delete",
-        "deletecollection",
-        "get",
-        "list",
-        "patch",
-        "create",
-        "update",
-        "watch"
-      ],
-      "shortNames": [
-        "ruler"
-      ],
-      "categories": [
-        "prometheus-operator"
-      ],
-      "storageVersionHash": "YBxpg/kA6UI="
-    },
-    {
       "name": "alertmanagers",
       "singularName": "alertmanager",
       "namespaced": true,
@@ -174,6 +151,29 @@
         "prometheus-operator"
       ],
       "storageVersionHash": "JLhPcfa+5xE="
+    },
+    {
+      "name": "thanosrulers",
+      "singularName": "thanosruler",
+      "namespaced": true,
+      "kind": "ThanosRuler",
+      "verbs": [
+        "delete",
+        "deletecollection",
+        "get",
+        "list",
+        "patch",
+        "create",
+        "update",
+        "watch"
+      ],
+      "shortNames": [
+        "ruler"
+      ],
+      "categories": [
+        "prometheus-operator"
+      ],
+      "storageVersionHash": "YBxpg/kA6UI="
     }
   ]
 }

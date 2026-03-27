@@ -8,11 +8,11 @@
   "properties": {
     "passwordSecret": {
       "default": {},
-      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.meta.v1.SecretKeySelector"
+      "$ref": "_definitions.json#/definitions/io.external-secrets.v1.SecretKeySelector"
     },
     "usernameSecret": {
       "default": {},
-      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.meta.v1.SecretKeySelector"
+      "$ref": "_definitions.json#/definitions/io.external-secrets.v1.SecretKeySelector"
     }
   },
   "additionalProperties": false,

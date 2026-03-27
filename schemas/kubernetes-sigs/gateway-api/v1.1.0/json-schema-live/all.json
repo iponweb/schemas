@@ -1,0 +1,58 @@
+{
+  "oneOf": [
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1.GRPCRoute"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1.GRPCRouteList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1.Gateway"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1.GatewayClass"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1.GatewayClassList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1.GatewayList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1.HTTPRoute"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1.HTTPRouteList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1beta1.Gateway"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1beta1.GatewayClass"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1beta1.GatewayClassList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1beta1.GatewayList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1beta1.HTTPRoute"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1beta1.HTTPRouteList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1beta1.ReferenceGrant"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1beta1.ReferenceGrantList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.util.intstr.IntOrString"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.api.resource.Quantity"
+    }
+  ]
+}

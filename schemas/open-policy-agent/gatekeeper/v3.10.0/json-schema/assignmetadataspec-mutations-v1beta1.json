@@ -10,11 +10,11 @@
     },
     "match": {
       "default": {},
-      "$ref": "_definitions.json#/definitions/sh.gatekeeper.pkg.mutation.match.Match"
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.match.Match"
     },
     "parameters": {
       "default": {},
-      "$ref": "_definitions.json#/definitions/sh.gatekeeper.apis.mutations.v1beta1.MetadataParameters"
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.mutations.v1beta1.MetadataParameters"
     }
   },
   "additionalProperties": false,

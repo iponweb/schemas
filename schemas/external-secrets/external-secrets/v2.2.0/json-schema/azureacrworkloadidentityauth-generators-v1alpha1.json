@@ -4,7 +4,7 @@
   "properties": {
     "serviceAccountRef": {
       "description": "ServiceAccountRef specified the service account that should be used when authenticating with WorkloadIdentity.",
-      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.meta.v1.ServiceAccountSelector"
+      "$ref": "_definitions.json#/definitions/io.external-secrets.v1.ServiceAccountSelector"
     }
   },
   "additionalProperties": false,

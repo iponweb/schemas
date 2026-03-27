@@ -9,7 +9,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/sh.gatekeeper.apis.config.v1alpha1.Trace"
+        "$ref": "_definitions.json#/definitions/sh.gatekeeper.config.v1alpha1.Trace"
       }
     }
   },

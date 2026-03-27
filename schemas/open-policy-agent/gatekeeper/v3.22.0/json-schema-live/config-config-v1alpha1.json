@@ -1,0 +1,304 @@
+{
+  "description": "Config is the Schema for the configs API.",
+  "type": "object",
+  "properties": {
+    "apiVersion": {
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "config.gatekeeper.sh/v1alpha1"
+      ]
+    },
+    "kind": {
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "Config"
+      ]
+    },
+    "metadata": {
+      "description": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+    },
+    "spec": {
+      "description": "ConfigSpec defines the desired state of Config.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "match": {
+          "description": "Configuration for namespace exclusion",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "excludedNamespaces": {
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "description": "A string that supports globbing at its front and end. Ex: \"kube-*\" will match \"kube-system\" or\n\"kube-public\", \"*-system\" will match \"kube-system\" or \"gatekeeper-system\", \"*system*\" will\nmatch \"system-kube\" or \"kube-system\".  The asterisk is required for wildcard matching.",
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "pattern": "^\\*?[-:a-z0-9]*\\*?$"
+                }
+              },
+              "processes": {
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "readiness": {
+          "description": "Configuration for readiness tracker",
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "statsEnabled": {
+              "type": [
+                "boolean",
+                "null"
+              ]
+            }
+          },
+          "additionalProperties": false
+        },
+        "sync": {
+          "description": "Configuration for syncing k8s objects",
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "syncOnly": {
+              "description": "If non-empty, only entries on this list will be replicated into OPA",
+              "type": [
+                "array",
+                "null"
+              ],
+              "items": {
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "properties": {
+                  "group": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "kind": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "version": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          },
+          "additionalProperties": false
+        },
+        "validation": {
+          "description": "Configuration for validation",
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "traces": {
+              "description": "List of requests to trace. Both \"user\" and \"kinds\" must be specified",
+              "type": [
+                "array",
+                "null"
+              ],
+              "items": {
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "properties": {
+                  "dump": {
+                    "description": "Also dump the state of OPA with the trace. Set to `All` to dump everything.",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "kind": {
+                    "description": "Only trace requests of the following GroupVersionKind",
+                    "type": [
+                      "object",
+                      "null"
+                    ],
+                    "properties": {
+                      "group": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "kind": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "version": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    },
+                    "additionalProperties": false
+                  },
+                  "user": {
+                    "description": "Only trace requests from the specified user",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "status": {
+      "description": "ConfigStatus defines the observed state of Config.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "byPod": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "configUID": {
+                "description": "UID is a type that holds unique ID values, including UUIDs.  Because we\ndon't ONLY use UUIDs, this is an alias to string.  Being a type captures\nintent and helps make sure that UIDs and names do not get conflated.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "errors": {
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "required": [
+                    "message"
+                  ],
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "type": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              },
+              "id": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "observedGeneration": {
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int64"
+              },
+              "operations": {
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "config.gatekeeper.sh",
+      "kind": "Config",
+      "version": "v1alpha1"
+    }
+  ],
+  "x-kubernetes-selectable-fields": [],
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

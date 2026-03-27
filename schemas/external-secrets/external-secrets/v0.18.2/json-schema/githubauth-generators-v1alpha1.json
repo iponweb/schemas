@@ -6,7 +6,7 @@
   "properties": {
     "privateKey": {
       "default": {},
-      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.generators.v1alpha1.GithubSecretRef"
+      "$ref": "_definitions.json#/definitions/io.external-secrets.generators.v1alpha1.GithubSecretRef"
     }
   },
   "additionalProperties": false,

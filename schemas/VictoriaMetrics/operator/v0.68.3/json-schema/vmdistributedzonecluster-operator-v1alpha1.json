@@ -11,7 +11,7 @@
     },
     "spec": {
       "description": "Spec defines the desired state of a new or update spec for existing VMCluster.",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.VMClusterSpec"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.VMClusterSpec"
     }
   },
   "additionalProperties": false,

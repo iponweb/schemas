@@ -103,7 +103,7 @@
     },
     "tlsConfig": {
       "description": "TLS configuration to use on every scrape request",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.TLSConfig"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.TLSConfig"
     },
     "userid": {
       "description": "UserID",

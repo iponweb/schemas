@@ -9,7 +9,7 @@
     "auth": {
       "description": "Auth defines the means for authenticating with GCP",
       "default": {},
-      "$ref": "_definitions.json#/definitions/io.external-secrets.apis.generators.v1alpha1.GCPSMAuth"
+      "$ref": "_definitions.json#/definitions/io.external-secrets.generators.v1alpha1.GCPSMAuth"
     },
     "projectID": {
       "description": "ProjectID defines which project to use to authenticate with",

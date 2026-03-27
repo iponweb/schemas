@@ -138,7 +138,7 @@
     "externalConfig": {
       "description": "ExternalConfig defines a source of external VMAuth configuration. If it's defined, configuration for vmauth becomes unmanaged and operator'll not create any related secrets/config-reloaders",
       "default": {},
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.ExternalConfig"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.ExternalConfig"
     },
     "extraArgs": {
       "description": "ExtraArgs that will be passed to the application container for example remoteWrite.tmpDataPath: /tmp",
@@ -222,7 +222,7 @@
     "image": {
       "description": "Image - docker image settings if no specified operator uses default version from operator config",
       "default": {},
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.Image"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.Image"
     },
     "imagePullSecrets": {
       "description": "ImagePullSecrets An optional list of references to secrets in the same namespace to use for pulling images from registries see https://kubernetes.io/docs/concepts/containers/images/#referring-to-an-imagepullsecrets-on-a-pod",
@@ -237,7 +237,7 @@
     },
     "ingress": {
       "description": "Ingress enables ingress configuration for VMAuth.",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.EmbeddedIngress"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.EmbeddedIngress"
     },
     "initContainers": {
       "description": "InitContainers allows adding initContainers to the pod definition. Any errors during the execution of an initContainer will lead to a restart of the Pod. More info: https://kubernetes.io/docs/concepts/workloads/pods/init-containers/",
@@ -260,11 +260,11 @@
     "ip_filters": {
       "description": "IPFilters defines per target src ip filters supported only with enterprise version of [vmauth](https://docs.victoriametrics.com/victoriametrics/vmauth/#ip-filters)",
       "default": {},
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.VMUserIPFilters"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.VMUserIPFilters"
     },
     "license": {
       "description": "License allows to configure license key to be used for enterprise features. Using license key is supported starting from VictoriaMetrics v1.94.0. See [here](https://docs.victoriametrics.com/victoriametrics/enterprise/)",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.License"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.License"
     },
     "livenessProbe": {
       "description": "LivenessProbe that will be added CRD pod",
@@ -293,7 +293,7 @@
     },
     "managedMetadata": {
       "description": "ManagedMetadata defines metadata that will be added to the all objects created by operator for the given CustomResource",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.ManagedObjectsMetadata"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.ManagedObjectsMetadata"
     },
     "max_concurrent_requests": {
       "description": "MaxConcurrentRequests defines max concurrent requests per user 300 is default value for vmauth",
@@ -334,11 +334,11 @@
     },
     "podDisruptionBudget": {
       "description": "PodDisruptionBudget created by operator",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.EmbeddedPodDisruptionBudgetSpec"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.EmbeddedPodDisruptionBudgetSpec"
     },
     "podMetadata": {
       "description": "PodMetadata configures Labels and Annotations which are propagated to the VMAuth pods.",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.EmbeddedObjectMetadata"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.EmbeddedObjectMetadata"
     },
     "port": {
       "description": "Port listen address",
@@ -449,7 +449,7 @@
     },
     "securityContext": {
       "description": "SecurityContext holds pod-level security attributes and common container settings. This defaults to the default PodSecurityContext.",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.SecurityContext"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.SecurityContext"
     },
     "selectAllByDefault": {
       "description": "SelectAllByDefault changes default behavior for empty CRD selectors, such userSelector. with selectAllByDefault: true and empty userSelector and userNamespaceSelector Operator selects all exist users with selectAllByDefault: false - selects nothing",
@@ -467,11 +467,11 @@
     },
     "serviceScrapeSpec": {
       "description": "ServiceScrapeSpec that will be added to vmauth VMServiceScrape spec",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.VMServiceScrapeSpec"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.VMServiceScrapeSpec"
     },
     "serviceSpec": {
       "description": "ServiceSpec that will be added to vmsingle service spec",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.AdditionalServiceSpec"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.AdditionalServiceSpec"
     },
     "startupProbe": {
       "description": "StartupProbe that will be added to CRD pod",
@@ -487,7 +487,7 @@
     },
     "tlsConfig": {
       "description": "TLSConfig defines tls configuration for the backend connection",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.TLSConfig"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.TLSConfig"
     },
     "tolerations": {
       "description": "Tolerations If specified, the pod's tolerations.",
@@ -519,12 +519,12 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.UnauthorizedAccessConfigURLMap"
+        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.UnauthorizedAccessConfigURLMap"
       }
     },
     "unauthorizedUserAccessSpec": {
       "description": "UnauthorizedUserAccessSpec defines unauthorized_user config section of vmauth config",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.VMAuthUnauthorizedUserAccessSpec"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.VMAuthUnauthorizedUserAccessSpec"
     },
     "useDefaultResources": {
       "description": "UseDefaultResources controls resource settings By default, operator sets built-in resource requirements",

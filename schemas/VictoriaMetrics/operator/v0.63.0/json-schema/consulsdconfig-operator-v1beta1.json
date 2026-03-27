@@ -14,11 +14,11 @@
     },
     "authorization": {
       "description": "Authorization header to use on every scrape request.",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.Authorization"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.Authorization"
     },
     "basicAuth": {
       "description": "BasicAuth information to use on every scrape request.",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.BasicAuth"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.BasicAuth"
     },
     "datacenter": {
       "description": "Consul Datacenter name, if not provided it will use the local Consul Agent Datacenter.",
@@ -64,7 +64,7 @@
     },
     "oauth2": {
       "description": "OAuth2 defines auth configuration",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.OAuth2"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.OAuth2"
     },
     "partition": {
       "description": "Admin Partitions are only supported in Consul Enterprise.",
@@ -82,7 +82,7 @@
     },
     "proxy_client_config": {
       "description": "ProxyClientConfig configures proxy auth settings for scraping See [feature description](https://docs.victoriametrics.com/victoriametrics/vmagent/#scraping-targets-via-a-proxy)",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.ProxyAuth"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.ProxyAuth"
     },
     "scheme": {
       "description": "HTTP Scheme default \"http\"",
@@ -136,7 +136,7 @@
     },
     "tlsConfig": {
       "description": "TLS configuration to use on every scrape request",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.TLSConfig"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.TLSConfig"
     },
     "tokenRef": {
       "description": "Consul ACL TokenRef, if not provided it will use the ACL from the local Consul Agent.",

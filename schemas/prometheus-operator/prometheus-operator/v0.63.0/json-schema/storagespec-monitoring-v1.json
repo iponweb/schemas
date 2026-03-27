@@ -20,7 +20,7 @@
     "volumeClaimTemplate": {
       "description": "A PVC spec to be used by the StatefulSet. The easiest way to use a volume that cannot be automatically provisioned (for whatever reason) is to use a label selector alongside manually created PersistentVolumes.",
       "default": {},
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.EmbeddedPersistentVolumeClaim"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.EmbeddedPersistentVolumeClaim"
     }
   },
   "additionalProperties": false,

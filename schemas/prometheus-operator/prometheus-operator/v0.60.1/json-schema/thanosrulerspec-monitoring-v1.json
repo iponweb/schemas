@@ -89,7 +89,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.ObjectReference"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.ObjectReference"
       }
     },
     "externalPrefix": {
@@ -101,7 +101,7 @@
     },
     "grpcServerTlsConfig": {
       "description": "GRPCServerTLSConfig configures the gRPC server from which Thanos Querier reads recorded rule data. Note: Currently only the CAFile, CertFile, and KeyFile fields are supported. Maps to the '--grpc-server-tls-*' CLI args.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.TLSConfig"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.TLSConfig"
     },
     "hostAliases": {
       "description": "Pods' hostAliases configuration",
@@ -111,7 +111,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.HostAlias"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.HostAlias"
       },
       "x-kubernetes-list-map-keys": [
         "ip"
@@ -224,7 +224,7 @@
     },
     "podMetadata": {
       "description": "PodMetadata contains Labels and Annotations gets propagated to the thanos ruler pods.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.EmbeddedObjectMetadata"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.EmbeddedObjectMetadata"
     },
     "portName": {
       "description": "Port name used for the pods and governing service. This defaults to web",
@@ -248,7 +248,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.PrometheusRuleExcludeConfig"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.PrometheusRuleExcludeConfig"
       }
     },
     "queryConfig": {
@@ -317,7 +317,7 @@
     },
     "storage": {
       "description": "Storage spec to specify how storage shall be used.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.StorageSpec"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.StorageSpec"
     },
     "tolerations": {
       "description": "If specified, the pod's tolerations.",

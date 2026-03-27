@@ -1,0 +1,172 @@
+{
+  "oneOf": [
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.config.v1alpha1.Config"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.config.v1alpha1.ConfigList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.connection.v1alpha1.Connection"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.connection.v1alpha1.ConnectionList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.expansion.v1alpha1.ExpansionTemplate"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.expansion.v1alpha1.ExpansionTemplateList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.expansion.v1beta1.ExpansionTemplate"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.expansion.v1beta1.ExpansionTemplateList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.externaldata.v1alpha1.Provider"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.externaldata.v1alpha1.ProviderList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.externaldata.v1beta1.Provider"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.externaldata.v1beta1.ProviderList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.mutations.v1.Assign"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.mutations.v1.AssignList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.mutations.v1.AssignMetadata"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.mutations.v1.AssignMetadataList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.mutations.v1.ModifySet"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.mutations.v1.ModifySetList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.mutations.v1alpha1.Assign"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.mutations.v1alpha1.AssignImage"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.mutations.v1alpha1.AssignImageList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.mutations.v1alpha1.AssignList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.mutations.v1alpha1.AssignMetadata"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.mutations.v1alpha1.AssignMetadataList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.mutations.v1alpha1.ModifySet"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.mutations.v1alpha1.ModifySetList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.mutations.v1beta1.Assign"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.mutations.v1beta1.AssignList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.mutations.v1beta1.AssignMetadata"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.mutations.v1beta1.AssignMetadataList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.mutations.v1beta1.ModifySet"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.mutations.v1beta1.ModifySetList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.status.v1alpha1.ConnectionPodStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.status.v1alpha1.ConnectionPodStatusList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.status.v1beta1.ConfigPodStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.status.v1beta1.ConfigPodStatusList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.status.v1beta1.ConstraintPodStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.status.v1beta1.ConstraintPodStatusList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.status.v1beta1.ConstraintTemplatePodStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.status.v1beta1.ConstraintTemplatePodStatusList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.status.v1beta1.ExpansionTemplatePodStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.status.v1beta1.ExpansionTemplatePodStatusList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.status.v1beta1.MutatorPodStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.status.v1beta1.MutatorPodStatusList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.status.v1beta1.ProviderPodStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.status.v1beta1.ProviderPodStatusList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.syncset.v1alpha1.SyncSet"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.syncset.v1alpha1.SyncSetList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.templates.v1.ConstraintTemplate"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.templates.v1.ConstraintTemplateList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.templates.v1alpha1.ConstraintTemplate"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.templates.v1alpha1.ConstraintTemplateList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.templates.v1beta1.ConstraintTemplate"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.templates.v1beta1.ConstraintTemplateList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.util.intstr.IntOrString"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.api.resource.Quantity"
+    }
+  ]
+}

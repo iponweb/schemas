@@ -45,7 +45,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.KeyValue"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.KeyValue"
       }
     },
     "group": {
@@ -57,7 +57,7 @@
     },
     "httpConfig": {
       "description": "HTTP client configuration.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.HTTPConfig"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.HTTPConfig"
     },
     "pagerDutyImageConfigs": {
       "description": "A list of image details to attach that provide further detail about an incident.",
@@ -67,7 +67,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.PagerDutyImageConfig"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.PagerDutyImageConfig"
       }
     },
     "pagerDutyLinkConfigs": {
@@ -78,7 +78,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.PagerDutyLinkConfig"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.PagerDutyLinkConfig"
       }
     },
     "routingKey": {

@@ -4,7 +4,7 @@
     "assign": {
       "description": "Assign.value holds the value to be assigned",
       "default": {},
-      "$ref": "_definitions.json#/definitions/sh.gatekeeper.apis.mutations.v1.AssignField"
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.mutations.v1.AssignField"
     },
     "pathTests": {
       "type": [
@@ -13,7 +13,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/sh.gatekeeper.apis.mutations.v1.PathTest"
+        "$ref": "_definitions.json#/definitions/sh.gatekeeper.mutations.v1.PathTest"
       }
     }
   },

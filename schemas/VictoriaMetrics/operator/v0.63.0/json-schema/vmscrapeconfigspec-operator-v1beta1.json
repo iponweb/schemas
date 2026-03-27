@@ -4,7 +4,7 @@
   "properties": {
     "authorization": {
       "description": "Authorization with http header Authorization",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.Authorization"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.Authorization"
     },
     "azureSDConfigs": {
       "description": "AzureSDConfigs defines a list of Azure service discovery configurations.",
@@ -14,12 +14,12 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.AzureSDConfig"
+        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.AzureSDConfig"
       }
     },
     "basicAuth": {
       "description": "BasicAuth allow an endpoint to authenticate over basic authentication",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.BasicAuth"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.BasicAuth"
     },
     "bearerTokenFile": {
       "description": "File to read bearer token for scraping targets.",
@@ -40,7 +40,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.ConsulSDConfig"
+        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.ConsulSDConfig"
       }
     },
     "digitalOceanSDConfigs": {
@@ -51,7 +51,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.DigitalOceanSDConfig"
+        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.DigitalOceanSDConfig"
       }
     },
     "dnsSDConfigs": {
@@ -62,7 +62,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.DNSSDConfig"
+        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.DNSSDConfig"
       }
     },
     "ec2SDConfigs": {
@@ -73,7 +73,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.EC2SDConfig"
+        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.EC2SDConfig"
       }
     },
     "fileSDConfigs": {
@@ -84,7 +84,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.FileSDConfig"
+        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.FileSDConfig"
       }
     },
     "follow_redirects": {
@@ -102,7 +102,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.GCESDConfig"
+        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.GCESDConfig"
       }
     },
     "honorLabels": {
@@ -127,7 +127,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.HTTPSDConfig"
+        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.HTTPSDConfig"
       }
     },
     "interval": {
@@ -145,7 +145,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.KubernetesSDConfig"
+        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.KubernetesSDConfig"
       }
     },
     "max_scrape_size": {
@@ -162,12 +162,12 @@
         "null"
       ],
       "items": {
-        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.RelabelConfig"
+        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.RelabelConfig"
       }
     },
     "oauth2": {
       "description": "OAuth2 defines auth configuration",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.OAuth2"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.OAuth2"
     },
     "openstackSDConfigs": {
       "description": "OpenStackSDConfigs defines a list of OpenStack service discovery configurations.",
@@ -177,7 +177,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.OpenStackSDConfig"
+        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.OpenStackSDConfig"
       }
     },
     "params": {
@@ -221,7 +221,7 @@
         "null"
       ],
       "items": {
-        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.RelabelConfig"
+        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.RelabelConfig"
       }
     },
     "sampleLimit": {
@@ -269,16 +269,16 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.StaticConfig"
+        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.StaticConfig"
       }
     },
     "tlsConfig": {
       "description": "TLSConfig configuration to use when scraping the endpoint",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.TLSConfig"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.TLSConfig"
     },
     "vm_scrape_params": {
       "description": "VMScrapeParams defines VictoriaMetrics specific scrape parameters",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.VMScrapeParams"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.VMScrapeParams"
     }
   },
   "additionalProperties": false,

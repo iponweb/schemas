@@ -8,7 +8,7 @@
   "properties": {
     "confirm": {
       "description": "confirm defines an optional confirmation dialog that appears before the action is executed. When set, users must confirm their intent before the action proceeds.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.SlackConfirmationField"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.SlackConfirmationField"
     },
     "name": {
       "description": "name defines a unique identifier for the action within the message. This value is sent back to your application when the action is triggered.",

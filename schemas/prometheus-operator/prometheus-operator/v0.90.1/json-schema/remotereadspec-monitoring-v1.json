@@ -7,11 +7,11 @@
   "properties": {
     "authorization": {
       "description": "authorization section for the URL.\n\nIt requires Prometheus >= v2.26.0.\n\nCannot be set at the same time as `basicAuth`, or `oauth2`.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.Authorization"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.Authorization"
     },
     "basicAuth": {
       "description": "basicAuth configuration for the URL.\n\nCannot be set at the same time as `authorization`, or `oauth2`.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.BasicAuth"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.BasicAuth"
     },
     "bearerToken": {
       "description": "bearerToken is deprecated: this will be removed in a future release. *Warning: this field shouldn't be used because the token value appears in clear-text. Prefer using `authorization`.*",
@@ -71,7 +71,7 @@
     },
     "oauth2": {
       "description": "oauth2 configuration for the URL.\n\nIt requires Prometheus >= v2.27.0.\n\nCannot be set at the same time as `authorization`, or `basicAuth`.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.OAuth2"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.OAuth2"
     },
     "proxyConnectHeader": {
       "description": "proxyConnectHeader optionally specifies headers to send to proxies during CONNECT requests.\n\nIt requires Prometheus >= v2.43.0, Alertmanager >= v0.25.0 or Thanos >= v0.32.0.",
@@ -134,7 +134,7 @@
     },
     "tlsConfig": {
       "description": "tlsConfig to use for the URL.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.TLSConfig"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.TLSConfig"
     },
     "url": {
       "description": "url defines the URL of the endpoint to query from.",

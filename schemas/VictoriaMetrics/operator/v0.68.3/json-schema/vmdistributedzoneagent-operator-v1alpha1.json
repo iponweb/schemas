@@ -12,7 +12,7 @@
     "spec": {
       "description": "Spec defines the desired state of a new VMAgent.",
       "default": {},
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1alpha1.VMDistributedZoneAgentSpec"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1alpha1.VMDistributedZoneAgentSpec"
     }
   },
   "additionalProperties": false,

@@ -4,11 +4,11 @@
   "properties": {
     "authorization": {
       "description": "Authorization header configuration for the client. This is mutually exclusive with BasicAuth and is only available starting from Alertmanager v0.22+.",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.Authorization"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.Authorization"
     },
     "basic_auth": {
       "description": "BasicAuth for the client.",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.BasicAuth"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.BasicAuth"
     },
     "bearer_token_file": {
       "description": "BearerTokenFile defines filename for bearer token, it must be mounted to pod.",
@@ -23,7 +23,7 @@
     },
     "oauth2": {
       "description": "OAuth2 client credentials used to fetch a token for the targets.",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.OAuth2"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.OAuth2"
     },
     "proxyURL": {
       "description": "Optional proxy URL.",
@@ -34,7 +34,7 @@
     },
     "tls_config": {
       "description": "TLS configuration for the client.",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.TLSConfig"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.TLSConfig"
     }
   },
   "additionalProperties": false,

@@ -21,7 +21,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.Filter"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.Filter"
       }
     },
     "followRedirects": {
@@ -104,7 +104,7 @@
     },
     "tlsConfig": {
       "description": "tlsConfig defines the TLS configuration to connect to the EC2 API. It requires Prometheus >= v2.41.0",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.SafeTLSConfig"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.SafeTLSConfig"
     }
   },
   "additionalProperties": false,

@@ -9,7 +9,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/sh.gatekeeper.apis.status.v1beta1.MutatorPodStatusStatus"
+        "$ref": "_definitions.json#/definitions/sh.gatekeeper.status.v1beta1.MutatorPodStatusStatus"
       }
     }
   },

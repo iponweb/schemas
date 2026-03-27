@@ -19,7 +19,7 @@
         "null"
       ],
       "items": {
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.Prometheus"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.Prometheus"
       }
     },
     "kind": {

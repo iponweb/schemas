@@ -22,11 +22,11 @@
     },
     "spec": {
       "default": {},
-      "$ref": "_definitions.json#/definitions/sh.gatekeeper.apis.mutations.v1.ModifySetSpec"
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.mutations.v1.ModifySetSpec"
     },
     "status": {
       "default": {},
-      "$ref": "_definitions.json#/definitions/sh.gatekeeper.apis.mutations.v1.ModifySetStatus"
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.mutations.v1.ModifySetStatus"
     }
   },
   "additionalProperties": false,

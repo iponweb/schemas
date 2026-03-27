@@ -18,7 +18,7 @@
     },
     "httpConfig": {
       "description": "HTTP client configuration.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.HTTPConfig"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1beta1.HTTPConfig"
     },
     "message": {
       "description": "Notification message.",
@@ -64,7 +64,7 @@
     },
     "token": {
       "description": "The secret's key that contains the registered application's API token, see https://pushover.net/apps. The secret needs to be in the same namespace as the AlertmanagerConfig object and accessible by the Prometheus Operator.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.SecretKeySelector"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1beta1.SecretKeySelector"
     },
     "url": {
       "description": "A supplementary URL shown alongside the message.",
@@ -82,7 +82,7 @@
     },
     "userKey": {
       "description": "The secret's key that contains the recipient user's user key. The secret needs to be in the same namespace as the AlertmanagerConfig object and accessible by the Prometheus Operator.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.SecretKeySelector"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1beta1.SecretKeySelector"
     }
   },
   "additionalProperties": false,

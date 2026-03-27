@@ -23,7 +23,7 @@
     "spec": {
       "description": "Spec defines the Provider specifications.",
       "default": {},
-      "$ref": "_definitions.json#/definitions/sh.gatekeeper.frameworks.constraint.pkg.apis.externaldata.v1alpha1.ProviderSpec"
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.externaldata.v1alpha1.ProviderSpec"
     }
   },
   "additionalProperties": false,

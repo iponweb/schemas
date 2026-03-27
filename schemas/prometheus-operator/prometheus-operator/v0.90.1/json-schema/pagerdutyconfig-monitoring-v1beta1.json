@@ -45,7 +45,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.KeyValue"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1beta1.KeyValue"
       },
       "x-kubernetes-list-type": "atomic"
     },
@@ -58,7 +58,7 @@
     },
     "httpConfig": {
       "description": "httpConfig defines the HTTP client configuration.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.HTTPConfig"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1beta1.HTTPConfig"
     },
     "pagerDutyImageConfigs": {
       "description": "pagerDutyImageConfigs defines a list of image details to attach that provide further detail about an incident.",
@@ -68,7 +68,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.PagerDutyImageConfig"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1beta1.PagerDutyImageConfig"
       },
       "x-kubernetes-list-type": "atomic"
     },
@@ -80,13 +80,13 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.PagerDutyLinkConfig"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1beta1.PagerDutyLinkConfig"
       },
       "x-kubernetes-list-type": "atomic"
     },
     "routingKey": {
       "description": "routingKey defines the secret's key that contains the PagerDuty integration key (when using Events API v2). Either this field or `serviceKey` needs to be defined. The secret needs to be in the same namespace as the AlertmanagerConfig object and accessible by the Prometheus Operator.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.SecretKeySelector"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1beta1.SecretKeySelector"
     },
     "sendResolved": {
       "description": "sendResolved defines whether or not to notify about resolved alerts.",
@@ -97,7 +97,7 @@
     },
     "serviceKey": {
       "description": "serviceKey defines the secret's key that contains the PagerDuty service key (when using integration type \"Prometheus\"). Either this field or `routingKey` needs to be defined. The secret needs to be in the same namespace as the AlertmanagerConfig object and accessible by the Prometheus Operator.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.SecretKeySelector"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1beta1.SecretKeySelector"
     },
     "severity": {
       "description": "severity of the incident.",

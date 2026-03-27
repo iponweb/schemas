@@ -11,7 +11,7 @@
     },
     "apiKey": {
       "description": "The secret's key that contains the OpsGenie API key. The secret needs to be in the same namespace as the AlertmanagerConfig object and accessible by the Prometheus Operator.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.SecretKeySelector"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1beta1.SecretKeySelector"
     },
     "apiURL": {
       "description": "The URL to send OpsGenie API requests to.",
@@ -35,7 +35,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.KeyValue"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1beta1.KeyValue"
       }
     },
     "entity": {
@@ -47,7 +47,7 @@
     },
     "httpConfig": {
       "description": "HTTP client configuration.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.HTTPConfig"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1beta1.HTTPConfig"
     },
     "message": {
       "description": "Alert text limited to 130 characters.",
@@ -78,7 +78,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.OpsGenieConfigResponder"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1beta1.OpsGenieConfigResponder"
       }
     },
     "sendResolved": {

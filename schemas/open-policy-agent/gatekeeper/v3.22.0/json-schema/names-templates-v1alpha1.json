@@ -1,0 +1,27 @@
+{
+  "description": "Names defines the naming conventions for the constraint kind.",
+  "type": "object",
+  "properties": {
+    "kind": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "shortNames": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

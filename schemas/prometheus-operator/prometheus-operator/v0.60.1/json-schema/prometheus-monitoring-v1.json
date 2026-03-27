@@ -26,12 +26,12 @@
     "spec": {
       "description": "Specification of the desired behavior of the Prometheus cluster. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#spec-and-status",
       "default": {},
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.PrometheusSpec"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.PrometheusSpec"
     },
     "status": {
       "description": "Most recent observed status of the Prometheus cluster. Read-only. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#spec-and-status",
       "default": {},
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.PrometheusStatus"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.PrometheusStatus"
     }
   },
   "additionalProperties": false,

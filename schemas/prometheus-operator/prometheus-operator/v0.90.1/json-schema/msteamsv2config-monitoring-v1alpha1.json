@@ -4,7 +4,7 @@
   "properties": {
     "httpConfig": {
       "description": "httpConfig defines the HTTP client configuration for Teams webhook requests.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.HTTPConfig"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.HTTPConfig"
     },
     "sendResolved": {
       "description": "sendResolved defines whether or not to notify about resolved alerts.",

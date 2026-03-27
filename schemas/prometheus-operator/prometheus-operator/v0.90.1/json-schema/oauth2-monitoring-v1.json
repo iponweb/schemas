@@ -10,7 +10,7 @@
     "clientId": {
       "description": "clientId defines a key of a Secret or ConfigMap containing the OAuth2 client's ID.",
       "default": {},
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.SecretOrConfigMap"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.SecretOrConfigMap"
     },
     "clientSecret": {
       "description": "clientSecret defines a key of a Secret containing the OAuth2 client's secret.",
@@ -85,7 +85,7 @@
     },
     "tlsConfig": {
       "description": "tlsConfig defines the TLS configuration to use when connecting to the OAuth2 server. It requires Prometheus >= v2.43.0.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.SafeTLSConfig"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.SafeTLSConfig"
     },
     "tokenUrl": {
       "description": "tokenUrl defines the URL to fetch the token from.",

@@ -5,7 +5,7 @@
     "cert": {
       "description": "cert defines the Secret or ConfigMap containing the TLS certificate for the web server.\n\nEither `keySecret` or `keyFile` must be defined.\n\nIt is mutually exclusive with `certFile`.",
       "default": {},
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.SecretOrConfigMap"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.SecretOrConfigMap"
     },
     "certFile": {
       "description": "certFile defines the path to the TLS certificate file in the container for the web server.\n\nEither `keySecret` or `keyFile` must be defined.\n\nIt is mutually exclusive with `cert`.",
@@ -45,7 +45,7 @@
     "client_ca": {
       "description": "client_ca defines the Secret or ConfigMap containing the CA certificate for client certificate authentication to the server.\n\nIt is mutually exclusive with `clientCAFile`.",
       "default": {},
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.SecretOrConfigMap"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.SecretOrConfigMap"
     },
     "curvePreferences": {
       "description": "curvePreferences defines elliptic curves that will be used in an ECDHE handshake, in preference order.\n\nAvailable curves are documented in the Go documentation: https://golang.org/pkg/crypto/tls/#CurveID",

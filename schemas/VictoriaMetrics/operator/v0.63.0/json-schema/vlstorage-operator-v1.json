@@ -148,7 +148,7 @@
     "image": {
       "description": "Image - docker image settings if no specified operator uses default version from operator config",
       "default": {},
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.Image"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.Image"
     },
     "imagePullSecrets": {
       "description": "ImagePullSecrets An optional list of references to secrets in the same namespace to use for pulling images from registries see https://kubernetes.io/docs/concepts/containers/images/#referring-to-an-imagepullsecrets-on-a-pod",
@@ -269,11 +269,11 @@
     },
     "podDisruptionBudget": {
       "description": "PodDisruptionBudget created by operator",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.EmbeddedPodDisruptionBudgetSpec"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.EmbeddedPodDisruptionBudgetSpec"
     },
     "podMetadata": {
       "description": "PodMetadata configures Labels and Annotations which are propagated to the VLStorage pods.",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.EmbeddedObjectMetadata"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.EmbeddedObjectMetadata"
     },
     "port": {
       "description": "Port listen address",
@@ -352,7 +352,7 @@
     },
     "rollingUpdateStrategyBehavior": {
       "description": "RollingUpdateStrategyBehavior defines customized behavior for rolling updates. It applies if the RollingUpdateStrategy is set to OnDelete, which is the default.",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.StatefulSetUpdateStrategyBehavior"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.StatefulSetUpdateStrategyBehavior"
     },
     "runtimeClassName": {
       "description": "RuntimeClassName - defines runtime class for kubernetes pod. https://kubernetes.io/docs/concepts/containers/runtime-class/",
@@ -384,15 +384,15 @@
     },
     "securityContext": {
       "description": "SecurityContext holds pod-level security attributes and common container settings. This defaults to the default PodSecurityContext.",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.SecurityContext"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.SecurityContext"
     },
     "serviceScrapeSpec": {
       "description": "ServiceScrapeSpec that will be added to vlselect VMServiceScrape spec",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.VMServiceScrapeSpec"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.VMServiceScrapeSpec"
     },
     "serviceSpec": {
       "description": "ServiceSpec that will be added to vlselect service spec",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.AdditionalServiceSpec"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.AdditionalServiceSpec"
     },
     "startupProbe": {
       "description": "StartupProbe that will be added to CRD pod",
@@ -400,7 +400,7 @@
     },
     "storage": {
       "description": "Storage configures persistent volume for VLStorage",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.StorageSpec"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.StorageSpec"
     },
     "storageDataPath": {
       "description": "StorageDataPath - path to storage data",

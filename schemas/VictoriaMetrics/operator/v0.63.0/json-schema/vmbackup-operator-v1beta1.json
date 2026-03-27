@@ -108,7 +108,7 @@
     "image": {
       "description": "Image - docker image settings for VMBackuper",
       "default": {},
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.Image"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.Image"
     },
     "logFormat": {
       "description": "LogFormat for VMBackup to be configured with. default or json",
@@ -138,7 +138,7 @@
     },
     "restore": {
       "description": "Restore Allows to enable restore options for pod Read [more](https://docs.victoriametrics.com/victoriametrics/vmbackupmanager/#restore-commands)",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.VMRestore"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.VMRestore"
     },
     "snapshotCreateURL": {
       "description": "SnapshotCreateURL overwrites url for snapshot create",

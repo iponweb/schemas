@@ -25,7 +25,7 @@
     },
     "httpConfig": {
       "description": "httpConfig defines the HTTP client configuration for SNS API requests.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.HTTPConfig"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1beta1.HTTPConfig"
     },
     "message": {
       "description": "message defines the message content of the SNS notification. This is the actual notification text that will be sent to subscribers.",
@@ -50,7 +50,7 @@
     },
     "sigv4": {
       "description": "sigv4 configures AWS's Signature Verification 4 signing process to sign requests. This includes AWS credentials and region configuration for authentication.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.Sigv4"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.Sigv4"
     },
     "subject": {
       "description": "subject defines the subject line when the message is delivered to email endpoints. This field is only used when sending to email subscribers of an SNS topic.",

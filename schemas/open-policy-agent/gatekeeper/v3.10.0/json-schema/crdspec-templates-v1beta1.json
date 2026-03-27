@@ -3,10 +3,10 @@
   "properties": {
     "names": {
       "default": {},
-      "$ref": "_definitions.json#/definitions/sh.gatekeeper.frameworks.constraint.pkg.apis.templates.v1beta1.Names"
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.templates.v1beta1.Names"
     },
     "validation": {
-      "$ref": "_definitions.json#/definitions/sh.gatekeeper.frameworks.constraint.pkg.apis.templates.v1beta1.Validation"
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.templates.v1beta1.Validation"
     }
   },
   "additionalProperties": false,

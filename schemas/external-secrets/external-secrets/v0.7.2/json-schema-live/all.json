@@ -1,0 +1,88 @@
+{
+  "oneOf": [
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.generators.v1alpha1.ACRAccessToken"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.generators.v1alpha1.ACRAccessTokenList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.generators.v1alpha1.ECRAuthorizationToken"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.generators.v1alpha1.ECRAuthorizationTokenList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.generators.v1alpha1.Fake"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.generators.v1alpha1.FakeList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.generators.v1alpha1.GCRAccessToken"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.generators.v1alpha1.GCRAccessTokenList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.generators.v1alpha1.Password"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.generators.v1alpha1.PasswordList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.v1alpha1.ClusterSecretStore"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.v1alpha1.ClusterSecretStoreList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.v1alpha1.ExternalSecret"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.v1alpha1.ExternalSecretList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.v1alpha1.PushSecret"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.v1alpha1.PushSecretList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.v1alpha1.SecretStore"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.v1alpha1.SecretStoreList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.v1beta1.ClusterExternalSecret"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.v1beta1.ClusterExternalSecretList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.v1beta1.ClusterSecretStore"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.v1beta1.ClusterSecretStoreList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.v1beta1.ExternalSecret"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.v1beta1.ExternalSecretList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.v1beta1.SecretStore"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.external-secrets.v1beta1.SecretStoreList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.util.intstr.IntOrString"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.api.resource.Quantity"
+    }
+  ]
+}

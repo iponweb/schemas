@@ -9,7 +9,7 @@
         "null"
       ],
       "items": {
-        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1.SyslogTCPListener"
+        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1.SyslogTCPListener"
       }
     },
     "udpListeners": {
@@ -19,7 +19,7 @@
         "null"
       ],
       "items": {
-        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1.SyslogUDPListener"
+        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1.SyslogUDPListener"
       }
     }
   },

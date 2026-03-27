@@ -21,7 +21,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.KeyValue"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.KeyValue"
       }
     },
     "entityDisplayName": {
@@ -33,7 +33,7 @@
     },
     "httpConfig": {
       "description": "The HTTP client's configuration.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.HTTPConfig"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.HTTPConfig"
     },
     "messageType": {
       "description": "Describes the behavior of the alert (CRITICAL, WARNING, INFO).",

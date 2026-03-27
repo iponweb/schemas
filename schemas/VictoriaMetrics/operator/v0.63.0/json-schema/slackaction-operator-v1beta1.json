@@ -7,7 +7,7 @@
   ],
   "properties": {
     "confirm": {
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.SlackConfirmationField"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.SlackConfirmationField"
     },
     "name": {
       "type": [

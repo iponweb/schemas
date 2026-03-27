@@ -1,0 +1,236 @@
+{
+  "description": "ConstraintTemplate is the Schema for the constrainttemplates API",
+  "type": "object",
+  "properties": {
+    "apiVersion": {
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "templates.gatekeeper.sh/v1beta1"
+      ]
+    },
+    "kind": {
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "ConstraintTemplate"
+      ]
+    },
+    "metadata": {
+      "description": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+    },
+    "spec": {
+      "description": "ConstraintTemplateSpec defines the desired state of ConstraintTemplate.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "crd": {
+          "description": "CRD defines the custom resource definition specification for the constraint.",
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "spec": {
+              "description": "CRDSpec defines the spec for the CRD.",
+              "type": [
+                "object",
+                "null"
+              ],
+              "properties": {
+                "names": {
+                  "description": "Names defines the naming conventions for the constraint kind.",
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "properties": {
+                    "kind": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "shortNames": {
+                      "type": [
+                        "array",
+                        "null"
+                      ],
+                      "items": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      }
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "validation": {
+                  "description": "Validation defines the schema for constraint parameters.",
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "properties": {
+                    "legacySchema": {
+                      "type": [
+                        "boolean",
+                        "null"
+                      ]
+                    },
+                    "openAPIV3Schema": {
+                      "x-kubernetes-preserve-unknown-fields": true
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "additionalProperties": false
+        },
+        "targets": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "description": "Target defines the target handler and policy for the constraint template.",
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "code": {
+                "description": "The source code options for the constraint template. \"Rego\" can only\nbe specified in one place (either here or in the \"rego\" field)",
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "description": "Code defines the policy source code for a specific engine.",
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "required": [
+                    "engine",
+                    "source"
+                  ],
+                  "properties": {
+                    "engine": {
+                      "description": "The engine used to evaluate the code. Example: \"Rego\". Required.",
+                      "type": "string"
+                    },
+                    "source": {
+                      "description": "The source code for the template. Required.",
+                      "x-kubernetes-preserve-unknown-fields": true
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "x-kubernetes-list-map-keys": [
+                  "engine"
+                ],
+                "x-kubernetes-list-type": "map"
+              },
+              "libs": {
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "operations": {
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "description": "OperationType specifies an operation for a request.",
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "enum": [
+                    "*",
+                    "CREATE",
+                    "DELETE",
+                    "UPDATE",
+                    "CONNECT"
+                  ]
+                }
+              },
+              "rego": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "target": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "status": {
+      "description": "ConstraintTemplateStatus defines the observed state of ConstraintTemplate.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "byPod": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "description": "ByPodStatus defines the observed state of ConstraintTemplate as seen by\nan individual controller",
+            "x-kubernetes-preserve-unknown-fields": true
+          }
+        },
+        "created": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "templates.gatekeeper.sh",
+      "kind": "ConstraintTemplate",
+      "version": "v1beta1"
+    }
+  ],
+  "x-kubernetes-selectable-fields": [],
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

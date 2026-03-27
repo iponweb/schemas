@@ -8,7 +8,7 @@
   "properties": {
     "attachMetadata": {
       "description": "attachMetadata defines additional metadata which is added to the discovered targets.\n\nIt requires Prometheus >= v2.37.0.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.AttachMetadata"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.AttachMetadata"
     },
     "bodySizeLimit": {
       "description": "bodySizeLimit when defined, bodySizeLimit specifies a job level limit on the size of uncompressed response body that will be accepted by Prometheus.\n\nIt requires Prometheus >= v2.28.0.",
@@ -32,7 +32,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.Endpoint"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.Endpoint"
       }
     },
     "fallbackScrapeProtocol": {
@@ -84,7 +84,7 @@
     "namespaceSelector": {
       "description": "namespaceSelector defines in which namespace(s) Prometheus should discover the services. By default, the services are discovered in the same namespace as the `ServiceMonitor` object but it is possible to select pods across different/all namespaces.",
       "default": {},
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.NamespaceSelector"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.NamespaceSelector"
     },
     "nativeHistogramBucketLimit": {
       "description": "nativeHistogramBucketLimit defines ff there are more than this many buckets in a native histogram, buckets will be merged to stay within the limit. It requires Prometheus >= v2.45.0.",

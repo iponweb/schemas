@@ -89,7 +89,7 @@
     },
     "tls_config": {
       "description": "TLS configuration",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.TLSConfig"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.TLSConfig"
     },
     "to": {
       "description": "The email address to send notifications to.",

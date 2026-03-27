@@ -49,7 +49,7 @@
     "issuerRef": {
       "description": "IssuerRef references a properly configured ACME-type Issuer which should be used to create this Order. If the Issuer does not exist, processing will be retried. If the Issuer is not an 'ACME' Issuer, an error will be returned and the Order will be marked as failed.",
       "default": {},
-      "$ref": "_definitions.json#/definitions/io.cert-manager.pkg.apis.meta.v1.IssuerReference"
+      "$ref": "_definitions.json#/definitions/io.cert-manager.v1.IssuerReference"
     },
     "profile": {
       "description": "Profile allows requesting a certificate profile from the ACME server. Supported profiles are listed by the server's ACME directory URL.",

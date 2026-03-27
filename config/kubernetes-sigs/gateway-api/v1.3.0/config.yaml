@@ -34,3 +34,6 @@ crd_names:
   - "sigs.k8s.io/gateway-api/apis/v1beta1.HTTPRoute"
   - "sigs.k8s.io/gateway-api/apis/v1beta1.ReferenceGrant"
 crd_path: "config/crd/standard"
+
+host_conversion_rules:
+  "sigs.k8s.io/gateway-api": "gateway.networking.k8s.io"

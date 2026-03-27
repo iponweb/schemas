@@ -8,11 +8,11 @@
   "properties": {
     "basicAuth": {
       "description": "Basic auth defines basic authorization configuration",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.BasicAuth"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.BasicAuth"
     },
     "bearer": {
       "description": "BearerAuth defines authorization with Authorization: Bearer header",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.BearerAuth"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.BearerAuth"
     },
     "dataRange": {
       "description": "Optional argumentallows defining valid data ranges for input of all the queries in queries",
@@ -110,7 +110,7 @@
     },
     "tlsConfig": {
       "description": "TLSConfig defines tls connection configuration",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.TLSConfig"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.TLSConfig"
     },
     "tz": {
       "description": "Optional argumentspecifies the IANA timezone to account for local shifts, like DST, in models sensitive to seasonal patterns",

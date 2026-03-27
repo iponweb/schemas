@@ -15,7 +15,7 @@
     },
     "clientSecretSecretRef": {
       "description": "Auth: Azure Service Principal: A reference to a Secret containing the password associated with the Service Principal. If set, ClientID and TenantID must also be set.",
-      "$ref": "_definitions.json#/definitions/io.cert-manager.pkg.apis.meta.v1.SecretKeySelector"
+      "$ref": "_definitions.json#/definitions/io.cert-manager.v1.SecretKeySelector"
     },
     "environment": {
       "description": "name of the Azure environment (default AzurePublicCloud)",
@@ -33,7 +33,7 @@
     },
     "managedIdentity": {
       "description": "Auth: Azure Workload Identity or Azure Managed Service Identity: Settings to enable Azure Workload Identity or Azure Managed Service Identity If set, ClientID, ClientSecret and TenantID must not be set.",
-      "$ref": "_definitions.json#/definitions/io.cert-manager.pkg.apis.acme.v1.AzureManagedIdentity"
+      "$ref": "_definitions.json#/definitions/io.cert-manager.acme.v1.AzureManagedIdentity"
     },
     "resourceGroupName": {
       "description": "resource group the DNS zone is located in",

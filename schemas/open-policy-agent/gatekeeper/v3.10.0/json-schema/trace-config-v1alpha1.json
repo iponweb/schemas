@@ -11,7 +11,7 @@
     "kind": {
       "description": "Only trace requests of the following GroupVersionKind",
       "default": {},
-      "$ref": "_definitions.json#/definitions/sh.gatekeeper.apis.config.v1alpha1.GVK"
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.config.v1alpha1.GVK"
     },
     "user": {
       "description": "Only trace requests from the specified user",

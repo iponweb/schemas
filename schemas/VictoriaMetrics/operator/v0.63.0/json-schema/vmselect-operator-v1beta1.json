@@ -154,12 +154,12 @@
     },
     "hpa": {
       "description": "Configures horizontal pod autoscaling. Note, enabling this option disables vmselect to vmselect communication. In most cases it's not an issue.",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.EmbeddedHPA"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.EmbeddedHPA"
     },
     "image": {
       "description": "Image - docker image settings if no specified operator uses default version from operator config",
       "default": {},
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.Image"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.Image"
     },
     "imagePullSecrets": {
       "description": "ImagePullSecrets An optional list of references to secrets in the same namespace to use for pulling images from registries see https://kubernetes.io/docs/concepts/containers/images/#referring-to-an-imagepullsecrets-on-a-pod",
@@ -232,7 +232,7 @@
     },
     "persistentVolume": {
       "description": "Storage - add persistent volume for cacheMountPath its useful for persistent cache use storage instead of persistentVolume.",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.StorageSpec"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.StorageSpec"
     },
     "persistentVolumeClaimRetentionPolicy": {
       "description": "PersistentVolumeClaimRetentionPolicy allows configuration of PVC retention policy",
@@ -240,11 +240,11 @@
     },
     "podDisruptionBudget": {
       "description": "PodDisruptionBudget created by operator",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.EmbeddedPodDisruptionBudgetSpec"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.EmbeddedPodDisruptionBudgetSpec"
     },
     "podMetadata": {
       "description": "PodMetadata configures Labels and Annotations which are propagated to the VMSelect pods.",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.EmbeddedObjectMetadata"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.EmbeddedObjectMetadata"
     },
     "port": {
       "description": "Port listen address",
@@ -309,7 +309,7 @@
     },
     "rollingUpdateStrategyBehavior": {
       "description": "RollingUpdateStrategyBehavior defines customized behavior for rolling updates. It applies if the RollingUpdateStrategy is set to OnDelete, which is the default.",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.StatefulSetUpdateStrategyBehavior"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.StatefulSetUpdateStrategyBehavior"
     },
     "runtimeClassName": {
       "description": "RuntimeClassName - defines runtime class for kubernetes pod. https://kubernetes.io/docs/concepts/containers/runtime-class/",
@@ -341,15 +341,15 @@
     },
     "securityContext": {
       "description": "SecurityContext holds pod-level security attributes and common container settings. This defaults to the default PodSecurityContext.",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.SecurityContext"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.SecurityContext"
     },
     "serviceScrapeSpec": {
       "description": "ServiceScrapeSpec that will be added to vmselect VMServiceScrape spec",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.VMServiceScrapeSpec"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.VMServiceScrapeSpec"
     },
     "serviceSpec": {
       "description": "ServiceSpec that will be added to vmselect service spec",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.AdditionalServiceSpec"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.AdditionalServiceSpec"
     },
     "startupProbe": {
       "description": "StartupProbe that will be added to CRD pod",
@@ -357,7 +357,7 @@
     },
     "storage": {
       "description": "StorageSpec - add persistent volume claim for cacheMountPath its needed for persistent cache",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.StorageSpec"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.StorageSpec"
     },
     "terminationGracePeriodSeconds": {
       "description": "TerminationGracePeriodSeconds period for container graceful termination",

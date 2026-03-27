@@ -6,7 +6,7 @@
   ],
   "properties": {
     "basicAuth": {
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.BasicAuth"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.BasicAuth"
     },
     "bearerTokenFile": {
       "description": "Path to bearer token file",
@@ -34,10 +34,10 @@
       }
     },
     "oauth2": {
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.OAuth2"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.OAuth2"
     },
     "tlsConfig": {
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.TLSConfig"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.TLSConfig"
     },
     "url": {
       "description": "Victoria Metrics or VMSelect url. Required parameter. E.g. http://127.0.0.1:8428",

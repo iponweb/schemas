@@ -24,7 +24,7 @@
     },
     "http_config": {
       "description": "HTTP client configuration.",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.HTTPConfig"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.HTTPConfig"
     },
     "message": {
       "description": "The message content of the SNS notification.",
@@ -49,7 +49,7 @@
     },
     "sigv4": {
       "description": "Configure the AWS Signature Verification 4 signing process",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.Sigv4Config"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.Sigv4Config"
     },
     "subject": {
       "description": "The subject line if message is delivered to an email endpoint.",

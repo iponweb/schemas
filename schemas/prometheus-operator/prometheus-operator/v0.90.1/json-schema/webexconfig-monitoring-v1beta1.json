@@ -14,7 +14,7 @@
     },
     "httpConfig": {
       "description": "httpConfig defines the HTTP client's configuration. You must use this configuration to supply the bot token as part of the HTTP `Authorization` header.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1beta1.HTTPConfig"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1beta1.HTTPConfig"
     },
     "message": {
       "description": "message defines the message template",

@@ -7,7 +7,7 @@
       "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SecretKeySelector"
     },
     "http_config": {
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.HTTPConfig"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.HTTPConfig"
     },
     "max_alerts": {
       "description": "MaxAlerts defines maximum number of alerts to be sent per incident.io message.",

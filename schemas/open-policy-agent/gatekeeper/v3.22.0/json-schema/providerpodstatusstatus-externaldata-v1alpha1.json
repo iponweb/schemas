@@ -15,7 +15,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/sh.gatekeeper.frameworks.constraint.pkg.apis.externaldata.v1alpha1.ProviderError"
+        "$ref": "_definitions.json#/definitions/sh.gatekeeper.externaldata.v1alpha1.ProviderError"
       }
     },
     "id": {

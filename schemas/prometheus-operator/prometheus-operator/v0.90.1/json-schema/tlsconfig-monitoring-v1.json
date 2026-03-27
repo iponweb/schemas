@@ -5,7 +5,7 @@
     "ca": {
       "description": "ca defines the Certificate authority used when verifying server certificates.",
       "default": {},
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.SecretOrConfigMap"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.SecretOrConfigMap"
     },
     "caFile": {
       "description": "caFile defines the path to the CA cert in the Prometheus container to use for the targets.",
@@ -17,7 +17,7 @@
     "cert": {
       "description": "cert defines the Client certificate to present when doing client-authentication.",
       "default": {},
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.SecretOrConfigMap"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.SecretOrConfigMap"
     },
     "certFile": {
       "description": "certFile defines the path to the client cert file in the Prometheus container for the targets.",

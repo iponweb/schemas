@@ -1,0 +1,70 @@
+{
+  "oneOf": [
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.Alertmanager"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.AlertmanagerList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.PodMonitor"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.PodMonitorList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.Probe"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.ProbeList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.Prometheus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.PrometheusList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.PrometheusRule"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.PrometheusRuleList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.ServiceMonitor"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.ServiceMonitorList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.ThanosRuler"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.ThanosRulerList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.AlertmanagerConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.AlertmanagerConfigList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.PrometheusAgent"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.PrometheusAgentList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.ScrapeConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.ScrapeConfigList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.util.intstr.IntOrString"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.api.resource.Quantity"
+    }
+  ]
+}

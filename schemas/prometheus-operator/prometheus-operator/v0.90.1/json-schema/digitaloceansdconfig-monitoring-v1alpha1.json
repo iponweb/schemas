@@ -4,7 +4,7 @@
   "properties": {
     "authorization": {
       "description": "authorization defines the header configuration to authenticate against the DigitalOcean API. Cannot be set at the same time as `oauth2`.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.SafeAuthorization"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.SafeAuthorization"
     },
     "enableHTTP2": {
       "description": "enableHTTP2 defines whether to enable HTTP2.",
@@ -29,7 +29,7 @@
     },
     "oauth2": {
       "description": "oauth2 defines the configuration to use on every scrape request.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.OAuth2"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.OAuth2"
     },
     "port": {
       "description": "port defines the port to scrape metrics from. If using the public IP address, this must",
@@ -79,7 +79,7 @@
     },
     "tlsConfig": {
       "description": "tlsConfig defines the TLS configuration to connect to the DigitalOcean API.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.SafeTLSConfig"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.SafeTLSConfig"
     }
   },
   "additionalProperties": false,

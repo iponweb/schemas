@@ -26,7 +26,7 @@
     "spec": {
       "description": "Specification of desired Ingress selection for target discovery by Prometheus.",
       "default": {},
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.ProbeSpec"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.ProbeSpec"
     }
   },
   "additionalProperties": false,

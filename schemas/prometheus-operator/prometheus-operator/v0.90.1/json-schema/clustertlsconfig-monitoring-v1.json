@@ -9,12 +9,12 @@
     "client": {
       "description": "client defines the client-side configuration for mutual TLS.",
       "default": {},
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.SafeTLSConfig"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.SafeTLSConfig"
     },
     "server": {
       "description": "server defines the server-side configuration for mutual TLS.",
       "default": {},
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1.WebTLSConfig"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.WebTLSConfig"
     }
   },
   "additionalProperties": false,

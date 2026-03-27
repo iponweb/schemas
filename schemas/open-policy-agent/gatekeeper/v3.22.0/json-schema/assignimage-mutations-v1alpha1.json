@@ -22,11 +22,11 @@
     },
     "spec": {
       "default": {},
-      "$ref": "_definitions.json#/definitions/sh.gatekeeper.apis.mutations.v1alpha1.AssignImageSpec"
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.mutations.v1alpha1.AssignImageSpec"
     },
     "status": {
       "default": {},
-      "$ref": "_definitions.json#/definitions/sh.gatekeeper.apis.mutations.v1alpha1.AssignImageStatus"
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.mutations.v1alpha1.AssignImageStatus"
     }
   },
   "additionalProperties": false,

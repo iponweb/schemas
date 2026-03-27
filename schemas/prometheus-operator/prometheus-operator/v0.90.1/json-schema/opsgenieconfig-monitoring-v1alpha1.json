@@ -35,7 +35,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.KeyValue"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.KeyValue"
       },
       "x-kubernetes-list-type": "atomic"
     },
@@ -48,7 +48,7 @@
     },
     "httpConfig": {
       "description": "httpConfig defines the HTTP client configuration for OpsGenie API requests.",
-      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.HTTPConfig"
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.HTTPConfig"
     },
     "message": {
       "description": "message defines the alert text limited to 130 characters. This appears as the main alert title in OpsGenie.",
@@ -79,7 +79,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.pkg.apis.monitoring.v1alpha1.OpsGenieConfigResponder"
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.OpsGenieConfigResponder"
       },
       "x-kubernetes-list-type": "atomic"
     },

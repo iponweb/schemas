@@ -53,4 +53,5 @@ crd_names:
 crd_path: "config/crds/bases"
 
 host_conversion_rules:
+  "github.com/external-secrets/external-secrets/apis/generators": "generators.external-secrets.io"
   "github.com/external-secrets/external-secrets": "external-secrets.io"

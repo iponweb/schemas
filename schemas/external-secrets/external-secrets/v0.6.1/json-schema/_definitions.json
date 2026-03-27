@@ -1,46 +1,92 @@
 {
   "definitions": {
-    "io.external-secrets.apis.externalsecrets.v1alpha1.AWSAuth": {
-      "description": "AWSAuth tells the controller how to do authentication with aws. Only one of secretRef or jwt can be specified. if none is specified the controller will load credentials using the aws sdk defaults.",
+    "io.external-secrets.v1.SecretKeySelector": {
+      "description": "A reference to a specific 'key' within a Secret resource, In some instances, `key` is a required field.",
       "type": "object",
       "properties": {
-        "jwt": {
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.AWSJWTAuth"
+        "key": {
+          "description": "The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be defaulted, in others it may be required.",
+          "type": "string"
         },
-        "secretRef": {
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.AWSAuthSecretRef"
+        "name": {
+          "description": "The name of the Secret resource being referred to.",
+          "type": "string"
+        },
+        "namespace": {
+          "description": "Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults to the namespace of the referent.",
+          "type": "string"
         }
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1alpha1.AWSAuthSecretRef": {
+    "io.external-secrets.v1.ServiceAccountSelector": {
+      "description": "A reference to a ServiceAccount resource.",
+      "type": "object",
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "audiences": {
+          "description": "Audience specifies the `aud` claim for the service account token If the service account uses a well-known annotation for e.g. IRSA or GCP Workload Identity then this audiences will be appended to the list",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "default": ""
+          }
+        },
+        "name": {
+          "description": "The name of the ServiceAccount resource being referred to.",
+          "type": "string",
+          "default": ""
+        },
+        "namespace": {
+          "description": "Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults to the namespace of the referent.",
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "io.external-secrets.v1alpha1.AWSAuth": {
+      "description": "AWSAuth tells the controller how to do authentication with aws. Only one of secretRef or jwt can be specified. if none is specified the controller will load credentials using the aws sdk defaults.",
+      "type": "object",
+      "properties": {
+        "jwt": {
+          "$ref": "#/definitions/io.external-secrets.v1alpha1.AWSJWTAuth"
+        },
+        "secretRef": {
+          "$ref": "#/definitions/io.external-secrets.v1alpha1.AWSAuthSecretRef"
+        }
+      },
+      "additionalProperties": false
+    },
+    "io.external-secrets.v1alpha1.AWSAuthSecretRef": {
       "description": "AWSAuthSecretRef holds secret references for AWS credentials both AccessKeyID and SecretAccessKey must be defined in order to properly authenticate.",
       "type": "object",
       "properties": {
         "accessKeyIDSecretRef": {
           "description": "The AccessKeyID is used for authentication",
           "default": {},
-          "$ref": "#/definitions/io.external-secrets.apis.meta.v1.SecretKeySelector"
+          "$ref": "#/definitions/io.external-secrets.v1.SecretKeySelector"
         },
         "secretAccessKeySecretRef": {
           "description": "The SecretAccessKey is used for authentication",
           "default": {},
-          "$ref": "#/definitions/io.external-secrets.apis.meta.v1.SecretKeySelector"
+          "$ref": "#/definitions/io.external-secrets.v1.SecretKeySelector"
         }
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1alpha1.AWSJWTAuth": {
+    "io.external-secrets.v1alpha1.AWSJWTAuth": {
       "description": "Authenticate against AWS using service account tokens.",
       "type": "object",
       "properties": {
         "serviceAccountRef": {
-          "$ref": "#/definitions/io.external-secrets.apis.meta.v1.ServiceAccountSelector"
+          "$ref": "#/definitions/io.external-secrets.v1.ServiceAccountSelector"
         }
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1alpha1.AWSProvider": {
+    "io.external-secrets.v1alpha1.AWSProvider": {
       "description": "AWSProvider configures a store to sync secrets with AWS.",
       "type": "object",
       "required": [
@@ -51,7 +97,7 @@
         "auth": {
           "description": "Auth defines the information necessary to authenticate against AWS if not set aws sdk will infer credentials from your environment see: https://docs.aws.amazon.com/sdk-for-go/v1/developer-guide/configuring-sdk.html#specifying-credentials",
           "default": {},
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.AWSAuth"
+          "$ref": "#/definitions/io.external-secrets.v1alpha1.AWSAuth"
         },
         "region": {
           "description": "AWS Region to be used for the provider",
@@ -70,42 +116,42 @@
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1alpha1.AkeylessAuth": {
+    "io.external-secrets.v1alpha1.AkeylessAuth": {
       "type": "object",
       "properties": {
         "kubernetesAuth": {
           "description": "Kubernetes authenticates with Akeyless by passing the ServiceAccount token stored in the named Secret resource.",
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.AkeylessKubernetesAuth"
+          "$ref": "#/definitions/io.external-secrets.v1alpha1.AkeylessKubernetesAuth"
         },
         "secretRef": {
           "description": "Reference to a Secret that contains the details to authenticate with Akeyless.",
           "default": {},
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.AkeylessAuthSecretRef"
+          "$ref": "#/definitions/io.external-secrets.v1alpha1.AkeylessAuthSecretRef"
         }
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1alpha1.AkeylessAuthSecretRef": {
+    "io.external-secrets.v1alpha1.AkeylessAuthSecretRef": {
       "description": "AkeylessAuthSecretRef AKEYLESS_ACCESS_TYPE_PARAM: AZURE_OBJ_ID OR GCP_AUDIENCE OR ACCESS_KEY OR KUB_CONFIG_NAME.",
       "type": "object",
       "properties": {
         "accessID": {
           "description": "The SecretAccessID is used for authentication",
           "default": {},
-          "$ref": "#/definitions/io.external-secrets.apis.meta.v1.SecretKeySelector"
+          "$ref": "#/definitions/io.external-secrets.v1.SecretKeySelector"
         },
         "accessType": {
           "default": {},
-          "$ref": "#/definitions/io.external-secrets.apis.meta.v1.SecretKeySelector"
+          "$ref": "#/definitions/io.external-secrets.v1.SecretKeySelector"
         },
         "accessTypeParam": {
           "default": {},
-          "$ref": "#/definitions/io.external-secrets.apis.meta.v1.SecretKeySelector"
+          "$ref": "#/definitions/io.external-secrets.v1.SecretKeySelector"
         }
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1alpha1.AkeylessKubernetesAuth": {
+    "io.external-secrets.v1alpha1.AkeylessKubernetesAuth": {
       "description": "Authenticate with Kubernetes ServiceAccount token stored.",
       "type": "object",
       "required": [
@@ -125,16 +171,16 @@
         },
         "secretRef": {
           "description": "Optional secret field containing a Kubernetes ServiceAccount JWT used for authenticating with Akeyless. If a name is specified without a key, `token` is the default. If one is not specified, the one bound to the controller will be used.",
-          "$ref": "#/definitions/io.external-secrets.apis.meta.v1.SecretKeySelector"
+          "$ref": "#/definitions/io.external-secrets.v1.SecretKeySelector"
         },
         "serviceAccountRef": {
           "description": "Optional service account field containing the name of a kubernetes ServiceAccount. If the service account is specified, the service account secret token JWT will be used for authenticating with Akeyless. If the service account selector is not supplied, the secretRef will be used instead.",
-          "$ref": "#/definitions/io.external-secrets.apis.meta.v1.ServiceAccountSelector"
+          "$ref": "#/definitions/io.external-secrets.v1.ServiceAccountSelector"
         }
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1alpha1.AkeylessProvider": {
+    "io.external-secrets.v1alpha1.AkeylessProvider": {
       "description": "AkeylessProvider Configures an store to sync secrets using Akeyless KV.",
       "type": "object",
       "required": [
@@ -148,12 +194,12 @@
         },
         "authSecretRef": {
           "description": "Auth configures how the operator authenticates with Akeyless.",
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.AkeylessAuth"
+          "$ref": "#/definitions/io.external-secrets.v1alpha1.AkeylessAuth"
         }
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1alpha1.AlibabaAuth": {
+    "io.external-secrets.v1alpha1.AlibabaAuth": {
       "description": "AlibabaAuth contains a secretRef for credentials.",
       "type": "object",
       "required": [
@@ -162,12 +208,12 @@
       "properties": {
         "secretRef": {
           "default": {},
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.AlibabaAuthSecretRef"
+          "$ref": "#/definitions/io.external-secrets.v1alpha1.AlibabaAuthSecretRef"
         }
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1alpha1.AlibabaAuthSecretRef": {
+    "io.external-secrets.v1alpha1.AlibabaAuthSecretRef": {
       "description": "AlibabaAuthSecretRef holds secret references for Alibaba credentials.",
       "type": "object",
       "required": [
@@ -178,17 +224,17 @@
         "accessKeyIDSecretRef": {
           "description": "The AccessKeyID is used for authentication",
           "default": {},
-          "$ref": "#/definitions/io.external-secrets.apis.meta.v1.SecretKeySelector"
+          "$ref": "#/definitions/io.external-secrets.v1.SecretKeySelector"
         },
         "accessKeySecretSecretRef": {
           "description": "The AccessKeySecret is used for authentication",
           "default": {},
-          "$ref": "#/definitions/io.external-secrets.apis.meta.v1.SecretKeySelector"
+          "$ref": "#/definitions/io.external-secrets.v1.SecretKeySelector"
         }
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1alpha1.AlibabaProvider": {
+    "io.external-secrets.v1alpha1.AlibabaProvider": {
       "description": "AlibabaProvider configures a store to sync secrets using the Alibaba Secret Manager provider.",
       "type": "object",
       "required": [
@@ -197,7 +243,7 @@
       ],
       "properties": {
         "auth": {
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.AlibabaAuth"
+          "$ref": "#/definitions/io.external-secrets.v1alpha1.AlibabaAuth"
         },
         "endpoint": {
           "type": "string",
@@ -211,22 +257,22 @@
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1alpha1.AzureKVAuth": {
+    "io.external-secrets.v1alpha1.AzureKVAuth": {
       "description": "Configuration used to authenticate with Azure.",
       "type": "object",
       "properties": {
         "clientId": {
           "description": "The Azure clientId of the service principle used for authentication.",
-          "$ref": "#/definitions/io.external-secrets.apis.meta.v1.SecretKeySelector"
+          "$ref": "#/definitions/io.external-secrets.v1.SecretKeySelector"
         },
         "clientSecret": {
           "description": "The Azure ClientSecret of the service principle used for authentication.",
-          "$ref": "#/definitions/io.external-secrets.apis.meta.v1.SecretKeySelector"
+          "$ref": "#/definitions/io.external-secrets.v1.SecretKeySelector"
         }
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1alpha1.AzureKVProvider": {
+    "io.external-secrets.v1alpha1.AzureKVProvider": {
       "description": "Configures an store to sync secrets using Azure KV.",
       "type": "object",
       "required": [
@@ -235,7 +281,7 @@
       "properties": {
         "authSecretRef": {
           "description": "Auth configures how the operator authenticates with Azure. Required for ServicePrincipal auth type.",
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.AzureKVAuth"
+          "$ref": "#/definitions/io.external-secrets.v1alpha1.AzureKVAuth"
         },
         "authType": {
           "description": "Auth type defines how to authenticate to the keyvault service. Valid values are: - \"ServicePrincipal\" (default): Using a service principal (tenantId, clientId, clientSecret) - \"ManagedIdentity\": Using Managed Identity assigned to the pod (see aad-pod-identity)",
@@ -247,7 +293,7 @@
         },
         "serviceAccountRef": {
           "description": "ServiceAccountRef specified the service account that should be used when authenticating with WorkloadIdentity.",
-          "$ref": "#/definitions/io.external-secrets.apis.meta.v1.ServiceAccountSelector"
+          "$ref": "#/definitions/io.external-secrets.v1.ServiceAccountSelector"
         },
         "tenantId": {
           "description": "TenantID configures the Azure Tenant to send requests to. Required for ServicePrincipal auth type.",
@@ -260,7 +306,7 @@
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1alpha1.CAProvider": {
+    "io.external-secrets.v1alpha1.CAProvider": {
       "description": "Defines a location to fetch the cert for the vault provider from.",
       "type": "object",
       "required": [
@@ -289,21 +335,21 @@
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1alpha1.CertAuth": {
+    "io.external-secrets.v1alpha1.CertAuth": {
       "type": "object",
       "properties": {
         "clientCert": {
           "default": {},
-          "$ref": "#/definitions/io.external-secrets.apis.meta.v1.SecretKeySelector"
+          "$ref": "#/definitions/io.external-secrets.v1.SecretKeySelector"
         },
         "clientKey": {
           "default": {},
-          "$ref": "#/definitions/io.external-secrets.apis.meta.v1.SecretKeySelector"
+          "$ref": "#/definitions/io.external-secrets.v1.SecretKeySelector"
         }
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1alpha1.ClusterSecretStore": {
+    "io.external-secrets.v1alpha1.ClusterSecretStore": {
       "description": "ClusterSecretStore represents a secure external location for storing secrets, which can be referenced as part of `storeRef` fields.",
       "type": "object",
       "properties": {
@@ -321,16 +367,16 @@
         },
         "spec": {
           "default": {},
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.SecretStoreSpec"
+          "$ref": "#/definitions/io.external-secrets.v1alpha1.SecretStoreSpec"
         },
         "status": {
           "default": {},
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.SecretStoreStatus"
+          "$ref": "#/definitions/io.external-secrets.v1alpha1.SecretStoreStatus"
         }
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1alpha1.ExternalSecret": {
+    "io.external-secrets.v1alpha1.ExternalSecret": {
       "description": "ExternalSecret is the Schema for the external-secrets API.",
       "type": "object",
       "properties": {
@@ -348,16 +394,16 @@
         },
         "spec": {
           "default": {},
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.ExternalSecretSpec"
+          "$ref": "#/definitions/io.external-secrets.v1alpha1.ExternalSecretSpec"
         },
         "status": {
           "default": {},
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.ExternalSecretStatus"
+          "$ref": "#/definitions/io.external-secrets.v1alpha1.ExternalSecretStatus"
         }
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1alpha1.ExternalSecretData": {
+    "io.external-secrets.v1alpha1.ExternalSecretData": {
       "description": "ExternalSecretData defines the connection between the Kubernetes Secret key (spec.data.<key>) and the Provider data.",
       "type": "object",
       "required": [
@@ -367,7 +413,7 @@
       "properties": {
         "remoteRef": {
           "default": {},
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.ExternalSecretDataRemoteRef"
+          "$ref": "#/definitions/io.external-secrets.v1alpha1.ExternalSecretDataRemoteRef"
         },
         "secretKey": {
           "type": "string",
@@ -376,7 +422,7 @@
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1alpha1.ExternalSecretDataRemoteRef": {
+    "io.external-secrets.v1alpha1.ExternalSecretDataRemoteRef": {
       "description": "ExternalSecretDataRemoteRef defines Provider data location.",
       "type": "object",
       "required": [
@@ -403,7 +449,7 @@
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1alpha1.ExternalSecretSpec": {
+    "io.external-secrets.v1alpha1.ExternalSecretSpec": {
       "description": "ExternalSecretSpec defines the desired state of ExternalSecret.",
       "type": "object",
       "required": [
@@ -416,7 +462,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.ExternalSecretData"
+            "$ref": "#/definitions/io.external-secrets.v1alpha1.ExternalSecretData"
           }
         },
         "dataFrom": {
@@ -424,7 +470,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.ExternalSecretDataRemoteRef"
+            "$ref": "#/definitions/io.external-secrets.v1alpha1.ExternalSecretDataRemoteRef"
           }
         },
         "refreshInterval": {
@@ -433,23 +479,23 @@
         },
         "secretStoreRef": {
           "default": {},
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.SecretStoreRef"
+          "$ref": "#/definitions/io.external-secrets.v1alpha1.SecretStoreRef"
         },
         "target": {
           "default": {},
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.ExternalSecretTarget"
+          "$ref": "#/definitions/io.external-secrets.v1alpha1.ExternalSecretTarget"
         }
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1alpha1.ExternalSecretStatus": {
+    "io.external-secrets.v1alpha1.ExternalSecretStatus": {
       "type": "object",
       "properties": {
         "conditions": {
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.ExternalSecretStatusCondition"
+            "$ref": "#/definitions/io.external-secrets.v1alpha1.ExternalSecretStatusCondition"
           }
         },
         "refreshTime": {
@@ -463,7 +509,7 @@
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1alpha1.ExternalSecretStatusCondition": {
+    "io.external-secrets.v1alpha1.ExternalSecretStatusCondition": {
       "type": "object",
       "required": [
         "type",
@@ -490,7 +536,7 @@
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1alpha1.ExternalSecretTarget": {
+    "io.external-secrets.v1alpha1.ExternalSecretTarget": {
       "description": "ExternalSecretTarget defines the Kubernetes Secret to be created There can be only one target per ExternalSecret.",
       "type": "object",
       "properties": {
@@ -508,12 +554,12 @@
         },
         "template": {
           "description": "Template defines a blueprint for the created Secret resource.",
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.ExternalSecretTemplate"
+          "$ref": "#/definitions/io.external-secrets.v1alpha1.ExternalSecretTemplate"
         }
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1alpha1.ExternalSecretTemplate": {
+    "io.external-secrets.v1alpha1.ExternalSecretTemplate": {
       "description": "ExternalSecretTemplate defines a blueprint for the created Secret resource. we can not use native corev1.Secret, it will have empty ObjectMeta values: https://github.com/kubernetes-sigs/controller-tools/issues/448",
       "type": "object",
       "properties": {
@@ -530,13 +576,13 @@
         },
         "metadata": {
           "default": {},
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.ExternalSecretTemplateMetadata"
+          "$ref": "#/definitions/io.external-secrets.v1alpha1.ExternalSecretTemplateMetadata"
         },
         "templateFrom": {
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.TemplateFrom"
+            "$ref": "#/definitions/io.external-secrets.v1alpha1.TemplateFrom"
           }
         },
         "type": {
@@ -545,7 +591,7 @@
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1alpha1.ExternalSecretTemplateMetadata": {
+    "io.external-secrets.v1alpha1.ExternalSecretTemplateMetadata": {
       "description": "ExternalSecretTemplateMetadata defines metadata fields for the Secret blueprint.",
       "type": "object",
       "properties": {
@@ -566,7 +612,7 @@
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1alpha1.FakeProvider": {
+    "io.external-secrets.v1alpha1.FakeProvider": {
       "description": "FakeProvider configures a fake provider that returns static values.",
       "type": "object",
       "required": [
@@ -577,13 +623,13 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.FakeProviderData"
+            "$ref": "#/definitions/io.external-secrets.v1alpha1.FakeProviderData"
           }
         }
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1alpha1.FakeProviderData": {
+    "io.external-secrets.v1alpha1.FakeProviderData": {
       "type": "object",
       "required": [
         "key"
@@ -609,37 +655,37 @@
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1alpha1.GCPSMAuth": {
+    "io.external-secrets.v1alpha1.GCPSMAuth": {
       "type": "object",
       "properties": {
         "secretRef": {
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.GCPSMAuthSecretRef"
+          "$ref": "#/definitions/io.external-secrets.v1alpha1.GCPSMAuthSecretRef"
         },
         "workloadIdentity": {
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.GCPWorkloadIdentity"
+          "$ref": "#/definitions/io.external-secrets.v1alpha1.GCPWorkloadIdentity"
         }
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1alpha1.GCPSMAuthSecretRef": {
+    "io.external-secrets.v1alpha1.GCPSMAuthSecretRef": {
       "type": "object",
       "properties": {
         "secretAccessKeySecretRef": {
           "description": "The SecretAccessKey is used for authentication",
           "default": {},
-          "$ref": "#/definitions/io.external-secrets.apis.meta.v1.SecretKeySelector"
+          "$ref": "#/definitions/io.external-secrets.v1.SecretKeySelector"
         }
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1alpha1.GCPSMProvider": {
+    "io.external-secrets.v1alpha1.GCPSMProvider": {
       "description": "GCPSMProvider Configures a store to sync secrets using the GCP Secret Manager provider.",
       "type": "object",
       "properties": {
         "auth": {
           "description": "Auth defines the information necessary to authenticate against GCP",
           "default": {},
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.GCPSMAuth"
+          "$ref": "#/definitions/io.external-secrets.v1alpha1.GCPSMAuth"
         },
         "projectID": {
           "description": "ProjectID project where secret is located",
@@ -648,7 +694,7 @@
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1alpha1.GCPWorkloadIdentity": {
+    "io.external-secrets.v1alpha1.GCPWorkloadIdentity": {
       "type": "object",
       "required": [
         "serviceAccountRef",
@@ -669,12 +715,12 @@
         },
         "serviceAccountRef": {
           "default": {},
-          "$ref": "#/definitions/io.external-secrets.apis.meta.v1.ServiceAccountSelector"
+          "$ref": "#/definitions/io.external-secrets.v1.ServiceAccountSelector"
         }
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1alpha1.GitlabAuth": {
+    "io.external-secrets.v1alpha1.GitlabAuth": {
       "type": "object",
       "required": [
         "SecretRef"
@@ -682,12 +728,12 @@
       "properties": {
         "SecretRef": {
           "default": {},
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.GitlabSecretRef"
+          "$ref": "#/definitions/io.external-secrets.v1alpha1.GitlabSecretRef"
         }
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1alpha1.GitlabProvider": {
+    "io.external-secrets.v1alpha1.GitlabProvider": {
       "description": "Configures a store to sync secrets with a GitLab instance.",
       "type": "object",
       "required": [
@@ -697,7 +743,7 @@
         "auth": {
           "description": "Auth configures how secret-manager authenticates with a GitLab instance.",
           "default": {},
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.GitlabAuth"
+          "$ref": "#/definitions/io.external-secrets.v1alpha1.GitlabAuth"
         },
         "projectID": {
           "description": "ProjectID specifies a project where secrets are located.",
@@ -710,18 +756,18 @@
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1alpha1.GitlabSecretRef": {
+    "io.external-secrets.v1alpha1.GitlabSecretRef": {
       "type": "object",
       "properties": {
         "accessToken": {
           "description": "AccessToken is used for authentication.",
           "default": {},
-          "$ref": "#/definitions/io.external-secrets.apis.meta.v1.SecretKeySelector"
+          "$ref": "#/definitions/io.external-secrets.v1.SecretKeySelector"
         }
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1alpha1.IBMAuth": {
+    "io.external-secrets.v1alpha1.IBMAuth": {
       "type": "object",
       "required": [
         "secretRef"
@@ -729,23 +775,23 @@
       "properties": {
         "secretRef": {
           "default": {},
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.IBMAuthSecretRef"
+          "$ref": "#/definitions/io.external-secrets.v1alpha1.IBMAuthSecretRef"
         }
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1alpha1.IBMAuthSecretRef": {
+    "io.external-secrets.v1alpha1.IBMAuthSecretRef": {
       "type": "object",
       "properties": {
         "secretApiKeySecretRef": {
           "description": "The SecretAccessKey is used for authentication",
           "default": {},
-          "$ref": "#/definitions/io.external-secrets.apis.meta.v1.SecretKeySelector"
+          "$ref": "#/definitions/io.external-secrets.v1.SecretKeySelector"
         }
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1alpha1.IBMProvider": {
+    "io.external-secrets.v1alpha1.IBMProvider": {
       "description": "Configures an store to sync secrets using a IBM Cloud Secrets Manager backend.",
       "type": "object",
       "required": [
@@ -755,7 +801,7 @@
         "auth": {
           "description": "Auth configures how secret-manager authenticates with the IBM secrets manager.",
           "default": {},
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.IBMAuth"
+          "$ref": "#/definitions/io.external-secrets.v1alpha1.IBMAuth"
         },
         "serviceUrl": {
           "description": "ServiceURL is the Endpoint URL that is specific to the Secrets Manager service instance",
@@ -764,25 +810,25 @@
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1alpha1.KubernetesAuth": {
+    "io.external-secrets.v1alpha1.KubernetesAuth": {
       "type": "object",
       "properties": {
         "cert": {
           "description": "has both clientCert and clientKey as secretKeySelector",
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.CertAuth"
+          "$ref": "#/definitions/io.external-secrets.v1alpha1.CertAuth"
         },
         "serviceAccount": {
           "description": "points to a service account that should be used for authentication",
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.ServiceAccountAuth"
+          "$ref": "#/definitions/io.external-secrets.v1alpha1.ServiceAccountAuth"
         },
         "token": {
           "description": "use static token to authenticate with",
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.TokenAuth"
+          "$ref": "#/definitions/io.external-secrets.v1alpha1.TokenAuth"
         }
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1alpha1.KubernetesProvider": {
+    "io.external-secrets.v1alpha1.KubernetesProvider": {
       "description": "Configures a store to sync secrets with a Kubernetes instance.",
       "type": "object",
       "required": [
@@ -792,7 +838,7 @@
         "auth": {
           "description": "Auth configures how secret-manager authenticates with a Kubernetes instance.",
           "default": {},
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.KubernetesAuth"
+          "$ref": "#/definitions/io.external-secrets.v1alpha1.KubernetesAuth"
         },
         "remoteNamespace": {
           "description": "Remote namespace to fetch the secrets from",
@@ -802,12 +848,12 @@
         "server": {
           "description": "configures the Kubernetes server Address.",
           "default": {},
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.KubernetesServer"
+          "$ref": "#/definitions/io.external-secrets.v1alpha1.KubernetesServer"
         }
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1alpha1.KubernetesServer": {
+    "io.external-secrets.v1alpha1.KubernetesServer": {
       "type": "object",
       "properties": {
         "caBundle": {
@@ -817,7 +863,7 @@
         },
         "caProvider": {
           "description": "see: https://external-secrets.io/v0.4.1/spec/#external-secrets.io/v1alpha1.CAProvider",
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.CAProvider"
+          "$ref": "#/definitions/io.external-secrets.v1alpha1.CAProvider"
         },
         "url": {
           "description": "configures the Kubernetes server Address.",
@@ -826,7 +872,7 @@
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1alpha1.OracleAuth": {
+    "io.external-secrets.v1alpha1.OracleAuth": {
       "type": "object",
       "required": [
         "tenancy",
@@ -837,7 +883,7 @@
         "secretRef": {
           "description": "SecretRef to pass through sensitive information.",
           "default": {},
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.OracleSecretRef"
+          "$ref": "#/definitions/io.external-secrets.v1alpha1.OracleSecretRef"
         },
         "tenancy": {
           "description": "Tenancy is the tenancy OCID where user is located.",
@@ -852,7 +898,7 @@
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1alpha1.OracleProvider": {
+    "io.external-secrets.v1alpha1.OracleProvider": {
       "description": "Configures an store to sync secrets using a Oracle Vault backend.",
       "type": "object",
       "required": [
@@ -862,7 +908,7 @@
       "properties": {
         "auth": {
           "description": "Auth configures how secret-manager authenticates with the Oracle Vault. If empty, use the instance principal, otherwise the user credentials specified in Auth.",
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.OracleAuth"
+          "$ref": "#/definitions/io.external-secrets.v1alpha1.OracleAuth"
         },
         "region": {
           "description": "Region is the region where vault is located.",
@@ -877,7 +923,7 @@
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1alpha1.OracleSecretRef": {
+    "io.external-secrets.v1alpha1.OracleSecretRef": {
       "type": "object",
       "required": [
         "privatekey",
@@ -887,17 +933,17 @@
         "fingerprint": {
           "description": "Fingerprint is the fingerprint of the API private key.",
           "default": {},
-          "$ref": "#/definitions/io.external-secrets.apis.meta.v1.SecretKeySelector"
+          "$ref": "#/definitions/io.external-secrets.v1.SecretKeySelector"
         },
         "privatekey": {
           "description": "PrivateKey is the user's API Signing Key in PEM format, used for authentication.",
           "default": {},
-          "$ref": "#/definitions/io.external-secrets.apis.meta.v1.SecretKeySelector"
+          "$ref": "#/definitions/io.external-secrets.v1.SecretKeySelector"
         }
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1alpha1.SecretStore": {
+    "io.external-secrets.v1alpha1.SecretStore": {
       "description": "SecretStore represents a secure external location for storing secrets, which can be referenced as part of `storeRef` fields.",
       "type": "object",
       "properties": {
@@ -915,75 +961,75 @@
         },
         "spec": {
           "default": {},
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.SecretStoreSpec"
+          "$ref": "#/definitions/io.external-secrets.v1alpha1.SecretStoreSpec"
         },
         "status": {
           "default": {},
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.SecretStoreStatus"
+          "$ref": "#/definitions/io.external-secrets.v1alpha1.SecretStoreStatus"
         }
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1alpha1.SecretStoreProvider": {
+    "io.external-secrets.v1alpha1.SecretStoreProvider": {
       "description": "SecretStoreProvider contains the provider-specific configration.",
       "type": "object",
       "properties": {
         "akeyless": {
           "description": "Akeyless configures this store to sync secrets using Akeyless Vault provider",
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.AkeylessProvider"
+          "$ref": "#/definitions/io.external-secrets.v1alpha1.AkeylessProvider"
         },
         "alibaba": {
           "description": "Alibaba configures this store to sync secrets using Alibaba Cloud provider",
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.AlibabaProvider"
+          "$ref": "#/definitions/io.external-secrets.v1alpha1.AlibabaProvider"
         },
         "aws": {
           "description": "AWS configures this store to sync secrets using AWS Secret Manager provider",
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.AWSProvider"
+          "$ref": "#/definitions/io.external-secrets.v1alpha1.AWSProvider"
         },
         "azurekv": {
           "description": "AzureKV configures this store to sync secrets using Azure Key Vault provider",
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.AzureKVProvider"
+          "$ref": "#/definitions/io.external-secrets.v1alpha1.AzureKVProvider"
         },
         "fake": {
           "description": "Fake configures a store with static key/value pairs",
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.FakeProvider"
+          "$ref": "#/definitions/io.external-secrets.v1alpha1.FakeProvider"
         },
         "gcpsm": {
           "description": "GCPSM configures this store to sync secrets using Google Cloud Platform Secret Manager provider",
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.GCPSMProvider"
+          "$ref": "#/definitions/io.external-secrets.v1alpha1.GCPSMProvider"
         },
         "gitlab": {
           "description": "Gitlab configures this store to sync secrets using Gitlab Variables provider",
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.GitlabProvider"
+          "$ref": "#/definitions/io.external-secrets.v1alpha1.GitlabProvider"
         },
         "ibm": {
           "description": "IBM configures this store to sync secrets using IBM Cloud provider",
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.IBMProvider"
+          "$ref": "#/definitions/io.external-secrets.v1alpha1.IBMProvider"
         },
         "kubernetes": {
           "description": "Kubernetes configures this store to sync secrets using a Kubernetes cluster provider",
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.KubernetesProvider"
+          "$ref": "#/definitions/io.external-secrets.v1alpha1.KubernetesProvider"
         },
         "oracle": {
           "description": "Oracle configures this store to sync secrets using Oracle Vault provider",
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.OracleProvider"
+          "$ref": "#/definitions/io.external-secrets.v1alpha1.OracleProvider"
         },
         "vault": {
           "description": "Vault configures this store to sync secrets using Hashi provider",
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.VaultProvider"
+          "$ref": "#/definitions/io.external-secrets.v1alpha1.VaultProvider"
         },
         "webhook": {
           "description": "Webhook configures this store to sync secrets using a generic templated webhook",
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.WebhookProvider"
+          "$ref": "#/definitions/io.external-secrets.v1alpha1.WebhookProvider"
         },
         "yandexlockbox": {
           "description": "YandexLockbox configures this store to sync secrets using Yandex Lockbox provider",
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.YandexLockboxProvider"
+          "$ref": "#/definitions/io.external-secrets.v1alpha1.YandexLockboxProvider"
         }
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1alpha1.SecretStoreRef": {
+    "io.external-secrets.v1alpha1.SecretStoreRef": {
       "description": "SecretStoreRef defines which SecretStore to fetch the ExternalSecret data.",
       "type": "object",
       "required": [
@@ -1002,7 +1048,7 @@
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1alpha1.SecretStoreRetrySettings": {
+    "io.external-secrets.v1alpha1.SecretStoreRetrySettings": {
       "type": "object",
       "properties": {
         "maxRetries": {
@@ -1015,7 +1061,7 @@
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1alpha1.SecretStoreSpec": {
+    "io.external-secrets.v1alpha1.SecretStoreSpec": {
       "description": "SecretStoreSpec defines the desired state of SecretStore.",
       "type": "object",
       "required": [
@@ -1029,16 +1075,16 @@
         },
         "provider": {
           "description": "Used to configure the provider. Only one provider may be set",
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.SecretStoreProvider"
+          "$ref": "#/definitions/io.external-secrets.v1alpha1.SecretStoreProvider"
         },
         "retrySettings": {
           "description": "Used to configure http retries if failed",
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.SecretStoreRetrySettings"
+          "$ref": "#/definitions/io.external-secrets.v1alpha1.SecretStoreRetrySettings"
         }
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1alpha1.SecretStoreStatus": {
+    "io.external-secrets.v1alpha1.SecretStoreStatus": {
       "description": "SecretStoreStatus defines the observed state of the SecretStore.",
       "type": "object",
       "properties": {
@@ -1046,13 +1092,13 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.SecretStoreStatusCondition"
+            "$ref": "#/definitions/io.external-secrets.v1alpha1.SecretStoreStatusCondition"
           }
         }
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1alpha1.SecretStoreStatusCondition": {
+    "io.external-secrets.v1alpha1.SecretStoreStatusCondition": {
       "type": "object",
       "required": [
         "type",
@@ -1079,29 +1125,29 @@
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1alpha1.ServiceAccountAuth": {
+    "io.external-secrets.v1alpha1.ServiceAccountAuth": {
       "type": "object",
       "properties": {
         "serviceAccount": {
           "default": {},
-          "$ref": "#/definitions/io.external-secrets.apis.meta.v1.ServiceAccountSelector"
+          "$ref": "#/definitions/io.external-secrets.v1.ServiceAccountSelector"
         }
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1alpha1.TemplateFrom": {
+    "io.external-secrets.v1alpha1.TemplateFrom": {
       "type": "object",
       "properties": {
         "configMap": {
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.TemplateRef"
+          "$ref": "#/definitions/io.external-secrets.v1alpha1.TemplateRef"
         },
         "secret": {
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.TemplateRef"
+          "$ref": "#/definitions/io.external-secrets.v1alpha1.TemplateRef"
         }
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1alpha1.TemplateRef": {
+    "io.external-secrets.v1alpha1.TemplateRef": {
       "type": "object",
       "required": [
         "name",
@@ -1112,7 +1158,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.TemplateRefItem"
+            "$ref": "#/definitions/io.external-secrets.v1alpha1.TemplateRefItem"
           }
         },
         "name": {
@@ -1122,7 +1168,7 @@
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1alpha1.TemplateRefItem": {
+    "io.external-secrets.v1alpha1.TemplateRefItem": {
       "type": "object",
       "required": [
         "key"
@@ -1135,17 +1181,17 @@
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1alpha1.TokenAuth": {
+    "io.external-secrets.v1alpha1.TokenAuth": {
       "type": "object",
       "properties": {
         "bearerToken": {
           "default": {},
-          "$ref": "#/definitions/io.external-secrets.apis.meta.v1.SecretKeySelector"
+          "$ref": "#/definitions/io.external-secrets.v1.SecretKeySelector"
         }
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1alpha1.VaultAppRole": {
+    "io.external-secrets.v1alpha1.VaultAppRole": {
       "description": "VaultAppRole authenticates with Vault using the App Role auth mechanism, with the role and secret stored in a Kubernetes Secret resource.",
       "type": "object",
       "required": [
@@ -1167,60 +1213,60 @@
         "secretRef": {
           "description": "Reference to a key in a Secret that contains the App Role secret used to authenticate with Vault. The `key` field must be specified and denotes which entry within the Secret resource is used as the app role secret.",
           "default": {},
-          "$ref": "#/definitions/io.external-secrets.apis.meta.v1.SecretKeySelector"
+          "$ref": "#/definitions/io.external-secrets.v1.SecretKeySelector"
         }
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1alpha1.VaultAuth": {
+    "io.external-secrets.v1alpha1.VaultAuth": {
       "description": "VaultAuth is the configuration used to authenticate with a Vault server. Only one of `tokenSecretRef`, `appRole`,  `kubernetes`, `ldap`, `jwt` or `cert` can be specified.",
       "type": "object",
       "properties": {
         "appRole": {
           "description": "AppRole authenticates with Vault using the App Role auth mechanism, with the role and secret stored in a Kubernetes Secret resource.",
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.VaultAppRole"
+          "$ref": "#/definitions/io.external-secrets.v1alpha1.VaultAppRole"
         },
         "cert": {
           "description": "Cert authenticates with TLS Certificates by passing client certificate, private key and ca certificate Cert authentication method",
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.VaultCertAuth"
+          "$ref": "#/definitions/io.external-secrets.v1alpha1.VaultCertAuth"
         },
         "jwt": {
           "description": "Jwt authenticates with Vault by passing role and JWT token using the JWT/OIDC authentication method",
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.VaultJwtAuth"
+          "$ref": "#/definitions/io.external-secrets.v1alpha1.VaultJwtAuth"
         },
         "kubernetes": {
           "description": "Kubernetes authenticates with Vault by passing the ServiceAccount token stored in the named Secret resource to the Vault server.",
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.VaultKubernetesAuth"
+          "$ref": "#/definitions/io.external-secrets.v1alpha1.VaultKubernetesAuth"
         },
         "ldap": {
           "description": "Ldap authenticates with Vault by passing username/password pair using the LDAP authentication method",
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.VaultLdapAuth"
+          "$ref": "#/definitions/io.external-secrets.v1alpha1.VaultLdapAuth"
         },
         "tokenSecretRef": {
           "description": "TokenSecretRef authenticates with Vault by presenting a token.",
-          "$ref": "#/definitions/io.external-secrets.apis.meta.v1.SecretKeySelector"
+          "$ref": "#/definitions/io.external-secrets.v1.SecretKeySelector"
         }
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1alpha1.VaultCertAuth": {
+    "io.external-secrets.v1alpha1.VaultCertAuth": {
       "description": "VaultJwtAuth authenticates with Vault using the JWT/OIDC authentication method, with the role name and token stored in a Kubernetes Secret resource.",
       "type": "object",
       "properties": {
         "clientCert": {
           "description": "ClientCert is a certificate to authenticate using the Cert Vault authentication method",
           "default": {},
-          "$ref": "#/definitions/io.external-secrets.apis.meta.v1.SecretKeySelector"
+          "$ref": "#/definitions/io.external-secrets.v1.SecretKeySelector"
         },
         "secretRef": {
           "description": "SecretRef to a key in a Secret resource containing client private key to authenticate with Vault using the Cert authentication method",
           "default": {},
-          "$ref": "#/definitions/io.external-secrets.apis.meta.v1.SecretKeySelector"
+          "$ref": "#/definitions/io.external-secrets.v1.SecretKeySelector"
         }
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1alpha1.VaultJwtAuth": {
+    "io.external-secrets.v1alpha1.VaultJwtAuth": {
       "description": "VaultJwtAuth authenticates with Vault using the JWT/OIDC authentication method, with the role name and a token stored in a Kubernetes Secret resource or a Kubernetes service account token retrieved via `TokenRequest`.",
       "type": "object",
       "required": [
@@ -1229,7 +1275,7 @@
       "properties": {
         "kubernetesServiceAccountToken": {
           "description": "Optional ServiceAccountToken specifies the Kubernetes service account for which to request a token for with the `TokenRequest` API.",
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.VaultKubernetesServiceAccountTokenAuth"
+          "$ref": "#/definitions/io.external-secrets.v1alpha1.VaultKubernetesServiceAccountTokenAuth"
         },
         "path": {
           "description": "Path where the JWT authentication backend is mounted in Vault, e.g: \"jwt\"",
@@ -1243,12 +1289,12 @@
         },
         "secretRef": {
           "description": "Optional SecretRef that refers to a key in a Secret resource containing JWT token to authenticate with Vault using the JWT/OIDC authentication method.",
-          "$ref": "#/definitions/io.external-secrets.apis.meta.v1.SecretKeySelector"
+          "$ref": "#/definitions/io.external-secrets.v1.SecretKeySelector"
         }
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1alpha1.VaultKubernetesAuth": {
+    "io.external-secrets.v1alpha1.VaultKubernetesAuth": {
       "description": "Authenticate against Vault using a Kubernetes ServiceAccount token stored in a Secret.",
       "type": "object",
       "required": [
@@ -1268,16 +1314,16 @@
         },
         "secretRef": {
           "description": "Optional secret field containing a Kubernetes ServiceAccount JWT used for authenticating with Vault. If a name is specified without a key, `token` is the default. If one is not specified, the one bound to the controller will be used.",
-          "$ref": "#/definitions/io.external-secrets.apis.meta.v1.SecretKeySelector"
+          "$ref": "#/definitions/io.external-secrets.v1.SecretKeySelector"
         },
         "serviceAccountRef": {
           "description": "Optional service account field containing the name of a kubernetes ServiceAccount. If the service account is specified, the service account secret token JWT will be used for authenticating with Vault. If the service account selector is not supplied, the secretRef will be used instead.",
-          "$ref": "#/definitions/io.external-secrets.apis.meta.v1.ServiceAccountSelector"
+          "$ref": "#/definitions/io.external-secrets.v1.ServiceAccountSelector"
         }
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1alpha1.VaultKubernetesServiceAccountTokenAuth": {
+    "io.external-secrets.v1alpha1.VaultKubernetesServiceAccountTokenAuth": {
       "description": "VaultKubernetesServiceAccountTokenAuth authenticates with Vault using a temporary Kubernetes service account token retrieved by the `TokenRequest` API.",
       "type": "object",
       "required": [
@@ -1300,12 +1346,12 @@
         "serviceAccountRef": {
           "description": "Service account field containing the name of a kubernetes ServiceAccount.",
           "default": {},
-          "$ref": "#/definitions/io.external-secrets.apis.meta.v1.ServiceAccountSelector"
+          "$ref": "#/definitions/io.external-secrets.v1.ServiceAccountSelector"
         }
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1alpha1.VaultLdapAuth": {
+    "io.external-secrets.v1alpha1.VaultLdapAuth": {
       "description": "VaultLdapAuth authenticates with Vault using the LDAP authentication method, with the username and password stored in a Kubernetes Secret resource.",
       "type": "object",
       "required": [
@@ -1321,7 +1367,7 @@
         "secretRef": {
           "description": "SecretRef to a key in a Secret resource containing password for the LDAP user used to authenticate with Vault using the LDAP authentication method",
           "default": {},
-          "$ref": "#/definitions/io.external-secrets.apis.meta.v1.SecretKeySelector"
+          "$ref": "#/definitions/io.external-secrets.v1.SecretKeySelector"
         },
         "username": {
           "description": "Username is a LDAP user name used to authenticate using the LDAP Vault authentication method",
@@ -1331,7 +1377,7 @@
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1alpha1.VaultProvider": {
+    "io.external-secrets.v1alpha1.VaultProvider": {
       "description": "Configures an store to sync secrets using a HashiCorp Vault KV backend.",
       "type": "object",
       "required": [
@@ -1343,7 +1389,7 @@
         "auth": {
           "description": "Auth configures how secret-manager authenticates with the Vault server.",
           "default": {},
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.VaultAuth"
+          "$ref": "#/definitions/io.external-secrets.v1alpha1.VaultAuth"
         },
         "caBundle": {
           "description": "PEM encoded CA bundle used to validate Vault server certificate. Only used if the Server URL is using HTTPS protocol. This parameter is ignored for plain HTTP protocol connection. If not set the system root certificates are used to validate the TLS connection.",
@@ -1352,7 +1398,7 @@
         },
         "caProvider": {
           "description": "The provider for the CA bundle to use to validate Vault server certificate.",
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.CAProvider"
+          "$ref": "#/definitions/io.external-secrets.v1alpha1.CAProvider"
         },
         "forwardInconsistent": {
           "description": "ForwardInconsistent tells Vault to forward read-after-write requests to the Vault leader instead of simply retrying within a loop. This can increase performance if the option is enabled serverside. https://www.vaultproject.io/docs/configuration/replication#allow_forwarding_via_header",
@@ -1383,7 +1429,7 @@
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1alpha1.WebhookCAProvider": {
+    "io.external-secrets.v1alpha1.WebhookCAProvider": {
       "description": "Defines a location to fetch the cert for the webhook provider from.",
       "type": "object",
       "required": [
@@ -1412,7 +1458,7 @@
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1alpha1.WebhookProvider": {
+    "io.external-secrets.v1alpha1.WebhookProvider": {
       "description": "AkeylessProvider Configures an store to sync secrets using Akeyless KV.",
       "type": "object",
       "required": [
@@ -1431,7 +1477,7 @@
         },
         "caProvider": {
           "description": "The provider for the CA bundle to use to validate webhook server certificate.",
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.WebhookCAProvider"
+          "$ref": "#/definitions/io.external-secrets.v1alpha1.WebhookCAProvider"
         },
         "headers": {
           "description": "Headers",
@@ -1448,14 +1494,14 @@
         "result": {
           "description": "Result formatting",
           "default": {},
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.WebhookResult"
+          "$ref": "#/definitions/io.external-secrets.v1alpha1.WebhookResult"
         },
         "secrets": {
           "description": "Secrets to fill in templates These secrets will be passed to the templating function as key value pairs under the given name",
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.WebhookSecret"
+            "$ref": "#/definitions/io.external-secrets.v1alpha1.WebhookSecret"
           }
         },
         "timeout": {
@@ -1470,7 +1516,7 @@
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1alpha1.WebhookResult": {
+    "io.external-secrets.v1alpha1.WebhookResult": {
       "type": "object",
       "properties": {
         "jsonPath": {
@@ -1480,7 +1526,7 @@
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1alpha1.WebhookSecret": {
+    "io.external-secrets.v1alpha1.WebhookSecret": {
       "type": "object",
       "required": [
         "name",
@@ -1495,33 +1541,33 @@
         "secretRef": {
           "description": "Secret ref to fill in credentials",
           "default": {},
-          "$ref": "#/definitions/io.external-secrets.apis.meta.v1.SecretKeySelector"
+          "$ref": "#/definitions/io.external-secrets.v1.SecretKeySelector"
         }
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1alpha1.YandexLockboxAuth": {
+    "io.external-secrets.v1alpha1.YandexLockboxAuth": {
       "type": "object",
       "properties": {
         "authorizedKeySecretRef": {
           "description": "The authorized key used for authentication",
           "default": {},
-          "$ref": "#/definitions/io.external-secrets.apis.meta.v1.SecretKeySelector"
+          "$ref": "#/definitions/io.external-secrets.v1.SecretKeySelector"
         }
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1alpha1.YandexLockboxCAProvider": {
+    "io.external-secrets.v1alpha1.YandexLockboxCAProvider": {
       "type": "object",
       "properties": {
         "certSecretRef": {
           "default": {},
-          "$ref": "#/definitions/io.external-secrets.apis.meta.v1.SecretKeySelector"
+          "$ref": "#/definitions/io.external-secrets.v1.SecretKeySelector"
         }
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1alpha1.YandexLockboxProvider": {
+    "io.external-secrets.v1alpha1.YandexLockboxProvider": {
       "description": "YandexLockboxProvider Configures a store to sync secrets using the Yandex Lockbox provider.",
       "type": "object",
       "required": [
@@ -1535,56 +1581,56 @@
         "auth": {
           "description": "Auth defines the information necessary to authenticate against Yandex Lockbox",
           "default": {},
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.YandexLockboxAuth"
+          "$ref": "#/definitions/io.external-secrets.v1alpha1.YandexLockboxAuth"
         },
         "caProvider": {
           "description": "The provider for the CA bundle to use to validate Yandex.Cloud server certificate.",
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1alpha1.YandexLockboxCAProvider"
+          "$ref": "#/definitions/io.external-secrets.v1alpha1.YandexLockboxCAProvider"
         }
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1beta1.AWSAuth": {
+    "io.external-secrets.v1beta1.AWSAuth": {
       "description": "AWSAuth tells the controller how to do authentication with aws. Only one of secretRef or jwt can be specified. if none is specified the controller will load credentials using the aws sdk defaults.",
       "type": "object",
       "properties": {
         "jwt": {
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.AWSJWTAuth"
+          "$ref": "#/definitions/io.external-secrets.v1beta1.AWSJWTAuth"
         },
         "secretRef": {
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.AWSAuthSecretRef"
+          "$ref": "#/definitions/io.external-secrets.v1beta1.AWSAuthSecretRef"
         }
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1beta1.AWSAuthSecretRef": {
+    "io.external-secrets.v1beta1.AWSAuthSecretRef": {
       "description": "AWSAuthSecretRef holds secret references for AWS credentials both AccessKeyID and SecretAccessKey must be defined in order to properly authenticate.",
       "type": "object",
       "properties": {
         "accessKeyIDSecretRef": {
           "description": "The AccessKeyID is used for authentication",
           "default": {},
-          "$ref": "#/definitions/io.external-secrets.apis.meta.v1.SecretKeySelector"
+          "$ref": "#/definitions/io.external-secrets.v1.SecretKeySelector"
         },
         "secretAccessKeySecretRef": {
           "description": "The SecretAccessKey is used for authentication",
           "default": {},
-          "$ref": "#/definitions/io.external-secrets.apis.meta.v1.SecretKeySelector"
+          "$ref": "#/definitions/io.external-secrets.v1.SecretKeySelector"
         }
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1beta1.AWSJWTAuth": {
+    "io.external-secrets.v1beta1.AWSJWTAuth": {
       "description": "Authenticate against AWS using service account tokens.",
       "type": "object",
       "properties": {
         "serviceAccountRef": {
-          "$ref": "#/definitions/io.external-secrets.apis.meta.v1.ServiceAccountSelector"
+          "$ref": "#/definitions/io.external-secrets.v1.ServiceAccountSelector"
         }
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1beta1.AWSProvider": {
+    "io.external-secrets.v1beta1.AWSProvider": {
       "description": "AWSProvider configures a store to sync secrets with AWS.",
       "type": "object",
       "required": [
@@ -1595,7 +1641,7 @@
         "auth": {
           "description": "Auth defines the information necessary to authenticate against AWS if not set aws sdk will infer credentials from your environment see: https://docs.aws.amazon.com/sdk-for-go/v1/developer-guide/configuring-sdk.html#specifying-credentials",
           "default": {},
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.AWSAuth"
+          "$ref": "#/definitions/io.external-secrets.v1beta1.AWSAuth"
         },
         "region": {
           "description": "AWS Region to be used for the provider",
@@ -1614,42 +1660,42 @@
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1beta1.AkeylessAuth": {
+    "io.external-secrets.v1beta1.AkeylessAuth": {
       "type": "object",
       "properties": {
         "kubernetesAuth": {
           "description": "Kubernetes authenticates with Akeyless by passing the ServiceAccount token stored in the named Secret resource.",
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.AkeylessKubernetesAuth"
+          "$ref": "#/definitions/io.external-secrets.v1beta1.AkeylessKubernetesAuth"
         },
         "secretRef": {
           "description": "Reference to a Secret that contains the details to authenticate with Akeyless.",
           "default": {},
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.AkeylessAuthSecretRef"
+          "$ref": "#/definitions/io.external-secrets.v1beta1.AkeylessAuthSecretRef"
         }
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1beta1.AkeylessAuthSecretRef": {
+    "io.external-secrets.v1beta1.AkeylessAuthSecretRef": {
       "description": "AkeylessAuthSecretRef AKEYLESS_ACCESS_TYPE_PARAM: AZURE_OBJ_ID OR GCP_AUDIENCE OR ACCESS_KEY OR KUB_CONFIG_NAME.",
       "type": "object",
       "properties": {
         "accessID": {
           "description": "The SecretAccessID is used for authentication",
           "default": {},
-          "$ref": "#/definitions/io.external-secrets.apis.meta.v1.SecretKeySelector"
+          "$ref": "#/definitions/io.external-secrets.v1.SecretKeySelector"
         },
         "accessType": {
           "default": {},
-          "$ref": "#/definitions/io.external-secrets.apis.meta.v1.SecretKeySelector"
+          "$ref": "#/definitions/io.external-secrets.v1.SecretKeySelector"
         },
         "accessTypeParam": {
           "default": {},
-          "$ref": "#/definitions/io.external-secrets.apis.meta.v1.SecretKeySelector"
+          "$ref": "#/definitions/io.external-secrets.v1.SecretKeySelector"
         }
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1beta1.AkeylessKubernetesAuth": {
+    "io.external-secrets.v1beta1.AkeylessKubernetesAuth": {
       "description": "Authenticate with Kubernetes ServiceAccount token stored.",
       "type": "object",
       "required": [
@@ -1669,16 +1715,16 @@
         },
         "secretRef": {
           "description": "Optional secret field containing a Kubernetes ServiceAccount JWT used for authenticating with Akeyless. If a name is specified without a key, `token` is the default. If one is not specified, the one bound to the controller will be used.",
-          "$ref": "#/definitions/io.external-secrets.apis.meta.v1.SecretKeySelector"
+          "$ref": "#/definitions/io.external-secrets.v1.SecretKeySelector"
         },
         "serviceAccountRef": {
           "description": "Optional service account field containing the name of a kubernetes ServiceAccount. If the service account is specified, the service account secret token JWT will be used for authenticating with Akeyless. If the service account selector is not supplied, the secretRef will be used instead.",
-          "$ref": "#/definitions/io.external-secrets.apis.meta.v1.ServiceAccountSelector"
+          "$ref": "#/definitions/io.external-secrets.v1.ServiceAccountSelector"
         }
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1beta1.AkeylessProvider": {
+    "io.external-secrets.v1beta1.AkeylessProvider": {
       "description": "AkeylessProvider Configures an store to sync secrets using Akeyless KV.",
       "type": "object",
       "required": [
@@ -1692,12 +1738,12 @@
         },
         "authSecretRef": {
           "description": "Auth configures how the operator authenticates with Akeyless.",
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.AkeylessAuth"
+          "$ref": "#/definitions/io.external-secrets.v1beta1.AkeylessAuth"
         }
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1beta1.AlibabaAuth": {
+    "io.external-secrets.v1beta1.AlibabaAuth": {
       "description": "AlibabaAuth contains a secretRef for credentials.",
       "type": "object",
       "required": [
@@ -1706,12 +1752,12 @@
       "properties": {
         "secretRef": {
           "default": {},
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.AlibabaAuthSecretRef"
+          "$ref": "#/definitions/io.external-secrets.v1beta1.AlibabaAuthSecretRef"
         }
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1beta1.AlibabaAuthSecretRef": {
+    "io.external-secrets.v1beta1.AlibabaAuthSecretRef": {
       "description": "AlibabaAuthSecretRef holds secret references for Alibaba credentials.",
       "type": "object",
       "required": [
@@ -1722,17 +1768,17 @@
         "accessKeyIDSecretRef": {
           "description": "The AccessKeyID is used for authentication",
           "default": {},
-          "$ref": "#/definitions/io.external-secrets.apis.meta.v1.SecretKeySelector"
+          "$ref": "#/definitions/io.external-secrets.v1.SecretKeySelector"
         },
         "accessKeySecretSecretRef": {
           "description": "The AccessKeySecret is used for authentication",
           "default": {},
-          "$ref": "#/definitions/io.external-secrets.apis.meta.v1.SecretKeySelector"
+          "$ref": "#/definitions/io.external-secrets.v1.SecretKeySelector"
         }
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1beta1.AlibabaProvider": {
+    "io.external-secrets.v1beta1.AlibabaProvider": {
       "description": "AlibabaProvider configures a store to sync secrets using the Alibaba Secret Manager provider.",
       "type": "object",
       "required": [
@@ -1741,7 +1787,7 @@
       ],
       "properties": {
         "auth": {
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.AlibabaAuth"
+          "$ref": "#/definitions/io.external-secrets.v1beta1.AlibabaAuth"
         },
         "endpoint": {
           "type": "string",
@@ -1755,22 +1801,22 @@
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1beta1.AzureKVAuth": {
+    "io.external-secrets.v1beta1.AzureKVAuth": {
       "description": "Configuration used to authenticate with Azure.",
       "type": "object",
       "properties": {
         "clientId": {
           "description": "The Azure clientId of the service principle used for authentication.",
-          "$ref": "#/definitions/io.external-secrets.apis.meta.v1.SecretKeySelector"
+          "$ref": "#/definitions/io.external-secrets.v1.SecretKeySelector"
         },
         "clientSecret": {
           "description": "The Azure ClientSecret of the service principle used for authentication.",
-          "$ref": "#/definitions/io.external-secrets.apis.meta.v1.SecretKeySelector"
+          "$ref": "#/definitions/io.external-secrets.v1.SecretKeySelector"
         }
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1beta1.AzureKVProvider": {
+    "io.external-secrets.v1beta1.AzureKVProvider": {
       "description": "Configures an store to sync secrets using Azure KV.",
       "type": "object",
       "required": [
@@ -1779,7 +1825,7 @@
       "properties": {
         "authSecretRef": {
           "description": "Auth configures how the operator authenticates with Azure. Required for ServicePrincipal auth type.",
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.AzureKVAuth"
+          "$ref": "#/definitions/io.external-secrets.v1beta1.AzureKVAuth"
         },
         "authType": {
           "description": "Auth type defines how to authenticate to the keyvault service. Valid values are: - \"ServicePrincipal\" (default): Using a service principal (tenantId, clientId, clientSecret) - \"ManagedIdentity\": Using Managed Identity assigned to the pod (see aad-pod-identity)",
@@ -1795,7 +1841,7 @@
         },
         "serviceAccountRef": {
           "description": "ServiceAccountRef specified the service account that should be used when authenticating with WorkloadIdentity.",
-          "$ref": "#/definitions/io.external-secrets.apis.meta.v1.ServiceAccountSelector"
+          "$ref": "#/definitions/io.external-secrets.v1.ServiceAccountSelector"
         },
         "tenantId": {
           "description": "TenantID configures the Azure Tenant to send requests to. Required for ServicePrincipal auth type.",
@@ -1808,7 +1854,7 @@
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1beta1.CAProvider": {
+    "io.external-secrets.v1beta1.CAProvider": {
       "description": "Used to provide custom certificate authority (CA) certificates for a secret store. The CAProvider points to a Secret or ConfigMap resource that contains a PEM-encoded certificate.",
       "type": "object",
       "required": [
@@ -1837,21 +1883,21 @@
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1beta1.CertAuth": {
+    "io.external-secrets.v1beta1.CertAuth": {
       "type": "object",
       "properties": {
         "clientCert": {
           "default": {},
-          "$ref": "#/definitions/io.external-secrets.apis.meta.v1.SecretKeySelector"
+          "$ref": "#/definitions/io.external-secrets.v1.SecretKeySelector"
         },
         "clientKey": {
           "default": {},
-          "$ref": "#/definitions/io.external-secrets.apis.meta.v1.SecretKeySelector"
+          "$ref": "#/definitions/io.external-secrets.v1.SecretKeySelector"
         }
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1beta1.ClusterExternalSecret": {
+    "io.external-secrets.v1beta1.ClusterExternalSecret": {
       "description": "ClusterExternalSecret is the Schema for the clusterexternalsecrets API.",
       "type": "object",
       "properties": {
@@ -1869,16 +1915,16 @@
         },
         "spec": {
           "default": {},
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.ClusterExternalSecretSpec"
+          "$ref": "#/definitions/io.external-secrets.v1beta1.ClusterExternalSecretSpec"
         },
         "status": {
           "default": {},
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.ClusterExternalSecretStatus"
+          "$ref": "#/definitions/io.external-secrets.v1beta1.ClusterExternalSecretStatus"
         }
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1beta1.ClusterExternalSecretNamespaceFailure": {
+    "io.external-secrets.v1beta1.ClusterExternalSecretNamespaceFailure": {
       "description": "ClusterExternalSecretNamespaceFailure represents a failed namespace deployment and it's reason.",
       "type": "object",
       "required": [
@@ -1897,7 +1943,7 @@
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1beta1.ClusterExternalSecretSpec": {
+    "io.external-secrets.v1beta1.ClusterExternalSecretSpec": {
       "description": "ClusterExternalSecretSpec defines the desired state of ClusterExternalSecret.",
       "type": "object",
       "required": [
@@ -1913,7 +1959,7 @@
         "externalSecretSpec": {
           "description": "The spec for the ExternalSecrets to be created",
           "default": {},
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.ExternalSecretSpec"
+          "$ref": "#/definitions/io.external-secrets.v1beta1.ExternalSecretSpec"
         },
         "namespaceSelector": {
           "description": "The labels to select by to find the Namespaces to create the ExternalSecrets in.",
@@ -1927,7 +1973,7 @@
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1beta1.ClusterExternalSecretStatus": {
+    "io.external-secrets.v1beta1.ClusterExternalSecretStatus": {
       "description": "ClusterExternalSecretStatus defines the observed state of ClusterExternalSecret.",
       "type": "object",
       "properties": {
@@ -1935,7 +1981,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.ClusterExternalSecretStatusCondition"
+            "$ref": "#/definitions/io.external-secrets.v1beta1.ClusterExternalSecretStatusCondition"
           }
         },
         "failedNamespaces": {
@@ -1943,7 +1989,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.ClusterExternalSecretNamespaceFailure"
+            "$ref": "#/definitions/io.external-secrets.v1beta1.ClusterExternalSecretNamespaceFailure"
           }
         },
         "provisionedNamespaces": {
@@ -1957,7 +2003,7 @@
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1beta1.ClusterExternalSecretStatusCondition": {
+    "io.external-secrets.v1beta1.ClusterExternalSecretStatusCondition": {
       "type": "object",
       "required": [
         "type",
@@ -1978,7 +2024,7 @@
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1beta1.ClusterSecretStore": {
+    "io.external-secrets.v1beta1.ClusterSecretStore": {
       "description": "ClusterSecretStore represents a secure external location for storing secrets, which can be referenced as part of `storeRef` fields.",
       "type": "object",
       "properties": {
@@ -1996,16 +2042,16 @@
         },
         "spec": {
           "default": {},
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.SecretStoreSpec"
+          "$ref": "#/definitions/io.external-secrets.v1beta1.SecretStoreSpec"
         },
         "status": {
           "default": {},
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.SecretStoreStatus"
+          "$ref": "#/definitions/io.external-secrets.v1beta1.SecretStoreStatus"
         }
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1beta1.ClusterSecretStoreCondition": {
+    "io.external-secrets.v1beta1.ClusterSecretStoreCondition": {
       "description": "ClusterSecretStoreCondition describes a condition by which to choose namespaces to process ExternalSecrets in for a ClusterSecretStore instance.",
       "type": "object",
       "properties": {
@@ -2024,7 +2070,7 @@
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1beta1.DopplerAuth": {
+    "io.external-secrets.v1beta1.DopplerAuth": {
       "type": "object",
       "required": [
         "secretRef"
@@ -2032,12 +2078,12 @@
       "properties": {
         "secretRef": {
           "default": {},
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.DopplerAuthSecretRef"
+          "$ref": "#/definitions/io.external-secrets.v1beta1.DopplerAuthSecretRef"
         }
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1beta1.DopplerAuthSecretRef": {
+    "io.external-secrets.v1beta1.DopplerAuthSecretRef": {
       "type": "object",
       "required": [
         "dopplerToken"
@@ -2046,12 +2092,12 @@
         "dopplerToken": {
           "description": "The DopplerToken is used for authentication. See https://docs.doppler.com/reference/api#authentication for auth token types. The Key attribute defaults to dopplerToken if not specified.",
           "default": {},
-          "$ref": "#/definitions/io.external-secrets.apis.meta.v1.SecretKeySelector"
+          "$ref": "#/definitions/io.external-secrets.v1.SecretKeySelector"
         }
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1beta1.DopplerProvider": {
+    "io.external-secrets.v1beta1.DopplerProvider": {
       "description": "DopplerProvider configures a store to sync secrets using the Doppler provider. Project and Config are required if not using a Service Token.",
       "type": "object",
       "required": [
@@ -2060,7 +2106,7 @@
       "properties": {
         "auth": {
           "description": "Auth configures how the Operator authenticates with the Doppler API",
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.DopplerAuth"
+          "$ref": "#/definitions/io.external-secrets.v1beta1.DopplerAuth"
         },
         "config": {
           "description": "Doppler config (required if not using a Service Token)",
@@ -2081,7 +2127,7 @@
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1beta1.ExternalSecret": {
+    "io.external-secrets.v1beta1.ExternalSecret": {
       "description": "ExternalSecret is the Schema for the external-secrets API.",
       "type": "object",
       "properties": {
@@ -2099,16 +2145,16 @@
         },
         "spec": {
           "default": {},
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.ExternalSecretSpec"
+          "$ref": "#/definitions/io.external-secrets.v1beta1.ExternalSecretSpec"
         },
         "status": {
           "default": {},
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.ExternalSecretStatus"
+          "$ref": "#/definitions/io.external-secrets.v1beta1.ExternalSecretStatus"
         }
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1beta1.ExternalSecretData": {
+    "io.external-secrets.v1beta1.ExternalSecretData": {
       "description": "ExternalSecretData defines the connection between the Kubernetes Secret key (spec.data.<key>) and the Provider data.",
       "type": "object",
       "required": [
@@ -2118,7 +2164,7 @@
       "properties": {
         "remoteRef": {
           "default": {},
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.ExternalSecretDataRemoteRef"
+          "$ref": "#/definitions/io.external-secrets.v1beta1.ExternalSecretDataRemoteRef"
         },
         "secretKey": {
           "type": "string",
@@ -2127,29 +2173,29 @@
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1beta1.ExternalSecretDataFromRemoteRef": {
+    "io.external-secrets.v1beta1.ExternalSecretDataFromRemoteRef": {
       "type": "object",
       "properties": {
         "extract": {
           "description": "Used to extract multiple key/value pairs from one secret",
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.ExternalSecretDataRemoteRef"
+          "$ref": "#/definitions/io.external-secrets.v1beta1.ExternalSecretDataRemoteRef"
         },
         "find": {
           "description": "Used to find secrets based on tags or regular expressions",
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.ExternalSecretFind"
+          "$ref": "#/definitions/io.external-secrets.v1beta1.ExternalSecretFind"
         },
         "rewrite": {
           "description": "Used to rewrite secret Keys after getting them from the secret Provider Multiple Rewrite operations can be provided. They are applied in a layered order (first to last)",
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.ExternalSecretRewrite"
+            "$ref": "#/definitions/io.external-secrets.v1beta1.ExternalSecretRewrite"
           }
         }
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1beta1.ExternalSecretDataRemoteRef": {
+    "io.external-secrets.v1beta1.ExternalSecretDataRemoteRef": {
       "description": "ExternalSecretDataRemoteRef defines Provider data location.",
       "type": "object",
       "required": [
@@ -2184,7 +2230,7 @@
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1beta1.ExternalSecretFind": {
+    "io.external-secrets.v1beta1.ExternalSecretFind": {
       "type": "object",
       "properties": {
         "conversionStrategy": {
@@ -2197,7 +2243,7 @@
         },
         "name": {
           "description": "Finds secrets based on the name.",
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.FindName"
+          "$ref": "#/definitions/io.external-secrets.v1beta1.FindName"
         },
         "path": {
           "description": "A root path to start the find operations.",
@@ -2214,17 +2260,17 @@
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1beta1.ExternalSecretRewrite": {
+    "io.external-secrets.v1beta1.ExternalSecretRewrite": {
       "type": "object",
       "properties": {
         "regexp": {
           "description": "Used to rewrite with regular expressions. The resulting key will be the output of a regexp.ReplaceAll operation.",
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.ExternalSecretRewriteRegexp"
+          "$ref": "#/definitions/io.external-secrets.v1beta1.ExternalSecretRewriteRegexp"
         }
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1beta1.ExternalSecretRewriteRegexp": {
+    "io.external-secrets.v1beta1.ExternalSecretRewriteRegexp": {
       "type": "object",
       "required": [
         "source",
@@ -2244,7 +2290,7 @@
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1beta1.ExternalSecretSpec": {
+    "io.external-secrets.v1beta1.ExternalSecretSpec": {
       "description": "ExternalSecretSpec defines the desired state of ExternalSecret.",
       "type": "object",
       "required": [
@@ -2256,7 +2302,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.ExternalSecretData"
+            "$ref": "#/definitions/io.external-secrets.v1beta1.ExternalSecretData"
           }
         },
         "dataFrom": {
@@ -2264,7 +2310,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.ExternalSecretDataFromRemoteRef"
+            "$ref": "#/definitions/io.external-secrets.v1beta1.ExternalSecretDataFromRemoteRef"
           }
         },
         "refreshInterval": {
@@ -2273,23 +2319,23 @@
         },
         "secretStoreRef": {
           "default": {},
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.SecretStoreRef"
+          "$ref": "#/definitions/io.external-secrets.v1beta1.SecretStoreRef"
         },
         "target": {
           "default": {},
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.ExternalSecretTarget"
+          "$ref": "#/definitions/io.external-secrets.v1beta1.ExternalSecretTarget"
         }
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1beta1.ExternalSecretStatus": {
+    "io.external-secrets.v1beta1.ExternalSecretStatus": {
       "type": "object",
       "properties": {
         "conditions": {
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.ExternalSecretStatusCondition"
+            "$ref": "#/definitions/io.external-secrets.v1beta1.ExternalSecretStatusCondition"
           }
         },
         "refreshTime": {
@@ -2303,7 +2349,7 @@
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1beta1.ExternalSecretStatusCondition": {
+    "io.external-secrets.v1beta1.ExternalSecretStatusCondition": {
       "type": "object",
       "required": [
         "type",
@@ -2330,7 +2376,7 @@
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1beta1.ExternalSecretTarget": {
+    "io.external-secrets.v1beta1.ExternalSecretTarget": {
       "description": "ExternalSecretTarget defines the Kubernetes Secret to be created There can be only one target per ExternalSecret.",
       "type": "object",
       "properties": {
@@ -2352,12 +2398,12 @@
         },
         "template": {
           "description": "Template defines a blueprint for the created Secret resource.",
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.ExternalSecretTemplate"
+          "$ref": "#/definitions/io.external-secrets.v1beta1.ExternalSecretTemplate"
         }
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1beta1.ExternalSecretTemplate": {
+    "io.external-secrets.v1beta1.ExternalSecretTemplate": {
       "description": "ExternalSecretTemplate defines a blueprint for the created Secret resource. we can not use native corev1.Secret, it will have empty ObjectMeta values: https://github.com/kubernetes-sigs/controller-tools/issues/448",
       "type": "object",
       "properties": {
@@ -2373,13 +2419,13 @@
         },
         "metadata": {
           "default": {},
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.ExternalSecretTemplateMetadata"
+          "$ref": "#/definitions/io.external-secrets.v1beta1.ExternalSecretTemplateMetadata"
         },
         "templateFrom": {
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.TemplateFrom"
+            "$ref": "#/definitions/io.external-secrets.v1beta1.TemplateFrom"
           }
         },
         "type": {
@@ -2388,7 +2434,7 @@
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1beta1.ExternalSecretTemplateMetadata": {
+    "io.external-secrets.v1beta1.ExternalSecretTemplateMetadata": {
       "description": "ExternalSecretTemplateMetadata defines metadata fields for the Secret blueprint.",
       "type": "object",
       "properties": {
@@ -2409,7 +2455,7 @@
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1beta1.FakeProvider": {
+    "io.external-secrets.v1beta1.FakeProvider": {
       "description": "FakeProvider configures a fake provider that returns static values.",
       "type": "object",
       "required": [
@@ -2420,13 +2466,13 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.FakeProviderData"
+            "$ref": "#/definitions/io.external-secrets.v1beta1.FakeProviderData"
           }
         }
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1beta1.FakeProviderData": {
+    "io.external-secrets.v1beta1.FakeProviderData": {
       "type": "object",
       "required": [
         "key"
@@ -2452,7 +2498,7 @@
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1beta1.FindName": {
+    "io.external-secrets.v1beta1.FindName": {
       "type": "object",
       "properties": {
         "regexp": {
@@ -2462,37 +2508,37 @@
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1beta1.GCPSMAuth": {
+    "io.external-secrets.v1beta1.GCPSMAuth": {
       "type": "object",
       "properties": {
         "secretRef": {
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.GCPSMAuthSecretRef"
+          "$ref": "#/definitions/io.external-secrets.v1beta1.GCPSMAuthSecretRef"
         },
         "workloadIdentity": {
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.GCPWorkloadIdentity"
+          "$ref": "#/definitions/io.external-secrets.v1beta1.GCPWorkloadIdentity"
         }
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1beta1.GCPSMAuthSecretRef": {
+    "io.external-secrets.v1beta1.GCPSMAuthSecretRef": {
       "type": "object",
       "properties": {
         "secretAccessKeySecretRef": {
           "description": "The SecretAccessKey is used for authentication",
           "default": {},
-          "$ref": "#/definitions/io.external-secrets.apis.meta.v1.SecretKeySelector"
+          "$ref": "#/definitions/io.external-secrets.v1.SecretKeySelector"
         }
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1beta1.GCPSMProvider": {
+    "io.external-secrets.v1beta1.GCPSMProvider": {
       "description": "GCPSMProvider Configures a store to sync secrets using the GCP Secret Manager provider.",
       "type": "object",
       "properties": {
         "auth": {
           "description": "Auth defines the information necessary to authenticate against GCP",
           "default": {},
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.GCPSMAuth"
+          "$ref": "#/definitions/io.external-secrets.v1beta1.GCPSMAuth"
         },
         "projectID": {
           "description": "ProjectID project where secret is located",
@@ -2501,7 +2547,7 @@
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1beta1.GCPWorkloadIdentity": {
+    "io.external-secrets.v1beta1.GCPWorkloadIdentity": {
       "type": "object",
       "required": [
         "serviceAccountRef",
@@ -2522,12 +2568,12 @@
         },
         "serviceAccountRef": {
           "default": {},
-          "$ref": "#/definitions/io.external-secrets.apis.meta.v1.ServiceAccountSelector"
+          "$ref": "#/definitions/io.external-secrets.v1.ServiceAccountSelector"
         }
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1beta1.GitlabAuth": {
+    "io.external-secrets.v1beta1.GitlabAuth": {
       "type": "object",
       "required": [
         "SecretRef"
@@ -2535,12 +2581,12 @@
       "properties": {
         "SecretRef": {
           "default": {},
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.GitlabSecretRef"
+          "$ref": "#/definitions/io.external-secrets.v1beta1.GitlabSecretRef"
         }
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1beta1.GitlabProvider": {
+    "io.external-secrets.v1beta1.GitlabProvider": {
       "description": "Configures a store to sync secrets with a GitLab instance.",
       "type": "object",
       "required": [
@@ -2550,7 +2596,7 @@
         "auth": {
           "description": "Auth configures how secret-manager authenticates with a GitLab instance.",
           "default": {},
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.GitlabAuth"
+          "$ref": "#/definitions/io.external-secrets.v1beta1.GitlabAuth"
         },
         "environment": {
           "description": "Environment environment_scope of gitlab CI/CD variables (Please see https://docs.gitlab.com/ee/ci/environments/#create-a-static-environment on how to create environments)",
@@ -2567,32 +2613,32 @@
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1beta1.GitlabSecretRef": {
+    "io.external-secrets.v1beta1.GitlabSecretRef": {
       "type": "object",
       "properties": {
         "accessToken": {
           "description": "AccessToken is used for authentication.",
           "default": {},
-          "$ref": "#/definitions/io.external-secrets.apis.meta.v1.SecretKeySelector"
+          "$ref": "#/definitions/io.external-secrets.v1.SecretKeySelector"
         }
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1beta1.IBMAuth": {
+    "io.external-secrets.v1beta1.IBMAuth": {
       "type": "object",
       "properties": {
         "containerAuth": {
           "default": {},
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.IBMAuthContainerAuth"
+          "$ref": "#/definitions/io.external-secrets.v1beta1.IBMAuthContainerAuth"
         },
         "secretRef": {
           "default": {},
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.IBMAuthSecretRef"
+          "$ref": "#/definitions/io.external-secrets.v1beta1.IBMAuthSecretRef"
         }
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1beta1.IBMAuthContainerAuth": {
+    "io.external-secrets.v1beta1.IBMAuthContainerAuth": {
       "description": "IBM Container-based auth with IAM Trusted Profile.",
       "type": "object",
       "required": [
@@ -2614,18 +2660,18 @@
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1beta1.IBMAuthSecretRef": {
+    "io.external-secrets.v1beta1.IBMAuthSecretRef": {
       "type": "object",
       "properties": {
         "secretApiKeySecretRef": {
           "description": "The SecretAccessKey is used for authentication",
           "default": {},
-          "$ref": "#/definitions/io.external-secrets.apis.meta.v1.SecretKeySelector"
+          "$ref": "#/definitions/io.external-secrets.v1.SecretKeySelector"
         }
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1beta1.IBMProvider": {
+    "io.external-secrets.v1beta1.IBMProvider": {
       "description": "Configures an store to sync secrets using a IBM Cloud Secrets Manager backend.",
       "type": "object",
       "required": [
@@ -2635,7 +2681,7 @@
         "auth": {
           "description": "Auth configures how secret-manager authenticates with the IBM secrets manager.",
           "default": {},
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.IBMAuth"
+          "$ref": "#/definitions/io.external-secrets.v1beta1.IBMAuth"
         },
         "serviceUrl": {
           "description": "ServiceURL is the Endpoint URL that is specific to the Secrets Manager service instance",
@@ -2644,25 +2690,25 @@
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1beta1.KubernetesAuth": {
+    "io.external-secrets.v1beta1.KubernetesAuth": {
       "type": "object",
       "properties": {
         "cert": {
           "description": "has both clientCert and clientKey as secretKeySelector",
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.CertAuth"
+          "$ref": "#/definitions/io.external-secrets.v1beta1.CertAuth"
         },
         "serviceAccount": {
           "description": "points to a service account that should be used for authentication",
-          "$ref": "#/definitions/io.external-secrets.apis.meta.v1.ServiceAccountSelector"
+          "$ref": "#/definitions/io.external-secrets.v1.ServiceAccountSelector"
         },
         "token": {
           "description": "use static token to authenticate with",
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.TokenAuth"
+          "$ref": "#/definitions/io.external-secrets.v1beta1.TokenAuth"
         }
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1beta1.KubernetesProvider": {
+    "io.external-secrets.v1beta1.KubernetesProvider": {
       "description": "Configures a store to sync secrets with a Kubernetes instance.",
       "type": "object",
       "required": [
@@ -2672,7 +2718,7 @@
         "auth": {
           "description": "Auth configures how secret-manager authenticates with a Kubernetes instance.",
           "default": {},
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.KubernetesAuth"
+          "$ref": "#/definitions/io.external-secrets.v1beta1.KubernetesAuth"
         },
         "remoteNamespace": {
           "description": "Remote namespace to fetch the secrets from",
@@ -2682,12 +2728,12 @@
         "server": {
           "description": "configures the Kubernetes server Address.",
           "default": {},
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.KubernetesServer"
+          "$ref": "#/definitions/io.external-secrets.v1beta1.KubernetesServer"
         }
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1beta1.KubernetesServer": {
+    "io.external-secrets.v1beta1.KubernetesServer": {
       "type": "object",
       "properties": {
         "caBundle": {
@@ -2697,7 +2743,7 @@
         },
         "caProvider": {
           "description": "see: https://external-secrets.io/v0.4.1/spec/#external-secrets.io/v1alpha1.CAProvider",
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.CAProvider"
+          "$ref": "#/definitions/io.external-secrets.v1beta1.CAProvider"
         },
         "url": {
           "description": "configures the Kubernetes server Address.",
@@ -2706,7 +2752,7 @@
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1beta1.OnePasswordAuth": {
+    "io.external-secrets.v1beta1.OnePasswordAuth": {
       "description": "OnePasswordAuth contains a secretRef for credentials.",
       "type": "object",
       "required": [
@@ -2714,12 +2760,12 @@
       ],
       "properties": {
         "secretRef": {
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.OnePasswordAuthSecretRef"
+          "$ref": "#/definitions/io.external-secrets.v1beta1.OnePasswordAuthSecretRef"
         }
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1beta1.OnePasswordAuthSecretRef": {
+    "io.external-secrets.v1beta1.OnePasswordAuthSecretRef": {
       "description": "OnePasswordAuthSecretRef holds secret references for 1Password credentials.",
       "type": "object",
       "required": [
@@ -2729,12 +2775,12 @@
         "connectTokenSecretRef": {
           "description": "The ConnectToken is used for authentication to a 1Password Connect Server.",
           "default": {},
-          "$ref": "#/definitions/io.external-secrets.apis.meta.v1.SecretKeySelector"
+          "$ref": "#/definitions/io.external-secrets.v1.SecretKeySelector"
         }
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1beta1.OnePasswordProvider": {
+    "io.external-secrets.v1beta1.OnePasswordProvider": {
       "description": "OnePasswordProvider configures a store to sync secrets using the 1Password Secret Manager provider.",
       "type": "object",
       "required": [
@@ -2745,7 +2791,7 @@
       "properties": {
         "auth": {
           "description": "Auth defines the information necessary to authenticate against OnePassword Connect Server",
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.OnePasswordAuth"
+          "$ref": "#/definitions/io.external-secrets.v1beta1.OnePasswordAuth"
         },
         "connectHost": {
           "description": "ConnectHost defines the OnePassword Connect Server to connect to",
@@ -2764,7 +2810,7 @@
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1beta1.OracleAuth": {
+    "io.external-secrets.v1beta1.OracleAuth": {
       "type": "object",
       "required": [
         "tenancy",
@@ -2775,7 +2821,7 @@
         "secretRef": {
           "description": "SecretRef to pass through sensitive information.",
           "default": {},
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.OracleSecretRef"
+          "$ref": "#/definitions/io.external-secrets.v1beta1.OracleSecretRef"
         },
         "tenancy": {
           "description": "Tenancy is the tenancy OCID where user is located.",
@@ -2790,7 +2836,7 @@
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1beta1.OracleProvider": {
+    "io.external-secrets.v1beta1.OracleProvider": {
       "description": "Configures an store to sync secrets using a Oracle Vault backend.",
       "type": "object",
       "required": [
@@ -2800,7 +2846,7 @@
       "properties": {
         "auth": {
           "description": "Auth configures how secret-manager authenticates with the Oracle Vault. If empty, use the instance principal, otherwise the user credentials specified in Auth.",
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.OracleAuth"
+          "$ref": "#/definitions/io.external-secrets.v1beta1.OracleAuth"
         },
         "region": {
           "description": "Region is the region where vault is located.",
@@ -2815,7 +2861,7 @@
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1beta1.OracleSecretRef": {
+    "io.external-secrets.v1beta1.OracleSecretRef": {
       "type": "object",
       "required": [
         "privatekey",
@@ -2825,17 +2871,17 @@
         "fingerprint": {
           "description": "Fingerprint is the fingerprint of the API private key.",
           "default": {},
-          "$ref": "#/definitions/io.external-secrets.apis.meta.v1.SecretKeySelector"
+          "$ref": "#/definitions/io.external-secrets.v1.SecretKeySelector"
         },
         "privatekey": {
           "description": "PrivateKey is the user's API Signing Key in PEM format, used for authentication.",
           "default": {},
-          "$ref": "#/definitions/io.external-secrets.apis.meta.v1.SecretKeySelector"
+          "$ref": "#/definitions/io.external-secrets.v1.SecretKeySelector"
         }
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1beta1.SecretStore": {
+    "io.external-secrets.v1beta1.SecretStore": {
       "description": "SecretStore represents a secure external location for storing secrets, which can be referenced as part of `storeRef` fields.",
       "type": "object",
       "properties": {
@@ -2853,91 +2899,91 @@
         },
         "spec": {
           "default": {},
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.SecretStoreSpec"
+          "$ref": "#/definitions/io.external-secrets.v1beta1.SecretStoreSpec"
         },
         "status": {
           "default": {},
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.SecretStoreStatus"
+          "$ref": "#/definitions/io.external-secrets.v1beta1.SecretStoreStatus"
         }
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1beta1.SecretStoreProvider": {
+    "io.external-secrets.v1beta1.SecretStoreProvider": {
       "description": "SecretStoreProvider contains the provider-specific configuration.",
       "type": "object",
       "properties": {
         "akeyless": {
           "description": "Akeyless configures this store to sync secrets using Akeyless Vault provider",
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.AkeylessProvider"
+          "$ref": "#/definitions/io.external-secrets.v1beta1.AkeylessProvider"
         },
         "alibaba": {
           "description": "Alibaba configures this store to sync secrets using Alibaba Cloud provider",
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.AlibabaProvider"
+          "$ref": "#/definitions/io.external-secrets.v1beta1.AlibabaProvider"
         },
         "aws": {
           "description": "AWS configures this store to sync secrets using AWS Secret Manager provider",
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.AWSProvider"
+          "$ref": "#/definitions/io.external-secrets.v1beta1.AWSProvider"
         },
         "azurekv": {
           "description": "AzureKV configures this store to sync secrets using Azure Key Vault provider",
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.AzureKVProvider"
+          "$ref": "#/definitions/io.external-secrets.v1beta1.AzureKVProvider"
         },
         "doppler": {
           "description": "Doppler configures this store to sync secrets using the Doppler provider",
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.DopplerProvider"
+          "$ref": "#/definitions/io.external-secrets.v1beta1.DopplerProvider"
         },
         "fake": {
           "description": "Fake configures a store with static key/value pairs",
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.FakeProvider"
+          "$ref": "#/definitions/io.external-secrets.v1beta1.FakeProvider"
         },
         "gcpsm": {
           "description": "GCPSM configures this store to sync secrets using Google Cloud Platform Secret Manager provider",
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.GCPSMProvider"
+          "$ref": "#/definitions/io.external-secrets.v1beta1.GCPSMProvider"
         },
         "gitlab": {
           "description": "Gitlab configures this store to sync secrets using Gitlab Variables provider",
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.GitlabProvider"
+          "$ref": "#/definitions/io.external-secrets.v1beta1.GitlabProvider"
         },
         "ibm": {
           "description": "IBM configures this store to sync secrets using IBM Cloud provider",
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.IBMProvider"
+          "$ref": "#/definitions/io.external-secrets.v1beta1.IBMProvider"
         },
         "kubernetes": {
           "description": "Kubernetes configures this store to sync secrets using a Kubernetes cluster provider",
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.KubernetesProvider"
+          "$ref": "#/definitions/io.external-secrets.v1beta1.KubernetesProvider"
         },
         "onepassword": {
           "description": "OnePassword configures this store to sync secrets using the 1Password Cloud provider",
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.OnePasswordProvider"
+          "$ref": "#/definitions/io.external-secrets.v1beta1.OnePasswordProvider"
         },
         "oracle": {
           "description": "Oracle configures this store to sync secrets using Oracle Vault provider",
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.OracleProvider"
+          "$ref": "#/definitions/io.external-secrets.v1beta1.OracleProvider"
         },
         "senhasegura": {
           "description": "Senhasegura configures this store to sync secrets using senhasegura provider",
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.SenhaseguraProvider"
+          "$ref": "#/definitions/io.external-secrets.v1beta1.SenhaseguraProvider"
         },
         "vault": {
           "description": "Vault configures this store to sync secrets using Hashi provider",
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.VaultProvider"
+          "$ref": "#/definitions/io.external-secrets.v1beta1.VaultProvider"
         },
         "webhook": {
           "description": "Webhook configures this store to sync secrets using a generic templated webhook",
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.WebhookProvider"
+          "$ref": "#/definitions/io.external-secrets.v1beta1.WebhookProvider"
         },
         "yandexcertificatemanager": {
           "description": "YandexCertificateManager configures this store to sync secrets using Yandex Certificate Manager provider",
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.YandexCertificateManagerProvider"
+          "$ref": "#/definitions/io.external-secrets.v1beta1.YandexCertificateManagerProvider"
         },
         "yandexlockbox": {
           "description": "YandexLockbox configures this store to sync secrets using Yandex Lockbox provider",
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.YandexLockboxProvider"
+          "$ref": "#/definitions/io.external-secrets.v1beta1.YandexLockboxProvider"
         }
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1beta1.SecretStoreRef": {
+    "io.external-secrets.v1beta1.SecretStoreRef": {
       "description": "SecretStoreRef defines which SecretStore to fetch the ExternalSecret data.",
       "type": "object",
       "required": [
@@ -2956,7 +3002,7 @@
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1beta1.SecretStoreRetrySettings": {
+    "io.external-secrets.v1beta1.SecretStoreRetrySettings": {
       "type": "object",
       "properties": {
         "maxRetries": {
@@ -2969,7 +3015,7 @@
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1beta1.SecretStoreSpec": {
+    "io.external-secrets.v1beta1.SecretStoreSpec": {
       "description": "SecretStoreSpec defines the desired state of SecretStore.",
       "type": "object",
       "required": [
@@ -2981,7 +3027,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.ClusterSecretStoreCondition"
+            "$ref": "#/definitions/io.external-secrets.v1beta1.ClusterSecretStoreCondition"
           }
         },
         "controller": {
@@ -2991,7 +3037,7 @@
         },
         "provider": {
           "description": "Used to configure the provider. Only one provider may be set",
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.SecretStoreProvider"
+          "$ref": "#/definitions/io.external-secrets.v1beta1.SecretStoreProvider"
         },
         "refreshInterval": {
           "description": "Used to configure store refresh interval in seconds. Empty or 0 will default to the controller config.",
@@ -3001,12 +3047,12 @@
         },
         "retrySettings": {
           "description": "Used to configure http retries if failed",
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.SecretStoreRetrySettings"
+          "$ref": "#/definitions/io.external-secrets.v1beta1.SecretStoreRetrySettings"
         }
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1beta1.SecretStoreStatus": {
+    "io.external-secrets.v1beta1.SecretStoreStatus": {
       "description": "SecretStoreStatus defines the observed state of the SecretStore.",
       "type": "object",
       "properties": {
@@ -3014,13 +3060,13 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.SecretStoreStatusCondition"
+            "$ref": "#/definitions/io.external-secrets.v1beta1.SecretStoreStatusCondition"
           }
         }
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1beta1.SecretStoreStatusCondition": {
+    "io.external-secrets.v1beta1.SecretStoreStatusCondition": {
       "type": "object",
       "required": [
         "type",
@@ -3047,7 +3093,7 @@
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1beta1.SenhaseguraAuth": {
+    "io.external-secrets.v1beta1.SenhaseguraAuth": {
       "description": "SenhaseguraAuth tells the controller how to do auth in senhasegura.",
       "type": "object",
       "required": [
@@ -3061,12 +3107,12 @@
         },
         "clientSecretSecretRef": {
           "default": {},
-          "$ref": "#/definitions/io.external-secrets.apis.meta.v1.SecretKeySelector"
+          "$ref": "#/definitions/io.external-secrets.v1.SecretKeySelector"
         }
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1beta1.SenhaseguraProvider": {
+    "io.external-secrets.v1beta1.SenhaseguraProvider": {
       "description": "SenhaseguraProvider setup a store to sync secrets with senhasegura.",
       "type": "object",
       "required": [
@@ -3078,7 +3124,7 @@
         "auth": {
           "description": "Auth defines parameters to authenticate in senhasegura",
           "default": {},
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.SenhaseguraAuth"
+          "$ref": "#/definitions/io.external-secrets.v1beta1.SenhaseguraAuth"
         },
         "ignoreSslCertificate": {
           "description": "IgnoreSslCertificate defines if SSL certificate must be ignored",
@@ -3097,19 +3143,19 @@
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1beta1.TemplateFrom": {
+    "io.external-secrets.v1beta1.TemplateFrom": {
       "type": "object",
       "properties": {
         "configMap": {
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.TemplateRef"
+          "$ref": "#/definitions/io.external-secrets.v1beta1.TemplateRef"
         },
         "secret": {
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.TemplateRef"
+          "$ref": "#/definitions/io.external-secrets.v1beta1.TemplateRef"
         }
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1beta1.TemplateRef": {
+    "io.external-secrets.v1beta1.TemplateRef": {
       "type": "object",
       "required": [
         "name",
@@ -3120,7 +3166,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.TemplateRefItem"
+            "$ref": "#/definitions/io.external-secrets.v1beta1.TemplateRefItem"
           }
         },
         "name": {
@@ -3130,7 +3176,7 @@
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1beta1.TemplateRefItem": {
+    "io.external-secrets.v1beta1.TemplateRefItem": {
       "type": "object",
       "required": [
         "key"
@@ -3143,17 +3189,17 @@
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1beta1.TokenAuth": {
+    "io.external-secrets.v1beta1.TokenAuth": {
       "type": "object",
       "properties": {
         "bearerToken": {
           "default": {},
-          "$ref": "#/definitions/io.external-secrets.apis.meta.v1.SecretKeySelector"
+          "$ref": "#/definitions/io.external-secrets.v1.SecretKeySelector"
         }
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1beta1.VaultAppRole": {
+    "io.external-secrets.v1beta1.VaultAppRole": {
       "description": "VaultAppRole authenticates with Vault using the App Role auth mechanism, with the role and secret stored in a Kubernetes Secret resource.",
       "type": "object",
       "required": [
@@ -3175,60 +3221,60 @@
         "secretRef": {
           "description": "Reference to a key in a Secret that contains the App Role secret used to authenticate with Vault. The `key` field must be specified and denotes which entry within the Secret resource is used as the app role secret.",
           "default": {},
-          "$ref": "#/definitions/io.external-secrets.apis.meta.v1.SecretKeySelector"
+          "$ref": "#/definitions/io.external-secrets.v1.SecretKeySelector"
         }
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1beta1.VaultAuth": {
+    "io.external-secrets.v1beta1.VaultAuth": {
       "description": "VaultAuth is the configuration used to authenticate with a Vault server. Only one of `tokenSecretRef`, `appRole`,  `kubernetes`, `ldap`, `jwt` or `cert` can be specified.",
       "type": "object",
       "properties": {
         "appRole": {
           "description": "AppRole authenticates with Vault using the App Role auth mechanism, with the role and secret stored in a Kubernetes Secret resource.",
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.VaultAppRole"
+          "$ref": "#/definitions/io.external-secrets.v1beta1.VaultAppRole"
         },
         "cert": {
           "description": "Cert authenticates with TLS Certificates by passing client certificate, private key and ca certificate Cert authentication method",
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.VaultCertAuth"
+          "$ref": "#/definitions/io.external-secrets.v1beta1.VaultCertAuth"
         },
         "jwt": {
           "description": "Jwt authenticates with Vault by passing role and JWT token using the JWT/OIDC authentication method",
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.VaultJwtAuth"
+          "$ref": "#/definitions/io.external-secrets.v1beta1.VaultJwtAuth"
         },
         "kubernetes": {
           "description": "Kubernetes authenticates with Vault by passing the ServiceAccount token stored in the named Secret resource to the Vault server.",
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.VaultKubernetesAuth"
+          "$ref": "#/definitions/io.external-secrets.v1beta1.VaultKubernetesAuth"
         },
         "ldap": {
           "description": "Ldap authenticates with Vault by passing username/password pair using the LDAP authentication method",
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.VaultLdapAuth"
+          "$ref": "#/definitions/io.external-secrets.v1beta1.VaultLdapAuth"
         },
         "tokenSecretRef": {
           "description": "TokenSecretRef authenticates with Vault by presenting a token.",
-          "$ref": "#/definitions/io.external-secrets.apis.meta.v1.SecretKeySelector"
+          "$ref": "#/definitions/io.external-secrets.v1.SecretKeySelector"
         }
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1beta1.VaultCertAuth": {
+    "io.external-secrets.v1beta1.VaultCertAuth": {
       "description": "VaultJwtAuth authenticates with Vault using the JWT/OIDC authentication method, with the role name and token stored in a Kubernetes Secret resource.",
       "type": "object",
       "properties": {
         "clientCert": {
           "description": "ClientCert is a certificate to authenticate using the Cert Vault authentication method",
           "default": {},
-          "$ref": "#/definitions/io.external-secrets.apis.meta.v1.SecretKeySelector"
+          "$ref": "#/definitions/io.external-secrets.v1.SecretKeySelector"
         },
         "secretRef": {
           "description": "SecretRef to a key in a Secret resource containing client private key to authenticate with Vault using the Cert authentication method",
           "default": {},
-          "$ref": "#/definitions/io.external-secrets.apis.meta.v1.SecretKeySelector"
+          "$ref": "#/definitions/io.external-secrets.v1.SecretKeySelector"
         }
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1beta1.VaultJwtAuth": {
+    "io.external-secrets.v1beta1.VaultJwtAuth": {
       "description": "VaultJwtAuth authenticates with Vault using the JWT/OIDC authentication method, with the role name and a token stored in a Kubernetes Secret resource or a Kubernetes service account token retrieved via `TokenRequest`.",
       "type": "object",
       "required": [
@@ -3237,7 +3283,7 @@
       "properties": {
         "kubernetesServiceAccountToken": {
           "description": "Optional ServiceAccountToken specifies the Kubernetes service account for which to request a token for with the `TokenRequest` API.",
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.VaultKubernetesServiceAccountTokenAuth"
+          "$ref": "#/definitions/io.external-secrets.v1beta1.VaultKubernetesServiceAccountTokenAuth"
         },
         "path": {
           "description": "Path where the JWT authentication backend is mounted in Vault, e.g: \"jwt\"",
@@ -3251,12 +3297,12 @@
         },
         "secretRef": {
           "description": "Optional SecretRef that refers to a key in a Secret resource containing JWT token to authenticate with Vault using the JWT/OIDC authentication method.",
-          "$ref": "#/definitions/io.external-secrets.apis.meta.v1.SecretKeySelector"
+          "$ref": "#/definitions/io.external-secrets.v1.SecretKeySelector"
         }
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1beta1.VaultKubernetesAuth": {
+    "io.external-secrets.v1beta1.VaultKubernetesAuth": {
       "description": "Authenticate against Vault using a Kubernetes ServiceAccount token stored in a Secret.",
       "type": "object",
       "required": [
@@ -3276,16 +3322,16 @@
         },
         "secretRef": {
           "description": "Optional secret field containing a Kubernetes ServiceAccount JWT used for authenticating with Vault. If a name is specified without a key, `token` is the default. If one is not specified, the one bound to the controller will be used.",
-          "$ref": "#/definitions/io.external-secrets.apis.meta.v1.SecretKeySelector"
+          "$ref": "#/definitions/io.external-secrets.v1.SecretKeySelector"
         },
         "serviceAccountRef": {
           "description": "Optional service account field containing the name of a kubernetes ServiceAccount. If the service account is specified, the service account secret token JWT will be used for authenticating with Vault. If the service account selector is not supplied, the secretRef will be used instead.",
-          "$ref": "#/definitions/io.external-secrets.apis.meta.v1.ServiceAccountSelector"
+          "$ref": "#/definitions/io.external-secrets.v1.ServiceAccountSelector"
         }
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1beta1.VaultKubernetesServiceAccountTokenAuth": {
+    "io.external-secrets.v1beta1.VaultKubernetesServiceAccountTokenAuth": {
       "description": "VaultKubernetesServiceAccountTokenAuth authenticates with Vault using a temporary Kubernetes service account token retrieved by the `TokenRequest` API.",
       "type": "object",
       "required": [
@@ -3308,12 +3354,12 @@
         "serviceAccountRef": {
           "description": "Service account field containing the name of a kubernetes ServiceAccount.",
           "default": {},
-          "$ref": "#/definitions/io.external-secrets.apis.meta.v1.ServiceAccountSelector"
+          "$ref": "#/definitions/io.external-secrets.v1.ServiceAccountSelector"
         }
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1beta1.VaultLdapAuth": {
+    "io.external-secrets.v1beta1.VaultLdapAuth": {
       "description": "VaultLdapAuth authenticates with Vault using the LDAP authentication method, with the username and password stored in a Kubernetes Secret resource.",
       "type": "object",
       "required": [
@@ -3329,7 +3375,7 @@
         "secretRef": {
           "description": "SecretRef to a key in a Secret resource containing password for the LDAP user used to authenticate with Vault using the LDAP authentication method",
           "default": {},
-          "$ref": "#/definitions/io.external-secrets.apis.meta.v1.SecretKeySelector"
+          "$ref": "#/definitions/io.external-secrets.v1.SecretKeySelector"
         },
         "username": {
           "description": "Username is a LDAP user name used to authenticate using the LDAP Vault authentication method",
@@ -3339,7 +3385,7 @@
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1beta1.VaultProvider": {
+    "io.external-secrets.v1beta1.VaultProvider": {
       "description": "Configures an store to sync secrets using a HashiCorp Vault KV backend.",
       "type": "object",
       "required": [
@@ -3351,7 +3397,7 @@
         "auth": {
           "description": "Auth configures how secret-manager authenticates with the Vault server.",
           "default": {},
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.VaultAuth"
+          "$ref": "#/definitions/io.external-secrets.v1beta1.VaultAuth"
         },
         "caBundle": {
           "description": "PEM encoded CA bundle used to validate Vault server certificate. Only used if the Server URL is using HTTPS protocol. This parameter is ignored for plain HTTP protocol connection. If not set the system root certificates are used to validate the TLS connection.",
@@ -3360,7 +3406,7 @@
         },
         "caProvider": {
           "description": "The provider for the CA bundle to use to validate Vault server certificate.",
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.CAProvider"
+          "$ref": "#/definitions/io.external-secrets.v1beta1.CAProvider"
         },
         "forwardInconsistent": {
           "description": "ForwardInconsistent tells Vault to forward read-after-write requests to the Vault leader instead of simply retrying within a loop. This can increase performance if the option is enabled serverside. https://www.vaultproject.io/docs/configuration/replication#allow_forwarding_via_header",
@@ -3391,7 +3437,7 @@
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1beta1.WebhookCAProvider": {
+    "io.external-secrets.v1beta1.WebhookCAProvider": {
       "description": "Defines a location to fetch the cert for the webhook provider from.",
       "type": "object",
       "required": [
@@ -3420,7 +3466,7 @@
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1beta1.WebhookProvider": {
+    "io.external-secrets.v1beta1.WebhookProvider": {
       "description": "AkeylessProvider Configures an store to sync secrets using Akeyless KV.",
       "type": "object",
       "required": [
@@ -3439,7 +3485,7 @@
         },
         "caProvider": {
           "description": "The provider for the CA bundle to use to validate webhook server certificate.",
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.WebhookCAProvider"
+          "$ref": "#/definitions/io.external-secrets.v1beta1.WebhookCAProvider"
         },
         "headers": {
           "description": "Headers",
@@ -3456,14 +3502,14 @@
         "result": {
           "description": "Result formatting",
           "default": {},
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.WebhookResult"
+          "$ref": "#/definitions/io.external-secrets.v1beta1.WebhookResult"
         },
         "secrets": {
           "description": "Secrets to fill in templates These secrets will be passed to the templating function as key value pairs under the given name",
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.WebhookSecret"
+            "$ref": "#/definitions/io.external-secrets.v1beta1.WebhookSecret"
           }
         },
         "timeout": {
@@ -3478,7 +3524,7 @@
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1beta1.WebhookResult": {
+    "io.external-secrets.v1beta1.WebhookResult": {
       "type": "object",
       "properties": {
         "jsonPath": {
@@ -3488,7 +3534,7 @@
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1beta1.WebhookSecret": {
+    "io.external-secrets.v1beta1.WebhookSecret": {
       "type": "object",
       "required": [
         "name",
@@ -3503,33 +3549,33 @@
         "secretRef": {
           "description": "Secret ref to fill in credentials",
           "default": {},
-          "$ref": "#/definitions/io.external-secrets.apis.meta.v1.SecretKeySelector"
+          "$ref": "#/definitions/io.external-secrets.v1.SecretKeySelector"
         }
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1beta1.YandexCertificateManagerAuth": {
+    "io.external-secrets.v1beta1.YandexCertificateManagerAuth": {
       "type": "object",
       "properties": {
         "authorizedKeySecretRef": {
           "description": "The authorized key used for authentication",
           "default": {},
-          "$ref": "#/definitions/io.external-secrets.apis.meta.v1.SecretKeySelector"
+          "$ref": "#/definitions/io.external-secrets.v1.SecretKeySelector"
         }
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1beta1.YandexCertificateManagerCAProvider": {
+    "io.external-secrets.v1beta1.YandexCertificateManagerCAProvider": {
       "type": "object",
       "properties": {
         "certSecretRef": {
           "default": {},
-          "$ref": "#/definitions/io.external-secrets.apis.meta.v1.SecretKeySelector"
+          "$ref": "#/definitions/io.external-secrets.v1.SecretKeySelector"
         }
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1beta1.YandexCertificateManagerProvider": {
+    "io.external-secrets.v1beta1.YandexCertificateManagerProvider": {
       "description": "YandexCertificateManagerProvider Configures a store to sync secrets using the Yandex Certificate Manager provider.",
       "type": "object",
       "required": [
@@ -3543,37 +3589,37 @@
         "auth": {
           "description": "Auth defines the information necessary to authenticate against Yandex Certificate Manager",
           "default": {},
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.YandexCertificateManagerAuth"
+          "$ref": "#/definitions/io.external-secrets.v1beta1.YandexCertificateManagerAuth"
         },
         "caProvider": {
           "description": "The provider for the CA bundle to use to validate Yandex.Cloud server certificate.",
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.YandexCertificateManagerCAProvider"
+          "$ref": "#/definitions/io.external-secrets.v1beta1.YandexCertificateManagerCAProvider"
         }
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1beta1.YandexLockboxAuth": {
+    "io.external-secrets.v1beta1.YandexLockboxAuth": {
       "type": "object",
       "properties": {
         "authorizedKeySecretRef": {
           "description": "The authorized key used for authentication",
           "default": {},
-          "$ref": "#/definitions/io.external-secrets.apis.meta.v1.SecretKeySelector"
+          "$ref": "#/definitions/io.external-secrets.v1.SecretKeySelector"
         }
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1beta1.YandexLockboxCAProvider": {
+    "io.external-secrets.v1beta1.YandexLockboxCAProvider": {
       "type": "object",
       "properties": {
         "certSecretRef": {
           "default": {},
-          "$ref": "#/definitions/io.external-secrets.apis.meta.v1.SecretKeySelector"
+          "$ref": "#/definitions/io.external-secrets.v1.SecretKeySelector"
         }
       },
       "additionalProperties": false
     },
-    "io.external-secrets.apis.externalsecrets.v1beta1.YandexLockboxProvider": {
+    "io.external-secrets.v1beta1.YandexLockboxProvider": {
       "description": "YandexLockboxProvider Configures a store to sync secrets using the Yandex Lockbox provider.",
       "type": "object",
       "required": [
@@ -3587,57 +3633,11 @@
         "auth": {
           "description": "Auth defines the information necessary to authenticate against Yandex Lockbox",
           "default": {},
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.YandexLockboxAuth"
+          "$ref": "#/definitions/io.external-secrets.v1beta1.YandexLockboxAuth"
         },
         "caProvider": {
           "description": "The provider for the CA bundle to use to validate Yandex.Cloud server certificate.",
-          "$ref": "#/definitions/io.external-secrets.apis.externalsecrets.v1beta1.YandexLockboxCAProvider"
-        }
-      },
-      "additionalProperties": false
-    },
-    "io.external-secrets.apis.meta.v1.SecretKeySelector": {
-      "description": "A reference to a specific 'key' within a Secret resource, In some instances, `key` is a required field.",
-      "type": "object",
-      "properties": {
-        "key": {
-          "description": "The key of the entry in the Secret resource's `data` field to be used. Some instances of this field may be defaulted, in others it may be required.",
-          "type": "string"
-        },
-        "name": {
-          "description": "The name of the Secret resource being referred to.",
-          "type": "string"
-        },
-        "namespace": {
-          "description": "Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults to the namespace of the referent.",
-          "type": "string"
-        }
-      },
-      "additionalProperties": false
-    },
-    "io.external-secrets.apis.meta.v1.ServiceAccountSelector": {
-      "description": "A reference to a ServiceAccount resource.",
-      "type": "object",
-      "required": [
-        "name"
-      ],
-      "properties": {
-        "audiences": {
-          "description": "Audience specifies the `aud` claim for the service account token If the service account uses a well-known annotation for e.g. IRSA or GCP Workload Identity then this audiences will be appended to the list",
-          "type": "array",
-          "items": {
-            "type": "string",
-            "default": ""
-          }
-        },
-        "name": {
-          "description": "The name of the ServiceAccount resource being referred to.",
-          "type": "string",
-          "default": ""
-        },
-        "namespace": {
-          "description": "Namespace of the resource being referred to. Ignored if referent is not cluster-scoped. cluster-scoped defaults to the namespace of the referent.",
-          "type": "string"
+          "$ref": "#/definitions/io.external-secrets.v1beta1.YandexLockboxCAProvider"
         }
       },
       "additionalProperties": false

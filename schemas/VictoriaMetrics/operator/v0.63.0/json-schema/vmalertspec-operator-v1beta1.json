@@ -67,7 +67,7 @@
     "datasource": {
       "description": "Datasource Victoria Metrics or VMSelect url. Required parameter. e.g. http://127.0.0.1:8428",
       "default": {},
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.VMAlertDatasourceSpec"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.VMAlertDatasourceSpec"
     },
     "disableAutomountServiceAccountToken": {
       "description": "DisableAutomountServiceAccountToken whether to disable serviceAccount auto mount by Kubernetes (available from v0.54.0). Operator will conditionally create volumes and volumeMounts for containers if it requires k8s API access. For example, vmagent and vm-config-reloader requires k8s API access. Operator creates volumes with name: \"kube-api-access\", which can be used as volumeMount for extraContainers if needed. And also adds VolumeMounts at /var/run/secrets/kubernetes.io/serviceaccount.",
@@ -196,7 +196,7 @@
     "image": {
       "description": "Image - docker image settings if no specified operator uses default version from operator config",
       "default": {},
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.Image"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.Image"
     },
     "imagePullSecrets": {
       "description": "ImagePullSecrets An optional list of references to secrets in the same namespace to use for pulling images from registries see https://kubernetes.io/docs/concepts/containers/images/#referring-to-an-imagepullsecrets-on-a-pod",
@@ -222,7 +222,7 @@
     },
     "license": {
       "description": "License allows to configure license key to be used for enterprise features. Using license key is supported starting from VictoriaMetrics v1.94.0. See [here](https://docs.victoriametrics.com/victoriametrics/enterprise/)",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.License"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.License"
     },
     "livenessProbe": {
       "description": "LivenessProbe that will be added CRD pod",
@@ -244,7 +244,7 @@
     },
     "managedMetadata": {
       "description": "ManagedMetadata defines metadata that will be added to the all objects created by operator for the given CustomResource",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.ManagedObjectsMetadata"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.ManagedObjectsMetadata"
     },
     "minReadySeconds": {
       "description": "MinReadySeconds defines a minimum number of seconds to wait before starting update next pod if previous in healthy state Has no effect for VLogs and VMSingle",
@@ -270,7 +270,7 @@
     },
     "notifier": {
       "description": "Notifier prometheus alertmanager endpoint spec. Required at least one of notifier or notifiers when there are alerting rules. e.g. http://127.0.0.1:9093 If specified both notifier and notifiers, notifier will be added as last element to notifiers. only one of notifier options could be chosen: notifierConfigRef or notifiers +  notifier",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.VMAlertNotifierSpec"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.VMAlertNotifierSpec"
     },
     "notifierConfigRef": {
       "description": "NotifierConfigRef reference for secret with notifier configuration for vmalert only one of notifier options could be chosen: notifierConfigRef or notifiers +  notifier",
@@ -284,7 +284,7 @@
       ],
       "items": {
         "default": {},
-        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.VMAlertNotifierSpec"
+        "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.VMAlertNotifierSpec"
       }
     },
     "paused": {
@@ -296,11 +296,11 @@
     },
     "podDisruptionBudget": {
       "description": "PodDisruptionBudget created by operator",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.EmbeddedPodDisruptionBudgetSpec"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.EmbeddedPodDisruptionBudgetSpec"
     },
     "podMetadata": {
       "description": "PodMetadata configures Labels and Annotations which are propagated to the VMAlert pods.",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.EmbeddedObjectMetadata"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.EmbeddedObjectMetadata"
     },
     "port": {
       "description": "Port listen address",
@@ -333,11 +333,11 @@
     },
     "remoteRead": {
       "description": "RemoteRead Optional URL to read vmalert state (persisted via RemoteWrite) This configuration only makes sense if alerts state has been successfully persisted (via RemoteWrite) before. see -remoteRead.url docs in vmalerts for details. E.g. http://127.0.0.1:8428",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.VMAlertRemoteReadSpec"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.VMAlertRemoteReadSpec"
     },
     "remoteWrite": {
       "description": "RemoteWrite Optional URL to remote-write compatible storage to persist vmalert state and rule results to. Rule results will be persisted according to each rule. Alerts state will be persisted in the form of time series named ALERTS and ALERTS_FOR_STATE see -remoteWrite.url docs in vmalerts for details. E.g. http://127.0.0.1:8428",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.VMAlertRemoteWriteSpec"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.VMAlertRemoteWriteSpec"
     },
     "replicaCount": {
       "description": "ReplicaCount is the expected size of the Application.",
@@ -416,7 +416,7 @@
     },
     "securityContext": {
       "description": "SecurityContext holds pod-level security attributes and common container settings. This defaults to the default PodSecurityContext.",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.SecurityContext"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.SecurityContext"
     },
     "selectAllByDefault": {
       "description": "SelectAllByDefault changes default behavior for empty CRD selectors, such RuleSelector. with selectAllByDefault: true and empty serviceScrapeSelector and RuleNamespaceSelector Operator selects all exist serviceScrapes with selectAllByDefault: false - selects nothing",
@@ -434,11 +434,11 @@
     },
     "serviceScrapeSpec": {
       "description": "ServiceScrapeSpec that will be added to vmalert VMServiceScrape spec",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.VMServiceScrapeSpec"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.VMServiceScrapeSpec"
     },
     "serviceSpec": {
       "description": "ServiceSpec that will be added to vmalert service spec",
-      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.api.operator.v1beta1.AdditionalServiceSpec"
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.AdditionalServiceSpec"
     },
     "startupProbe": {
       "description": "StartupProbe that will be added to CRD pod",
