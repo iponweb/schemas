@@ -29,15 +29,20 @@ schemas/
         apis.json                # Filtered APIGroupList (controller groups only)
         apis__GROUP__VERSION.json
       json-schema/
-        _definitions.json        # All schema definitions
+        _definitions.json        # All schema definitions (source-generated)
         KIND.GROUP.VERSION.json  # Individual resource schemas
+      json-schema-live/
+        _definitions.json        # All schema definitions (live kube-apiserver)
+        KIND.GROUP.VERSION.json  # Individual resource schemas (live)
       openapi/
-        openapi.json             # Merged OpenAPI spec (intermediate artifact)
+        openapi.json             # Merged OpenAPI spec from source (intermediate)
+        openapi-live.json        # Filtered OpenAPI spec from live /openapi/v2
 
 tools/
   generate.py                    # Shared generation pipeline script
   discover.py                    # Populates index.yaml from API discovery
   envtest.py                     # Live CRD discovery via envtest kube-apiserver
+  envtest_openapi.py             # Fetches /openapi/v2 from envtest, produces json-schema-live/
   validate.py                    # Schema validation script
   openapi-json-gen/
     main.go.tmpl                 # Go source template for the OpenAPI builder
@@ -74,9 +79,15 @@ Karpenter (and ideally all future controllers) use the shared pipeline.
                                   #            via live discovery — overwrites step 10's resource list
                                   #            with authoritative data; runs when crd_path is set and
                                   #            $ENVTEST_BIN_DIR/kube-apiserver is present
+12. tools/envtest_openapi.py      # (optional, requires step 11) fetch /openapi/v2 from the same
+                                  #            API server, filter to controller groups, save
+                                  #            openapi-live.json and generate json-schema-live/
+13. compare_schemas               # (optional, requires steps 8+12) compare root CRD definition
+                                  #            names between json-schema/ and json-schema-live/;
+                                  #            reports mismatches that indicate wrong host_conversion_rules
 ```
 
-Steps 10–11 are mutually exclusive with step 9: controllers that use `crd_path` rely on
+Steps 10–13 are mutually exclusive with step 9: controllers that use `crd_path` rely on
 envtest for discovery; controllers that use `discovery_base_url` fetch static files from GitHub.
 
 **Run via Docker (preferred):**
@@ -206,12 +217,44 @@ crd_names:
 # Maps Go module prefixes to their Kubernetes API group hostnames.
 # Used by GetDefinitionName to produce OpenAPI definition keys like
 # "sh.karpenter.v1.NodePool" instead of "io.sigs.k8s.karpenter.pkg.apis.v1.NodePool".
-# Rules:
-#   - Keys are Go module path PREFIXES (not full paths).
-#   - The matching uses HasPrefix(name, key+"/") — the trailing "/" prevents
-#     "github.com/aws/karpenter" from matching "github.com/aws/karpenter-provider-aws".
-#   - Only one rule fires per type (break after first match).
-#   - Derive the value from the controller's CRD group annotation (groupName).
+#
+# Matching rules (applied longest-key-first):
+#   1. Sub-package match: HasPrefix(name, key+"/")
+#      Fires when a type lives in a sub-package of key.
+#      After replacement, the Go path is stripped to keep only {version}.{Kind}.
+#      Example key: "github.com/aws/karpenter-provider-aws"
+#      Matches:     "github.com/aws/karpenter-provider-aws/pkg/apis/v1.EC2NodeClass"
+#
+#   2. Exact package match: HasPrefix(name, key+".")
+#      Fires when a type lives in the exact package named by key.
+#      The version is extracted from the last path segment of key.
+#      Use this when a sub-package has a DIFFERENT API group than the module root.
+#      Example key: "github.com/cert-manager/cert-manager/pkg/apis/acme"
+#      Matches:     "github.com/cert-manager/cert-manager/pkg/apis/acme/v1.Challenge"
+#      Result:      "io.cert-manager.acme.v1.Challenge"
+#
+# Only one rule fires per type (break after first match). Sort longer (more
+# specific) keys first so sub-package rules win over module-level fallbacks.
+# This is done automatically inside main.go.tmpl.
+#
+# Multi-group controllers: when a controller's CRDs span multiple Kubernetes API
+# groups (e.g. "cert-manager.io" and "acme.cert-manager.io", or
+# "external-secrets.io" and "generators.external-secrets.io"), add a more-specific
+# key for each non-default group before the module-level fallback:
+#
+#   "github.com/cert-manager/cert-manager/pkg/apis/acme": "acme.cert-manager.io"
+#   "github.com/cert-manager/cert-manager": "cert-manager.io"
+#
+#   "github.com/external-secrets/external-secrets/apis/generators": "generators.external-secrets.io"
+#   "github.com/external-secrets/external-secrets": "external-secrets.io"
+#
+# For controllers whose module path doesn't match their CRD group at all
+# (e.g. gateway-api: module "sigs.k8s.io/gateway-api", group "gateway.networking.k8s.io"),
+# a single rule suffices:
+#   "sigs.k8s.io/gateway-api": "gateway.networking.k8s.io"
+#
+# Derive the group value from the controller's CRD group annotation (groupName
+# in doc.go or +groupName marker).
 host_conversion_rules:
   "github.com/aws/karpenter-provider-aws": "karpenter.k8s.aws"
   "sigs.k8s.io/karpenter": "karpenter.sh"
@@ -442,6 +485,23 @@ envtest API server. `kubectl apply` adds a
 `kubectl.kubernetes.io/last-applied-configuration` annotation containing the full CRD
 JSON, which can exceed the 256 KB kube-apiserver annotation limit for large CRDs.
 
+### compare-schemas mismatch after host_conversion_rules change
+
+Step 13 (`compare_schemas`) checks that every root CRD kind appears under the same
+definition key in both `json-schema/` (source) and `json-schema-live/` (live). A
+`MISS` in the **source** column means a `host_conversion_rules` rule is wrong or
+missing. A `MISS` in the **live** column means the CRD exists in the source but was
+not served by the live API server (usually a missing or unserved version in the chart).
+
+Common root causes for source MISS:
+- The controller has CRDs in **multiple API groups** (e.g. `cert-manager.io` and
+  `acme.cert-manager.io`) but only one module-level rule was set — add per-package
+  rules for each non-default group.
+- The module path doesn't share a prefix with the CRD group (e.g. `sigs.k8s.io/gateway-api`
+  vs `gateway.networking.k8s.io`) — add an explicit mapping.
+- A type is listed in `crd_names` but the Go type doesn't exist at that version
+  (CRD added to helm chart before Go type was written) — remove from `crd_names`.
+
 ### generated/ is gitignored
 
 The `**/generated/*` pattern in `.gitignore` covers intermediate build artifacts.
@@ -456,6 +516,7 @@ Do not commit anything under `generated/`.
 | `openapi-gen` | Generates Go OpenAPI definitions from annotated types | `go install k8s.io/kube-openapi/cmd/openapi-gen@VERSION` |
 | `openapi2jsonschema` | Converts OpenAPI spec to JSON Schema files | Python venv (`instrumenta/openapi2jsonschema`) |
 | `setup-envtest` | Downloads envtest binaries (etcd + kube-apiserver + kubectl) | `go install sigs.k8s.io/controller-runtime/tools/setup-envtest@latest` |
+| `tools/envtest_openapi.py` | Starts envtest, fetches `/openapi/v2`, produces `json-schema-live/` | bundled in repo |
 | `go` | Compiles and runs the OpenAPI builder | brew / golang.org |
 | `git` | Clones controller source | system |
 
