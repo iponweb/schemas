@@ -5,7 +5,7 @@ Shared schema generation pipeline for Kubernetes controllers.
 Usage (from the repo root):
     python3 tools/generate.py config/aws/karpenter-provider-aws/v1.10.0/config.yaml
 
-Output is written to schemas/ORG/REPO/VERSION/json-schema/ derived from the config path.
+Output is written to schemas/ORG/REPO/VERSION/json-schema/source/ derived from the config path.
 All pipeline parameters are read from config.yaml.
 """
 
@@ -264,9 +264,9 @@ def main():
     config_path = Path(sys.argv[1]).resolve()
     version_dir = config_path.parent     # e.g. config/aws/karpenter-provider-aws/v1.10.0/
 
-    # Derive output path: config/ORG/REPO/VERSION/ → schemas/ORG/REPO/VERSION/json-schema/
+    # Derive output path: config/ORG/REPO/VERSION/ → schemas/ORG/REPO/VERSION/json-schema/source/
     rel = config_path.parent.relative_to(REPO_ROOT / "config")
-    output_dir = REPO_ROOT / "schemas" / rel / "json-schema"
+    output_dir = REPO_ROOT / "schemas" / rel / "json-schema" / "source"
 
     with open(config_path) as f:
         cfg = yaml.safe_load(f)
@@ -379,7 +379,7 @@ def main():
         # Step 8 — Persist openapi.json
         # -------------------------------------------------------------------
         openapi_src = generated_dir / "openapi.json"
-        openapi_out = REPO_ROOT / "schemas" / rel / "openapi" / "openapi.json"
+        openapi_out = REPO_ROOT / "schemas" / rel / "openapi" / "source.json"
         openapi_out.parent.mkdir(parents=True, exist_ok=True)
         shutil.copy2(openapi_src, openapi_out)
 
@@ -417,6 +417,25 @@ def main():
             index_yaml = REPO_ROOT / "schemas" / rel / "index.yaml"
             collect_crds(sources_root, crd_path_cfg, crd_dir, index_yaml)
 
+            # Build crds.yaml — all CRDs as a single multi-document YAML for Terraform
+            crds_yaml_out = REPO_ROOT / "schemas" / rel / "crds.yaml"
+            crd_docs = []
+            seen_crds = set()
+            for crd_file in sorted(crd_dir.glob("*.yaml")):
+                with open(crd_file) as f:
+                    doc = yaml.safe_load(f)
+                crd_name = doc.get('metadata', {}).get('name', '')
+                if crd_name and crd_name not in seen_crds:
+                    seen_crds.add(crd_name)
+                    crd_docs.append(doc)
+            crds_yaml_out.write_text(
+                "---\n".join(
+                    yaml.dump(d, default_flow_style=False, sort_keys=False, allow_unicode=True)
+                    for d in crd_docs
+                )
+            )
+            print(f"  crds.yaml: {len(crd_docs)} CRDs → {crds_yaml_out}", flush=True)
+
         # -------------------------------------------------------------------
         # Step 12 — Live CRD discovery via envtest (optional)
         #           Runs when crd_path is set and envtest binaries are present.
@@ -443,8 +462,8 @@ def main():
             #           Output is separate from the source-generated schemas so
             #           both can be compared / used independently.
             # -------------------------------------------------------------------
-            openapi_live_out = REPO_ROOT / "schemas" / rel / "openapi" / "openapi-live.json"
-            json_schema_live_dir = REPO_ROOT / "schemas" / rel / "json-schema-live"
+            openapi_live_out = REPO_ROOT / "schemas" / rel / "openapi" / "live.json"
+            json_schema_live_dir = REPO_ROOT / "schemas" / rel / "json-schema" / "live"
             run([
                 "python3", TOOLS_DIR / "envtest_openapi.py",
                 "--crd-dir",     crd_dir,
@@ -462,8 +481,8 @@ def main():
             index_yaml = REPO_ROOT / "schemas" / rel / "index.yaml"
             compare_schemas(output_dir, json_schema_live_dir, index_yaml)
 
-        print(f"\nDone. Schemas written to {output_dir}", flush=True)
-        print(f"      OpenAPI written to  {openapi_out}", flush=True)
+        print(f"\nDone. Schemas  → {output_dir}", flush=True)
+        print(f"      OpenAPI  → {openapi_out}", flush=True)
 
     finally:
         shutil.rmtree(sources_root, ignore_errors=True)

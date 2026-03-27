@@ -24,25 +24,27 @@ schemas/
     index.yaml                   # Controller metadata (name, repository URL)
     VERSION/
       index.yaml                 # Version data: resource list with GVK
-      crd/                       # Individual CRD YAML files (one per CRD)
+      crds.yaml                  # All CRDs as a single multi-document YAML (for Terraform)
+      crd/                       # Individual CRD YAML files (one per CRD name)
       discovery/                 # Raw API discovery JSON files
         apis.json                # Filtered APIGroupList (controller groups only)
         apis__GROUP__VERSION.json
       json-schema/
-        _definitions.json        # All schema definitions (source-generated)
-        KIND.GROUP.VERSION.json  # Individual resource schemas
-      json-schema-live/
-        _definitions.json        # All schema definitions (live kube-apiserver)
-        KIND.GROUP.VERSION.json  # Individual resource schemas (live)
+        source/
+          _definitions.json      # All schema definitions (source-generated)
+          KIND.GROUP.VERSION.json
+        live/
+          _definitions.json      # All schema definitions (live kube-apiserver)
+          KIND.GROUP.VERSION.json
       openapi/
-        openapi.json             # Merged OpenAPI spec from source (intermediate)
-        openapi-live.json        # Filtered OpenAPI spec from live /openapi/v2
+        source.json              # Merged OpenAPI spec from source (intermediate)
+        live.json                # Filtered OpenAPI spec from live /openapi/v2
 
 tools/
   generate.py                    # Shared generation pipeline script
   discover.py                    # Populates index.yaml from API discovery
   envtest.py                     # Live CRD discovery via envtest kube-apiserver
-  envtest_openapi.py             # Fetches /openapi/v2 from envtest, produces json-schema-live/
+  envtest_openapi.py             # Fetches /openapi/v2 from envtest, produces json-schema/live/
   validate.py                    # Schema validation script
   openapi-json-gen/
     main.go.tmpl                 # Go source template for the OpenAPI builder
@@ -56,7 +58,7 @@ This is unambiguous even when multiple vendors implement the same API group.
 
 **Exception — built-in Kubernetes schemas** have no `config/kubernetes/kubernetes/` entry.
 `make generate-kubernetes VERSION=v1.34.1` fetches `swagger.json` directly from the
-Kubernetes GitHub repo and writes to `schemas/kubernetes/kubernetes/VERSION/json-schema/`.
+Kubernetes GitHub repo and writes to `schemas/kubernetes/kubernetes/VERSION/json-schema/source/`.
 
 ---
 
@@ -72,18 +74,18 @@ Karpenter (and ideally all future controllers) use the shared pipeline.
  5. openapi-gen → generated/openapi/openapi_generated.go
  6. write generated/go.mod + render generated/main.go from main.go.tmpl
  7. go mod tidy && go run ./main.go → generated/openapi/openapi.json
- 8. openapi2jsonschema → schemas/ORG/REPO/VERSION/json-schema/
+ 8. openapi2jsonschema → schemas/ORG/REPO/VERSION/json-schema/source/
  9. tools/discover.py (static)   # (optional) populate index.yaml from discovery_base_url
-10. collect_crds                  # (optional) copy CRD YAMLs to schemas/.../crd/, populate index.yaml
+10. collect_crds                  # (optional) copy CRD YAMLs to crd/, write crds.yaml, populate index.yaml
 11. tools/envtest.py              # (optional) start kube-apiserver, install CRDs, populate index.yaml
                                   #            via live discovery — overwrites step 10's resource list
                                   #            with authoritative data; runs when crd_path is set and
                                   #            $ENVTEST_BIN_DIR/kube-apiserver is present
 12. tools/envtest_openapi.py      # (optional, requires step 11) fetch /openapi/v2 from the same
                                   #            API server, filter to controller groups, save
-                                  #            openapi-live.json and generate json-schema-live/
+                                  #            openapi/live.json and generate json-schema/live/
 13. compare_schemas               # (optional, requires steps 8+12) compare root CRD definition
-                                  #            names between json-schema/ and json-schema-live/;
+                                  #            names between json-schema/source/ and json-schema/live/;
                                   #            reports mismatches that indicate wrong host_conversion_rules
 ```
 

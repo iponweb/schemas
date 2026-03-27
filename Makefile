@@ -47,13 +47,13 @@ K8S_DISCOVERY_BASE := https://raw.githubusercontent.com/kubernetes/kubernetes
 generate-kubernetes:
 	@test -n "$(VERSION)" || (echo "ERROR: VERSION is required"; exit 1)
 	mkdir -p schemas/kubernetes/kubernetes/$(VERSION)/openapi
-	mkdir -p schemas/kubernetes/kubernetes/$(VERSION)/json-schema
+	mkdir -p schemas/kubernetes/kubernetes/$(VERSION)/json-schema/source
 	curl -fsSL \
 		"$(K8S_DISCOVERY_BASE)/$(VERSION)/api/openapi-spec/swagger.json" \
-		-o schemas/kubernetes/kubernetes/$(VERSION)/openapi/openapi.json
+		-o schemas/kubernetes/kubernetes/$(VERSION)/openapi/source.json
 	openapi2jsonschema \
-		schemas/kubernetes/kubernetes/$(VERSION)/openapi/openapi.json \
-		-o schemas/kubernetes/kubernetes/$(VERSION)/json-schema \
+		schemas/kubernetes/kubernetes/$(VERSION)/openapi/source.json \
+		-o schemas/kubernetes/kubernetes/$(VERSION)/json-schema/source \
 		--strict --kubernetes --expanded
 	python3 tools/discover.py \
 		--discovery-base-url "$(K8S_DISCOVERY_BASE)/$(VERSION)/api/discovery" \
@@ -68,4 +68,4 @@ generate-kubernetes:
 validate:
 	@test -n "$(CONTROLLER)" || (echo "ERROR: CONTROLLER is required"; exit 1)
 	@test -n "$(VERSION)"    || (echo "ERROR: VERSION is required"; exit 1)
-	python3 tools/validate.py schemas/$(CONTROLLER)/$(VERSION)/json-schema
+	python3 tools/validate.py schemas/$(CONTROLLER)/$(VERSION)/json-schema/source
