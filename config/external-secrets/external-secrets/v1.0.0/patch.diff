@@ -1,0 +1,60 @@
+diff --git a/apis/externalsecrets/v1/doc.go b/apis/externalsecrets/v1/doc.go
+--- a/apis/externalsecrets/v1/doc.go
++++ b/apis/externalsecrets/v1/doc.go
+@@ -18,4 +18,5 @@
+ // +kubebuilder:object:generate=true
+ // +groupName=external-secrets.io
+ // +versionName=v1
++// +k8s:openapi-gen=true
+ package v1
+diff --git a/apis/externalsecrets/v1alpha1/doc.go b/apis/externalsecrets/v1alpha1/doc.go
+--- a/apis/externalsecrets/v1alpha1/doc.go
++++ b/apis/externalsecrets/v1alpha1/doc.go
+@@ -18,4 +18,5 @@
+ // +kubebuilder:object:generate=true
+ // +groupName=external-secrets.io
+ // +versionName=v1alpha1
++// +k8s:openapi-gen=true
+ package v1alpha1
+diff --git a/apis/externalsecrets/v1beta1/doc.go b/apis/externalsecrets/v1beta1/doc.go
+--- a/apis/externalsecrets/v1beta1/doc.go
++++ b/apis/externalsecrets/v1beta1/doc.go
+@@ -18,4 +18,5 @@
+ // +kubebuilder:object:generate=true
+ // +groupName=external-secrets.io
+ // +versionName=v1beta1
++// +k8s:openapi-gen=true
+ package v1beta1
+diff --git a/apis/generators/v1alpha1/doc.go b/apis/generators/v1alpha1/doc.go
+--- a/apis/generators/v1alpha1/doc.go
++++ b/apis/generators/v1alpha1/doc.go
+@@ -18,4 +18,5 @@
+ // +kubebuilder:object:generate=true
+ // +groupName=generators.external-secrets.io
+ // +versionName=v1alpha1
++// +k8s:openapi-gen=true
+ package v1alpha1
+diff --git a/apis/generators/v1alpha1/generator_types.go b/apis/generators/v1alpha1/generator_types.go
+--- a/apis/generators/v1alpha1/generator_types.go
++++ b/apis/generators/v1alpha1/generator_types.go
+@@ -19,6 +19,6 @@
+ // ControllerClassResource defines a resource that can be assigned to a specific controller class.
+-type ControllerClassResource struct {
+-	Spec struct {
+-		ControllerClass string `json:"controller"`
+-	} `json:"spec"`
+-}
++//type ControllerClassResource struct {
++//	Spec struct {
++//		ControllerClass string `json:"controller"`
++//	} `json:"spec"`
++//}
+diff --git a/apis/meta/v1/doc.go b/apis/meta/v1/doc.go
+--- a/apis/meta/v1/doc.go
++++ b/apis/meta/v1/doc.go
+@@ -16,4 +16,5 @@
+
+ // Package v1 contains meta types for external-secrets APIs
+ // +kubebuilder:object:generate=true
++// +k8s:openapi-gen=true
+ package v1

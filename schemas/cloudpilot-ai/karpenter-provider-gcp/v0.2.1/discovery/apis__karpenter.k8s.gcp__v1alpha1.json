@@ -1,0 +1,42 @@
+{
+  "kind": "APIResourceList",
+  "apiVersion": "v1",
+  "groupVersion": "karpenter.k8s.gcp/v1alpha1",
+  "resources": [
+    {
+      "name": "gcenodeclasses",
+      "singularName": "gcenodeclass",
+      "namespaced": false,
+      "kind": "GCENodeClass",
+      "verbs": [
+        "delete",
+        "deletecollection",
+        "get",
+        "list",
+        "patch",
+        "create",
+        "update",
+        "watch"
+      ],
+      "shortNames": [
+        "gcenc",
+        "gcencs"
+      ],
+      "categories": [
+        "karpenter"
+      ],
+      "storageVersionHash": "NA6XDcvAtVU="
+    },
+    {
+      "name": "gcenodeclasses/status",
+      "singularName": "",
+      "namespaced": false,
+      "kind": "GCENodeClass",
+      "verbs": [
+        "get",
+        "patch",
+        "update"
+      ]
+    }
+  ]
+}

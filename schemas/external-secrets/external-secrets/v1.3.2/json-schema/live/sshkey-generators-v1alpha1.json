@@ -1,0 +1,78 @@
+{
+  "description": "SSHKey generates SSH key pairs.",
+  "type": "object",
+  "properties": {
+    "apiVersion": {
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "generators.external-secrets.io/v1alpha1"
+      ]
+    },
+    "kind": {
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "SSHKey"
+      ]
+    },
+    "metadata": {
+      "description": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+    },
+    "spec": {
+      "description": "SSHKeySpec controls the behavior of the ssh key generator.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "comment": {
+          "description": "Comment specifies an optional comment for the SSH key",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "keySize": {
+          "description": "KeySize specifies the key size for RSA keys (default: 2048) and ECDSA keys (default: 256).\nFor RSA keys: 2048, 3072, 4096\nFor ECDSA keys: 256, 384, 521\nIgnored for ed25519 keys",
+          "type": [
+            "integer",
+            "null"
+          ],
+          "maximum": 8192,
+          "minimum": 256
+        },
+        "keyType": {
+          "description": "KeyType specifies the SSH key type (rsa, ecdsa, ed25519)",
+          "type": [
+            "string",
+            "null"
+          ],
+          "enum": [
+            "rsa",
+            "ecdsa",
+            "ed25519"
+          ]
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "generators.external-secrets.io",
+      "kind": "SSHKey",
+      "version": "v1alpha1"
+    }
+  ],
+  "x-kubernetes-selectable-fields": [],
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

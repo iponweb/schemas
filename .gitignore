@@ -1,3 +1,11 @@
+# Build artifacts
 config/**/generated/
-.claude/settings.local.json
+site/node_modules/
+site/dist/
+site/.astro/
+
+# Logs
 logs/
+
+# Local tooling / IDE
+.claude/settings.local.json

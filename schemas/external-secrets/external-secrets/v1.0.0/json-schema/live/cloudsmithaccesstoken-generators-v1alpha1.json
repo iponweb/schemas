@@ -1,0 +1,110 @@
+{
+  "description": "CloudsmithAccessToken generates Cloudsmith access token using OIDC authentication",
+  "type": "object",
+  "properties": {
+    "apiVersion": {
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "generators.external-secrets.io/v1alpha1"
+      ]
+    },
+    "kind": {
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "CloudsmithAccessToken"
+      ]
+    },
+    "metadata": {
+      "description": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+    },
+    "spec": {
+      "description": "CloudsmithAccessTokenSpec defines the configuration for generating a Cloudsmith access token using OIDC authentication.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "orgSlug",
+        "serviceAccountRef",
+        "serviceSlug"
+      ],
+      "properties": {
+        "apiUrl": {
+          "description": "APIURL configures the Cloudsmith API URL. Defaults to https://api.cloudsmith.io.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "orgSlug": {
+          "description": "OrgSlug is the organization slug in Cloudsmith",
+          "type": "string"
+        },
+        "serviceAccountRef": {
+          "description": "Name of the service account you are federating with",
+          "type": "object",
+          "required": [
+            "name"
+          ],
+          "properties": {
+            "audiences": {
+              "description": "Audience specifies the `aud` claim for the service account token\nIf the service account uses a well-known annotation for e.g. IRSA or GCP Workload Identity\nthen this audiences will be appended to the list",
+              "type": [
+                "array",
+                "null"
+              ],
+              "items": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "name": {
+              "description": "The name of the ServiceAccount resource being referred to.",
+              "type": "string",
+              "maxLength": 253,
+              "minLength": 1,
+              "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?(\\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*$"
+            },
+            "namespace": {
+              "description": "Namespace of the resource being referred to.\nIgnored if referent is not cluster-scoped, otherwise defaults to the namespace of the referent.",
+              "type": [
+                "string",
+                "null"
+              ],
+              "maxLength": 63,
+              "minLength": 1,
+              "pattern": "^[a-z0-9]([-a-z0-9]*[a-z0-9])?$"
+            }
+          },
+          "additionalProperties": false
+        },
+        "serviceSlug": {
+          "description": "ServiceSlug is the service slug in Cloudsmith for OIDC authentication",
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "generators.external-secrets.io",
+      "kind": "CloudsmithAccessToken",
+      "version": "v1alpha1"
+    }
+  ],
+  "x-kubernetes-selectable-fields": [],
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

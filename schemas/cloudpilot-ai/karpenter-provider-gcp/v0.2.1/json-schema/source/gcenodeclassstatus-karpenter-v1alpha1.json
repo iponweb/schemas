@@ -1,0 +1,30 @@
+{
+  "description": "GCENodeClassStatus contains the resolved state of the GCENodeClass",
+  "type": "object",
+  "properties": {
+    "conditions": {
+      "description": "Conditions contains signals for health and readiness",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.github.awslabs.operatorpkg.status.Condition"
+      }
+    },
+    "images": {
+      "description": "Image contains the current image that are available to the cluster under the Image selectors.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/gcp.k8s.karpenter.v1alpha1.Image"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

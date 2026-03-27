@@ -1,0 +1,31 @@
+{
+  "description": "Image contains resolved image selector values utilized for node launch",
+  "type": "object",
+  "required": [
+    "sourceImage",
+    "requirements"
+  ],
+  "properties": {
+    "requirements": {
+      "description": "Requirements of the Image to be utilized on an instance type",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.NodeSelectorRequirement"
+      }
+    },
+    "sourceImage": {
+      "description": "SourceImage represents the source image, format like projects/gke-node-images/global/images/gke-1309-gke1046000-cos-113-18244-291-9-c-pre",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

@@ -1,0 +1,26 @@
+resources:
+- kind: GCENodeClass
+  group: karpenter.k8s.gcp
+  version: v1alpha1
+  plural: gcenodeclasses
+  scope: Cluster
+  shortNames:
+  - gcenc
+  - gcencs
+- kind: NodeClaim
+  group: karpenter.sh
+  version: v1
+  plural: nodeclaims
+  scope: Cluster
+- kind: NodePool
+  group: karpenter.sh
+  version: v1
+  plural: nodepools
+  scope: Cluster
+- kind: NodeOverlay
+  group: karpenter.sh
+  version: v1alpha1
+  plural: nodeoverlays
+  scope: Cluster
+  shortNames:
+  - overlays

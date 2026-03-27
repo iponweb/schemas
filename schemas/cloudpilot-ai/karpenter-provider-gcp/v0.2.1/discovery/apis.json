@@ -1,0 +1,36 @@
+{
+  "kind": "APIGroupList",
+  "apiVersion": "v1",
+  "groups": [
+    {
+      "name": "karpenter.sh",
+      "versions": [
+        {
+          "groupVersion": "karpenter.sh/v1",
+          "version": "v1"
+        },
+        {
+          "groupVersion": "karpenter.sh/v1alpha1",
+          "version": "v1alpha1"
+        }
+      ],
+      "preferredVersion": {
+        "groupVersion": "karpenter.sh/v1",
+        "version": "v1"
+      }
+    },
+    {
+      "name": "karpenter.k8s.gcp",
+      "versions": [
+        {
+          "groupVersion": "karpenter.k8s.gcp/v1alpha1",
+          "version": "v1alpha1"
+        }
+      ],
+      "preferredVersion": {
+        "groupVersion": "karpenter.k8s.gcp/v1alpha1",
+        "version": "v1alpha1"
+      }
+    }
+  ]
+}

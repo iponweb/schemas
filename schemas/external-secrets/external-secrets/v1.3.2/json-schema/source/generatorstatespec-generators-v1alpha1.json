@@ -1,0 +1,24 @@
+{
+  "description": "GeneratorStateSpec defines the desired state of a generator state resource.",
+  "type": "object",
+  "required": [
+    "resource",
+    "state"
+  ],
+  "properties": {
+    "garbageCollectionDeadline": {
+      "description": "GarbageCollectionDeadline is the time after which the generator state will be deleted. It is set by the controller which creates the generator state and can be set configured by the user. If the garbage collection deadline is not set the generator state will not be deleted.",
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
+    },
+    "resource": {
+      "description": "Resource is the generator manifest that produced the state. It is a snapshot of the generator manifest at the time the state was produced. This manifest will be used to delete the resource. Any configuration that is referenced in the manifest should be available at the time of garbage collection. If that is not the case deletion will be blocked by a finalizer.",
+      "$ref": "_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.JSON"
+    },
+    "state": {
+      "description": "State is the state that was produced by the generator implementation.",
+      "$ref": "_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.JSON"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

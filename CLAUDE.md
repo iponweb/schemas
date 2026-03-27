@@ -439,22 +439,36 @@ package contains a generic type with an OpenAPI-incompatible field (e.g.
 that package in `openapi_gen_packages`. Use `type_aliases` instead to provide the
 needed type's schema from an equivalent processable type.
 
-### type_aliases key format changed in kube-openapi ~2024-11
+### type_aliases value format depends on the openapi-gen version that generated the code
 
-In kube-openapi >= ~2024-11, types that implement `OpenAPIModelName()` use their
-model name as the definitions map key instead of the Go type path. The value in
-`type_aliases` must match the actual key:
+The `type_aliases` value must match the key that the generated `GetOpenAPIDefinitions`
+function uses for the alias target. This key format is determined by the version of
+**openapi-gen** (and its bundled kube-openapi) that produced the `openapi_generated.go`
+— NOT by the `k8s.io/kube-openapi` version in `go_dependencies`.
 
-- **Old** (kube-openapi ≤ 2024-08): `"k8s.io/apimachinery/pkg/apis/meta/v1.Condition"`
-- **New** (kube-openapi ≥ 2024-11): `"io.k8s.apimachinery.pkg.apis.meta.v1.Condition"`
+- **Old openapi-gen** (kube-openapi ≤ 2024-08): keys are Go type paths.
+  Use `"k8s.io/apimachinery/pkg/apis/meta/v1.Condition"` as the alias value.
+- **New openapi-gen** (kube-openapi ≥ 2024-11): types that implement `OpenAPIModelName()`
+  use their model name as the key.
+  Use `"io.k8s.apimachinery.pkg.apis.meta.v1.Condition"` as the alias value.
 
-Check by running: `go run -mod=mod -e - <<'EOF'`
-```go
-package main
-import (fmt; metav1 "k8s.io/apimachinery/pkg/apis/meta/v1")
-func main() { fmt.Println(metav1.Condition{}.OpenAPIModelName()) }
-EOF
+To determine which format a specific controller uses, check the generated
+`config/ORG/REPO/VERSION/generated/openapi/openapi_generated.go` for the key
+`metav1.Condition` uses in the returned map:
 ```
+grep '"k8s.io/apimachinery/pkg/apis/meta/v1.Condition"\|"io.k8s.apimachinery' \
+  config/ORG/REPO/VERSION/generated/openapi/openapi_generated.go | head -1
+```
+
+If the key starts with `"k8s.io/..."` → use the old format.
+If the key starts with `"io.k8s...."` → use the new format.
+
+The `k8s.io/kube-openapi` version in `go_dependencies` does **not** need to match the
+controller's go.mod. Using a newer version (e.g. `v0.0.0-20251125145642-4e65d59e963e`)
+is safe as long as the generated code is compatible, which it generally is.
+
+Symptoms of wrong format: generation fails with:
+> `cannot build openapi definitions: cannot find model definition for github.com/awslabs/operatorpkg/status.Condition`
 
 ### resource.Quantity missing in newer kube-openapi
 

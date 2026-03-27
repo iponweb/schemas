@@ -1,0 +1,46 @@
+---
+import { getControllerIconFile } from '../lib/data'
+
+interface Props {
+  org: string
+  repo: string
+  size?: 'sm' | 'md' | 'lg'
+}
+
+const { org, repo, size = 'md' } = Astro.props
+const icon = getControllerIconFile(org, repo)
+
+const dim = { sm: 'w-8 h-8', md: 'w-10 h-10', lg: 'w-14 h-14' }[size]
+const textSize = { sm: 'text-[9px]', md: 'text-[10px]', lg: 'text-sm' }[size]
+const radius = { sm: 'rounded-lg', md: 'rounded-xl', lg: 'rounded-2xl' }[size]
+
+// Fallback badge label and color
+const label = repo.slice(0, 3).toUpperCase()
+const hex = '71717a'
+---
+
+{icon?.type === 'svg' ? (
+  <div
+    class={`${dim} ${radius} flex items-center justify-center flex-shrink-0 bg-white border border-zinc-200 overflow-hidden p-0.5`}
+    title={`${org}/${repo}`}
+    set:html={icon.content}
+  />
+) : icon?.type === 'img' ? (
+  <div
+    class={`${dim} ${radius} flex items-center justify-center flex-shrink-0 bg-white border border-zinc-200 overflow-hidden`}
+    title={`${org}/${repo}`}
+  >
+    <img
+      src={icon.src}
+      alt={`${org}/${repo} icon`}
+      class="w-full h-full object-contain"
+    />
+  </div>
+) : (
+  <div
+    class={`${dim} ${radius} flex items-center justify-center flex-shrink-0 font-bold font-mono tracking-tight`}
+    style={`background-color: #${hex}`}
+  >
+    <span class={`${textSize} text-white leading-none`}>{label}</span>
+  </div>
+)}

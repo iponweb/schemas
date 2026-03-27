@@ -81,6 +81,40 @@ generate-kubernetes:
 		--discovery-base-url "$(K8S_DISCOVERY_BASE)/$(VERSION)/api/discovery" \
 		--output schemas/kubernetes/kubernetes/$(VERSION)/index.yaml
 
+# ── Documentation site ─────────────────────────────────────────────────────────
+#
+# Usage:
+#   make icons             # download controller icons to schemas/ORG/REPO/icon.*
+#   make site-install      # install npm deps (once)
+#   make site              # build static site → site/dist/
+#   make site-dev          # run dev server (hot reload)
+#   make site-preview      # preview the built site locally
+#
+# For GitHub Pages with a base path:
+#   BASE_PATH=/schemas make site
+#
+BASE_PATH ?=
+
+.PHONY: icons
+icons:
+	python3 tools/download_icons.py
+
+.PHONY: site-install
+site-install:
+	npm --prefix site ci
+
+.PHONY: site
+site:
+	BASE_PATH="$(BASE_PATH)" npm --prefix site run build
+
+.PHONY: site-dev
+site-dev:
+	npm --prefix site run dev
+
+.PHONY: site-preview
+site-preview:
+	npm --prefix site run preview
+
 # ── Validation ─────────────────────────────────────────────────────────────────
 #
 # Usage:
