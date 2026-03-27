@@ -4,23 +4,6 @@
   "groupVersion": "status.gatekeeper.sh/v1beta1",
   "resources": [
     {
-      "name": "expansiontemplatepodstatuses",
-      "singularName": "expansiontemplatepodstatus",
-      "namespaced": true,
-      "kind": "ExpansionTemplatePodStatus",
-      "verbs": [
-        "delete",
-        "deletecollection",
-        "get",
-        "list",
-        "patch",
-        "create",
-        "update",
-        "watch"
-      ],
-      "storageVersionHash": "HU8oyne9gMU="
-    },
-    {
       "name": "constrainttemplatepodstatuses",
       "singularName": "constrainttemplatepodstatus",
       "namespaced": true,
@@ -55,6 +38,23 @@
       "storageVersionHash": "a7B1iPGe+eY="
     },
     {
+      "name": "expansiontemplatepodstatuses",
+      "singularName": "expansiontemplatepodstatus",
+      "namespaced": true,
+      "kind": "ExpansionTemplatePodStatus",
+      "verbs": [
+        "delete",
+        "deletecollection",
+        "get",
+        "list",
+        "patch",
+        "create",
+        "update",
+        "watch"
+      ],
+      "storageVersionHash": "HU8oyne9gMU="
+    },
+    {
       "name": "configpodstatuses",
       "singularName": "configpodstatus",
       "namespaced": true,
@@ -72,23 +72,6 @@
       "storageVersionHash": "iqdPKJNEA8s="
     },
     {
-      "name": "constraintpodstatuses",
-      "singularName": "constraintpodstatus",
-      "namespaced": true,
-      "kind": "ConstraintPodStatus",
-      "verbs": [
-        "delete",
-        "deletecollection",
-        "get",
-        "list",
-        "patch",
-        "create",
-        "update",
-        "watch"
-      ],
-      "storageVersionHash": "50rQw0tnefI="
-    },
-    {
       "name": "mutatorpodstatuses",
       "singularName": "mutatorpodstatus",
       "namespaced": true,
@@ -104,6 +87,23 @@
         "watch"
       ],
       "storageVersionHash": "hkh0rbrHbB8="
+    },
+    {
+      "name": "constraintpodstatuses",
+      "singularName": "constraintpodstatus",
+      "namespaced": true,
+      "kind": "ConstraintPodStatus",
+      "verbs": [
+        "delete",
+        "deletecollection",
+        "get",
+        "list",
+        "patch",
+        "create",
+        "update",
+        "watch"
+      ],
+      "storageVersionHash": "50rQw0tnefI="
     }
   ]
 }

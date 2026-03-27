@@ -1,2 +1,3 @@
 config/**/generated/
 .claude/settings.local.json
+logs/*

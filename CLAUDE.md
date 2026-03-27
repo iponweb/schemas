@@ -41,7 +41,8 @@ schemas/
         live.json                # Filtered OpenAPI spec from live /openapi/v2
 
 tools/
-  generate.py                    # Shared generation pipeline script
+  generate.py                    # Shared generation pipeline script (single controller/version)
+  run.py                         # Parallel runner: discovers configs, runs generate.py N-way
   discover.py                    # Populates index.yaml from API discovery
   envtest.py                     # Live CRD discovery via envtest kube-apiserver
   envtest_openapi.py             # Fetches /openapi/v2 from envtest, produces json-schema/live/
@@ -50,6 +51,7 @@ tools/
     main.go.tmpl                 # Go source template for the OpenAPI builder
 builder/
   Dockerfile                     # Builds the schema-builder Docker image
+logs/                            # Per-job logs written by run.py (.gitignored)
 Makefile
 ```
 
@@ -92,16 +94,34 @@ Karpenter (and ideally all future controllers) use the shared pipeline.
 Steps 10–13 are mutually exclusive with step 9: controllers that use `crd_path` rely on
 envtest for discovery; controllers that use `discovery_base_url` fetch static files from GitHub.
 
-**Run via Docker (preferred):**
+**Single controller — Docker (preferred):**
 ```bash
 make builder                                                              # build image once
 make generate CONTROLLER=aws/karpenter-provider-aws VERSION=v1.10.0
 ```
 
-**Run locally (no Docker):**
+**Single controller — local (no Docker):**
 ```bash
 make generate-local CONTROLLER=aws/karpenter-provider-aws VERSION=v1.10.0
 ```
+
+**All controllers, all versions — 8 parallel Docker containers:**
+```bash
+make generate-all                          # 8 threads (default)
+make generate-all THREADS=4               # custom thread count
+```
+
+**All versions of one controller — parallel Docker:**
+```bash
+make generate-all-versions CONTROLLER=aws/karpenter-provider-aws
+make generate-all-versions CONTROLLER=cert-manager/cert-manager THREADS=2
+```
+
+Per-job logs are written to `logs/ORG-REPO-VERSION.log`. Failed jobs print their
+last 30 log lines to stdout and `run.py` exits non-zero.
+
+Each Docker container is named `ORG-REPO-VERSION-<4-char-hex>` so `docker ps` shows
+what is currently running.
 
 **Validate output:**
 ```bash
@@ -490,7 +510,7 @@ JSON, which can exceed the 256 KB kube-apiserver annotation limit for large CRDs
 ### compare-schemas mismatch after host_conversion_rules change
 
 Step 13 (`compare_schemas`) checks that every root CRD kind appears under the same
-definition key in both `json-schema/` (source) and `json-schema-live/` (live). A
+definition key in both `json-schema/source/` and `json-schema/live/`. A
 `MISS` in the **source** column means a `host_conversion_rules` rule is wrong or
 missing. A `MISS` in the **live** column means the CRD exists in the source but was
 not served by the live API server (usually a missing or unserved version in the chart).
@@ -518,7 +538,8 @@ Do not commit anything under `generated/`.
 | `openapi-gen` | Generates Go OpenAPI definitions from annotated types | `go install k8s.io/kube-openapi/cmd/openapi-gen@VERSION` |
 | `openapi2jsonschema` | Converts OpenAPI spec to JSON Schema files | Python venv (`instrumenta/openapi2jsonschema`) |
 | `setup-envtest` | Downloads envtest binaries (etcd + kube-apiserver + kubectl) | `go install sigs.k8s.io/controller-runtime/tools/setup-envtest@latest` |
-| `tools/envtest_openapi.py` | Starts envtest, fetches `/openapi/v2`, produces `json-schema-live/` | bundled in repo |
+| `tools/envtest_openapi.py` | Starts envtest, fetches `/openapi/v2`, produces `json-schema/live/` | bundled in repo |
+| `tools/run.py` | Parallel generation runner (discovers configs, launches Docker containers) | bundled in repo |
 | `go` | Compiles and runs the OpenAPI builder | brew / golang.org |
 | `git` | Clones controller source | system |
 

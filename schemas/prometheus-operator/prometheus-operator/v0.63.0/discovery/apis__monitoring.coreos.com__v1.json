@@ -4,6 +4,29 @@
   "groupVersion": "monitoring.coreos.com/v1",
   "resources": [
     {
+      "name": "podmonitors",
+      "singularName": "podmonitor",
+      "namespaced": true,
+      "kind": "PodMonitor",
+      "verbs": [
+        "delete",
+        "deletecollection",
+        "get",
+        "list",
+        "patch",
+        "create",
+        "update",
+        "watch"
+      ],
+      "shortNames": [
+        "pmon"
+      ],
+      "categories": [
+        "prometheus-operator"
+      ],
+      "storageVersionHash": "t6BHpUAzPig="
+    },
+    {
       "name": "probes",
       "singularName": "probe",
       "namespaced": true,
@@ -162,29 +185,6 @@
         "patch",
         "update"
       ]
-    },
-    {
-      "name": "podmonitors",
-      "singularName": "podmonitor",
-      "namespaced": true,
-      "kind": "PodMonitor",
-      "verbs": [
-        "delete",
-        "deletecollection",
-        "get",
-        "list",
-        "patch",
-        "create",
-        "update",
-        "watch"
-      ],
-      "shortNames": [
-        "pmon"
-      ],
-      "categories": [
-        "prometheus-operator"
-      ],
-      "storageVersionHash": "t6BHpUAzPig="
     }
   ]
 }

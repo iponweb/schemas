@@ -60,10 +60,10 @@
       ]
     },
     {
-      "name": "vtsingles",
-      "singularName": "vtsingle",
+      "name": "vlsingles",
+      "singularName": "vlsingle",
       "namespaced": true,
-      "kind": "VTSingle",
+      "kind": "VLSingle",
       "verbs": [
         "delete",
         "deletecollection",
@@ -74,54 +74,13 @@
         "update",
         "watch"
       ],
-      "storageVersionHash": "2LX6+oqLJYs="
+      "storageVersionHash": "kWtXgnzXWtY="
     },
     {
-      "name": "vtsingles/status",
+      "name": "vlsingles/status",
       "singularName": "",
       "namespaced": true,
-      "kind": "VTSingle",
-      "verbs": [
-        "get",
-        "patch",
-        "update"
-      ]
-    },
-    {
-      "name": "vmanomalies",
-      "singularName": "vmanomaly",
-      "namespaced": true,
-      "kind": "VMAnomaly",
-      "verbs": [
-        "delete",
-        "deletecollection",
-        "get",
-        "list",
-        "patch",
-        "create",
-        "update",
-        "watch"
-      ],
-      "storageVersionHash": "luaQ05yDsFU="
-    },
-    {
-      "name": "vmanomalies/status",
-      "singularName": "",
-      "namespaced": true,
-      "kind": "VMAnomaly",
-      "verbs": [
-        "get",
-        "patch",
-        "update"
-      ]
-    },
-    {
-      "name": "vmanomalies/scale",
-      "singularName": "",
-      "namespaced": true,
-      "group": "autoscaling",
-      "version": "v1",
-      "kind": "Scale",
+      "kind": "VLSingle",
       "verbs": [
         "get",
         "patch",
@@ -170,10 +129,10 @@
       ]
     },
     {
-      "name": "vlsingles",
-      "singularName": "vlsingle",
+      "name": "vmanomalies",
+      "singularName": "vmanomaly",
       "namespaced": true,
-      "kind": "VLSingle",
+      "kind": "VMAnomaly",
       "verbs": [
         "delete",
         "deletecollection",
@@ -184,13 +143,54 @@
         "update",
         "watch"
       ],
-      "storageVersionHash": "kWtXgnzXWtY="
+      "storageVersionHash": "luaQ05yDsFU="
     },
     {
-      "name": "vlsingles/status",
+      "name": "vmanomalies/status",
       "singularName": "",
       "namespaced": true,
-      "kind": "VLSingle",
+      "kind": "VMAnomaly",
+      "verbs": [
+        "get",
+        "patch",
+        "update"
+      ]
+    },
+    {
+      "name": "vmanomalies/scale",
+      "singularName": "",
+      "namespaced": true,
+      "group": "autoscaling",
+      "version": "v1",
+      "kind": "Scale",
+      "verbs": [
+        "get",
+        "patch",
+        "update"
+      ]
+    },
+    {
+      "name": "vtsingles",
+      "singularName": "vtsingle",
+      "namespaced": true,
+      "kind": "VTSingle",
+      "verbs": [
+        "delete",
+        "deletecollection",
+        "get",
+        "list",
+        "patch",
+        "create",
+        "update",
+        "watch"
+      ],
+      "storageVersionHash": "2LX6+oqLJYs="
+    },
+    {
+      "name": "vtsingles/status",
+      "singularName": "",
+      "namespaced": true,
+      "kind": "VTSingle",
       "verbs": [
         "get",
         "patch",

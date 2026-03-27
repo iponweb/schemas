@@ -4,10 +4,10 @@
   "groupVersion": "mutations.gatekeeper.sh/v1",
   "resources": [
     {
-      "name": "assign",
-      "singularName": "assign",
+      "name": "modifyset",
+      "singularName": "modifyset",
       "namespaced": false,
-      "kind": "Assign",
+      "kind": "ModifySet",
       "verbs": [
         "delete",
         "deletecollection",
@@ -18,13 +18,13 @@
         "update",
         "watch"
       ],
-      "storageVersionHash": "0zKAFLXWTw8="
+      "storageVersionHash": "4wpGGHQEDmo="
     },
     {
-      "name": "assign/status",
+      "name": "modifyset/status",
       "singularName": "",
       "namespaced": false,
-      "kind": "Assign",
+      "kind": "ModifySet",
       "verbs": [
         "get",
         "patch",
@@ -60,10 +60,10 @@
       ]
     },
     {
-      "name": "modifyset",
-      "singularName": "modifyset",
+      "name": "assign",
+      "singularName": "assign",
       "namespaced": false,
-      "kind": "ModifySet",
+      "kind": "Assign",
       "verbs": [
         "delete",
         "deletecollection",
@@ -74,13 +74,13 @@
         "update",
         "watch"
       ],
-      "storageVersionHash": "4wpGGHQEDmo="
+      "storageVersionHash": "0zKAFLXWTw8="
     },
     {
-      "name": "modifyset/status",
+      "name": "assign/status",
       "singularName": "",
       "namespaced": false,
-      "kind": "ModifySet",
+      "kind": "Assign",
       "verbs": [
         "get",
         "patch",

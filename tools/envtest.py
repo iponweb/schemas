@@ -30,6 +30,12 @@ from pathlib import Path
 
 import yaml
 
+
+class _NoAnchorDumper(yaml.SafeDumper):
+    """SafeDumper that never emits YAML anchors/aliases."""
+    def ignore_aliases(self, data):
+        return True
+
 TOOLS_DIR = Path(__file__).parent
 DEFAULT_BIN_DIR = Path(os.environ.get('ENVTEST_BIN_DIR', '/usr/local/kubebuilder/bin'))
 
@@ -103,7 +109,7 @@ def sanitize_crds(crd_dir, dest_dir):
         if cleaned:
             dest = dest_dir / src.name
             dest.write_text(
-                yaml.dump_all(cleaned, default_flow_style=False,
+                yaml.dump_all(cleaned, Dumper=_NoAnchorDumper, default_flow_style=False,
                               sort_keys=False, allow_unicode=True)
             )
 
@@ -232,11 +238,8 @@ def main():
             if result.returncode != 0:
                 print(f'  error: kubectl apply failed:\n{result.stderr}', file=sys.stderr)
                 sys.exit(1)
-            print(f'  envtest: CRDs installed ({len(list(sanitized_dir.glob("*.yaml")))} files)',
-                  flush=True)
-
-            # Brief wait for CRD controllers to register resources
-            time.sleep(1)
+            n_crd_files = len(list(sanitized_dir.glob("*.yaml")))
+            print(f'  envtest: CRDs installed ({n_crd_files} files)', flush=True)
 
             # Live discovery — reuse discover.py logic
             sys.path.insert(0, str(TOOLS_DIR))
@@ -245,12 +248,21 @@ def main():
             opener   = make_opener(token=token, insecure=True)
             dump_dir = args.dump_dir or str(Path(args.output).parent / 'discovery')
 
-            # Clean stale discovery files before writing fresh ones
-            dump_path = Path(dump_dir)
-            if dump_path.exists():
-                shutil.rmtree(dump_path)
-            resources = discover_live(api_url, opener, dump_dir=dump_dir,
-                                       only_groups=groups)
+            # Retry discovery until the resource count stabilises — the API
+            # server may need a moment to register all CRDs after kubectl create.
+            prev_count = -1
+            resources  = []
+            for attempt in range(20):
+                time.sleep(1)
+                dump_path = Path(dump_dir)
+                if dump_path.exists():
+                    shutil.rmtree(dump_path)
+                resources = discover_live(api_url, opener, dump_dir=dump_dir,
+                                          only_groups=groups)
+                if len(resources) == prev_count:
+                    break  # stable
+                prev_count = len(resources)
+
             print(f'  envtest: {len(resources)} resources in groups: {sorted(groups)}',
                   flush=True)
 
@@ -261,8 +273,8 @@ def main():
                     existing = yaml.safe_load(f) or {}
             existing['resources'] = resources
             output.write_text(
-                yaml.dump(existing, default_flow_style=False, sort_keys=False,
-                          allow_unicode=True)
+                yaml.dump(existing, Dumper=_NoAnchorDumper, default_flow_style=False,
+                          sort_keys=False, allow_unicode=True)
             )
 
         finally:

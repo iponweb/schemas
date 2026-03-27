@@ -14,6 +14,7 @@ import os
 import shutil
 import subprocess
 import sys
+import tempfile
 import yaml
 from pathlib import Path
 from string import Template
@@ -92,6 +93,12 @@ _CRDLoader.add_constructor(
 )
 
 
+class _NoAnchorDumper(yaml.SafeDumper):
+    """SafeDumper that never emits YAML anchors/aliases."""
+    def ignore_aliases(self, data):
+        return True
+
+
 def collect_crds(sources_root: Path, crd_path: str, crd_dir: Path, index_yaml: Path):
     """
     Recursively find CRD YAML files under sources_root/crd_path, copy them to
@@ -130,7 +137,7 @@ def collect_crds(sources_root: Path, crd_path: str, crd_dir: Path, index_yaml: P
             # which may be a multi-document YAML containing all CRDs).
             dest = crd_dir / f"{name}.yaml"
             dest.write_text(
-                yaml.dump(doc, default_flow_style=False, sort_keys=False,
+                yaml.dump(doc, Dumper=_NoAnchorDumper, default_flow_style=False, sort_keys=False,
                           allow_unicode=True)
             )
             copied += 1
@@ -177,7 +184,7 @@ def collect_crds(sources_root: Path, crd_path: str, crd_dir: Path, index_yaml: P
             existing = yaml.safe_load(f) or {}
     existing['resources'] = resources
     index_yaml.write_text(
-        yaml.dump(existing, default_flow_style=False, sort_keys=False, allow_unicode=True)
+        yaml.dump(existing, Dumper=_NoAnchorDumper, default_flow_style=False, sort_keys=False, allow_unicode=True)
     )
     print(f"  CRDs: copied {copied} files, {len(resources)} resource entries → {index_yaml}",
           flush=True)
@@ -274,8 +281,10 @@ def main():
     version    = cfg["version"]
     repository = cfg["repository"]
 
-    gopath      = Path(os.environ.get("GOPATH", "/go"))
-    sources_root = gopath / "src" / repository
+    # Use a unique temp directory per run so parallel invocations of the same
+    # repository (different versions) never collide on the clone path.
+    _tmpdir      = Path(tempfile.mkdtemp(prefix="schemas-build-"))
+    sources_root = _tmpdir / repository.split("/")[-1]
 
     # Determine the installed Go version so we can pin GOTOOLCHAIN to it,
     # preventing "go.mod requires go >= X" errors when a controller's go.mod
@@ -286,9 +295,6 @@ def main():
     # -----------------------------------------------------------------------
     # Step 1 — Clone
     # -----------------------------------------------------------------------
-    shutil.rmtree(sources_root, ignore_errors=True)
-    sources_root.mkdir(parents=True)
-
     try:
         run(["git", "clone", "--depth", "1", "--branch", version,
              f"https://{repository}", sources_root])
@@ -430,7 +436,7 @@ def main():
                     crd_docs.append(doc)
             crds_yaml_out.write_text(
                 "---\n".join(
-                    yaml.dump(d, default_flow_style=False, sort_keys=False, allow_unicode=True)
+                    yaml.dump(d, Dumper=_NoAnchorDumper, default_flow_style=False, sort_keys=False, allow_unicode=True)
                     for d in crd_docs
                 )
             )
@@ -485,7 +491,7 @@ def main():
         print(f"      OpenAPI  → {openapi_out}", flush=True)
 
     finally:
-        shutil.rmtree(sources_root, ignore_errors=True)
+        shutil.rmtree(_tmpdir, ignore_errors=True)
 
 
 main()

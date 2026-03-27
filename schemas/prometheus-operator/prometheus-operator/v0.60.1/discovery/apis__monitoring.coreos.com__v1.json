@@ -4,52 +4,6 @@
   "groupVersion": "monitoring.coreos.com/v1",
   "resources": [
     {
-      "name": "alertmanagers",
-      "singularName": "alertmanager",
-      "namespaced": true,
-      "kind": "Alertmanager",
-      "verbs": [
-        "delete",
-        "deletecollection",
-        "get",
-        "list",
-        "patch",
-        "create",
-        "update",
-        "watch"
-      ],
-      "shortNames": [
-        "am"
-      ],
-      "categories": [
-        "prometheus-operator"
-      ],
-      "storageVersionHash": "NshW3zg1K7o="
-    },
-    {
-      "name": "podmonitors",
-      "singularName": "podmonitor",
-      "namespaced": true,
-      "kind": "PodMonitor",
-      "verbs": [
-        "delete",
-        "deletecollection",
-        "get",
-        "list",
-        "patch",
-        "create",
-        "update",
-        "watch"
-      ],
-      "shortNames": [
-        "pmon"
-      ],
-      "categories": [
-        "prometheus-operator"
-      ],
-      "storageVersionHash": "t6BHpUAzPig="
-    },
-    {
       "name": "probes",
       "singularName": "probe",
       "namespaced": true,
@@ -174,6 +128,52 @@
         "prometheus-operator"
       ],
       "storageVersionHash": "YBxpg/kA6UI="
+    },
+    {
+      "name": "alertmanagers",
+      "singularName": "alertmanager",
+      "namespaced": true,
+      "kind": "Alertmanager",
+      "verbs": [
+        "delete",
+        "deletecollection",
+        "get",
+        "list",
+        "patch",
+        "create",
+        "update",
+        "watch"
+      ],
+      "shortNames": [
+        "am"
+      ],
+      "categories": [
+        "prometheus-operator"
+      ],
+      "storageVersionHash": "NshW3zg1K7o="
+    },
+    {
+      "name": "podmonitors",
+      "singularName": "podmonitor",
+      "namespaced": true,
+      "kind": "PodMonitor",
+      "verbs": [
+        "delete",
+        "deletecollection",
+        "get",
+        "list",
+        "patch",
+        "create",
+        "update",
+        "watch"
+      ],
+      "shortNames": [
+        "pmon"
+      ],
+      "categories": [
+        "prometheus-operator"
+      ],
+      "storageVersionHash": "t6BHpUAzPig="
     }
   ]
 }

@@ -4,6 +4,34 @@
   "groupVersion": "mutations.gatekeeper.sh/v1alpha1",
   "resources": [
     {
+      "name": "assignimage",
+      "singularName": "assignimage",
+      "namespaced": false,
+      "kind": "AssignImage",
+      "verbs": [
+        "delete",
+        "deletecollection",
+        "get",
+        "list",
+        "patch",
+        "create",
+        "update",
+        "watch"
+      ],
+      "storageVersionHash": "Qpl/cmzoQxY="
+    },
+    {
+      "name": "assignimage/status",
+      "singularName": "",
+      "namespaced": false,
+      "kind": "AssignImage",
+      "verbs": [
+        "get",
+        "patch",
+        "update"
+      ]
+    },
+    {
       "name": "assignmetadata",
       "singularName": "assignmetadata",
       "namespaced": false,
@@ -53,34 +81,6 @@
       "singularName": "",
       "namespaced": false,
       "kind": "ModifySet",
-      "verbs": [
-        "get",
-        "patch",
-        "update"
-      ]
-    },
-    {
-      "name": "assignimage",
-      "singularName": "assignimage",
-      "namespaced": false,
-      "kind": "AssignImage",
-      "verbs": [
-        "delete",
-        "deletecollection",
-        "get",
-        "list",
-        "patch",
-        "create",
-        "update",
-        "watch"
-      ],
-      "storageVersionHash": "Qpl/cmzoQxY="
-    },
-    {
-      "name": "assignimage/status",
-      "singularName": "",
-      "namespaced": false,
-      "kind": "AssignImage",
       "verbs": [
         "get",
         "patch",

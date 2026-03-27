@@ -36,6 +36,12 @@ from pathlib import Path
 import yaml
 
 
+class _NoAnchorDumper(yaml.SafeDumper):
+    """SafeDumper that never emits YAML anchors/aliases."""
+    def ignore_aliases(self, data):
+        return True
+
+
 # ---------------------------------------------------------------------------
 # Helpers
 # ---------------------------------------------------------------------------
@@ -218,7 +224,7 @@ def main():
 
     existing['resources'] = resources
     output.write_text(
-        yaml.dump(existing, default_flow_style=False, sort_keys=False, allow_unicode=True)
+        yaml.dump(existing, Dumper=_NoAnchorDumper, default_flow_style=False, sort_keys=False, allow_unicode=True)
     )
     print(f"Written {output}", flush=True)
 

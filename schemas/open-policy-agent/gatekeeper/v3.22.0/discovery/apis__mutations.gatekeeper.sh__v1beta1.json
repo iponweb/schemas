@@ -32,34 +32,6 @@
       ]
     },
     {
-      "name": "modifyset",
-      "singularName": "modifyset",
-      "namespaced": false,
-      "kind": "ModifySet",
-      "verbs": [
-        "delete",
-        "deletecollection",
-        "get",
-        "list",
-        "patch",
-        "create",
-        "update",
-        "watch"
-      ],
-      "storageVersionHash": "4wpGGHQEDmo="
-    },
-    {
-      "name": "modifyset/status",
-      "singularName": "",
-      "namespaced": false,
-      "kind": "ModifySet",
-      "verbs": [
-        "get",
-        "patch",
-        "update"
-      ]
-    },
-    {
       "name": "assign",
       "singularName": "assign",
       "namespaced": false,
@@ -81,6 +53,34 @@
       "singularName": "",
       "namespaced": false,
       "kind": "Assign",
+      "verbs": [
+        "get",
+        "patch",
+        "update"
+      ]
+    },
+    {
+      "name": "modifyset",
+      "singularName": "modifyset",
+      "namespaced": false,
+      "kind": "ModifySet",
+      "verbs": [
+        "delete",
+        "deletecollection",
+        "get",
+        "list",
+        "patch",
+        "create",
+        "update",
+        "watch"
+      ],
+      "storageVersionHash": "4wpGGHQEDmo="
+    },
+    {
+      "name": "modifyset/status",
+      "singularName": "",
+      "namespaced": false,
+      "kind": "ModifySet",
       "verbs": [
         "get",
         "patch",

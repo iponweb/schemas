@@ -4,37 +4,6 @@
   "groupVersion": "karpenter.sh/v1beta1",
   "resources": [
     {
-      "name": "nodepools",
-      "singularName": "nodepool",
-      "namespaced": false,
-      "kind": "NodePool",
-      "verbs": [
-        "delete",
-        "deletecollection",
-        "get",
-        "list",
-        "patch",
-        "create",
-        "update",
-        "watch"
-      ],
-      "categories": [
-        "karpenter"
-      ],
-      "storageVersionHash": "aRHJ1SVAM4A="
-    },
-    {
-      "name": "nodepools/status",
-      "singularName": "",
-      "namespaced": false,
-      "kind": "NodePool",
-      "verbs": [
-        "get",
-        "patch",
-        "update"
-      ]
-    },
-    {
       "name": "nodeclaims",
       "singularName": "nodeclaim",
       "namespaced": false,
@@ -59,6 +28,37 @@
       "singularName": "",
       "namespaced": false,
       "kind": "NodeClaim",
+      "verbs": [
+        "get",
+        "patch",
+        "update"
+      ]
+    },
+    {
+      "name": "nodepools",
+      "singularName": "nodepool",
+      "namespaced": false,
+      "kind": "NodePool",
+      "verbs": [
+        "delete",
+        "deletecollection",
+        "get",
+        "list",
+        "patch",
+        "create",
+        "update",
+        "watch"
+      ],
+      "categories": [
+        "karpenter"
+      ],
+      "storageVersionHash": "aRHJ1SVAM4A="
+    },
+    {
+      "name": "nodepools/status",
+      "singularName": "",
+      "namespaced": false,
+      "kind": "NodePool",
       "verbs": [
         "get",
         "patch",

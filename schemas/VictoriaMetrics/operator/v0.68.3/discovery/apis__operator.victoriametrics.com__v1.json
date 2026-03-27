@@ -4,10 +4,10 @@
   "groupVersion": "operator.victoriametrics.com/v1",
   "resources": [
     {
-      "name": "vtclusters",
-      "singularName": "vtcluster",
+      "name": "vlagents",
+      "singularName": "vlagent",
       "namespaced": true,
-      "kind": "VTCluster",
+      "kind": "VLAgent",
       "verbs": [
         "delete",
         "deletecollection",
@@ -18,13 +18,26 @@
         "update",
         "watch"
       ],
-      "storageVersionHash": "9JC+KGUGkTQ="
+      "storageVersionHash": "B1XA6X1Y4Vs="
     },
     {
-      "name": "vtclusters/status",
+      "name": "vlagents/status",
       "singularName": "",
       "namespaced": true,
-      "kind": "VTCluster",
+      "kind": "VLAgent",
+      "verbs": [
+        "get",
+        "patch",
+        "update"
+      ]
+    },
+    {
+      "name": "vlagents/scale",
+      "singularName": "",
+      "namespaced": true,
+      "group": "autoscaling",
+      "version": "v1",
+      "kind": "Scale",
       "verbs": [
         "get",
         "patch",
@@ -101,10 +114,10 @@
       ]
     },
     {
-      "name": "vlagents",
-      "singularName": "vlagent",
+      "name": "vtsingles",
+      "singularName": "vtsingle",
       "namespaced": true,
-      "kind": "VLAgent",
+      "kind": "VTSingle",
       "verbs": [
         "delete",
         "deletecollection",
@@ -115,13 +128,13 @@
         "update",
         "watch"
       ],
-      "storageVersionHash": "B1XA6X1Y4Vs="
+      "storageVersionHash": "2LX6+oqLJYs="
     },
     {
-      "name": "vlagents/status",
+      "name": "vtsingles/status",
       "singularName": "",
       "namespaced": true,
-      "kind": "VLAgent",
+      "kind": "VTSingle",
       "verbs": [
         "get",
         "patch",
@@ -129,12 +142,27 @@
       ]
     },
     {
-      "name": "vlagents/scale",
+      "name": "vtclusters",
+      "singularName": "vtcluster",
+      "namespaced": true,
+      "kind": "VTCluster",
+      "verbs": [
+        "delete",
+        "deletecollection",
+        "get",
+        "list",
+        "patch",
+        "create",
+        "update",
+        "watch"
+      ],
+      "storageVersionHash": "9JC+KGUGkTQ="
+    },
+    {
+      "name": "vtclusters/status",
       "singularName": "",
       "namespaced": true,
-      "group": "autoscaling",
-      "version": "v1",
-      "kind": "Scale",
+      "kind": "VTCluster",
       "verbs": [
         "get",
         "patch",
@@ -163,34 +191,6 @@
       "singularName": "",
       "namespaced": true,
       "kind": "VLSingle",
-      "verbs": [
-        "get",
-        "patch",
-        "update"
-      ]
-    },
-    {
-      "name": "vtsingles",
-      "singularName": "vtsingle",
-      "namespaced": true,
-      "kind": "VTSingle",
-      "verbs": [
-        "delete",
-        "deletecollection",
-        "get",
-        "list",
-        "patch",
-        "create",
-        "update",
-        "watch"
-      ],
-      "storageVersionHash": "2LX6+oqLJYs="
-    },
-    {
-      "name": "vtsingles/status",
-      "singularName": "",
-      "namespaced": true,
-      "kind": "VTSingle",
       "verbs": [
         "get",
         "patch",
