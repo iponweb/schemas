@@ -1,0 +1,35 @@
+{
+  "kind": "APIResourceList",
+  "apiVersion": "v1",
+  "groupVersion": "config.gatekeeper.sh/v1alpha1",
+  "resources": [
+    {
+      "name": "configs",
+      "singularName": "config",
+      "namespaced": true,
+      "kind": "Config",
+      "verbs": [
+        "delete",
+        "deletecollection",
+        "get",
+        "list",
+        "patch",
+        "create",
+        "update",
+        "watch"
+      ],
+      "storageVersionHash": "H3fzJiLhVn8="
+    },
+    {
+      "name": "configs/status",
+      "singularName": "",
+      "namespaced": true,
+      "kind": "Config",
+      "verbs": [
+        "get",
+        "patch",
+        "update"
+      ]
+    }
+  ]
+}

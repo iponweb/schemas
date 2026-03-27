@@ -4,14 +4,14 @@ resources:
   version: v1alpha1
   plural: clustersecretstores
   scope: Cluster
-  shortNames: &id001
+  shortNames:
   - css
 - kind: ExternalSecret
   group: external-secrets.io
   version: v1alpha1
   plural: externalsecrets
   scope: Namespaced
-  shortNames: &id002
+  shortNames:
   - es
 - kind: PushSecret
   group: external-secrets.io
@@ -23,7 +23,7 @@ resources:
   version: v1alpha1
   plural: secretstores
   scope: Namespaced
-  shortNames: &id003
+  shortNames:
   - ss
 - kind: ClusterExternalSecret
   group: external-secrets.io
@@ -37,19 +37,22 @@ resources:
   version: v1beta1
   plural: clustersecretstores
   scope: Cluster
-  shortNames: *id001
+  shortNames:
+  - css
 - kind: ExternalSecret
   group: external-secrets.io
   version: v1beta1
   plural: externalsecrets
   scope: Namespaced
-  shortNames: *id002
+  shortNames:
+  - es
 - kind: SecretStore
   group: external-secrets.io
   version: v1beta1
   plural: secretstores
   scope: Namespaced
-  shortNames: *id003
+  shortNames:
+  - ss
 - kind: ACRAccessToken
   group: generators.external-secrets.io
   version: v1alpha1

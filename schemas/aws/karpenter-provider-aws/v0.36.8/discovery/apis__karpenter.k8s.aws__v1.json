@@ -1,0 +1,42 @@
+{
+  "kind": "APIResourceList",
+  "apiVersion": "v1",
+  "groupVersion": "karpenter.k8s.aws/v1",
+  "resources": [
+    {
+      "name": "ec2nodeclasses",
+      "singularName": "ec2nodeclass",
+      "namespaced": false,
+      "kind": "EC2NodeClass",
+      "verbs": [
+        "delete",
+        "deletecollection",
+        "get",
+        "list",
+        "patch",
+        "create",
+        "update",
+        "watch"
+      ],
+      "shortNames": [
+        "ec2nc",
+        "ec2ncs"
+      ],
+      "categories": [
+        "karpenter"
+      ],
+      "storageVersionHash": "1sLUTsyay6Y="
+    },
+    {
+      "name": "ec2nodeclasses/status",
+      "singularName": "",
+      "namespaced": false,
+      "kind": "EC2NodeClass",
+      "verbs": [
+        "get",
+        "patch",
+        "update"
+      ]
+    }
+  ]
+}

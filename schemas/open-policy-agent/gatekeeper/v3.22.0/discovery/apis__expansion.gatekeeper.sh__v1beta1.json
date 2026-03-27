@@ -1,0 +1,35 @@
+{
+  "kind": "APIResourceList",
+  "apiVersion": "v1",
+  "groupVersion": "expansion.gatekeeper.sh/v1beta1",
+  "resources": [
+    {
+      "name": "expansiontemplate",
+      "singularName": "expansiontemplate",
+      "namespaced": false,
+      "kind": "ExpansionTemplate",
+      "verbs": [
+        "delete",
+        "deletecollection",
+        "get",
+        "list",
+        "patch",
+        "create",
+        "update",
+        "watch"
+      ],
+      "storageVersionHash": "5TgdXcJkuBI="
+    },
+    {
+      "name": "expansiontemplate/status",
+      "singularName": "",
+      "namespaced": false,
+      "kind": "ExpansionTemplate",
+      "verbs": [
+        "get",
+        "patch",
+        "update"
+      ]
+    }
+  ]
+}

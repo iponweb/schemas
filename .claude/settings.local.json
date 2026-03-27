@@ -49,7 +49,11 @@
       "Bash(kill:*)",
       "Bash(cat:*)",
       "Bash(/tmp/gen_one.sh VictoriaMetrics/operator/v0.63.0)",
-      "WebSearch"
+      "WebSearch",
+      "Bash(setup-envtest use:*)",
+      "Bash(sleep:*)",
+      "Bash(KUBECTL=\"/tmp/envtest-bins/k8s/1.32.0-darwin-arm64/kubectl --server=https://127.0.0.1:16443 --insecure-skip-tls-verify --token=admin\"\n\n$KUBECTL apply -f schemas/aws/karpenter-provider-aws/v1.10.0/crd/ 2>&1)",
+      "Bash(ENVTEST_BIN_DIR=/tmp/envtest-bins/k8s/1.32.0-darwin-arm64 \\\\\npython3 tools/envtest.py \\\\\n  --crd-dir schemas/aws/karpenter-provider-aws/v1.10.0/crd \\\\\n  --output  /tmp/test-envtest-index.yaml 2>&1)"
     ]
   }
 }

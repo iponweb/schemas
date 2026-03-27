@@ -1,0 +1,24 @@
+{
+  "kind": "APIResourceList",
+  "apiVersion": "v1",
+  "groupVersion": "syncset.gatekeeper.sh/v1alpha1",
+  "resources": [
+    {
+      "name": "syncsets",
+      "singularName": "syncset",
+      "namespaced": false,
+      "kind": "SyncSet",
+      "verbs": [
+        "delete",
+        "deletecollection",
+        "get",
+        "list",
+        "patch",
+        "create",
+        "update",
+        "watch"
+      ],
+      "storageVersionHash": "sSGtnKXdquQ="
+    }
+  ]
+}

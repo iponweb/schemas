@@ -24,12 +24,20 @@ schemas/
     index.yaml                   # Controller metadata (name, repository URL)
     VERSION/
       index.yaml                 # Version data: resource list with GVK
+      crd/                       # Individual CRD YAML files (one per CRD)
+      discovery/                 # Raw API discovery JSON files
+        apis.json                # Filtered APIGroupList (controller groups only)
+        apis__GROUP__VERSION.json
       json-schema/
         _definitions.json        # All schema definitions
         KIND.GROUP.VERSION.json  # Individual resource schemas
+      openapi/
+        openapi.json             # Merged OpenAPI spec (intermediate artifact)
 
 tools/
   generate.py                    # Shared generation pipeline script
+  discover.py                    # Populates index.yaml from API discovery
+  envtest.py                     # Live CRD discovery via envtest kube-apiserver
   validate.py                    # Schema validation script
   openapi-json-gen/
     main.go.tmpl                 # Go source template for the OpenAPI builder
@@ -52,15 +60,24 @@ Kubernetes GitHub repo and writes to `schemas/kubernetes/kubernetes/VERSION/json
 Karpenter (and ideally all future controllers) use the shared pipeline.
 
 ```
-1. git clone --depth 1 --branch VERSION https://REPOSITORY
-2. git apply patch.diff          # (optional) add +k8s:openapi-gen=true markers etc.
-3. go mod vendor
-4. git apply patch-vendor.diff   # (optional) patch vendor/ after download
-5. openapi-gen → generated/openapi/openapi_generated.go
-6. write generated/go.mod + render generated/main.go from main.go.tmpl
-7. go mod tidy && go run ./main.go → generated/openapi/openapi.json
-8. openapi2jsonschema → schemas/ORG/REPO/VERSION/json-schema/
+ 1. git clone --depth 1 --branch VERSION https://REPOSITORY
+ 2. git apply patch.diff          # (optional) add +k8s:openapi-gen=true markers etc.
+ 3. go mod vendor
+ 4. git apply patch-vendor.diff   # (optional) patch vendor/ after download
+ 5. openapi-gen → generated/openapi/openapi_generated.go
+ 6. write generated/go.mod + render generated/main.go from main.go.tmpl
+ 7. go mod tidy && go run ./main.go → generated/openapi/openapi.json
+ 8. openapi2jsonschema → schemas/ORG/REPO/VERSION/json-schema/
+ 9. tools/discover.py (static)   # (optional) populate index.yaml from discovery_base_url
+10. collect_crds                  # (optional) copy CRD YAMLs to schemas/.../crd/, populate index.yaml
+11. tools/envtest.py              # (optional) start kube-apiserver, install CRDs, populate index.yaml
+                                  #            via live discovery — overwrites step 10's resource list
+                                  #            with authoritative data; runs when crd_path is set and
+                                  #            $ENVTEST_BIN_DIR/kube-apiserver is present
 ```
+
+Steps 10–11 are mutually exclusive with step 9: controllers that use `crd_path` rely on
+envtest for discovery; controllers that use `discovery_base_url` fetch static files from GitHub.
 
 **Run via Docker (preferred):**
 ```bash
@@ -153,6 +170,25 @@ kubernetes_swagger_url: "https://raw.githubusercontent.com/kubernetes/kubernetes
 # Available for Kubernetes >= 1.28. Omit for older versions or non-Kubernetes
 # controllers (CRD-based discovery is handled separately).
 discovery_base_url: "https://raw.githubusercontent.com/kubernetes/kubernetes/v1.34.1/api/discovery"
+
+# Path (relative to the cloned repository root) where CRD YAML files live.
+# When set, generate.py:
+#   - Copies individual CRD documents to schemas/ORG/REPO/VERSION/crd/
+#     (one file per CRD, named <plural>.<group>.yaml).
+#   - Populates index.yaml with one entry per served CRD version.
+#   - If $ENVTEST_BIN_DIR/kube-apiserver is present (inside Docker), also runs
+#     tools/envtest.py to overwrite index.yaml with live discovery data.
+#
+# Mutually exclusive with discovery_base_url — use one or the other.
+#
+# Common values:
+#   "config/crd/bases"           external-secrets, secrets-store-csi-driver
+#   "config/crd/overlay"         VictoriaMetrics (multi-doc overlay files)
+#   "config/crd/standard"        gateway-api
+#   "charts/CHART/crds"          gatekeeper, cert-manager
+#   "pkg/apis/crds"              karpenter
+#   "example/prometheus-operator-crd"  prometheus-operator
+crd_path: "pkg/apis/crds"
 
 # Human-readable title embedded in the generated OpenAPI spec.
 title: "karpenter CRD OpenAPI"
@@ -379,6 +415,33 @@ Some repositories (e.g. `sigs.k8s.io/gateway-api` v1.5+) use Go workspace mode
 `generate.py` automatically sets `GOWORK=off` when running `go mod vendor` to work
 around this. No config change is needed.
 
+### YAML 1.1 `=` value-indicator scalar in CRD files
+
+Some CRDs (e.g. prometheus-operator's `alertmanagerconfigs`) contain `=` as a plain
+YAML scalar. Python's `yaml.SafeLoader` rejects it with:
+
+> `could not determine a constructor for the tag 'tag:yaml.org,2002:value'`
+
+Both `generate.py` (`collect_crds`) and `tools/envtest.py` (`sanitize_crds`,
+`crd_groups`) use a custom `_CRDLoader` subclass that registers a constructor for
+`tag:yaml.org,2002:value` to handle this. Do not replace these loaders with
+`yaml.SafeLoader` or files will be silently skipped.
+
+### Multi-document CRD overlay files
+
+Some repositories (e.g. VictoriaMetrics `config/crd/overlay/`) ship variant CRD files
+(`crd.yaml`, `crd.descriptionless.yaml`, `crd.specless.yaml`) each containing all CRDs
+as a multi-document YAML. `collect_crds` deduplicates by `(group, version, kind)` and
+writes one file per CRD (not a copy of the whole source file) to avoid `AlreadyExists`
+errors when `kubectl create` is run by `envtest.py`.
+
+### kubectl create vs apply for CRD installation
+
+`tools/envtest.py` uses `kubectl create` (not `apply`) to install CRDs into the
+envtest API server. `kubectl apply` adds a
+`kubectl.kubernetes.io/last-applied-configuration` annotation containing the full CRD
+JSON, which can exceed the 256 KB kube-apiserver annotation limit for large CRDs.
+
 ### generated/ is gitignored
 
 The `**/generated/*` pattern in `.gitignore` covers intermediate build artifacts.
@@ -392,5 +455,9 @@ Do not commit anything under `generated/`.
 |---|---|---|
 | `openapi-gen` | Generates Go OpenAPI definitions from annotated types | `go install k8s.io/kube-openapi/cmd/openapi-gen@VERSION` |
 | `openapi2jsonschema` | Converts OpenAPI spec to JSON Schema files | Python venv (`instrumenta/openapi2jsonschema`) |
+| `setup-envtest` | Downloads envtest binaries (etcd + kube-apiserver + kubectl) | `go install sigs.k8s.io/controller-runtime/tools/setup-envtest@latest` |
 | `go` | Compiles and runs the OpenAPI builder | brew / golang.org |
 | `git` | Clones controller source | system |
+
+The Docker builder image (`make builder`) bundles all of the above including
+pre-downloaded envtest binaries at `$ENVTEST_BIN_DIR=/usr/local/kubebuilder/bin`.

@@ -1,0 +1,109 @@
+{
+  "kind": "APIResourceList",
+  "apiVersion": "v1",
+  "groupVersion": "status.gatekeeper.sh/v1beta1",
+  "resources": [
+    {
+      "name": "constraintpodstatuses",
+      "singularName": "constraintpodstatus",
+      "namespaced": true,
+      "kind": "ConstraintPodStatus",
+      "verbs": [
+        "delete",
+        "deletecollection",
+        "get",
+        "list",
+        "patch",
+        "create",
+        "update",
+        "watch"
+      ],
+      "storageVersionHash": "50rQw0tnefI="
+    },
+    {
+      "name": "configpodstatuses",
+      "singularName": "configpodstatus",
+      "namespaced": true,
+      "kind": "ConfigPodStatus",
+      "verbs": [
+        "delete",
+        "deletecollection",
+        "get",
+        "list",
+        "patch",
+        "create",
+        "update",
+        "watch"
+      ],
+      "storageVersionHash": "iqdPKJNEA8s="
+    },
+    {
+      "name": "expansiontemplatepodstatuses",
+      "singularName": "expansiontemplatepodstatus",
+      "namespaced": true,
+      "kind": "ExpansionTemplatePodStatus",
+      "verbs": [
+        "delete",
+        "deletecollection",
+        "get",
+        "list",
+        "patch",
+        "create",
+        "update",
+        "watch"
+      ],
+      "storageVersionHash": "HU8oyne9gMU="
+    },
+    {
+      "name": "mutatorpodstatuses",
+      "singularName": "mutatorpodstatus",
+      "namespaced": true,
+      "kind": "MutatorPodStatus",
+      "verbs": [
+        "delete",
+        "deletecollection",
+        "get",
+        "list",
+        "patch",
+        "create",
+        "update",
+        "watch"
+      ],
+      "storageVersionHash": "hkh0rbrHbB8="
+    },
+    {
+      "name": "constrainttemplatepodstatuses",
+      "singularName": "constrainttemplatepodstatus",
+      "namespaced": true,
+      "kind": "ConstraintTemplatePodStatus",
+      "verbs": [
+        "delete",
+        "deletecollection",
+        "get",
+        "list",
+        "patch",
+        "create",
+        "update",
+        "watch"
+      ],
+      "storageVersionHash": "+DJ0NWc6Akc="
+    },
+    {
+      "name": "providerpodstatuses",
+      "singularName": "providerpodstatus",
+      "namespaced": true,
+      "kind": "ProviderPodStatus",
+      "verbs": [
+        "delete",
+        "deletecollection",
+        "get",
+        "list",
+        "patch",
+        "create",
+        "update",
+        "watch"
+      ],
+      "storageVersionHash": "a7B1iPGe+eY="
+    }
+  ]
+}

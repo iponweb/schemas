@@ -1,0 +1,35 @@
+{
+  "kind": "APIResourceList",
+  "apiVersion": "v1",
+  "groupVersion": "templates.gatekeeper.sh/v1",
+  "resources": [
+    {
+      "name": "constrainttemplates",
+      "singularName": "constrainttemplate",
+      "namespaced": false,
+      "kind": "ConstraintTemplate",
+      "verbs": [
+        "delete",
+        "deletecollection",
+        "get",
+        "list",
+        "patch",
+        "create",
+        "update",
+        "watch"
+      ],
+      "storageVersionHash": "TJcYtHzUqRQ="
+    },
+    {
+      "name": "constrainttemplates/status",
+      "singularName": "",
+      "namespaced": false,
+      "kind": "ConstraintTemplate",
+      "verbs": [
+        "get",
+        "patch",
+        "update"
+      ]
+    }
+  ]
+}

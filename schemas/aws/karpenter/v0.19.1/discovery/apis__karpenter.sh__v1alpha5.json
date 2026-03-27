@@ -1,0 +1,38 @@
+{
+  "kind": "APIResourceList",
+  "apiVersion": "v1",
+  "groupVersion": "karpenter.sh/v1alpha5",
+  "resources": [
+    {
+      "name": "provisioners",
+      "singularName": "provisioner",
+      "namespaced": false,
+      "kind": "Provisioner",
+      "verbs": [
+        "delete",
+        "deletecollection",
+        "get",
+        "list",
+        "patch",
+        "create",
+        "update",
+        "watch"
+      ],
+      "categories": [
+        "karpenter"
+      ],
+      "storageVersionHash": "FG15QbZxJho="
+    },
+    {
+      "name": "provisioners/status",
+      "singularName": "",
+      "namespaced": false,
+      "kind": "Provisioner",
+      "verbs": [
+        "get",
+        "patch",
+        "update"
+      ]
+    }
+  ]
+}

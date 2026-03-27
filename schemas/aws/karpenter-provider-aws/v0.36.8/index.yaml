@@ -4,7 +4,7 @@ resources:
   version: v1
   plural: ec2nodeclasses
   scope: Cluster
-  shortNames: &id001
+  shortNames:
   - ec2nc
   - ec2ncs
 - kind: EC2NodeClass
@@ -12,7 +12,9 @@ resources:
   version: v1beta1
   plural: ec2nodeclasses
   scope: Cluster
-  shortNames: *id001
+  shortNames:
+  - ec2nc
+  - ec2ncs
 - kind: NodeClaim
   group: karpenter.sh
   version: v1

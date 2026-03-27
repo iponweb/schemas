@@ -1,0 +1,100 @@
+{
+  "kind": "APIGroupList",
+  "apiVersion": "v1",
+  "groups": [
+    {
+      "name": "mutations.gatekeeper.sh",
+      "versions": [
+        {
+          "groupVersion": "mutations.gatekeeper.sh/v1",
+          "version": "v1"
+        },
+        {
+          "groupVersion": "mutations.gatekeeper.sh/v1beta1",
+          "version": "v1beta1"
+        },
+        {
+          "groupVersion": "mutations.gatekeeper.sh/v1alpha1",
+          "version": "v1alpha1"
+        }
+      ],
+      "preferredVersion": {
+        "groupVersion": "mutations.gatekeeper.sh/v1",
+        "version": "v1"
+      }
+    },
+    {
+      "name": "templates.gatekeeper.sh",
+      "versions": [
+        {
+          "groupVersion": "templates.gatekeeper.sh/v1",
+          "version": "v1"
+        },
+        {
+          "groupVersion": "templates.gatekeeper.sh/v1beta1",
+          "version": "v1beta1"
+        },
+        {
+          "groupVersion": "templates.gatekeeper.sh/v1alpha1",
+          "version": "v1alpha1"
+        }
+      ],
+      "preferredVersion": {
+        "groupVersion": "templates.gatekeeper.sh/v1",
+        "version": "v1"
+      }
+    },
+    {
+      "name": "config.gatekeeper.sh",
+      "versions": [
+        {
+          "groupVersion": "config.gatekeeper.sh/v1alpha1",
+          "version": "v1alpha1"
+        }
+      ],
+      "preferredVersion": {
+        "groupVersion": "config.gatekeeper.sh/v1alpha1",
+        "version": "v1alpha1"
+      }
+    },
+    {
+      "name": "expansion.gatekeeper.sh",
+      "versions": [
+        {
+          "groupVersion": "expansion.gatekeeper.sh/v1alpha1",
+          "version": "v1alpha1"
+        }
+      ],
+      "preferredVersion": {
+        "groupVersion": "expansion.gatekeeper.sh/v1alpha1",
+        "version": "v1alpha1"
+      }
+    },
+    {
+      "name": "externaldata.gatekeeper.sh",
+      "versions": [
+        {
+          "groupVersion": "externaldata.gatekeeper.sh/v1alpha1",
+          "version": "v1alpha1"
+        }
+      ],
+      "preferredVersion": {
+        "groupVersion": "externaldata.gatekeeper.sh/v1alpha1",
+        "version": "v1alpha1"
+      }
+    },
+    {
+      "name": "status.gatekeeper.sh",
+      "versions": [
+        {
+          "groupVersion": "status.gatekeeper.sh/v1beta1",
+          "version": "v1beta1"
+        }
+      ],
+      "preferredVersion": {
+        "groupVersion": "status.gatekeeper.sh/v1beta1",
+        "version": "v1beta1"
+      }
+    }
+  ]
+}

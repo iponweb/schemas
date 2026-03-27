@@ -1,0 +1,122 @@
+{
+  "kind": "APIResourceList",
+  "apiVersion": "v1",
+  "groupVersion": "monitoring.coreos.com/v1alpha1",
+  "resources": [
+    {
+      "name": "prometheusagents",
+      "singularName": "prometheusagent",
+      "namespaced": true,
+      "kind": "PrometheusAgent",
+      "verbs": [
+        "delete",
+        "deletecollection",
+        "get",
+        "list",
+        "patch",
+        "create",
+        "update",
+        "watch"
+      ],
+      "shortNames": [
+        "promagent"
+      ],
+      "categories": [
+        "prometheus-operator"
+      ],
+      "storageVersionHash": "lATxwg5UEm8="
+    },
+    {
+      "name": "prometheusagents/status",
+      "singularName": "",
+      "namespaced": true,
+      "kind": "PrometheusAgent",
+      "verbs": [
+        "get",
+        "patch",
+        "update"
+      ]
+    },
+    {
+      "name": "prometheusagents/scale",
+      "singularName": "",
+      "namespaced": true,
+      "group": "autoscaling",
+      "version": "v1",
+      "kind": "Scale",
+      "verbs": [
+        "get",
+        "patch",
+        "update"
+      ]
+    },
+    {
+      "name": "scrapeconfigs",
+      "singularName": "scrapeconfig",
+      "namespaced": true,
+      "kind": "ScrapeConfig",
+      "verbs": [
+        "delete",
+        "deletecollection",
+        "get",
+        "list",
+        "patch",
+        "create",
+        "update",
+        "watch"
+      ],
+      "shortNames": [
+        "scfg"
+      ],
+      "categories": [
+        "prometheus-operator"
+      ],
+      "storageVersionHash": "kAKYOPsAdCU="
+    },
+    {
+      "name": "scrapeconfigs/status",
+      "singularName": "",
+      "namespaced": true,
+      "kind": "ScrapeConfig",
+      "verbs": [
+        "get",
+        "patch",
+        "update"
+      ]
+    },
+    {
+      "name": "alertmanagerconfigs",
+      "singularName": "alertmanagerconfig",
+      "namespaced": true,
+      "kind": "AlertmanagerConfig",
+      "verbs": [
+        "delete",
+        "deletecollection",
+        "get",
+        "list",
+        "patch",
+        "create",
+        "update",
+        "watch"
+      ],
+      "shortNames": [
+        "amcfg"
+      ],
+      "categories": [
+        "prometheus-operator"
+      ],
+      "storageVersionHash": "95DNJ6wsUCg="
+    },
+    {
+      "name": "alertmanagerconfigs/status",
+      "singularName": "",
+      "namespaced": true,
+      "kind": "AlertmanagerConfig",
+      "verbs": [
+        "get",
+        "patch",
+        "update"
+      ]
+    }
+  ]
+}

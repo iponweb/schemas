@@ -125,9 +125,13 @@ def collect_crds(sources_root: Path, crd_path: str, crd_dir: Path, index_yaml: P
             if not name:
                 continue
 
-            # Copy the CRD file
+            # Write the individual CRD document (not the whole source file,
+            # which may be a multi-document YAML containing all CRDs).
             dest = crd_dir / f"{name}.yaml"
-            shutil.copy2(yaml_file, dest)
+            dest.write_text(
+                yaml.dump(doc, default_flow_style=False, sort_keys=False,
+                          allow_unicode=True)
+            )
             copied += 1
 
             spec = doc.get('spec', {})
@@ -342,6 +346,23 @@ def main():
             crd_dir = REPO_ROOT / "schemas" / rel / "crd"
             index_yaml = REPO_ROOT / "schemas" / rel / "index.yaml"
             collect_crds(sources_root, crd_path_cfg, crd_dir, index_yaml)
+
+        # -------------------------------------------------------------------
+        # Step 12 — Live CRD discovery via envtest (optional)
+        #           Runs when crd_path is set and envtest binaries are present.
+        #           Overwrites the index.yaml resource list with authoritative
+        #           data from a real API server instead of static CRD parsing.
+        # -------------------------------------------------------------------
+        envtest_bin_dir = Path(os.environ.get("ENVTEST_BIN_DIR", "/usr/local/kubebuilder/bin"))
+        if crd_path_cfg and (envtest_bin_dir / "kube-apiserver").exists():
+            crd_dir   = REPO_ROOT / "schemas" / rel / "crd"
+            index_yaml = REPO_ROOT / "schemas" / rel / "index.yaml"
+            run([
+                "python3", TOOLS_DIR / "envtest.py",
+                "--crd-dir", crd_dir,
+                "--output",  index_yaml,
+                "--envtest-bin-dir", envtest_bin_dir,
+            ])
 
         print(f"\nDone. Schemas written to {output_dir}", flush=True)
         print(f"      OpenAPI written to  {openapi_out}", flush=True)

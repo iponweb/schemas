@@ -9,14 +9,14 @@ resources:
   version: v1
   plural: gateways
   scope: Namespaced
-  shortNames: &id001
+  shortNames:
   - gtw
 - kind: GatewayClass
   group: gateway.networking.k8s.io
   version: v1
   plural: gatewayclasses
   scope: Cluster
-  shortNames: &id002
+  shortNames:
   - gc
 - kind: HTTPRoute
   group: gateway.networking.k8s.io
@@ -28,13 +28,15 @@ resources:
   version: v1beta1
   plural: gateways
   scope: Namespaced
-  shortNames: *id001
+  shortNames:
+  - gtw
 - kind: GatewayClass
   group: gateway.networking.k8s.io
   version: v1beta1
   plural: gatewayclasses
   scope: Cluster
-  shortNames: *id002
+  shortNames:
+  - gc
 - kind: HTTPRoute
   group: gateway.networking.k8s.io
   version: v1beta1

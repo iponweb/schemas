@@ -1,0 +1,35 @@
+{
+  "kind": "APIResourceList",
+  "apiVersion": "v1",
+  "groupVersion": "connection.gatekeeper.sh/v1alpha1",
+  "resources": [
+    {
+      "name": "connections",
+      "singularName": "connection",
+      "namespaced": true,
+      "kind": "Connection",
+      "verbs": [
+        "delete",
+        "deletecollection",
+        "get",
+        "list",
+        "patch",
+        "create",
+        "update",
+        "watch"
+      ],
+      "storageVersionHash": "LLmcv7kt+8s="
+    },
+    {
+      "name": "connections/status",
+      "singularName": "",
+      "namespaced": true,
+      "kind": "Connection",
+      "verbs": [
+        "get",
+        "patch",
+        "update"
+      ]
+    }
+  ]
+}
