@@ -1,0 +1,65 @@
+{
+  "description": "ApplicationSetApplicationStatus contains details about each Application managed by the ApplicationSet",
+  "type": "object",
+  "required": [
+    "application",
+    "message",
+    "status",
+    "step",
+    "targetRevisions"
+  ],
+  "properties": {
+    "application": {
+      "description": "Application contains the name of the Application resource",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "lastTransitionTime": {
+      "description": "LastTransitionTime is the time the status was last updated",
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
+    },
+    "message": {
+      "description": "Message contains human-readable message indicating details about the status",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "status": {
+      "description": "Status contains the AppSet's perceived status of the managed Application resource",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "step": {
+      "description": "Step tracks which step this Application should be updated in",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "targetRevisions": {
+      "description": "TargetRevision tracks the desired revisions the Application should be synced to.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

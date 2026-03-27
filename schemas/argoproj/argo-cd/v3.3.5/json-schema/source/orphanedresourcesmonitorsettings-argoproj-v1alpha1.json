@@ -1,0 +1,26 @@
+{
+  "description": "OrphanedResourcesMonitorSettings holds settings of orphaned resources monitoring",
+  "type": "object",
+  "properties": {
+    "ignore": {
+      "description": "Ignore contains a list of resources that are to be excluded from orphaned resources monitoring",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.OrphanedResourceKey"
+      }
+    },
+    "warn": {
+      "description": "Warn indicates if warning condition should be created for apps which have orphaned resources",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

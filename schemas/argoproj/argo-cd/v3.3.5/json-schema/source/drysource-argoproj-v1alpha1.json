@@ -1,0 +1,53 @@
+{
+  "description": "DrySource specifies a location for dry \"don't repeat yourself\" manifest source information.",
+  "type": "object",
+  "required": [
+    "repoURL",
+    "targetRevision",
+    "path"
+  ],
+  "properties": {
+    "directory": {
+      "description": "Directory specifies path/directory specific options",
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.ApplicationSourceDirectory"
+    },
+    "helm": {
+      "description": "Helm specifies helm specific options",
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.ApplicationSourceHelm"
+    },
+    "kustomize": {
+      "description": "Kustomize specifies kustomize specific options",
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.ApplicationSourceKustomize"
+    },
+    "path": {
+      "description": "Path is a directory path within the Git repository where the manifests are located",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "plugin": {
+      "description": "Plugin specifies config management plugin specific options",
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.ApplicationSourcePlugin"
+    },
+    "repoURL": {
+      "description": "RepoURL is the URL to the git repository that contains the application manifests",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "targetRevision": {
+      "description": "TargetRevision defines the revision of the source to hydrate",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

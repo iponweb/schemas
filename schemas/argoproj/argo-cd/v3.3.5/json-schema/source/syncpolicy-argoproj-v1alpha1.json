@@ -1,0 +1,34 @@
+{
+  "description": "SyncPolicy controls when a sync will be performed in response to updates in git",
+  "type": "object",
+  "properties": {
+    "automated": {
+      "description": "Automated will keep an application synced to the target revision",
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.SyncPolicyAutomated"
+    },
+    "managedNamespaceMetadata": {
+      "description": "ManagedNamespaceMetadata controls metadata in the given namespace (if CreateNamespace=true)",
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.ManagedNamespaceMetadata"
+    },
+    "retry": {
+      "description": "Retry controls failed sync retry behavior",
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.RetryStrategy"
+    },
+    "syncOptions": {
+      "description": "Options allow you to specify whole app sync-options",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

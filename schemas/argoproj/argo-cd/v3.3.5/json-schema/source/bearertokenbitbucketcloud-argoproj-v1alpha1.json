@@ -1,0 +1,15 @@
+{
+  "description": "BearerTokenBitbucketCloud defines the Bearer token for BitBucket AppToken auth.",
+  "type": "object",
+  "required": [
+    "tokenRef"
+  ],
+  "properties": {
+    "tokenRef": {
+      "description": "Password (or personal access token) reference.",
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.SecretRef"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

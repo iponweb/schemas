@@ -1,0 +1,45 @@
+{
+  "description": "Application is a definition of Application resource.",
+  "type": "object",
+  "required": [
+    "metadata",
+    "spec"
+  ],
+  "properties": {
+    "apiVersion": {
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "kind": {
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "metadata": {
+      "description": "Common: shared with ApplicationSet",
+      "default": {},
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+    },
+    "operation": {
+      "description": "Common: shared with ApplicationSet (different type)",
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.Operation"
+    },
+    "spec": {
+      "description": "Common: shared with ApplicationSet",
+      "default": {},
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.ApplicationSpec"
+    },
+    "status": {
+      "description": "Common: shared with ApplicationSet (different type)",
+      "default": {},
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.ApplicationStatus"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

@@ -1,0 +1,19 @@
+{
+  "description": "AppProjectStatus contains status information for AppProject CRs",
+  "type": "object",
+  "properties": {
+    "jwtTokensByRole": {
+      "description": "JWTTokensByRole contains a list of JWT tokens issued for a given role",
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.JWTTokens"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

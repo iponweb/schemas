@@ -1,0 +1,26 @@
+{
+  "description": "GroupKind specifies a Group and a Kind, but does not force a version.  This is useful for identifying concepts during lookup stages without having partially valid types",
+  "type": "object",
+  "required": [
+    "group",
+    "kind"
+  ],
+  "properties": {
+    "group": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "kind": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

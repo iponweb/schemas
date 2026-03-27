@@ -1,0 +1,76 @@
+{
+  "type": "object",
+  "required": [
+    "repoURL",
+    "revision"
+  ],
+  "properties": {
+    "directories": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.GitDirectoryGeneratorItem"
+      }
+    },
+    "files": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.GitFileGeneratorItem"
+      }
+    },
+    "pathParamPrefix": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "repoURL": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "requeueAfterSeconds": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int64"
+    },
+    "revision": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "template": {
+      "default": {},
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.ApplicationSetTemplate"
+    },
+    "values": {
+      "description": "Values contains key/value pairs which are passed directly as parameters to the template",
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

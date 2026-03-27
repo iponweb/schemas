@@ -1,0 +1,46 @@
+{
+  "description": "SCMProviderGeneratorGitea defines a connection info specific to Gitea.",
+  "type": "object",
+  "required": [
+    "owner",
+    "api"
+  ],
+  "properties": {
+    "allBranches": {
+      "description": "Scan all branches instead of just the default branch.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "api": {
+      "description": "The Gitea URL to talk to. For example https://gitea.mydomain.com/.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "insecure": {
+      "description": "Allow self-signed TLS / Certificates; default: false",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "owner": {
+      "description": "Gitea organization or user to scan. Required.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "tokenRef": {
+      "description": "Authentication token reference.",
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.SecretRef"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

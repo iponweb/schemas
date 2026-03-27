@@ -1,0 +1,83 @@
+{
+  "description": "ResourceStatus holds the current synchronization and health status of a Kubernetes resource.",
+  "type": "object",
+  "properties": {
+    "group": {
+      "description": "Group represents the API group of the resource (e.g., \"apps\" for Deployments).",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "health": {
+      "description": "Health indicates the health status of the resource (e.g., Healthy, Degraded, Progressing).",
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.HealthStatus"
+    },
+    "hook": {
+      "description": "Hook is true if the resource is used as a lifecycle hook in an Argo CD application.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "kind": {
+      "description": "Kind specifies the type of the resource (e.g., \"Deployment\", \"Service\").",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "name": {
+      "description": "Name is the unique name of the resource within the namespace.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "namespace": {
+      "description": "Namespace defines the Kubernetes namespace where the resource is located.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "requiresDeletionConfirmation": {
+      "description": "RequiresDeletionConfirmation is true if the resource requires explicit user confirmation before deletion.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "requiresPruning": {
+      "description": "RequiresPruning is true if the resource needs to be pruned (deleted) as part of synchronization.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "status": {
+      "description": "Status represents the synchronization state of the resource (e.g., Synced, OutOfSync).",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "syncWave": {
+      "description": "SyncWave determines the order in which resources are applied during a sync operation. Lower values are applied first.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int64"
+    },
+    "version": {
+      "description": "Version indicates the API version of the resource (e.g., \"v1\", \"v1beta1\").",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

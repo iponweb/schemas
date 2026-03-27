@@ -4,41 +4,6 @@
   "groupVersion": "cert-manager.io/v1",
   "resources": [
     {
-      "name": "certificaterequests",
-      "singularName": "certificaterequest",
-      "namespaced": true,
-      "kind": "CertificateRequest",
-      "verbs": [
-        "delete",
-        "deletecollection",
-        "get",
-        "list",
-        "patch",
-        "create",
-        "update",
-        "watch"
-      ],
-      "shortNames": [
-        "cr",
-        "crs"
-      ],
-      "categories": [
-        "cert-manager"
-      ],
-      "storageVersionHash": "tuxiikMaACg="
-    },
-    {
-      "name": "certificaterequests/status",
-      "singularName": "",
-      "namespaced": true,
-      "kind": "CertificateRequest",
-      "verbs": [
-        "get",
-        "patch",
-        "update"
-      ]
-    },
-    {
       "name": "certificates",
       "singularName": "certificate",
       "namespaced": true,
@@ -135,6 +100,41 @@
       "singularName": "",
       "namespaced": true,
       "kind": "Issuer",
+      "verbs": [
+        "get",
+        "patch",
+        "update"
+      ]
+    },
+    {
+      "name": "certificaterequests",
+      "singularName": "certificaterequest",
+      "namespaced": true,
+      "kind": "CertificateRequest",
+      "verbs": [
+        "delete",
+        "deletecollection",
+        "get",
+        "list",
+        "patch",
+        "create",
+        "update",
+        "watch"
+      ],
+      "shortNames": [
+        "cr",
+        "crs"
+      ],
+      "categories": [
+        "cert-manager"
+      ],
+      "storageVersionHash": "tuxiikMaACg="
+    },
+    {
+      "name": "certificaterequests/status",
+      "singularName": "",
+      "namespaced": true,
+      "kind": "CertificateRequest",
       "verbs": [
         "get",
         "patch",

@@ -1,0 +1,16 @@
+{
+  "description": "SyncStrategy controls the manner in which a sync is performed",
+  "type": "object",
+  "properties": {
+    "apply": {
+      "description": "Apply will perform a `kubectl apply` to perform the sync.",
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.SyncStrategyApply"
+    },
+    "hook": {
+      "description": "Hook will submit any referenced resources to perform the sync. This is the default strategy",
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.SyncStrategyHook"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

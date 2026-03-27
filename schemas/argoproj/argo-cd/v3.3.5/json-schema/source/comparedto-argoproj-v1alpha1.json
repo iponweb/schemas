@@ -1,0 +1,43 @@
+{
+  "description": "ComparedTo contains application source and target which was used for resources comparison",
+  "type": "object",
+  "required": [
+    "destination"
+  ],
+  "properties": {
+    "destination": {
+      "description": "Destination is a reference to the application's destination used for comparison",
+      "default": {},
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.ApplicationDestination"
+    },
+    "ignoreDifferences": {
+      "description": "IgnoreDifferences is a reference to the application's ignored differences used for comparison",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.ResourceIgnoreDifferences"
+      }
+    },
+    "source": {
+      "description": "Source is a reference to the application's source used for comparison",
+      "default": {},
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.ApplicationSource"
+    },
+    "sources": {
+      "description": "Sources is a reference to the application's multiple sources used for comparison",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.ApplicationSource"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

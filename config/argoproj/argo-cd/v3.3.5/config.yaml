@@ -1,0 +1,30 @@
+version: "v3.3.5"
+repository: "github.com/argoproj/argo-cd"
+
+openapi_gen_packages:
+  - "github.com/argoproj/argo-cd/v3/pkg/apis/application/v1alpha1"
+  - "k8s.io/api/core/v1"
+  - "k8s.io/apiextensions-apiserver/pkg/apis/apiextensions/v1"
+  - "k8s.io/apimachinery/pkg/api/resource"
+  - "k8s.io/apimachinery/pkg/apis/meta/v1"
+  - "k8s.io/apimachinery/pkg/runtime"
+  - "k8s.io/apimachinery/pkg/util/intstr"
+  - "k8s.io/apimachinery/pkg/version"
+
+go_dependencies:
+  k8s.io/apimachinery: "v0.34.0"
+  k8s.io/apiserver: "v0.34.0"
+  k8s.io/kube-openapi: "v0.0.0-20250710124328-f3f2b991d03b"
+
+kubernetes_swagger_url: "https://raw.githubusercontent.com/kubernetes/kubernetes/v1.34.1/api/openapi-spec/swagger.json"
+title: "argo-cd CRD OpenAPI"
+
+crd_names:
+  - "github.com/argoproj/argo-cd/v3/pkg/apis/application/v1alpha1.Application"
+  - "github.com/argoproj/argo-cd/v3/pkg/apis/application/v1alpha1.ApplicationSet"
+  - "github.com/argoproj/argo-cd/v3/pkg/apis/application/v1alpha1.AppProject"
+
+crd_path: "manifests/crds"
+
+host_conversion_rules:
+  "github.com/argoproj/argo-cd/v3": "argoproj.io"

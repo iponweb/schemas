@@ -1,0 +1,35 @@
+{
+  "type": "object",
+  "properties": {
+    "options": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": {
+        "type": [
+          "boolean",
+          "null"
+        ],
+        "default": false
+      }
+    },
+    "patch": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "path": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "target": {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.KustomizeSelector"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

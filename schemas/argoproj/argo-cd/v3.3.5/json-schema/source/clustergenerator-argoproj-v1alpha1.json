@@ -1,0 +1,38 @@
+{
+  "description": "ClusterGenerator defines a generator to match against clusters registered with ArgoCD.",
+  "type": "object",
+  "properties": {
+    "flatList": {
+      "description": "returns the clusters a single 'clusters' value in the template",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "selector": {
+      "description": "Selector defines a label selector to match against all clusters registered with ArgoCD. Clusters today are stored as Kubernetes Secrets, thus the Secret labels will be used for matching the selector.",
+      "default": {},
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.LabelSelector"
+    },
+    "template": {
+      "default": {},
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.ApplicationSetTemplate"
+    },
+    "values": {
+      "description": "Values contains key/value pairs which are passed directly as parameters to the template",
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

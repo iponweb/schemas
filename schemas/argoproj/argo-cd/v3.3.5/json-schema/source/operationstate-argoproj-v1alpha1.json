@@ -1,0 +1,53 @@
+{
+  "description": "OperationState contains information about state of a running operation",
+  "type": "object",
+  "required": [
+    "operation",
+    "phase",
+    "startedAt"
+  ],
+  "properties": {
+    "finishedAt": {
+      "description": "FinishedAt contains time of operation completion",
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
+    },
+    "message": {
+      "description": "Message holds any pertinent messages when attempting to perform operation (typically errors).",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "operation": {
+      "description": "Operation is the original requested operation",
+      "default": {},
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.Operation"
+    },
+    "phase": {
+      "description": "Phase is the current phase of the operation",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "retryCount": {
+      "description": "RetryCount contains time of operation retries",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int64"
+    },
+    "startedAt": {
+      "description": "StartedAt contains time of operation start",
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
+    },
+    "syncResult": {
+      "description": "SyncResult is the result of a Sync operation",
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.SyncOperationResult"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

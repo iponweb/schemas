@@ -4,37 +4,6 @@
   "groupVersion": "cert-manager.io/v1",
   "resources": [
     {
-      "name": "issuers",
-      "singularName": "issuer",
-      "namespaced": true,
-      "kind": "Issuer",
-      "verbs": [
-        "delete",
-        "deletecollection",
-        "get",
-        "list",
-        "patch",
-        "create",
-        "update",
-        "watch"
-      ],
-      "categories": [
-        "cert-manager"
-      ],
-      "storageVersionHash": "P8OOH0cQiDA="
-    },
-    {
-      "name": "issuers/status",
-      "singularName": "",
-      "namespaced": true,
-      "kind": "Issuer",
-      "verbs": [
-        "get",
-        "patch",
-        "update"
-      ]
-    },
-    {
       "name": "certificaterequests",
       "singularName": "certificaterequest",
       "namespaced": true,
@@ -129,6 +98,37 @@
       "singularName": "",
       "namespaced": false,
       "kind": "ClusterIssuer",
+      "verbs": [
+        "get",
+        "patch",
+        "update"
+      ]
+    },
+    {
+      "name": "issuers",
+      "singularName": "issuer",
+      "namespaced": true,
+      "kind": "Issuer",
+      "verbs": [
+        "delete",
+        "deletecollection",
+        "get",
+        "list",
+        "patch",
+        "create",
+        "update",
+        "watch"
+      ],
+      "categories": [
+        "cert-manager"
+      ],
+      "storageVersionHash": "P8OOH0cQiDA="
+    },
+    {
+      "name": "issuers/status",
+      "singularName": "",
+      "namespaced": true,
+      "kind": "Issuer",
       "verbs": [
         "get",
         "patch",

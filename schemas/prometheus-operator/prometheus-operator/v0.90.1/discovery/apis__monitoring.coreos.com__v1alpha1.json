@@ -4,40 +4,6 @@
   "groupVersion": "monitoring.coreos.com/v1alpha1",
   "resources": [
     {
-      "name": "scrapeconfigs",
-      "singularName": "scrapeconfig",
-      "namespaced": true,
-      "kind": "ScrapeConfig",
-      "verbs": [
-        "delete",
-        "deletecollection",
-        "get",
-        "list",
-        "patch",
-        "create",
-        "update",
-        "watch"
-      ],
-      "shortNames": [
-        "scfg"
-      ],
-      "categories": [
-        "prometheus-operator"
-      ],
-      "storageVersionHash": "kAKYOPsAdCU="
-    },
-    {
-      "name": "scrapeconfigs/status",
-      "singularName": "",
-      "namespaced": true,
-      "kind": "ScrapeConfig",
-      "verbs": [
-        "get",
-        "patch",
-        "update"
-      ]
-    },
-    {
       "name": "alertmanagerconfigs",
       "singularName": "alertmanagerconfig",
       "namespaced": true,
@@ -112,6 +78,40 @@
       "group": "autoscaling",
       "version": "v1",
       "kind": "Scale",
+      "verbs": [
+        "get",
+        "patch",
+        "update"
+      ]
+    },
+    {
+      "name": "scrapeconfigs",
+      "singularName": "scrapeconfig",
+      "namespaced": true,
+      "kind": "ScrapeConfig",
+      "verbs": [
+        "delete",
+        "deletecollection",
+        "get",
+        "list",
+        "patch",
+        "create",
+        "update",
+        "watch"
+      ],
+      "shortNames": [
+        "scfg"
+      ],
+      "categories": [
+        "prometheus-operator"
+      ],
+      "storageVersionHash": "kAKYOPsAdCU="
+    },
+    {
+      "name": "scrapeconfigs/status",
+      "singularName": "",
+      "namespaced": true,
+      "kind": "ScrapeConfig",
       "verbs": [
         "get",
         "patch",

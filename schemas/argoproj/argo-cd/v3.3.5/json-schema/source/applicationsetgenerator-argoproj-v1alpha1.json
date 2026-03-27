@@ -1,0 +1,39 @@
+{
+  "description": "ApplicationSetGenerator represents a generator at the top level of an ApplicationSet.",
+  "type": "object",
+  "properties": {
+    "clusterDecisionResource": {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.DuckTypeGenerator"
+    },
+    "clusters": {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.ClusterGenerator"
+    },
+    "git": {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.GitGenerator"
+    },
+    "list": {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.ListGenerator"
+    },
+    "matrix": {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.MatrixGenerator"
+    },
+    "merge": {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.MergeGenerator"
+    },
+    "plugin": {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.PluginGenerator"
+    },
+    "pullRequest": {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.PullRequestGenerator"
+    },
+    "scmProvider": {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.SCMProviderGenerator"
+    },
+    "selector": {
+      "description": "Selector allows to post-filter all generator.",
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.LabelSelector"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

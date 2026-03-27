@@ -1,0 +1,22 @@
+{
+  "description": "ApplicationSetSyncPolicy configures how generated Applications will relate to their ApplicationSet.",
+  "type": "object",
+  "properties": {
+    "applicationsSync": {
+      "description": "ApplicationsSync represents the policy applied on the generated applications. Possible values are create-only, create-update, create-delete, sync",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "preserveResourcesOnDeletion": {
+      "description": "PreserveResourcesOnDeletion will preserve resources on deletion. If PreserveResourcesOnDeletion is set to true, these Applications will not be deleted.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

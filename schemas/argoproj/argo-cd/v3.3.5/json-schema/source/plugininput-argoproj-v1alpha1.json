@@ -1,0 +1,17 @@
+{
+  "type": "object",
+  "properties": {
+    "parameters": {
+      "description": "Parameters contains the information to pass to the plugin. It is a map. The keys must be strings, and the values can be any type.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": {
+        "$ref": "_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.JSON"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

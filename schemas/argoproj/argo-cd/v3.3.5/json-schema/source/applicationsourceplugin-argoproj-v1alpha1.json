@@ -1,0 +1,33 @@
+{
+  "description": "ApplicationSourcePlugin holds options specific to config management plugins",
+  "type": "object",
+  "properties": {
+    "env": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.EnvEntry"
+      }
+    },
+    "name": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "parameters": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.ApplicationSourcePluginParameter"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

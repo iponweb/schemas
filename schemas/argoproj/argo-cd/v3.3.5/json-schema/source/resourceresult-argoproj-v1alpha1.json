@@ -1,0 +1,104 @@
+{
+  "description": "ResourceResult holds the operation result details of a specific resource",
+  "type": "object",
+  "required": [
+    "group",
+    "version",
+    "kind",
+    "namespace",
+    "name"
+  ],
+  "properties": {
+    "group": {
+      "description": "Group specifies the API group of the resource",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "hookPhase": {
+      "description": "HookPhase contains the state of any operation associated with this resource OR hook This can also contain values for non-hook resources.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "hookType": {
+      "description": "HookType specifies the type of the hook. Empty for non-hook resources",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "images": {
+      "description": "Images contains the images related to the ResourceResult",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "kind": {
+      "description": "Kind specifies the API kind of the resource",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "message": {
+      "description": "Message contains an informational or error message for the last sync OR operation",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "name": {
+      "description": "Name specifies the name of the resource",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "namespace": {
+      "description": "Namespace specifies the target namespace of the resource",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "status": {
+      "description": "Status holds the final result of the sync. Will be empty if the resources is yet to be applied/pruned and is always zero-value for hooks",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "syncPhase": {
+      "description": "SyncPhase indicates the particular phase of the sync that this result was acquired in",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "version": {
+      "description": "Version specifies the API version of the resource",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

@@ -1,0 +1,19 @@
+{
+  "description": "SignatureKey is the specification of a key required to verify commit signatures with",
+  "type": "object",
+  "required": [
+    "keyID"
+  ],
+  "properties": {
+    "keyID": {
+      "description": "The ID of the key in hexadecimal notation",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

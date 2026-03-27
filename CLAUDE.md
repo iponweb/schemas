@@ -144,7 +144,11 @@ Every field and its role:
 # Version tag to check out from the repository (passed to git clone --branch).
 version: "v1.10.0"
 
-# Go module path of the repository to clone (no https:// prefix).
+# GitHub repository path to clone (no https:// prefix).
+# For Go modules with a major-version suffix (e.g. github.com/argoproj/argo-cd/v3),
+# use the bare GitHub repo path here (github.com/argoproj/argo-cd) — the /v3 suffix
+# is part of the Go module path but not the actual repository URL.
+# The full module path (with suffix) belongs only in openapi_gen_packages / crd_names.
 repository: "github.com/aws/karpenter-provider-aws"
 
 # Packages passed to openapi-gen for Go type analysis.

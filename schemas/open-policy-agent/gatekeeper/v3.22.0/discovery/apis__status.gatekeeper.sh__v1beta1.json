@@ -4,40 +4,6 @@
   "groupVersion": "status.gatekeeper.sh/v1beta1",
   "resources": [
     {
-      "name": "constrainttemplatepodstatuses",
-      "singularName": "constrainttemplatepodstatus",
-      "namespaced": true,
-      "kind": "ConstraintTemplatePodStatus",
-      "verbs": [
-        "delete",
-        "deletecollection",
-        "get",
-        "list",
-        "patch",
-        "create",
-        "update",
-        "watch"
-      ],
-      "storageVersionHash": "+DJ0NWc6Akc="
-    },
-    {
-      "name": "providerpodstatuses",
-      "singularName": "providerpodstatus",
-      "namespaced": true,
-      "kind": "ProviderPodStatus",
-      "verbs": [
-        "delete",
-        "deletecollection",
-        "get",
-        "list",
-        "patch",
-        "create",
-        "update",
-        "watch"
-      ],
-      "storageVersionHash": "a7B1iPGe+eY="
-    },
-    {
       "name": "expansiontemplatepodstatuses",
       "singularName": "expansiontemplatepodstatus",
       "namespaced": true,
@@ -53,6 +19,23 @@
         "watch"
       ],
       "storageVersionHash": "HU8oyne9gMU="
+    },
+    {
+      "name": "constrainttemplatepodstatuses",
+      "singularName": "constrainttemplatepodstatus",
+      "namespaced": true,
+      "kind": "ConstraintTemplatePodStatus",
+      "verbs": [
+        "delete",
+        "deletecollection",
+        "get",
+        "list",
+        "patch",
+        "create",
+        "update",
+        "watch"
+      ],
+      "storageVersionHash": "+DJ0NWc6Akc="
     },
     {
       "name": "configpodstatuses",
@@ -72,23 +55,6 @@
       "storageVersionHash": "iqdPKJNEA8s="
     },
     {
-      "name": "mutatorpodstatuses",
-      "singularName": "mutatorpodstatus",
-      "namespaced": true,
-      "kind": "MutatorPodStatus",
-      "verbs": [
-        "delete",
-        "deletecollection",
-        "get",
-        "list",
-        "patch",
-        "create",
-        "update",
-        "watch"
-      ],
-      "storageVersionHash": "hkh0rbrHbB8="
-    },
-    {
       "name": "constraintpodstatuses",
       "singularName": "constraintpodstatus",
       "namespaced": true,
@@ -104,6 +70,40 @@
         "watch"
       ],
       "storageVersionHash": "50rQw0tnefI="
+    },
+    {
+      "name": "providerpodstatuses",
+      "singularName": "providerpodstatus",
+      "namespaced": true,
+      "kind": "ProviderPodStatus",
+      "verbs": [
+        "delete",
+        "deletecollection",
+        "get",
+        "list",
+        "patch",
+        "create",
+        "update",
+        "watch"
+      ],
+      "storageVersionHash": "a7B1iPGe+eY="
+    },
+    {
+      "name": "mutatorpodstatuses",
+      "singularName": "mutatorpodstatus",
+      "namespaced": true,
+      "kind": "MutatorPodStatus",
+      "verbs": [
+        "delete",
+        "deletecollection",
+        "get",
+        "list",
+        "patch",
+        "create",
+        "update",
+        "watch"
+      ],
+      "storageVersionHash": "hkh0rbrHbB8="
     }
   ]
 }

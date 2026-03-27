@@ -38,10 +38,10 @@
       ]
     },
     {
-      "name": "prometheusrules",
-      "singularName": "prometheusrule",
+      "name": "probes",
+      "singularName": "probe",
       "namespaced": true,
-      "kind": "PrometheusRule",
+      "kind": "Probe",
       "verbs": [
         "delete",
         "deletecollection",
@@ -53,18 +53,52 @@
         "watch"
       ],
       "shortNames": [
-        "promrule"
+        "prb"
       ],
       "categories": [
         "prometheus-operator"
       ],
-      "storageVersionHash": "RSJ8iG+KDOo="
+      "storageVersionHash": "x4d99qNb5YI="
     },
     {
-      "name": "prometheusrules/status",
+      "name": "probes/status",
       "singularName": "",
       "namespaced": true,
-      "kind": "PrometheusRule",
+      "kind": "Probe",
+      "verbs": [
+        "get",
+        "patch",
+        "update"
+      ]
+    },
+    {
+      "name": "thanosrulers",
+      "singularName": "thanosruler",
+      "namespaced": true,
+      "kind": "ThanosRuler",
+      "verbs": [
+        "delete",
+        "deletecollection",
+        "get",
+        "list",
+        "patch",
+        "create",
+        "update",
+        "watch"
+      ],
+      "shortNames": [
+        "ruler"
+      ],
+      "categories": [
+        "prometheus-operator"
+      ],
+      "storageVersionHash": "YBxpg/kA6UI="
+    },
+    {
+      "name": "thanosrulers/status",
+      "singularName": "",
+      "namespaced": true,
+      "kind": "ThanosRuler",
       "verbs": [
         "get",
         "patch",
@@ -119,10 +153,10 @@
       ]
     },
     {
-      "name": "probes",
-      "singularName": "probe",
+      "name": "servicemonitors",
+      "singularName": "servicemonitor",
       "namespaced": true,
-      "kind": "Probe",
+      "kind": "ServiceMonitor",
       "verbs": [
         "delete",
         "deletecollection",
@@ -134,18 +168,18 @@
         "watch"
       ],
       "shortNames": [
-        "prb"
+        "smon"
       ],
       "categories": [
         "prometheus-operator"
       ],
-      "storageVersionHash": "x4d99qNb5YI="
+      "storageVersionHash": "JLhPcfa+5xE="
     },
     {
-      "name": "probes/status",
+      "name": "servicemonitors/status",
       "singularName": "",
       "namespaced": true,
-      "kind": "Probe",
+      "kind": "ServiceMonitor",
       "verbs": [
         "get",
         "patch",
@@ -200,10 +234,10 @@
       ]
     },
     {
-      "name": "servicemonitors",
-      "singularName": "servicemonitor",
+      "name": "prometheusrules",
+      "singularName": "prometheusrule",
       "namespaced": true,
-      "kind": "ServiceMonitor",
+      "kind": "PrometheusRule",
       "verbs": [
         "delete",
         "deletecollection",
@@ -215,52 +249,18 @@
         "watch"
       ],
       "shortNames": [
-        "smon"
+        "promrule"
       ],
       "categories": [
         "prometheus-operator"
       ],
-      "storageVersionHash": "JLhPcfa+5xE="
+      "storageVersionHash": "RSJ8iG+KDOo="
     },
     {
-      "name": "servicemonitors/status",
+      "name": "prometheusrules/status",
       "singularName": "",
       "namespaced": true,
-      "kind": "ServiceMonitor",
-      "verbs": [
-        "get",
-        "patch",
-        "update"
-      ]
-    },
-    {
-      "name": "thanosrulers",
-      "singularName": "thanosruler",
-      "namespaced": true,
-      "kind": "ThanosRuler",
-      "verbs": [
-        "delete",
-        "deletecollection",
-        "get",
-        "list",
-        "patch",
-        "create",
-        "update",
-        "watch"
-      ],
-      "shortNames": [
-        "ruler"
-      ],
-      "categories": [
-        "prometheus-operator"
-      ],
-      "storageVersionHash": "YBxpg/kA6UI="
-    },
-    {
-      "name": "thanosrulers/status",
-      "singularName": "",
-      "namespaced": true,
-      "kind": "ThanosRuler",
+      "kind": "PrometheusRule",
       "verbs": [
         "get",
         "patch",

@@ -1,0 +1,27 @@
+{
+  "description": "SuccessfulHydrateOperation contains information about the most recent successful hydrate operation",
+  "type": "object",
+  "properties": {
+    "drySHA": {
+      "description": "DrySHA holds the resolved revision (sha) of the dry source as of the most recent reconciliation",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "hydratedSHA": {
+      "description": "HydratedSHA holds the resolved revision (sha) of the hydrated source as of the most recent reconciliation",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "sourceHydrator": {
+      "description": "SourceHydrator holds the hydrator config used for the hydrate operation",
+      "default": {},
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.SourceHydrator"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

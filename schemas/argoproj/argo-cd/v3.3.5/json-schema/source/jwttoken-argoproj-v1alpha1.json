@@ -1,0 +1,32 @@
+{
+  "description": "JWTToken holds the issuedAt and expiresAt values of a token",
+  "type": "object",
+  "required": [
+    "iat"
+  ],
+  "properties": {
+    "exp": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int64"
+    },
+    "iat": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int64",
+      "default": 0
+    },
+    "id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

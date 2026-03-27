@@ -1,0 +1,32 @@
+{
+  "description": "Operation contains information about a requested or running operation",
+  "type": "object",
+  "properties": {
+    "info": {
+      "description": "Info is a list of informational items for this operation",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.Info"
+      }
+    },
+    "initiatedBy": {
+      "description": "InitiatedBy contains information about who initiated the operations",
+      "default": {},
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.OperationInitiator"
+    },
+    "retry": {
+      "description": "Retry controls the strategy to apply if a sync fails",
+      "default": {},
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.RetryStrategy"
+    },
+    "sync": {
+      "description": "Sync contains parameters for the operation",
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.SyncOperation"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

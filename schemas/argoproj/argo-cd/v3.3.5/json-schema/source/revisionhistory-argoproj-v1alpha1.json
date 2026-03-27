@@ -1,0 +1,71 @@
+{
+  "description": "RevisionHistory contains history information about a previous sync",
+  "type": "object",
+  "required": [
+    "deployedAt",
+    "id"
+  ],
+  "properties": {
+    "deployStartedAt": {
+      "description": "DeployStartedAt holds the time the sync operation started",
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
+    },
+    "deployedAt": {
+      "description": "DeployedAt holds the time the sync operation completed",
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
+    },
+    "id": {
+      "description": "ID is an auto incrementing identifier of the RevisionHistory",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int64",
+      "default": 0
+    },
+    "initiatedBy": {
+      "description": "InitiatedBy contains information about who initiated the operations",
+      "default": {},
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.OperationInitiator"
+    },
+    "revision": {
+      "description": "Revision holds the revision the sync was performed against",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "revisions": {
+      "description": "Revisions holds the revision of each source in sources field the sync was performed against",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "source": {
+      "description": "Source is a reference to the application source used for the sync operation",
+      "default": {},
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.ApplicationSource"
+    },
+    "sources": {
+      "description": "Sources is a reference to the application sources used for the sync operation",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.ApplicationSource"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

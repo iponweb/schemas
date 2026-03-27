@@ -1,0 +1,56 @@
+{
+  "description": "PullRequestGeneratorBitbucketServer defines connection info specific to BitbucketServer.",
+  "type": "object",
+  "required": [
+    "project",
+    "repo",
+    "api"
+  ],
+  "properties": {
+    "api": {
+      "description": "The Bitbucket REST API URL to talk to e.g. https://bitbucket.org/rest Required.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "basicAuth": {
+      "description": "Credentials for Basic auth",
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.BasicAuthBitbucketServer"
+    },
+    "bearerToken": {
+      "description": "Credentials for AccessToken (Bearer auth)",
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.BearerTokenBitbucket"
+    },
+    "caRef": {
+      "description": "ConfigMap key holding the trusted certificates",
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.ConfigMapKeyRef"
+    },
+    "insecure": {
+      "description": "Allow self-signed TLS / Certificates; default: false",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "project": {
+      "description": "Project to scan. Required.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "repo": {
+      "description": "Repo name to scan. Required.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

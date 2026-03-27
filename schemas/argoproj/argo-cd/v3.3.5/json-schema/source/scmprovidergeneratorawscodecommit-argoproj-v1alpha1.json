@@ -1,0 +1,39 @@
+{
+  "description": "SCMProviderGeneratorAWSCodeCommit defines connection info specific to AWS CodeCommit.",
+  "type": "object",
+  "properties": {
+    "allBranches": {
+      "description": "Scan all branches instead of just the default branch.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "region": {
+      "description": "Region provides the AWS region to discover repos. if not provided, AppSet controller will infer the current region from environment.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "role": {
+      "description": "Role provides the AWS IAM role to assume, for cross-account repo discovery if not provided, AppSet controller will use its pod/node identity to discover.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "tagFilters": {
+      "description": "TagFilters provides the tag filter(s) for repo discovery",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.TagFilter"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

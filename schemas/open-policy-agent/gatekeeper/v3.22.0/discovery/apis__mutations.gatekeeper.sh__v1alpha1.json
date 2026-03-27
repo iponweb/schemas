@@ -32,34 +32,6 @@
       ]
     },
     {
-      "name": "assignmetadata",
-      "singularName": "assignmetadata",
-      "namespaced": false,
-      "kind": "AssignMetadata",
-      "verbs": [
-        "delete",
-        "deletecollection",
-        "get",
-        "list",
-        "patch",
-        "create",
-        "update",
-        "watch"
-      ],
-      "storageVersionHash": "h9Kp6KoBtC4="
-    },
-    {
-      "name": "assignmetadata/status",
-      "singularName": "",
-      "namespaced": false,
-      "kind": "AssignMetadata",
-      "verbs": [
-        "get",
-        "patch",
-        "update"
-      ]
-    },
-    {
       "name": "modifyset",
       "singularName": "modifyset",
       "namespaced": false,
@@ -109,6 +81,34 @@
       "singularName": "",
       "namespaced": false,
       "kind": "Assign",
+      "verbs": [
+        "get",
+        "patch",
+        "update"
+      ]
+    },
+    {
+      "name": "assignmetadata",
+      "singularName": "assignmetadata",
+      "namespaced": false,
+      "kind": "AssignMetadata",
+      "verbs": [
+        "delete",
+        "deletecollection",
+        "get",
+        "list",
+        "patch",
+        "create",
+        "update",
+        "watch"
+      ],
+      "storageVersionHash": "h9Kp6KoBtC4="
+    },
+    {
+      "name": "assignmetadata/status",
+      "singularName": "",
+      "namespaced": false,
+      "kind": "AssignMetadata",
       "verbs": [
         "get",
         "patch",

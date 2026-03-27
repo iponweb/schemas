@@ -1,0 +1,152 @@
+{
+  "description": "AppProjectSpec is the specification of an AppProject",
+  "type": "object",
+  "properties": {
+    "clusterResourceBlacklist": {
+      "description": "ClusterResourceBlacklist contains list of blacklisted cluster level resources",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.ClusterResourceRestrictionItem"
+      }
+    },
+    "clusterResourceWhitelist": {
+      "description": "ClusterResourceWhitelist contains list of whitelisted cluster level resources",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.ClusterResourceRestrictionItem"
+      }
+    },
+    "description": {
+      "description": "Description contains optional project description",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "destinationServiceAccounts": {
+      "description": "DestinationServiceAccounts holds information about the service accounts to be impersonated for the application sync operation for each destination.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.ApplicationDestinationServiceAccount"
+      }
+    },
+    "destinations": {
+      "description": "Destinations contains list of destinations available for deployment",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.ApplicationDestination"
+      }
+    },
+    "namespaceResourceBlacklist": {
+      "description": "NamespaceResourceBlacklist contains list of blacklisted namespace level resources",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.GroupKind"
+      }
+    },
+    "namespaceResourceWhitelist": {
+      "description": "NamespaceResourceWhitelist contains list of whitelisted namespace level resources",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.GroupKind"
+      }
+    },
+    "orphanedResources": {
+      "description": "OrphanedResources specifies if controller should monitor orphaned resources of apps in this project",
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.OrphanedResourcesMonitorSettings"
+    },
+    "permitOnlyProjectScopedClusters": {
+      "description": "PermitOnlyProjectScopedClusters determines whether destinations can only reference clusters which are project-scoped",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "roles": {
+      "description": "Roles are user defined RBAC roles associated with this project",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.ProjectRole"
+      }
+    },
+    "signatureKeys": {
+      "description": "SignatureKeys contains a list of PGP key IDs that commits in Git must be signed with in order to be allowed for sync",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.SignatureKey"
+      }
+    },
+    "sourceNamespaces": {
+      "description": "SourceNamespaces defines the namespaces application resources are allowed to be created in",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "sourceRepos": {
+      "description": "SourceRepos contains list of repository URLs which can be used for deployment",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "syncWindows": {
+      "description": "SyncWindows controls when syncs can be run for apps in this project",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.SyncWindow"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

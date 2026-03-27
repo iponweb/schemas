@@ -1,15 +1,14 @@
 #!/usr/bin/env python3
 """
-Validate a generated VERSION-strict schema directory.
+Validate a generated JSON Schema directory.
 
-Usage (from the controller directory):
-    python3 ../../tools/validate.py v0.19.1-strict
+Usage:
+    python3 tools/validate.py schemas/ORG/REPO/VERSION/json-schema/source
 
 Checks:
   1. _definitions.json exists and is valid JSON
   2. All *.json files are valid JSON
   3. Every $ref in individual schemas resolves within _definitions.json
-  4. The two primary CRD schemas listed in config.yaml are present
 """
 
 import json

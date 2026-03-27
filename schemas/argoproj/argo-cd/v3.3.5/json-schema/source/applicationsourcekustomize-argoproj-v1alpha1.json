@@ -1,0 +1,177 @@
+{
+  "description": "ApplicationSourceKustomize holds options specific to an Application source specific to Kustomize",
+  "type": "object",
+  "properties": {
+    "apiVersions": {
+      "description": "APIVersions specifies the Kubernetes resource API versions to pass to Helm when templating manifests. By default, Argo CD uses the API versions of the target cluster. The format is [group/]version/kind.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "commonAnnotations": {
+      "description": "CommonAnnotations is a list of additional annotations to add to rendered manifests",
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "commonAnnotationsEnvsubst": {
+      "description": "CommonAnnotationsEnvsubst specifies whether to apply env variables substitution for annotation values",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "commonLabels": {
+      "description": "CommonLabels is a list of additional labels to add to rendered manifests",
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "components": {
+      "description": "Components specifies a list of kustomize components to add to the kustomization before building",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "forceCommonAnnotations": {
+      "description": "ForceCommonAnnotations specifies whether to force applying common annotations to resources for Kustomize apps",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "forceCommonLabels": {
+      "description": "ForceCommonLabels specifies whether to force applying common labels to resources for Kustomize apps",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "ignoreMissingComponents": {
+      "description": "IgnoreMissingComponents prevents kustomize from failing when components do not exist locally by not appending them to kustomization file",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "images": {
+      "description": "Images is a list of Kustomize image override specifications",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "kubeVersion": {
+      "description": "KubeVersion specifies the Kubernetes API version to pass to Helm when templating manifests. By default, Argo CD uses the Kubernetes version of the target cluster.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "labelIncludeTemplates": {
+      "description": "LabelIncludeTemplates specifies whether to apply common labels to resource templates or not",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "labelWithoutSelector": {
+      "description": "LabelWithoutSelector specifies whether to apply common labels to resource selectors or not",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "namePrefix": {
+      "description": "NamePrefix is a prefix appended to resources for Kustomize apps",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "nameSuffix": {
+      "description": "NameSuffix is a suffix appended to resources for Kustomize apps",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "namespace": {
+      "description": "Namespace sets the namespace that Kustomize adds to all resources",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "patches": {
+      "description": "Patches is a list of Kustomize patches",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.KustomizePatch"
+      }
+    },
+    "replicas": {
+      "description": "Replicas is a list of Kustomize Replicas override specifications",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.KustomizeReplica"
+      }
+    },
+    "version": {
+      "description": "Version controls which version of Kustomize to use for rendering manifests",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

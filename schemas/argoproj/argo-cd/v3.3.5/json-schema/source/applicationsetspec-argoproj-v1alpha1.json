@@ -1,0 +1,77 @@
+{
+  "description": "ApplicationSetSpec represents a class of application set state.",
+  "type": "object",
+  "required": [
+    "generators",
+    "template"
+  ],
+  "properties": {
+    "applyNestedSelectors": {
+      "description": "ApplyNestedSelectors enables selectors defined within the generators of two level-nested matrix or merge generators Deprecated: This field is ignored, and the behavior is always enabled. The field will be removed in a future version of the ApplicationSet CRD.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "generators": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.ApplicationSetGenerator"
+      }
+    },
+    "goTemplate": {
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "goTemplateOptions": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "ignoreApplicationDifferences": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.ApplicationSetResourceIgnoreDifferences"
+      }
+    },
+    "preservedFields": {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.ApplicationPreservedFields"
+    },
+    "strategy": {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.ApplicationSetStrategy"
+    },
+    "syncPolicy": {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.ApplicationSetSyncPolicy"
+    },
+    "template": {
+      "default": {},
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.ApplicationSetTemplate"
+    },
+    "templatePatch": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

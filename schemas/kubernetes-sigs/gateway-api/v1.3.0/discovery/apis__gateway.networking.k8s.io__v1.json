@@ -4,6 +4,37 @@
   "groupVersion": "gateway.networking.k8s.io/v1",
   "resources": [
     {
+      "name": "httproutes",
+      "singularName": "httproute",
+      "namespaced": true,
+      "kind": "HTTPRoute",
+      "verbs": [
+        "delete",
+        "deletecollection",
+        "get",
+        "list",
+        "patch",
+        "create",
+        "update",
+        "watch"
+      ],
+      "categories": [
+        "gateway-api"
+      ],
+      "storageVersionHash": "s9TOoTqdPlk="
+    },
+    {
+      "name": "httproutes/status",
+      "singularName": "",
+      "namespaced": true,
+      "kind": "HTTPRoute",
+      "verbs": [
+        "get",
+        "patch",
+        "update"
+      ]
+    },
+    {
       "name": "gatewayclasses",
       "singularName": "gatewayclass",
       "namespaced": false,
@@ -96,37 +127,6 @@
       "singularName": "",
       "namespaced": true,
       "kind": "GRPCRoute",
-      "verbs": [
-        "get",
-        "patch",
-        "update"
-      ]
-    },
-    {
-      "name": "httproutes",
-      "singularName": "httproute",
-      "namespaced": true,
-      "kind": "HTTPRoute",
-      "verbs": [
-        "delete",
-        "deletecollection",
-        "get",
-        "list",
-        "patch",
-        "create",
-        "update",
-        "watch"
-      ],
-      "categories": [
-        "gateway-api"
-      ],
-      "storageVersionHash": "s9TOoTqdPlk="
-    },
-    {
-      "name": "httproutes/status",
-      "singularName": "",
-      "namespaced": true,
-      "kind": "HTTPRoute",
       "verbs": [
         "get",
         "patch",

@@ -1,0 +1,26 @@
+{
+  "description": "HealthStatus contains information about the currently observed health state of a resource",
+  "type": "object",
+  "properties": {
+    "lastTransitionTime": {
+      "description": "LastTransitionTime is the time the HealthStatus was set or updated\n\nDeprecated: this field is not used and will be removed in a future release.",
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
+    },
+    "message": {
+      "description": "Message is a human-readable informational message describing the health status",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "status": {
+      "description": "Status holds the status code of the resource",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

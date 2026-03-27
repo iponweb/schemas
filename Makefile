@@ -20,7 +20,7 @@ builder:
 generate:
 	@test -n "$(CONTROLLER)" || (echo "ERROR: CONTROLLER is required"; exit 1)
 	@test -n "$(VERSION)"    || (echo "ERROR: VERSION is required"; exit 1)
-	docker run -it --rm \
+	docker run --rm $(if $(shell [ -t 0 ] && echo y),-it) \
 		-v "$(REPO_ROOT):/repo" \
 		-w "/repo" \
 		$(BUILDER_IMAGE) \

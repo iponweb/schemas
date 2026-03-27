@@ -1,0 +1,45 @@
+{
+  "description": "PluginGenerator defines connection info specific to Plugin.",
+  "type": "object",
+  "required": [
+    "configMapRef"
+  ],
+  "properties": {
+    "configMapRef": {
+      "default": {},
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.PluginConfigMapRef"
+    },
+    "input": {
+      "default": {},
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.PluginInput"
+    },
+    "requeueAfterSeconds": {
+      "description": "RequeueAfterSeconds determines how long the ApplicationSet controller will wait before reconciling the ApplicationSet again.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int64"
+    },
+    "template": {
+      "default": {},
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.ApplicationSetTemplate"
+    },
+    "values": {
+      "description": "Values contains key/value pairs which are passed directly as parameters to the template. These values will not be sent as parameters to the plugin.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

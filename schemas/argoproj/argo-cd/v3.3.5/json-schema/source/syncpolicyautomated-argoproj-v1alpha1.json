@@ -1,0 +1,36 @@
+{
+  "description": "SyncPolicyAutomated controls the behavior of an automated sync",
+  "type": "object",
+  "properties": {
+    "allowEmpty": {
+      "description": "AllowEmpty allows apps have zero live resources (default: false)",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "enabled": {
+      "description": "Enable allows apps to explicitly control automated sync",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "prune": {
+      "description": "Prune specifies whether to delete resources from the cluster that are not found in the sources anymore as part of automated sync (default: false)",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "selfHeal": {
+      "description": "SelfHeal specifies whether to revert resources back to their desired state upon modification in the cluster (default: false)",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

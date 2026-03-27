@@ -1,0 +1,41 @@
+{
+  "description": "ApplicationSetNestedGenerator represents a generator nested within a combination-type generator (MatrixGenerator or MergeGenerator).",
+  "type": "object",
+  "properties": {
+    "clusterDecisionResource": {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.DuckTypeGenerator"
+    },
+    "clusters": {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.ClusterGenerator"
+    },
+    "git": {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.GitGenerator"
+    },
+    "list": {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.ListGenerator"
+    },
+    "matrix": {
+      "description": "Matrix should have the form of NestedMatrixGenerator",
+      "$ref": "_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.JSON"
+    },
+    "merge": {
+      "description": "Merge should have the form of NestedMergeGenerator",
+      "$ref": "_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.JSON"
+    },
+    "plugin": {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.PluginGenerator"
+    },
+    "pullRequest": {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.PullRequestGenerator"
+    },
+    "scmProvider": {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.SCMProviderGenerator"
+    },
+    "selector": {
+      "description": "Selector allows to post-filter all generator.",
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.LabelSelector"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

@@ -435,8 +435,8 @@ def main():
                     seen_crds.add(crd_name)
                     crd_docs.append(doc)
             crds_yaml_out.write_text(
-                "---\n".join(
-                    yaml.dump(d, Dumper=_NoAnchorDumper, default_flow_style=False, sort_keys=False, allow_unicode=True)
+                "".join(
+                    "---\n" + yaml.dump(d, Dumper=_NoAnchorDumper, default_flow_style=False, sort_keys=False, allow_unicode=True)
                     for d in crd_docs
                 )
             )

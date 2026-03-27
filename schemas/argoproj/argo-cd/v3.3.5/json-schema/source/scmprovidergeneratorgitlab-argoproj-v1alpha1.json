@@ -1,0 +1,69 @@
+{
+  "description": "SCMProviderGeneratorGitlab defines connection info specific to Gitlab.",
+  "type": "object",
+  "required": [
+    "group"
+  ],
+  "properties": {
+    "allBranches": {
+      "description": "Scan all branches instead of just the default branch.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "api": {
+      "description": "The Gitlab API URL to talk to.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "caRef": {
+      "description": "ConfigMap key holding the trusted certificates",
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.ConfigMapKeyRef"
+    },
+    "group": {
+      "description": "Gitlab group to scan. Required.  You can use either the project id (recommended) or the full namespaced path.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "includeSharedProjects": {
+      "description": "When recursing through subgroups, also include shared Projects (true) or scan only the subgroups under same path (false).  Defaults to \"true\"",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "includeSubgroups": {
+      "description": "Recurse through subgroups (true) or scan only the base group (false).  Defaults to \"false\"",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "insecure": {
+      "description": "Skips validating the SCM provider's TLS certificate - useful for self-signed certificates.; default: false",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "tokenRef": {
+      "description": "Authentication token reference.",
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.SecretRef"
+    },
+    "topic": {
+      "description": "Filter repos list based on Gitlab Topic.",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

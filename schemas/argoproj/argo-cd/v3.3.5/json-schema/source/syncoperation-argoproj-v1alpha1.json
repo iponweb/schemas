@@ -1,0 +1,109 @@
+{
+  "description": "SyncOperation contains details about a sync operation.",
+  "type": "object",
+  "properties": {
+    "autoHealAttemptsCount": {
+      "description": "SelfHealAttemptsCount contains the number of auto-heal attempts",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int64"
+    },
+    "dryRun": {
+      "description": "DryRun specifies to perform a `kubectl apply --dry-run` without actually performing the sync",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "manifests": {
+      "description": "Manifests is an optional field that overrides sync source with a local directory for development",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "prune": {
+      "description": "Prune specifies to delete resources from the cluster that are no longer tracked in git",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "resources": {
+      "description": "Resources describes which resources shall be part of the sync",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.SyncOperationResource"
+      }
+    },
+    "revision": {
+      "description": "Revision is the revision (Git) or chart version (Helm) which to sync the application to If omitted, will use the revision specified in app spec.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "revisions": {
+      "description": "Revisions is the list of revision (Git) or chart version (Helm) which to sync each source in sources field for the application to If omitted, will use the revision specified in app spec.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "source": {
+      "description": "Source overrides the source definition set in the application. This is typically set in a Rollback operation and is nil during a Sync operation",
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.ApplicationSource"
+    },
+    "sources": {
+      "description": "Sources overrides the source definition set in the application. This is typically set in a Rollback operation and is nil during a Sync operation",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.ApplicationSource"
+      }
+    },
+    "syncOptions": {
+      "description": "SyncOptions provide per-sync sync-options, e.g. Validate=false",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "syncStrategy": {
+      "description": "SyncStrategy describes how to perform the sync",
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.SyncStrategy"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

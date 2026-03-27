@@ -1,0 +1,44 @@
+{
+  "description": "ApplicationSourceJsonnet holds options specific to applications of type Jsonnet",
+  "type": "object",
+  "properties": {
+    "extVars": {
+      "description": "ExtVars is a list of Jsonnet External Variables",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.JsonnetVar"
+      }
+    },
+    "libs": {
+      "description": "Additional library search dirs",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "tlas": {
+      "description": "TLAS is a list of Jsonnet Top-level Arguments",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.JsonnetVar"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}
