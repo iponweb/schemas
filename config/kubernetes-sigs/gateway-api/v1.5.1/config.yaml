@@ -1,0 +1,40 @@
+version: "v1.5.1"
+repository: "github.com/kubernetes-sigs/gateway-api"
+
+openapi_gen_packages:
+  - "sigs.k8s.io/gateway-api/apis/v1"
+  - "sigs.k8s.io/gateway-api/apis/v1alpha2"
+  - "sigs.k8s.io/gateway-api/apis/v1alpha3"
+  - "sigs.k8s.io/gateway-api/apis/v1beta1"
+  - "k8s.io/apimachinery/pkg/apis/meta/v1"
+  - "k8s.io/apimachinery/pkg/runtime"
+  - "k8s.io/apimachinery/pkg/version"
+
+go_dependencies:
+  k8s.io/apimachinery: "v0.35.2"
+  k8s.io/apiserver: "v0.35.2"
+  k8s.io/kube-openapi: "v0.0.0-20260304202019-5b3e3fdb0acf"
+
+kubernetes_swagger_url: "https://raw.githubusercontent.com/kubernetes/kubernetes/v1.35.0/api/openapi-spec/swagger.json"
+title: "kubernetes gateway api CRD OpenAPI"
+
+crd_names:
+  - "sigs.k8s.io/gateway-api/apis/v1.GatewayClass"
+  - "sigs.k8s.io/gateway-api/apis/v1.Gateway"
+  - "sigs.k8s.io/gateway-api/apis/v1.HTTPRoute"
+  - "sigs.k8s.io/gateway-api/apis/v1.GRPCRoute"
+  - "sigs.k8s.io/gateway-api/apis/v1.TLSRoute"
+  - "sigs.k8s.io/gateway-api/apis/v1.BackendTLSPolicy"
+  - "sigs.k8s.io/gateway-api/apis/v1.ReferenceGrant"
+  - "sigs.k8s.io/gateway-api/apis/v1.ListenerSet"
+  - "sigs.k8s.io/gateway-api/apis/v1alpha2.GRPCRoute"
+  - "sigs.k8s.io/gateway-api/apis/v1alpha2.ReferenceGrant"
+  - "sigs.k8s.io/gateway-api/apis/v1alpha2.TCPRoute"
+  - "sigs.k8s.io/gateway-api/apis/v1alpha2.TLSRoute"
+  - "sigs.k8s.io/gateway-api/apis/v1alpha2.UDPRoute"
+  - "sigs.k8s.io/gateway-api/apis/v1alpha3.BackendTLSPolicy"
+  - "sigs.k8s.io/gateway-api/apis/v1beta1.GatewayClass"
+  - "sigs.k8s.io/gateway-api/apis/v1beta1.Gateway"
+  - "sigs.k8s.io/gateway-api/apis/v1beta1.HTTPRoute"
+  - "sigs.k8s.io/gateway-api/apis/v1beta1.ReferenceGrant"
+crd_path: "config/crd/standard"

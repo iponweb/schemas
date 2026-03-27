@@ -1,0 +1,29 @@
+version: "v0.19.1"
+repository: "github.com/aws/karpenter"
+
+openapi_gen_packages:
+  - "github.com/aws/karpenter/pkg/apis/v1alpha1"
+  - "github.com/aws/karpenter/pkg/apis/v1alpha5"
+  - "github.com/aws/karpenter-core/pkg/apis/provisioning/v1alpha5"
+  - "knative.dev/pkg/apis"
+  - "k8s.io/apimachinery/pkg/apis/meta/v1"
+  - "k8s.io/apimachinery/pkg/runtime"
+  - "k8s.io/apimachinery/pkg/version"
+
+go_dependencies:
+  k8s.io/apimachinery: "v0.24.2"
+  k8s.io/apiserver: "v0.24.2"
+  k8s.io/kube-openapi: "v0.0.0-20220328201542-3ee0da9b0b42"
+
+kubernetes_swagger_url: "https://raw.githubusercontent.com/kubernetes/kubernetes/v1.25.2/api/openapi-spec/swagger.json"
+title: "karpenter CRD OpenAPI"
+
+crd_names:
+  - "github.com/aws/karpenter/pkg/apis/v1alpha1.AWSNodeTemplate"
+  - "github.com/aws/karpenter/pkg/apis/v1alpha5.Provisioner"
+
+crd_path: "pkg/apis/crds"
+
+host_conversion_rules:
+  "github.com/aws/karpenter-core": "core.karpenter.sh"
+  "github.com/aws/karpenter": "karpenter.sh"

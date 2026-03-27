@@ -1,0 +1,87 @@
+resources:
+- kind: ClusterSecretStore
+  group: external-secrets.io
+  version: v1alpha1
+  plural: clustersecretstores
+  scope: Cluster
+  shortNames: &id001
+  - css
+- kind: ExternalSecret
+  group: external-secrets.io
+  version: v1alpha1
+  plural: externalsecrets
+  scope: Namespaced
+  shortNames: &id002
+  - es
+- kind: PushSecret
+  group: external-secrets.io
+  version: v1alpha1
+  plural: pushsecrets
+  scope: Namespaced
+- kind: SecretStore
+  group: external-secrets.io
+  version: v1alpha1
+  plural: secretstores
+  scope: Namespaced
+  shortNames: &id003
+  - ss
+- kind: ClusterExternalSecret
+  group: external-secrets.io
+  version: v1beta1
+  plural: clusterexternalsecrets
+  scope: Cluster
+  shortNames:
+  - ces
+- kind: ClusterSecretStore
+  group: external-secrets.io
+  version: v1beta1
+  plural: clustersecretstores
+  scope: Cluster
+  shortNames: *id001
+- kind: ExternalSecret
+  group: external-secrets.io
+  version: v1beta1
+  plural: externalsecrets
+  scope: Namespaced
+  shortNames: *id002
+- kind: SecretStore
+  group: external-secrets.io
+  version: v1beta1
+  plural: secretstores
+  scope: Namespaced
+  shortNames: *id003
+- kind: ACRAccessToken
+  group: generators.external-secrets.io
+  version: v1alpha1
+  plural: acraccesstokens
+  scope: Namespaced
+  shortNames:
+  - acraccesstoken
+- kind: ECRAuthorizationToken
+  group: generators.external-secrets.io
+  version: v1alpha1
+  plural: ecrauthorizationtokens
+  scope: Namespaced
+  shortNames:
+  - ecrauthorizationtoken
+- kind: Fake
+  group: generators.external-secrets.io
+  version: v1alpha1
+  plural: fakes
+  scope: Namespaced
+  shortNames:
+  - fake
+- kind: GCRAccessToken
+  group: generators.external-secrets.io
+  version: v1alpha1
+  plural: gcraccesstokens
+  scope: Namespaced
+  shortNames:
+  - gcraccesstoken
+- kind: Password
+  group: generators.external-secrets.io
+  version: v1alpha1
+  plural: passwords
+  scope: Namespaced
+  shortNames:
+  - password

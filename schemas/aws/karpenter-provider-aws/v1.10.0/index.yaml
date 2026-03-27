@@ -1,0 +1,26 @@
+resources:
+- kind: EC2NodeClass
+  group: karpenter.k8s.aws
+  version: v1
+  plural: ec2nodeclasses
+  scope: Cluster
+  shortNames:
+  - ec2nc
+  - ec2ncs
+- kind: NodeClaim
+  group: karpenter.sh
+  version: v1
+  plural: nodeclaims
+  scope: Cluster
+- kind: NodePool
+  group: karpenter.sh
+  version: v1
+  plural: nodepools
+  scope: Cluster
+- kind: NodeOverlay
+  group: karpenter.sh
+  version: v1alpha1
+  plural: nodeoverlays
+  scope: Cluster
+  shortNames:
+  - overlays

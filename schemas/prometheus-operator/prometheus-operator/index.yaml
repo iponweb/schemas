@@ -1,0 +1,2 @@
+name: "Prometheus Operator"
+repository: "https://github.com/prometheus-operator/prometheus-operator"

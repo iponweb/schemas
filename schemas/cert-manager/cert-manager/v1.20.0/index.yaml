@@ -1,0 +1,41 @@
+resources:
+- kind: Challenge
+  group: acme.cert-manager.io
+  version: v1
+  plural: challenges
+  scope: Namespaced
+- kind: Order
+  group: acme.cert-manager.io
+  version: v1
+  plural: orders
+  scope: Namespaced
+- kind: Certificate
+  group: cert-manager.io
+  version: v1
+  plural: certificates
+  scope: Namespaced
+  shortNames:
+  - cert
+  - certs
+- kind: CertificateRequest
+  group: cert-manager.io
+  version: v1
+  plural: certificaterequests
+  scope: Namespaced
+  shortNames:
+  - cr
+  - crs
+- kind: ClusterIssuer
+  group: cert-manager.io
+  version: v1
+  plural: clusterissuers
+  scope: Cluster
+  shortNames:
+  - ciss
+- kind: Issuer
+  group: cert-manager.io
+  version: v1
+  plural: issuers
+  scope: Namespaced
+  shortNames:
+  - iss

@@ -1,0 +1,2 @@
+name: "External Secrets Operator"
+repository: "https://github.com/external-secrets/external-secrets"

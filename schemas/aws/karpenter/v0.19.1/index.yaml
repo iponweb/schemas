@@ -1,0 +1,11 @@
+resources:
+- kind: AWSNodeTemplate
+  group: karpenter.k8s.aws
+  version: v1alpha1
+  plural: awsnodetemplates
+  scope: Cluster
+- kind: Provisioner
+  group: karpenter.sh
+  version: v1alpha5
+  plural: provisioners
+  scope: Cluster

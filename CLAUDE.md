@@ -11,19 +11,23 @@ third-party controllers/operators. Schemas are used by
 ## Repository Structure
 
 ```
-json-schemas/
-  CONTROLLER/
-    generate/
-      boilerplate.go.txt         # Apache 2.0 header for openapi-gen
-      VERSION/
-        config.yaml              # All generation parameters (new shared pipeline)
-        generate-docker.sh       # Docker wrapper for running generate.py
-        patch.diff               # (optional) Patch applied to controller source
-        patch-vendor.diff        # (optional) Patch applied after go mod vendor
-        generated/               # Intermediate build artifacts (.gitignored)
-    VERSION-strict/
-      _definitions.json          # All schema definitions
-      RESOURCE-GROUP-VERSION.json # Individual resource schemas
+config/
+  boilerplate.go.txt             # Shared Apache 2.0 header for openapi-gen
+  ORG/REPO/VERSION/
+    config.yaml                  # All generation parameters
+    patch.diff                   # (optional) Patch applied to controller source
+    patch-vendor.diff            # (optional) Patch applied after go mod vendor
+    generated/                   # Intermediate build artifacts (.gitignored)
+
+schemas/
+  ORG/REPO/
+    index.yaml                   # Controller metadata (name, repository URL)
+    VERSION/
+      index.yaml                 # Version data: resource list with GVK
+      json-schema/
+        _definitions.json        # All schema definitions
+        KIND.GROUP.VERSION.json  # Individual resource schemas
+
 tools/
   generate.py                    # Shared generation pipeline script
   validate.py                    # Schema validation script
@@ -31,11 +35,15 @@ tools/
     main.go.tmpl                 # Go source template for the OpenAPI builder
 builder/
   Dockerfile                     # Builds the schema-builder Docker image
+Makefile
 ```
 
-**Exception — built-in Kubernetes schemas** live under `json-schemas/kubernetes/generate/`
-and use a single `generage.sh` (typo in filename) that fetches `swagger.json` directly
-from the Kubernetes GitHub repo — no source cloning or openapi-gen step needed.
+**ORG/REPO** mirrors the GitHub repository path (e.g. `aws/karpenter-provider-aws`).
+This is unambiguous even when multiple vendors implement the same API group.
+
+**Exception — built-in Kubernetes schemas** have no `config/kubernetes/kubernetes/` entry.
+`make generate-kubernetes VERSION=v1.34.1` fetches `swagger.json` directly from the
+Kubernetes GitHub repo and writes to `schemas/kubernetes/kubernetes/VERSION/json-schema/`.
 
 ---
 
@@ -51,23 +59,23 @@ Karpenter (and ideally all future controllers) use the shared pipeline.
 5. openapi-gen → generated/openapi/openapi_generated.go
 6. write generated/go.mod + render generated/main.go from main.go.tmpl
 7. go mod tidy && go run ./main.go → generated/openapi/openapi.json
-8. openapi2jsonschema → VERSION-strict/
+8. openapi2jsonschema → schemas/ORG/REPO/VERSION/json-schema/
 ```
 
 **Run via Docker (preferred):**
 ```bash
-make builder                                          # build image once
-make generate CONTROLLER=karpenter VERSION=v1.10.0
+make builder                                                              # build image once
+make generate CONTROLLER=aws/karpenter-provider-aws VERSION=v1.10.0
 ```
 
 **Run locally (no Docker):**
 ```bash
-make generate-local CONTROLLER=karpenter VERSION=v1.10.0
+make generate-local CONTROLLER=aws/karpenter-provider-aws VERSION=v1.10.0
 ```
 
 **Validate output:**
 ```bash
-make validate CONTROLLER=karpenter VERSION=v1.10.0
+make validate CONTROLLER=aws/karpenter-provider-aws VERSION=v1.10.0
 ```
 
 ### For built-in Kubernetes schemas
@@ -131,6 +139,20 @@ go_dependencies:
 # k8s.io/apimachinery (minor 35 → v1.35.x). If that exact patch hasn't been
 # released yet, use the latest available patch of that minor.
 kubernetes_swagger_url: "https://raw.githubusercontent.com/kubernetes/kubernetes/v1.34.1/api/openapi-spec/swagger.json"
+
+# Optional. Base URL of a Kubernetes api/discovery directory.
+# When set, tools/discover.py is run after schema generation to populate
+# schemas/ORG/REPO/VERSION/index.yaml with the full resource list (kind, group,
+# version, plural, scope, shortNames).
+#
+# Format follows the Kubernetes api/discovery convention:
+#   {base}/api__v1.json              - core group resources
+#   {base}/apis.json                 - named group enumeration
+#   {base}/apis__{group}__{ver}.json - per-group resources
+#
+# Available for Kubernetes >= 1.28. Omit for older versions or non-Kubernetes
+# controllers (CRD-based discovery is handled separately).
+discovery_base_url: "https://raw.githubusercontent.com/kubernetes/kubernetes/v1.34.1/api/discovery"
 
 # Human-readable title embedded in the generated OpenAPI spec.
 title: "karpenter CRD OpenAPI"
@@ -213,12 +235,12 @@ open('pkg/apis/v1alpha5/doc.go', 'w').write(
 # 3. Stage the original files first, THEN make the change, so git diff works:
 git add pkg/apis/v1alpha5/doc.go
 # ... make the actual edit ...
-git diff > /path/to/generate/vX.Y.Z/patch.diff
+git diff > config/ORG/REPO/vX.Y.Z/patch.diff
 
 # OR: stage originals and commit, then make edits, then git diff HEAD
 git add -A && git commit -m "orig"
 # ... edit ...
-git diff HEAD > /path/to/generate/vX.Y.Z/patch.diff
+git diff HEAD > config/ORG/REPO/vX.Y.Z/patch.diff
 ```
 
 ### patch-vendor.diff — vendor patches (after `go mod vendor`)
@@ -256,14 +278,14 @@ open('vendor/some/dep/doc.go', 'w').write(
 "
 
 # 4. Capture the diff
-git diff vendor/some/dep/doc.go > /path/to/generate/vX.Y.Z/patch-vendor.diff
+git diff vendor/some/dep/doc.go > config/ORG/REPO/vX.Y.Z/patch-vendor.diff
 ```
 
 **Important:** always verify the patch applies cleanly before committing:
 
 ```bash
 git stash
-git apply --check /path/to/generate/vX.Y.Z/patch-vendor.diff && echo "OK"
+git apply --check config/ORG/REPO/vX.Y.Z/patch-vendor.diff && echo "OK"
 ```
 
 Never write patch files by hand — the blank-line context rule in unified diffs
