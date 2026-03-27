@@ -1,0 +1,60 @@
+{
+  "description": "SlackAction configures a single Slack action that is sent with each notification. See https://api.slack.com/docs/message-attachments#action_fields and https://api.slack.com/docs/message-buttons for more information.",
+  "type": "object",
+  "required": [
+    "type",
+    "text"
+  ],
+  "properties": {
+    "confirm": {
+      "description": "confirm defines an optional confirmation dialog that appears before the action is executed. When set, users must confirm their intent before the action proceeds.",
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1beta1.SlackConfirmationField"
+    },
+    "name": {
+      "description": "name defines a unique identifier for the action within the message. This value is sent back to your application when the action is triggered.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "style": {
+      "description": "style defines the visual appearance of the action element. Valid values include \"default\", \"primary\" (green), and \"danger\" (red).",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "text": {
+      "description": "text defines the user-visible label displayed on the action element. For buttons, this is the button text. For select menus, this is the placeholder text.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "type": {
+      "description": "type defines the type of interactive component. Common values include \"button\" for clickable buttons and \"select\" for dropdown menus.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "url": {
+      "description": "url defines the URL to open when the action is triggered. Only applicable for button-type actions. When set, clicking the button opens this URL.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "value": {
+      "description": "value defines the payload sent when the action is triggered. This data is included in the callback sent to your application.",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

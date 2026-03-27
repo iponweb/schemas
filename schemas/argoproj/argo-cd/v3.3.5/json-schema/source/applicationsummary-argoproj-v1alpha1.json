@@ -1,0 +1,36 @@
+{
+  "description": "ApplicationSummary contains information about URLs and container images used by an application",
+  "type": "object",
+  "properties": {
+    "externalURLs": {
+      "description": "ExternalURLs holds all external URLs of application child resources.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "images": {
+      "description": "Images holds all images of application child resources.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

@@ -1,0 +1,66 @@
+{
+  "description": "GlobalSMTPConfig configures global SMTP parameters. See https://prometheus.io/docs/alerting/latest/configuration/#configuration-file",
+  "type": "object",
+  "properties": {
+    "authIdentity": {
+      "description": "authIdentity represents SMTP Auth using PLAIN",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "authPassword": {
+      "description": "authPassword represents SMTP Auth using LOGIN and PLAIN.",
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SecretKeySelector"
+    },
+    "authSecret": {
+      "description": "authSecret represents SMTP Auth using CRAM-MD5.",
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SecretKeySelector"
+    },
+    "authUsername": {
+      "description": "authUsername represents SMTP Auth using CRAM-MD5, LOGIN and PLAIN. If empty, Alertmanager doesn't authenticate to the SMTP server.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "forceImplicitTLS": {
+      "description": "forceImplicitTLS defines whether to force use of implicit TLS (direct TLS connection) for better security. true: force use of implicit TLS (direct TLS connection on any port) false: force disable implicit TLS (use explicit TLS/STARTTLS if required) nil (default): auto-detect based on port (465=implicit, other=explicit) for backward compatibility It requires Alertmanager >= v0.31.0.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "from": {
+      "description": "from defines the default SMTP From header field.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "hello": {
+      "description": "hello defines the default hostname to identify to the SMTP server.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "requireTLS": {
+      "description": "requireTLS defines the default SMTP TLS requirement. Note that Go does not support unencrypted connections to remote SMTP endpoints.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "smartHost": {
+      "description": "smartHost defines the default SMTP smarthost used for sending emails.",
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.HostPort"
+    },
+    "tlsConfig": {
+      "description": "tlsConfig defines the default TLS configuration for SMTP receivers",
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.SafeTLSConfig"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

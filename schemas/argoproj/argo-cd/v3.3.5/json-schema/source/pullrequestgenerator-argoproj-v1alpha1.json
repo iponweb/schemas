@@ -1,0 +1,72 @@
+{
+  "description": "PullRequestGenerator defines a generator that scrapes a PullRequest API to find candidate pull requests.",
+  "type": "object",
+  "properties": {
+    "azuredevops": {
+      "description": "Additional provider to use and config for it.",
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.PullRequestGeneratorAzureDevOps"
+    },
+    "bitbucket": {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.PullRequestGeneratorBitbucket"
+    },
+    "bitbucketServer": {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.PullRequestGeneratorBitbucketServer"
+    },
+    "continueOnRepoNotFoundError": {
+      "description": "ContinueOnRepoNotFoundError is a flag to continue the ApplicationSet Pull Request generator parameters generation even if the repository is not found.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "filters": {
+      "description": "Filters for which pull requests should be considered.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.PullRequestGeneratorFilter"
+      }
+    },
+    "gitea": {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.PullRequestGeneratorGitea"
+    },
+    "github": {
+      "description": "Which provider to use and config for it.",
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.PullRequestGeneratorGithub"
+    },
+    "gitlab": {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.PullRequestGeneratorGitLab"
+    },
+    "requeueAfterSeconds": {
+      "description": "Standard parameters.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int64"
+    },
+    "template": {
+      "default": {},
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.ApplicationSetTemplate"
+    },
+    "values": {
+      "description": "Values contains key/value pairs which are passed directly as parameters to the template",
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

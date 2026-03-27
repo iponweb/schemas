@@ -1,0 +1,38 @@
+{
+  "type": "object",
+  "properties": {
+    "assignDomain": {
+      "description": "AssignDomain sets the domain component on an image string. The trailing slash should not be included.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "assignPath": {
+      "description": "AssignPath sets the domain component on an image string.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "assignTag": {
+      "description": "AssignImage sets the image component on an image string. It must start with a `:` or `@`.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "pathTests": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/sh.gatekeeper.mutations.v1alpha1.PathTest"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

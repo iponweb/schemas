@@ -1,0 +1,37 @@
+{
+  "description": "VMClusterStatus defines the observed state of VMCluster",
+  "type": "object",
+  "properties": {
+    "clusterStatus": {
+      "description": "LegacyStatus is deprecated and will be removed at v0.52.0 version",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "observedGeneration": {
+      "description": "ObservedGeneration defines current generation picked by operator for the reconcile",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int64"
+    },
+    "reason": {
+      "description": "Reason defines human readable error reason",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "updateStatus": {
+      "description": "UpdateStatus defines a status for update rollout",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

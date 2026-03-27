@@ -1,0 +1,32 @@
+{
+  "description": "AlertmanagerWebSpec defines the web command line flags when starting Alertmanager.",
+  "type": "object",
+  "properties": {
+    "getConcurrency": {
+      "description": "getConcurrency defines the maximum number of GET requests processed concurrently. This corresponds to the Alertmanager's `--web.get-concurrency` flag.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int64"
+    },
+    "httpConfig": {
+      "description": "httpConfig defines HTTP parameters for web server.",
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.WebHTTPConfig"
+    },
+    "timeout": {
+      "description": "timeout for HTTP requests. This corresponds to the Alertmanager's `--web.timeout` flag.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int64"
+    },
+    "tlsConfig": {
+      "description": "tlsConfig defines the TLS parameters for HTTPS.",
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.WebTLSConfig"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

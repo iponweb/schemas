@@ -1,0 +1,2 @@
+name: "Karpenter Provider AWS"
+repository: "https://github.com/aws/karpenter-provider-aws"

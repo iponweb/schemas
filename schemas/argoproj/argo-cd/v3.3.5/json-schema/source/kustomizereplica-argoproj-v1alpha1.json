@@ -1,0 +1,23 @@
+{
+  "type": "object",
+  "required": [
+    "name",
+    "count"
+  ],
+  "properties": {
+    "count": {
+      "description": "Number of replicas",
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.util.intstr.IntOrString"
+    },
+    "name": {
+      "description": "Name of Deployment or StatefulSet",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

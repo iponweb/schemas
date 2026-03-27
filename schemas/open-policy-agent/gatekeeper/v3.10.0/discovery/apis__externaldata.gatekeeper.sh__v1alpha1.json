@@ -1,0 +1,24 @@
+{
+  "kind": "APIResourceList",
+  "apiVersion": "v1",
+  "groupVersion": "externaldata.gatekeeper.sh/v1alpha1",
+  "resources": [
+    {
+      "name": "providers",
+      "singularName": "provider",
+      "namespaced": false,
+      "kind": "Provider",
+      "verbs": [
+        "delete",
+        "deletecollection",
+        "get",
+        "list",
+        "patch",
+        "create",
+        "update",
+        "watch"
+      ],
+      "storageVersionHash": "gR9CHXNEygY="
+    }
+  ]
+}

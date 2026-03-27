@@ -1,0 +1,72 @@
+{
+  "description": "VMAlertmanagerTracingConfig defines Tracing configuration for alertmanager",
+  "type": "object",
+  "required": [
+    "endpoint"
+  ],
+  "properties": {
+    "client_type": {
+      "description": "ClientType defines tracing client protocol",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "compression": {
+      "description": "Compression defines compression algorithm for tracing",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "endpoint": {
+      "description": "Endpoint defines tracing URL where traces will be sent",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "http_headers": {
+      "description": "HTTPHeaders defines custom HTTP headers for tracing",
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "insecure": {
+      "description": "Insecure allows TLS configuration to be omitted",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "sampling_fraction": {
+      "description": "SamplingFraction defines fraction of the requests that should be sampled",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "timeout": {
+      "description": "Timeout defines tracing connection timeout",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "tls_config": {
+      "description": "TLSConfig defines tracing TLS config",
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.TLSClientConfig"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

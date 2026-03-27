@@ -1,0 +1,43 @@
+{
+  "description": "ObjectReference references a PodMonitor, ServiceMonitor, Probe or PrometheusRule object.",
+  "type": "object",
+  "required": [
+    "resource",
+    "namespace"
+  ],
+  "properties": {
+    "group": {
+      "description": "Group of the referent. When not specified, it defaults to `monitoring.coreos.com`",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "name": {
+      "description": "Name of the referent. When not set, all resources are matched.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "namespace": {
+      "description": "Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "resource": {
+      "description": "Resource of the referent.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

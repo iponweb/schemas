@@ -1,0 +1,82 @@
+{
+  "type": "object",
+  "required": [
+    "availabilityZone",
+    "id",
+    "instanceMatchCriteria",
+    "instanceType",
+    "ownerID"
+  ],
+  "properties": {
+    "availabilityZone": {
+      "description": "The availability zone the capacity reservation is available in.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "endTime": {
+      "description": "The time at which the capacity reservation expires. Once expired, the reserved capacity is released and Karpenter will no longer be able to launch instances into that reservation.",
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
+    },
+    "id": {
+      "description": "The id for the capacity reservation.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "instanceMatchCriteria": {
+      "description": "Indicates the type of instance launches the capacity reservation accepts.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "instanceType": {
+      "description": "The instance type for the capacity reservation.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "interruptible": {
+      "description": "Indicates whether this capacity reservation is interruptible",
+      "type": [
+        "boolean",
+        "null"
+      ],
+      "default": false
+    },
+    "ownerID": {
+      "description": "The ID of the AWS account that owns the capacity reservation.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "reservationType": {
+      "description": "The type of capacity reservation.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "state": {
+      "description": "The state of the capacity reservation. A capacity reservation is considered to be expiring if it is within the EC2 reclaimation window. Only capacity-block reservations may be in this state.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

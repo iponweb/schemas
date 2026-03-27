@@ -1,0 +1,63 @@
+{
+  "type": "object",
+  "properties": {
+    "dnsDomains": {
+      "description": "DNSDomains is a list of DNS domains that are permitted or excluded.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "emailAddresses": {
+      "description": "EmailAddresses is a list of Email Addresses that are permitted or excluded.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "ipRanges": {
+      "description": "IPRanges is a list of IP Ranges that are permitted or excluded. This should be a valid CIDR notation.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "uriDomains": {
+      "description": "URIDomains is a list of URI domains that are permitted or excluded.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

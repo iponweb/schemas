@@ -1,0 +1,55 @@
+{
+  "description": "HydrateOperation contains information about the most recent hydrate operation",
+  "type": "object",
+  "required": [
+    "phase",
+    "message"
+  ],
+  "properties": {
+    "drySHA": {
+      "description": "DrySHA holds the resolved revision (sha) of the dry source as of the most recent reconciliation",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "finishedAt": {
+      "description": "FinishedAt indicates when the hydrate operation finished",
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
+    },
+    "hydratedSHA": {
+      "description": "HydratedSHA holds the resolved revision (sha) of the hydrated source as of the most recent reconciliation",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "message": {
+      "description": "Message contains a message describing the current status of the hydrate operation",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "phase": {
+      "description": "Phase indicates the status of the hydrate operation",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "sourceHydrator": {
+      "description": "SourceHydrator holds the hydrator config used for the hydrate operation",
+      "default": {},
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.SourceHydrator"
+    },
+    "startedAt": {
+      "description": "StartedAt indicates when the hydrate operation started",
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

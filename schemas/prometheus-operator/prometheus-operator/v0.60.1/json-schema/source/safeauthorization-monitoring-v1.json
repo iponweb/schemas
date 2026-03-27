@@ -1,0 +1,19 @@
+{
+  "description": "SafeAuthorization specifies a subset of the Authorization struct, that is safe for use in Endpoints (no CredentialsFile field)",
+  "type": "object",
+  "properties": {
+    "credentials": {
+      "description": "The secret's key that contains the credentials of the request",
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SecretKeySelector"
+    },
+    "type": {
+      "description": "Set the authentication type. Defaults to Bearer, Basic will cause an error",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

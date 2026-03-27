@@ -1,0 +1,26 @@
+{
+  "description": "ConfigResourceStatus is the most recent observed status of the Configuration Resource (ServiceMonitor, PodMonitor, Probes, ScrapeConfig, PrometheusRule or AlertmanagerConfig). Read-only. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#spec-and-status",
+  "type": "object",
+  "properties": {
+    "bindings": {
+      "description": "bindings defines the list of workload resources (Prometheus, PrometheusAgent, ThanosRuler or Alertmanager) which select the configuration resource.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.WorkloadBinding"
+      },
+      "x-kubernetes-list-map-keys": [
+        "group",
+        "resource",
+        "name",
+        "namespace"
+      ],
+      "x-kubernetes-list-type": "map"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

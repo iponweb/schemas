@@ -1,0 +1,26 @@
+{
+  "description": "VMDistributedAuth defines a VMAuth by name or inline spec",
+  "type": "object",
+  "properties": {
+    "enabled": {
+      "description": "Enabled defines if vmauth should be created.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "name": {
+      "description": "Name specifies the static name to be used for the VMDistributedAuth when Spec is provided.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "spec": {
+      "description": "Spec defines the desired state of a new VMAuth.",
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.VMAuthSpec"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

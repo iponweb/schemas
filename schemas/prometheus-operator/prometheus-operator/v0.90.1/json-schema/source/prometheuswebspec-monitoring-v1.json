@@ -1,0 +1,31 @@
+{
+  "description": "PrometheusWebSpec defines the configuration of the Prometheus web server.",
+  "type": "object",
+  "properties": {
+    "httpConfig": {
+      "description": "httpConfig defines HTTP parameters for web server.",
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.WebHTTPConfig"
+    },
+    "maxConnections": {
+      "description": "maxConnections defines the maximum number of simultaneous connections A zero value means that Prometheus doesn't accept any incoming connection.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32"
+    },
+    "pageTitle": {
+      "description": "pageTitle defines the prometheus web page title.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "tlsConfig": {
+      "description": "tlsConfig defines the TLS parameters for HTTPS.",
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.WebTLSConfig"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

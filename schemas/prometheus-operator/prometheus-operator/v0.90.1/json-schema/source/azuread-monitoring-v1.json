@@ -1,0 +1,38 @@
+{
+  "description": "AzureAD defines the configuration for remote write's azuread parameters.",
+  "type": "object",
+  "properties": {
+    "cloud": {
+      "description": "cloud defines the Azure Cloud. Options are 'AzurePublic', 'AzureChina', or 'AzureGovernment'.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "managedIdentity": {
+      "description": "managedIdentity defines the Azure User-assigned Managed identity. Cannot be set at the same time as `oauth`, `sdk` or `workloadIdentity`.",
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.ManagedIdentity"
+    },
+    "oauth": {
+      "description": "oauth defines the oauth config that is being used to authenticate. Cannot be set at the same time as `managedIdentity`, `sdk` or `workloadIdentity`.\n\nIt requires Prometheus >= v2.48.0 or Thanos >= v0.31.0.",
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.AzureOAuth"
+    },
+    "scope": {
+      "description": "scope is the custom OAuth 2.0 scope to request when acquiring tokens. It requires Prometheus >= 3.9.0. Currently not supported by Thanos.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "sdk": {
+      "description": "sdk defines the Azure SDK config that is being used to authenticate. See https://learn.microsoft.com/en-us/azure/developer/go/azure-sdk-authentication Cannot be set at the same time as `oauth`, `managedIdentity` or `workloadIdentity`.\n\nIt requires Prometheus >= v2.52.0 or Thanos >= v0.36.0.",
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.AzureSDK"
+    },
+    "workloadIdentity": {
+      "description": "workloadIdentity defines the Azure Workload Identity authentication. Cannot be set at the same time as `oauth`, `managedIdentity`, or `sdk`.\n\nIt requires Prometheus >= 3.7.0. Currently not supported by Thanos.",
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.AzureWorkloadIdentity"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

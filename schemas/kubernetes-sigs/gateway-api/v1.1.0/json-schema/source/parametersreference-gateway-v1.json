@@ -1,0 +1,44 @@
+{
+  "description": "ParametersReference identifies an API object containing controller-specific configuration resource within the cluster.",
+  "type": "object",
+  "required": [
+    "group",
+    "kind",
+    "name"
+  ],
+  "properties": {
+    "group": {
+      "description": "Group is the group of the referent.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "kind": {
+      "description": "Kind is kind of the referent.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "name": {
+      "description": "Name is the name of the referent.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "namespace": {
+      "description": "Namespace is the namespace of the referent. This field is required when referring to a Namespace-scoped resource and MUST be unset when referring to a Cluster-scoped resource.",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

@@ -1,0 +1,12 @@
+{
+  "type": "object",
+  "properties": {
+    "alert": {
+      "description": "alert defines the parameters of the Prometheus rules' engine.\n\nAny update to these parameters trigger a restart of the pods.",
+      "default": {},
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.RulesAlert"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

@@ -1,0 +1,197 @@
+{
+  "description": "PodMetricsEndpoint defines an endpoint serving Prometheus metrics to be scraped by Prometheus.",
+  "type": "object",
+  "properties": {
+    "authorization": {
+      "description": "authorization configures the Authorization header credentials used by the client.\n\nCannot be set at the same time as `basicAuth`, `bearerTokenSecret` or `oauth2`.",
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.SafeAuthorization"
+    },
+    "basicAuth": {
+      "description": "basicAuth defines the Basic Authentication credentials used by the client.\n\nCannot be set at the same time as `authorization`, `bearerTokenSecret` or `oauth2`.",
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.BasicAuth"
+    },
+    "bearerTokenSecret": {
+      "description": "bearerTokenSecret defines a key of a Secret containing the bearer token used by the client for authentication. The secret needs to be in the same namespace as the custom resource and readable by the Prometheus Operator.\n\nCannot be set at the same time as `authorization`, `basicAuth` or `oauth2`.\n\n\nDeprecated: use `authorization` instead.",
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SecretKeySelector"
+    },
+    "enableHttp2": {
+      "description": "enableHttp2 can be used to disable HTTP2.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "filterRunning": {
+      "description": "filterRunning when true, the pods which are not running (e.g. either in Failed or Succeeded state) are dropped during the target discovery.\n\nIf unset, the filtering is enabled.\n\nMore info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#pod-phase",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "followRedirects": {
+      "description": "followRedirects defines whether the client should follow HTTP 3xx redirects.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "honorLabels": {
+      "description": "honorLabels when true preserves the metric's labels when they collide with the target's labels.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "honorTimestamps": {
+      "description": "honorTimestamps defines whether Prometheus preserves the timestamps when exposed by the target.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "interval": {
+      "description": "interval at which Prometheus scrapes the metrics from the target.\n\nIf empty, Prometheus uses the global scrape interval.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "metricRelabelings": {
+      "description": "metricRelabelings defines the relabeling rules to apply to the samples before ingestion.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.RelabelConfig"
+      }
+    },
+    "noProxy": {
+      "description": "noProxy defines a comma-separated string that can contain IPs, CIDR notation, domain names that should be excluded from proxying. IP and domain names can contain port numbers.\n\nIt requires Prometheus >= v2.43.0, Alertmanager >= v0.25.0 or Thanos >= v0.32.0.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "oauth2": {
+      "description": "oauth2 defines the OAuth2 settings used by the client.\n\nIt requires Prometheus >= 2.27.0.\n\nCannot be set at the same time as `authorization`, `basicAuth` or `bearerTokenSecret`.",
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.OAuth2"
+    },
+    "params": {
+      "description": "params define optional HTTP URL parameters.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": {
+        "type": [
+          "array",
+          "null"
+        ],
+        "items": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "default": ""
+        }
+      }
+    },
+    "path": {
+      "description": "path defines the HTTP path from which to scrape for metrics.\n\nIf empty, Prometheus uses the default value (e.g. `/metrics`).",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "port": {
+      "description": "port defines the `Pod` port name which exposes the endpoint.\n\nIf the pod doesn't expose a port with the same name, it will result in no targets being discovered.\n\nIf a `Pod` has multiple `Port`s with the same name (which is not recommended), one target instance per unique port number will be generated.\n\nIt takes precedence over the `portNumber` and `targetPort` fields.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "portNumber": {
+      "description": "portNumber defines the `Pod` port number which exposes the endpoint.\n\nThe `Pod` must declare the specified `Port` in its spec or the target will be dropped by Prometheus.\n\nThis cannot be used to enable scraping of an undeclared port. To scrape targets on a port which isn't exposed, you need to use relabeling to override the `__address__` label (but beware of duplicate targets if the `Pod` has other declared ports).\n\nIn practice Prometheus will select targets for which the matches the target's __meta_kubernetes_pod_container_port_number.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32"
+    },
+    "proxyConnectHeader": {
+      "description": "proxyConnectHeader optionally specifies headers to send to proxies during CONNECT requests.\n\nIt requires Prometheus >= v2.43.0, Alertmanager >= v0.25.0 or Thanos >= v0.32.0.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": {
+        "type": [
+          "array",
+          "null"
+        ],
+        "items": {
+          "default": {},
+          "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SecretKeySelector"
+        }
+      }
+    },
+    "proxyFromEnvironment": {
+      "description": "proxyFromEnvironment defines whether to use the proxy configuration defined by environment variables (HTTP_PROXY, HTTPS_PROXY, and NO_PROXY).\n\nIt requires Prometheus >= v2.43.0, Alertmanager >= v0.25.0 or Thanos >= v0.32.0.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "proxyUrl": {
+      "description": "proxyUrl defines the HTTP proxy server to use.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "relabelings": {
+      "description": "relabelings defines the relabeling rules to apply the target's metadata labels.\n\nThe Operator automatically adds relabelings for a few standard Kubernetes fields.\n\nThe original scrape job's name is available via the `__tmp_prometheus_job_name` label.\n\nMore info: https://prometheus.io/docs/prometheus/latest/configuration/configuration/#relabel_config",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.RelabelConfig"
+      }
+    },
+    "scheme": {
+      "description": "scheme defines the HTTP scheme to use for scraping.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "scrapeTimeout": {
+      "description": "scrapeTimeout defines the timeout after which Prometheus considers the scrape to be failed.\n\nIf empty, Prometheus uses the global scrape timeout unless it is less than the target's scrape interval value in which the latter is used. The value cannot be greater than the scrape interval otherwise the operator will reject the resource.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "targetPort": {
+      "description": "targetPort defines the name or number of the target port of the `Pod` object behind the Service, the port must be specified with container port property.\n\nDeprecated: use 'port' or 'portNumber' instead.",
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.util.intstr.IntOrString"
+    },
+    "tlsConfig": {
+      "description": "tlsConfig defines the TLS configuration used by the client.",
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.SafeTLSConfig"
+    },
+    "trackTimestampsStaleness": {
+      "description": "trackTimestampsStaleness defines whether Prometheus tracks staleness of the metrics that have an explicit timestamp present in scraped data. Has no effect if `honorTimestamps` is false.\n\nIt requires Prometheus >= v2.48.0.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

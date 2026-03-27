@@ -1,0 +1,558 @@
+{
+  "description": "ScrapeConfigSpec is a specification of the desired configuration for a scrape configuration.",
+  "type": "object",
+  "properties": {
+    "authorization": {
+      "description": "authorization defines the header to use on every scrape request.",
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.SafeAuthorization"
+    },
+    "azureSDConfigs": {
+      "description": "azureSDConfigs defines a list of Azure service discovery configurations.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.AzureSDConfig"
+      }
+    },
+    "basicAuth": {
+      "description": "basicAuth defines information to use on every scrape request.",
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.BasicAuth"
+    },
+    "bodySizeLimit": {
+      "description": "bodySizeLimit defines a per-scrape limit on the size of the uncompressed response body that will be accepted by Prometheus. Targets responding with a body larger than this many bytes will cause the scrape to fail.\n\nIt requires Prometheus >= v2.28.0.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "consulSDConfigs": {
+      "description": "consulSDConfigs defines a list of Consul service discovery configurations.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.ConsulSDConfig"
+      }
+    },
+    "convertClassicHistogramsToNHCB": {
+      "description": "convertClassicHistogramsToNHCB defines whether to convert all scraped classic histograms into a native histogram with custom buckets. It requires Prometheus >= v3.0.0.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "digitalOceanSDConfigs": {
+      "description": "digitalOceanSDConfigs defines a list of DigitalOcean service discovery configurations.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.DigitalOceanSDConfig"
+      }
+    },
+    "dnsSDConfigs": {
+      "description": "dnsSDConfigs defines a list of DNS service discovery configurations.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.DNSSDConfig"
+      }
+    },
+    "dockerSDConfigs": {
+      "description": "dockerSDConfigs defines a list of Docker service discovery configurations.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.DockerSDConfig"
+      }
+    },
+    "dockerSwarmSDConfigs": {
+      "description": "dockerSwarmSDConfigs defines a list of Dockerswarm service discovery configurations.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.DockerSwarmSDConfig"
+      }
+    },
+    "ec2SDConfigs": {
+      "description": "ec2SDConfigs defines a list of EC2 service discovery configurations.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.EC2SDConfig"
+      }
+    },
+    "enableCompression": {
+      "description": "enableCompression when false, Prometheus will request uncompressed response from the scraped target.\n\nIt requires Prometheus >= v2.49.0.\n\nIf unset, Prometheus uses true by default.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "enableHTTP2": {
+      "description": "enableHTTP2 defines whether to enable HTTP2.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "eurekaSDConfigs": {
+      "description": "eurekaSDConfigs defines a list of Eureka service discovery configurations.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.EurekaSDConfig"
+      }
+    },
+    "fallbackScrapeProtocol": {
+      "description": "fallbackScrapeProtocol defines the protocol to use if a scrape returns blank, unparseable, or otherwise invalid Content-Type.\n\nIt requires Prometheus >= v3.0.0.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "fileSDConfigs": {
+      "description": "fileSDConfigs defines a list of file service discovery configurations.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.FileSDConfig"
+      }
+    },
+    "gceSDConfigs": {
+      "description": "gceSDConfigs defines a list of GCE service discovery configurations.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.GCESDConfig"
+      }
+    },
+    "hetznerSDConfigs": {
+      "description": "hetznerSDConfigs defines a list of Hetzner service discovery configurations.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.HetznerSDConfig"
+      }
+    },
+    "honorLabels": {
+      "description": "honorLabels defines when true the metric's labels when they collide with the target's labels.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "honorTimestamps": {
+      "description": "honorTimestamps defines whether Prometheus preserves the timestamps when exposed by the target.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "httpSDConfigs": {
+      "description": "httpSDConfigs defines a list of HTTP service discovery configurations.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.HTTPSDConfig"
+      }
+    },
+    "ionosSDConfigs": {
+      "description": "ionosSDConfigs defines a list of IONOS service discovery configurations.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.IonosSDConfig"
+      }
+    },
+    "jobName": {
+      "description": "jobName defines the value of the `job` label assigned to the scraped metrics by default.\n\nThe `job_name` field in the rendered scrape configuration is always controlled by the operator to prevent duplicate job names, which Prometheus does not allow. Instead the `job` label is set by means of relabeling configs.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "keepDroppedTargets": {
+      "description": "keepDroppedTargets defines the per-scrape limit on the number of targets dropped by relabeling that will be kept in memory. 0 means no limit.\n\nIt requires Prometheus >= v2.47.0.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int64"
+    },
+    "kubernetesSDConfigs": {
+      "description": "kubernetesSDConfigs defines a list of Kubernetes service discovery configurations.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.KubernetesSDConfig"
+      }
+    },
+    "kumaSDConfigs": {
+      "description": "kumaSDConfigs defines a list of Kuma service discovery configurations.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.KumaSDConfig"
+      }
+    },
+    "labelLimit": {
+      "description": "labelLimit defines the per-scrape limit on number of labels that will be accepted for a sample. Only valid in Prometheus versions 2.27.0 and newer.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int64"
+    },
+    "labelNameLengthLimit": {
+      "description": "labelNameLengthLimit defines the per-scrape limit on length of labels name that will be accepted for a sample. Only valid in Prometheus versions 2.27.0 and newer.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int64"
+    },
+    "labelValueLengthLimit": {
+      "description": "labelValueLengthLimit defines the per-scrape limit on length of labels value that will be accepted for a sample. Only valid in Prometheus versions 2.27.0 and newer.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int64"
+    },
+    "lightSailSDConfigs": {
+      "description": "lightSailSDConfigs defines a list of Lightsail service discovery configurations.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.LightSailSDConfig"
+      }
+    },
+    "linodeSDConfigs": {
+      "description": "linodeSDConfigs defines a list of Linode service discovery configurations.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.LinodeSDConfig"
+      }
+    },
+    "metricRelabelings": {
+      "description": "metricRelabelings defines the metricRelabelings to apply to samples before ingestion.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.RelabelConfig"
+      }
+    },
+    "metricsPath": {
+      "description": "metricsPath defines the HTTP path to scrape for metrics. If empty, Prometheus uses the default value (e.g. /metrics).",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "nameEscapingScheme": {
+      "description": "nameEscapingScheme defines the metric name escaping mode to request through content negotiation.\n\nIt requires Prometheus >= v3.4.0.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "nameValidationScheme": {
+      "description": "nameValidationScheme defines the validation scheme for metric and label names.\n\nIt requires Prometheus >= v3.0.0.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "nativeHistogramBucketLimit": {
+      "description": "nativeHistogramBucketLimit defines ff there are more than this many buckets in a native histogram, buckets will be merged to stay within the limit. It requires Prometheus >= v2.45.0.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int64"
+    },
+    "nativeHistogramMinBucketFactor": {
+      "description": "nativeHistogramMinBucketFactor defines if the growth factor of one bucket to the next is smaller than this, buckets will be merged to increase the factor sufficiently. It requires Prometheus >= v2.50.0.",
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.api.resource.Quantity"
+    },
+    "noProxy": {
+      "description": "noProxy defines a comma-separated string that can contain IPs, CIDR notation, domain names that should be excluded from proxying. IP and domain names can contain port numbers.\n\nIt requires Prometheus >= v2.43.0, Alertmanager >= v0.25.0 or Thanos >= v0.32.0.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "nomadSDConfigs": {
+      "description": "nomadSDConfigs defines a list of Nomad service discovery configurations.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.NomadSDConfig"
+      }
+    },
+    "oauth2": {
+      "description": "oauth2 defines the configuration to use on every scrape request.",
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.OAuth2"
+    },
+    "openstackSDConfigs": {
+      "description": "openstackSDConfigs defines a list of OpenStack service discovery configurations.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.OpenStackSDConfig"
+      }
+    },
+    "ovhcloudSDConfigs": {
+      "description": "ovhcloudSDConfigs defines a list of OVHcloud service discovery configurations.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.OVHCloudSDConfig"
+      }
+    },
+    "params": {
+      "description": "params defines optional HTTP URL parameters",
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": {
+        "type": [
+          "array",
+          "null"
+        ],
+        "items": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "default": ""
+        }
+      }
+    },
+    "proxyConnectHeader": {
+      "description": "proxyConnectHeader optionally specifies headers to send to proxies during CONNECT requests.\n\nIt requires Prometheus >= v2.43.0, Alertmanager >= v0.25.0 or Thanos >= v0.32.0.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": {
+        "type": [
+          "array",
+          "null"
+        ],
+        "items": {
+          "default": {},
+          "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SecretKeySelector"
+        }
+      }
+    },
+    "proxyFromEnvironment": {
+      "description": "proxyFromEnvironment defines whether to use the proxy configuration defined by environment variables (HTTP_PROXY, HTTPS_PROXY, and NO_PROXY).\n\nIt requires Prometheus >= v2.43.0, Alertmanager >= v0.25.0 or Thanos >= v0.32.0.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "proxyUrl": {
+      "description": "proxyUrl defines the HTTP proxy server to use.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "puppetDBSDConfigs": {
+      "description": "puppetDBSDConfigs defines a list of PuppetDB service discovery configurations.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.PuppetDBSDConfig"
+      }
+    },
+    "relabelings": {
+      "description": "relabelings defines how to rewrite the target's labels before scraping. Prometheus Operator automatically adds relabelings for a few standard Kubernetes fields. The original scrape job's name is available via the `__tmp_prometheus_job_name` label. More info: https://prometheus.io/docs/prometheus/latest/configuration/configuration/#relabel_config",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.RelabelConfig"
+      }
+    },
+    "sampleLimit": {
+      "description": "sampleLimit defines per-scrape limit on number of scraped samples that will be accepted.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int64"
+    },
+    "scalewaySDConfigs": {
+      "description": "scalewaySDConfigs defines a list of Scaleway instances and baremetal service discovery configurations.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.ScalewaySDConfig"
+      }
+    },
+    "scheme": {
+      "description": "scheme defines the protocol scheme used for requests.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "scrapeClass": {
+      "description": "scrapeClass defines the scrape class to apply.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "scrapeClassicHistograms": {
+      "description": "scrapeClassicHistograms defines whether to scrape a classic histogram that is also exposed as a native histogram. It requires Prometheus >= v2.45.0.\n\nNotice: `scrapeClassicHistograms` corresponds to the `always_scrape_classic_histograms` field in the Prometheus configuration.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "scrapeInterval": {
+      "description": "scrapeInterval defines the interval between consecutive scrapes.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "scrapeNativeHistograms": {
+      "description": "scrapeNativeHistograms defines whether to enable scraping of native histograms. It requires Prometheus >= v3.8.0.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "scrapeProtocols": {
+      "description": "scrapeProtocols defines the protocols to negotiate during a scrape. It tells clients the protocols supported by Prometheus in order of preference (from most to least preferred).\n\nIf unset, Prometheus uses its default value.\n\nIt requires Prometheus >= v2.49.0.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      },
+      "x-kubernetes-list-type": "set"
+    },
+    "scrapeTimeout": {
+      "description": "scrapeTimeout defines the number of seconds to wait until a scrape request times out. The value cannot be greater than the scrape interval otherwise the operator will reject the resource.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "staticConfigs": {
+      "description": "staticConfigs defines a list of static targets with a common label set.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.StaticConfig"
+      }
+    },
+    "targetLimit": {
+      "description": "targetLimit defines a limit on the number of scraped targets that will be accepted.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int64"
+    },
+    "tlsConfig": {
+      "description": "tlsConfig defines the TLS configuration to use on every scrape request",
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.SafeTLSConfig"
+    },
+    "trackTimestampsStaleness": {
+      "description": "trackTimestampsStaleness defines whether Prometheus tracks staleness of the metrics that have an explicit timestamp present in scraped data. Has no effect if `honorTimestamps` is false. It requires Prometheus >= v2.48.0.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

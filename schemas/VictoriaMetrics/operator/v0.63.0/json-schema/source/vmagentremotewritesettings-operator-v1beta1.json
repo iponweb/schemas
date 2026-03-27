@@ -1,0 +1,73 @@
+{
+  "description": "VMAgentRemoteWriteSettings - defines global settings for all remoteWrite urls.",
+  "type": "object",
+  "properties": {
+    "flushInterval": {
+      "description": "Interval for flushing the data to remote storage. (default 1s)",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "label": {
+      "description": "Labels in the form 'name=value' to add to all the metrics before sending them. This overrides the label if it already exists.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "maxBlockSize": {
+      "description": "The maximum size in bytes of unpacked request to send to remote storage",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32"
+    },
+    "maxDiskUsagePerURL": {
+      "description": "The maximum file-based buffer size in bytes at -remoteWrite.tmpDataPath",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "queues": {
+      "description": "The number of concurrent queues",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32"
+    },
+    "showURL": {
+      "description": "Whether to show -remoteWrite.url in the exported metrics. It is hidden by default, since it can contain sensitive auth info",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "tmpDataPath": {
+      "description": "Path to directory where temporary data for remote write component is stored (default vmagent-remotewrite-data)",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "useMultiTenantMode": {
+      "description": "Configures vmagent accepting data via the same multitenant endpoints as vminsert at VictoriaMetrics cluster does, see [here](https://docs.victoriametrics.com/victoriametrics/vmagent/#multitenancy). it's global setting and affects all remote storage configurations",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

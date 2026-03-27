@@ -1,0 +1,34 @@
+{
+  "description": "VMDistributedZone defines items within a single zone to update.",
+  "type": "object",
+  "required": [
+    "name"
+  ],
+  "properties": {
+    "name": {
+      "description": "Name defines a name of zone, which can be used in zoneCommon spec as %ZONE%",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "remoteWrite": {
+      "description": "RemoteWrite defines VMAgent remote write settings for given zone",
+      "default": {},
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1alpha1.VMDistributedZoneRemoteWriteSpec"
+    },
+    "vmagent": {
+      "description": "VMAgent defines VMAgent to balance incoming traffic between VMClusters.",
+      "default": {},
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1alpha1.VMDistributedZoneAgent"
+    },
+    "vmcluster": {
+      "description": "VMCluster defines a new inline or referencing existing one VMCluster",
+      "default": {},
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1alpha1.VMDistributedZoneCluster"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

@@ -1,0 +1,62 @@
+{
+  "description": "PullRequestGeneratorGitLab defines connection info specific to GitLab.",
+  "type": "object",
+  "required": [
+    "project"
+  ],
+  "properties": {
+    "api": {
+      "description": "The GitLab API URL to talk to. If blank, uses https://gitlab.com/.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "caRef": {
+      "description": "ConfigMap key holding the trusted certificates",
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.ConfigMapKeyRef"
+    },
+    "insecure": {
+      "description": "Skips validating the SCM provider's TLS certificate - useful for self-signed certificates.; default: false",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "labels": {
+      "description": "Labels is used to filter the MRs that you want to target",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "project": {
+      "description": "GitLab project to scan. Required.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "pullRequestState": {
+      "description": "PullRequestState is an additional MRs filter to get only those with a certain state. Default: \"\" (all states). Valid values: opened, closed, merged, locked\".",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "tokenRef": {
+      "description": "Authentication token reference.",
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.SecretRef"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

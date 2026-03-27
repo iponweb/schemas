@@ -1,0 +1,133 @@
+{
+  "description": "PagerDutyConfig configures notifications via PagerDuty. See https://prometheus.io/docs/alerting/latest/configuration/#pagerduty_config",
+  "type": "object",
+  "properties": {
+    "class": {
+      "description": "class defines the class/type of the event.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "client": {
+      "description": "client defines the client identification.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "clientURL": {
+      "description": "clientURL defines the backlink to the sender of notification.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "component": {
+      "description": "component defines the part or component of the affected system that is broken.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "description": {
+      "description": "description of the incident.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "details": {
+      "description": "details defines the arbitrary key/value pairs that provide further detail about the incident.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1beta1.KeyValue"
+      },
+      "x-kubernetes-list-type": "atomic"
+    },
+    "group": {
+      "description": "group defines a cluster or grouping of sources.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "httpConfig": {
+      "description": "httpConfig defines the HTTP client configuration.",
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1beta1.HTTPConfig"
+    },
+    "pagerDutyImageConfigs": {
+      "description": "pagerDutyImageConfigs defines a list of image details to attach that provide further detail about an incident.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1beta1.PagerDutyImageConfig"
+      },
+      "x-kubernetes-list-type": "atomic"
+    },
+    "pagerDutyLinkConfigs": {
+      "description": "pagerDutyLinkConfigs defines a list of link details to attach that provide further detail about an incident.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1beta1.PagerDutyLinkConfig"
+      },
+      "x-kubernetes-list-type": "atomic"
+    },
+    "routingKey": {
+      "description": "routingKey defines the secret's key that contains the PagerDuty integration key (when using Events API v2). Either this field or `serviceKey` needs to be defined. The secret needs to be in the same namespace as the AlertmanagerConfig object and accessible by the Prometheus Operator.",
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1beta1.SecretKeySelector"
+    },
+    "sendResolved": {
+      "description": "sendResolved defines whether or not to notify about resolved alerts.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "serviceKey": {
+      "description": "serviceKey defines the secret's key that contains the PagerDuty service key (when using integration type \"Prometheus\"). Either this field or `routingKey` needs to be defined. The secret needs to be in the same namespace as the AlertmanagerConfig object and accessible by the Prometheus Operator.",
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1beta1.SecretKeySelector"
+    },
+    "severity": {
+      "description": "severity of the incident.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "source": {
+      "description": "source defines the unique location of the affected system.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "timeout": {
+      "description": "timeout is the maximum time allowed to invoke the pagerduty It requires Alertmanager >= v0.30.0.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "url": {
+      "description": "url defines the URL to send requests to.",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

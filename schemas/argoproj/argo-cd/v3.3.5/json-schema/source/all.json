@@ -1,0 +1,376 @@
+{
+  "oneOf": [
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.AppHealthStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.AppProject"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.AppProjectSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.AppProjectStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.Application"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.ApplicationCondition"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.ApplicationDestination"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.ApplicationDestinationServiceAccount"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.ApplicationMatchExpression"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.ApplicationPreservedFields"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.ApplicationSet"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.ApplicationSetApplicationStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.ApplicationSetCondition"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.ApplicationSetGenerator"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.ApplicationSetNestedGenerator"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.ApplicationSetResourceIgnoreDifferences"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.ApplicationSetRolloutStep"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.ApplicationSetRolloutStrategy"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.ApplicationSetSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.ApplicationSetStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.ApplicationSetStrategy"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.ApplicationSetSyncPolicy"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.ApplicationSetTemplate"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.ApplicationSetTemplateMeta"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.ApplicationSource"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.ApplicationSourceDirectory"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.ApplicationSourceHelm"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.ApplicationSourceJsonnet"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.ApplicationSourceKustomize"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.ApplicationSourcePlugin"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.ApplicationSourcePluginParameter"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.ApplicationSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.ApplicationStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.ApplicationSummary"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.Backoff"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.BasicAuthBitbucketServer"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.BearerTokenBitbucket"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.BearerTokenBitbucketCloud"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.ClusterGenerator"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.ClusterResourceRestrictionItem"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.ComparedTo"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.ConfigMapKeyRef"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.DrySource"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.DuckTypeGenerator"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.EnvEntry"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.GitDirectoryGeneratorItem"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.GitFileGeneratorItem"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.GitGenerator"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.HealthStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.HelmFileParameter"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.HelmParameter"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.HydrateOperation"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.HydrateTo"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.Info"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.JWTToken"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.JWTTokens"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.JsonnetVar"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.KustomizePatch"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.KustomizeReplica"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.KustomizeSelector"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.ListGenerator"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.ManagedNamespaceMetadata"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.MatrixGenerator"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.MergeGenerator"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.Operation"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.OperationInitiator"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.OperationState"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.OrphanedResourceKey"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.OrphanedResourcesMonitorSettings"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.PluginConfigMapRef"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.PluginGenerator"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.PluginInput"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.ProjectRole"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.PullRequestGenerator"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.PullRequestGeneratorAzureDevOps"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.PullRequestGeneratorBitbucket"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.PullRequestGeneratorBitbucketServer"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.PullRequestGeneratorFilter"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.PullRequestGeneratorGitLab"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.PullRequestGeneratorGitea"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.PullRequestGeneratorGithub"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.ResourceIgnoreDifferences"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.ResourceResult"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.ResourceStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.RetryStrategy"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.RevisionHistory"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.SCMProviderGenerator"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.SCMProviderGeneratorAWSCodeCommit"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.SCMProviderGeneratorAzureDevOps"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.SCMProviderGeneratorBitbucket"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.SCMProviderGeneratorBitbucketServer"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.SCMProviderGeneratorFilter"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.SCMProviderGeneratorGitea"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.SCMProviderGeneratorGithub"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.SCMProviderGeneratorGitlab"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.SecretRef"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.SignatureKey"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.SourceHydrator"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.SourceHydratorStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.SuccessfulHydrateOperation"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.SyncOperation"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.SyncOperationResource"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.SyncOperationResult"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.SyncPolicy"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.SyncPolicyAutomated"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.SyncSource"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.SyncStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.SyncStrategy"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.SyncStrategyApply"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.SyncStrategyHook"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.SyncWindow"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.TagFilter"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.JSON"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.FieldsV1"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.GroupKind"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.LabelSelector"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.LabelSelectorRequirement"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ManagedFieldsEntry"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.OwnerReference"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.runtime.RawExtension"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.util.intstr.IntOrString"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.api.resource.Quantity"
+    }
+  ]
+}

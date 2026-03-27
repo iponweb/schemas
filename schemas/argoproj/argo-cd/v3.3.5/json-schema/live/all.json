@@ -1,0 +1,28 @@
+{
+  "oneOf": [
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.AppProject"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.AppProjectList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.Application"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.ApplicationList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.ApplicationSet"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.ApplicationSetList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.util.intstr.IntOrString"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.api.resource.Quantity"
+    }
+  ]
+}

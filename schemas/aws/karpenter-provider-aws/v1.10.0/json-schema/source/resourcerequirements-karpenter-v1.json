@@ -1,0 +1,18 @@
+{
+  "description": "ResourceRequirements models the required resources for the NodeClaim to launch Ths will eventually be transformed into v1.ResourceRequirements when we support resources.limits",
+  "type": "object",
+  "properties": {
+    "requests": {
+      "description": "Requests describes the minimum required resources for the NodeClaim to launch",
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": {
+        "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.api.resource.Quantity"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

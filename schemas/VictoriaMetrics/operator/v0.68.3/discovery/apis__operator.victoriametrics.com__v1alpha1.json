@@ -1,0 +1,35 @@
+{
+  "kind": "APIResourceList",
+  "apiVersion": "v1",
+  "groupVersion": "operator.victoriametrics.com/v1alpha1",
+  "resources": [
+    {
+      "name": "vmdistributed",
+      "singularName": "vmdistributed",
+      "namespaced": true,
+      "kind": "VMDistributed",
+      "verbs": [
+        "delete",
+        "deletecollection",
+        "get",
+        "list",
+        "patch",
+        "create",
+        "update",
+        "watch"
+      ],
+      "storageVersionHash": "LOvKqSFzskg="
+    },
+    {
+      "name": "vmdistributed/status",
+      "singularName": "",
+      "namespaced": true,
+      "kind": "VMDistributed",
+      "verbs": [
+        "get",
+        "patch",
+        "update"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "description": "CreateCRDError represents a single error caught during parsing, compiling, etc.",
+  "type": "object",
+  "required": [
+    "code",
+    "message"
+  ],
+  "properties": {
+    "code": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "location": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "message": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

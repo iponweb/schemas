@@ -1,0 +1,15 @@
+{
+  "description": "VMRestoreOnStartConfig controls vmrestore setting",
+  "type": "object",
+  "properties": {
+    "enabled": {
+      "description": "Enabled defines if restore on start enabled",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

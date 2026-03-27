@@ -6,6 +6,7 @@ import (
 	"io"
 	"log"
 	"net/http"
+	"sort"
 	"strings"
 
 	generated "openapi-json-gen/openapi"
@@ -92,9 +93,35 @@ func main() {
 		},
 		GetDefinitions: definitionGetter,
 		GetDefinitionName: func(name string) (string, spec.Extensions) {
-			for f, t := range hostConversionRules {
+			// Sort rules longest-first so specific sub-package rules win
+			// over broad module-level fallbacks.
+			ruleKeys := make([]string, 0, len(hostConversionRules))
+			for k := range hostConversionRules {
+				ruleKeys = append(ruleKeys, k)
+			}
+			sort.Slice(ruleKeys, func(i, j int) bool {
+				return len(ruleKeys[i]) > len(ruleKeys[j])
+			})
+
+			ruleMatched := false
+			for _, f := range ruleKeys {
+				t := hostConversionRules[f]
 				if strings.HasPrefix(name, f+"/") {
+					// Sub-package match: "module/pkg/version/..." → keep path as-is
 					name = t + name[len(f):]
+					ruleMatched = true
+					break
+				}
+				if strings.HasPrefix(name, f+".") {
+					// Exact package match: "module/pkg/version.Type"
+					// Extract the version (last path segment of f) so that the
+					// version is preserved in the rewritten name:
+					// "host/version.Type" → "rev.host.version.Type"
+					fSlash := strings.LastIndex(f, "/")
+					version := f[fSlash+1:]
+					typeName := name[len(f)+1:] // skip the "."
+					name = t + "/" + version + "." + typeName
+					ruleMatched = true
 					break
 				}
 			}
@@ -106,6 +133,18 @@ func main() {
 
 			hostname := name[:sep]
 			path := name[sep+1:]
+
+			// For controller types (host conversion applied) strip the
+			// intermediate Go package path and keep only {version}.{Kind},
+			// matching the naming kube-apiserver uses for CRD types in
+			// /openapi/v2: com.coreos.monitoring.v1.Alertmanager.
+			// For k8s built-in types keep the full path for compatibility
+			// with vanilla swagger.json definition names.
+			if ruleMatched {
+				if slash := strings.LastIndex(path, "/"); slash >= 0 {
+					path = path[slash+1:]
+				}
+			}
 
 			definitionName := fmt.Sprintf("%s.%s",
 				strings.Join(reverse(strings.Split(hostname, ".")), "."),

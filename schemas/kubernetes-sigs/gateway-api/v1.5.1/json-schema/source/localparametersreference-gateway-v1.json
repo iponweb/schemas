@@ -1,0 +1,37 @@
+{
+  "description": "LocalParametersReference identifies an API object containing controller-specific configuration resource within the namespace.",
+  "type": "object",
+  "required": [
+    "group",
+    "kind",
+    "name"
+  ],
+  "properties": {
+    "group": {
+      "description": "Group is the group of the referent.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "kind": {
+      "description": "Kind is kind of the referent.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "name": {
+      "description": "Name is the name of the referent.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

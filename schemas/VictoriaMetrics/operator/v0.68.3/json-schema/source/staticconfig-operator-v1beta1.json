@@ -1,0 +1,36 @@
+{
+  "description": "StaticConfig defines a static configuration. See [here](https://docs.victoriametrics.com/victoriametrics/sd_configs/#static_configs)",
+  "type": "object",
+  "properties": {
+    "labels": {
+      "description": "Labels assigned to all metrics scraped from the targets.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "targets": {
+      "description": "List of targets for this static configuration.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

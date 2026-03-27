@@ -1,2 +1,11 @@
-**/generated/*
+# Build artifacts
+config/**/generated/
+site/node_modules/
+site/dist/
+site/.astro/
+
+# Logs
+logs/
+
+# Local tooling / IDE
 .claude/settings.local.json

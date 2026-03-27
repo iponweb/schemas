@@ -1,0 +1,36 @@
+{
+  "kind": "APIGroupList",
+  "apiVersion": "v1",
+  "groups": [
+    {
+      "name": "external-secrets.io",
+      "versions": [
+        {
+          "groupVersion": "external-secrets.io/v1beta1",
+          "version": "v1beta1"
+        },
+        {
+          "groupVersion": "external-secrets.io/v1alpha1",
+          "version": "v1alpha1"
+        }
+      ],
+      "preferredVersion": {
+        "groupVersion": "external-secrets.io/v1beta1",
+        "version": "v1beta1"
+      }
+    },
+    {
+      "name": "generators.external-secrets.io",
+      "versions": [
+        {
+          "groupVersion": "generators.external-secrets.io/v1alpha1",
+          "version": "v1alpha1"
+        }
+      ],
+      "preferredVersion": {
+        "groupVersion": "generators.external-secrets.io/v1alpha1",
+        "version": "v1alpha1"
+      }
+    }
+  ]
+}

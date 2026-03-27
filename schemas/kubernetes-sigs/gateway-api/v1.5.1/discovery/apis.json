@@ -1,0 +1,23 @@
+{
+  "kind": "APIGroupList",
+  "apiVersion": "v1",
+  "groups": [
+    {
+      "name": "gateway.networking.k8s.io",
+      "versions": [
+        {
+          "groupVersion": "gateway.networking.k8s.io/v1",
+          "version": "v1"
+        },
+        {
+          "groupVersion": "gateway.networking.k8s.io/v1beta1",
+          "version": "v1beta1"
+        }
+      ],
+      "preferredVersion": {
+        "groupVersion": "gateway.networking.k8s.io/v1",
+        "version": "v1"
+      }
+    }
+  ]
+}

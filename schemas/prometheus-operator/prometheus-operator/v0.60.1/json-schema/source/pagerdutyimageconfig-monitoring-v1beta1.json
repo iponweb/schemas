@@ -1,0 +1,29 @@
+{
+  "description": "PagerDutyImageConfig attaches images to an incident",
+  "type": "object",
+  "properties": {
+    "alt": {
+      "description": "Alt is the optional alternative text for the image.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "href": {
+      "description": "Optional URL; makes the image a clickable link.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "src": {
+      "description": "Src of the image being attached to the incident",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

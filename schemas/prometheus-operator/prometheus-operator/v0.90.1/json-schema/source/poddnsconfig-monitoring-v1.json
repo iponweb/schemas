@@ -1,0 +1,51 @@
+{
+  "description": "PodDNSConfig defines the DNS parameters of a pod in addition to those generated from DNSPolicy.",
+  "type": "object",
+  "properties": {
+    "nameservers": {
+      "description": "nameservers defines the list of DNS name server IP addresses. This will be appended to the base nameservers generated from DNSPolicy.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "options": {
+      "description": "options defines the list of DNS resolver options. This will be merged with the base options generated from DNSPolicy. Resolution options given in Options will override those that appear in the base DNSPolicy.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.PodDNSConfigOption"
+      },
+      "x-kubernetes-list-map-keys": [
+        "name"
+      ],
+      "x-kubernetes-list-type": "map"
+    },
+    "searches": {
+      "description": "searches defines the list of DNS search domains for host-name lookup. This will be appended to the base search paths generated from DNSPolicy.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

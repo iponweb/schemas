@@ -1,0 +1,25 @@
+resources:
+- kind: AppProject
+  group: argoproj.io
+  version: v1alpha1
+  plural: appprojects
+  scope: Namespaced
+  shortNames:
+  - appproj
+  - appprojs
+- kind: Application
+  group: argoproj.io
+  version: v1alpha1
+  plural: applications
+  scope: Namespaced
+  shortNames:
+  - app
+  - apps
+- kind: ApplicationSet
+  group: argoproj.io
+  version: v1alpha1
+  plural: applicationsets
+  scope: Namespaced
+  shortNames:
+  - appset
+  - appsets

@@ -11,31 +11,56 @@ third-party controllers/operators. Schemas are used by
 ## Repository Structure
 
 ```
-json-schemas/
-  CONTROLLER/
-    generate/
-      boilerplate.go.txt         # Apache 2.0 header for openapi-gen
-      VERSION/
-        config.yaml              # All generation parameters (new shared pipeline)
-        generate-docker.sh       # Docker wrapper for running generate.py
-        patch.diff               # (optional) Patch applied to controller source
-        patch-vendor.diff        # (optional) Patch applied after go mod vendor
-        generated/               # Intermediate build artifacts (.gitignored)
-    VERSION-strict/
-      _definitions.json          # All schema definitions
-      RESOURCE-GROUP-VERSION.json # Individual resource schemas
+config/
+  boilerplate.go.txt             # Shared Apache 2.0 header for openapi-gen
+  ORG/REPO/VERSION/
+    config.yaml                  # All generation parameters
+    patch.diff                   # (optional) Patch applied to controller source
+    patch-vendor.diff            # (optional) Patch applied after go mod vendor
+    generated/                   # Intermediate build artifacts (.gitignored)
+
+schemas/
+  ORG/REPO/
+    index.yaml                   # Controller metadata (name, repository URL)
+    VERSION/
+      index.yaml                 # Version data: resource list with GVK
+      crds.yaml                  # All CRDs as a single multi-document YAML (for Terraform)
+      crd/                       # Individual CRD YAML files (one per CRD name)
+      discovery/                 # Raw API discovery JSON files
+        apis.json                # Filtered APIGroupList (controller groups only)
+        apis__GROUP__VERSION.json
+      json-schema/
+        source/
+          _definitions.json      # All schema definitions (source-generated)
+          KIND.GROUP.VERSION.json
+        live/
+          _definitions.json      # All schema definitions (live kube-apiserver)
+          KIND.GROUP.VERSION.json
+      openapi/
+        source.json              # Merged OpenAPI spec from source (intermediate)
+        live.json                # Filtered OpenAPI spec from live /openapi/v2
+
 tools/
-  generate.py                    # Shared generation pipeline script
+  generate.py                    # Shared generation pipeline script (single controller/version)
+  run.py                         # Parallel runner: discovers configs, runs generate.py N-way
+  discover.py                    # Populates index.yaml from API discovery
+  envtest.py                     # Live CRD discovery via envtest kube-apiserver
+  envtest_openapi.py             # Fetches /openapi/v2 from envtest, produces json-schema/live/
   validate.py                    # Schema validation script
   openapi-json-gen/
     main.go.tmpl                 # Go source template for the OpenAPI builder
 builder/
   Dockerfile                     # Builds the schema-builder Docker image
+logs/                            # Per-job logs written by run.py (.gitignored)
+Makefile
 ```
 
-**Exception — built-in Kubernetes schemas** live under `json-schemas/kubernetes/generate/`
-and use a single `generage.sh` (typo in filename) that fetches `swagger.json` directly
-from the Kubernetes GitHub repo — no source cloning or openapi-gen step needed.
+**ORG/REPO** mirrors the GitHub repository path (e.g. `aws/karpenter-provider-aws`).
+This is unambiguous even when multiple vendors implement the same API group.
+
+**Exception — built-in Kubernetes schemas** have no `config/kubernetes/kubernetes/` entry.
+`make generate-kubernetes VERSION=v1.34.1` fetches `swagger.json` directly from the
+Kubernetes GitHub repo and writes to `schemas/kubernetes/kubernetes/VERSION/json-schema/source/`.
 
 ---
 
@@ -44,30 +69,63 @@ from the Kubernetes GitHub repo — no source cloning or openapi-gen step needed
 Karpenter (and ideally all future controllers) use the shared pipeline.
 
 ```
-1. git clone --depth 1 --branch VERSION https://REPOSITORY
-2. git apply patch.diff          # (optional) add +k8s:openapi-gen=true markers etc.
-3. go mod vendor
-4. git apply patch-vendor.diff   # (optional) patch vendor/ after download
-5. openapi-gen → generated/openapi/openapi_generated.go
-6. write generated/go.mod + render generated/main.go from main.go.tmpl
-7. go mod tidy && go run ./main.go → generated/openapi/openapi.json
-8. openapi2jsonschema → VERSION-strict/
+ 1. git clone --depth 1 --branch VERSION https://REPOSITORY
+ 2. git apply patch.diff          # (optional) add +k8s:openapi-gen=true markers etc.
+ 3. go mod vendor
+ 4. git apply patch-vendor.diff   # (optional) patch vendor/ after download
+ 5. openapi-gen → generated/openapi/openapi_generated.go
+ 6. write generated/go.mod + render generated/main.go from main.go.tmpl
+ 7. go mod tidy && go run ./main.go → generated/openapi/openapi.json
+ 8. openapi2jsonschema → schemas/ORG/REPO/VERSION/json-schema/source/
+ 9. tools/discover.py (static)   # (optional) populate index.yaml from discovery_base_url
+10. collect_crds                  # (optional) copy CRD YAMLs to crd/, write crds.yaml, populate index.yaml
+11. tools/envtest.py              # (optional) start kube-apiserver, install CRDs, populate index.yaml
+                                  #            via live discovery — overwrites step 10's resource list
+                                  #            with authoritative data; runs when crd_path is set and
+                                  #            $ENVTEST_BIN_DIR/kube-apiserver is present
+12. tools/envtest_openapi.py      # (optional, requires step 11) fetch /openapi/v2 from the same
+                                  #            API server, filter to controller groups, save
+                                  #            openapi/live.json and generate json-schema/live/
+13. compare_schemas               # (optional, requires steps 8+12) compare root CRD definition
+                                  #            names between json-schema/source/ and json-schema/live/;
+                                  #            reports mismatches that indicate wrong host_conversion_rules
 ```
 
-**Run via Docker (preferred):**
+Steps 10–13 are mutually exclusive with step 9: controllers that use `crd_path` rely on
+envtest for discovery; controllers that use `discovery_base_url` fetch static files from GitHub.
+
+**Single controller — Docker (preferred):**
 ```bash
-make builder                                          # build image once
-make generate CONTROLLER=karpenter VERSION=v1.10.0
+make builder                                                              # build image once
+make generate CONTROLLER=aws/karpenter-provider-aws VERSION=v1.10.0
 ```
 
-**Run locally (no Docker):**
+**Single controller — local (no Docker):**
 ```bash
-make generate-local CONTROLLER=karpenter VERSION=v1.10.0
+make generate-local CONTROLLER=aws/karpenter-provider-aws VERSION=v1.10.0
 ```
+
+**All controllers, all versions — 8 parallel Docker containers:**
+```bash
+make generate-all                          # 8 threads (default)
+make generate-all THREADS=4               # custom thread count
+```
+
+**All versions of one controller — parallel Docker:**
+```bash
+make generate-all-versions CONTROLLER=aws/karpenter-provider-aws
+make generate-all-versions CONTROLLER=cert-manager/cert-manager THREADS=2
+```
+
+Per-job logs are written to `logs/ORG-REPO-VERSION.log`. Failed jobs print their
+last 30 log lines to stdout and `run.py` exits non-zero.
+
+Each Docker container is named `ORG-REPO-VERSION-<4-char-hex>` so `docker ps` shows
+what is currently running.
 
 **Validate output:**
 ```bash
-make validate CONTROLLER=karpenter VERSION=v1.10.0
+make validate CONTROLLER=aws/karpenter-provider-aws VERSION=v1.10.0
 ```
 
 ### For built-in Kubernetes schemas
@@ -86,7 +144,11 @@ Every field and its role:
 # Version tag to check out from the repository (passed to git clone --branch).
 version: "v1.10.0"
 
-# Go module path of the repository to clone (no https:// prefix).
+# GitHub repository path to clone (no https:// prefix).
+# For Go modules with a major-version suffix (e.g. github.com/argoproj/argo-cd/v3),
+# use the bare GitHub repo path here (github.com/argoproj/argo-cd) — the /v3 suffix
+# is part of the Go module path but not the actual repository URL.
+# The full module path (with suffix) belongs only in openapi_gen_packages / crd_names.
 repository: "github.com/aws/karpenter-provider-aws"
 
 # Packages passed to openapi-gen for Go type analysis.
@@ -132,6 +194,39 @@ go_dependencies:
 # released yet, use the latest available patch of that minor.
 kubernetes_swagger_url: "https://raw.githubusercontent.com/kubernetes/kubernetes/v1.34.1/api/openapi-spec/swagger.json"
 
+# Optional. Base URL of a Kubernetes api/discovery directory.
+# When set, tools/discover.py is run after schema generation to populate
+# schemas/ORG/REPO/VERSION/index.yaml with the full resource list (kind, group,
+# version, plural, scope, shortNames).
+#
+# Format follows the Kubernetes api/discovery convention:
+#   {base}/api__v1.json              - core group resources
+#   {base}/apis.json                 - named group enumeration
+#   {base}/apis__{group}__{ver}.json - per-group resources
+#
+# Available for Kubernetes >= 1.28. Omit for older versions or non-Kubernetes
+# controllers (CRD-based discovery is handled separately).
+discovery_base_url: "https://raw.githubusercontent.com/kubernetes/kubernetes/v1.34.1/api/discovery"
+
+# Path (relative to the cloned repository root) where CRD YAML files live.
+# When set, generate.py:
+#   - Copies individual CRD documents to schemas/ORG/REPO/VERSION/crd/
+#     (one file per CRD, named <plural>.<group>.yaml).
+#   - Populates index.yaml with one entry per served CRD version.
+#   - If $ENVTEST_BIN_DIR/kube-apiserver is present (inside Docker), also runs
+#     tools/envtest.py to overwrite index.yaml with live discovery data.
+#
+# Mutually exclusive with discovery_base_url — use one or the other.
+#
+# Common values:
+#   "config/crd/bases"           external-secrets, secrets-store-csi-driver
+#   "config/crd/overlay"         VictoriaMetrics (multi-doc overlay files)
+#   "config/crd/standard"        gateway-api
+#   "charts/CHART/crds"          gatekeeper, cert-manager
+#   "pkg/apis/crds"              karpenter
+#   "example/prometheus-operator-crd"  prometheus-operator
+crd_path: "pkg/apis/crds"
+
 # Human-readable title embedded in the generated OpenAPI spec.
 title: "karpenter CRD OpenAPI"
 
@@ -148,12 +243,44 @@ crd_names:
 # Maps Go module prefixes to their Kubernetes API group hostnames.
 # Used by GetDefinitionName to produce OpenAPI definition keys like
 # "sh.karpenter.v1.NodePool" instead of "io.sigs.k8s.karpenter.pkg.apis.v1.NodePool".
-# Rules:
-#   - Keys are Go module path PREFIXES (not full paths).
-#   - The matching uses HasPrefix(name, key+"/") — the trailing "/" prevents
-#     "github.com/aws/karpenter" from matching "github.com/aws/karpenter-provider-aws".
-#   - Only one rule fires per type (break after first match).
-#   - Derive the value from the controller's CRD group annotation (groupName).
+#
+# Matching rules (applied longest-key-first):
+#   1. Sub-package match: HasPrefix(name, key+"/")
+#      Fires when a type lives in a sub-package of key.
+#      After replacement, the Go path is stripped to keep only {version}.{Kind}.
+#      Example key: "github.com/aws/karpenter-provider-aws"
+#      Matches:     "github.com/aws/karpenter-provider-aws/pkg/apis/v1.EC2NodeClass"
+#
+#   2. Exact package match: HasPrefix(name, key+".")
+#      Fires when a type lives in the exact package named by key.
+#      The version is extracted from the last path segment of key.
+#      Use this when a sub-package has a DIFFERENT API group than the module root.
+#      Example key: "github.com/cert-manager/cert-manager/pkg/apis/acme"
+#      Matches:     "github.com/cert-manager/cert-manager/pkg/apis/acme/v1.Challenge"
+#      Result:      "io.cert-manager.acme.v1.Challenge"
+#
+# Only one rule fires per type (break after first match). Sort longer (more
+# specific) keys first so sub-package rules win over module-level fallbacks.
+# This is done automatically inside main.go.tmpl.
+#
+# Multi-group controllers: when a controller's CRDs span multiple Kubernetes API
+# groups (e.g. "cert-manager.io" and "acme.cert-manager.io", or
+# "external-secrets.io" and "generators.external-secrets.io"), add a more-specific
+# key for each non-default group before the module-level fallback:
+#
+#   "github.com/cert-manager/cert-manager/pkg/apis/acme": "acme.cert-manager.io"
+#   "github.com/cert-manager/cert-manager": "cert-manager.io"
+#
+#   "github.com/external-secrets/external-secrets/apis/generators": "generators.external-secrets.io"
+#   "github.com/external-secrets/external-secrets": "external-secrets.io"
+#
+# For controllers whose module path doesn't match their CRD group at all
+# (e.g. gateway-api: module "sigs.k8s.io/gateway-api", group "gateway.networking.k8s.io"),
+# a single rule suffices:
+#   "sigs.k8s.io/gateway-api": "gateway.networking.k8s.io"
+#
+# Derive the group value from the controller's CRD group annotation (groupName
+# in doc.go or +groupName marker).
 host_conversion_rules:
   "github.com/aws/karpenter-provider-aws": "karpenter.k8s.aws"
   "sigs.k8s.io/karpenter": "karpenter.sh"
@@ -213,12 +340,12 @@ open('pkg/apis/v1alpha5/doc.go', 'w').write(
 # 3. Stage the original files first, THEN make the change, so git diff works:
 git add pkg/apis/v1alpha5/doc.go
 # ... make the actual edit ...
-git diff > /path/to/generate/vX.Y.Z/patch.diff
+git diff > config/ORG/REPO/vX.Y.Z/patch.diff
 
 # OR: stage originals and commit, then make edits, then git diff HEAD
 git add -A && git commit -m "orig"
 # ... edit ...
-git diff HEAD > /path/to/generate/vX.Y.Z/patch.diff
+git diff HEAD > config/ORG/REPO/vX.Y.Z/patch.diff
 ```
 
 ### patch-vendor.diff — vendor patches (after `go mod vendor`)
@@ -256,14 +383,14 @@ open('vendor/some/dep/doc.go', 'w').write(
 "
 
 # 4. Capture the diff
-git diff vendor/some/dep/doc.go > /path/to/generate/vX.Y.Z/patch-vendor.diff
+git diff vendor/some/dep/doc.go > config/ORG/REPO/vX.Y.Z/patch-vendor.diff
 ```
 
 **Important:** always verify the patch applies cleanly before committing:
 
 ```bash
 git stash
-git apply --check /path/to/generate/vX.Y.Z/patch-vendor.diff && echo "OK"
+git apply --check config/ORG/REPO/vX.Y.Z/patch-vendor.diff && echo "OK"
 ```
 
 Never write patch files by hand — the blank-line context rule in unified diffs
@@ -312,22 +439,36 @@ package contains a generic type with an OpenAPI-incompatible field (e.g.
 that package in `openapi_gen_packages`. Use `type_aliases` instead to provide the
 needed type's schema from an equivalent processable type.
 
-### type_aliases key format changed in kube-openapi ~2024-11
+### type_aliases value format depends on the openapi-gen version that generated the code
 
-In kube-openapi >= ~2024-11, types that implement `OpenAPIModelName()` use their
-model name as the definitions map key instead of the Go type path. The value in
-`type_aliases` must match the actual key:
+The `type_aliases` value must match the key that the generated `GetOpenAPIDefinitions`
+function uses for the alias target. This key format is determined by the version of
+**openapi-gen** (and its bundled kube-openapi) that produced the `openapi_generated.go`
+— NOT by the `k8s.io/kube-openapi` version in `go_dependencies`.
 
-- **Old** (kube-openapi ≤ 2024-08): `"k8s.io/apimachinery/pkg/apis/meta/v1.Condition"`
-- **New** (kube-openapi ≥ 2024-11): `"io.k8s.apimachinery.pkg.apis.meta.v1.Condition"`
+- **Old openapi-gen** (kube-openapi ≤ 2024-08): keys are Go type paths.
+  Use `"k8s.io/apimachinery/pkg/apis/meta/v1.Condition"` as the alias value.
+- **New openapi-gen** (kube-openapi ≥ 2024-11): types that implement `OpenAPIModelName()`
+  use their model name as the key.
+  Use `"io.k8s.apimachinery.pkg.apis.meta.v1.Condition"` as the alias value.
 
-Check by running: `go run -mod=mod -e - <<'EOF'`
-```go
-package main
-import (fmt; metav1 "k8s.io/apimachinery/pkg/apis/meta/v1")
-func main() { fmt.Println(metav1.Condition{}.OpenAPIModelName()) }
-EOF
+To determine which format a specific controller uses, check the generated
+`config/ORG/REPO/VERSION/generated/openapi/openapi_generated.go` for the key
+`metav1.Condition` uses in the returned map:
 ```
+grep '"k8s.io/apimachinery/pkg/apis/meta/v1.Condition"\|"io.k8s.apimachinery' \
+  config/ORG/REPO/VERSION/generated/openapi/openapi_generated.go | head -1
+```
+
+If the key starts with `"k8s.io/..."` → use the old format.
+If the key starts with `"io.k8s...."` → use the new format.
+
+The `k8s.io/kube-openapi` version in `go_dependencies` does **not** need to match the
+controller's go.mod. Using a newer version (e.g. `v0.0.0-20251125145642-4e65d59e963e`)
+is safe as long as the generated code is compatible, which it generally is.
+
+Symptoms of wrong format: generation fails with:
+> `cannot build openapi definitions: cannot find model definition for github.com/awslabs/operatorpkg/status.Condition`
 
 ### resource.Quantity missing in newer kube-openapi
 
@@ -357,6 +498,50 @@ Some repositories (e.g. `sigs.k8s.io/gateway-api` v1.5+) use Go workspace mode
 `generate.py` automatically sets `GOWORK=off` when running `go mod vendor` to work
 around this. No config change is needed.
 
+### YAML 1.1 `=` value-indicator scalar in CRD files
+
+Some CRDs (e.g. prometheus-operator's `alertmanagerconfigs`) contain `=` as a plain
+YAML scalar. Python's `yaml.SafeLoader` rejects it with:
+
+> `could not determine a constructor for the tag 'tag:yaml.org,2002:value'`
+
+Both `generate.py` (`collect_crds`) and `tools/envtest.py` (`sanitize_crds`,
+`crd_groups`) use a custom `_CRDLoader` subclass that registers a constructor for
+`tag:yaml.org,2002:value` to handle this. Do not replace these loaders with
+`yaml.SafeLoader` or files will be silently skipped.
+
+### Multi-document CRD overlay files
+
+Some repositories (e.g. VictoriaMetrics `config/crd/overlay/`) ship variant CRD files
+(`crd.yaml`, `crd.descriptionless.yaml`, `crd.specless.yaml`) each containing all CRDs
+as a multi-document YAML. `collect_crds` deduplicates by `(group, version, kind)` and
+writes one file per CRD (not a copy of the whole source file) to avoid `AlreadyExists`
+errors when `kubectl create` is run by `envtest.py`.
+
+### kubectl create vs apply for CRD installation
+
+`tools/envtest.py` uses `kubectl create` (not `apply`) to install CRDs into the
+envtest API server. `kubectl apply` adds a
+`kubectl.kubernetes.io/last-applied-configuration` annotation containing the full CRD
+JSON, which can exceed the 256 KB kube-apiserver annotation limit for large CRDs.
+
+### compare-schemas mismatch after host_conversion_rules change
+
+Step 13 (`compare_schemas`) checks that every root CRD kind appears under the same
+definition key in both `json-schema/source/` and `json-schema/live/`. A
+`MISS` in the **source** column means a `host_conversion_rules` rule is wrong or
+missing. A `MISS` in the **live** column means the CRD exists in the source but was
+not served by the live API server (usually a missing or unserved version in the chart).
+
+Common root causes for source MISS:
+- The controller has CRDs in **multiple API groups** (e.g. `cert-manager.io` and
+  `acme.cert-manager.io`) but only one module-level rule was set — add per-package
+  rules for each non-default group.
+- The module path doesn't share a prefix with the CRD group (e.g. `sigs.k8s.io/gateway-api`
+  vs `gateway.networking.k8s.io`) — add an explicit mapping.
+- A type is listed in `crd_names` but the Go type doesn't exist at that version
+  (CRD added to helm chart before Go type was written) — remove from `crd_names`.
+
 ### generated/ is gitignored
 
 The `**/generated/*` pattern in `.gitignore` covers intermediate build artifacts.
@@ -370,5 +555,11 @@ Do not commit anything under `generated/`.
 |---|---|---|
 | `openapi-gen` | Generates Go OpenAPI definitions from annotated types | `go install k8s.io/kube-openapi/cmd/openapi-gen@VERSION` |
 | `openapi2jsonschema` | Converts OpenAPI spec to JSON Schema files | Python venv (`instrumenta/openapi2jsonschema`) |
+| `setup-envtest` | Downloads envtest binaries (etcd + kube-apiserver + kubectl) | `go install sigs.k8s.io/controller-runtime/tools/setup-envtest@latest` |
+| `tools/envtest_openapi.py` | Starts envtest, fetches `/openapi/v2`, produces `json-schema/live/` | bundled in repo |
+| `tools/run.py` | Parallel generation runner (discovers configs, launches Docker containers) | bundled in repo |
 | `go` | Compiles and runs the OpenAPI builder | brew / golang.org |
 | `git` | Clones controller source | system |
+
+The Docker builder image (`make builder`) bundles all of the above including
+pre-downloaded envtest binaries at `$ENVTEST_BIN_DIR=/usr/local/kubebuilder/bin`.

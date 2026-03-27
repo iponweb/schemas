@@ -1,0 +1,323 @@
+---
+import Layout from '../../../../layouts/Layout.astro'
+import DiffView from '../../../../components/DiffView.astro'
+import { getAllControllers, getResources, getVersionDiff, sortVersions, getVersionAssets, getControllerMeta } from '../../../../lib/data'
+import type { GetStaticPaths } from 'astro'
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const controllers = getAllControllers()
+  const paths: { params: { org: string; repo: string; version: string }; props: object }[] = []
+  for (const ctrl of controllers) {
+    for (const version of ctrl.versions) {
+      paths.push({
+        params: { org: ctrl.org, repo: ctrl.repo, version },
+        props: { ctrl },
+      })
+    }
+  }
+  return paths
+}
+
+const { ctrl } = Astro.props
+const { org, repo, version } = Astro.params
+const base = import.meta.env.BASE_URL.replace(/\/$/, '')
+
+const resources = getResources(org, repo, version)
+const sortedVersions = ctrl.versions  // already sorted newest first
+
+const versionIndex = sortedVersions.indexOf(version)
+const prevVersion = sortedVersions[versionIndex + 1] ?? null
+const isLatest = versionIndex === 0
+
+let diff = null
+if (prevVersion) {
+  try {
+    diff = getVersionDiff(org, repo, version, prevVersion)
+  } catch {
+    // skip
+  }
+}
+
+const assets = getVersionAssets(org, repo, version)
+const meta = getControllerMeta(org, repo)
+---
+
+<Layout
+  title={`${org}/${repo} ${version}`}
+  description={`Schema documentation for ${org}/${repo} version ${version}`}
+  breadcrumbs={[
+    { label: org, href: `${base}/` },
+    { label: repo, href: `${base}/${org}/${repo}/` },
+    { label: version, href: `${base}/${org}/${repo}/${version}/` },
+  ]}
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <!-- Version Header -->
+    <div class="bg-white border border-zinc-200 rounded-xl p-6 mb-8 shadow-sm">
+      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+        <div>
+          <div class="text-sm text-zinc-400 mb-1">
+            <a href={`${base}/${org}/${repo}/`} class="hover:text-violet-600 transition-colors">
+              {org}/{repo}
+            </a>
+            {' / '}
+          </div>
+          <div class="flex items-center gap-3">
+            <h1 class="text-3xl font-bold text-zinc-900 font-mono">{version}</h1>
+            {isLatest && (
+              <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-violet-100 text-violet-700">
+                latest
+              </span>
+            )}
+          </div>
+        </div>
+        <div class="flex flex-wrap gap-3">
+          {versionIndex > 0 && (
+            <a
+              href={`${base}/${org}/${repo}/${sortedVersions[versionIndex - 1]}/`}
+              class="inline-flex items-center gap-1.5 px-4 py-2 text-sm bg-zinc-100 text-zinc-600 hover:bg-zinc-200 rounded-lg transition-colors"
+            >
+              Newer: {sortedVersions[versionIndex - 1]}
+            </a>
+          )}
+          {prevVersion && (
+            <a
+              href={`${base}/${org}/${repo}/${prevVersion}/`}
+              class="inline-flex items-center gap-1.5 px-4 py-2 text-sm bg-zinc-100 text-zinc-600 hover:bg-zinc-200 rounded-lg transition-colors"
+            >
+              Older: {prevVersion}
+            </a>
+          )}
+        </div>
+      </div>
+    </div>
+
+    <!-- Diff vs previous version -->
+    {diff && prevVersion && (
+      <div class="mb-8">
+        <h2 class="text-lg font-semibold text-zinc-800 mb-4">
+          Changes vs
+          <a href={`${base}/${org}/${repo}/${prevVersion}/`} class="text-violet-600 hover:text-violet-800 font-mono">
+            {prevVersion}
+          </a>
+        </h2>
+        <DiffView diff={diff} versionNew={version} versionOld={prevVersion} />
+      </div>
+    )}
+
+    <!-- Files & Links -->
+    <div class="mb-8">
+      <h2 class="text-lg font-semibold text-zinc-800 mb-4">Files &amp; Links</h2>
+      <div class="bg-white border border-zinc-200 rounded-xl shadow-sm divide-y divide-zinc-100">
+
+        {/* GitHub tree link */}
+        <a
+          href={assets.githubTree}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="flex items-center justify-between px-4 py-3 hover:bg-zinc-50 transition-colors group"
+        >
+          <div class="flex items-center gap-3">
+            <svg class="w-4 h-4 text-zinc-400 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
+            </svg>
+            <div>
+              <span class="text-sm font-medium text-zinc-700 group-hover:text-violet-700 transition-colors">Browse on GitHub</span>
+              <span class="ml-2 text-xs text-zinc-400 font-mono">schemas/{org}/{repo}/{version}/</span>
+            </div>
+          </div>
+          <svg class="w-3.5 h-3.5 text-zinc-300 group-hover:text-violet-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+          </svg>
+        </a>
+
+        {/* Controller GitHub repo */}
+        {meta?.repository && (
+          <a
+            href={`${meta.repository}/tree/${version}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex items-center justify-between px-4 py-3 hover:bg-zinc-50 transition-colors group"
+          >
+            <div class="flex items-center gap-3">
+              <svg class="w-4 h-4 text-zinc-400 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
+              </svg>
+              <div>
+                <span class="text-sm font-medium text-zinc-700 group-hover:text-violet-700 transition-colors">Controller source</span>
+                <span class="ml-2 text-xs text-zinc-400 font-mono">{meta.repository.replace('https://github.com/', '')}@{version}</span>
+              </div>
+            </div>
+            <svg class="w-3.5 h-3.5 text-zinc-300 group-hover:text-violet-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+          </a>
+        )}
+
+        {/* OpenAPI source */}
+        {assets.openapiSource && (
+          <a
+            href={assets.openapiSource}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex items-center justify-between px-4 py-3 hover:bg-zinc-50 transition-colors group"
+          >
+            <div class="flex items-center gap-3">
+              <svg class="w-4 h-4 text-zinc-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              </svg>
+              <div>
+                <span class="text-sm font-medium text-zinc-700 group-hover:text-violet-700 transition-colors">OpenAPI spec</span>
+                <span class="ml-2 text-xs text-zinc-400 font-mono">openapi/source.json</span>
+              </div>
+            </div>
+            <span class="text-xs text-zinc-400 bg-zinc-100 px-2 py-0.5 rounded font-mono">source</span>
+          </a>
+        )}
+
+        {/* OpenAPI live */}
+        {assets.openapiLive && (
+          <a
+            href={assets.openapiLive}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex items-center justify-between px-4 py-3 hover:bg-zinc-50 transition-colors group"
+          >
+            <div class="flex items-center gap-3">
+              <svg class="w-4 h-4 text-zinc-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              </svg>
+              <div>
+                <span class="text-sm font-medium text-zinc-700 group-hover:text-violet-700 transition-colors">OpenAPI spec</span>
+                <span class="ml-2 text-xs text-zinc-400 font-mono">openapi/live.json</span>
+              </div>
+            </div>
+            <span class="text-xs text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded font-mono">live</span>
+          </a>
+        )}
+
+        {/* JSON Schema definitions source */}
+        {assets.jsonSchemaSource && (
+          <a
+            href={assets.jsonSchemaSource}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex items-center justify-between px-4 py-3 hover:bg-zinc-50 transition-colors group"
+          >
+            <div class="flex items-center gap-3">
+              <svg class="w-4 h-4 text-zinc-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+              </svg>
+              <div>
+                <span class="text-sm font-medium text-zinc-700 group-hover:text-violet-700 transition-colors">JSON Schema definitions</span>
+                <span class="ml-2 text-xs text-zinc-400 font-mono">json-schema/source/_definitions.json</span>
+              </div>
+            </div>
+            <span class="text-xs text-zinc-400 bg-zinc-100 px-2 py-0.5 rounded font-mono">source</span>
+          </a>
+        )}
+
+        {/* JSON Schema definitions live */}
+        {assets.jsonSchemaLive && (
+          <a
+            href={assets.jsonSchemaLive}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex items-center justify-between px-4 py-3 hover:bg-zinc-50 transition-colors group"
+          >
+            <div class="flex items-center gap-3">
+              <svg class="w-4 h-4 text-zinc-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+              </svg>
+              <div>
+                <span class="text-sm font-medium text-zinc-700 group-hover:text-violet-700 transition-colors">JSON Schema definitions</span>
+                <span class="ml-2 text-xs text-zinc-400 font-mono">json-schema/live/_definitions.json</span>
+              </div>
+            </div>
+            <span class="text-xs text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded font-mono">live</span>
+          </a>
+        )}
+
+      </div>
+    </div>
+
+    <!-- Resources Table -->
+    <div>
+      <h2 class="text-lg font-semibold text-zinc-800 mb-4">
+        Resources
+        <span class="text-sm font-normal text-zinc-400 ml-2">({resources.length})</span>
+      </h2>
+
+      {resources.length > 0 ? (
+        <div class="bg-white border border-zinc-200 rounded-xl shadow-sm overflow-hidden">
+          <table class="w-full text-sm">
+            <thead class="bg-zinc-50 border-b border-zinc-200">
+              <tr>
+                <th class="text-left px-4 py-3 font-semibold text-zinc-600">Kind</th>
+                <th class="text-left px-4 py-3 font-semibold text-zinc-600 hidden sm:table-cell">Group</th>
+                <th class="text-left px-4 py-3 font-semibold text-zinc-600 hidden md:table-cell">API Version</th>
+                <th class="text-left px-4 py-3 font-semibold text-zinc-600">Scope</th>
+                <th class="text-left px-4 py-3 font-semibold text-zinc-600 hidden lg:table-cell">Short Names</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-zinc-100">
+              {resources.map(resource => (
+                <tr class="hover:bg-zinc-50 transition-colors">
+                  <td class="px-4 py-3">
+                    <a
+                      href={`${base}/${org}/${repo}/${version}/${resource.group || 'core'}/${resource.kind}/`}
+                      class="font-mono font-semibold text-violet-700 hover:text-violet-900 transition-colors"
+                    >
+                      {resource.kind}
+                    </a>
+                    {resource.shortNames && resource.shortNames.length > 0 && (
+                      <div class="flex flex-wrap gap-1 mt-1 sm:hidden">
+                        {resource.shortNames.map(sn => (
+                          <span class="text-xs font-mono bg-zinc-100 text-zinc-500 px-1.5 py-0.5 rounded">
+                            {sn}
+                          </span>
+                        ))}
+                      </div>
+                    )}
+                  </td>
+                  <td class="px-4 py-3 hidden sm:table-cell">
+                    <span class="font-mono text-xs text-zinc-500">
+                      {resource.group || <span class="text-zinc-300 italic">core</span>}
+                    </span>
+                  </td>
+                  <td class="px-4 py-3 hidden md:table-cell">
+                    <span class="font-mono text-xs text-zinc-500">
+                      {resource.group ? `${resource.group}/${resource.version}` : resource.version}
+                    </span>
+                  </td>
+                  <td class="px-4 py-3">
+                    <span class={`inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium ${
+                      resource.scope === 'Namespaced'
+                        ? 'bg-blue-100 text-blue-700'
+                        : 'bg-amber-100 text-amber-700'
+                    }`}>
+                      {resource.scope}
+                    </span>
+                  </td>
+                  <td class="px-4 py-3 hidden lg:table-cell">
+                    <div class="flex flex-wrap gap-1">
+                      {resource.shortNames?.map(sn => (
+                        <span class="text-xs font-mono bg-zinc-100 text-zinc-500 px-1.5 py-0.5 rounded">
+                          {sn}
+                        </span>
+                      ))}
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      ) : (
+        <div class="bg-zinc-50 border border-zinc-200 rounded-xl p-8 text-center text-zinc-400">
+          No resources found for this version
+        </div>
+      )}
+    </div>
+  </div>
+</Layout>

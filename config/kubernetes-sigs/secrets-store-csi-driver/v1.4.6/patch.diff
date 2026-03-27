@@ -1,0 +1,20 @@
+diff --git a/apis/v1/doc.go b/apis/v1/doc.go
+index 7b55ac0c..2ca66dae 100644
+--- a/apis/v1/doc.go
++++ b/apis/v1/doc.go
+@@ -18,4 +18,5 @@ limitations under the License.
+ // +kubebuilder:object:generate=true
+ // +k8s:deepcopy-gen=package,register
+ // +groupName=secrets-store.csi.x-k8s.io
++// +k8s:openapi-gen=true
+ package v1
+diff --git a/apis/v1alpha1/doc.go b/apis/v1alpha1/doc.go
+index cbf14882..cf9c9754 100644
+--- a/apis/v1alpha1/doc.go
++++ b/apis/v1alpha1/doc.go
+@@ -18,4 +18,5 @@ limitations under the License.
+ // +kubebuilder:object:generate=true
+ // +k8s:deepcopy-gen=package,register
+ // +groupName=secrets-store.csi.x-k8s.io
++// +k8s:openapi-gen=true
+ package v1alpha1

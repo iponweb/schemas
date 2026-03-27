@@ -1,0 +1,10 @@
+diff --git a/vendor/knative.dev/pkg/apis/doc.go b/vendor/knative.dev/pkg/apis/doc.go
+index 73ae032..ef7937c 100644
+--- a/vendor/knative.dev/pkg/apis/doc.go
++++ b/vendor/knative.dev/pkg/apis/doc.go
+@@ -15,4 +15,5 @@ limitations under the License.
+ */
+
+ // +k8s:deepcopy-gen=package
++// +k8s:openapi-gen=true
+ package apis

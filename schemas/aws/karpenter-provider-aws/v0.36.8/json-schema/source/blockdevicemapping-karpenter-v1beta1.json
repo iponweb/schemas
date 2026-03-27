@@ -1,0 +1,25 @@
+{
+  "type": "object",
+  "properties": {
+    "deviceName": {
+      "description": "The device name (for example, /dev/sdh or xvdh).",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "ebs": {
+      "description": "EBS contains parameters used to automatically set up EBS volumes when an instance is launched.",
+      "$ref": "_definitions.json#/definitions/aws.k8s.karpenter.v1beta1.BlockDevice"
+    },
+    "rootVolume": {
+      "description": "RootVolume is a flag indicating if this device is mounted as kubelet root dir. You can configure at most one root volume in BlockDeviceMappings.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

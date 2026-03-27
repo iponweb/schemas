@@ -1,0 +1,201 @@
+{
+  "kind": "APIResourceList",
+  "apiVersion": "v1",
+  "groupVersion": "operator.victoriametrics.com/v1",
+  "resources": [
+    {
+      "name": "vtclusters",
+      "singularName": "vtcluster",
+      "namespaced": true,
+      "kind": "VTCluster",
+      "verbs": [
+        "delete",
+        "deletecollection",
+        "get",
+        "list",
+        "patch",
+        "create",
+        "update",
+        "watch"
+      ],
+      "storageVersionHash": "9JC+KGUGkTQ="
+    },
+    {
+      "name": "vtclusters/status",
+      "singularName": "",
+      "namespaced": true,
+      "kind": "VTCluster",
+      "verbs": [
+        "get",
+        "patch",
+        "update"
+      ]
+    },
+    {
+      "name": "vlclusters",
+      "singularName": "vlcluster",
+      "namespaced": true,
+      "kind": "VLCluster",
+      "verbs": [
+        "delete",
+        "deletecollection",
+        "get",
+        "list",
+        "patch",
+        "create",
+        "update",
+        "watch"
+      ],
+      "storageVersionHash": "9JeijwgbUbE="
+    },
+    {
+      "name": "vlclusters/status",
+      "singularName": "",
+      "namespaced": true,
+      "kind": "VLCluster",
+      "verbs": [
+        "get",
+        "patch",
+        "update"
+      ]
+    },
+    {
+      "name": "vlagents",
+      "singularName": "vlagent",
+      "namespaced": true,
+      "kind": "VLAgent",
+      "verbs": [
+        "delete",
+        "deletecollection",
+        "get",
+        "list",
+        "patch",
+        "create",
+        "update",
+        "watch"
+      ],
+      "storageVersionHash": "B1XA6X1Y4Vs="
+    },
+    {
+      "name": "vlagents/status",
+      "singularName": "",
+      "namespaced": true,
+      "kind": "VLAgent",
+      "verbs": [
+        "get",
+        "patch",
+        "update"
+      ]
+    },
+    {
+      "name": "vlagents/scale",
+      "singularName": "",
+      "namespaced": true,
+      "group": "autoscaling",
+      "version": "v1",
+      "kind": "Scale",
+      "verbs": [
+        "get",
+        "patch",
+        "update"
+      ]
+    },
+    {
+      "name": "vtsingles",
+      "singularName": "vtsingle",
+      "namespaced": true,
+      "kind": "VTSingle",
+      "verbs": [
+        "delete",
+        "deletecollection",
+        "get",
+        "list",
+        "patch",
+        "create",
+        "update",
+        "watch"
+      ],
+      "storageVersionHash": "2LX6+oqLJYs="
+    },
+    {
+      "name": "vtsingles/status",
+      "singularName": "",
+      "namespaced": true,
+      "kind": "VTSingle",
+      "verbs": [
+        "get",
+        "patch",
+        "update"
+      ]
+    },
+    {
+      "name": "vmanomalies",
+      "singularName": "vmanomaly",
+      "namespaced": true,
+      "kind": "VMAnomaly",
+      "verbs": [
+        "delete",
+        "deletecollection",
+        "get",
+        "list",
+        "patch",
+        "create",
+        "update",
+        "watch"
+      ],
+      "storageVersionHash": "luaQ05yDsFU="
+    },
+    {
+      "name": "vmanomalies/status",
+      "singularName": "",
+      "namespaced": true,
+      "kind": "VMAnomaly",
+      "verbs": [
+        "get",
+        "patch",
+        "update"
+      ]
+    },
+    {
+      "name": "vmanomalies/scale",
+      "singularName": "",
+      "namespaced": true,
+      "group": "autoscaling",
+      "version": "v1",
+      "kind": "Scale",
+      "verbs": [
+        "get",
+        "patch",
+        "update"
+      ]
+    },
+    {
+      "name": "vlsingles",
+      "singularName": "vlsingle",
+      "namespaced": true,
+      "kind": "VLSingle",
+      "verbs": [
+        "delete",
+        "deletecollection",
+        "get",
+        "list",
+        "patch",
+        "create",
+        "update",
+        "watch"
+      ],
+      "storageVersionHash": "kWtXgnzXWtY="
+    },
+    {
+      "name": "vlsingles/status",
+      "singularName": "",
+      "namespaced": true,
+      "kind": "VLSingle",
+      "verbs": [
+        "get",
+        "patch",
+        "update"
+      ]
+    }
+  ]
+}

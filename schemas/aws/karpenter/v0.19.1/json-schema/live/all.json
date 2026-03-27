@@ -1,0 +1,22 @@
+{
+  "oneOf": [
+    {
+      "$ref": "_definitions.json#/definitions/aws.k8s.karpenter.v1alpha1.AWSNodeTemplate"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/aws.k8s.karpenter.v1alpha1.AWSNodeTemplateList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.karpenter.v1alpha5.Provisioner"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.karpenter.v1alpha5.ProvisionerList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.util.intstr.IntOrString"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.api.resource.Quantity"
+    }
+  ]
+}

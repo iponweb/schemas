@@ -1,0 +1,23 @@
+{
+  "description": "ConnectionSpec defines the desired state of Connection.",
+  "type": "object",
+  "required": [
+    "driver",
+    "config"
+  ],
+  "properties": {
+    "config": {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.types.Anything"
+    },
+    "driver": {
+      "description": "Driver is the name of one of the expected drivers i.e. dapr, disk",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

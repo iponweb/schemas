@@ -1,0 +1,15 @@
+{
+  "description": "Route53Auth is configuration used to authenticate with a Route53.",
+  "type": "object",
+  "required": [
+    "kubernetes"
+  ],
+  "properties": {
+    "kubernetes": {
+      "description": "Kubernetes authenticates with Route53 using AssumeRoleWithWebIdentity by passing a bound ServiceAccount token.",
+      "$ref": "_definitions.json#/definitions/io.cert-manager.acme.v1.Route53KubernetesAuth"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

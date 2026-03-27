@@ -1,0 +1,47 @@
+{
+  "description": "SCMProviderGeneratorAzureDevOps defines connection info specific to Azure DevOps.",
+  "type": "object",
+  "required": [
+    "organization",
+    "teamProject",
+    "accessTokenRef"
+  ],
+  "properties": {
+    "accessTokenRef": {
+      "description": "The Personal Access Token (PAT) to use when connecting. Required.",
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.SecretRef"
+    },
+    "allBranches": {
+      "description": "Scan all branches instead of just the default branch.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "api": {
+      "description": "The URL to Azure DevOps. If blank, use https://dev.azure.com.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "organization": {
+      "description": "Azure Devops organization. Required. E.g. \"my-organization\".",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "teamProject": {
+      "description": "Azure Devops team project. Required. E.g. \"my-team\".",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

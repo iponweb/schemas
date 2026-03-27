@@ -1,0 +1,39 @@
+version: "v0.2.1"
+repository: "github.com/cloudpilot-ai/karpenter-provider-gcp"
+
+openapi_gen_packages:
+  - "github.com/cloudpilot-ai/karpenter-provider-gcp/pkg/apis/v1alpha1"
+  - "sigs.k8s.io/karpenter/pkg/apis/v1"
+  - "sigs.k8s.io/karpenter/pkg/apis/v1alpha1"
+  - "k8s.io/api/core/v1"
+  - "k8s.io/apimachinery/pkg/api/resource"
+  - "k8s.io/apimachinery/pkg/apis/meta/v1"
+  - "k8s.io/apimachinery/pkg/runtime"
+  - "k8s.io/apimachinery/pkg/version"
+
+go_dependencies:
+  k8s.io/apimachinery: "v0.35.0-alpha.0"
+  k8s.io/apiserver: "v0.35.0-alpha.0"
+  k8s.io/kube-openapi: "v0.0.0-20251125145642-4e65d59e963e"
+
+kubernetes_swagger_url: "https://raw.githubusercontent.com/kubernetes/kubernetes/v1.35.3/api/openapi-spec/swagger.json"
+title: "karpenter-provider-gcp CRD OpenAPI"
+
+crd_names:
+  - "github.com/cloudpilot-ai/karpenter-provider-gcp/pkg/apis/v1alpha1.GCENodeClass"
+  - "sigs.k8s.io/karpenter/pkg/apis/v1.NodePool"
+  - "sigs.k8s.io/karpenter/pkg/apis/v1.NodeClaim"
+  - "sigs.k8s.io/karpenter/pkg/apis/v1alpha1.NodeOverlay"
+
+crd_path: "charts/karpenter/crds"
+
+host_conversion_rules:
+  "github.com/cloudpilot-ai/karpenter-provider-gcp": "karpenter.k8s.gcp"
+  "sigs.k8s.io/karpenter": "karpenter.sh"
+
+# operatorpkg/status.Condition cannot be processed by openapi-gen directly
+# (its package also contains Controller[T] with a non-string map key).
+# Since Condition is defined as `type Condition metav1.Condition`, we reuse
+# the metav1.Condition schema.
+type_aliases:
+  "github.com/awslabs/operatorpkg/status.Condition": "k8s.io/apimachinery/pkg/apis/meta/v1.Condition"

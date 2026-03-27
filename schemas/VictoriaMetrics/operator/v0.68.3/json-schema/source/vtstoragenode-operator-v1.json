@@ -1,0 +1,19 @@
+{
+  "description": "VTStorageNode defines slice of additional vtstorage nodes",
+  "type": "object",
+  "required": [
+    "addr"
+  ],
+  "properties": {
+    "addr": {
+      "description": "Addr defines storage node address",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

@@ -1,0 +1,18 @@
+{
+  "type": "object",
+  "required": [
+    "retentionPeriod"
+  ],
+  "properties": {
+    "retentionPeriod": {
+      "description": "retentionPeriod defines the retentionPeriod for shard retention policy.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

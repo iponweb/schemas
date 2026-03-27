@@ -1,0 +1,1459 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "karpenter CRD OpenAPI",
+    "version": "v1"
+  },
+  "paths": {},
+  "definitions": {
+    "aws.k8s.karpenter.v1.AMI": {
+      "description": "AMI contains resolved AMI selector values utilized for node launch",
+      "type": "object",
+      "required": [
+        "id",
+        "requirements"
+      ],
+      "properties": {
+        "deprecated": {
+          "description": "Deprecation status of the AMI",
+          "type": "boolean"
+        },
+        "id": {
+          "description": "ID of the AMI",
+          "type": "string",
+          "default": ""
+        },
+        "name": {
+          "description": "Name of the AMI",
+          "type": "string"
+        },
+        "requirements": {
+          "description": "Requirements of the AMI to be utilized on an instance type",
+          "type": "array",
+          "items": {
+            "default": {},
+            "$ref": "#/definitions/io.k8s.api.core.v1.NodeSelectorRequirement"
+          }
+        }
+      }
+    },
+    "aws.k8s.karpenter.v1.AMISelectorTerm": {
+      "description": "AMISelectorTerm defines selection logic for an ami used by Karpenter to launch nodes. If multiple fields are used for selection, the requirements are ANDed.",
+      "type": "object",
+      "properties": {
+        "alias": {
+          "description": "Alias specifies which EKS optimized AMI to select. Each alias consists of a family and an AMI version, specified as \"family@version\". Valid families include: al2, al2023, bottlerocket, windows2019, windows2022, windows2025. The version can either be pinned to a specific AMI release, with that AMIs version format (ex: \"al2023@v20240625\" or \"bottlerocket@v1.10.0\"). The version can also be set to \"latest\" for any family. Setting the version to latest will result in drift when a new AMI is released. This is **not** recommended for production environments. Note: The Windows families do **not** support version pinning, and only latest may be used.",
+          "type": "string"
+        },
+        "id": {
+          "description": "ID is the ami id in EC2",
+          "type": "string"
+        },
+        "name": {
+          "description": "Name is the ami name in EC2. This value is the name field, which is different from the name tag.",
+          "type": "string"
+        },
+        "owner": {
+          "description": "Owner is the owner for the ami. You can specify a combination of AWS account IDs, \"self\", \"amazon\", and \"aws-marketplace\"",
+          "type": "string"
+        },
+        "ssmParameter": {
+          "description": "SSMParameter is the name (or ARN) of the SSM parameter containing the Image ID.",
+          "type": "string"
+        },
+        "tags": {
+          "description": "Tags is a map of key/value tags used to select amis. Specifying '*' for a value selects all values for a given tag key.",
+          "type": "object",
+          "additionalProperties": {
+            "type": "string",
+            "default": ""
+          }
+        }
+      }
+    },
+    "aws.k8s.karpenter.v1.BlockDevice": {
+      "type": "object",
+      "properties": {
+        "deleteOnTermination": {
+          "description": "DeleteOnTermination indicates whether the EBS volume is deleted on instance termination.",
+          "type": "boolean"
+        },
+        "encrypted": {
+          "description": "Encrypted indicates whether the EBS volume is encrypted. Encrypted volumes can only be attached to instances that support Amazon EBS encryption. If you are creating a volume from a snapshot, you can't specify an encryption value.",
+          "type": "boolean"
+        },
+        "iops": {
+          "description": "IOPS is the number of I/O operations per second (IOPS). For gp3, io1, and io2 volumes, this represents the number of IOPS that are provisioned for the volume. For gp2 volumes, this represents the baseline performance of the volume and the rate at which the volume accumulates I/O credits for bursting.\n\nThe following are the supported values for each volume type:\n\n   * gp3: 3,000-16,000 IOPS\n\n   * io1: 100-64,000 IOPS\n\n   * io2: 100-64,000 IOPS\n\nFor io1 and io2 volumes, we guarantee 64,000 IOPS only for Instances built on the Nitro System (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#ec2-nitro-instances). Other instance families guarantee performance up to 32,000 IOPS.\n\nThis parameter is supported for io1, io2, and gp3 volumes only. This parameter is not supported for gp2, st1, sc1, or standard volumes.",
+          "type": "integer",
+          "format": "int64"
+        },
+        "kmsKeyID": {
+          "description": "Identifier (key ID, key alias, key ARN, or alias ARN) of the customer managed KMS key to use for EBS encryption.",
+          "type": "string"
+        },
+        "snapshotID": {
+          "description": "SnapshotID is the ID of an EBS snapshot",
+          "type": "string"
+        },
+        "throughput": {
+          "description": "Throughput to provision for a gp3 volume, with a maximum of 1,000 MiB/s. Valid Range: Minimum value of 125. Maximum value of 1000.",
+          "type": "integer",
+          "format": "int64"
+        },
+        "volumeInitializationRate": {
+          "description": "VolumeInitializationRate specifies the Amazon EBS Provisioned Rate for Volume Initialization, in MiB/s, at which to download the snapshot blocks from Amazon S3 to the volume. This is also known as volume initialization. Specifying a volume initialization rate ensures that the volume is initialized at a predictable and consistent rate after creation. Only allowed if SnapshotID is set. Valid Range: Minimum value of 100. Maximum value of 300.",
+          "type": "integer",
+          "format": "int32"
+        },
+        "volumeSize": {
+          "description": "VolumeSize in `Gi`, `G`, `Ti`, or `T`. You must specify either a snapshot ID or a volume size. The following are the supported volumes sizes for each volume type:\n\n   * gp2 and gp3: 1-16,384\n\n   * io1 and io2: 4-16,384\n\n   * st1 and sc1: 125-16,384\n\n   * standard: 1-1,024",
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.api.resource.Quantity"
+        },
+        "volumeType": {
+          "description": "VolumeType of the block device. For more information, see Amazon EBS volume types (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html) in the Amazon Elastic Compute Cloud User Guide.",
+          "type": "string"
+        }
+      }
+    },
+    "aws.k8s.karpenter.v1.BlockDeviceMapping": {
+      "type": "object",
+      "properties": {
+        "deviceName": {
+          "description": "The device name (for example, /dev/sdh or xvdh).",
+          "type": "string"
+        },
+        "ebs": {
+          "description": "EBS contains parameters used to automatically set up EBS volumes when an instance is launched.",
+          "$ref": "#/definitions/aws.k8s.karpenter.v1.BlockDevice"
+        },
+        "rootVolume": {
+          "description": "RootVolume is a flag indicating if this device is mounted as kubelet root dir. You can configure at most one root volume in BlockDeviceMappings.",
+          "type": "boolean"
+        }
+      }
+    },
+    "aws.k8s.karpenter.v1.CapacityReservation": {
+      "type": "object",
+      "required": [
+        "availabilityZone",
+        "id",
+        "instanceMatchCriteria",
+        "instanceType",
+        "ownerID"
+      ],
+      "properties": {
+        "availabilityZone": {
+          "description": "The availability zone the capacity reservation is available in.",
+          "type": "string",
+          "default": ""
+        },
+        "endTime": {
+          "description": "The time at which the capacity reservation expires. Once expired, the reserved capacity is released and Karpenter will no longer be able to launch instances into that reservation.",
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
+        },
+        "id": {
+          "description": "The id for the capacity reservation.",
+          "type": "string",
+          "default": ""
+        },
+        "instanceMatchCriteria": {
+          "description": "Indicates the type of instance launches the capacity reservation accepts.",
+          "type": "string",
+          "default": ""
+        },
+        "instanceType": {
+          "description": "The instance type for the capacity reservation.",
+          "type": "string",
+          "default": ""
+        },
+        "interruptible": {
+          "description": "Indicates whether this capacity reservation is interruptible",
+          "type": "boolean",
+          "default": false
+        },
+        "ownerID": {
+          "description": "The ID of the AWS account that owns the capacity reservation.",
+          "type": "string",
+          "default": ""
+        },
+        "reservationType": {
+          "description": "The type of capacity reservation.",
+          "type": "string",
+          "default": ""
+        },
+        "state": {
+          "description": "The state of the capacity reservation. A capacity reservation is considered to be expiring if it is within the EC2 reclaimation window. Only capacity-block reservations may be in this state.",
+          "type": "string",
+          "default": ""
+        }
+      }
+    },
+    "aws.k8s.karpenter.v1.CapacityReservationSelectorTerm": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "description": "ID is the capacity reservation id in EC2",
+          "type": "string"
+        },
+        "instanceMatchCriteria": {
+          "description": "InstanceMatchCriteria specifies how instances are matched to capacity reservations.",
+          "type": "string"
+        },
+        "ownerID": {
+          "description": "Owner is the owner id for the ami.",
+          "type": "string"
+        },
+        "tags": {
+          "description": "Tags is a map of key/value tags used to select capacity reservations. Specifying '*' for a value selects all values for a given tag key.",
+          "type": "object",
+          "additionalProperties": {
+            "type": "string",
+            "default": ""
+          }
+        }
+      }
+    },
+    "aws.k8s.karpenter.v1.EC2NodeClass": {
+      "description": "EC2NodeClass is the Schema for the EC2NodeClass API",
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+          "type": "string"
+        },
+        "kind": {
+          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+          "type": "string"
+        },
+        "metadata": {
+          "default": {},
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+        },
+        "spec": {
+          "default": {},
+          "$ref": "#/definitions/aws.k8s.karpenter.v1.EC2NodeClassSpec"
+        },
+        "status": {
+          "default": {},
+          "$ref": "#/definitions/aws.k8s.karpenter.v1.EC2NodeClassStatus"
+        }
+      }
+    },
+    "aws.k8s.karpenter.v1.EC2NodeClassSpec": {
+      "description": "EC2NodeClassSpec is the top level specification for the AWS Karpenter Provider. This will contain configuration necessary to launch instances in AWS.",
+      "type": "object",
+      "required": [
+        "subnetSelectorTerms",
+        "securityGroupSelectorTerms",
+        "amiSelectorTerms"
+      ],
+      "properties": {
+        "amiFamily": {
+          "description": "AMIFamily dictates the UserData format and default BlockDeviceMappings used when generating launch templates. This field is optional when using an alias amiSelectorTerm, and the value will be inferred from the alias' family. When an alias is specified, this field may only be set to its corresponding family or 'Custom'. If no alias is specified, this field is required. NOTE: We ignore the AMIFamily for hashing here because we hash the AMIFamily dynamically by using the alias using the AMIFamily() helper function",
+          "type": "string"
+        },
+        "amiSelectorTerms": {
+          "description": "AMISelectorTerms is a list of or ami selector terms. The terms are ORed.",
+          "type": "array",
+          "items": {
+            "default": {},
+            "$ref": "#/definitions/aws.k8s.karpenter.v1.AMISelectorTerm"
+          }
+        },
+        "associatePublicIPAddress": {
+          "description": "AssociatePublicIPAddress controls if public IP addresses are assigned to instances that are launched with the nodeclass.",
+          "type": "boolean"
+        },
+        "blockDeviceMappings": {
+          "description": "BlockDeviceMappings to be applied to provisioned nodes.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/aws.k8s.karpenter.v1.BlockDeviceMapping"
+          }
+        },
+        "capacityReservationSelectorTerms": {
+          "description": "CapacityReservationSelectorTerms is a list of capacity reservation selector terms. Each term is ORed together to determine the set of eligible capacity reservations.",
+          "type": "array",
+          "items": {
+            "default": {},
+            "$ref": "#/definitions/aws.k8s.karpenter.v1.CapacityReservationSelectorTerm"
+          }
+        },
+        "context": {
+          "description": "Context is a Reserved field in EC2 APIs https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateFleet.html",
+          "type": "string"
+        },
+        "detailedMonitoring": {
+          "description": "DetailedMonitoring controls if detailed monitoring is enabled for instances that are launched",
+          "type": "boolean"
+        },
+        "instanceProfile": {
+          "description": "InstanceProfile is the AWS entity that instances use. This field is mutually exclusive from role. The instance profile should already have a role assigned to it that Karpenter\n has PassRole permission on for instance launch using this instanceProfile to succeed.",
+          "type": "string"
+        },
+        "instanceStorePolicy": {
+          "description": "InstanceStorePolicy specifies how to handle instance-store disks.",
+          "type": "string"
+        },
+        "ipPrefixCount": {
+          "description": "IPPrefixCount sets the number of IPv4 prefixes to be automatically assigned to the network interface.",
+          "type": "integer",
+          "format": "int32"
+        },
+        "kubelet": {
+          "description": "Kubelet defines args to be used when configuring kubelet on provisioned nodes. They are a subset of the upstream types, recognizing not all options may be supported. Wherever possible, the types and names should reflect the upstream kubelet types.",
+          "$ref": "#/definitions/aws.k8s.karpenter.v1.KubeletConfiguration"
+        },
+        "metadataOptions": {
+          "description": "MetadataOptions for the generated launch template of provisioned nodes.\n\nThis specifies the exposure of the Instance Metadata Service to provisioned EC2 nodes. For more information, see Instance Metadata and User Data (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html) in the Amazon Elastic Compute Cloud User Guide.\n\nRefer to recommended, security best practices (https://aws.github.io/aws-eks-best-practices/security/docs/iam/#restrict-access-to-the-instance-profile-assigned-to-the-worker-node) for limiting exposure of Instance Metadata and User Data to pods. If omitted, defaults to httpEndpoint enabled, with httpProtocolIPv6 disabled, with httpPutResponseLimit of 1, and with httpTokens required.",
+          "$ref": "#/definitions/aws.k8s.karpenter.v1.MetadataOptions"
+        },
+        "role": {
+          "description": "Role is the AWS identity that nodes use. This field is mutually exclusive from instanceProfile.",
+          "type": "string"
+        },
+        "securityGroupSelectorTerms": {
+          "description": "SecurityGroupSelectorTerms is a list of security group selector terms. The terms are ORed.",
+          "type": "array",
+          "items": {
+            "default": {},
+            "$ref": "#/definitions/aws.k8s.karpenter.v1.SecurityGroupSelectorTerm"
+          }
+        },
+        "subnetSelectorTerms": {
+          "description": "SubnetSelectorTerms is a list of subnet selector terms. The terms are ORed.",
+          "type": "array",
+          "items": {
+            "default": {},
+            "$ref": "#/definitions/aws.k8s.karpenter.v1.SubnetSelectorTerm"
+          }
+        },
+        "tags": {
+          "description": "Tags to be applied on ec2 resources like instances and launch templates.",
+          "type": "object",
+          "additionalProperties": {
+            "type": "string",
+            "default": ""
+          }
+        },
+        "userData": {
+          "description": "UserData to be applied to the provisioned nodes. It must be in the appropriate format based on the AMIFamily in use. Karpenter will merge certain fields into this UserData to ensure nodes are being provisioned with the correct configuration.",
+          "type": "string"
+        }
+      }
+    },
+    "aws.k8s.karpenter.v1.EC2NodeClassStatus": {
+      "description": "EC2NodeClassStatus contains the resolved state of the EC2NodeClass",
+      "type": "object",
+      "properties": {
+        "amis": {
+          "description": "AMI contains the current AMI values that are available to the cluster under the AMI selectors.",
+          "type": "array",
+          "items": {
+            "default": {},
+            "$ref": "#/definitions/aws.k8s.karpenter.v1.AMI"
+          }
+        },
+        "capacityReservations": {
+          "description": "CapacityReservations contains the current capacity reservation values that are available to this NodeClass under the CapacityReservation selectors.",
+          "type": "array",
+          "items": {
+            "default": {},
+            "$ref": "#/definitions/aws.k8s.karpenter.v1.CapacityReservation"
+          }
+        },
+        "conditions": {
+          "description": "Conditions contains signals for health and readiness",
+          "type": "array",
+          "items": {
+            "default": {},
+            "$ref": "#/definitions/com.github.awslabs.operatorpkg.status.Condition"
+          }
+        },
+        "instanceProfile": {
+          "description": "InstanceProfile contains the resolved instance profile for the role",
+          "type": "string"
+        },
+        "securityGroups": {
+          "description": "SecurityGroups contains the current security group values that are available to the cluster under the SecurityGroups selectors.",
+          "type": "array",
+          "items": {
+            "default": {},
+            "$ref": "#/definitions/aws.k8s.karpenter.v1.SecurityGroup"
+          }
+        },
+        "subnets": {
+          "description": "Subnets contains the current subnet values that are available to the cluster under the subnet selectors.",
+          "type": "array",
+          "items": {
+            "default": {},
+            "$ref": "#/definitions/aws.k8s.karpenter.v1.Subnet"
+          }
+        }
+      }
+    },
+    "aws.k8s.karpenter.v1.KubeletConfiguration": {
+      "description": "KubeletConfiguration defines args to be used when configuring kubelet on provisioned nodes. They are a subset of the upstream types, recognizing not all options may be supported. Wherever possible, the types and names should reflect the upstream kubelet types. https://pkg.go.dev/k8s.io/kubelet/config/v1beta1#KubeletConfiguration https://github.com/kubernetes/kubernetes/blob/9f82d81e55cafdedab619ea25cabf5d42736dacf/cmd/kubelet/app/options/options.go#L53",
+      "type": "object",
+      "properties": {
+        "clusterDNS": {
+          "description": "clusterDNS is a list of IP addresses for the cluster DNS server. Note that not all providers may use all addresses.",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "default": ""
+          }
+        },
+        "cpuCFSQuota": {
+          "description": "CPUCFSQuota enables CPU CFS quota enforcement for containers that specify CPU limits.",
+          "type": "boolean"
+        },
+        "evictionHard": {
+          "description": "EvictionHard is the map of signal names to quantities that define hard eviction thresholds",
+          "type": "object",
+          "additionalProperties": {
+            "type": "string",
+            "default": ""
+          }
+        },
+        "evictionMaxPodGracePeriod": {
+          "description": "EvictionMaxPodGracePeriod is the maximum allowed grace period (in seconds) to use when terminating pods in response to soft eviction thresholds being met.",
+          "type": "integer",
+          "format": "int32"
+        },
+        "evictionSoft": {
+          "description": "EvictionSoft is the map of signal names to quantities that define soft eviction thresholds",
+          "type": "object",
+          "additionalProperties": {
+            "type": "string",
+            "default": ""
+          }
+        },
+        "evictionSoftGracePeriod": {
+          "description": "EvictionSoftGracePeriod is the map of signal names to quantities that define grace periods for each eviction signal",
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Duration"
+          }
+        },
+        "imageGCHighThresholdPercent": {
+          "description": "ImageGCHighThresholdPercent is the percent of disk usage after which image garbage collection is always run. The percent is calculated by dividing this field value by 100, so this field must be between 0 and 100, inclusive. When specified, the value must be greater than ImageGCLowThresholdPercent.",
+          "type": "integer",
+          "format": "int32"
+        },
+        "imageGCLowThresholdPercent": {
+          "description": "ImageGCLowThresholdPercent is the percent of disk usage before which image garbage collection is never run. Lowest disk usage to garbage collect to. The percent is calculated by dividing this field value by 100, so the field value must be between 0 and 100, inclusive. When specified, the value must be less than imageGCHighThresholdPercent",
+          "type": "integer",
+          "format": "int32"
+        },
+        "kubeReserved": {
+          "description": "KubeReserved contains resources reserved for Kubernetes system components.",
+          "type": "object",
+          "additionalProperties": {
+            "type": "string",
+            "default": ""
+          }
+        },
+        "maxPods": {
+          "description": "MaxPods is an override for the maximum number of pods that can run on a worker node instance.",
+          "type": "integer",
+          "format": "int32"
+        },
+        "podsPerCore": {
+          "description": "PodsPerCore is an override for the number of pods that can run on a worker node instance based on the number of cpu cores. This value cannot exceed MaxPods, so, if MaxPods is a lower value, that value will be used.",
+          "type": "integer",
+          "format": "int32"
+        },
+        "systemReserved": {
+          "description": "SystemReserved contains resources reserved for OS system daemons and kernel memory.",
+          "type": "object",
+          "additionalProperties": {
+            "type": "string",
+            "default": ""
+          }
+        }
+      }
+    },
+    "aws.k8s.karpenter.v1.MetadataOptions": {
+      "description": "MetadataOptions contains parameters for specifying the exposure of the Instance Metadata Service to provisioned EC2 nodes.",
+      "type": "object",
+      "properties": {
+        "httpEndpoint": {
+          "description": "HTTPEndpoint enables or disables the HTTP metadata endpoint on provisioned nodes. If metadata options is non-nil, but this parameter is not specified, the default state is \"enabled\".\n\nIf you specify a value of \"disabled\", instance metadata will not be accessible on the node.",
+          "type": "string"
+        },
+        "httpProtocolIPv6": {
+          "description": "HTTPProtocolIPv6 enables or disables the IPv6 endpoint for the instance metadata service on provisioned nodes. If metadata options is non-nil, but this parameter is not specified, the default state is \"disabled\".",
+          "type": "string"
+        },
+        "httpPutResponseHopLimit": {
+          "description": "HTTPPutResponseHopLimit is the desired HTTP PUT response hop limit for instance metadata requests. The larger the number, the further instance metadata requests can travel. Possible values are integers from 1 to 64. If metadata options is non-nil, but this parameter is not specified, the default value is 1.",
+          "type": "integer",
+          "format": "int64"
+        },
+        "httpTokens": {
+          "description": "HTTPTokens determines the state of token usage for instance metadata requests. If metadata options is non-nil, but this parameter is not specified, the default state is \"required\".\n\nIf the state is optional, one can choose to retrieve instance metadata with or without a signed token header on the request. If one retrieves the IAM role credentials without a token, the version 1.0 role credentials are returned. If one retrieves the IAM role credentials using a valid signed token, the version 2.0 role credentials are returned.\n\nIf the state is \"required\", one must send a signed token header with any instance metadata retrieval requests. In this state, retrieving the IAM role credentials always returns the version 2.0 credentials; the version 1.0 credentials are not available.",
+          "type": "string"
+        }
+      }
+    },
+    "aws.k8s.karpenter.v1.SecurityGroup": {
+      "description": "SecurityGroup contains resolved SecurityGroup selector values utilized for node launch",
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "description": "ID of the security group",
+          "type": "string",
+          "default": ""
+        },
+        "name": {
+          "description": "Name of the security group",
+          "type": "string"
+        }
+      }
+    },
+    "aws.k8s.karpenter.v1.SecurityGroupSelectorTerm": {
+      "description": "SecurityGroupSelectorTerm defines selection logic for a security group used by Karpenter to launch nodes. If multiple fields are used for selection, the requirements are ANDed.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "description": "ID is the security group id in EC2",
+          "type": "string"
+        },
+        "name": {
+          "description": "Name is the security group name in EC2. This value is the name field, which is different from the name tag.",
+          "type": "string"
+        },
+        "tags": {
+          "description": "Tags is a map of key/value tags used to select security groups. Specifying '*' for a value selects all values for a given tag key.",
+          "type": "object",
+          "additionalProperties": {
+            "type": "string",
+            "default": ""
+          }
+        }
+      }
+    },
+    "aws.k8s.karpenter.v1.Subnet": {
+      "description": "Subnet contains resolved Subnet selector values utilized for node launch",
+      "type": "object",
+      "required": [
+        "id",
+        "zone"
+      ],
+      "properties": {
+        "id": {
+          "description": "ID of the subnet",
+          "type": "string",
+          "default": ""
+        },
+        "zone": {
+          "description": "The associated availability zone",
+          "type": "string",
+          "default": ""
+        },
+        "zoneID": {
+          "description": "The associated availability zone ID",
+          "type": "string"
+        }
+      }
+    },
+    "aws.k8s.karpenter.v1.SubnetSelectorTerm": {
+      "description": "SubnetSelectorTerm defines selection logic for a subnet used by Karpenter to launch nodes. If multiple fields are used for selection, the requirements are ANDed.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "description": "ID is the subnet id in EC2",
+          "type": "string"
+        },
+        "tags": {
+          "description": "Tags is a map of key/value tags used to select subnets Specifying '*' for a value selects all values for a given tag key.",
+          "type": "object",
+          "additionalProperties": {
+            "type": "string",
+            "default": ""
+          }
+        }
+      }
+    },
+    "com.github.awslabs.operatorpkg.status.Condition": {
+      "description": "Condition contains details for one aspect of the current state of this API Resource.",
+      "type": "object",
+      "required": [
+        "type",
+        "status",
+        "lastTransitionTime",
+        "reason",
+        "message"
+      ],
+      "properties": {
+        "lastTransitionTime": {
+          "description": "lastTransitionTime is the last time the condition transitioned from one status to another. This should be when the underlying condition changed.  If that is not known, then using the time when the API field changed is acceptable.",
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
+        },
+        "message": {
+          "description": "message is a human readable message indicating details about the transition. This may be an empty string.",
+          "type": "string",
+          "default": ""
+        },
+        "observedGeneration": {
+          "description": "observedGeneration represents the .metadata.generation that the condition was set based upon. For instance, if .metadata.generation is currently 12, but the .status.conditions[x].observedGeneration is 9, the condition is out of date with respect to the current state of the instance.",
+          "type": "integer",
+          "format": "int64"
+        },
+        "reason": {
+          "description": "reason contains a programmatic identifier indicating the reason for the condition's last transition. Producers of specific condition types may define expected values and meanings for this field, and whether the values are considered a guaranteed API. The value should be a CamelCase string. This field may not be empty.",
+          "type": "string",
+          "default": ""
+        },
+        "status": {
+          "description": "status of the condition, one of True, False, Unknown.",
+          "type": "string",
+          "default": ""
+        },
+        "type": {
+          "description": "type of condition in CamelCase or in foo.example.com/CamelCase.",
+          "type": "string",
+          "default": ""
+        }
+      }
+    },
+    "io.k8s.api.core.v1.NodeSelectorRequirement": {
+      "description": "A node selector requirement is a selector that contains values, a key, and an operator that relates the key and values.",
+      "type": "object",
+      "required": [
+        "key",
+        "operator"
+      ],
+      "properties": {
+        "key": {
+          "description": "The label key that the selector applies to.",
+          "type": "string",
+          "default": ""
+        },
+        "operator": {
+          "description": "Represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists, DoesNotExist. Gt, and Lt.\n\nPossible enum values:\n - `\"DoesNotExist\"`\n - `\"Exists\"`\n - `\"Gt\"`\n - `\"Gte\"`\n - `\"In\"`\n - `\"Lt\"`\n - `\"Lte\"`\n - `\"NotIn\"`",
+          "type": "string",
+          "default": "",
+          "enum": [
+            "DoesNotExist",
+            "Exists",
+            "Gt",
+            "Gte",
+            "In",
+            "Lt",
+            "Lte",
+            "NotIn"
+          ]
+        },
+        "values": {
+          "description": "An array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. If the operator is Gt or Lt, the values array must have a single element, which will be interpreted as an integer. This array is replaced during a strategic merge patch.",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "default": ""
+          },
+          "x-kubernetes-list-type": "atomic"
+        }
+      }
+    },
+    "io.k8s.api.core.v1.Taint": {
+      "description": "The node this Taint is attached to has the \"effect\" on any pod that does not tolerate the Taint.",
+      "type": "object",
+      "required": [
+        "key",
+        "effect"
+      ],
+      "properties": {
+        "effect": {
+          "description": "Required. The effect of the taint on pods that do not tolerate the taint. Valid effects are NoSchedule, PreferNoSchedule and NoExecute.\n\nPossible enum values:\n - `\"NoExecute\"` Evict any already-running pods that do not tolerate the taint. Currently enforced by NodeController.\n - `\"NoSchedule\"` Do not allow new pods to schedule onto the node unless they tolerate the taint, but allow all pods submitted to Kubelet without going through the scheduler to start, and allow all already-running pods to continue running. Enforced by the scheduler.\n - `\"PreferNoSchedule\"` Like TaintEffectNoSchedule, but the scheduler tries not to schedule new pods onto the node, rather than prohibiting new pods from scheduling onto the node entirely. Enforced by the scheduler.",
+          "type": "string",
+          "default": "",
+          "enum": [
+            "NoExecute",
+            "NoSchedule",
+            "PreferNoSchedule"
+          ]
+        },
+        "key": {
+          "description": "Required. The taint key to be applied to a node.",
+          "type": "string",
+          "default": ""
+        },
+        "timeAdded": {
+          "description": "TimeAdded represents the time at which the taint was added.",
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
+        },
+        "value": {
+          "description": "The taint value corresponding to the taint key.",
+          "type": "string"
+        }
+      }
+    },
+    "io.k8s.apimachinery.pkg.api.resource.Quantity": {
+      "description": "Quantity is a fixed-point representation of a number. It provides convenient marshaling/unmarshaling in JSON and YAML, in addition to String() and AsInt64() accessors.\n\nThe serialization format is:\n\n``` \u003cquantity\u003e        ::= \u003csignedNumber\u003e\u003csuffix\u003e\n\n\t(Note that \u003csuffix\u003e may be empty, from the \"\" case in \u003cdecimalSI\u003e.)\n\n\u003cdigit\u003e           ::= 0 | 1 | ... | 9 \u003cdigits\u003e          ::= \u003cdigit\u003e | \u003cdigit\u003e\u003cdigits\u003e \u003cnumber\u003e          ::= \u003cdigits\u003e | \u003cdigits\u003e.\u003cdigits\u003e | \u003cdigits\u003e. | .\u003cdigits\u003e \u003csign\u003e            ::= \"+\" | \"-\" \u003csignedNumber\u003e    ::= \u003cnumber\u003e | \u003csign\u003e\u003cnumber\u003e \u003csuffix\u003e          ::= \u003cbinarySI\u003e | \u003cdecimalExponent\u003e | \u003cdecimalSI\u003e \u003cbinarySI\u003e        ::= Ki | Mi | Gi | Ti | Pi | Ei\n\n\t(International System of units; See: http://physics.nist.gov/cuu/Units/binary.html)\n\n\u003cdecimalSI\u003e       ::= m | \"\" | k | M | G | T | P | E\n\n\t(Note that 1024 = 1Ki but 1000 = 1k; I didn't choose the capitalization.)\n\n\u003cdecimalExponent\u003e ::= \"e\" \u003csignedNumber\u003e | \"E\" \u003csignedNumber\u003e ```\n\nNo matter which of the three exponent forms is used, no quantity may represent a number greater than 2^63-1 in magnitude, nor may it have more than 3 decimal places. Numbers larger or more precise will be capped or rounded up. (E.g.: 0.1m will rounded up to 1m.) This may be extended in the future if we require larger or smaller quantities.\n\nWhen a Quantity is parsed from a string, it will remember the type of suffix it had, and will use the same type again when it is serialized.\n\nBefore serializing, Quantity will be put in \"canonical form\". This means that Exponent/suffix will be adjusted up or down (with a corresponding increase or decrease in Mantissa) such that:\n\n- No precision is lost - No fractional digits will be emitted - The exponent (or suffix) is as large as possible.\n\nThe sign will be omitted unless the number is negative.\n\nExamples:\n\n- 1.5 will be serialized as \"1500m\" - 1.5Gi will be serialized as \"1536Mi\"\n\nNote that the quantity will NEVER be internally represented by a floating point number. That is the whole point of this exercise.\n\nNon-canonical values will still parse as long as they are well formed, but will be re-emitted in their canonical form. (So always use canonical form, or don't diff.)\n\nThis format is intended to make it difficult to use these numbers without writing some sort of special handling code in the hopes that that will cause implementors to also use a fixed point implementation.",
+      "type": "string"
+    },
+    "io.k8s.apimachinery.pkg.apis.meta.v1.Duration": {
+      "description": "Duration is a wrapper around time.Duration which supports correct marshaling to YAML and JSON. In particular, it marshals into strings, which can be used as map keys in json.",
+      "type": "string"
+    },
+    "io.k8s.apimachinery.pkg.apis.meta.v1.FieldsV1": {
+      "description": "FieldsV1 stores a set of fields in a data structure like a Trie, in JSON format.\n\nEach key is either a '.' representing the field itself, and will always map to an empty set, or a string representing a sub-field or item. The string will follow one of these four formats: 'f:\u003cname\u003e', where \u003cname\u003e is the name of a field in a struct, or key in a map 'v:\u003cvalue\u003e', where \u003cvalue\u003e is the exact json formatted value of a list item 'i:\u003cindex\u003e', where \u003cindex\u003e is position of a item in a list 'k:\u003ckeys\u003e', where \u003ckeys\u003e is a map of  a list item's key fields to their unique values If a key maps to an empty Fields value, the field that key represents is part of the set.\n\nThe exact format is defined in sigs.k8s.io/structured-merge-diff",
+      "type": "object"
+    },
+    "io.k8s.apimachinery.pkg.apis.meta.v1.ManagedFieldsEntry": {
+      "description": "ManagedFieldsEntry is a workflow-id, a FieldSet and the group version of the resource that the fieldset applies to.",
+      "type": "object",
+      "properties": {
+        "apiVersion": {
+          "description": "APIVersion defines the version of this resource that this field set applies to. The format is \"group/version\" just like the top-level APIVersion field. It is necessary to track the version of a field set because it cannot be automatically converted.",
+          "type": "string"
+        },
+        "fieldsType": {
+          "description": "FieldsType is the discriminator for the different fields format and version. There is currently only one possible value: \"FieldsV1\"",
+          "type": "string"
+        },
+        "fieldsV1": {
+          "description": "FieldsV1 holds the first JSON version format as described in the \"FieldsV1\" type.",
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.FieldsV1"
+        },
+        "manager": {
+          "description": "Manager is an identifier of the workflow managing these fields.",
+          "type": "string"
+        },
+        "operation": {
+          "description": "Operation is the type of operation which lead to this ManagedFieldsEntry being created. The only valid values for this field are 'Apply' and 'Update'.",
+          "type": "string"
+        },
+        "subresource": {
+          "description": "Subresource is the name of the subresource used to update that object, or empty string if the object was updated through the main resource. The value of this field is used to distinguish between managers, even if they share the same name. For example, a status update will be distinct from a regular update using the same manager name. Note that the APIVersion field is not related to the Subresource field and it always corresponds to the version of the main resource.",
+          "type": "string"
+        },
+        "time": {
+          "description": "Time is the timestamp of when the ManagedFields entry was added. The timestamp will also be updated if a field is added, the manager changes any of the owned fields value or removes a field. The timestamp does not update when a field is removed from the entry because another manager took it over.",
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
+        }
+      }
+    },
+    "io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta": {
+      "description": "ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create.",
+      "type": "object",
+      "properties": {
+        "annotations": {
+          "description": "Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations",
+          "type": "object",
+          "additionalProperties": {
+            "type": "string",
+            "default": ""
+          }
+        },
+        "creationTimestamp": {
+          "description": "CreationTimestamp is a timestamp representing the server time when this object was created. It is not guaranteed to be set in happens-before order across separate operations. Clients may not set this value. It is represented in RFC3339 form and is in UTC.\n\nPopulated by the system. Read-only. Null for lists. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
+        },
+        "deletionGracePeriodSeconds": {
+          "description": "Number of seconds allowed for this object to gracefully terminate before it will be removed from the system. Only set when deletionTimestamp is also set. May only be shortened. Read-only.",
+          "type": "integer",
+          "format": "int64"
+        },
+        "deletionTimestamp": {
+          "description": "DeletionTimestamp is RFC 3339 date and time at which this resource will be deleted. This field is set by the server when a graceful deletion is requested by the user, and is not directly settable by a client. The resource is expected to be deleted (no longer visible from resource lists, and not reachable by name) after the time in this field, once the finalizers list is empty. As long as the finalizers list contains items, deletion is blocked. Once the deletionTimestamp is set, this value may not be unset or be set further into the future, although it may be shortened or the resource may be deleted prior to this time. For example, a user may request that a pod is deleted in 30 seconds. The Kubelet will react by sending a graceful termination signal to the containers in the pod. After that 30 seconds, the Kubelet will send a hard termination signal (SIGKILL) to the container and after cleanup, remove the pod from the API. In the presence of network partitions, this object may still exist after this timestamp, until an administrator or automated process can determine the resource is fully terminated. If not set, graceful deletion of the object has not been requested.\n\nPopulated by the system when a graceful deletion is requested. Read-only. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
+        },
+        "finalizers": {
+          "description": "Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed. Finalizers may be processed and removed in any order.  Order is NOT enforced because it introduces significant risk of stuck finalizers. finalizers is a shared field, any actor with permission can reorder it. If the finalizer list is processed in order, then this can lead to a situation in which the component responsible for the first finalizer in the list is waiting for a signal (field value, external system, or other) produced by a component responsible for a finalizer later in the list, resulting in a deadlock. Without enforced ordering finalizers are free to order amongst themselves and are not vulnerable to ordering changes in the list.",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "default": ""
+          },
+          "x-kubernetes-list-type": "set",
+          "x-kubernetes-patch-strategy": "merge"
+        },
+        "generateName": {
+          "description": "GenerateName is an optional prefix, used by the server, to generate a unique name ONLY IF the Name field has not been provided. If this field is used, the name returned to the client will be different than the name passed. This value will also be combined with a unique suffix. The provided value has the same validation rules as the Name field, and may be truncated by the length of the suffix required to make the value unique on the server.\n\nIf this field is specified and the generated name exists, the server will return a 409.\n\nApplied only if Name is not specified. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#idempotency",
+          "type": "string"
+        },
+        "generation": {
+          "description": "A sequence number representing a specific generation of the desired state. Populated by the system. Read-only.",
+          "type": "integer",
+          "format": "int64"
+        },
+        "labels": {
+          "description": "Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and services. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels",
+          "type": "object",
+          "additionalProperties": {
+            "type": "string",
+            "default": ""
+          }
+        },
+        "managedFields": {
+          "description": "ManagedFields maps workflow-id and version to the set of fields that are managed by that workflow. This is mostly for internal housekeeping, and users typically shouldn't need to set or understand this field. A workflow can be the user's name, a controller's name, or the name of a specific apply path like \"ci-cd\". The set of fields is always in the version that the workflow used when modifying the object.",
+          "type": "array",
+          "items": {
+            "default": {},
+            "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ManagedFieldsEntry"
+          },
+          "x-kubernetes-list-type": "atomic"
+        },
+        "name": {
+          "description": "Name must be unique within a namespace. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically. Name is primarily intended for creation idempotence and configuration definition. Cannot be updated. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#names",
+          "type": "string"
+        },
+        "namespace": {
+          "description": "Namespace defines the space within which each name must be unique. An empty namespace is equivalent to the \"default\" namespace, but \"default\" is the canonical representation. Not all objects are required to be scoped to a namespace - the value of this field for those objects will be empty.\n\nMust be a DNS_LABEL. Cannot be updated. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces",
+          "type": "string"
+        },
+        "ownerReferences": {
+          "description": "List of objects depended by this object. If ALL objects in the list have been deleted, this object will be garbage collected. If this object is managed by a controller, then an entry in this list will point to this controller, with the controller field set to true. There cannot be more than one managing controller.",
+          "type": "array",
+          "items": {
+            "default": {},
+            "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.OwnerReference"
+          },
+          "x-kubernetes-list-map-keys": [
+            "uid"
+          ],
+          "x-kubernetes-list-type": "map",
+          "x-kubernetes-patch-merge-key": "uid",
+          "x-kubernetes-patch-strategy": "merge"
+        },
+        "resourceVersion": {
+          "description": "An opaque value that represents the internal version of this object that can be used by clients to determine when objects have changed. May be used for optimistic concurrency, change detection, and the watch operation on a resource or set of resources. Clients must treat these values as opaque and passed unmodified back to the server. They may only be valid for a particular resource or set of resources.\n\nPopulated by the system. Read-only. Value must be treated as opaque by clients and . More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency",
+          "type": "string"
+        },
+        "selfLink": {
+          "description": "Deprecated: selfLink is a legacy read-only field that is no longer populated by the system.",
+          "type": "string"
+        },
+        "uid": {
+          "description": "UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations.\n\nPopulated by the system. Read-only. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#uids",
+          "type": "string"
+        }
+      }
+    },
+    "io.k8s.apimachinery.pkg.apis.meta.v1.OwnerReference": {
+      "description": "OwnerReference contains enough information to let you identify an owning object. An owning object must be in the same namespace as the dependent, or be cluster-scoped, so there is no namespace field.",
+      "type": "object",
+      "required": [
+        "apiVersion",
+        "kind",
+        "name",
+        "uid"
+      ],
+      "properties": {
+        "apiVersion": {
+          "description": "API version of the referent.",
+          "type": "string",
+          "default": ""
+        },
+        "blockOwnerDeletion": {
+          "description": "If true, AND if the owner has the \"foregroundDeletion\" finalizer, then the owner cannot be deleted from the key-value store until this reference is removed. See https://kubernetes.io/docs/concepts/architecture/garbage-collection/#foreground-deletion for how the garbage collector interacts with this field and enforces the foreground deletion. Defaults to false. To set this field, a user needs \"delete\" permission of the owner, otherwise 422 (Unprocessable Entity) will be returned.",
+          "type": "boolean"
+        },
+        "controller": {
+          "description": "If true, this reference points to the managing controller.",
+          "type": "boolean"
+        },
+        "kind": {
+          "description": "Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+          "type": "string",
+          "default": ""
+        },
+        "name": {
+          "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#names",
+          "type": "string",
+          "default": ""
+        },
+        "uid": {
+          "description": "UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names#uids",
+          "type": "string",
+          "default": ""
+        }
+      },
+      "x-kubernetes-map-type": "atomic"
+    },
+    "io.k8s.apimachinery.pkg.apis.meta.v1.Time": {
+      "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
+      "type": "string",
+      "format": "date-time"
+    },
+    "sh.karpenter.v1.Budget": {
+      "description": "Budget defines when Karpenter will restrict the number of Node Claims that can be terminating simultaneously.",
+      "type": "object",
+      "required": [
+        "nodes"
+      ],
+      "properties": {
+        "duration": {
+          "description": "Duration determines how long a Budget is active since each Schedule hit. Only minutes and hours are accepted, as cron does not work in seconds. If omitted, the budget is always active. This is required if Schedule is set. This regex has an optional 0s at the end since the duration.String() always adds a 0s at the end.",
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Duration"
+        },
+        "nodes": {
+          "description": "Nodes dictates the maximum number of NodeClaims owned by this NodePool that can be terminating at once. This is calculated by counting nodes that have a deletion timestamp set, or are actively being deleted by Karpenter. This field is required when specifying a budget. This cannot be of type intstr.IntOrString since kubebuilder doesn't support pattern checking for int nodes for IntOrString nodes. Ref: https://github.com/kubernetes-sigs/controller-tools/blob/55efe4be40394a288216dab63156b0a64fb82929/pkg/crd/markers/validation.go#L379-L388",
+          "type": "string",
+          "default": ""
+        },
+        "reasons": {
+          "description": "Reasons is a list of disruption methods that this budget applies to. If Reasons is not set, this budget applies to all methods. Otherwise, this will apply to each reason defined. allowed reasons are Underutilized, Empty, and Drifted.",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "default": ""
+          }
+        },
+        "schedule": {
+          "description": "Schedule specifies when a budget begins being active, following the upstream cronjob syntax. If omitted, the budget is always active. Timezones are not supported. This field is required if Duration is set.",
+          "type": "string"
+        }
+      }
+    },
+    "sh.karpenter.v1.Disruption": {
+      "type": "object",
+      "required": [
+        "consolidateAfter"
+      ],
+      "properties": {
+        "budgets": {
+          "description": "Budgets is a list of Budgets. If there are multiple active budgets, Karpenter uses the most restrictive value. If left undefined, this will default to one budget with a value to 10%.",
+          "type": "array",
+          "items": {
+            "default": {},
+            "$ref": "#/definitions/sh.karpenter.v1.Budget"
+          }
+        },
+        "consolidateAfter": {
+          "description": "ConsolidateAfter is the duration the controller will wait before attempting to terminate nodes that are underutilized. Refer to ConsolidationPolicy for how underutilization is considered. When replicas is set, ConsolidateAfter is simply ignored",
+          "$ref": "#/definitions/sh.karpenter.v1.NillableDuration"
+        },
+        "consolidationPolicy": {
+          "description": "ConsolidationPolicy describes which nodes Karpenter can disrupt through its consolidation algorithm. This policy defaults to \"WhenEmptyOrUnderutilized\" if not specified When replicas is set, ConsolidationPolicy is simply ignored",
+          "type": "string"
+        }
+      }
+    },
+    "sh.karpenter.v1.NillableDuration": {
+      "description": "NillableDuration is a wrapper around time.Duration which supports correct marshaling to YAML and JSON. It uses the value \"Never\" to signify that the duration is disabled and sets the inner duration as nil",
+      "type": "object",
+      "required": [
+        "Duration",
+        "Raw"
+      ],
+      "properties": {
+        "Duration": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "Raw": {
+          "description": "Raw is used to ensure we remarshal the NillableDuration in the same format it was specified. This ensures tools like Flux and ArgoCD don't mistakenly detect drift due to our conversion webhooks.",
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    },
+    "sh.karpenter.v1.NodeClaim": {
+      "description": "NodeClaim is the Schema for the NodeClaims API",
+      "type": "object",
+      "required": [
+        "spec"
+      ],
+      "properties": {
+        "apiVersion": {
+          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+          "type": "string"
+        },
+        "kind": {
+          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+          "type": "string"
+        },
+        "metadata": {
+          "default": {},
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+        },
+        "spec": {
+          "default": {},
+          "$ref": "#/definitions/sh.karpenter.v1.NodeClaimSpec"
+        },
+        "status": {
+          "default": {},
+          "$ref": "#/definitions/sh.karpenter.v1.NodeClaimStatus"
+        }
+      }
+    },
+    "sh.karpenter.v1.NodeClaimSpec": {
+      "description": "NodeClaimSpec describes the desired state of the NodeClaim",
+      "type": "object",
+      "required": [
+        "requirements",
+        "nodeClassRef"
+      ],
+      "properties": {
+        "expireAfter": {
+          "description": "ExpireAfter is the duration the controller will wait before terminating a node, measured from when the node is created. This is useful to implement features like eventually consistent node upgrade, memory leak protection, and disruption testing.",
+          "$ref": "#/definitions/sh.karpenter.v1.NillableDuration"
+        },
+        "nodeClassRef": {
+          "description": "NodeClassRef is a reference to an object that defines provider specific configuration",
+          "$ref": "#/definitions/sh.karpenter.v1.NodeClassReference"
+        },
+        "requirements": {
+          "description": "Requirements are layered with GetLabels and applied to every node.",
+          "type": "array",
+          "items": {
+            "default": {},
+            "$ref": "#/definitions/sh.karpenter.v1.NodeSelectorRequirementWithMinValues"
+          }
+        },
+        "resources": {
+          "description": "Resources models the resource requirements for the NodeClaim to launch",
+          "default": {},
+          "$ref": "#/definitions/sh.karpenter.v1.ResourceRequirements"
+        },
+        "startupTaints": {
+          "description": "StartupTaints are taints that are applied to nodes upon startup which are expected to be removed automatically within a short period of time, typically by a DaemonSet that tolerates the taint. These are commonly used by daemonsets to allow initialization and enforce startup ordering.  StartupTaints are ignored for provisioning purposes in that pods are not required to tolerate a StartupTaint in order to have nodes provisioned for them.",
+          "type": "array",
+          "items": {
+            "default": {},
+            "$ref": "#/definitions/io.k8s.api.core.v1.Taint"
+          }
+        },
+        "taints": {
+          "description": "Taints will be applied to the NodeClaim's node.",
+          "type": "array",
+          "items": {
+            "default": {},
+            "$ref": "#/definitions/io.k8s.api.core.v1.Taint"
+          }
+        },
+        "terminationGracePeriod": {
+          "description": "TerminationGracePeriod is the maximum duration the controller will wait before forcefully deleting the pods on a node, measured from when deletion is first initiated.\n\nWarning: this feature takes precedence over a Pod's terminationGracePeriodSeconds value, and bypasses any blocked PDBs or the karpenter.sh/do-not-disrupt annotation.\n\nThis field is intended to be used by cluster administrators to enforce that nodes can be cycled within a given time period. When set, drifted nodes will begin draining even if there are pods blocking eviction. Draining will respect PDBs and the do-not-disrupt annotation until the TGP is reached.\n\nKarpenter will preemptively delete pods so their terminationGracePeriodSeconds align with the node's terminationGracePeriod. If a pod would be terminated without being granted its full terminationGracePeriodSeconds prior to the node timeout, that pod will be deleted at T = node timeout - pod terminationGracePeriodSeconds.\n\nThe feature can also be used to allow maximum time limits for long-running jobs which can delay node termination with preStop hooks. If left undefined, the controller will wait indefinitely for pods to be drained.",
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Duration"
+        }
+      }
+    },
+    "sh.karpenter.v1.NodeClaimStatus": {
+      "description": "NodeClaimStatus defines the observed state of NodeClaim",
+      "type": "object",
+      "properties": {
+        "allocatable": {
+          "description": "Allocatable is the estimated allocatable capacity of the node",
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/io.k8s.apimachinery.pkg.api.resource.Quantity"
+          }
+        },
+        "capacity": {
+          "description": "Capacity is the estimated full capacity of the node",
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/io.k8s.apimachinery.pkg.api.resource.Quantity"
+          }
+        },
+        "conditions": {
+          "description": "Conditions contains signals for health and readiness",
+          "type": "array",
+          "items": {
+            "default": {},
+            "$ref": "#/definitions/com.github.awslabs.operatorpkg.status.Condition"
+          }
+        },
+        "imageID": {
+          "description": "ImageID is an identifier for the image that runs on the node",
+          "type": "string"
+        },
+        "lastPodEventTime": {
+          "description": "LastPodEventTime is updated with the last time a pod was scheduled or removed from the node. A pod going terminal or terminating is also considered as removed.",
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
+        },
+        "nodeName": {
+          "description": "NodeName is the name of the corresponding node object",
+          "type": "string"
+        },
+        "providerID": {
+          "description": "ProviderID of the corresponding node object",
+          "type": "string"
+        }
+      }
+    },
+    "sh.karpenter.v1.NodeClaimTemplate": {
+      "type": "object",
+      "required": [
+        "spec"
+      ],
+      "properties": {
+        "metadata": {
+          "default": {},
+          "$ref": "#/definitions/sh.karpenter.v1.ObjectMeta"
+        },
+        "spec": {
+          "default": {},
+          "$ref": "#/definitions/sh.karpenter.v1.NodeClaimTemplateSpec"
+        }
+      }
+    },
+    "sh.karpenter.v1.NodeClaimTemplateSpec": {
+      "description": "NodeClaimTemplateSpec describes the desired state of the NodeClaim in the Nodepool NodeClaimTemplateSpec is used in the NodePool's NodeClaimTemplate, with the resource requests omitted since users are not able to set resource requests in the NodePool.",
+      "type": "object",
+      "required": [
+        "requirements",
+        "nodeClassRef"
+      ],
+      "properties": {
+        "expireAfter": {
+          "description": "ExpireAfter is the duration the controller will wait before terminating a node, measured from when the node is created. This is useful to implement features like eventually consistent node upgrade, memory leak protection, and disruption testing.",
+          "$ref": "#/definitions/sh.karpenter.v1.NillableDuration"
+        },
+        "nodeClassRef": {
+          "description": "NodeClassRef is a reference to an object that defines provider specific configuration",
+          "$ref": "#/definitions/sh.karpenter.v1.NodeClassReference"
+        },
+        "requirements": {
+          "description": "Requirements are layered with GetLabels and applied to every node.",
+          "type": "array",
+          "items": {
+            "default": {},
+            "$ref": "#/definitions/sh.karpenter.v1.NodeSelectorRequirementWithMinValues"
+          }
+        },
+        "startupTaints": {
+          "description": "StartupTaints are taints that are applied to nodes upon startup which are expected to be removed automatically within a short period of time, typically by a DaemonSet that tolerates the taint. These are commonly used by daemonsets to allow initialization and enforce startup ordering.  StartupTaints are ignored for provisioning purposes in that pods are not required to tolerate a StartupTaint in order to have nodes provisioned for them.",
+          "type": "array",
+          "items": {
+            "default": {},
+            "$ref": "#/definitions/io.k8s.api.core.v1.Taint"
+          }
+        },
+        "taints": {
+          "description": "Taints will be applied to the NodeClaim's node.",
+          "type": "array",
+          "items": {
+            "default": {},
+            "$ref": "#/definitions/io.k8s.api.core.v1.Taint"
+          }
+        },
+        "terminationGracePeriod": {
+          "description": "TerminationGracePeriod is the maximum duration the controller will wait before forcefully deleting the pods on a node, measured from when deletion is first initiated.\n\nWarning: this feature takes precedence over a Pod's terminationGracePeriodSeconds value, and bypasses any blocked PDBs or the karpenter.sh/do-not-disrupt annotation.\n\nThis field is intended to be used by cluster administrators to enforce that nodes can be cycled within a given time period. When set, drifted nodes will begin draining even if there are pods blocking eviction. Draining will respect PDBs and the do-not-disrupt annotation until the TGP is reached.\n\nKarpenter will preemptively delete pods so their terminationGracePeriodSeconds align with the node's terminationGracePeriod. If a pod would be terminated without being granted its full terminationGracePeriodSeconds prior to the node timeout, that pod will be deleted at T = node timeout - pod terminationGracePeriodSeconds.\n\nThe feature can also be used to allow maximum time limits for long-running jobs which can delay node termination with preStop hooks. If left undefined, the controller will wait indefinitely for pods to be drained.",
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Duration"
+        }
+      }
+    },
+    "sh.karpenter.v1.NodeClassReference": {
+      "type": "object",
+      "required": [
+        "kind",
+        "name",
+        "group"
+      ],
+      "properties": {
+        "group": {
+          "description": "API version of the referent",
+          "type": "string",
+          "default": ""
+        },
+        "kind": {
+          "description": "Kind of the referent; More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds\"",
+          "type": "string",
+          "default": ""
+        },
+        "name": {
+          "description": "Name of the referent; More info: http://kubernetes.io/docs/user-guide/identifiers#names",
+          "type": "string",
+          "default": ""
+        }
+      }
+    },
+    "sh.karpenter.v1.NodePool": {
+      "description": "NodePool is the Schema for the NodePools API",
+      "type": "object",
+      "required": [
+        "spec"
+      ],
+      "properties": {
+        "apiVersion": {
+          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+          "type": "string"
+        },
+        "kind": {
+          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+          "type": "string"
+        },
+        "metadata": {
+          "default": {},
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+        },
+        "spec": {
+          "default": {},
+          "$ref": "#/definitions/sh.karpenter.v1.NodePoolSpec"
+        },
+        "status": {
+          "default": {},
+          "$ref": "#/definitions/sh.karpenter.v1.NodePoolStatus"
+        }
+      }
+    },
+    "sh.karpenter.v1.NodePoolSpec": {
+      "description": "NodePoolSpec is the top level nodepool specification. Nodepools launch nodes in response to pods that are unschedulable. A single nodepool is capable of managing a diverse set of nodes. Node properties are determined from a combination of nodepool and pod scheduling constraints.",
+      "type": "object",
+      "required": [
+        "template"
+      ],
+      "properties": {
+        "disruption": {
+          "description": "Disruption contains the parameters that relate to Karpenter's disruption logic",
+          "default": {},
+          "$ref": "#/definitions/sh.karpenter.v1.Disruption"
+        },
+        "limits": {
+          "description": "Limits define a set of bounds for provisioning capacity. Limits other than limits.nodes is not supported when replicas is set.",
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/io.k8s.apimachinery.pkg.api.resource.Quantity"
+          }
+        },
+        "replicas": {
+          "description": "Replicas is the desired number of nodes for the NodePool. When specified, the NodePool will maintain this fixed number of replicas rather than scaling based on pod demand. When replicas is set:\n  - The following fields are ignored:\n      * disruption.consolidationPolicy\n      * disruption.consolidateAfter\n  - Only limits.nodes is supported; other resource limits (e.g., CPU, memory) must not be specified.\n  - Weight is not supported.\nNote: This field is alpha.",
+          "type": "integer",
+          "format": "int64"
+        },
+        "template": {
+          "description": "Template contains the template of possibilities for the provisioning logic to launch a NodeClaim with. NodeClaims launched from this NodePool will often be further constrained than the template specifies.",
+          "default": {},
+          "$ref": "#/definitions/sh.karpenter.v1.NodeClaimTemplate"
+        },
+        "weight": {
+          "description": "Weight is the priority given to the nodepool during scheduling. A higher numerical weight indicates that this nodepool will be ordered ahead of other nodepools with lower weights. A nodepool with no weight will be treated as if it is a nodepool with a weight of 0. Weight is not supported when replicas is set.",
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "sh.karpenter.v1.NodePoolStatus": {
+      "description": "NodePoolStatus defines the observed state of NodePool",
+      "type": "object",
+      "properties": {
+        "conditions": {
+          "description": "Conditions contains signals for health and readiness",
+          "type": "array",
+          "items": {
+            "default": {},
+            "$ref": "#/definitions/com.github.awslabs.operatorpkg.status.Condition"
+          }
+        },
+        "nodeClassObservedGeneration": {
+          "description": "NodeClassObservedGeneration represents the observed nodeClass generation for referenced nodeClass. If this does not match the actual NodeClass Generation, NodeRegistrationHealthy status condition on the NodePool will be reset",
+          "type": "integer",
+          "format": "int64"
+        },
+        "nodes": {
+          "description": "Nodes is the count of nodes associated with this NodePool",
+          "type": "integer",
+          "format": "int64"
+        },
+        "resources": {
+          "description": "Resources is the list of resources that have been provisioned.",
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/io.k8s.apimachinery.pkg.api.resource.Quantity"
+          }
+        }
+      }
+    },
+    "sh.karpenter.v1.NodeSelectorRequirementWithMinValues": {
+      "description": "A node selector requirement is a selector that contains values, a key, an operator that relates the key and values and minValues that represent the requirement to have at least that many values.",
+      "type": "object",
+      "required": [
+        "key",
+        "operator"
+      ],
+      "properties": {
+        "key": {
+          "description": "The label key that the selector applies to.",
+          "type": "string",
+          "default": ""
+        },
+        "minValues": {
+          "description": "This field is ALPHA and can be dropped or replaced at any time MinValues is the minimum number of unique values required to define the flexibility of the specific requirement.",
+          "type": "integer",
+          "format": "int32"
+        },
+        "operator": {
+          "description": "Represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists, DoesNotExist. Gt, Lt, Gte, and Lte.\n\nPossible enum values:\n - `\"DoesNotExist\"`\n - `\"Exists\"`\n - `\"Gt\"`\n - `\"Gte\"`\n - `\"In\"`\n - `\"Lt\"`\n - `\"Lte\"`\n - `\"NotIn\"`",
+          "type": "string",
+          "enum": [
+            "DoesNotExist",
+            "Exists",
+            "Gt",
+            "Gte",
+            "In",
+            "Lt",
+            "Lte",
+            "NotIn"
+          ]
+        },
+        "values": {
+          "description": "An array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. If the operator is Gt, Lt, Gte, or Lte, the values array must have a single element, which will be interpreted as an integer. This array is replaced during a strategic merge patch.",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "default": ""
+          },
+          "x-kubernetes-list-type": "atomic"
+        }
+      }
+    },
+    "sh.karpenter.v1.ObjectMeta": {
+      "type": "object",
+      "properties": {
+        "annotations": {
+          "description": "Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations",
+          "type": "object",
+          "additionalProperties": {
+            "type": "string",
+            "default": ""
+          }
+        },
+        "labels": {
+          "description": "Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and services. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels",
+          "type": "object",
+          "additionalProperties": {
+            "type": "string",
+            "default": ""
+          }
+        }
+      }
+    },
+    "sh.karpenter.v1.ResourceRequirements": {
+      "description": "ResourceRequirements models the required resources for the NodeClaim to launch Ths will eventually be transformed into v1.ResourceRequirements when we support resources.limits",
+      "type": "object",
+      "properties": {
+        "requests": {
+          "description": "Requests describes the minimum required resources for the NodeClaim to launch",
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/io.k8s.apimachinery.pkg.api.resource.Quantity"
+          }
+        }
+      }
+    },
+    "sh.karpenter.v1alpha1.NodeOverlay": {
+      "type": "object",
+      "required": [
+        "spec"
+      ],
+      "properties": {
+        "apiVersion": {
+          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+          "type": "string"
+        },
+        "kind": {
+          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+          "type": "string"
+        },
+        "metadata": {
+          "default": {},
+          "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+        },
+        "spec": {
+          "default": {},
+          "$ref": "#/definitions/sh.karpenter.v1alpha1.NodeOverlaySpec"
+        },
+        "status": {
+          "default": {},
+          "$ref": "#/definitions/sh.karpenter.v1alpha1.NodeOverlayStatus"
+        }
+      }
+    },
+    "sh.karpenter.v1alpha1.NodeOverlaySpec": {
+      "type": "object",
+      "required": [
+        "requirements"
+      ],
+      "properties": {
+        "capacity": {
+          "description": "Capacity adds extended resources only, and does not replace any existing resources. These extended resources are appended to the node's existing resource list. Note: This field does not modify or override standard resources like cpu, memory, ephemeral-storage, or pods.",
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/io.k8s.apimachinery.pkg.api.resource.Quantity"
+          }
+        },
+        "price": {
+          "description": "Price specifies amount for an instance types that match the specified labels. Users can override prices using a signed float representing the price override",
+          "type": "string"
+        },
+        "priceAdjustment": {
+          "description": "PriceAdjustment specifies the price change for matching instance types. Accepts either: - A fixed price modifier (e.g., -0.5, 1.2) - A percentage modifier (e.g., +10% for increase, -15% for decrease)",
+          "type": "string"
+        },
+        "requirements": {
+          "description": "Requirements constrain when this NodeOverlay is applied during scheduling simulations. These requirements can match: - Well-known labels (e.g., node.kubernetes.io/instance-type, karpenter.sh/nodepool) - Custom labels from NodePool's spec.template.labels",
+          "type": "array",
+          "items": {
+            "default": {},
+            "$ref": "#/definitions/sh.karpenter.v1alpha1.NodeSelectorRequirement"
+          }
+        },
+        "weight": {
+          "description": "Weight defines the priority of this NodeOverlay when overriding node attributes. NodeOverlays with higher numerical weights take precedence over those with lower weights. If no weight is specified, the NodeOverlay is treated as having a weight of 0. When multiple NodeOverlays have identical weights, they are merged in alphabetical order.",
+          "type": "integer",
+          "format": "int32"
+        }
+      }
+    },
+    "sh.karpenter.v1alpha1.NodeOverlayStatus": {
+      "description": "NodeOverlayStatus defines the observed state of NodeOverlay",
+      "type": "object",
+      "properties": {
+        "conditions": {
+          "description": "Conditions contains signals for health and readiness",
+          "type": "array",
+          "items": {
+            "default": {},
+            "$ref": "#/definitions/com.github.awslabs.operatorpkg.status.Condition"
+          }
+        }
+      }
+    },
+    "sh.karpenter.v1alpha1.NodeSelectorRequirement": {
+      "description": "A node selector requirement is a selector that contains values, a key, an operator that relates the key and values to have at least that many values.",
+      "type": "object",
+      "required": [
+        "key",
+        "operator"
+      ],
+      "properties": {
+        "key": {
+          "description": "The label key that the selector applies to.",
+          "type": "string",
+          "default": ""
+        },
+        "operator": {
+          "description": "Represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists, DoesNotExist. Gt, Lt, Gte, and Lte.\n\nPossible enum values:\n - `\"DoesNotExist\"`\n - `\"Exists\"`\n - `\"Gt\"`\n - `\"Gte\"`\n - `\"In\"`\n - `\"Lt\"`\n - `\"Lte\"`\n - `\"NotIn\"`",
+          "type": "string",
+          "enum": [
+            "DoesNotExist",
+            "Exists",
+            "Gt",
+            "Gte",
+            "In",
+            "Lt",
+            "Lte",
+            "NotIn"
+          ]
+        },
+        "values": {
+          "description": "An array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. If the operator is Gt, Lt, Gte, or Lte, the values array must have a single element, which will be interpreted as an integer.",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "default": ""
+          },
+          "x-kubernetes-list-type": "atomic"
+        }
+      }
+    }
+  }
+}

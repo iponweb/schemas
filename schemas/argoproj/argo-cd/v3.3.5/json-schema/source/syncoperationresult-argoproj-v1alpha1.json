@@ -1,0 +1,63 @@
+{
+  "description": "SyncOperationResult represent result of sync operation",
+  "type": "object",
+  "required": [
+    "revision"
+  ],
+  "properties": {
+    "managedNamespaceMetadata": {
+      "description": "ManagedNamespaceMetadata contains the current sync state of managed namespace metadata",
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.ManagedNamespaceMetadata"
+    },
+    "resources": {
+      "description": "Resources contains a list of sync result items for each individual resource in a sync operation",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.ResourceResult"
+      }
+    },
+    "revision": {
+      "description": "Revision holds the revision this sync operation was performed to",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "revisions": {
+      "description": "Revisions holds the revision this sync operation was performed for respective indexed source in sources field",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "source": {
+      "description": "Source records the application source information of the sync, used for comparing auto-sync",
+      "default": {},
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.ApplicationSource"
+    },
+    "sources": {
+      "description": "Source records the application source information of the sync, used for comparing auto-sync",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.ApplicationSource"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

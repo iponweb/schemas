@@ -1,0 +1,93 @@
+{
+  "description": "GCENodeClassSpec is the top level specification for the GCP Karpenter Provider. This will contain the configuration necessary to launch instances in GCP.",
+  "type": "object",
+  "required": [
+    "imageSelectorTerms"
+  ],
+  "properties": {
+    "disks": {
+      "description": "Disk defines the disks to attach to the provisioned instance.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/gcp.k8s.karpenter.v1alpha1.Disk"
+      }
+    },
+    "imageFamily": {
+      "description": "ImageFamily dictates the instance template used when generating launch templates. If no ImageSelectorTerms alias is specified, this field is required.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "imageSelectorTerms": {
+      "description": "ImageSelectorTerms is a list of or image selector terms. The terms are ORed. Remove or adjust mutual exclusivity rules since there's only one field",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/gcp.k8s.karpenter.v1alpha1.ImageSelectorTerm"
+      }
+    },
+    "kubeletConfiguration": {
+      "description": "KubeletConfiguration defines args to be used when configuring kubelet on provisioned nodes. They are a vswitch of the upstream types, recognizing not all options may be supported. Wherever possible, the types and names should reflect the upstream kubelet types.",
+      "$ref": "_definitions.json#/definitions/gcp.k8s.karpenter.v1alpha1.KubeletConfiguration"
+    },
+    "labels": {
+      "description": "Labels to be applied on GCE VM instance.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "metadata": {
+      "description": "Metadata contains key/value pairs to set as instance metadata",
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "networkTags": {
+      "description": "NetworkTags is a list of network tags to apply to the node.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "serviceAccount": {
+      "description": "ServiceAccount is the GCP IAM service account email to assign to the instance",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

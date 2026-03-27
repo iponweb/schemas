@@ -1,0 +1,51 @@
+resources:
+- kind: GRPCRoute
+  group: gateway.networking.k8s.io
+  version: v1
+  plural: grpcroutes
+  scope: Namespaced
+- kind: Gateway
+  group: gateway.networking.k8s.io
+  version: v1
+  plural: gateways
+  scope: Namespaced
+  shortNames:
+  - gtw
+- kind: GatewayClass
+  group: gateway.networking.k8s.io
+  version: v1
+  plural: gatewayclasses
+  scope: Cluster
+  shortNames:
+  - gc
+- kind: HTTPRoute
+  group: gateway.networking.k8s.io
+  version: v1
+  plural: httproutes
+  scope: Namespaced
+- kind: Gateway
+  group: gateway.networking.k8s.io
+  version: v1beta1
+  plural: gateways
+  scope: Namespaced
+  shortNames:
+  - gtw
+- kind: GatewayClass
+  group: gateway.networking.k8s.io
+  version: v1beta1
+  plural: gatewayclasses
+  scope: Cluster
+  shortNames:
+  - gc
+- kind: HTTPRoute
+  group: gateway.networking.k8s.io
+  version: v1beta1
+  plural: httproutes
+  scope: Namespaced
+- kind: ReferenceGrant
+  group: gateway.networking.k8s.io
+  version: v1beta1
+  plural: referencegrants
+  scope: Namespaced
+  shortNames:
+  - refgrant

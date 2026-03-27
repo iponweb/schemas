@@ -1,0 +1,23 @@
+{
+  "kind": "APIGroupList",
+  "apiVersion": "v1",
+  "groups": [
+    {
+      "name": "monitoring.coreos.com",
+      "versions": [
+        {
+          "groupVersion": "monitoring.coreos.com/v1",
+          "version": "v1"
+        },
+        {
+          "groupVersion": "monitoring.coreos.com/v1alpha1",
+          "version": "v1alpha1"
+        }
+      ],
+      "preferredVersion": {
+        "groupVersion": "monitoring.coreos.com/v1",
+        "version": "v1"
+      }
+    }
+  ]
+}

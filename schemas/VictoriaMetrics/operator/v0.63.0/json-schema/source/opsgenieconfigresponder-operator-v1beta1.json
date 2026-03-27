@@ -1,0 +1,40 @@
+{
+  "description": "OpsGenieConfigResponder defines a responder to an incident. One of `id`, `name` or `username` has to be defined.",
+  "type": "object",
+  "required": [
+    "type"
+  ],
+  "properties": {
+    "id": {
+      "description": "ID of the responder.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "name": {
+      "description": "Name of the responder.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "type": {
+      "description": "Type of responder.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "username": {
+      "description": "Username of the responder.",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

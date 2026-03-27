@@ -1,0 +1,113 @@
+{
+  "description": "X509Subject Full X509 name specification",
+  "type": "object",
+  "properties": {
+    "countries": {
+      "description": "Countries to be used on the Certificate.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "localities": {
+      "description": "Cities to be used on the Certificate.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "organizationalUnits": {
+      "description": "Organizational Units to be used on the Certificate.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "organizations": {
+      "description": "Organizations to be used on the Certificate.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "postalCodes": {
+      "description": "Postal codes to be used on the Certificate.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "provinces": {
+      "description": "State/Provinces to be used on the Certificate.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "serialNumber": {
+      "description": "Serial number to be used on the Certificate.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "streetAddresses": {
+      "description": "Street addresses to be used on the Certificate.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

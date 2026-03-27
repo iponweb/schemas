@@ -1,0 +1,14 @@
+{
+  "type": "object",
+  "properties": {
+    "node": {
+      "description": "When set to true, Prometheus must have permissions to get Nodes.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

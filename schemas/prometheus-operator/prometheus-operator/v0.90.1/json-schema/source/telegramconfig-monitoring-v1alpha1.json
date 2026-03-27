@@ -1,0 +1,77 @@
+{
+  "description": "TelegramConfig configures notifications via Telegram. See https://prometheus.io/docs/alerting/latest/configuration/#telegram_config",
+  "type": "object",
+  "required": [
+    "chatID"
+  ],
+  "properties": {
+    "apiURL": {
+      "description": "apiURL defines the Telegram API URL, e.g. https://api.telegram.org. If not specified, the default Telegram API URL will be used.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "botToken": {
+      "description": "botToken defines the Telegram bot token. It is mutually exclusive with `botTokenFile`. The secret needs to be in the same namespace as the AlertmanagerConfig object and accessible by the Prometheus Operator. Either `botToken` or `botTokenFile` is required.",
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SecretKeySelector"
+    },
+    "botTokenFile": {
+      "description": "botTokenFile defines the file to read the Telegram bot token from. It is mutually exclusive with `botToken`. Either `botToken` or `botTokenFile` is required. It requires Alertmanager >= v0.26.0.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "chatID": {
+      "description": "chatID defines the Telegram chat ID where messages will be sent. This can be a user ID, group ID, or channel ID (with @ prefix for public channels).",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int64"
+    },
+    "disableNotifications": {
+      "description": "disableNotifications controls whether Telegram notifications are sent silently. When true, users will receive the message without notification sounds.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "httpConfig": {
+      "description": "httpConfig defines the HTTP client configuration for Telegram API requests.",
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.HTTPConfig"
+    },
+    "message": {
+      "description": "message defines the message template for the Telegram notification. This is the content that will be sent to the specified chat.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "messageThreadID": {
+      "description": "messageThreadID defines the Telegram Group Topic ID for threaded messages. This allows sending messages to specific topics within Telegram groups. It requires Alertmanager >= 0.26.0.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int64"
+    },
+    "parseMode": {
+      "description": "parseMode defines the parse mode for telegram message formatting. Valid values are \"MarkdownV2\", \"Markdown\", and \"HTML\". This determines how text formatting is interpreted in the message.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "sendResolved": {
+      "description": "sendResolved defines whether or not to notify about resolved alerts.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

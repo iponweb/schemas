@@ -1,9 +1,0 @@
-diff --git a/vendor/github.com/open-policy-agent/frameworks/constraint/pkg/core/templates/doc.go b/vendor/github.com/open-policy-agent/frameworks/constraint/pkg/core/templates/doc.go
---- a/vendor/github.com/open-policy-agent/frameworks/constraint/pkg/core/templates/doc.go
-+++ b/vendor/github.com/open-policy-agent/frameworks/constraint/pkg/core/templates/doc.go
-@@ -15,4 +15,5 @@
-
- // Package templates contains API Schema definitions for the templates API group
- // +k8s:deepcopy-gen=package
-+// +k8s:openapi-gen=true
- package templates

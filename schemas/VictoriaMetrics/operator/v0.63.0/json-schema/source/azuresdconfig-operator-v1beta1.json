@@ -1,0 +1,66 @@
+{
+  "description": "AzureSDConfig allow retrieving scrape targets from Azure VMs. See [here](https://docs.victoriametrics.com/victoriametrics/sd_configs/#azure_sd_configs)",
+  "type": "object",
+  "required": [
+    "subscriptionID"
+  ],
+  "properties": {
+    "authenticationMethod": {
+      "description": "# The authentication method, either OAuth or ManagedIdentity. See https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "clientID": {
+      "description": "Optional client ID. Only required with the OAuth authentication method.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "clientSecret": {
+      "description": "Optional client secret. Only required with the OAuth authentication method.",
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SecretKeySelector"
+    },
+    "environment": {
+      "description": "The Azure environment.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "port": {
+      "description": "The port to scrape metrics from. If using the public IP address, this must instead be specified in the relabeling rule.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32"
+    },
+    "resourceGroup": {
+      "description": "Optional resource group name. Limits discovery to this resource group.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "subscriptionID": {
+      "description": "The subscription ID. Always required.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "tenantID": {
+      "description": "Optional tenant ID. Only required with the OAuth authentication method.",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

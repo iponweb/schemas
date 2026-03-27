@@ -1,0 +1,142 @@
+{
+  "oneOf": [
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1.VLAgent"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1.VLAgentList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1.VLCluster"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1.VLClusterList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1.VLSingle"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1.VLSingleList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1.VMAnomaly"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1.VMAnomalyList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1.VTCluster"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1.VTClusterList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1.VTSingle"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1.VTSingleList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.VLogs"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.VLogsList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.VMAgent"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.VMAgentList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.VMAlert"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.VMAlertList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.VMAlertmanager"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.VMAlertmanagerConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.VMAlertmanagerConfigList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.VMAlertmanagerList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.VMAuth"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.VMAuthList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.VMCluster"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.VMClusterList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.VMNodeScrape"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.VMNodeScrapeList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.VMPodScrape"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.VMPodScrapeList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.VMProbe"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.VMProbeList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.VMRule"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.VMRuleList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.VMScrapeConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.VMScrapeConfigList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.VMServiceScrape"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.VMServiceScrapeList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.VMSingle"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.VMSingleList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.VMStaticScrape"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.VMStaticScrapeList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.VMUser"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1beta1.VMUserList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.util.intstr.IntOrString"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.api.resource.Quantity"
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "description": "The `PodMonitor` custom resource definition (CRD) defines how `Prometheus` and `PrometheusAgent` can scrape metrics from a group of pods. Among other things, it allows to specify: * The pods to scrape via label selectors. * The container ports to scrape. * Authentication credentials to use. * Target and metric relabeling.\n\n`Prometheus` and `PrometheusAgent` objects select `PodMonitor` objects using label and namespace selectors.",
+  "type": "object",
+  "required": [
+    "spec"
+  ],
+  "properties": {
+    "apiVersion": {
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "kind": {
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "metadata": {
+      "description": "metadata defines ObjectMeta as the metadata that all persisted resources.",
+      "default": {},
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+    },
+    "spec": {
+      "description": "spec defines the specification of desired Pod selection for target discovery by Prometheus.",
+      "default": {},
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.PodMonitorSpec"
+    },
+    "status": {
+      "description": "status defines the status subresource. It is under active development and is updated only when the \"StatusForConfigurationResources\" feature gate is enabled.\n\nMost recent observed status of the PodMonitor. Read-only. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#spec-and-status",
+      "default": {},
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.ConfigResourceStatus"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

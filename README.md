@@ -1,48 +1,77 @@
 # Schemas
 
-The repository contains JSON Schemas required for
-[metachart](https://github.com/iponweb/metachart) born Helm Charts generation.
+JSON Schemas for Kubernetes built-in APIs and third-party controllers/operators.
+Used by [metachart](https://github.com/iponweb/metachart) for Helm chart validation.
 
-For complete charts list see [charts](https://github.com/iponweb/charts).
-
-Inspired by
-[instrumenta/kubernetes-json-schema](https://github.com/instrumenta/kubernetes-json-schema).
+Inspired by [instrumenta/kubernetes-json-schema](https://github.com/instrumenta/kubernetes-json-schema).
 
 ## Structure
 
-Schemas:
-
 ```
-schema-type/controller-name/v0.0.1-strict/_definitions.json
-schema-type/controller-name/v0.0.1-strict/resource-controller-name-v1.json
+schemas/
+  ORG/REPO/
+    index.yaml          # Controller metadata (name, repository URL)
+    VERSION/
+      index.yaml        # Resource list with GVK (group/version/kind)
+      crds.yaml         # All CRDs as a single multi-document YAML (for Terraform)
+      crd/              # Individual CRD YAML files (one per CRD name)
+      discovery/        # Raw API discovery JSON files
+      json-schema/
+        source/         # Schemas generated from Go source via openapi-gen
+        live/           # Schemas from a live kube-apiserver (via envtest)
+      openapi/
+        source.json     # Merged OpenAPI spec (source-generated)
+        live.json       # OpenAPI spec from live kube-apiserver
 ```
 
-Generators:
+Built-in Kubernetes schemas live under `schemas/kubernetes/kubernetes/VERSION/`.
 
+## Generating schemas
+
+**Prerequisites:** Docker (for the builder image) or a local Go + Python environment.
+
+```bash
+# Build the Docker image once
+make builder
+
+# Generate schemas for a controller
+make generate CONTROLLER=aws/karpenter-provider-aws VERSION=v1.10.0
+
+# Generate built-in Kubernetes schemas
+make generate-kubernetes VERSION=v1.34.1
+
+# Validate generated schemas
+make validate CONTROLLER=aws/karpenter-provider-aws VERSION=v1.10.0
 ```
-schema-type/controller-name/generate/v0.0.1/generate.sh
+
+Local (no Docker):
+
+```bash
+make generate-local CONTROLLER=aws/karpenter-provider-aws VERSION=v1.10.0
 ```
 
-## Adding a schema
+See [CLAUDE.md](CLAUDE.md) for the full generation pipeline reference.
 
-Currently, schema build process is pretty straightforward and can be divided
-in the following steps:
+## Using `crds.yaml` with Terraform
 
-- Clone the controller repository
-- Prepare and apply patch to the controller sources. In most cases adding of
-  the `// +k8s:openapi-gen=true` comment to the `doc.go` file of api definition
-  is enough to enable OpenAPI schema generation from go sources. In some cases,
-  dependencies also have to be patched. For example,
-  [knative/pkg](https://github.com/knative/pkg) does not contain required
-  comment.
-- OpenAPI golang schema generation
-- Conversion of golang OpenAPI schema to JSON OpenAPI definition
-- OpenAPI JSON schema conversion to JSON Schema
+Each controller version includes a `crds.yaml` — all CRDs concatenated into a single
+multi-document YAML. This is convenient for Terraform:
 
-## For operators developers
+```hcl
+data "kubectl_file_documents" "crds" {
+  content = file("schemas/aws/karpenter-provider-aws/v1.10.0/crds.yaml")
+}
 
-If you are an operator/api-server developer with custom resources, and you are
-interested in the [metachart](https://github.com/iponweb/metachart) born Helm
-Charts usage, we kindly recommend you to maintain OpenAPI and JSON schemas by
-yourself and host them in your repositories to speedup new versions support
-and decrease potential errors count.
+resource "kubectl_manifest" "crds" {
+  for_each          = data.kubectl_file_documents.crds.manifests
+  yaml_body         = each.value
+  server_side_apply = true
+}
+```
+
+## For controller developers
+
+If you maintain a Kubernetes controller with custom resources and are interested in
+[metachart](https://github.com/iponweb/metachart) Helm chart generation, consider
+hosting OpenAPI and JSON schemas in your own repository to speed up version support
+and reduce errors.

@@ -1,0 +1,26 @@
+{
+  "description": "SourceHydrator specifies a dry \"don't repeat yourself\" source for manifests, a sync source from which to sync hydrated manifests, and an optional hydrateTo location to act as a \"staging\" aread for hydrated manifests.",
+  "type": "object",
+  "required": [
+    "drySource",
+    "syncSource"
+  ],
+  "properties": {
+    "drySource": {
+      "description": "DrySource specifies where the dry \"don't repeat yourself\" manifest source lives.",
+      "default": {},
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.DrySource"
+    },
+    "hydrateTo": {
+      "description": "HydrateTo specifies an optional \"staging\" location to push hydrated manifests to. An external system would then have to move manifests to the SyncSource, e.g. by pull request.",
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.HydrateTo"
+    },
+    "syncSource": {
+      "description": "SyncSource specifies where to sync hydrated manifests from.",
+      "default": {},
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.SyncSource"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

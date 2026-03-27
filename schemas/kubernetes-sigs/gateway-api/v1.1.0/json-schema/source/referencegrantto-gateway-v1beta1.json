@@ -1,0 +1,35 @@
+{
+  "description": "ReferenceGrantTo describes what Kinds are allowed as targets of the references.",
+  "type": "object",
+  "required": [
+    "group",
+    "kind"
+  ],
+  "properties": {
+    "group": {
+      "description": "Group is the group of the referent. When empty, the Kubernetes core API group is inferred.\n\nSupport: Core",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "kind": {
+      "description": "Kind is the kind of the referent. Although implementations may support additional resources, the following types are part of the \"Core\" support level for this field:\n\n* Secret when used to permit a SecretObjectReference * Service when used to permit a BackendObjectReference",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "name": {
+      "description": "Name is the name of the referent. When unspecified, this policy refers to all resources of the specified Group and Kind in the local namespace.",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

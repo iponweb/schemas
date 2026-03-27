@@ -1,0 +1,15 @@
+{
+  "description": "SyncStrategyApply uses `kubectl apply` to perform the apply",
+  "type": "object",
+  "properties": {
+    "force": {
+      "description": "Force indicates whether or not to supply the --force flag to `kubectl apply`. The --force flag deletes and re-create the resource, when PATCH encounters conflict and has retried for 5 times.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

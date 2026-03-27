@@ -1,0 +1,481 @@
+{
+  "description": "AssignMetadata is the Schema for the assignmetadata API.",
+  "type": "object",
+  "properties": {
+    "apiVersion": {
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "mutations.gatekeeper.sh/v1"
+      ]
+    },
+    "kind": {
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "AssignMetadata"
+      ]
+    },
+    "metadata": {
+      "description": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+    },
+    "spec": {
+      "description": "AssignMetadataSpec defines the desired state of AssignMetadata.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "location": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "match": {
+          "description": "Match selects which objects are in scope.",
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "excludedNamespaces": {
+              "description": "ExcludedNamespaces is a list of namespace names. If defined, a\nconstraint only applies to resources not in a listed namespace.\nExcludedNamespaces also supports a prefix or suffix based glob.  For example,\n`excludedNamespaces: [kube-*]` matches both `kube-system` and\n`kube-public`, and `excludedNamespaces: [*-system]` matches both `kube-system` and\n`gatekeeper-system`.",
+              "type": [
+                "array",
+                "null"
+              ],
+              "items": {
+                "description": "A string that supports globbing at its front and end. Ex: \"kube-*\" will match \"kube-system\" or\n\"kube-public\", \"*-system\" will match \"kube-system\" or \"gatekeeper-system\", \"*system*\" will\nmatch \"system-kube\" or \"kube-system\".  The asterisk is required for wildcard matching.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "pattern": "^\\*?[-:a-z0-9]*\\*?$"
+              }
+            },
+            "kinds": {
+              "type": [
+                "array",
+                "null"
+              ],
+              "items": {
+                "description": "Kinds accepts a list of objects with apiGroups and kinds fields\nthat list the groups/kinds of objects to which the mutation will apply.\nIf multiple groups/kinds objects are specified,\nonly one match is needed for the resource to be in scope.",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "properties": {
+                  "apiGroups": {
+                    "description": "APIGroups is the API groups the resources belong to. '*' is all groups.\nIf '*' is present, the length of the slice must be one.\nRequired.",
+                    "type": [
+                      "array",
+                      "null"
+                    ],
+                    "items": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  },
+                  "kinds": {
+                    "type": [
+                      "array",
+                      "null"
+                    ],
+                    "items": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                },
+                "additionalProperties": false
+              }
+            },
+            "labelSelector": {
+              "description": "LabelSelector is the combination of two optional fields: `matchLabels`\nand `matchExpressions`.  These two fields provide different methods of\nselecting or excluding k8s objects based on the label keys and values\nincluded in object metadata.  All selection expressions from both\nsections are ANDed to determine if an object meets the cumulative\nrequirements of the selector.",
+              "type": [
+                "object",
+                "null"
+              ],
+              "properties": {
+                "matchExpressions": {
+                  "description": "matchExpressions is a list of label selector requirements. The requirements are ANDed.",
+                  "type": [
+                    "array",
+                    "null"
+                  ],
+                  "items": {
+                    "description": "A label selector requirement is a selector that contains values, a key, and an operator that\nrelates the key and values.",
+                    "type": [
+                      "object",
+                      "null"
+                    ],
+                    "required": [
+                      "key",
+                      "operator"
+                    ],
+                    "properties": {
+                      "key": {
+                        "description": "key is the label key that the selector applies to.",
+                        "type": "string"
+                      },
+                      "operator": {
+                        "description": "operator represents a key's relationship to a set of values.\nValid operators are In, NotIn, Exists and DoesNotExist.",
+                        "type": "string"
+                      },
+                      "values": {
+                        "description": "values is an array of string values. If the operator is In or NotIn,\nthe values array must be non-empty. If the operator is Exists or DoesNotExist,\nthe values array must be empty. This array is replaced during a strategic\nmerge patch.",
+                        "type": [
+                          "array",
+                          "null"
+                        ],
+                        "items": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "x-kubernetes-list-type": "atomic"
+                      }
+                    },
+                    "additionalProperties": false
+                  },
+                  "x-kubernetes-list-type": "atomic"
+                },
+                "matchLabels": {
+                  "description": "matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels\nmap is equivalent to an element of matchExpressions, whose key field is \"key\", the\noperator is \"In\", and the values array contains only \"value\". The requirements are ANDed.",
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "additionalProperties": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  }
+                }
+              },
+              "x-kubernetes-map-type": "atomic",
+              "additionalProperties": false
+            },
+            "name": {
+              "description": "Name is the name of an object.  If defined, it will match against objects with the specified\nname.  Name also supports a prefix or suffix glob.  For example, `name: pod-*` would match\nboth `pod-a` and `pod-b`, and `name: *-pod` would match both `a-pod` and `b-pod`.",
+              "type": [
+                "string",
+                "null"
+              ],
+              "pattern": "^\\*?[-:a-z0-9]*\\*?$"
+            },
+            "namespaceSelector": {
+              "description": "NamespaceSelector is a label selector against an object's containing\nnamespace or the object itself, if the object is a namespace.",
+              "type": [
+                "object",
+                "null"
+              ],
+              "properties": {
+                "matchExpressions": {
+                  "description": "matchExpressions is a list of label selector requirements. The requirements are ANDed.",
+                  "type": [
+                    "array",
+                    "null"
+                  ],
+                  "items": {
+                    "description": "A label selector requirement is a selector that contains values, a key, and an operator that\nrelates the key and values.",
+                    "type": [
+                      "object",
+                      "null"
+                    ],
+                    "required": [
+                      "key",
+                      "operator"
+                    ],
+                    "properties": {
+                      "key": {
+                        "description": "key is the label key that the selector applies to.",
+                        "type": "string"
+                      },
+                      "operator": {
+                        "description": "operator represents a key's relationship to a set of values.\nValid operators are In, NotIn, Exists and DoesNotExist.",
+                        "type": "string"
+                      },
+                      "values": {
+                        "description": "values is an array of string values. If the operator is In or NotIn,\nthe values array must be non-empty. If the operator is Exists or DoesNotExist,\nthe values array must be empty. This array is replaced during a strategic\nmerge patch.",
+                        "type": [
+                          "array",
+                          "null"
+                        ],
+                        "items": {
+                          "type": [
+                            "string",
+                            "null"
+                          ]
+                        },
+                        "x-kubernetes-list-type": "atomic"
+                      }
+                    },
+                    "additionalProperties": false
+                  },
+                  "x-kubernetes-list-type": "atomic"
+                },
+                "matchLabels": {
+                  "description": "matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels\nmap is equivalent to an element of matchExpressions, whose key field is \"key\", the\noperator is \"In\", and the values array contains only \"value\". The requirements are ANDed.",
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "additionalProperties": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  }
+                }
+              },
+              "x-kubernetes-map-type": "atomic",
+              "additionalProperties": false
+            },
+            "namespaces": {
+              "description": "Namespaces is a list of namespace names. If defined, a constraint only\napplies to resources in a listed namespace.  Namespaces also supports a\nprefix or suffix based glob.  For example, `namespaces: [kube-*]` matches both\n`kube-system` and `kube-public`, and `namespaces: [*-system]` matches both\n`kube-system` and `gatekeeper-system`.",
+              "type": [
+                "array",
+                "null"
+              ],
+              "items": {
+                "description": "A string that supports globbing at its front and end. Ex: \"kube-*\" will match \"kube-system\" or\n\"kube-public\", \"*-system\" will match \"kube-system\" or \"gatekeeper-system\", \"*system*\" will\nmatch \"system-kube\" or \"kube-system\".  The asterisk is required for wildcard matching.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "pattern": "^\\*?[-:a-z0-9]*\\*?$"
+              }
+            },
+            "scope": {
+              "description": "Scope determines if cluster-scoped and/or namespaced-scoped resources\nare matched.  Accepts `*`, `Cluster`, or `Namespaced`. (defaults to `*`)",
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "source": {
+              "description": "Source determines whether generated or original resources are matched.\nAccepts `Generated`|`Original`|`All` (defaults to `All`). A value of\n`Generated` will only match generated resources, while `Original` will only\nmatch regular resources.",
+              "type": [
+                "string",
+                "null"
+              ],
+              "enum": [
+                "All",
+                "Generated",
+                "Original"
+              ]
+            }
+          },
+          "additionalProperties": false
+        },
+        "parameters": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "assign": {
+              "description": "Assign.value holds the value to be assigned",
+              "type": [
+                "object",
+                "null"
+              ],
+              "properties": {
+                "externalData": {
+                  "description": "ExternalData describes the external data provider to be used for mutation.",
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "required": [
+                    "provider"
+                  ],
+                  "properties": {
+                    "dataSource": {
+                      "description": "DataSource specifies where to extract the data that will be sent\nto the external data provider as parameters.",
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "enum": [
+                        "ValueAtLocation",
+                        "Username"
+                      ]
+                    },
+                    "default": {
+                      "description": "Default specifies the default value to use when the external data\nprovider returns an error and the failure policy is set to \"UseDefault\".",
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "failurePolicy": {
+                      "description": "FailurePolicy specifies the policy to apply when the external data\nprovider returns an error.",
+                      "type": [
+                        "string",
+                        "null"
+                      ],
+                      "enum": [
+                        "UseDefault",
+                        "Ignore",
+                        "Fail"
+                      ]
+                    },
+                    "provider": {
+                      "description": "Provider is the name of the external data provider.",
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "fromMetadata": {
+                  "description": "FromMetadata assigns a value from the specified metadata field.",
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "properties": {
+                    "field": {
+                      "description": "Field specifies which metadata field provides the assigned value. Valid fields are `namespace` and `name`.",
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "value": {
+                  "description": "Value is a constant value that will be assigned to `location`",
+                  "x-kubernetes-preserve-unknown-fields": true
+                }
+              },
+              "additionalProperties": false
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "status": {
+      "description": "AssignMetadataStatus defines the observed state of AssignMetadata.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "byPod": {
+          "description": "INSERT ADDITIONAL STATUS FIELD - define observed state of cluster\nImportant: Run \"make\" to regenerate code after modifying this file",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "description": "MutatorPodStatusStatus defines the observed state of MutatorPodStatus.",
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "enforced": {
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "errors": {
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "description": "MutatorError represents a single error caught while adding a mutator to a system.",
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "required": [
+                    "message"
+                  ],
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "type": {
+                      "description": "Type indicates a specific class of error for use by controller code.\nIf not present, the error should be treated as not matching any known type.",
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              },
+              "id": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "mutatorUID": {
+                "description": "Storing the mutator UID allows us to detect drift, such as\nwhen a mutator has been recreated after its CRD was deleted\nout from under it, interrupting the watch",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "observedGeneration": {
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int64"
+              },
+              "operations": {
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "mutations.gatekeeper.sh",
+      "kind": "AssignMetadata",
+      "version": "v1"
+    }
+  ],
+  "x-kubernetes-selectable-fields": [],
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

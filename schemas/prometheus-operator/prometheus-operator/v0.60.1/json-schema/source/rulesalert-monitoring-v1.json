@@ -1,0 +1,29 @@
+{
+  "description": "/--rules.alert.*/ command-line arguments",
+  "type": "object",
+  "properties": {
+    "forGracePeriod": {
+      "description": "Minimum duration between alert and restored 'for' state. This is maintained only for alerts with configured 'for' time greater than grace period.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "forOutageTolerance": {
+      "description": "Max time to tolerate prometheus outage for restoring 'for' state of alert.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "resendDelay": {
+      "description": "Minimum amount of time to wait before resending an alert to Alertmanager.",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

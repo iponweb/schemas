@@ -1,0 +1,50 @@
+{
+  "description": "ApplicationSetCondition contains details about an applicationset condition, which is usually an error or warning",
+  "type": "object",
+  "required": [
+    "type",
+    "message",
+    "status",
+    "reason"
+  ],
+  "properties": {
+    "lastTransitionTime": {
+      "description": "LastTransitionTime is the time the condition was last observed",
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
+    },
+    "message": {
+      "description": "Message contains human-readable message indicating details about condition",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "reason": {
+      "description": "Single word camelcase representing the reason for the status eg ErrorOccurred",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "status": {
+      "description": "True/False/Unknown",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "type": {
+      "description": "Type is an applicationset condition type",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

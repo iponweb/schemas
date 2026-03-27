@@ -1,0 +1,51 @@
+{
+  "description": "VLAgentRemoteWriteSettings - defines global settings for all remoteWrite urls.",
+  "type": "object",
+  "properties": {
+    "flushInterval": {
+      "description": "Interval for flushing the data to remote storage. (default 1s)",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "maxBlockSize": {
+      "description": "The maximum size of unpacked request to send to remote storage",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "maxDiskUsagePerURL": {
+      "description": "The maximum file-based buffer size in bytes at -remoteWrite.tmpDataPath",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "queues": {
+      "description": "The number of concurrent queues",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32"
+    },
+    "showURL": {
+      "description": "Whether to show -remoteWrite.url in the exported metrics. It is hidden by default, since it can contain sensitive auth info",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "tmpDataPath": {
+      "description": "Path to directory where temporary data for remote write component is stored (default /vlagent_pq/vlagent-remotewrite-data) If defined, operator ignores spec.storage field and skips adding volume and volumeMount for pq",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

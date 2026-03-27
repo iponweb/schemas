@@ -1,0 +1,50 @@
+{
+  "description": "SafeTLSConfig defines safe TLS configurations.",
+  "type": "object",
+  "properties": {
+    "ca": {
+      "description": "ca defines the Certificate authority used when verifying server certificates.",
+      "default": {},
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.SecretOrConfigMap"
+    },
+    "cert": {
+      "description": "cert defines the Client certificate to present when doing client-authentication.",
+      "default": {},
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.SecretOrConfigMap"
+    },
+    "insecureSkipVerify": {
+      "description": "insecureSkipVerify defines how to disable target certificate validation.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "keySecret": {
+      "description": "keySecret defines the Secret containing the client key file for the targets.",
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SecretKeySelector"
+    },
+    "maxVersion": {
+      "description": "maxVersion defines the maximum acceptable TLS version.\n\nIt requires Prometheus >= v2.41.0 or Thanos >= v0.31.0.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "minVersion": {
+      "description": "minVersion defines the minimum acceptable TLS version.\n\nIt requires Prometheus >= v2.35.0 or Thanos >= v0.28.0.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "serverName": {
+      "description": "serverName is used to verify the hostname for the targets.",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

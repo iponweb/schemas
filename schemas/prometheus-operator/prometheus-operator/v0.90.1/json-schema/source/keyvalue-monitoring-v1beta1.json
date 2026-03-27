@@ -1,0 +1,28 @@
+{
+  "description": "KeyValue defines a (key, value) tuple.",
+  "type": "object",
+  "required": [
+    "key",
+    "value"
+  ],
+  "properties": {
+    "key": {
+      "description": "key defines the key of the tuple. This is the identifier or name part of the key-value pair.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "value": {
+      "description": "value defines the value of the tuple. This is the data or content associated with the key.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

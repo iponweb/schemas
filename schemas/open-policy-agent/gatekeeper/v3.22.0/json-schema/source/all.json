@@ -1,0 +1,499 @@
+{
+  "oneOf": [
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.ExternalDocumentation"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.JSON"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.JSONSchemaProps"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.JSONSchemaPropsOrArray"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.JSONSchemaPropsOrBool"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.JSONSchemaPropsOrStringArray"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apiextensions-apiserver.pkg.apis.apiextensions.v1.ValidationRule"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.FieldsV1"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.LabelSelector"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.LabelSelectorRequirement"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ManagedFieldsEntry"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.OwnerReference"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.config.v1alpha1.Config"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.config.v1alpha1.ConfigSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.config.v1alpha1.ConfigStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.config.v1alpha1.GVK"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.config.v1alpha1.MatchEntry"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.config.v1alpha1.ReadinessSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.config.v1alpha1.Sync"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.config.v1alpha1.SyncOnlyEntry"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.config.v1alpha1.Trace"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.config.v1alpha1.Validation"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.connection.v1alpha1.Connection"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.connection.v1alpha1.ConnectionSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.connection.v1alpha1.ConnectionStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.expansion.v1alpha1.ExpansionTemplate"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.expansion.v1alpha1.ExpansionTemplateSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.expansion.v1alpha1.ExpansionTemplateStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.expansion.v1alpha1.GeneratedGVK"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.expansion.v1beta1.ExpansionTemplate"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.expansion.v1beta1.ExpansionTemplateSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.expansion.v1beta1.ExpansionTemplateStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.expansion.v1beta1.GeneratedGVK"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.externaldata.v1alpha1.Provider"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.externaldata.v1alpha1.ProviderError"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.externaldata.v1alpha1.ProviderPodStatusStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.externaldata.v1alpha1.ProviderSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.externaldata.v1alpha1.ProviderStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.externaldata.v1beta1.Provider"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.externaldata.v1beta1.ProviderError"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.externaldata.v1beta1.ProviderPodStatusStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.externaldata.v1beta1.ProviderSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.externaldata.v1beta1.ProviderStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.frameworks.templates.Anything"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.match.ApplyTo"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.match.Kinds"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.match.Match"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.mutations.v1.Assign"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.mutations.v1.AssignField"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.mutations.v1.AssignMetadata"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.mutations.v1.AssignMetadataSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.mutations.v1.AssignMetadataStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.mutations.v1.AssignSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.mutations.v1.AssignStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.mutations.v1.ExternalData"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.mutations.v1.FromMetadata"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.mutations.v1.MetadataParameters"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.mutations.v1.ModifySet"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.mutations.v1.ModifySetParameters"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.mutations.v1.ModifySetSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.mutations.v1.ModifySetStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.mutations.v1.Parameters"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.mutations.v1.PathTest"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.mutations.v1.Values"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.mutations.v1alpha1.Assign"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.mutations.v1alpha1.AssignField"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.mutations.v1alpha1.AssignImage"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.mutations.v1alpha1.AssignImageParameters"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.mutations.v1alpha1.AssignImageSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.mutations.v1alpha1.AssignImageStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.mutations.v1alpha1.AssignMetadata"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.mutations.v1alpha1.AssignMetadataSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.mutations.v1alpha1.AssignMetadataStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.mutations.v1alpha1.AssignSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.mutations.v1alpha1.AssignStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.mutations.v1alpha1.ExternalData"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.mutations.v1alpha1.FromMetadata"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.mutations.v1alpha1.MetadataParameters"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.mutations.v1alpha1.ModifySet"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.mutations.v1alpha1.ModifySetParameters"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.mutations.v1alpha1.ModifySetSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.mutations.v1alpha1.ModifySetStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.mutations.v1alpha1.Parameters"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.mutations.v1alpha1.PathTest"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.mutations.v1alpha1.Values"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.mutations.v1beta1.Assign"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.mutations.v1beta1.AssignField"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.mutations.v1beta1.AssignMetadata"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.mutations.v1beta1.AssignMetadataSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.mutations.v1beta1.AssignMetadataStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.mutations.v1beta1.AssignSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.mutations.v1beta1.AssignStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.mutations.v1beta1.ExternalData"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.mutations.v1beta1.FromMetadata"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.mutations.v1beta1.MetadataParameters"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.mutations.v1beta1.ModifySet"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.mutations.v1beta1.ModifySetParameters"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.mutations.v1beta1.ModifySetSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.mutations.v1beta1.ModifySetStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.mutations.v1beta1.Parameters"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.mutations.v1beta1.PathTest"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.mutations.v1beta1.Values"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.status.v1alpha1.ConnectionError"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.status.v1alpha1.ConnectionPodStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.status.v1alpha1.ConnectionPodStatusStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.status.v1beta1.ConfigError"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.status.v1beta1.ConfigPodStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.status.v1beta1.ConfigPodStatusStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.status.v1beta1.ConstraintPodStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.status.v1beta1.ConstraintPodStatusStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.status.v1beta1.ConstraintTemplatePodStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.status.v1beta1.ConstraintTemplatePodStatusStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.status.v1beta1.EnforcementPointStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.status.v1beta1.Error"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.status.v1beta1.ExpansionTemplateError"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.status.v1beta1.ExpansionTemplatePodStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.status.v1beta1.ExpansionTemplatePodStatusStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.status.v1beta1.MutatorError"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.status.v1beta1.MutatorPodStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.status.v1beta1.MutatorPodStatusStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.status.v1beta1.ProviderError"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.status.v1beta1.ProviderPodStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.status.v1beta1.ProviderPodStatusStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.status.v1beta1.VAPGenerationStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.syncset.v1alpha1.GVKEntry"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.syncset.v1alpha1.SyncSet"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.syncset.v1alpha1.SyncSetSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.templates.v1.ByPodStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.templates.v1.CRD"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.templates.v1.CRDSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.templates.v1.Code"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.templates.v1.ConstraintTemplate"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.templates.v1.ConstraintTemplateSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.templates.v1.ConstraintTemplateStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.templates.v1.CreateCRDError"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.templates.v1.Names"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.templates.v1.Target"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.templates.v1.Validation"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.templates.v1alpha1.ByPodStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.templates.v1alpha1.CRD"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.templates.v1alpha1.CRDSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.templates.v1alpha1.Code"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.templates.v1alpha1.ConstraintTemplate"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.templates.v1alpha1.ConstraintTemplateSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.templates.v1alpha1.ConstraintTemplateStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.templates.v1alpha1.CreateCRDError"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.templates.v1alpha1.Names"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.templates.v1alpha1.Target"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.templates.v1alpha1.Validation"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.templates.v1beta1.ByPodStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.templates.v1beta1.CRD"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.templates.v1beta1.CRDSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.templates.v1beta1.Code"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.templates.v1beta1.ConstraintTemplate"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.templates.v1beta1.ConstraintTemplateSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.templates.v1beta1.ConstraintTemplateStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.templates.v1beta1.CreateCRDError"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.templates.v1beta1.Names"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.templates.v1beta1.Target"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.templates.v1beta1.Validation"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.types.Anything"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.util.intstr.IntOrString"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.api.resource.Quantity"
+    }
+  ]
+}

@@ -1,0 +1,112 @@
+{
+  "oneOf": [
+    {
+      "$ref": "_definitions.json#/definitions/com.github.awslabs.operatorpkg.status.Condition"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/gcp.k8s.karpenter.v1alpha1.Disk"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/gcp.k8s.karpenter.v1alpha1.GCENodeClass"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/gcp.k8s.karpenter.v1alpha1.GCENodeClassSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/gcp.k8s.karpenter.v1alpha1.GCENodeClassStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/gcp.k8s.karpenter.v1alpha1.Image"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/gcp.k8s.karpenter.v1alpha1.ImageSelectorTerm"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/gcp.k8s.karpenter.v1alpha1.KubeletConfiguration"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.NodeSelectorRequirement"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.Taint"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.api.resource.Quantity"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Duration"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.FieldsV1"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ManagedFieldsEntry"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.OwnerReference"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.karpenter.v1.Budget"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.karpenter.v1.Disruption"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.karpenter.v1.NillableDuration"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.karpenter.v1.NodeClaim"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.karpenter.v1.NodeClaimSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.karpenter.v1.NodeClaimStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.karpenter.v1.NodeClaimTemplate"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.karpenter.v1.NodeClaimTemplateSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.karpenter.v1.NodeClassReference"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.karpenter.v1.NodePool"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.karpenter.v1.NodePoolSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.karpenter.v1.NodePoolStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.karpenter.v1.NodeSelectorRequirementWithMinValues"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.karpenter.v1.ObjectMeta"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.karpenter.v1.ResourceRequirements"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.karpenter.v1alpha1.NodeOverlay"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.karpenter.v1alpha1.NodeOverlaySpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.karpenter.v1alpha1.NodeOverlayStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.util.intstr.IntOrString"
+    }
+  ]
+}

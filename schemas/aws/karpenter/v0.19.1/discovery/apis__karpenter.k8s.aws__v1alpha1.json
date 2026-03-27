@@ -1,0 +1,38 @@
+{
+  "kind": "APIResourceList",
+  "apiVersion": "v1",
+  "groupVersion": "karpenter.k8s.aws/v1alpha1",
+  "resources": [
+    {
+      "name": "awsnodetemplates",
+      "singularName": "awsnodetemplate",
+      "namespaced": false,
+      "kind": "AWSNodeTemplate",
+      "verbs": [
+        "delete",
+        "deletecollection",
+        "get",
+        "list",
+        "patch",
+        "create",
+        "update",
+        "watch"
+      ],
+      "categories": [
+        "karpenter"
+      ],
+      "storageVersionHash": "4coXxGbJUC8="
+    },
+    {
+      "name": "awsnodetemplates/status",
+      "singularName": "",
+      "namespaced": false,
+      "kind": "AWSNodeTemplate",
+      "verbs": [
+        "get",
+        "patch",
+        "update"
+      ]
+    }
+  ]
+}

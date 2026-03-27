@@ -1,0 +1,82 @@
+{
+  "kind": "APIResourceList",
+  "apiVersion": "v1",
+  "groupVersion": "karpenter.sh/v1",
+  "resources": [
+    {
+      "name": "nodeclaims",
+      "singularName": "nodeclaim",
+      "namespaced": false,
+      "kind": "NodeClaim",
+      "verbs": [
+        "delete",
+        "deletecollection",
+        "get",
+        "list",
+        "patch",
+        "create",
+        "update",
+        "watch"
+      ],
+      "categories": [
+        "karpenter"
+      ],
+      "storageVersionHash": "QTizURWjI3E="
+    },
+    {
+      "name": "nodeclaims/status",
+      "singularName": "",
+      "namespaced": false,
+      "kind": "NodeClaim",
+      "verbs": [
+        "get",
+        "patch",
+        "update"
+      ]
+    },
+    {
+      "name": "nodepools",
+      "singularName": "nodepool",
+      "namespaced": false,
+      "kind": "NodePool",
+      "verbs": [
+        "delete",
+        "deletecollection",
+        "get",
+        "list",
+        "patch",
+        "create",
+        "update",
+        "watch"
+      ],
+      "categories": [
+        "karpenter"
+      ],
+      "storageVersionHash": "Vc6J1THIlNI="
+    },
+    {
+      "name": "nodepools/status",
+      "singularName": "",
+      "namespaced": false,
+      "kind": "NodePool",
+      "verbs": [
+        "get",
+        "patch",
+        "update"
+      ]
+    },
+    {
+      "name": "nodepools/scale",
+      "singularName": "",
+      "namespaced": false,
+      "group": "autoscaling",
+      "version": "v1",
+      "kind": "Scale",
+      "verbs": [
+        "get",
+        "patch",
+        "update"
+      ]
+    }
+  ]
+}

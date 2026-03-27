@@ -1,0 +1,47 @@
+{
+  "description": "NodePoolSpec is the top level nodepool specification. Nodepools launch nodes in response to pods that are unschedulable. A single nodepool is capable of managing a diverse set of nodes. Node properties are determined from a combination of nodepool and pod scheduling constraints.",
+  "type": "object",
+  "required": [
+    "template"
+  ],
+  "properties": {
+    "disruption": {
+      "description": "Disruption contains the parameters that relate to Karpenter's disruption logic",
+      "default": {},
+      "$ref": "_definitions.json#/definitions/sh.karpenter.v1.Disruption"
+    },
+    "limits": {
+      "description": "Limits define a set of bounds for provisioning capacity. Limits other than limits.nodes is not supported when replicas is set.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": {
+        "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.api.resource.Quantity"
+      }
+    },
+    "replicas": {
+      "description": "Replicas is the desired number of nodes for the NodePool. When specified, the NodePool will maintain this fixed number of replicas rather than scaling based on pod demand. When replicas is set:\n  - The following fields are ignored:\n      * disruption.consolidationPolicy\n      * disruption.consolidateAfter\n  - Only limits.nodes is supported; other resource limits (e.g., CPU, memory) must not be specified.\n  - Weight is not supported.\nNote: This field is alpha.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int64"
+    },
+    "template": {
+      "description": "Template contains the template of possibilities for the provisioning logic to launch a NodeClaim with. NodeClaims launched from this NodePool will often be further constrained than the template specifies.",
+      "default": {},
+      "$ref": "_definitions.json#/definitions/sh.karpenter.v1.NodeClaimTemplate"
+    },
+    "weight": {
+      "description": "Weight is the priority given to the nodepool during scheduling. A higher numerical weight indicates that this nodepool will be ordered ahead of other nodepools with lower weights. A nodepool with no weight will be treated as if it is a nodepool with a weight of 0. Weight is not supported when replicas is set.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

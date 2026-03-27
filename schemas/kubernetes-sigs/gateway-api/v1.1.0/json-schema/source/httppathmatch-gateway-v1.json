@@ -1,0 +1,22 @@
+{
+  "description": "HTTPPathMatch describes how to select a HTTP route by matching the HTTP request path.",
+  "type": "object",
+  "properties": {
+    "type": {
+      "description": "Type specifies how to match against the path Value.\n\nSupport: Core (Exact, PathPrefix)\n\nSupport: Implementation-specific (RegularExpression)",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "value": {
+      "description": "Value of the HTTP path to match against.",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

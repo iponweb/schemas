@@ -1,0 +1,18 @@
+{
+  "description": "ConnectionStatus defines the observed state of Connection.",
+  "type": "object",
+  "properties": {
+    "byPod": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/sh.gatekeeper.status.v1alpha1.ConnectionPodStatusStatus"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

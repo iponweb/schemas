@@ -1,0 +1,20 @@
+{
+  "description": "VMDistributedZoneAgent is a name and a specification of a new VMAgent.",
+  "type": "object",
+  "properties": {
+    "name": {
+      "description": "Name specifies the static name to be used for the VMAgent when Spec is provided.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "spec": {
+      "description": "Spec defines the desired state of a new VMAgent.",
+      "default": {},
+      "$ref": "_definitions.json#/definitions/com.victoriametrics.operator.v1alpha1.VMDistributedZoneAgentSpec"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

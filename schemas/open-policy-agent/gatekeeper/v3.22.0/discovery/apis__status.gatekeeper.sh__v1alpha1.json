@@ -1,0 +1,24 @@
+{
+  "kind": "APIResourceList",
+  "apiVersion": "v1",
+  "groupVersion": "status.gatekeeper.sh/v1alpha1",
+  "resources": [
+    {
+      "name": "connectionpodstatuses",
+      "singularName": "connectionpodstatus",
+      "namespaced": true,
+      "kind": "ConnectionPodStatus",
+      "verbs": [
+        "delete",
+        "deletecollection",
+        "get",
+        "list",
+        "patch",
+        "create",
+        "update",
+        "watch"
+      ],
+      "storageVersionHash": "RRIhon/5LzA="
+    }
+  ]
+}

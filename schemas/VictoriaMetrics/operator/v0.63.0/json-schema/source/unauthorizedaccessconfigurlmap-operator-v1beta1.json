@@ -1,0 +1,50 @@
+{
+  "description": "UnauthorizedAccessConfigURLMap defines element of url_map routing configuration For UnauthorizedAccessConfig and VMAuthUnauthorizedUserAccessSpec.URLMap",
+  "type": "object",
+  "properties": {
+    "src_hosts": {
+      "description": "SrcHosts is an optional list of regular expressions, which must match the request hostname.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "src_paths": {
+      "description": "SrcPaths is an optional list of regular expressions, which must match the request path.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "url_prefix": {
+      "description": "UrlPrefix contains backend url prefixes for the proxied request url. URLPrefix defines prefix prefix for destination",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

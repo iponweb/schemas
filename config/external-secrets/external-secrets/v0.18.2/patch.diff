@@ -1,0 +1,68 @@
+diff --git a/apis/externalsecrets/v1/doc.go b/apis/externalsecrets/v1/doc.go
+index 1cba51a..3d2de22 100644
+--- a/apis/externalsecrets/v1/doc.go
++++ b/apis/externalsecrets/v1/doc.go
+@@ -16,4 +16,5 @@ limitations under the License.
+ // +kubebuilder:object:generate=true
+ // +groupName=external-secrets.io
+ // +versionName=v1
++// +k8s:openapi-gen=true
+ package v1
+diff --git a/apis/externalsecrets/v1alpha1/doc.go b/apis/externalsecrets/v1alpha1/doc.go
+index a327e11..7836890 100644
+--- a/apis/externalsecrets/v1alpha1/doc.go
++++ b/apis/externalsecrets/v1alpha1/doc.go
+@@ -16,4 +16,5 @@ limitations under the License.
+ // +kubebuilder:object:generate=true
+ // +groupName=external-secrets.io
+ // +versionName=v1alpha1
++// +k8s:openapi-gen=true
+ package v1alpha1
+diff --git a/apis/externalsecrets/v1beta1/doc.go b/apis/externalsecrets/v1beta1/doc.go
+index d4fea6d..94d404e 100644
+--- a/apis/externalsecrets/v1beta1/doc.go
++++ b/apis/externalsecrets/v1beta1/doc.go
+@@ -16,4 +16,5 @@ limitations under the License.
+ // +kubebuilder:object:generate=true
+ // +groupName=external-secrets.io
+ // +versionName=v1beta1
++// +k8s:openapi-gen=true
+ package v1beta1
+diff --git a/apis/generators/v1alpha1/doc.go b/apis/generators/v1alpha1/doc.go
+index cc27d1a..40ba6a2 100644
+--- a/apis/generators/v1alpha1/doc.go
++++ b/apis/generators/v1alpha1/doc.go
+@@ -16,4 +16,5 @@ limitations under the License.
+ // +kubebuilder:object:generate=true
+ // +groupName=generators.external-secrets.io
+ // +versionName=v1alpha1
++// +k8s:openapi-gen=true
+ package v1alpha1
+diff --git a/apis/generators/v1alpha1/generator_types.go b/apis/generators/v1alpha1/generator_types.go
+index 6d7ac9d..4275563 100644
+--- a/apis/generators/v1alpha1/generator_types.go
++++ b/apis/generators/v1alpha1/generator_types.go
+@@ -14,8 +14,8 @@ limitations under the License.
+
+ package v1alpha1
+
+-type ControllerClassResource struct {
+-	Spec struct {
+-		ControllerClass string `json:"controller"`
+-	} `json:"spec"`
+-}
++//type ControllerClassResource struct {
++//	Spec struct {
++//		ControllerClass string `json:"controller"`
++//	} `json:"spec"`
++//}
+diff --git a/apis/meta/v1/doc.go b/apis/meta/v1/doc.go
+index 317234b..24c520e 100644
+--- a/apis/meta/v1/doc.go
++++ b/apis/meta/v1/doc.go
+@@ -14,4 +14,5 @@ limitations under the License.
+
+ // Package meta contains meta types for external-secrets APIs
+ // +kubebuilder:object:generate=true
++// +k8s:openapi-gen=true
+ package v1

@@ -1,0 +1,30 @@
+diff --git a/apis/externalsecrets/v1alpha1/doc.go b/apis/externalsecrets/v1alpha1/doc.go
+index a327e118..78368909 100644
+--- a/apis/externalsecrets/v1alpha1/doc.go
++++ b/apis/externalsecrets/v1alpha1/doc.go
+@@ -16,4 +16,5 @@ limitations under the License.
+ // +kubebuilder:object:generate=true
+ // +groupName=external-secrets.io
+ // +versionName=v1alpha1
++// +k8s:openapi-gen=true
+ package v1alpha1
+diff --git a/apis/externalsecrets/v1beta1/doc.go b/apis/externalsecrets/v1beta1/doc.go
+index d4fea6d6..94d404e7 100644
+--- a/apis/externalsecrets/v1beta1/doc.go
++++ b/apis/externalsecrets/v1beta1/doc.go
+@@ -16,4 +16,5 @@ limitations under the License.
+ // +kubebuilder:object:generate=true
+ // +groupName=external-secrets.io
+ // +versionName=v1beta1
++// +k8s:openapi-gen=true
+ package v1beta1
+diff --git a/apis/meta/v1/doc.go b/apis/meta/v1/doc.go
+index 317234b7..24c520ec 100644
+--- a/apis/meta/v1/doc.go
++++ b/apis/meta/v1/doc.go
+@@ -14,4 +14,5 @@ limitations under the License.
+ 
+ // Package meta contains meta types for external-secrets APIs
+ // +kubebuilder:object:generate=true
++// +k8s:openapi-gen=true
+ package v1

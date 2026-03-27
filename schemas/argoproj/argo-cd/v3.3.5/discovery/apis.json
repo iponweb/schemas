@@ -1,0 +1,19 @@
+{
+  "kind": "APIGroupList",
+  "apiVersion": "v1",
+  "groups": [
+    {
+      "name": "argoproj.io",
+      "versions": [
+        {
+          "groupVersion": "argoproj.io/v1alpha1",
+          "version": "v1alpha1"
+        }
+      ],
+      "preferredVersion": {
+        "groupVersion": "argoproj.io/v1alpha1",
+        "version": "v1alpha1"
+      }
+    }
+  ]
+}

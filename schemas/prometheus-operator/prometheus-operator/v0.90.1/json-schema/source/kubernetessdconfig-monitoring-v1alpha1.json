@@ -1,0 +1,117 @@
+{
+  "description": "KubernetesSDConfig allows retrieving scrape targets from Kubernetes' REST API. See https://prometheus.io/docs/prometheus/latest/configuration/configuration/#kubernetes_sd_config",
+  "type": "object",
+  "required": [
+    "role"
+  ],
+  "properties": {
+    "apiServer": {
+      "description": "apiServer defines the API server address consisting of a hostname or IP address followed by an optional port number. If left empty, Prometheus is assumed to run inside of the cluster. It will discover API servers automatically and use the pod's CA certificate and bearer token file at /var/run/secrets/kubernetes.io/serviceaccount/.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "attachMetadata": {
+      "description": "attachMetadata defines the metadata to attach to discovered targets. It requires Prometheus >= v2.35.0 when using the `Pod` role and Prometheus >= v2.37.0 for `Endpoints` and `Endpointslice` roles.",
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.AttachMetadata"
+    },
+    "authorization": {
+      "description": "authorization defines the authorization header to use on every scrape request. Cannot be set at the same time as `basicAuth`, or `oauth2`.",
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.SafeAuthorization"
+    },
+    "basicAuth": {
+      "description": "basicAuth defines information to use on every scrape request. Cannot be set at the same time as `authorization`, or `oauth2`.",
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.BasicAuth"
+    },
+    "enableHTTP2": {
+      "description": "enableHTTP2 defines whether to enable HTTP2.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "followRedirects": {
+      "description": "followRedirects defines whether HTTP requests follow HTTP 3xx redirects.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "namespaces": {
+      "description": "namespaces defines the namespace discovery. If omitted, Prometheus discovers targets across all namespaces.",
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.NamespaceDiscovery"
+    },
+    "noProxy": {
+      "description": "noProxy defines a comma-separated string that can contain IPs, CIDR notation, domain names that should be excluded from proxying. IP and domain names can contain port numbers.\n\nIt requires Prometheus >= v2.43.0, Alertmanager >= v0.25.0 or Thanos >= v0.32.0.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "oauth2": {
+      "description": "oauth2 defines the optional OAuth 2.0 configuration to authenticate against the target HTTP endpoint. Cannot be set at the same time as `authorization`, or `basicAuth`.",
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.OAuth2"
+    },
+    "proxyConnectHeader": {
+      "description": "proxyConnectHeader optionally specifies headers to send to proxies during CONNECT requests.\n\nIt requires Prometheus >= v2.43.0, Alertmanager >= v0.25.0 or Thanos >= v0.32.0.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": {
+        "type": [
+          "array",
+          "null"
+        ],
+        "items": {
+          "default": {},
+          "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SecretKeySelector"
+        }
+      }
+    },
+    "proxyFromEnvironment": {
+      "description": "proxyFromEnvironment defines whether to use the proxy configuration defined by environment variables (HTTP_PROXY, HTTPS_PROXY, and NO_PROXY).\n\nIt requires Prometheus >= v2.43.0, Alertmanager >= v0.25.0 or Thanos >= v0.32.0.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "proxyUrl": {
+      "description": "proxyUrl defines the HTTP proxy server to use.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "role": {
+      "description": "role defines the Kubernetes role of the entities that should be discovered. Role `Endpointslice` requires Prometheus >= v2.21.0",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "selectors": {
+      "description": "selectors defines the selector to select objects. It requires Prometheus >= v2.17.0",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.K8SSelectorConfig"
+      },
+      "x-kubernetes-list-map-keys": [
+        "role"
+      ],
+      "x-kubernetes-list-type": "map"
+    },
+    "tlsConfig": {
+      "description": "tlsConfig defines the TLS configuration to connect to the Kubernetes API.",
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.SafeTLSConfig"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

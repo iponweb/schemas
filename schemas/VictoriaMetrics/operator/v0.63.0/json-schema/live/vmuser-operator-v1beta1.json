@@ -1,0 +1,914 @@
+{
+  "description": "VMUser is the Schema for the vmusers API",
+  "type": "object",
+  "properties": {
+    "apiVersion": {
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "operator.victoriametrics.com/v1beta1"
+      ]
+    },
+    "kind": {
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "VMUser"
+      ]
+    },
+    "metadata": {
+      "description": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+    },
+    "spec": {
+      "description": "VMUserSpec defines the desired state of VMUser",
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "targetRefs"
+      ],
+      "properties": {
+        "bearerToken": {
+          "description": "BearerToken Authorization header value for accessing protected endpoint.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "default_url": {
+          "description": "DefaultURLs backend url for non-matching paths filter\nusually used for default backend with error message",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "disable_secret_creation": {
+          "description": "DisableSecretCreation skips related secret creation for vmuser",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "discover_backend_ips": {
+          "description": "DiscoverBackendIPs instructs discovering URLPrefix backend IPs via DNS.",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "drop_src_path_prefix_parts": {
+          "description": "DropSrcPathPrefixParts is the number of `/`-delimited request path prefix parts to drop before proxying the request to backend.\nSee [here](https://docs.victoriametrics.com/victoriametrics/vmauth/#dropping-request-path-prefix) for more details.",
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "dump_request_on_errors": {
+          "description": "DumpRequestOnErrors instructs vmauth to return detailed request params to the client\nif routing rules don't allow to forward request to the backends.\nUseful for debugging `src_hosts` and `src_headers` based routing rules\n\navailable since v1.107.0 vmauth version",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "generatePassword": {
+          "description": "GeneratePassword instructs operator to generate password for user\nif spec.password if empty.",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "headers": {
+          "description": "Headers represent additional http headers, that vmauth uses\nin form of [\"header_key: header_value\"]\nmultiple values for header key:\n[\"header_key: value1,value2\"]\nit's available since 1.68.0 version of vmauth",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "ip_filters": {
+          "description": "IPFilters defines per target src ip filters\nsupported only with enterprise version of [vmauth](https://docs.victoriametrics.com/victoriametrics/vmauth/#ip-filters)",
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "allow_list": {
+              "type": [
+                "array",
+                "null"
+              ],
+              "items": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "deny_list": {
+              "type": [
+                "array",
+                "null"
+              ],
+              "items": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            }
+          },
+          "additionalProperties": false
+        },
+        "load_balancing_policy": {
+          "description": "LoadBalancingPolicy defines load balancing policy to use for backend urls.\nSupported policies: least_loaded, first_available.\nSee [here](https://docs.victoriametrics.com/victoriametrics/vmauth/#load-balancing) for more details (default \"least_loaded\")",
+          "type": [
+            "string",
+            "null"
+          ],
+          "enum": [
+            "least_loaded",
+            "first_available"
+          ]
+        },
+        "max_concurrent_requests": {
+          "description": "MaxConcurrentRequests defines max concurrent requests per user\n300 is default value for vmauth",
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "metric_labels": {
+          "description": "MetricLabels - additional labels for metrics exported by vmauth for given user.",
+          "type": [
+            "object",
+            "null"
+          ],
+          "additionalProperties": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "name": {
+          "description": "Name of the VMUser object.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "password": {
+          "description": "Password basic auth password for accessing protected endpoint.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "passwordRef": {
+          "description": "PasswordRef allows fetching password from user-create secret by its name and key.",
+          "type": [
+            "object",
+            "null"
+          ],
+          "required": [
+            "key"
+          ],
+          "properties": {
+            "key": {
+              "description": "The key of the secret to select from.  Must be a valid secret key.",
+              "type": "string"
+            },
+            "name": {
+              "description": "Name of the referent.\nThis field is effectively required, but due to backwards compatibility is\nallowed to be empty. Instances of this type with an empty value here are\nalmost certainly wrong.\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "optional": {
+              "description": "Specify whether the Secret or its key must be defined",
+              "type": [
+                "boolean",
+                "null"
+              ]
+            }
+          },
+          "x-kubernetes-map-type": "atomic",
+          "additionalProperties": false
+        },
+        "response_headers": {
+          "description": "ResponseHeaders represent additional http headers, that vmauth adds for request response\nin form of [\"header_key: header_value\"]\nmultiple values for header key:\n[\"header_key: value1,value2\"]\nit's available since 1.93.0 version of vmauth",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "retry_status_codes": {
+          "description": "RetryStatusCodes defines http status codes in numeric format for request retries\ne.g. [429,503]",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          }
+        },
+        "targetRefs": {
+          "description": "TargetRefs - reference to endpoints, which user may access.",
+          "type": "array",
+          "items": {
+            "description": "TargetRef describes target for user traffic forwarding.\none of target types can be chosen:\ncrd or static per targetRef.\nuser can define multiple targetRefs with different ref Types.",
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "crd": {
+                "description": "CRD describes exist operator's CRD object,\noperator generates access url based on CRD params.",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "required": [
+                  "kind",
+                  "name",
+                  "namespace"
+                ],
+                "properties": {
+                  "kind": {
+                    "description": "Kind one of:\nVMAgent,VMAlert, VMSingle, VMCluster/vmselect, VMCluster/vmstorage,VMCluster/vminsert,VMAlertManager, VLSingle, VLCluster/vlinsert, VLCluster/vlselect, VLCluster/vlstorage, VTSingle, VTCluster/vtinsert, VTCluster/vtselect, VTCluster/vtstorage and VLAgent",
+                    "type": "string",
+                    "enum": [
+                      "VMAgent",
+                      "VMAlert",
+                      "VMSingle",
+                      "VLogs",
+                      "VMAlertManager",
+                      "VMAlertmanager",
+                      "VMCluster/vmselect",
+                      "VMCluster/vmstorage",
+                      "VMCluster/vminsert",
+                      "VLSingle",
+                      "VLCluster/vlinsert",
+                      "VLCluster/vlselect",
+                      "VLCluster/vlstorage",
+                      "VLAgent",
+                      "VTCluster/vtinsert",
+                      "VTCluster/vtselect",
+                      "VTCluster/vtstorage",
+                      "VTSingle"
+                    ]
+                  },
+                  "name": {
+                    "description": "Name target CRD object name",
+                    "type": "string"
+                  },
+                  "namespace": {
+                    "description": "Namespace target CRD object namespace.",
+                    "type": "string"
+                  }
+                },
+                "additionalProperties": false
+              },
+              "discover_backend_ips": {
+                "description": "DiscoverBackendIPs instructs discovering URLPrefix backend IPs via DNS.",
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "drop_src_path_prefix_parts": {
+                "description": "DropSrcPathPrefixParts is the number of `/`-delimited request path prefix parts to drop before proxying the request to backend.\nSee [here](https://docs.victoriametrics.com/victoriametrics/vmauth/#dropping-request-path-prefix) for more details.",
+                "type": [
+                  "integer",
+                  "null"
+                ]
+              },
+              "headers": {
+                "description": "RequestHeaders represent additional http headers, that vmauth uses\nin form of [\"header_key: header_value\"]\nmultiple values for header key:\n[\"header_key: value1,value2\"]\nit's available since 1.68.0 version of vmauth",
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "hosts": {
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "load_balancing_policy": {
+                "description": "LoadBalancingPolicy defines load balancing policy to use for backend urls.\nSupported policies: least_loaded, first_available.\nSee [here](https://docs.victoriametrics.com/victoriametrics/vmauth/#load-balancing) for more details (default \"least_loaded\")",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "enum": [
+                  "least_loaded",
+                  "first_available"
+                ]
+              },
+              "paths": {
+                "description": "Paths - matched path to route.",
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "response_headers": {
+                "description": "ResponseHeaders represent additional http headers, that vmauth adds for request response\nin form of [\"header_key: header_value\"]\nmultiple values for header key:\n[\"header_key: value1,value2\"]\nit's available since 1.93.0 version of vmauth",
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "retry_status_codes": {
+                "description": "RetryStatusCodes defines http status codes in numeric format for request retries\nCan be defined per target or at VMUser.spec level\ne.g. [429,503]",
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "type": [
+                    "integer",
+                    "null"
+                  ]
+                }
+              },
+              "src_headers": {
+                "description": "SrcHeaders is an optional list of headers, which must match request headers.",
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "src_query_args": {
+                "description": "SrcQueryArgs is an optional list of query args, which must match request URL query args.",
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              },
+              "static": {
+                "description": "Static - user defined url for traffic forward,\nfor instance http://vmsingle:8428",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "properties": {
+                  "url": {
+                    "description": "URL http url for given staticRef.",
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "urls": {
+                    "description": "URLs allows setting multiple urls for load-balancing at vmauth-side.",
+                    "type": [
+                      "array",
+                      "null"
+                    ],
+                    "items": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                },
+                "additionalProperties": false
+              },
+              "targetRefBasicAuth": {
+                "description": "TargetRefBasicAuth allow an target endpoint to authenticate over basic authentication",
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "required": [
+                  "password",
+                  "username"
+                ],
+                "properties": {
+                  "password": {
+                    "description": "The secret in the service scrape namespace that contains the password\nfor authentication.\nIt must be at them same namespace as CRD",
+                    "type": "object",
+                    "required": [
+                      "key"
+                    ],
+                    "properties": {
+                      "key": {
+                        "description": "The key of the secret to select from.  Must be a valid secret key.",
+                        "type": "string"
+                      },
+                      "name": {
+                        "description": "Name of the referent.\nThis field is effectively required, but due to backwards compatibility is\nallowed to be empty. Instances of this type with an empty value here are\nalmost certainly wrong.\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "optional": {
+                        "description": "Specify whether the Secret or its key must be defined",
+                        "type": [
+                          "boolean",
+                          "null"
+                        ]
+                      }
+                    },
+                    "x-kubernetes-map-type": "atomic",
+                    "additionalProperties": false
+                  },
+                  "username": {
+                    "description": "The secret in the service scrape namespace that contains the username\nfor authentication.\nIt must be at them same namespace as CRD",
+                    "type": "object",
+                    "required": [
+                      "key"
+                    ],
+                    "properties": {
+                      "key": {
+                        "description": "The key of the secret to select from.  Must be a valid secret key.",
+                        "type": "string"
+                      },
+                      "name": {
+                        "description": "Name of the referent.\nThis field is effectively required, but due to backwards compatibility is\nallowed to be empty. Instances of this type with an empty value here are\nalmost certainly wrong.\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "optional": {
+                        "description": "Specify whether the Secret or its key must be defined",
+                        "type": [
+                          "boolean",
+                          "null"
+                        ]
+                      }
+                    },
+                    "x-kubernetes-map-type": "atomic",
+                    "additionalProperties": false
+                  }
+                },
+                "additionalProperties": false
+              },
+              "target_path_suffix": {
+                "description": "TargetPathSuffix allows to add some suffix to the target path\nIt allows to hide tenant configuration from user with crd as ref.\nit also may contain any url encoded params.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "tlsConfig": {
+          "description": "TLSConfig defines tls configuration for the backend connection",
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "ca": {
+              "description": "Struct containing the CA cert to use for the targets.",
+              "type": [
+                "object",
+                "null"
+              ],
+              "properties": {
+                "configMap": {
+                  "description": "ConfigMap containing data to use for the targets.",
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "required": [
+                    "key"
+                  ],
+                  "properties": {
+                    "key": {
+                      "description": "The key to select.",
+                      "type": "string"
+                    },
+                    "name": {
+                      "description": "Name of the referent.\nThis field is effectively required, but due to backwards compatibility is\nallowed to be empty. Instances of this type with an empty value here are\nalmost certainly wrong.\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "optional": {
+                      "description": "Specify whether the ConfigMap or its key must be defined",
+                      "type": [
+                        "boolean",
+                        "null"
+                      ]
+                    }
+                  },
+                  "x-kubernetes-map-type": "atomic",
+                  "additionalProperties": false
+                },
+                "secret": {
+                  "description": "Secret containing data to use for the targets.",
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "required": [
+                    "key"
+                  ],
+                  "properties": {
+                    "key": {
+                      "description": "The key of the secret to select from.  Must be a valid secret key.",
+                      "type": "string"
+                    },
+                    "name": {
+                      "description": "Name of the referent.\nThis field is effectively required, but due to backwards compatibility is\nallowed to be empty. Instances of this type with an empty value here are\nalmost certainly wrong.\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "optional": {
+                      "description": "Specify whether the Secret or its key must be defined",
+                      "type": [
+                        "boolean",
+                        "null"
+                      ]
+                    }
+                  },
+                  "x-kubernetes-map-type": "atomic",
+                  "additionalProperties": false
+                }
+              },
+              "additionalProperties": false
+            },
+            "caFile": {
+              "description": "Path to the CA cert in the container to use for the targets.",
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "cert": {
+              "description": "Struct containing the client cert file for the targets.",
+              "type": [
+                "object",
+                "null"
+              ],
+              "properties": {
+                "configMap": {
+                  "description": "ConfigMap containing data to use for the targets.",
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "required": [
+                    "key"
+                  ],
+                  "properties": {
+                    "key": {
+                      "description": "The key to select.",
+                      "type": "string"
+                    },
+                    "name": {
+                      "description": "Name of the referent.\nThis field is effectively required, but due to backwards compatibility is\nallowed to be empty. Instances of this type with an empty value here are\nalmost certainly wrong.\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "optional": {
+                      "description": "Specify whether the ConfigMap or its key must be defined",
+                      "type": [
+                        "boolean",
+                        "null"
+                      ]
+                    }
+                  },
+                  "x-kubernetes-map-type": "atomic",
+                  "additionalProperties": false
+                },
+                "secret": {
+                  "description": "Secret containing data to use for the targets.",
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "required": [
+                    "key"
+                  ],
+                  "properties": {
+                    "key": {
+                      "description": "The key of the secret to select from.  Must be a valid secret key.",
+                      "type": "string"
+                    },
+                    "name": {
+                      "description": "Name of the referent.\nThis field is effectively required, but due to backwards compatibility is\nallowed to be empty. Instances of this type with an empty value here are\nalmost certainly wrong.\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "optional": {
+                      "description": "Specify whether the Secret or its key must be defined",
+                      "type": [
+                        "boolean",
+                        "null"
+                      ]
+                    }
+                  },
+                  "x-kubernetes-map-type": "atomic",
+                  "additionalProperties": false
+                }
+              },
+              "additionalProperties": false
+            },
+            "certFile": {
+              "description": "Path to the client cert file in the container for the targets.",
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "insecureSkipVerify": {
+              "description": "Disable target certificate validation.",
+              "type": [
+                "boolean",
+                "null"
+              ]
+            },
+            "keyFile": {
+              "description": "Path to the client key file in the container for the targets.",
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "keySecret": {
+              "description": "Secret containing the client key file for the targets.",
+              "type": [
+                "object",
+                "null"
+              ],
+              "required": [
+                "key"
+              ],
+              "properties": {
+                "key": {
+                  "description": "The key of the secret to select from.  Must be a valid secret key.",
+                  "type": "string"
+                },
+                "name": {
+                  "description": "Name of the referent.\nThis field is effectively required, but due to backwards compatibility is\nallowed to be empty. Instances of this type with an empty value here are\nalmost certainly wrong.\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "optional": {
+                  "description": "Specify whether the Secret or its key must be defined",
+                  "type": [
+                    "boolean",
+                    "null"
+                  ]
+                }
+              },
+              "x-kubernetes-map-type": "atomic",
+              "additionalProperties": false
+            },
+            "serverName": {
+              "description": "Used to verify the hostname for the targets.",
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "additionalProperties": false
+        },
+        "tokenRef": {
+          "description": "TokenRef allows fetching token from user-created secrets by its name and key.",
+          "type": [
+            "object",
+            "null"
+          ],
+          "required": [
+            "key"
+          ],
+          "properties": {
+            "key": {
+              "description": "The key of the secret to select from.  Must be a valid secret key.",
+              "type": "string"
+            },
+            "name": {
+              "description": "Name of the referent.\nThis field is effectively required, but due to backwards compatibility is\nallowed to be empty. Instances of this type with an empty value here are\nalmost certainly wrong.\nMore info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "optional": {
+              "description": "Specify whether the Secret or its key must be defined",
+              "type": [
+                "boolean",
+                "null"
+              ]
+            }
+          },
+          "x-kubernetes-map-type": "atomic",
+          "additionalProperties": false
+        },
+        "username": {
+          "description": "UserName basic auth user name for accessing protected endpoint,\nwill be replaced with metadata.name of VMUser if omitted.",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "status": {
+      "description": "VMUserStatus defines the observed state of VMUser",
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "conditions": {
+          "description": "Known .status.conditions.type are: \"Available\", \"Progressing\", and \"Degraded\"",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "description": "Condition defines status condition of the resource",
+            "type": [
+              "object",
+              "null"
+            ],
+            "required": [
+              "lastTransitionTime",
+              "lastUpdateTime",
+              "reason",
+              "status",
+              "type"
+            ],
+            "properties": {
+              "lastTransitionTime": {
+                "description": "lastTransitionTime is the last time the condition transitioned from one status to another.",
+                "type": "string",
+                "format": "date-time"
+              },
+              "lastUpdateTime": {
+                "description": "LastUpdateTime is the last time of given type update.\nThis value is used for status TTL update and removal",
+                "type": "string",
+                "format": "date-time"
+              },
+              "message": {
+                "description": "message is a human readable message indicating details about the transition.\nThis may be an empty string.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "maxLength": 32768
+              },
+              "observedGeneration": {
+                "description": "observedGeneration represents the .metadata.generation that the condition was set based upon.\nFor instance, if .metadata.generation is currently 12, but the .status.conditions[x].observedGeneration is 9, the condition is out of date\nwith respect to the current state of the instance.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int64",
+                "minimum": 0
+              },
+              "reason": {
+                "description": "reason contains a programmatic identifier indicating the reason for the condition's last transition.\nProducers of specific condition types may define expected values and meanings for this field,\nand whether the values are considered a guaranteed API.\nThe value should be a CamelCase string.\nThis field may not be empty.",
+                "type": "string",
+                "maxLength": 1024,
+                "minLength": 1
+              },
+              "status": {
+                "description": "status of the condition, one of True, False, Unknown.",
+                "type": "string",
+                "enum": [
+                  "True",
+                  "False",
+                  "Unknown"
+                ]
+              },
+              "type": {
+                "description": "Type of condition in CamelCase or in name.namespace.resource.victoriametrics.com/CamelCase.",
+                "type": "string",
+                "maxLength": 316
+              }
+            },
+            "additionalProperties": false
+          },
+          "x-kubernetes-list-map-keys": [
+            "type"
+          ],
+          "x-kubernetes-list-type": "map"
+        },
+        "observedGeneration": {
+          "description": "ObservedGeneration defines current generation picked by operator for the\nreconcile",
+          "type": [
+            "integer",
+            "null"
+          ],
+          "format": "int64"
+        },
+        "reason": {
+          "description": "Reason defines human readable error reason",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "updateStatus": {
+          "description": "UpdateStatus defines a status for update rollout",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "operator.victoriametrics.com",
+      "kind": "VMUser",
+      "version": "v1beta1"
+    }
+  ],
+  "x-kubernetes-selectable-fields": [],
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

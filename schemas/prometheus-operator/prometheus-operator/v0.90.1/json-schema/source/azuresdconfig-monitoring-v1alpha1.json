@@ -1,0 +1,141 @@
+{
+  "description": "AzureSDConfig allow retrieving scrape targets from Azure VMs. See https://prometheus.io/docs/prometheus/latest/configuration/configuration/#azure_sd_config",
+  "type": "object",
+  "required": [
+    "subscriptionID"
+  ],
+  "properties": {
+    "authenticationMethod": {
+      "description": "authenticationMethod defines the authentication method, either `OAuth` or `ManagedIdentity` or `SDK`. See https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview SDK authentication method uses environment variables by default. See https://learn.microsoft.com/en-us/azure/developer/go/azure-sdk-authentication",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "authorization": {
+      "description": "authorization defines the authorization header configuration to authenticate against the target HTTP endpoint. Cannot be set at the same time as `oAuth2`, or `basicAuth`.",
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.SafeAuthorization"
+    },
+    "basicAuth": {
+      "description": "basicAuth defines the information to authenticate against the target HTTP endpoint. More info: https://prometheus.io/docs/operating/configuration/#endpoints Cannot be set at the same time as `authorization`, or `oAuth2`.",
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.BasicAuth"
+    },
+    "clientID": {
+      "description": "clientID defines client ID. Only required with the OAuth authentication method.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "clientSecret": {
+      "description": "clientSecret defines client secret. Only required with the OAuth authentication method.",
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SecretKeySelector"
+    },
+    "enableHTTP2": {
+      "description": "enableHTTP2 defines whether to enable HTTP2.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "environment": {
+      "description": "environment defines the Azure environment.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "followRedirects": {
+      "description": "followRedirects defines whether HTTP requests follow HTTP 3xx redirects.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "noProxy": {
+      "description": "noProxy defines a comma-separated string that can contain IPs, CIDR notation, domain names that should be excluded from proxying. IP and domain names can contain port numbers.\n\nIt requires Prometheus >= v2.43.0, Alertmanager >= v0.25.0 or Thanos >= v0.32.0.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "oauth2": {
+      "description": "oauth2 defines the configuration to use on every scrape request.",
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.OAuth2"
+    },
+    "port": {
+      "description": "port defines the port to scrape metrics from. If using the public IP address, this must instead be specified in the relabeling rule.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32"
+    },
+    "proxyConnectHeader": {
+      "description": "proxyConnectHeader optionally specifies headers to send to proxies during CONNECT requests.\n\nIt requires Prometheus >= v2.43.0, Alertmanager >= v0.25.0 or Thanos >= v0.32.0.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": {
+        "type": [
+          "array",
+          "null"
+        ],
+        "items": {
+          "default": {},
+          "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SecretKeySelector"
+        }
+      }
+    },
+    "proxyFromEnvironment": {
+      "description": "proxyFromEnvironment defines whether to use the proxy configuration defined by environment variables (HTTP_PROXY, HTTPS_PROXY, and NO_PROXY).\n\nIt requires Prometheus >= v2.43.0, Alertmanager >= v0.25.0 or Thanos >= v0.32.0.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "proxyUrl": {
+      "description": "proxyUrl defines the HTTP proxy server to use.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "refreshInterval": {
+      "description": "refreshInterval defines the time after which the provided names are refreshed. If not set, Prometheus uses its default value.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "resourceGroup": {
+      "description": "resourceGroup defines resource group name. Limits discovery to this resource group. Requires  Prometheus v2.35.0 and above",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "subscriptionID": {
+      "description": "subscriptionID defines subscription ID. Always required.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "tenantID": {
+      "description": "tenantID defines tenant ID. Only required with the OAuth authentication method.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "tlsConfig": {
+      "description": "tlsConfig defies the TLS configuration applying to the target HTTP endpoint.",
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.SafeTLSConfig"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

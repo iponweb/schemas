@@ -1,0 +1,26 @@
+{
+  "description": "ConfigMapKeyRef struct for a reference to a configmap key.",
+  "type": "object",
+  "required": [
+    "configMapName",
+    "key"
+  ],
+  "properties": {
+    "configMapName": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "key": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

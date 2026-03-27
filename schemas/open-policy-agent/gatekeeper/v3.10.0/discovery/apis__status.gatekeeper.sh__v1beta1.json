@@ -1,0 +1,58 @@
+{
+  "kind": "APIResourceList",
+  "apiVersion": "v1",
+  "groupVersion": "status.gatekeeper.sh/v1beta1",
+  "resources": [
+    {
+      "name": "constrainttemplatepodstatuses",
+      "singularName": "constrainttemplatepodstatus",
+      "namespaced": true,
+      "kind": "ConstraintTemplatePodStatus",
+      "verbs": [
+        "delete",
+        "deletecollection",
+        "get",
+        "list",
+        "patch",
+        "create",
+        "update",
+        "watch"
+      ],
+      "storageVersionHash": "+DJ0NWc6Akc="
+    },
+    {
+      "name": "constraintpodstatuses",
+      "singularName": "constraintpodstatus",
+      "namespaced": true,
+      "kind": "ConstraintPodStatus",
+      "verbs": [
+        "delete",
+        "deletecollection",
+        "get",
+        "list",
+        "patch",
+        "create",
+        "update",
+        "watch"
+      ],
+      "storageVersionHash": "50rQw0tnefI="
+    },
+    {
+      "name": "mutatorpodstatuses",
+      "singularName": "mutatorpodstatus",
+      "namespaced": true,
+      "kind": "MutatorPodStatus",
+      "verbs": [
+        "delete",
+        "deletecollection",
+        "get",
+        "list",
+        "patch",
+        "create",
+        "update",
+        "watch"
+      ],
+      "storageVersionHash": "hkh0rbrHbB8="
+    }
+  ]
+}

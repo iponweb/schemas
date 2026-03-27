@@ -1,0 +1,21 @@
+{
+  "type": "object",
+  "properties": {
+    "name": {
+      "description": "Name is the name identifying a parameter.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "string": {
+      "description": "String_ is the value of a string type parameter.",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

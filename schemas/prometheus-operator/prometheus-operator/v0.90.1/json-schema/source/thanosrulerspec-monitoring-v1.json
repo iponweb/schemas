@@ -1,0 +1,533 @@
+{
+  "description": "ThanosRulerSpec is a specification of the desired behavior of the ThanosRuler. More info: https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api-conventions.md#spec-and-status",
+  "type": "object",
+  "properties": {
+    "additionalArgs": {
+      "description": "additionalArgs defines how to add additional arguments for the ThanosRuler container. It is intended for e.g. activating hidden flags which are not supported by the dedicated configuration options yet. The arguments are passed as-is to the ThanosRuler container which may cause issues if they are invalid or not supported by the given ThanosRuler version. In case of an argument conflict (e.g. an argument which is already set by the operator itself) or when providing an invalid argument the reconciliation will fail and an error will be logged.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.Argument"
+      }
+    },
+    "affinity": {
+      "description": "affinity defines when specified, the pod's scheduling constraints.",
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.Affinity"
+    },
+    "alertDropLabels": {
+      "description": "alertDropLabels defines the label names which should be dropped in Thanos Ruler alerts.\n\nThe replica label `thanos_ruler_replica` will always be dropped from the alerts.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "alertQueryUrl": {
+      "description": "alertQueryUrl defines how Thanos Ruler will set in the 'Source' field of all alerts. Maps to the '--alert.query-url' CLI arg.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "alertRelabelConfigFile": {
+      "description": "alertRelabelConfigFile defines the path to the alert relabeling configuration file.\n\nAlert relabel configuration must have the form as specified in the official Prometheus documentation: https://prometheus.io/docs/prometheus/latest/configuration/configuration/#alert_relabel_configs\n\nThe operator performs no validation of the configuration file.\n\nThis field takes precedence over `alertRelabelConfig`.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "alertRelabelConfigs": {
+      "description": "alertRelabelConfigs defines the alert relabeling in Thanos Ruler.\n\nAlert relabel configuration must have the form as specified in the official Prometheus documentation: https://prometheus.io/docs/prometheus/latest/configuration/configuration/#alert_relabel_configs\n\nThe operator performs no validation of the configuration.\n\n`alertRelabelConfigFile` takes precedence over this field.",
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SecretKeySelector"
+    },
+    "alertmanagersConfig": {
+      "description": "alertmanagersConfig defines the list of Alertmanager endpoints to send alerts to.\n\nThe configuration format is defined at https://thanos.io/tip/components/rule.md/#alertmanager.\n\nIt requires Thanos >= v0.10.0.\n\nThe operator performs no validation of the configuration.\n\nThis field takes precedence over `alertmanagersUrl`.",
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SecretKeySelector"
+    },
+    "alertmanagersUrl": {
+      "description": "alertmanagersUrl defines the list of Alertmanager endpoints to send alerts to.\n\nFor Thanos >= v0.10.0, it is recommended to use `alertmanagersConfig` instead.\n\n`alertmanagersConfig` takes precedence over this field.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "containers": {
+      "description": "containers allows injecting additional containers or modifying operator generated containers. This can be used to allow adding an authentication proxy to the Pods or to change the behavior of an operator generated container. Containers described here modify an operator generated container if they share the same name and modifications are done via a strategic merge patch.\n\nThe names of containers managed by the operator are: * `thanos-ruler` * `config-reloader`\n\nOverriding containers which are managed by the operator require careful testing, especially when upgrading to a new version of the operator.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.Container"
+      }
+    },
+    "dnsConfig": {
+      "description": "dnsConfig defines Defines the DNS configuration for the pods.",
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.PodDNSConfig"
+    },
+    "dnsPolicy": {
+      "description": "dnsPolicy defines the DNS policy for the pods.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "enableFeatures": {
+      "description": "enableFeatures defines how to setup Thanos Ruler feature flags. By default, no features are enabled.\n\nEnabling features which are disabled by default is entirely outside the scope of what the maintainers will support and by doing so, you accept that this behaviour may break at any time without notice.\n\nFor more information see https://thanos.io/tip/components/rule.md/\n\nIt requires Thanos >= 0.39.0.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "enableServiceLinks": {
+      "description": "enableServiceLinks defines whether information about services should be injected into pod's environment variables",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "enforcedNamespaceLabel": {
+      "description": "enforcedNamespaceLabel enforces adding a namespace label of origin for each alert and metric that is user created. The label value will always be the namespace of the object that is being created.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "evaluationInterval": {
+      "description": "evaluationInterval defines the interval between consecutive evaluations.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "excludedFromEnforcement": {
+      "description": "excludedFromEnforcement defines the list of references to PrometheusRule objects to be excluded from enforcing a namespace label of origin. Applies only if enforcedNamespaceLabel set to true.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.ObjectReference"
+      }
+    },
+    "externalPrefix": {
+      "description": "externalPrefix defines the Thanos Ruler instances will be available under. This is necessary to generate correct URLs. This is necessary if Thanos Ruler is not served from root of a DNS name.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "grpcServerTlsConfig": {
+      "description": "grpcServerTlsConfig defines the gRPC server from which Thanos Querier reads recorded rule data.\n\nNote: Currently only the `minVersion`, `caFile`, `certFile`, and `keyFile` fields are supported.",
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.TLSConfig"
+    },
+    "hostAliases": {
+      "description": "hostAliases defines pods' hostAliases configuration",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.HostAlias"
+      },
+      "x-kubernetes-list-map-keys": [
+        "ip"
+      ],
+      "x-kubernetes-list-type": "map"
+    },
+    "hostUsers": {
+      "description": "hostUsers supports the user space in Kubernetes.\n\nMore info: https://kubernetes.io/docs/tasks/configure-pod-container/user-namespaces/\n\nThe feature requires at least Kubernetes 1.28 with the `UserNamespacesSupport` feature gate enabled. Starting Kubernetes 1.33, the feature is enabled by default.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "image": {
+      "description": "image defines Thanos container image URL.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "imagePullPolicy": {
+      "description": "imagePullPolicy defines for the 'thanos', 'init-config-reloader' and 'config-reloader' containers. See https://kubernetes.io/docs/concepts/containers/images/#image-pull-policy for more details.\n\nPossible enum values:\n - `\"Always\"` means that kubelet always attempts to pull the latest image. Container will fail If the pull fails.\n - `\"IfNotPresent\"` means that kubelet pulls if the image isn't present on disk. Container will fail if the image isn't present and the pull fails.\n - `\"Never\"` means that kubelet never pulls an image, but only uses a local image. Container will fail if the image isn't present",
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "Always",
+        "IfNotPresent",
+        "Never"
+      ]
+    },
+    "imagePullSecrets": {
+      "description": "imagePullSecrets defines an optional list of references to secrets in the same namespace to use for pulling thanos images from registries see http://kubernetes.io/docs/user-guide/images#specifying-imagepullsecrets-on-a-pod",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.LocalObjectReference"
+      }
+    },
+    "initContainers": {
+      "description": "initContainers allows injecting initContainers to the Pod definition. Those can be used to e.g. fetch secrets for injection into the configuration from external sources. Any errors during the execution of an initContainer will lead to a restart of the Pod. More info: https://kubernetes.io/docs/concepts/workloads/pods/init-containers/",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.Container"
+      }
+    },
+    "labels": {
+      "description": "labels defines the external label pairs of the ThanosRuler resource.\n\nA default replica label `thanos_ruler_replica` will be always added as a label with the value of the pod's name.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "listenLocal": {
+      "description": "listenLocal defines the Thanos ruler listen on loopback, so that it does not bind against the Pod IP.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "logFormat": {
+      "description": "logFormat for ThanosRuler to be configured with.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "logLevel": {
+      "description": "logLevel for ThanosRuler to be configured with.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "minReadySeconds": {
+      "description": "minReadySeconds defines the minimum number of seconds for which a newly created pod should be ready without any of its container crashing for it to be considered available.\n\nIf unset, pods will be considered available as soon as they are ready.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32"
+    },
+    "nodeSelector": {
+      "description": "nodeSelector defines which Nodes the Pods are scheduled on.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "objectStorageConfig": {
+      "description": "objectStorageConfig defines the configuration format is defined at https://thanos.io/tip/thanos/storage.md/#configuring-access-to-object-storage\n\nThe operator performs no validation of the configuration.\n\n`objectStorageConfigFile` takes precedence over this field.",
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SecretKeySelector"
+    },
+    "objectStorageConfigFile": {
+      "description": "objectStorageConfigFile defines the path of the object storage configuration file.\n\nThe configuration format is defined at https://thanos.io/tip/thanos/storage.md/#configuring-access-to-object-storage\n\nThe operator performs no validation of the configuration file.\n\nThis field takes precedence over `objectStorageConfig`.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "paused": {
+      "description": "paused defines when a ThanosRuler deployment is paused, no actions except for deletion will be performed on the underlying objects.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "podManagementPolicy": {
+      "description": "podManagementPolicy defines the policy for creating/deleting pods when scaling up and down.\n\nUnlike the default StatefulSet behavior, the default policy is `Parallel` to avoid manual intervention in case a pod gets stuck during a rollout.\n\nNote that updating this value implies the recreation of the StatefulSet which incurs a service outage.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "podMetadata": {
+      "description": "podMetadata defines labels and annotations which are propagated to the ThanosRuler pods.\n\nThe following items are reserved and cannot be overridden: * \"app.kubernetes.io/name\" label, set to \"thanos-ruler\". * \"app.kubernetes.io/managed-by\" label, set to \"prometheus-operator\". * \"app.kubernetes.io/instance\" label, set to the name of the ThanosRuler instance. * \"thanos-ruler\" label, set to the name of the ThanosRuler instance. * \"kubectl.kubernetes.io/default-container\" annotation, set to \"thanos-ruler\".",
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.EmbeddedObjectMetadata"
+    },
+    "portName": {
+      "description": "portName defines the port name used for the pods and governing service. Defaults to `web`.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "priorityClassName": {
+      "description": "priorityClassName defines the priority class assigned to the Pods",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "prometheusRulesExcludedFromEnforce": {
+      "description": "prometheusRulesExcludedFromEnforce defines a list of Prometheus rules to be excluded from enforcing of adding namespace labels. Works only if enforcedNamespaceLabel set to true. Make sure both ruleNamespace and ruleName are set for each pair Deprecated: use excludedFromEnforcement instead.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.PrometheusRuleExcludeConfig"
+      }
+    },
+    "queryConfig": {
+      "description": "queryConfig defines the list of Thanos Query endpoints from which to query metrics.\n\nThe configuration format is defined at https://thanos.io/tip/components/rule.md/#query-api\n\nIt requires Thanos >= v0.11.0.\n\nThe operator performs no validation of the configuration.\n\nThis field takes precedence over `queryEndpoints`.",
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SecretKeySelector"
+    },
+    "queryEndpoints": {
+      "description": "queryEndpoints defines the list of Thanos Query endpoints from which to query metrics.\n\nFor Thanos >= v0.11.0, it is recommended to use `queryConfig` instead.\n\n`queryConfig` takes precedence over this field.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "remoteWrite": {
+      "description": "remoteWrite defines the list of remote write configurations.\n\nWhen the list isn't empty, the ruler is configured with stateless mode.\n\nIt requires Thanos >= 0.24.0.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.RemoteWriteSpec"
+      }
+    },
+    "replicas": {
+      "description": "replicas defines the number of thanos ruler instances to deploy.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32"
+    },
+    "resendDelay": {
+      "description": "resendDelay defines the minimum amount of time to wait before resending an alert to Alertmanager.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "resources": {
+      "description": "resources defines the resource requirements for single Pods. If not provided, no requests/limits will be set",
+      "default": {},
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.ResourceRequirements"
+    },
+    "retention": {
+      "description": "retention defines the time duration ThanosRuler shall retain data for. Default is '24h', and must match the regular expression `[0-9]+(ms|s|m|h|d|w|y)` (milliseconds seconds minutes hours days weeks years).\n\nThe field has no effect when remote-write is configured since the Ruler operates in stateless mode.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "routePrefix": {
+      "description": "routePrefix defines the route prefix ThanosRuler registers HTTP handlers for. This allows thanos UI to be served on a sub-path.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "ruleConcurrentEval": {
+      "description": "ruleConcurrentEval defines how many rules can be evaluated concurrently. It requires Thanos >= v0.37.0.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32"
+    },
+    "ruleGracePeriod": {
+      "description": "ruleGracePeriod defines the minimum duration between alert and restored \"for\" state. This is maintained only for alerts with configured \"for\" time greater than grace period. It requires Thanos >= v0.30.0.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "ruleNamespaceSelector": {
+      "description": "ruleNamespaceSelector defines the namespaces to be selected for Rules discovery. If unspecified, only the same namespace as the ThanosRuler object is in is used.",
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.LabelSelector"
+    },
+    "ruleOutageTolerance": {
+      "description": "ruleOutageTolerance defines the max time to tolerate prometheus outage for restoring \"for\" state of alert. It requires Thanos >= v0.30.0.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "ruleQueryOffset": {
+      "description": "ruleQueryOffset defines the default rule group's query offset duration to use. It requires Thanos >= v0.38.0.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "ruleSelector": {
+      "description": "ruleSelector defines the PrometheusRule objects to be selected for rule evaluation. An empty label selector matches all objects. A null label selector matches no objects.",
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.LabelSelector"
+    },
+    "schedulerName": {
+      "description": "schedulerName defines the scheduler to use for Pod scheduling. If not specified, the default scheduler is used.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "securityContext": {
+      "description": "securityContext defines the pod-level security attributes and common container settings. This defaults to the default PodSecurityContext.",
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.PodSecurityContext"
+    },
+    "serviceAccountName": {
+      "description": "serviceAccountName defines the name of the ServiceAccount to use to run the Thanos Ruler Pods.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "serviceName": {
+      "description": "serviceName defines the name of the service name used by the underlying StatefulSet(s) as the governing service. If defined, the Service  must be created before the ThanosRuler resource in the same namespace and it must define a selector that matches the pod labels. If empty, the operator will create and manage a headless service named `thanos-ruler-operated` for ThanosRuler resources. When deploying multiple ThanosRuler resources in the same namespace, it is recommended to specify a different value for each. See https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/#stable-network-id for more details.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "storage": {
+      "description": "storage defines the specification of how storage shall be used.",
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.StorageSpec"
+    },
+    "terminationGracePeriodSeconds": {
+      "description": "terminationGracePeriodSeconds defines the optional duration in seconds the pod needs to terminate gracefully. Value must be non-negative integer. The value zero indicates stop immediately via the kill signal (no opportunity to shut down) which may lead to data corruption.\n\nDefaults to 120 seconds.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int64"
+    },
+    "tolerations": {
+      "description": "tolerations defines when specified, the pod's tolerations.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.Toleration"
+      }
+    },
+    "topologySpreadConstraints": {
+      "description": "topologySpreadConstraints defines the pod's topology spread constraints.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.TopologySpreadConstraint"
+      }
+    },
+    "tracingConfig": {
+      "description": "tracingConfig defines the tracing configuration.\n\nThe configuration format is defined at https://thanos.io/tip/thanos/tracing.md/#configuration\n\nThis is an *experimental feature*, it may change in any upcoming release in a breaking way.\n\nThe operator performs no validation of the configuration.\n\n`tracingConfigFile` takes precedence over this field.",
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SecretKeySelector"
+    },
+    "tracingConfigFile": {
+      "description": "tracingConfigFile defines the path of the tracing configuration file.\n\nThe configuration format is defined at https://thanos.io/tip/thanos/tracing.md/#configuration\n\nThis is an *experimental feature*, it may change in any upcoming release in a breaking way.\n\nThe operator performs no validation of the configuration file.\n\nThis field takes precedence over `tracingConfig`.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "updateStrategy": {
+      "description": "updateStrategy indicates the strategy that will be employed to update Pods in the StatefulSet when a revision is made to statefulset's Pod Template.\n\nThe default strategy is RollingUpdate.",
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.StatefulSetUpdateStrategy"
+    },
+    "version": {
+      "description": "version of Thanos to be deployed.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "volumeMounts": {
+      "description": "volumeMounts defines how the configuration of additional VolumeMounts on the output StatefulSet definition. VolumeMounts specified will be appended to other VolumeMounts in the ruler container, that are generated as a result of StorageSpec objects.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.VolumeMount"
+      }
+    },
+    "volumes": {
+      "description": "volumes defines how configuration of additional volumes on the output StatefulSet definition. Volumes specified will be appended to other volumes that are generated as a result of StorageSpec objects.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.Volume"
+      }
+    },
+    "web": {
+      "description": "web defines the configuration of the ThanosRuler web server.",
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.ThanosRulerWebSpec"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

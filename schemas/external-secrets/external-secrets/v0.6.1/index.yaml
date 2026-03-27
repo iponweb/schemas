@@ -1,0 +1,50 @@
+resources:
+- kind: ClusterSecretStore
+  group: external-secrets.io
+  version: v1alpha1
+  plural: clustersecretstores
+  scope: Cluster
+  shortNames:
+  - css
+- kind: ExternalSecret
+  group: external-secrets.io
+  version: v1alpha1
+  plural: externalsecrets
+  scope: Namespaced
+  shortNames:
+  - es
+- kind: SecretStore
+  group: external-secrets.io
+  version: v1alpha1
+  plural: secretstores
+  scope: Namespaced
+  shortNames:
+  - ss
+- kind: ClusterExternalSecret
+  group: external-secrets.io
+  version: v1beta1
+  plural: clusterexternalsecrets
+  scope: Cluster
+  shortNames:
+  - ces
+- kind: ClusterSecretStore
+  group: external-secrets.io
+  version: v1beta1
+  plural: clustersecretstores
+  scope: Cluster
+  shortNames:
+  - css
+- kind: ExternalSecret
+  group: external-secrets.io
+  version: v1beta1
+  plural: externalsecrets
+  scope: Namespaced
+  shortNames:
+  - es
+- kind: SecretStore
+  group: external-secrets.io
+  version: v1beta1
+  plural: secretstores
+  scope: Namespaced
+  shortNames:
+  - ss

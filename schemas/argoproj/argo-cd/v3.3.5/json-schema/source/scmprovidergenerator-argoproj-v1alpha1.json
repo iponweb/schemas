@@ -1,0 +1,74 @@
+{
+  "description": "SCMProviderGenerator defines a generator that scrapes a SCMaaS API to find candidate repos.",
+  "type": "object",
+  "properties": {
+    "awsCodeCommit": {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.SCMProviderGeneratorAWSCodeCommit"
+    },
+    "azureDevOps": {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.SCMProviderGeneratorAzureDevOps"
+    },
+    "bitbucket": {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.SCMProviderGeneratorBitbucket"
+    },
+    "bitbucketServer": {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.SCMProviderGeneratorBitbucketServer"
+    },
+    "cloneProtocol": {
+      "description": "Which protocol to use for the SCM URL. Default is provider-specific but ssh if possible. Not all providers necessarily support all protocols.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "filters": {
+      "description": "Filters for which repos should be considered.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.SCMProviderGeneratorFilter"
+      }
+    },
+    "gitea": {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.SCMProviderGeneratorGitea"
+    },
+    "github": {
+      "description": "Which provider to use and config for it.",
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.SCMProviderGeneratorGithub"
+    },
+    "gitlab": {
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.SCMProviderGeneratorGitlab"
+    },
+    "requeueAfterSeconds": {
+      "description": "Standard parameters.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int64"
+    },
+    "template": {
+      "default": {},
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.ApplicationSetTemplate"
+    },
+    "values": {
+      "description": "Values contains key/value pairs which are passed directly as parameters to the template",
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

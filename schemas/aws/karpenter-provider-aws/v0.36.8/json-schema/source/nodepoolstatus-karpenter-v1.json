@@ -1,0 +1,29 @@
+{
+  "description": "NodePoolStatus defines the observed state of NodePool",
+  "type": "object",
+  "properties": {
+    "conditions": {
+      "description": "Conditions contains signals for health and readiness",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.github.awslabs.operatorpkg.status.Condition"
+      }
+    },
+    "resources": {
+      "description": "Resources is the list of resources that have been provisioned.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": {
+        "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.api.resource.Quantity"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

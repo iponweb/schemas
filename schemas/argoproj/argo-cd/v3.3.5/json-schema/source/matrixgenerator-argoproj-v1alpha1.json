@@ -1,0 +1,25 @@
+{
+  "description": "MatrixGenerator generates the cartesian product of two sets of parameters. The parameters are defined by two nested generators.",
+  "type": "object",
+  "required": [
+    "generators"
+  ],
+  "properties": {
+    "generators": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.ApplicationSetNestedGenerator"
+      }
+    },
+    "template": {
+      "default": {},
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.ApplicationSetTemplate"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

@@ -1,0 +1,14 @@
+diff --git a/vendor/k8s.io/autoscaler/vertical-pod-autoscaler/pkg/apis/autoscaling.k8s.io/v1/doc.go b/vendor/k8s.io/autoscaler/vertical-pod-autoscaler/pkg/apis/autoscaling.k8s.io/v1/doc.go
+--- a/vendor/k8s.io/autoscaler/vertical-pod-autoscaler/pkg/apis/autoscaling.k8s.io/v1/doc.go
++++ b/vendor/k8s.io/autoscaler/vertical-pod-autoscaler/pkg/apis/autoscaling.k8s.io/v1/doc.go
+@@ -22,2 +22,3 @@
+ // +kubebuilder:object:generate=true
++// +k8s:openapi-gen=true
+ package v1
+diff --git a/vendor/k8s.io/autoscaler/vertical-pod-autoscaler/pkg/apis/autoscaling.k8s.io/v1/types.go b/vendor/k8s.io/autoscaler/vertical-pod-autoscaler/pkg/apis/autoscaling.k8s.io/v1/types.go
+--- a/vendor/k8s.io/autoscaler/vertical-pod-autoscaler/pkg/apis/autoscaling.k8s.io/v1/types.go
++++ b/vendor/k8s.io/autoscaler/vertical-pod-autoscaler/pkg/apis/autoscaling.k8s.io/v1/types.go
+@@ -423,2 +423,3 @@
+ // HistogramCheckpoint contains data needed to reconstruct the histogram.
++// +k8s:openapi-gen=false
+ type HistogramCheckpoint struct {

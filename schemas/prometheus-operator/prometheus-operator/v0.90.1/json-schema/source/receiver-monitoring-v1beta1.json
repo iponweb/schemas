@@ -1,0 +1,184 @@
+{
+  "description": "Receiver defines one or more notification integrations.",
+  "type": "object",
+  "required": [
+    "name"
+  ],
+  "properties": {
+    "discordConfigs": {
+      "description": "discordConfigs defines the list of Discord configurations.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1beta1.DiscordConfig"
+      }
+    },
+    "emailConfigs": {
+      "description": "emailConfigs defines the list of Email configurations.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1beta1.EmailConfig"
+      }
+    },
+    "msteamsConfigs": {
+      "description": "msteamsConfigs defines the list of MSTeams configurations. It requires Alertmanager >= 0.26.0.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1beta1.MSTeamsConfig"
+      }
+    },
+    "msteamsv2Configs": {
+      "description": "msteamsv2Configs defines the list of MSTeamsV2 configurations. It requires Alertmanager >= 0.28.0.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1beta1.MSTeamsV2Config"
+      }
+    },
+    "name": {
+      "description": "name defines the name of the receiver. Must be unique across all items from the list.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "opsgenieConfigs": {
+      "description": "opsgenieConfigs defines the list of OpsGenie configurations.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1beta1.OpsGenieConfig"
+      }
+    },
+    "pagerdutyConfigs": {
+      "description": "pagerdutyConfigs defines the List of PagerDuty configurations.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1beta1.PagerDutyConfig"
+      }
+    },
+    "pushoverConfigs": {
+      "description": "pushoverConfigs defines the list of Pushover configurations.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1beta1.PushoverConfig"
+      }
+    },
+    "rocketchatConfigs": {
+      "description": "rocketchatConfigs defines the list of RocketChat configurations. It requires Alertmanager >= 0.28.0.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1beta1.RocketChatConfig"
+      }
+    },
+    "slackConfigs": {
+      "description": "slackConfigs defines the list of Slack configurations.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1beta1.SlackConfig"
+      }
+    },
+    "snsConfigs": {
+      "description": "snsConfigs defines the list of SNS configurations",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1beta1.SNSConfig"
+      }
+    },
+    "telegramConfigs": {
+      "description": "telegramConfigs defines the list of Telegram configurations.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1beta1.TelegramConfig"
+      }
+    },
+    "victoropsConfigs": {
+      "description": "victoropsConfigs defines the list of VictorOps configurations.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1beta1.VictorOpsConfig"
+      }
+    },
+    "webexConfigs": {
+      "description": "webexConfigs defines the list of Webex configurations.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1beta1.WebexConfig"
+      }
+    },
+    "webhookConfigs": {
+      "description": "webhookConfigs defines the List of webhook configurations.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1beta1.WebhookConfig"
+      }
+    },
+    "wechatConfigs": {
+      "description": "wechatConfigs defines the list of WeChat configurations.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1beta1.WeChatConfig"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

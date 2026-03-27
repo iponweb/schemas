@@ -1,0 +1,122 @@
+{
+  "description": "NomadSDConfig configurations allow retrieving scrape targets from Nomad's Service API. See https://prometheus.io/docs/prometheus/latest/configuration/configuration/#nomad_sd_config",
+  "type": "object",
+  "required": [
+    "server"
+  ],
+  "properties": {
+    "allowStale": {
+      "description": "allowStale defines the information to access the Nomad API. It is to be defined as the Nomad documentation requires.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "authorization": {
+      "description": "authorization defines the header configuration to authenticate against the Nomad API. Cannot be set at the same time as `oauth2`.",
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.SafeAuthorization"
+    },
+    "basicAuth": {
+      "description": "basicAuth defines information to use on every scrape request.",
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.BasicAuth"
+    },
+    "enableHTTP2": {
+      "description": "enableHTTP2 defines whether to enable HTTP2.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "followRedirects": {
+      "description": "followRedirects defines whether HTTP requests follow HTTP 3xx redirects.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "namespace": {
+      "description": "namespace defines the Nomad namespace to query for service discovery. When specified, only resources within this namespace will be discovered.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "noProxy": {
+      "description": "noProxy defines a comma-separated string that can contain IPs, CIDR notation, domain names that should be excluded from proxying. IP and domain names can contain port numbers.\n\nIt requires Prometheus >= v2.43.0, Alertmanager >= v0.25.0 or Thanos >= v0.32.0.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "oauth2": {
+      "description": "oauth2 defines the configuration to use on every scrape request.",
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.OAuth2"
+    },
+    "proxyConnectHeader": {
+      "description": "proxyConnectHeader optionally specifies headers to send to proxies during CONNECT requests.\n\nIt requires Prometheus >= v2.43.0, Alertmanager >= v0.25.0 or Thanos >= v0.32.0.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": {
+        "type": [
+          "array",
+          "null"
+        ],
+        "items": {
+          "default": {},
+          "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SecretKeySelector"
+        }
+      }
+    },
+    "proxyFromEnvironment": {
+      "description": "proxyFromEnvironment defines whether to use the proxy configuration defined by environment variables (HTTP_PROXY, HTTPS_PROXY, and NO_PROXY).\n\nIt requires Prometheus >= v2.43.0, Alertmanager >= v0.25.0 or Thanos >= v0.32.0.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "proxyUrl": {
+      "description": "proxyUrl defines the HTTP proxy server to use.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "refreshInterval": {
+      "description": "refreshInterval defines the time after which the provided names are refreshed. If not set, Prometheus uses its default value.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "region": {
+      "description": "region defines the Nomad region to query for service discovery. When specified, only resources within this region will be discovered.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "server": {
+      "description": "server defines the Nomad server address to connect to for service discovery. This should be the full URL including protocol (e.g., \"https://nomad.example.com:4646\").",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "tagSeparator": {
+      "description": "tagSeparator defines the separator used to join multiple tags. This determines how Nomad service tags are concatenated into Prometheus labels.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "tlsConfig": {
+      "description": "tlsConfig defines the TLS configuration to connect to the Nomad API.",
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1.SafeTLSConfig"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

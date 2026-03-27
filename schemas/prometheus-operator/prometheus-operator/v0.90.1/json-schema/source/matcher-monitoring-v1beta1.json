@@ -1,0 +1,34 @@
+{
+  "description": "Matcher defines how to match on alert's labels.",
+  "type": "object",
+  "required": [
+    "name"
+  ],
+  "properties": {
+    "matchType": {
+      "description": "matchType defines the match operation available with AlertManager >= v0.22.0. Takes precedence over Regex (deprecated) if non-empty. Valid values: \"=\" (equality), \"!=\" (inequality), \"=~\" (regex match), \"!~\" (regex non-match).",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "name": {
+      "description": "name defines the label to match. This specifies which alert label should be evaluated.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "value": {
+      "description": "value defines the label value to match. This is the expected value for the specified label.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

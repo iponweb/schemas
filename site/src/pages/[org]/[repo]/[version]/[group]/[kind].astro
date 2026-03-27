@@ -1,0 +1,218 @@
+---
+import Layout from '../../../../../layouts/Layout.astro'
+import PropertyTree from '../../../../../components/PropertyTree'
+import ChangeHistory from '../../../../../components/ChangeHistory'
+import { getAllControllers, getResources, getResourceSchema, getResourceSchemaFromDefinitions, getDefinitions, getChangeHistory } from '../../../../../lib/data'
+import type { ChangeHistoryEntry } from '../../../../../lib/data'
+import type { GetStaticPaths } from 'astro'
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const controllers = getAllControllers()
+  const paths: {
+    params: { org: string; repo: string; version: string; group: string; kind: string }
+    props: object
+  }[] = []
+
+  const historyCache = new Map<string, ChangeHistoryEntry[]>()
+
+  for (const ctrl of controllers) {
+    for (const version of ctrl.versions) {
+      const resources = getResources(ctrl.org, ctrl.repo, version)
+      for (const resource of resources) {
+        const cacheKey = `${ctrl.org}/${ctrl.repo}/${resource.group}/${resource.kind}`
+        let changeHistory: ChangeHistoryEntry[]
+        if (historyCache.has(cacheKey)) {
+          changeHistory = historyCache.get(cacheKey)!
+        } else {
+          changeHistory = getChangeHistory(
+            ctrl.org,
+            ctrl.repo,
+            ctrl.versions,
+            resource.plural,
+            resource.group,
+            resource.version,
+            resource.kind,
+          )
+          historyCache.set(cacheKey, changeHistory)
+        }
+        paths.push({
+          params: {
+            org: ctrl.org,
+            repo: ctrl.repo,
+            version,
+            group: resource.group || 'core',
+            kind: resource.kind,
+          },
+          props: { resource, ctrl, changeHistory },
+        })
+      }
+    }
+  }
+  return paths
+}
+
+const { resource, ctrl, changeHistory } = Astro.props as {
+  resource: import('../../../../../lib/types').Resource
+  ctrl: import('../../../../../lib/types').Controller
+  changeHistory: ChangeHistoryEntry[]
+}
+const { org, repo, version, group } = Astro.params
+const label = repo.charAt(0).toUpperCase() + repo.slice(1)
+const base = import.meta.env.BASE_URL.replace(/\/$/, '')
+
+// Try to get schema from CRD, then fall back to definitions (for kubernetes/)
+let schema = null
+let definitions: Record<string, import('../../../../../lib/types').SchemaProperty> = {}
+const isKubernetes = org === 'kubernetes' && repo === 'kubernetes'
+
+if (!isKubernetes) {
+  schema = getResourceSchema(org, repo, version, resource.plural, resource.group, resource.version)
+} else {
+  definitions = getDefinitions(org, repo, version)
+  schema = getResourceSchemaFromDefinitions(org, repo, version, resource.kind, resource.group)
+}
+
+const hasSchema = schema !== null
+
+const prevVersion = (() => {
+  const idx = ctrl.versions.indexOf(version)
+  return ctrl.versions[idx + 1] ?? null
+})()
+const nextVersion = (() => {
+  const idx = ctrl.versions.indexOf(version)
+  return idx > 0 ? ctrl.versions[idx - 1] : null
+})()
+---
+
+<Layout
+  title={`${resource.kind} — ${org}/${repo} ${version}`}
+  description={`Schema for ${resource.kind} (${resource.group}/${resource.version}) in ${org}/${repo} ${version}`}
+  breadcrumbs={[
+    { label: org, href: `${base}/` },
+    { label: repo, href: `${base}/${org}/${repo}/` },
+    { label: version, href: `${base}/${org}/${repo}/${version}/` },
+    { label: resource.kind, href: `${base}/${org}/${repo}/${version}/${group}/${resource.kind}/` },
+  ]}
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <!-- Resource Header -->
+    <div class="bg-white border border-zinc-200 rounded-xl p-6 mb-8 shadow-sm">
+      <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
+        <div>
+          <div class="flex flex-wrap items-center gap-2 mb-2">
+            <span class={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
+              resource.scope === 'Namespaced'
+                ? 'bg-blue-100 text-blue-700'
+                : 'bg-amber-100 text-amber-700'
+            }`}>
+              {resource.scope}
+            </span>
+            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-violet-100 text-violet-700 font-mono">
+              {version}
+            </span>
+          </div>
+          <h1 class="text-3xl font-bold text-zinc-900 font-mono mb-2">{resource.kind}</h1>
+          <div class="flex flex-wrap gap-3 text-sm text-zinc-500">
+            <span class="font-mono">
+              {resource.group
+                ? <><span class="text-zinc-400">group:</span> {resource.group}</>
+                : <span class="text-zinc-400">core API</span>
+              }
+            </span>
+            <span class="font-mono">
+              <span class="text-zinc-400">version:</span> {resource.version}
+            </span>
+            <span class="font-mono">
+              <span class="text-zinc-400">plural:</span> {resource.plural}
+            </span>
+          </div>
+          {resource.shortNames && resource.shortNames.length > 0 && (
+            <div class="flex flex-wrap gap-1.5 mt-3">
+              <span class="text-xs text-zinc-400">short names:</span>
+              {resource.shortNames.map(sn => (
+                <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-mono bg-zinc-100 text-zinc-600 border border-zinc-200">
+                  {sn}
+                </span>
+              ))}
+            </div>
+          )}
+          {schema?.description && (
+            <p class="mt-4 text-sm text-zinc-600 leading-relaxed max-w-2xl">
+              {schema.description}
+            </p>
+          )}
+        </div>
+        <div class="flex gap-2">
+          {prevVersion && (
+            <a
+              href={`${base}/${org}/${repo}/${prevVersion}/${group}/${resource.kind}/`}
+              class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs bg-zinc-100 text-zinc-600 hover:bg-zinc-200 rounded-lg transition-colors font-mono"
+            >
+              ← {prevVersion}
+            </a>
+          )}
+          {nextVersion && (
+            <a
+              href={`${base}/${org}/${repo}/${nextVersion}/${group}/${resource.kind}/`}
+              class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs bg-zinc-100 text-zinc-600 hover:bg-zinc-200 rounded-lg transition-colors font-mono"
+            >
+              {nextVersion} →
+            </a>
+          )}
+        </div>
+      </div>
+    </div>
+
+    <!-- Schema Tree or Message -->
+    {!hasSchema ? (
+      <div class="bg-white border border-zinc-200 rounded-xl p-12 text-center shadow-sm">
+        <div class="w-16 h-16 rounded-2xl bg-zinc-100 flex items-center justify-center mx-auto mb-4">
+          <svg class="w-8 h-8 text-zinc-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+          </svg>
+        </div>
+        <h2 class="text-lg font-semibold text-zinc-700 mb-2">Schema available via OpenAPI</h2>
+        <p class="text-zinc-400 text-sm max-w-md mx-auto">
+          This resource is a Kubernetes built-in type. Its schema is part of the
+          core Kubernetes OpenAPI specification.
+        </p>
+        <a
+          href={`https://kubernetes.io/docs/reference/kubernetes-api/`}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-1.5 mt-4 px-4 py-2 text-sm bg-violet-600 text-white rounded-lg hover:bg-violet-700 transition-colors"
+        >
+          View Kubernetes API Reference
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+          </svg>
+        </a>
+      </div>
+    ) : (
+      <div class="bg-white border border-zinc-200 rounded-xl shadow-sm overflow-hidden">
+        <div class="bg-zinc-50 border-b border-zinc-200 px-6 py-4 flex items-center justify-between">
+          <h2 class="text-base font-semibold text-zinc-700">Schema</h2>
+          <div class="flex items-center gap-3 text-xs text-zinc-400">
+            <span class="flex items-center gap-1">
+              <span class="w-2 h-2 rounded-full bg-violet-400 inline-block"></span>
+              required
+            </span>
+            <span class="flex items-center gap-1">
+              <span class="w-2 h-2 rounded-full bg-zinc-300 inline-block"></span>
+              optional
+            </span>
+          </div>
+        </div>
+        <div class="p-4">
+          <PropertyTree schema={schema} definitions={definitions} client:load />
+        </div>
+      </div>
+    )}
+
+    {changeHistory.length > 0 && (
+      <div class="mt-8">
+        <ChangeHistory history={changeHistory} label={label} client:load />
+      </div>
+    )}
+  </div>
+</Layout>

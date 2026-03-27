@@ -1,0 +1,358 @@
+{
+  "oneOf": [
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Condition"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.FieldsV1"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.LabelSelector"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.LabelSelectorRequirement"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ManagedFieldsEntry"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.OwnerReference"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Time"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1.AllowedListeners"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1.AllowedRoutes"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1.BackendObjectReference"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1.BackendRef"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1.BackendTLSPolicy"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1.BackendTLSPolicySpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1.BackendTLSPolicyValidation"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1.CookieConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1.ForwardBodyConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1.Fraction"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1.FrontendTLSConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1.FrontendTLSValidation"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1.GRPCAuthConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1.GRPCBackendRef"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1.GRPCHeaderMatch"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1.GRPCMethodMatch"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1.GRPCRoute"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1.GRPCRouteFilter"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1.GRPCRouteMatch"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1.GRPCRouteRule"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1.GRPCRouteSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1.GRPCRouteStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1.Gateway"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1.GatewayBackendTLS"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1.GatewayClass"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1.GatewayClassSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1.GatewayClassStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1.GatewayInfrastructure"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1.GatewaySpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1.GatewaySpecAddress"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1.GatewayStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1.GatewayStatusAddress"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1.GatewayTLSConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1.HTTPAuthConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1.HTTPBackendRef"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1.HTTPCORSFilter"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1.HTTPExternalAuthFilter"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1.HTTPHeader"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1.HTTPHeaderFilter"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1.HTTPHeaderMatch"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1.HTTPPathMatch"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1.HTTPPathModifier"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1.HTTPQueryParamMatch"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1.HTTPRequestMirrorFilter"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1.HTTPRequestRedirectFilter"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1.HTTPRoute"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1.HTTPRouteFilter"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1.HTTPRouteMatch"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1.HTTPRouteRetry"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1.HTTPRouteRule"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1.HTTPRouteSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1.HTTPRouteStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1.HTTPRouteTimeouts"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1.HTTPURLRewriteFilter"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1.Listener"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1.ListenerEntry"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1.ListenerEntryStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1.ListenerNamespaces"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1.ListenerSet"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1.ListenerSetSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1.ListenerSetStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1.ListenerStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1.ListenerTLSConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1.LocalObjectReference"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1.LocalParametersReference"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1.LocalPolicyTargetReferenceWithSectionName"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1.ObjectReference"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1.ParametersReference"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1.ParentGatewayReference"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1.ParentReference"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1.PolicyAncestorStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1.PolicyStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1.ReferenceGrant"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1.ReferenceGrantFrom"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1.ReferenceGrantSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1.ReferenceGrantTo"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1.RouteGroupKind"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1.RouteNamespaces"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1.RouteParentStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1.SecretObjectReference"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1.SessionPersistence"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1.SubjectAltName"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1.SupportedFeature"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1.TLSConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1.TLSPortConfig"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1.TLSRoute"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1.TLSRouteRule"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1.TLSRouteSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1.TLSRouteStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1alpha2.GRPCRoute"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1alpha2.ReferenceGrant"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1alpha2.TCPRoute"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1alpha2.TCPRouteRule"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1alpha2.TCPRouteSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1alpha2.TCPRouteStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1alpha2.TLSRoute"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1alpha2.TLSRouteRule"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1alpha2.TLSRouteSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1alpha2.TLSRouteStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1alpha2.UDPRoute"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1alpha2.UDPRouteRule"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1alpha2.UDPRouteSpec"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1alpha2.UDPRouteStatus"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1alpha3.BackendTLSPolicy"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1beta1.Gateway"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1beta1.GatewayClass"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1beta1.HTTPRoute"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.networking.gateway.v1beta1.ReferenceGrant"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.util.intstr.IntOrString"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.api.resource.Quantity"
+    }
+  ]
+}

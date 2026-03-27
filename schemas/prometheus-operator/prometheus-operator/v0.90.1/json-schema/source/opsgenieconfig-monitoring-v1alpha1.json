@@ -1,0 +1,117 @@
+{
+  "description": "OpsGenieConfig configures notifications via OpsGenie. See https://prometheus.io/docs/alerting/latest/configuration/#opsgenie_config",
+  "type": "object",
+  "properties": {
+    "actions": {
+      "description": "actions defines a comma separated list of actions that will be available for the alert. These appear as action buttons in the OpsGenie interface.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "apiKey": {
+      "description": "apiKey defines the secret's key that contains the OpsGenie API key. The secret needs to be in the same namespace as the AlertmanagerConfig object and accessible by the Prometheus Operator.",
+      "$ref": "_definitions.json#/definitions/io.k8s.api.core.v1.SecretKeySelector"
+    },
+    "apiURL": {
+      "description": "apiURL defines the URL to send OpsGenie API requests to. When not specified, defaults to the standard OpsGenie API endpoint.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "description": {
+      "description": "description defines the detailed description of the incident. This provides additional context beyond the message field.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "details": {
+      "description": "details defines a set of arbitrary key/value pairs that provide further detail about the incident. These appear as additional fields in the OpsGenie alert.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.KeyValue"
+      },
+      "x-kubernetes-list-type": "atomic"
+    },
+    "entity": {
+      "description": "entity defines an optional field that can be used to specify which domain alert is related to. This helps group related alerts together in OpsGenie.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "httpConfig": {
+      "description": "httpConfig defines the HTTP client configuration for OpsGenie API requests.",
+      "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.HTTPConfig"
+    },
+    "message": {
+      "description": "message defines the alert text limited to 130 characters. This appears as the main alert title in OpsGenie.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "note": {
+      "description": "note defines an additional alert note. This provides supplementary information about the alert.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "priority": {
+      "description": "priority defines the priority level of alert. Possible values are P1, P2, P3, P4, and P5, where P1 is highest priority.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "responders": {
+      "description": "responders defines the list of responders responsible for notifications. These determine who gets notified when the alert is created.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/com.coreos.monitoring.v1alpha1.OpsGenieConfigResponder"
+      },
+      "x-kubernetes-list-type": "atomic"
+    },
+    "sendResolved": {
+      "description": "sendResolved defines whether or not to notify about resolved alerts.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "source": {
+      "description": "source defines the backlink to the sender of the notification. This helps identify where the alert originated from.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "tags": {
+      "description": "tags defines a comma separated list of tags attached to the notifications. These help categorize and filter alerts within OpsGenie.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "updateAlerts": {
+      "description": "updateAlerts defines Whether to update message and description of the alert in OpsGenie if it already exists By default, the alert is never updated in OpsGenie, the new message only appears in activity log.",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

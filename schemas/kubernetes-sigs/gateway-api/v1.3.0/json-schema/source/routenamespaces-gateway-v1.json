@@ -1,0 +1,19 @@
+{
+  "description": "RouteNamespaces indicate which namespaces Routes should be selected from.",
+  "type": "object",
+  "properties": {
+    "from": {
+      "description": "From indicates where Routes will be selected for this Gateway. Possible values are:\n\n* All: Routes in all namespaces may be used by this Gateway. * Selector: Routes in namespaces selected by the selector may be used by\n  this Gateway.\n* Same: Only Routes in the same namespace may be used by this Gateway.\n\nSupport: Core",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "selector": {
+      "description": "Selector must be specified when From is set to \"Selector\". In that case, only Routes in Namespaces matching this Selector will be selected by this Gateway. This field is ignored for other values of \"From\".\n\nSupport: Core",
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.LabelSelector"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

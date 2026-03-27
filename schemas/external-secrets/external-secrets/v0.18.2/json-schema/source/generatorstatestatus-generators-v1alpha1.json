@@ -1,0 +1,17 @@
+{
+  "type": "object",
+  "properties": {
+    "conditions": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "default": {},
+        "$ref": "_definitions.json#/definitions/io.external-secrets.generators.v1alpha1.GeneratorStateStatusCondition"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

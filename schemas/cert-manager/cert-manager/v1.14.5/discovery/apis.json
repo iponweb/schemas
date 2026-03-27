@@ -1,0 +1,32 @@
+{
+  "kind": "APIGroupList",
+  "apiVersion": "v1",
+  "groups": [
+    {
+      "name": "acme.cert-manager.io",
+      "versions": [
+        {
+          "groupVersion": "acme.cert-manager.io/v1",
+          "version": "v1"
+        }
+      ],
+      "preferredVersion": {
+        "groupVersion": "acme.cert-manager.io/v1",
+        "version": "v1"
+      }
+    },
+    {
+      "name": "cert-manager.io",
+      "versions": [
+        {
+          "groupVersion": "cert-manager.io/v1",
+          "version": "v1"
+        }
+      ],
+      "preferredVersion": {
+        "groupVersion": "cert-manager.io/v1",
+        "version": "v1"
+      }
+    }
+  ]
+}

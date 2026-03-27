@@ -1,0 +1,27 @@
+{
+  "description": "RetryStrategy contains information about the strategy to apply when a sync failed",
+  "type": "object",
+  "properties": {
+    "backoff": {
+      "description": "Backoff controls how to backoff on subsequent retries of failed syncs",
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.Backoff"
+    },
+    "limit": {
+      "description": "Limit is the maximum number of attempts for retrying a failed sync. If set to 0, no retries will be performed.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int64"
+    },
+    "refresh": {
+      "description": "Refresh indicates if the latest revision should be used on retry instead of the initial one (default: false)",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

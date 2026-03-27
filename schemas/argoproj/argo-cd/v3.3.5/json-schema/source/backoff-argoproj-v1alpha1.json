@@ -1,0 +1,30 @@
+{
+  "description": "Backoff is the backoff strategy to use on subsequent retries for failing syncs",
+  "type": "object",
+  "properties": {
+    "duration": {
+      "description": "Duration is the amount to back off. Default unit is seconds, but could also be a duration (e.g. \"2m\", \"1h\")",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "factor": {
+      "description": "Factor is a factor to multiply the base duration after each failed retry",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int64"
+    },
+    "maxDuration": {
+      "description": "MaxDuration is the maximum amount of time allowed for the backoff strategy",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

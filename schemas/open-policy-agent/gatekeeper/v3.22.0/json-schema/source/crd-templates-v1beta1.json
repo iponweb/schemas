@@ -1,0 +1,12 @@
+{
+  "description": "CRD defines the custom resource definition specification for the constraint.",
+  "type": "object",
+  "properties": {
+    "spec": {
+      "default": {},
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.templates.v1beta1.CRDSpec"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

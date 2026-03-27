@@ -1,0 +1,22 @@
+{
+  "description": "ImageSelectorTerm defines selection logic for an image used by Karpenter to launch nodes. If multiple fields are used for selection, the requirements are ANDed.",
+  "type": "object",
+  "properties": {
+    "alias": {
+      "description": "Alias specifies which GKE image to select. Valid families include: ContainerOptimizedOS,Ubuntu",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "id": {
+      "description": "ID specifies which GKE image to select.",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

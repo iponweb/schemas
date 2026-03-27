@@ -1,0 +1,15 @@
+{
+  "description": "CRDSpec defines the spec for the CRD.",
+  "type": "object",
+  "properties": {
+    "names": {
+      "default": {},
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.templates.v1beta1.Names"
+    },
+    "validation": {
+      "$ref": "_definitions.json#/definitions/sh.gatekeeper.templates.v1beta1.Validation"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

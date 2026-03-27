@@ -1,0 +1,29 @@
+{
+  "description": "RequestParameters contains parameters that can be passed to the STS service.",
+  "type": "object",
+  "properties": {
+    "serialNumber": {
+      "description": "SerialNumber is the identification number of the MFA device that is associated with the IAM user who is making the GetSessionToken call. Possible values: hardware device (such as GAHT12345678) or an Amazon Resource Name (ARN) for a virtual device (such as arn:aws:iam::123456789012:mfa/user)",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "sessionDuration": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32"
+    },
+    "tokenCode": {
+      "description": "TokenCode is the value provided by the MFA device, if MFA is required.",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

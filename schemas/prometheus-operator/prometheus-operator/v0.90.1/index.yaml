@@ -1,0 +1,71 @@
+resources:
+- kind: Alertmanager
+  group: monitoring.coreos.com
+  version: v1
+  plural: alertmanagers
+  scope: Namespaced
+  shortNames:
+  - am
+- kind: PodMonitor
+  group: monitoring.coreos.com
+  version: v1
+  plural: podmonitors
+  scope: Namespaced
+  shortNames:
+  - pmon
+- kind: Probe
+  group: monitoring.coreos.com
+  version: v1
+  plural: probes
+  scope: Namespaced
+  shortNames:
+  - prb
+- kind: Prometheus
+  group: monitoring.coreos.com
+  version: v1
+  plural: prometheuses
+  scope: Namespaced
+  shortNames:
+  - prom
+- kind: PrometheusRule
+  group: monitoring.coreos.com
+  version: v1
+  plural: prometheusrules
+  scope: Namespaced
+  shortNames:
+  - promrule
+- kind: ServiceMonitor
+  group: monitoring.coreos.com
+  version: v1
+  plural: servicemonitors
+  scope: Namespaced
+  shortNames:
+  - smon
+- kind: ThanosRuler
+  group: monitoring.coreos.com
+  version: v1
+  plural: thanosrulers
+  scope: Namespaced
+  shortNames:
+  - ruler
+- kind: AlertmanagerConfig
+  group: monitoring.coreos.com
+  version: v1alpha1
+  plural: alertmanagerconfigs
+  scope: Namespaced
+  shortNames:
+  - amcfg
+- kind: PrometheusAgent
+  group: monitoring.coreos.com
+  version: v1alpha1
+  plural: prometheusagents
+  scope: Namespaced
+  shortNames:
+  - promagent
+- kind: ScrapeConfig
+  group: monitoring.coreos.com
+  version: v1alpha1
+  plural: scrapeconfigs
+  scope: Namespaced
+  shortNames:
+  - scfg

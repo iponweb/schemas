@@ -1,0 +1,22 @@
+{
+  "description": "AzureManagedIdentity contains the configuration for Azure Workload Identity or Azure Managed Service Identity If the AZURE_FEDERATED_TOKEN_FILE environment variable is set, the Azure Workload Identity will be used. Otherwise, we fall-back to using Azure Managed Service Identity.",
+  "type": "object",
+  "properties": {
+    "clientID": {
+      "description": "client ID of the managed identity, can not be used at the same time as resourceID",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "resourceID": {
+      "description": "resource ID of the managed identity, can not be used at the same time as clientID Cannot be used for Azure Managed Service Identity",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

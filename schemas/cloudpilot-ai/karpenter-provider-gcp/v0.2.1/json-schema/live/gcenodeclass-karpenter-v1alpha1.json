@@ -1,0 +1,626 @@
+{
+  "description": "GCENodeClass is the Schema for the GCENodeClass API",
+  "type": "object",
+  "properties": {
+    "apiVersion": {
+      "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "karpenter.k8s.gcp/v1alpha1"
+      ]
+    },
+    "kind": {
+      "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+      "type": [
+        "string",
+        "null"
+      ],
+      "enum": [
+        "GCENodeClass"
+      ]
+    },
+    "metadata": {
+      "description": "Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
+    },
+    "spec": {
+      "description": "GCENodeClassSpec is the top level specification for the GCP Karpenter Provider.\nThis will contain the configuration necessary to launch instances in GCP.",
+      "type": [
+        "object",
+        "null"
+      ],
+      "required": [
+        "imageSelectorTerms"
+      ],
+      "properties": {
+        "disks": {
+          "description": "Disk defines the disks to attach to the provisioned instance.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "maxItems": 10,
+          "items": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "boot": {
+                "description": "Indicates that this is a boot disk.",
+                "type": [
+                  "boolean",
+                  "null"
+                ]
+              },
+              "category": {
+                "description": "The category of the disk (e.g., pd-standard, pd-balanced, pd-ssd, pd-extreme).",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "enum": [
+                  "hyperdisk-balanced",
+                  "hyperdisk-balanced-high-availability",
+                  "hyperdisk-extreme",
+                  "hyperdisk-ml",
+                  "hyperdisk-throughput",
+                  "local-ssd",
+                  "pd-balanced",
+                  "pd-extreme",
+                  "pd-ssd",
+                  "pd-standard"
+                ]
+              },
+              "kmsKeyName": {
+                "description": "KMSKeyName is the Cloud KMS key to use for disk encryption.\nFormat: projects/{project}/locations/{region}/keyRings/{keyring}/cryptoKeys/{key}\nOptionally, you can specify a version: projects/{project}/locations/{region}/keyRings/{keyring}/cryptoKeys/{key}/cryptoKeyVersions/{version}",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "pattern": "^projects/[^/]+/locations/[^/]+/keyRings/[^/]+/cryptoKeys/[^/]+(/cryptoKeyVersions/[^/]+)?$"
+              },
+              "kmsKeyServiceAccount": {
+                "description": "KMSKeyServiceAccount is the service account to use for accessing the KMS key.\nIf not specified, the Compute Engine default service account will be used.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "pattern": "^[^@]+@(developer\\.gserviceaccount\\.com|[^@]+\\.iam\\.gserviceaccount\\.com)$"
+              },
+              "secondaryBootImage": {
+                "description": "SecondaryBootImage is the secondary boot disk image name (e.g. global/images/DISK_IMAGE_NAME).",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "secondaryBootMode": {
+                "description": "SecondaryBootMode is the secondary boot disk mode (e.g. CONTAINER_IMAGE_CACHE).",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "enum": [
+                  "MODE_UNSPECIFIED",
+                  "CONTAINER_IMAGE_CACHE"
+                ]
+              },
+              "sizeGiB": {
+                "description": "SizeGiB is the size of the disk. Unit: GiB",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int32",
+                "x-kubernetes-validations": [
+                  {
+                    "message": "size invalid",
+                    "rule": "self >= 10"
+                  }
+                ]
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "imageFamily": {
+          "description": "ImageFamily dictates the instance template used when generating launch templates.\nIf no ImageSelectorTerms alias is specified, this field is required.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "enum": [
+            "Ubuntu",
+            "ContainerOptimizedOS"
+          ]
+        },
+        "imageSelectorTerms": {
+          "description": "ImageSelectorTerms is a list of or image selector terms. The terms are ORed.\nRemove or adjust mutual exclusivity rules since there's only one field",
+          "type": "array",
+          "maxItems": 30,
+          "minItems": 1,
+          "items": {
+            "description": "ImageSelectorTerm defines selection logic for an image used by Karpenter to launch nodes.\nIf multiple fields are used for selection, the requirements are ANDed.",
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "alias": {
+                "description": "Alias specifies which GKE image to select.\nValid families include: ContainerOptimizedOS,Ubuntu",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "maxLength": 60,
+                "x-kubernetes-validations": [
+                  {
+                    "message": "'alias' is improperly formatted, must match the format 'family@version'",
+                    "rule": "self.matches('^[a-zA-Z0-9]+@.+$')"
+                  },
+                  {
+                    "message": "family is not supported, must be one of the following: 'ContainerOptimizedOS,Ubuntu'",
+                    "rule": "self.find('^[^@]+') in ['ContainerOptimizedOS', 'Ubuntu']"
+                  }
+                ]
+              },
+              "id": {
+                "description": "ID specifies which GKE image to select.",
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "maxLength": 160,
+                "x-kubernetes-validations": [
+                  {
+                    "message": "'id' is improperly formatted, must match the format 'id'",
+                    "rule": "self.matches('^.*$')"
+                  }
+                ]
+              }
+            },
+            "additionalProperties": false
+          },
+          "x-kubernetes-validations": [
+            {
+              "message": "'alias' is improperly formatted, must match the format 'family'",
+              "rule": "self.all(x, has(x.alias) || has(x.id))"
+            }
+          ]
+        },
+        "kubeletConfiguration": {
+          "description": "KubeletConfiguration defines args to be used when configuring kubelet on provisioned nodes.\nThey are a vswitch of the upstream types, recognizing not all options may be supported.\nWherever possible, the types and names should reflect the upstream kubelet types.",
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "clusterDNS": {
+              "description": "clusterDNS is a list of IP addresses for the cluster DNS server.\nNote that not all providers may use all addresses.",
+              "type": [
+                "array",
+                "null"
+              ],
+              "items": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "cpuCFSQuota": {
+              "description": "CPUCFSQuota enables CPU CFS quota enforcement for containers that specify CPU limits.",
+              "type": [
+                "boolean",
+                "null"
+              ]
+            },
+            "evictionHard": {
+              "description": "EvictionHard is the map of signal names to quantities that define hard eviction thresholds",
+              "type": [
+                "object",
+                "null"
+              ],
+              "maxProperties": 10,
+              "additionalProperties": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "x-kubernetes-validations": [
+                {
+                  "message": "valid keys for evictionHard are ['memory.available','nodefs.available','nodefs.inodesFree','imagefs.available','imagefs.inodesFree','pid.available']",
+                  "rule": "self.all(x, x in ['memory.available','nodefs.available','nodefs.inodesFree','imagefs.available','imagefs.inodesFree','pid.available'])"
+                }
+              ]
+            },
+            "evictionMaxPodGracePeriod": {
+              "description": "EvictionMaxPodGracePeriod is the maximum allowed grace period (in seconds) to use when terminating pods in\nresponse to soft eviction thresholds being met.",
+              "type": [
+                "integer",
+                "null"
+              ],
+              "format": "int32"
+            },
+            "evictionSoft": {
+              "description": "EvictionSoft is the map of signal names to quantities that define soft eviction thresholds",
+              "type": [
+                "object",
+                "null"
+              ],
+              "maxProperties": 10,
+              "additionalProperties": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "x-kubernetes-validations": [
+                {
+                  "message": "valid keys for evictionSoft are ['memory.available','nodefs.available','nodefs.inodesFree','imagefs.available','imagefs.inodesFree','pid.available']",
+                  "rule": "self.all(x, x in ['memory.available','nodefs.available','nodefs.inodesFree','imagefs.available','imagefs.inodesFree','pid.available'])"
+                }
+              ]
+            },
+            "evictionSoftGracePeriod": {
+              "description": "EvictionSoftGracePeriod is the map of signal names to quantities that define grace periods for each eviction signal",
+              "type": [
+                "object",
+                "null"
+              ],
+              "maxProperties": 10,
+              "additionalProperties": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "x-kubernetes-validations": [
+                {
+                  "message": "valid keys for evictionSoftGracePeriod are ['memory.available','nodefs.available','nodefs.inodesFree','imagefs.available','imagefs.inodesFree','pid.available']",
+                  "rule": "self.all(x, x in ['memory.available','nodefs.available','nodefs.inodesFree','imagefs.available','imagefs.inodesFree','pid.available'])"
+                }
+              ]
+            },
+            "imageGCHighThresholdPercent": {
+              "description": "ImageGCHighThresholdPercent is the percent of disk usage after which image\ngarbage collection is always run. The percent is calculated by dividing this\nfield value by 100, so this field must be between 0 and 100, inclusive.\nWhen specified, the value must be greater than ImageGCLowThresholdPercent.",
+              "type": [
+                "integer",
+                "null"
+              ],
+              "format": "int32",
+              "maximum": 100,
+              "minimum": 0
+            },
+            "imageGCLowThresholdPercent": {
+              "description": "ImageGCLowThresholdPercent is the percent of disk usage before which image\ngarbage collection is never run. Lowest disk usage to garbage collect to.\nThe percent is calculated by dividing this field value by 100,\nso the field value must be between 0 and 100, inclusive.\nWhen specified, the value must be less than imageGCHighThresholdPercent",
+              "type": [
+                "integer",
+                "null"
+              ],
+              "format": "int32",
+              "maximum": 100,
+              "minimum": 0
+            },
+            "kubeReserved": {
+              "description": "KubeReserved contains resources reserved for Kubernetes system components.",
+              "type": [
+                "object",
+                "null"
+              ],
+              "maxProperties": 10,
+              "additionalProperties": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "x-kubernetes-validations": [
+                {
+                  "message": "valid keys for kubeReserved are ['cpu','memory','ephemeral-storage','pid']",
+                  "rule": "self.all(x, x=='cpu' || x=='memory' || x=='ephemeral-storage' || x=='pid')"
+                },
+                {
+                  "message": "kubeReserved value cannot be a negative resource quantity",
+                  "rule": "self.all(x, !self[x].startsWith('-'))"
+                }
+              ]
+            },
+            "maxPods": {
+              "description": "MaxPods is an override for the maximum number of pods that can run on\na worker node instance.",
+              "type": [
+                "integer",
+                "null"
+              ],
+              "format": "int32",
+              "minimum": 0
+            },
+            "podsPerCore": {
+              "description": "PodsPerCore is an override for the number of pods that can run on a worker node\ninstance based on the number of cpu cores. This value cannot exceed MaxPods, so, if\nMaxPods is a lower value, that value will be used.",
+              "type": [
+                "integer",
+                "null"
+              ],
+              "format": "int32",
+              "minimum": 0
+            },
+            "systemReserved": {
+              "description": "SystemReserved contains resources reserved for OS system daemons and kernel memory.",
+              "type": [
+                "object",
+                "null"
+              ],
+              "maxProperties": 10,
+              "additionalProperties": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "x-kubernetes-validations": [
+                {
+                  "message": "valid keys for systemReserved are ['cpu','memory','ephemeral-storage','pid']",
+                  "rule": "self.all(x, x=='cpu' || x=='memory' || x=='ephemeral-storage' || x=='pid')"
+                },
+                {
+                  "message": "systemReserved value cannot be a negative resource quantity",
+                  "rule": "self.all(x, !self[x].startsWith('-'))"
+                }
+              ]
+            }
+          },
+          "x-kubernetes-validations": [
+            {
+              "message": "imageGCHighThresholdPercent must be greater than imageGCLowThresholdPercent",
+              "rule": "has(self.imageGCHighThresholdPercent) && has(self.imageGCLowThresholdPercent) ?  self.imageGCHighThresholdPercent > self.imageGCLowThresholdPercent  : true"
+            },
+            {
+              "message": "evictionSoft OwnerKey does not have a matching evictionSoftGracePeriod",
+              "rule": "has(self.evictionSoft) ? self.evictionSoft.all(e, (e in self.evictionSoftGracePeriod)):true"
+            },
+            {
+              "message": "evictionSoftGracePeriod OwnerKey does not have a matching evictionSoft",
+              "rule": "has(self.evictionSoftGracePeriod) ? self.evictionSoftGracePeriod.all(e, (e in self.evictionSoft)):true"
+            }
+          ],
+          "additionalProperties": false
+        },
+        "labels": {
+          "description": "Labels to be applied on GCE VM instance.",
+          "type": [
+            "object",
+            "null"
+          ],
+          "maxProperties": 20,
+          "additionalProperties": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "x-kubernetes-validations": [
+            {
+              "message": "empty tag keys aren't supported",
+              "rule": "self.all(k, k != '')"
+            },
+            {
+              "message": "tag contains a restricted tag matching gce:gce-cluster-name",
+              "rule": "self.all(k, k !='gce:gce-cluster-name')"
+            },
+            {
+              "message": "tag contains a restricted tag matching kubernetes.io/cluster/",
+              "rule": "self.all(k, !k.startsWith('kubernetes.io/cluster') )"
+            },
+            {
+              "message": "tag contains a restricted tag matching karpenter.sh/nodepool",
+              "rule": "self.all(k, k != 'karpenter.sh/nodepool')"
+            },
+            {
+              "message": "tag contains a restricted tag matching karpenter.sh/nodeclaim",
+              "rule": "self.all(k, k !='karpenter.sh/nodeclaim')"
+            },
+            {
+              "message": "tag contains a restricted tag matching karpenter.k8s.gcp/gcenodeclass",
+              "rule": "self.all(k, k !='karpenter.k8s.gcp/gcenodeclass')"
+            }
+          ]
+        },
+        "metadata": {
+          "description": "Metadata contains key/value pairs to set as instance metadata",
+          "type": [
+            "object",
+            "null"
+          ],
+          "additionalProperties": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "networkTags": {
+          "description": "NetworkTags is a list of network tags to apply to the node.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "maxItems": 20,
+          "items": {
+            "description": "NetworkTag represents a single GCE network tag value.\nNetwork tags must be RFC1035 compliant, start with a lowercase letter, and contain only\nlowercase letters, digits, and hyphens.",
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 63,
+            "minLength": 1,
+            "pattern": "^[a-z]([-a-z0-9]{0,61}[a-z0-9])?$"
+          }
+        },
+        "serviceAccount": {
+          "description": "ServiceAccount is the GCP IAM service account email to assign to the instance",
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^[^@]+@(developer\\.gserviceaccount\\.com|[^@]+\\.iam\\.gserviceaccount\\.com)$"
+        }
+      },
+      "additionalProperties": false
+    },
+    "status": {
+      "description": "GCENodeClassStatus contains the resolved state of the GCENodeClass",
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "conditions": {
+          "description": "Conditions contains signals for health and readiness",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "description": "Condition aliases the upstream type and adds additional helper methods",
+            "type": [
+              "object",
+              "null"
+            ],
+            "required": [
+              "lastTransitionTime",
+              "message",
+              "reason",
+              "status",
+              "type"
+            ],
+            "properties": {
+              "lastTransitionTime": {
+                "description": "lastTransitionTime is the last time the condition transitioned from one status to another.\nThis should be when the underlying condition changed.  If that is not known, then using the time when the API field changed is acceptable.",
+                "type": "string",
+                "format": "date-time"
+              },
+              "message": {
+                "description": "message is a human readable message indicating details about the transition.\nThis may be an empty string.",
+                "type": "string",
+                "maxLength": 32768
+              },
+              "observedGeneration": {
+                "description": "observedGeneration represents the .metadata.generation that the condition was set based upon.\nFor instance, if .metadata.generation is currently 12, but the .status.conditions[x].observedGeneration is 9, the condition is out of date\nwith respect to the current state of the instance.",
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "format": "int64",
+                "minimum": 0
+              },
+              "reason": {
+                "description": "reason contains a programmatic identifier indicating the reason for the condition's last transition.\nProducers of specific condition types may define expected values and meanings for this field,\nand whether the values are considered a guaranteed API.\nThe value should be a CamelCase string.\nThis field may not be empty.",
+                "type": "string",
+                "maxLength": 1024,
+                "minLength": 1,
+                "pattern": "^[A-Za-z]([A-Za-z0-9_,:]*[A-Za-z0-9_])?$"
+              },
+              "status": {
+                "description": "status of the condition, one of True, False, Unknown.",
+                "type": "string",
+                "enum": [
+                  "True",
+                  "False",
+                  "Unknown"
+                ]
+              },
+              "type": {
+                "description": "type of condition in CamelCase or in foo.example.com/CamelCase.",
+                "type": "string",
+                "maxLength": 316,
+                "pattern": "^([a-z0-9]([-a-z0-9]*[a-z0-9])?(\\.[a-z0-9]([-a-z0-9]*[a-z0-9])?)*/)?(([A-Za-z0-9][-A-Za-z0-9_.]*)?[A-Za-z0-9])$"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "images": {
+          "description": "Image contains the current image that are available to the\ncluster under the Image selectors.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "description": "Image contains resolved image selector values utilized for node launch",
+            "type": [
+              "object",
+              "null"
+            ],
+            "required": [
+              "requirements",
+              "sourceImage"
+            ],
+            "properties": {
+              "requirements": {
+                "description": "Requirements of the Image to be utilized on an instance type",
+                "type": "array",
+                "items": {
+                  "description": "A node selector requirement is a selector that contains values, a key, and an operator\nthat relates the key and values.",
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "required": [
+                    "key",
+                    "operator"
+                  ],
+                  "properties": {
+                    "key": {
+                      "description": "The label key that the selector applies to.",
+                      "type": "string"
+                    },
+                    "operator": {
+                      "description": "Represents a key's relationship to a set of values.\nValid operators are In, NotIn, Exists, DoesNotExist. Gt, and Lt.",
+                      "type": "string"
+                    },
+                    "values": {
+                      "description": "An array of string values. If the operator is In or NotIn,\nthe values array must be non-empty. If the operator is Exists or DoesNotExist,\nthe values array must be empty. If the operator is Gt or Lt, the values\narray must have a single element, which will be interpreted as an integer.\nThis array is replaced during a strategic merge patch.",
+                      "type": [
+                        "array",
+                        "null"
+                      ],
+                      "items": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "x-kubernetes-list-type": "atomic"
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              },
+              "sourceImage": {
+                "description": "SourceImage represents the source image, format like projects/gke-node-images/global/images/gke-1309-gke1046000-cos-113-18244-291-9-c-pre",
+                "type": "string"
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "karpenter.k8s.gcp",
+      "kind": "GCENodeClass",
+      "version": "v1alpha1"
+    }
+  ],
+  "x-kubernetes-selectable-fields": [],
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

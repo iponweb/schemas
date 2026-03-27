@@ -1,0 +1,41 @@
+{
+  "kind": "APIResourceList",
+  "apiVersion": "v1",
+  "groupVersion": "karpenter.sh/v1alpha1",
+  "resources": [
+    {
+      "name": "nodeoverlays",
+      "singularName": "nodeoverlay",
+      "namespaced": false,
+      "kind": "NodeOverlay",
+      "verbs": [
+        "delete",
+        "deletecollection",
+        "get",
+        "list",
+        "patch",
+        "create",
+        "update",
+        "watch"
+      ],
+      "shortNames": [
+        "overlays"
+      ],
+      "categories": [
+        "karpenter"
+      ],
+      "storageVersionHash": "i6vUpcr5Xck="
+    },
+    {
+      "name": "nodeoverlays/status",
+      "singularName": "",
+      "namespaced": false,
+      "kind": "NodeOverlay",
+      "verbs": [
+        "get",
+        "patch",
+        "update"
+      ]
+    }
+  ]
+}

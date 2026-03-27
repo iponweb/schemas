@@ -1,0 +1,16 @@
+{
+  "description": "SourceHydratorStatus contains information about the current state of source hydration",
+  "type": "object",
+  "properties": {
+    "currentOperation": {
+      "description": "CurrentOperation holds the status of the hydrate operation",
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.HydrateOperation"
+    },
+    "lastSuccessfulOperation": {
+      "description": "LastSuccessfulOperation holds info about the most recent successful hydration",
+      "$ref": "_definitions.json#/definitions/io.argoproj.v1alpha1.SuccessfulHydrateOperation"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

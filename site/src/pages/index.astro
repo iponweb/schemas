@@ -1,0 +1,124 @@
+---
+import Layout from '../layouts/Layout.astro'
+import ControllerIcon from '../components/ControllerIcon.astro'
+import { getAllControllers, getResources } from '../lib/data'
+
+const controllers = getAllControllers()
+
+// Group by org
+const byOrg = new Map<string, typeof controllers>()
+for (const ctrl of controllers) {
+  if (!byOrg.has(ctrl.org)) byOrg.set(ctrl.org, [])
+  byOrg.get(ctrl.org)!.push(ctrl)
+}
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '')
+
+// Pre-fetch resource counts for latest version
+const controllerData = controllers.map(ctrl => {
+  const latestVersion = ctrl.versions[0]
+  const resources = latestVersion ? getResources(ctrl.org, ctrl.repo, latestVersion) : []
+  return { ...ctrl, latestVersion, resourceCount: resources.length }
+})
+
+const byOrgData = new Map<string, typeof controllerData>()
+for (const ctrl of controllerData) {
+  if (!byOrgData.has(ctrl.org)) byOrgData.set(ctrl.org, [])
+  byOrgData.get(ctrl.org)!.push(ctrl)
+}
+
+const totalResources = controllerData.reduce((sum, c) => sum + c.resourceCount, 0)
+---
+
+<Layout title="Home" description="Kubernetes CRD Schema Explorer — browse schemas for all your controllers">
+  <!-- Hero -->
+  <section class="bg-gradient-to-br from-violet-600 via-violet-700 to-violet-900 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
+      <div class="max-w-3xl">
+        <h1 class="text-4xl sm:text-5xl font-bold leading-tight mb-4">
+          Kubernetes CRD<br />
+          <span class="text-violet-200">Schema Explorer</span>
+        </h1>
+        <p class="text-lg text-violet-100 mb-8 leading-relaxed">
+          Browse and explore JSON Schemas for Kubernetes built-in APIs and
+          third-party controllers. Interactive field trees, version diffs, and
+          full type documentation.
+        </p>
+        <div class="flex flex-wrap gap-6 text-sm text-violet-200">
+          <div class="flex items-center gap-2">
+            <svg class="w-5 h-5 text-violet-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+            </svg>
+            <strong class="text-white">{controllers.length}</strong> controllers
+          </div>
+          <div class="flex items-center gap-2">
+            <svg class="w-5 h-5 text-violet-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+            <strong class="text-white">{totalResources}</strong> resource types
+          </div>
+          <div class="flex items-center gap-2">
+            <svg class="w-5 h-5 text-violet-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
+            </svg>
+            <strong class="text-white">{[...new Set(controllers.flatMap(c => c.versions))].length}</strong> versions tracked
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Controllers by org -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    {[...byOrgData.entries()].map(([org, ctrls]) => (
+      <section class="mb-12">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-8 h-8 rounded-lg bg-zinc-100 flex items-center justify-center border border-zinc-200">
+            <svg class="w-4 h-4 text-zinc-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+            </svg>
+          </div>
+          <h2 class="text-xl font-semibold text-zinc-800">{org}</h2>
+          <span class="text-sm text-zinc-400">{ctrls.length} {ctrls.length === 1 ? 'controller' : 'controllers'}</span>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {ctrls.map(ctrl => (
+            <a
+              href={`${base}/${ctrl.org}/${ctrl.repo}/`}
+              class="group bg-white border border-zinc-200 rounded-xl p-5 shadow-sm hover:shadow-md hover:border-violet-200 hover:-translate-y-0.5 transition-all duration-200"
+            >
+              <div class="flex items-start justify-between mb-3">
+                <div class="flex items-center gap-3">
+                  <ControllerIcon org={ctrl.org} repo={ctrl.repo} size="md" />
+                  <div>
+                    <div class="text-xs text-zinc-400 mb-0.5">{ctrl.org}/</div>
+                    <h3 class="text-base font-semibold text-zinc-900 group-hover:text-violet-700 transition-colors">
+                      {ctrl.repo}
+                    </h3>
+                  </div>
+                </div>
+                <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-violet-100 text-violet-700 whitespace-nowrap">
+                  {ctrl.latestVersion}
+                </span>
+              </div>
+              <div class="flex items-center gap-4 text-sm text-zinc-500">
+                <span class="flex items-center gap-1.5">
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
+                  </svg>
+                  {ctrl.versions.length} {ctrl.versions.length === 1 ? 'version' : 'versions'}
+                </span>
+                <span class="flex items-center gap-1.5">
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                  </svg>
+                  {ctrl.resourceCount} {ctrl.resourceCount === 1 ? 'resource' : 'resources'}
+                </span>
+              </div>
+            </a>
+          ))}
+        </div>
+      </section>
+    ))}
+  </div>
+</Layout>

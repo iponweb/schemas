@@ -1,0 +1,38 @@
+{
+  "description": "SyncOperationResource contains resources to sync.",
+  "type": "object",
+  "required": [
+    "kind",
+    "name"
+  ],
+  "properties": {
+    "group": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "kind": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "name": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "namespace": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

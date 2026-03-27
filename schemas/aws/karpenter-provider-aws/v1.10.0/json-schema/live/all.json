@@ -1,0 +1,34 @@
+{
+  "oneOf": [
+    {
+      "$ref": "_definitions.json#/definitions/aws.k8s.karpenter.v1.EC2NodeClass"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/aws.k8s.karpenter.v1.EC2NodeClassList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.karpenter.v1.NodeClaim"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.karpenter.v1.NodeClaimList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.karpenter.v1.NodePool"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.karpenter.v1.NodePoolList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.karpenter.v1alpha1.NodeOverlay"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/sh.karpenter.v1alpha1.NodeOverlayList"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.util.intstr.IntOrString"
+    },
+    {
+      "$ref": "_definitions.json#/definitions/io.k8s.apimachinery.pkg.api.resource.Quantity"
+    }
+  ]
+}

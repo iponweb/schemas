@@ -1,0 +1,23 @@
+{
+  "kind": "APIGroupList",
+  "apiVersion": "v1",
+  "groups": [
+    {
+      "name": "operator.victoriametrics.com",
+      "versions": [
+        {
+          "groupVersion": "operator.victoriametrics.com/v1",
+          "version": "v1"
+        },
+        {
+          "groupVersion": "operator.victoriametrics.com/v1beta1",
+          "version": "v1beta1"
+        }
+      ],
+      "preferredVersion": {
+        "groupVersion": "operator.victoriametrics.com/v1",
+        "version": "v1"
+      }
+    }
+  ]
+}

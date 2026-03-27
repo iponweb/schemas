@@ -1,0 +1,29 @@
+{
+  "description": "StaticRef - user-defined routing host address.",
+  "type": "object",
+  "properties": {
+    "url": {
+      "description": "URL http url for given staticRef.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "urls": {
+      "description": "URLs allows setting multiple urls for load-balancing at vmauth-side.",
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}

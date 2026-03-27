@@ -1,0 +1,87 @@
+{
+  "description": "Rule describes an alerting or recording rule.",
+  "type": "object",
+  "properties": {
+    "alert": {
+      "description": "Alert is a name for alert",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "annotations": {
+      "description": "Annotations will be added to rule configuration",
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "debug": {
+      "description": "Debug enables logging for rule it useful for tracking",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "expr": {
+      "description": "Expr is query, that will be evaluated at dataSource",
+      "type": [
+        "string",
+        "null"
+      ],
+      "default": ""
+    },
+    "for": {
+      "description": "For evaluation interval in time.Duration format 30s, 1m, 1h  or nanoseconds",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "keep_firing_for": {
+      "description": "KeepFiringFor will make alert continue firing for this long even when the alerting expression no longer has results. Use time.Duration format, 30s, 1m, 1h  or nanoseconds",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "labels": {
+      "description": "Labels will be added to rule configuration",
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "default": ""
+      }
+    },
+    "record": {
+      "description": "Record represents a query, that will be recorded to dataSource",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "update_entries_limit": {
+      "description": "UpdateEntriesLimit defines max number of rule's state updates stored in memory. Overrides `-rule.updateEntriesLimit` in vmalert.",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "int32"
+    }
+  },
+  "additionalProperties": false,
+  "$schema": "http://json-schema.org/schema#"
+}
