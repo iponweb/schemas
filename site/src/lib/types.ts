@@ -13,6 +13,7 @@ export interface Resource {
   scope: 'Namespaced' | 'Cluster'
   shortNames?: string[]
   userManaged?: boolean
+  definitionKey?: string
 }
 
 export interface SchemaProperty {

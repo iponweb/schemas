@@ -347,6 +347,27 @@ const meta = getControllerMeta(org, repo)
             </a>
           )}
 
+          {/* API JSON */}
+          <a
+            href={`${base}/api/v1/${org}/${repo}/${version}/index.json`}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex items-center justify-between px-4 py-3 hover:bg-zinc-50 transition-colors group"
+          >
+            <div class="flex items-center gap-3">
+              <svg class="w-4 h-4 text-zinc-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+              </svg>
+              <div>
+                <span class="text-sm font-medium text-zinc-700 group-hover:text-violet-700 transition-colors">API</span>
+                <span class="ml-2 text-xs text-zinc-400 font-mono">/api/v1/{org}/{repo}/{version}/index.json</span>
+              </div>
+            </div>
+            <svg class="w-3.5 h-3.5 text-zinc-300 group-hover:text-violet-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+          </a>
+
         </div>
       </div>
     )}
