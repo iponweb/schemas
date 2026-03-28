@@ -2,6 +2,7 @@
 import Layout from '../../../../../layouts/Layout.astro'
 import PropertyTree from '../../../../../components/PropertyTree'
 import ChangeHistory from '../../../../../components/ChangeHistory'
+import FileBadge from '../../../../../components/FileBadge.astro'
 import { getAllControllers, getResources, getResourceSchema, getResourceSchemaFromDefinitions, getDefinitions, getChangeHistory, getResourceAssets, getControllerMeta } from '../../../../../lib/data'
 import type { ChangeHistoryEntry } from '../../../../../lib/data'
 import type { GetStaticPaths } from 'astro'
@@ -261,7 +262,7 @@ const meta = getControllerMeta(org, repo)
                   <span class="ml-2 text-xs text-zinc-400 font-mono">json-schema/source/{resourceAssets.jsonSchemaFile}</span>
                 </div>
               </div>
-              <span class="text-xs text-zinc-400 bg-zinc-100 px-2 py-0.5 rounded font-mono">source</span>
+              <FileBadge type="source" />
             </a>
           )}
 
@@ -282,7 +283,7 @@ const meta = getControllerMeta(org, repo)
                   <span class="ml-2 text-xs text-zinc-400 font-mono">json-schema/live/{resourceAssets.jsonSchemaFile}</span>
                 </div>
               </div>
-              <span class="text-xs text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded font-mono">live</span>
+              <FileBadge type="live" />
             </a>
           )}
 
@@ -312,7 +313,7 @@ const meta = getControllerMeta(org, repo)
                   )}
                 </div>
               </div>
-              <span class="text-xs text-zinc-400 bg-zinc-100 px-2 py-0.5 rounded font-mono">source</span>
+              <FileBadge type="source" />
             </a>
           )}
 
@@ -342,7 +343,7 @@ const meta = getControllerMeta(org, repo)
                   )}
                 </div>
               </div>
-              <span class="text-xs text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded font-mono">live</span>
+              <FileBadge type="live" />
             </a>
           )}
 

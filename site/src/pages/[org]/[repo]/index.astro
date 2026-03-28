@@ -150,14 +150,21 @@ const versionInfos = ctrl.versions.map((version, i) => {
               </thead>
               <tbody class="divide-y divide-zinc-100">
                 {latestResources.map(resource => (
-                  <tr class="hover:bg-zinc-50 transition-colors group">
+                  <tr class={`hover:bg-zinc-50 transition-colors group ${resource.userManaged === false ? 'opacity-60' : ''}`}>
                     <td class="px-4 py-3">
-                      <a
-                        href={`${base}/${org}/${repo}/${latestVersion}/${resource.group || 'core'}/${resource.kind}/`}
-                        class="font-mono font-medium text-violet-700 hover:text-violet-900 transition-colors"
-                      >
-                        {resource.kind}
-                      </a>
+                      <div class="flex items-center gap-2">
+                        <a
+                          href={`${base}/${org}/${repo}/${latestVersion}/${resource.group || 'core'}/${resource.kind}/`}
+                          class="font-mono font-medium text-violet-700 hover:text-violet-900 transition-colors"
+                        >
+                          {resource.kind}
+                        </a>
+                        {resource.userManaged === false && (
+                          <span class="inline-flex items-center px-1.5 py-0.5 rounded text-xs font-medium bg-zinc-100 text-zinc-500 border border-zinc-200">
+                            system
+                          </span>
+                        )}
+                      </div>
                     </td>
                     <td class="px-4 py-3 font-mono text-xs text-zinc-500">
                       {resource.group || <span class="text-zinc-300 italic">core</span>}

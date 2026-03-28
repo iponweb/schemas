@@ -1,0 +1,28 @@
+---
+interface Props {
+  type: 'source' | 'live'
+}
+
+const { type } = Astro.props
+
+const label = type
+const tip = type === 'source'
+  ? 'Schema derived from controller source code via openapi-gen'
+  : 'Schema captured from a live kube-apiserver via envtest'
+
+const badgeClass = type === 'source'
+  ? 'text-zinc-400 bg-zinc-100'
+  : 'text-emerald-600 bg-emerald-50'
+---
+
+<span class="relative group/badge inline-flex shrink-0">
+  <span class={`text-xs px-2 py-0.5 rounded font-mono cursor-default ${badgeClass}`}>
+    {label}
+  </span>
+  <span class="pointer-events-none absolute bottom-full right-0 mb-2 hidden group-hover/badge:block z-20">
+    <span class="block w-56 rounded-lg bg-zinc-800 px-3 py-2 text-xs text-white shadow-xl leading-relaxed whitespace-normal">
+      {tip}
+    </span>
+    <span class="block w-0 h-0 ml-auto mr-3 border-4 border-transparent border-t-zinc-800"></span>
+  </span>
+</span>

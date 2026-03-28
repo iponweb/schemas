@@ -2,6 +2,7 @@
 import Layout from '../../../../layouts/Layout.astro'
 import DiffView from '../../../../components/DiffView.astro'
 import ResourcesTable from '../../../../components/ResourcesTable'
+import FileBadge from '../../../../components/FileBadge.astro'
 import { getAllControllers, getResources, getVersionDiff, sortVersions, getVersionAssets, getControllerMeta } from '../../../../lib/data'
 import type { GetStaticPaths } from 'astro'
 
@@ -172,7 +173,7 @@ const meta = getControllerMeta(org, repo)
                 <span class="ml-2 text-xs text-zinc-400 font-mono">openapi/source.json</span>
               </div>
             </div>
-            <span class="text-xs text-zinc-400 bg-zinc-100 px-2 py-0.5 rounded font-mono">source</span>
+            <FileBadge type="source" />
           </a>
         )}
 
@@ -193,7 +194,7 @@ const meta = getControllerMeta(org, repo)
                 <span class="ml-2 text-xs text-zinc-400 font-mono">openapi/live.json</span>
               </div>
             </div>
-            <span class="text-xs text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded font-mono">live</span>
+            <FileBadge type="live" />
           </a>
         )}
 
@@ -214,7 +215,7 @@ const meta = getControllerMeta(org, repo)
                 <span class="ml-2 text-xs text-zinc-400 font-mono">json-schema/source/_definitions.json</span>
               </div>
             </div>
-            <span class="text-xs text-zinc-400 bg-zinc-100 px-2 py-0.5 rounded font-mono">source</span>
+            <FileBadge type="source" />
           </a>
         )}
 
@@ -235,7 +236,7 @@ const meta = getControllerMeta(org, repo)
                 <span class="ml-2 text-xs text-zinc-400 font-mono">json-schema/live/_definitions.json</span>
               </div>
             </div>
-            <span class="text-xs text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded font-mono">live</span>
+            <FileBadge type="live" />
           </a>
         )}
 
