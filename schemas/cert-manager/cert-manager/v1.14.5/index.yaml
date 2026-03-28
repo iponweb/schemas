@@ -4,11 +4,13 @@ resources:
   version: v1
   plural: challenges
   scope: Namespaced
+  definitionKey: io.cert-manager.acme.v1.Challenge
 - kind: Order
   group: acme.cert-manager.io
   version: v1
   plural: orders
   scope: Namespaced
+  definitionKey: io.cert-manager.acme.v1.Order
 - kind: Certificate
   group: cert-manager.io
   version: v1
@@ -17,6 +19,7 @@ resources:
   shortNames:
   - cert
   - certs
+  definitionKey: io.cert-manager.v1.Certificate
 - kind: CertificateRequest
   group: cert-manager.io
   version: v1
@@ -25,13 +28,16 @@ resources:
   shortNames:
   - cr
   - crs
+  definitionKey: io.cert-manager.v1.CertificateRequest
 - kind: ClusterIssuer
   group: cert-manager.io
   version: v1
   plural: clusterissuers
   scope: Cluster
+  definitionKey: io.cert-manager.v1.ClusterIssuer
 - kind: Issuer
   group: cert-manager.io
   version: v1
   plural: issuers
   scope: Namespaced
+  definitionKey: io.cert-manager.v1.Issuer

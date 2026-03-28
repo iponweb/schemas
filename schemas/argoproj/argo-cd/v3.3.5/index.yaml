@@ -7,6 +7,7 @@ resources:
   shortNames:
   - appproj
   - appprojs
+  definitionKey: io.argoproj.v1alpha1.AppProject
 - kind: Application
   group: argoproj.io
   version: v1alpha1
@@ -15,6 +16,7 @@ resources:
   shortNames:
   - app
   - apps
+  definitionKey: io.argoproj.v1alpha1.Application
 - kind: ApplicationSet
   group: argoproj.io
   version: v1alpha1
@@ -23,3 +25,4 @@ resources:
   shortNames:
   - appset
   - appsets
+  definitionKey: io.argoproj.v1alpha1.ApplicationSet

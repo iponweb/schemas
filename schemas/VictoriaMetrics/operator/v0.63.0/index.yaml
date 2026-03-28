@@ -4,46 +4,55 @@ resources:
   version: v1
   plural: vlagents
   scope: Namespaced
+  definitionKey: com.victoriametrics.operator.v1.VLAgent
 - kind: VLCluster
   group: operator.victoriametrics.com
   version: v1
   plural: vlclusters
   scope: Namespaced
+  definitionKey: com.victoriametrics.operator.v1.VLCluster
 - kind: VLSingle
   group: operator.victoriametrics.com
   version: v1
   plural: vlsingles
   scope: Namespaced
+  definitionKey: com.victoriametrics.operator.v1.VLSingle
 - kind: VMAnomaly
   group: operator.victoriametrics.com
   version: v1
   plural: vmanomalies
   scope: Namespaced
+  definitionKey: com.victoriametrics.operator.v1.VMAnomaly
 - kind: VTCluster
   group: operator.victoriametrics.com
   version: v1
   plural: vtclusters
   scope: Namespaced
+  definitionKey: com.victoriametrics.operator.v1.VTCluster
 - kind: VTSingle
   group: operator.victoriametrics.com
   version: v1
   plural: vtsingles
   scope: Namespaced
+  definitionKey: com.victoriametrics.operator.v1.VTSingle
 - kind: VLogs
   group: operator.victoriametrics.com
   version: v1beta1
   plural: vlogs
   scope: Namespaced
+  definitionKey: com.victoriametrics.operator.v1beta1.VLogs
 - kind: VMAgent
   group: operator.victoriametrics.com
   version: v1beta1
   plural: vmagents
   scope: Namespaced
+  definitionKey: com.victoriametrics.operator.v1beta1.VMAgent
 - kind: VMAlert
   group: operator.victoriametrics.com
   version: v1beta1
   plural: vmalerts
   scope: Namespaced
+  definitionKey: com.victoriametrics.operator.v1beta1.VMAlert
 - kind: VMAlertmanager
   group: operator.victoriametrics.com
   version: v1beta1
@@ -51,63 +60,76 @@ resources:
   scope: Namespaced
   shortNames:
   - vma
+  definitionKey: com.victoriametrics.operator.v1beta1.VMAlertmanager
 - kind: VMAlertmanagerConfig
   group: operator.victoriametrics.com
   version: v1beta1
   plural: vmalertmanagerconfigs
   scope: Namespaced
+  definitionKey: com.victoriametrics.operator.v1beta1.VMAlertmanagerConfig
 - kind: VMAuth
   group: operator.victoriametrics.com
   version: v1beta1
   plural: vmauths
   scope: Namespaced
+  definitionKey: com.victoriametrics.operator.v1beta1.VMAuth
 - kind: VMCluster
   group: operator.victoriametrics.com
   version: v1beta1
   plural: vmclusters
   scope: Namespaced
+  definitionKey: com.victoriametrics.operator.v1beta1.VMCluster
 - kind: VMNodeScrape
   group: operator.victoriametrics.com
   version: v1beta1
   plural: vmnodescrapes
   scope: Namespaced
+  definitionKey: com.victoriametrics.operator.v1beta1.VMNodeScrape
 - kind: VMPodScrape
   group: operator.victoriametrics.com
   version: v1beta1
   plural: vmpodscrapes
   scope: Namespaced
+  definitionKey: com.victoriametrics.operator.v1beta1.VMPodScrape
 - kind: VMProbe
   group: operator.victoriametrics.com
   version: v1beta1
   plural: vmprobes
   scope: Namespaced
+  definitionKey: com.victoriametrics.operator.v1beta1.VMProbe
 - kind: VMRule
   group: operator.victoriametrics.com
   version: v1beta1
   plural: vmrules
   scope: Namespaced
+  definitionKey: com.victoriametrics.operator.v1beta1.VMRule
 - kind: VMScrapeConfig
   group: operator.victoriametrics.com
   version: v1beta1
   plural: vmscrapeconfigs
   scope: Namespaced
+  definitionKey: com.victoriametrics.operator.v1beta1.VMScrapeConfig
 - kind: VMServiceScrape
   group: operator.victoriametrics.com
   version: v1beta1
   plural: vmservicescrapes
   scope: Namespaced
+  definitionKey: com.victoriametrics.operator.v1beta1.VMServiceScrape
 - kind: VMSingle
   group: operator.victoriametrics.com
   version: v1beta1
   plural: vmsingles
   scope: Namespaced
+  definitionKey: com.victoriametrics.operator.v1beta1.VMSingle
 - kind: VMStaticScrape
   group: operator.victoriametrics.com
   version: v1beta1
   plural: vmstaticscrapes
   scope: Namespaced
+  definitionKey: com.victoriametrics.operator.v1beta1.VMStaticScrape
 - kind: VMUser
   group: operator.victoriametrics.com
   version: v1beta1
   plural: vmusers
   scope: Namespaced
+  definitionKey: com.victoriametrics.operator.v1beta1.VMUser

@@ -4,133 +4,160 @@ resources:
   version: v1alpha1
   plural: configs
   scope: Namespaced
+  definitionKey: sh.gatekeeper.config.v1alpha1.Config
 - kind: Connection
   group: connection.gatekeeper.sh
   version: v1alpha1
   plural: connections
   scope: Namespaced
+  definitionKey: sh.gatekeeper.connection.v1alpha1.Connection
 - kind: ExpansionTemplate
   group: expansion.gatekeeper.sh
   version: v1alpha1
   plural: expansiontemplate
   scope: Cluster
+  definitionKey: sh.gatekeeper.expansion.v1alpha1.ExpansionTemplate
 - kind: ExpansionTemplate
   group: expansion.gatekeeper.sh
   version: v1beta1
   plural: expansiontemplate
   scope: Cluster
+  definitionKey: sh.gatekeeper.expansion.v1alpha1.ExpansionTemplate
 - kind: Provider
   group: externaldata.gatekeeper.sh
   version: v1alpha1
   plural: providers
   scope: Cluster
+  definitionKey: sh.gatekeeper.externaldata.v1alpha1.Provider
 - kind: Provider
   group: externaldata.gatekeeper.sh
   version: v1beta1
   plural: providers
   scope: Cluster
+  definitionKey: sh.gatekeeper.externaldata.v1alpha1.Provider
 - kind: Assign
   group: mutations.gatekeeper.sh
   version: v1
   plural: assign
   scope: Cluster
+  definitionKey: sh.gatekeeper.mutations.v1.Assign
 - kind: AssignMetadata
   group: mutations.gatekeeper.sh
   version: v1
   plural: assignmetadata
   scope: Cluster
+  definitionKey: sh.gatekeeper.mutations.v1.AssignMetadata
 - kind: ModifySet
   group: mutations.gatekeeper.sh
   version: v1
   plural: modifyset
   scope: Cluster
+  definitionKey: sh.gatekeeper.mutations.v1.ModifySet
 - kind: Assign
   group: mutations.gatekeeper.sh
   version: v1alpha1
   plural: assign
   scope: Cluster
+  definitionKey: sh.gatekeeper.mutations.v1.Assign
 - kind: AssignImage
   group: mutations.gatekeeper.sh
   version: v1alpha1
   plural: assignimage
   scope: Cluster
+  definitionKey: sh.gatekeeper.mutations.v1alpha1.AssignImage
 - kind: AssignMetadata
   group: mutations.gatekeeper.sh
   version: v1alpha1
   plural: assignmetadata
   scope: Cluster
+  definitionKey: sh.gatekeeper.mutations.v1.AssignMetadata
 - kind: ModifySet
   group: mutations.gatekeeper.sh
   version: v1alpha1
   plural: modifyset
   scope: Cluster
+  definitionKey: sh.gatekeeper.mutations.v1.ModifySet
 - kind: Assign
   group: mutations.gatekeeper.sh
   version: v1beta1
   plural: assign
   scope: Cluster
+  definitionKey: sh.gatekeeper.mutations.v1.Assign
 - kind: AssignMetadata
   group: mutations.gatekeeper.sh
   version: v1beta1
   plural: assignmetadata
   scope: Cluster
+  definitionKey: sh.gatekeeper.mutations.v1.AssignMetadata
 - kind: ModifySet
   group: mutations.gatekeeper.sh
   version: v1beta1
   plural: modifyset
   scope: Cluster
+  definitionKey: sh.gatekeeper.mutations.v1.ModifySet
 - kind: ConnectionPodStatus
   group: status.gatekeeper.sh
   version: v1alpha1
   plural: connectionpodstatuses
   scope: Namespaced
+  definitionKey: sh.gatekeeper.status.v1alpha1.ConnectionPodStatus
 - kind: ConfigPodStatus
   group: status.gatekeeper.sh
   version: v1beta1
   plural: configpodstatuses
   scope: Namespaced
+  definitionKey: sh.gatekeeper.status.v1beta1.ConfigPodStatus
 - kind: ConstraintPodStatus
   group: status.gatekeeper.sh
   version: v1beta1
   plural: constraintpodstatuses
   scope: Namespaced
+  definitionKey: sh.gatekeeper.status.v1beta1.ConstraintPodStatus
 - kind: ConstraintTemplatePodStatus
   group: status.gatekeeper.sh
   version: v1beta1
   plural: constrainttemplatepodstatuses
   scope: Namespaced
+  definitionKey: sh.gatekeeper.status.v1beta1.ConstraintTemplatePodStatus
 - kind: ExpansionTemplatePodStatus
   group: status.gatekeeper.sh
   version: v1beta1
   plural: expansiontemplatepodstatuses
   scope: Namespaced
+  definitionKey: sh.gatekeeper.status.v1beta1.ExpansionTemplatePodStatus
 - kind: MutatorPodStatus
   group: status.gatekeeper.sh
   version: v1beta1
   plural: mutatorpodstatuses
   scope: Namespaced
+  definitionKey: sh.gatekeeper.status.v1beta1.MutatorPodStatus
 - kind: ProviderPodStatus
   group: status.gatekeeper.sh
   version: v1beta1
   plural: providerpodstatuses
   scope: Namespaced
+  definitionKey: sh.gatekeeper.status.v1beta1.ProviderPodStatus
 - kind: SyncSet
   group: syncset.gatekeeper.sh
   version: v1alpha1
   plural: syncsets
   scope: Cluster
+  definitionKey: sh.gatekeeper.syncset.v1alpha1.SyncSet
 - kind: ConstraintTemplate
   group: templates.gatekeeper.sh
   version: v1
   plural: constrainttemplates
   scope: Cluster
+  definitionKey: sh.gatekeeper.templates.v1.ConstraintTemplate
 - kind: ConstraintTemplate
   group: templates.gatekeeper.sh
   version: v1alpha1
   plural: constrainttemplates
   scope: Cluster
+  definitionKey: sh.gatekeeper.templates.v1.ConstraintTemplate
 - kind: ConstraintTemplate
   group: templates.gatekeeper.sh
   version: v1beta1
   plural: constrainttemplates
   scope: Cluster
+  definitionKey: sh.gatekeeper.templates.v1.ConstraintTemplate

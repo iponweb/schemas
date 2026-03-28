@@ -4,18 +4,22 @@ resources:
   version: v1
   plural: secretproviderclasses
   scope: Namespaced
+  definitionKey: io.x-k8s.csi.secrets-store.v1.SecretProviderClass
 - kind: SecretProviderClassPodStatus
   group: secrets-store.csi.x-k8s.io
   version: v1
   plural: secretproviderclasspodstatuses
   scope: Namespaced
+  definitionKey: io.x-k8s.csi.secrets-store.v1.SecretProviderClassPodStatus
 - kind: SecretProviderClass
   group: secrets-store.csi.x-k8s.io
   version: v1alpha1
   plural: secretproviderclasses
   scope: Namespaced
+  definitionKey: io.x-k8s.csi.secrets-store.v1.SecretProviderClass
 - kind: SecretProviderClassPodStatus
   group: secrets-store.csi.x-k8s.io
   version: v1alpha1
   plural: secretproviderclasspodstatuses
   scope: Namespaced
+  definitionKey: io.x-k8s.csi.secrets-store.v1.SecretProviderClassPodStatus

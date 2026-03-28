@@ -6,6 +6,7 @@ resources:
   scope: Namespaced
   shortNames:
   - am
+  definitionKey: com.coreos.monitoring.v1.Alertmanager
 - kind: PodMonitor
   group: monitoring.coreos.com
   version: v1
@@ -13,6 +14,7 @@ resources:
   scope: Namespaced
   shortNames:
   - pmon
+  definitionKey: com.coreos.monitoring.v1.PodMonitor
 - kind: Probe
   group: monitoring.coreos.com
   version: v1
@@ -20,6 +22,7 @@ resources:
   scope: Namespaced
   shortNames:
   - prb
+  definitionKey: com.coreos.monitoring.v1.Probe
 - kind: Prometheus
   group: monitoring.coreos.com
   version: v1
@@ -27,6 +30,7 @@ resources:
   scope: Namespaced
   shortNames:
   - prom
+  definitionKey: com.coreos.monitoring.v1.Prometheus
 - kind: PrometheusRule
   group: monitoring.coreos.com
   version: v1
@@ -34,6 +38,7 @@ resources:
   scope: Namespaced
   shortNames:
   - promrule
+  definitionKey: com.coreos.monitoring.v1.PrometheusRule
 - kind: ServiceMonitor
   group: monitoring.coreos.com
   version: v1
@@ -41,6 +46,7 @@ resources:
   scope: Namespaced
   shortNames:
   - smon
+  definitionKey: com.coreos.monitoring.v1.ServiceMonitor
 - kind: ThanosRuler
   group: monitoring.coreos.com
   version: v1
@@ -48,6 +54,7 @@ resources:
   scope: Namespaced
   shortNames:
   - ruler
+  definitionKey: com.coreos.monitoring.v1.ThanosRuler
 - kind: AlertmanagerConfig
   group: monitoring.coreos.com
   version: v1alpha1
@@ -55,6 +62,7 @@ resources:
   scope: Namespaced
   shortNames:
   - amcfg
+  definitionKey: com.coreos.monitoring.v1alpha1.AlertmanagerConfig
 - kind: PrometheusAgent
   group: monitoring.coreos.com
   version: v1alpha1
@@ -62,6 +70,7 @@ resources:
   scope: Namespaced
   shortNames:
   - promagent
+  definitionKey: com.coreos.monitoring.v1alpha1.PrometheusAgent
 - kind: ScrapeConfig
   group: monitoring.coreos.com
   version: v1alpha1
@@ -69,3 +78,4 @@ resources:
   scope: Namespaced
   shortNames:
   - scfg
+  definitionKey: com.coreos.monitoring.v1alpha1.ScrapeConfig

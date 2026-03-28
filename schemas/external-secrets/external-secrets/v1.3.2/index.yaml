@@ -6,6 +6,7 @@ resources:
   scope: Cluster
   shortNames:
   - ces
+  definitionKey: io.external-secrets.v1.ClusterExternalSecret
 - kind: ClusterSecretStore
   group: external-secrets.io
   version: v1
@@ -13,6 +14,7 @@ resources:
   scope: Cluster
   shortNames:
   - css
+  definitionKey: io.external-secrets.v1.ClusterSecretStore
 - kind: ExternalSecret
   group: external-secrets.io
   version: v1
@@ -20,6 +22,7 @@ resources:
   scope: Namespaced
   shortNames:
   - es
+  definitionKey: io.external-secrets.v1.ExternalSecret
 - kind: SecretStore
   group: external-secrets.io
   version: v1
@@ -27,11 +30,13 @@ resources:
   scope: Namespaced
   shortNames:
   - ss
+  definitionKey: io.external-secrets.v1.SecretStore
 - kind: ClusterPushSecret
   group: external-secrets.io
   version: v1alpha1
   plural: clusterpushsecrets
   scope: Cluster
+  definitionKey: io.external-secrets.v1alpha1.ClusterPushSecret
 - kind: PushSecret
   group: external-secrets.io
   version: v1alpha1
@@ -39,36 +44,43 @@ resources:
   scope: Namespaced
   shortNames:
   - ps
+  definitionKey: io.external-secrets.v1alpha1.PushSecret
 - kind: ACRAccessToken
   group: generators.external-secrets.io
   version: v1alpha1
   plural: acraccesstokens
   scope: Namespaced
+  definitionKey: io.external-secrets.generators.v1alpha1.ACRAccessToken
 - kind: CloudsmithAccessToken
   group: generators.external-secrets.io
   version: v1alpha1
   plural: cloudsmithaccesstokens
   scope: Namespaced
+  definitionKey: io.external-secrets.generators.v1alpha1.CloudsmithAccessToken
 - kind: ClusterGenerator
   group: generators.external-secrets.io
   version: v1alpha1
   plural: clustergenerators
   scope: Cluster
+  definitionKey: io.external-secrets.generators.v1alpha1.ClusterGenerator
 - kind: ECRAuthorizationToken
   group: generators.external-secrets.io
   version: v1alpha1
   plural: ecrauthorizationtokens
   scope: Namespaced
+  definitionKey: io.external-secrets.generators.v1alpha1.ECRAuthorizationToken
 - kind: Fake
   group: generators.external-secrets.io
   version: v1alpha1
   plural: fakes
   scope: Namespaced
+  definitionKey: io.external-secrets.generators.v1alpha1.Fake
 - kind: GCRAccessToken
   group: generators.external-secrets.io
   version: v1alpha1
   plural: gcraccesstokens
   scope: Namespaced
+  definitionKey: io.external-secrets.generators.v1alpha1.GCRAccessToken
 - kind: GeneratorState
   group: generators.external-secrets.io
   version: v1alpha1
@@ -76,53 +88,64 @@ resources:
   scope: Namespaced
   shortNames:
   - gs
+  definitionKey: io.external-secrets.generators.v1alpha1.GeneratorState
 - kind: GithubAccessToken
   group: generators.external-secrets.io
   version: v1alpha1
   plural: githubaccesstokens
   scope: Namespaced
+  definitionKey: io.external-secrets.generators.v1alpha1.GithubAccessToken
 - kind: Grafana
   group: generators.external-secrets.io
   version: v1alpha1
   plural: grafanas
   scope: Namespaced
+  definitionKey: io.external-secrets.generators.v1alpha1.Grafana
 - kind: MFA
   group: generators.external-secrets.io
   version: v1alpha1
   plural: mfas
   scope: Namespaced
+  definitionKey: io.external-secrets.generators.v1alpha1.MFA
 - kind: Password
   group: generators.external-secrets.io
   version: v1alpha1
   plural: passwords
   scope: Namespaced
+  definitionKey: io.external-secrets.generators.v1alpha1.Password
 - kind: QuayAccessToken
   group: generators.external-secrets.io
   version: v1alpha1
   plural: quayaccesstokens
   scope: Namespaced
+  definitionKey: io.external-secrets.generators.v1alpha1.QuayAccessToken
 - kind: SSHKey
   group: generators.external-secrets.io
   version: v1alpha1
   plural: sshkeys
   scope: Namespaced
+  definitionKey: io.external-secrets.generators.v1alpha1.SSHKey
 - kind: STSSessionToken
   group: generators.external-secrets.io
   version: v1alpha1
   plural: stssessiontokens
   scope: Namespaced
+  definitionKey: io.external-secrets.generators.v1alpha1.STSSessionToken
 - kind: UUID
   group: generators.external-secrets.io
   version: v1alpha1
   plural: uuids
   scope: Namespaced
+  definitionKey: io.external-secrets.generators.v1alpha1.UUID
 - kind: VaultDynamicSecret
   group: generators.external-secrets.io
   version: v1alpha1
   plural: vaultdynamicsecrets
   scope: Namespaced
+  definitionKey: io.external-secrets.generators.v1alpha1.VaultDynamicSecret
 - kind: Webhook
   group: generators.external-secrets.io
   version: v1alpha1
   plural: webhooks
   scope: Namespaced
+  definitionKey: io.external-secrets.generators.v1alpha1.Webhook

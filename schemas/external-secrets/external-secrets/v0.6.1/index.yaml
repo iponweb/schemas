@@ -6,6 +6,7 @@ resources:
   scope: Cluster
   shortNames:
   - css
+  definitionKey: io.external-secrets.v1alpha1.ClusterSecretStore
 - kind: ExternalSecret
   group: external-secrets.io
   version: v1alpha1
@@ -13,6 +14,7 @@ resources:
   scope: Namespaced
   shortNames:
   - es
+  definitionKey: io.external-secrets.v1alpha1.ExternalSecret
 - kind: SecretStore
   group: external-secrets.io
   version: v1alpha1
@@ -20,6 +22,7 @@ resources:
   scope: Namespaced
   shortNames:
   - ss
+  definitionKey: io.external-secrets.v1alpha1.SecretStore
 - kind: ClusterExternalSecret
   group: external-secrets.io
   version: v1beta1
@@ -27,6 +30,7 @@ resources:
   scope: Cluster
   shortNames:
   - ces
+  definitionKey: io.external-secrets.v1beta1.ClusterExternalSecret
 - kind: ClusterSecretStore
   group: external-secrets.io
   version: v1beta1
@@ -34,6 +38,7 @@ resources:
   scope: Cluster
   shortNames:
   - css
+  definitionKey: io.external-secrets.v1alpha1.ClusterSecretStore
 - kind: ExternalSecret
   group: external-secrets.io
   version: v1beta1
@@ -41,6 +46,7 @@ resources:
   scope: Namespaced
   shortNames:
   - es
+  definitionKey: io.external-secrets.v1alpha1.ExternalSecret
 - kind: SecretStore
   group: external-secrets.io
   version: v1beta1
@@ -48,3 +54,4 @@ resources:
   scope: Namespaced
   shortNames:
   - ss
+  definitionKey: io.external-secrets.v1alpha1.SecretStore

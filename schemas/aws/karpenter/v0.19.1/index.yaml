@@ -4,8 +4,10 @@ resources:
   version: v1alpha1
   plural: awsnodetemplates
   scope: Cluster
+  definitionKey: aws.k8s.karpenter.v1alpha1.AWSNodeTemplate
 - kind: Provisioner
   group: karpenter.sh
   version: v1alpha5
   plural: provisioners
   scope: Cluster
+  definitionKey: sh.karpenter.v1alpha5.Provisioner
