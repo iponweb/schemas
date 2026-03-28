@@ -1,15 +1,7 @@
-import { useState, useContext, createContext, useCallback, type ReactNode } from 'react'
+import { useState } from 'react'
 import type { SchemaProperty } from '../lib/types'
 
 type Definitions = Record<string, SchemaProperty>
-
-// ── Hover context ────────────────────────────────────────────────────────────
-
-interface HoverCtx {
-  hoveredPath: string[]
-  setHoveredPath: (p: string[]) => void
-}
-const HoverContext = createContext<HoverCtx>({ hoveredPath: [], setHoveredPath: () => {} })
 
 // ── Props ────────────────────────────────────────────────────────────────────
 
@@ -24,7 +16,6 @@ interface NodeProps {
   schema: SchemaProperty
   depth: number
   isRequired: boolean
-  path: string[]           // full path from root, e.g. ['spec', 'template', 'spec']
   parentRequired?: string[]
   definitions?: Definitions
 }
@@ -75,37 +66,27 @@ function TypeBadge({ type }: { type: string }) {
   )
 }
 
-function hasChildren(schema: SchemaProperty): boolean {
+function hasChildren(schema: SchemaProperty, definitions: Definitions): boolean {
   const type = getType(schema)
   if (type === 'object' && schema.properties && Object.keys(schema.properties).length > 0) return true
   if (type === 'array' && schema.items && typeof schema.items === 'object') {
-    const items = schema.items as SchemaProperty
+    const items = resolveRef(schema.items as SchemaProperty, definitions)
     if (items.properties && Object.keys(items.properties).length > 0) return true
   }
   return false
 }
 
-/** Returns true if `candidate` is a strict prefix of `hovered` (ancestor check). */
-function isAncestorPath(candidate: string[], hovered: string[]): boolean {
-  if (hovered.length <= candidate.length) return false
-  for (let i = 0; i < candidate.length; i++) {
-    if (candidate[i] !== hovered[i]) return false
-  }
-  return true
-}
-
 // ── Node ─────────────────────────────────────────────────────────────────────
 
-function PropertyNode({ name, schema: rawSchema, depth, isRequired, path, definitions = {} }: NodeProps) {
+function PropertyNode({ name, schema: rawSchema, depth, isRequired, definitions = {} }: NodeProps) {
   const schema = resolveRef(rawSchema, definitions)
-  const [expanded, setExpanded] = useState(depth < 2)
+  const [expanded, setExpanded] = useState(
+    name === 'metadata' ? false : name === 'spec' ? true : depth < 2
+  )
   const [descExpanded, setDescExpanded] = useState(false)
 
-  const { hoveredPath, setHoveredPath } = useContext(HoverContext)
-  const isAncestor = isAncestorPath(path, hoveredPath)
-
   const type = getType(schema)
-  const canExpand = hasChildren(schema)
+  const canExpand = hasChildren(schema, definitions)
 
   const description = schema.description ?? ''
   const shortDesc = description.length > 120 ? description.slice(0, 120) + '…' : description
@@ -118,7 +99,7 @@ function PropertyNode({ name, schema: rawSchema, depth, isRequired, path, defini
     children = Object.entries(schema.properties).map(([k, v]) => ({ name: k, schema: v }))
     childRequired = schema.required ?? []
   } else if (type === 'array' && schema.items && typeof schema.items === 'object') {
-    const items = schema.items as SchemaProperty
+    const items = resolveRef(schema.items as SchemaProperty, definitions)
     if (items.properties) {
       children = Object.entries(items.properties).map(([k, v]) => ({ name: k, schema: v }))
       childRequired = items.required ?? []
@@ -127,44 +108,16 @@ function PropertyNode({ name, schema: rawSchema, depth, isRequired, path, defini
 
   const indentStyle = { paddingLeft: `${depth * 20}px` }
 
-  // Ancestor highlight: left border + very subtle background
-  const ancestorClass = isAncestor
-    ? 'border-l-2 border-violet-300 bg-violet-50/40'
-    : 'border-l-2 border-transparent'
-
   return (
     <div className="font-mono text-sm">
       <div
-        className={`flex items-start gap-2 py-1.5 px-2 rounded-lg group transition-colors cursor-default
-          ${ancestorClass}
-          ${!isAncestor && depth === 0 ? 'hover:bg-violet-50' : ''}
-          ${!isAncestor && depth > 0 ? 'hover:bg-zinc-50' : ''}
+        className={`flex items-start gap-2 py-1.5 px-2 rounded-lg group transition-colors
+          ${canExpand ? 'cursor-pointer' : 'cursor-default'}
+          ${depth === 0 ? 'hover:bg-violet-50' : 'hover:bg-zinc-50'}
         `}
         style={indentStyle}
-        onMouseEnter={() => setHoveredPath(path)}
+        onClick={() => canExpand && setExpanded(e => !e)}
       >
-        {/* Expand toggle or spacer */}
-        <button
-          type="button"
-          className={`flex-shrink-0 w-4 h-4 mt-0.5 flex items-center justify-center rounded text-zinc-400 hover:text-zinc-600 transition-colors ${
-            canExpand ? 'cursor-pointer hover:bg-zinc-200' : 'cursor-default opacity-0'
-          }`}
-          onClick={() => canExpand && setExpanded(e => !e)}
-          aria-label={expanded ? 'Collapse' : 'Expand'}
-          tabIndex={canExpand ? 0 : -1}
-        >
-          {canExpand && (
-            <svg
-              className={`w-3 h-3 transition-transform ${expanded ? 'rotate-90' : ''}`}
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
-            </svg>
-          )}
-        </button>
-
         {/* Field info */}
         <div className="flex-1 min-w-0">
           <div className="flex flex-wrap items-center gap-2">
@@ -184,6 +137,11 @@ function PropertyNode({ name, schema: rawSchema, depth, isRequired, path, defini
             {schema['x-kubernetes-preserve-unknown-fields'] && (
               <span className="text-xs text-zinc-400 italic">free-form</span>
             )}
+            {canExpand && (
+              <span className="text-xs text-zinc-400 font-mono select-none">
+                {expanded ? '−' : '+'}
+              </span>
+            )}
           </div>
 
           {description && (
@@ -194,7 +152,7 @@ function PropertyNode({ name, schema: rawSchema, depth, isRequired, path, defini
               {hasLongDesc && (
                 <button
                   type="button"
-                  onClick={() => setDescExpanded(d => !d)}
+                  onClick={e => { e.stopPropagation(); setDescExpanded(d => !d) }}
                   className="ml-1 text-violet-500 hover:text-violet-700 transition-colors"
                 >
                   {descExpanded ? 'less' : 'more'}
@@ -233,18 +191,23 @@ function PropertyNode({ name, schema: rawSchema, depth, isRequired, path, defini
 
       {/* Children */}
       {canExpand && expanded && children.length > 0 && (
-        <div>
+        <div className="relative">
           {children.map(child => (
-            <PropertyNode
-              key={child.name}
-              name={child.name}
-              schema={child.schema}
-              depth={depth + 1}
-              isRequired={childRequired.includes(child.name)}
-              path={[...path, child.name]}
-              parentRequired={childRequired}
-              definitions={definitions}
-            />
+            <div key={child.name} className="relative">
+              <PropertyNode
+                name={child.name}
+                schema={child.schema}
+                depth={depth + 1}
+                isRequired={childRequired.includes(child.name)}
+                parentRequired={childRequired}
+                definitions={definitions}
+              />
+              {/* Bulb — after PropertyNode so it paints on top of hover bg */}
+              <div
+                className="absolute w-1.5 h-1.5 rounded-full bg-zinc-200 ring-2 ring-white pointer-events-none"
+                style={{ left: `${depth * 20 + 4}px`, top: '13px' }}
+              />
+            </div>
           ))}
           {type === 'array' && schema.items && typeof schema.items === 'object' && !(schema.items as SchemaProperty).properties && (
             <div
@@ -254,6 +217,11 @@ function PropertyNode({ name, schema: rawSchema, depth, isRequired, path, defini
               items: <TypeBadge type={getType(schema.items as SchemaProperty)} />
             </div>
           )}
+          {/* Vertical guide line — last in DOM so it paints on top of all child hover bgs */}
+          <div
+            className="absolute top-0 bottom-0 w-px bg-zinc-200 rounded-full pointer-events-none"
+            style={{ left: `${depth * 20 + 7}px` }}
+          />
         </div>
       )}
     </div>
@@ -262,10 +230,15 @@ function PropertyNode({ name, schema: rawSchema, depth, isRequired, path, defini
 
 // ── Root ─────────────────────────────────────────────────────────────────────
 
+const TOP_FIELDS = ['apiVersion', 'kind', 'metadata']
+
 export default function PropertyTree({ schema, name = 'root', definitions = {} }: PropertyTreeProps) {
-  const topProperties = schema.properties ? Object.entries(schema.properties) : []
+  const allProperties = schema.properties ? Object.entries(schema.properties) : []
+  const topProperties = [
+    ...allProperties.filter(([k]) => TOP_FIELDS.includes(k)).sort(([a], [b]) => TOP_FIELDS.indexOf(a) - TOP_FIELDS.indexOf(b)),
+    ...allProperties.filter(([k]) => !TOP_FIELDS.includes(k)),
+  ]
   const required = schema.required ?? []
-  const [hoveredPath, setHoveredPath] = useState<string[]>([])
 
   if (topProperties.length === 0) {
     return (
@@ -276,21 +249,18 @@ export default function PropertyTree({ schema, name = 'root', definitions = {} }
   }
 
   return (
-    <HoverContext.Provider value={{ hoveredPath, setHoveredPath }}>
-      <div className="space-y-0.5" onMouseLeave={() => setHoveredPath([])}>
-        {topProperties.map(([propName, propSchema]) => (
-          <PropertyNode
-            key={propName}
-            name={propName}
-            schema={propSchema}
-            depth={0}
-            isRequired={required.includes(propName)}
-            path={[propName]}
-            parentRequired={required}
-            definitions={definitions}
-          />
-        ))}
-      </div>
-    </HoverContext.Provider>
+    <div className="space-y-0.5">
+      {topProperties.map(([propName, propSchema]) => (
+        <PropertyNode
+          key={propName}
+          name={propName}
+          schema={propSchema}
+          depth={0}
+          isRequired={required.includes(propName)}
+          parentRequired={required}
+          definitions={definitions}
+        />
+      ))}
+    </div>
   )
 }

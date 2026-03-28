@@ -90,57 +90,44 @@ const totalResources = controllerData.reduce((sum, c) => sum + c.resourceCount, 
     </div>
   </section>
 
-  <!-- Controllers by org -->
+  <!-- Controllers grid: orgs in columns, controllers stacked inside -->
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-    {[...byOrgData.entries()].map(([org, ctrls]) => (
-      <section class="mb-12">
-        <div class="flex items-center gap-3 mb-6">
-          <div class="w-8 h-8 rounded-lg bg-zinc-100 flex items-center justify-center border border-zinc-200">
-            <svg class="w-4 h-4 text-zinc-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {[...byOrgData.entries()].sort(([a], [b]) => a.localeCompare(b, undefined, { sensitivity: 'base' })).map(([org, ctrls]) => (
+        <div class="bg-white border border-zinc-200 rounded-xl shadow-sm overflow-hidden">
+          <!-- Org header -->
+          <div class="px-4 py-3 bg-zinc-50 border-b border-zinc-200 flex items-center gap-2">
+            <svg class="w-3.5 h-3.5 text-zinc-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
             </svg>
+            <span class="text-sm font-semibold text-zinc-700">{org}</span>
           </div>
-          <h2 class="text-xl font-semibold text-zinc-800">{org}</h2>
-          <span class="text-sm text-zinc-400">{ctrls.length} {ctrls.length === 1 ? 'controller' : 'controllers'}</span>
-        </div>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {ctrls.map(ctrl => (
-            <a
-              href={`${base}/${ctrl.org}/${ctrl.repo}/`}
-              class="group bg-white border border-zinc-200 rounded-xl p-5 shadow-sm hover:shadow-md hover:border-violet-200 hover:-translate-y-0.5 transition-all duration-200"
-            >
-              <div class="flex items-start justify-between mb-3">
-                <div class="flex items-center gap-3">
-                  <ControllerIcon org={ctrl.org} repo={ctrl.repo} size="md" />
-                  <div>
-                    <div class="text-xs text-zinc-400 mb-0.5">{ctrl.org}/</div>
-                    <h3 class="text-base font-semibold text-zinc-900 group-hover:text-violet-700 transition-colors">
-                      {ctrl.repo}
-                    </h3>
+          <!-- Controllers in this org -->
+          <div class="divide-y divide-zinc-100">
+            {ctrls.map(ctrl => (
+              <a
+                href={`${base}/${ctrl.org}/${ctrl.repo}/`}
+                class="group flex items-center gap-3 px-4 py-3.5 hover:bg-zinc-50 transition-colors"
+              >
+                <ControllerIcon org={ctrl.org} repo={ctrl.repo} size="sm" />
+                <div class="min-w-0 flex-1">
+                  <div class="font-medium text-zinc-900 group-hover:text-violet-700 transition-colors truncate">
+                    {ctrl.repo}
+                  </div>
+                  <div class="text-xs text-zinc-400 mt-0.5 flex items-center gap-2">
+                    <span>{ctrl.versions.length} {ctrl.versions.length === 1 ? 'version' : 'versions'}</span>
+                    <span class="text-zinc-200">·</span>
+                    <span>{ctrl.resourceCount} resources</span>
                   </div>
                 </div>
-                <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-violet-100 text-violet-700 whitespace-nowrap">
+                <span class="flex-shrink-0 inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-violet-100 text-violet-700 font-mono">
                   {ctrl.latestVersion}
                 </span>
-              </div>
-              <div class="flex items-center gap-4 text-sm text-zinc-500">
-                <span class="flex items-center gap-1.5">
-                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
-                  </svg>
-                  {ctrl.versions.length} {ctrl.versions.length === 1 ? 'version' : 'versions'}
-                </span>
-                <span class="flex items-center gap-1.5">
-                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                  </svg>
-                  {ctrl.resourceCount} {ctrl.resourceCount === 1 ? 'resource' : 'resources'}
-                </span>
-              </div>
-            </a>
-          ))}
+              </a>
+            ))}
+          </div>
         </div>
-      </section>
-    ))}
+      ))}
+    </div>
   </div>
 </Layout>
