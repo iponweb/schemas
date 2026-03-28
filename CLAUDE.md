@@ -52,6 +52,7 @@ tools/
 builder/
   Dockerfile                     # Builds the schema-builder Docker image
 logs/                            # Per-job logs written by run.py (.gitignored)
+site/                            # Astro static site (see §Site below)
 Makefile
 ```
 
@@ -546,6 +547,175 @@ Common root causes for source MISS:
 
 The `**/generated/*` pattern in `.gitignore` covers intermediate build artifacts.
 Do not commit anything under `generated/`.
+
+---
+
+## Site (`site/`)
+
+An [Astro](https://astro.build) static site (`output: 'static'`, `trailingSlash: 'always'`)
+that reads schema data from `schemas/` at build time. No server or database — everything
+is pre-rendered to HTML + JSON files in `site/dist/`.
+
+### Site structure
+
+```
+site/
+  src/
+    layouts/
+      Layout.astro               # Shared HTML shell (nav, breadcrumbs, footer)
+    components/
+      ResourcesTable.tsx          # React island — resource list with "Hide system" toggle
+      FileBadge.astro             # "source" / "live" badge with CSS-only tooltip
+      DiffView.astro              # Version-diff display (added/removed/changed)
+      PropertyTree.tsx            # Interactive JSON Schema field tree (React island)
+      ChangeHistory.tsx           # Per-resource change history across versions (React island)
+      ControllerIcon.astro        # Org avatar from GitHub
+    lib/
+      data.ts                     # All data-access functions (reads schemas/ at build time)
+      types.ts                    # Shared TypeScript interfaces (Controller, Resource, …)
+    pages/
+      index.astro                 # Home — controller grid + hero with API link
+      about.astro                 # "How it's built" documentation page
+      [org]/[repo]/
+        index.astro               # Controller overview: version list + latest resource table
+        [version]/
+          index.astro             # Version page: diff, Files & Links, ResourcesTable
+          [group]/[kind].astro    # Resource kind page: schema tree, Files & Links, history
+      api/v1/
+        index.json.ts             # Level 1: list of all controllers
+        [org]/[repo]/
+          index.json.ts           # Level 2: controller metadata + version list
+          [version]/
+            index.json.ts         # Level 3: full resource list with schema URLs
+```
+
+### Running the site
+
+```bash
+cd site
+npm install
+npm run dev        # dev server at http://localhost:4321
+npm run build      # static build to site/dist/
+npm run preview    # preview the built output
+```
+
+Or via the root Makefile:
+```bash
+make site-dev      # npm run dev
+make site-build    # npm run build
+```
+
+### Data layer (`site/src/lib/data.ts`)
+
+All functions read directly from `schemas/` using Node `fs` (only available at build time):
+
+| Function | Returns |
+|---|---|
+| `getAllControllers()` | All controllers sorted by org/repo, versions newest-first |
+| `getControllerMeta(org, repo)` | `name`, `repository` from controller `index.yaml` |
+| `getResources(org, repo, version)` | Resource list from version `index.yaml` |
+| `getVersionDiff(org, repo, vNew, vOld)` | Added/removed/changed resources between versions |
+| `getVersionAssets(org, repo, version)` | GitHub and file URLs for a version's artifacts |
+| `getResourceAssets(org, repo, version, kind, group, apiVersion, plural)` | Per-resource artifact URLs + `definitionKey` |
+| `getResourceSchema(…)` | Parsed JSON Schema from `json-schema/source/` CRD file |
+| `getResourceSchemaFromDefinitions(…)` | Schema from `_definitions.json` (Kubernetes built-ins) |
+| `getDefinitions(…)` | Full definitions map from `_definitions.json` |
+| `getChangeHistory(…)` | Schema diff history for a resource across all versions |
+
+### `index.yaml` formats
+
+**Controller-level** (`schemas/ORG/REPO/index.yaml`):
+```yaml
+name: "Human-readable name"
+repository: "https://github.com/ORG/REPO"
+systemResources:              # optional — T2 system resources (see §Resource classification)
+  - kind: Endpoints
+    group: ""
+  - kind: EndpointSlice
+    group: discovery.k8s.io
+```
+
+**Version-level** (`schemas/ORG/REPO/VERSION/index.yaml`):
+```yaml
+resources:
+  - kind: Deployment
+    group: apps
+    version: v1
+    plural: deployments
+    scope: Namespaced
+    shortNames: [deploy]      # optional
+    definitionKey: io.k8s.api.apps.v1.Deployment   # optional — set by annotate_definition_keys()
+    userManaged: false         # optional — omitted for normal resources, false for system ones
+```
+
+### Resource classification (`userManaged` field)
+
+Resources fall into three categories:
+
+**User-managed** (default — `userManaged` omitted): resources intended to be created and
+managed directly by users (`Deployment`, `Service`, `ConfigMap`, etc.).
+
+**System — auto-detected (T1)**: set `userManaged: false` automatically by `tools/discover.py`
+when API verbs do not include `delete` (e.g. `TokenReview`, `Binding`, `ComponentStatus`)
+or the group is `internal.apiserver.k8s.io`.
+
+**System — manually listed (T2)**: set `userManaged: false` by `tools/discover.py` at
+generation time from the controller-level `systemResources` list. Use for resources that
+have full verbs but are managed by the control plane rather than users (e.g. `Endpoints`,
+`EndpointSlice`, `VolumeAttachment`).
+
+The site shows a `system` badge on these resources and the `ResourcesTable` component
+offers a "Hide system resources" toggle (only when discovery data is available).
+
+### `definitionKey` — JSON Schema `$ref` name
+
+`tools/generate.py` calls `annotate_definition_keys()` after schema generation to match
+each resource to its key in `_definitions.json` (e.g. `io.k8s.api.apps.v1.Deployment`)
+and write it back to `index.yaml`. Matching logic:
+- Find all keys in `_definitions.json` whose last dot-segment equals `resource.kind`
+- Prefer the key whose prefix starts with the first segment of `resource.group`
+- Write the best match as `definitionKey` in the resource entry
+
+The site uses `definitionKey` for the copyable `$ref` name shown on resource kind pages.
+`getResourceAssets()` prefers this pre-computed value and falls back to scanning
+`_definitions.json` live at build time.
+
+### Static JSON API
+
+Three levels of static JSON files are generated as Astro endpoint files and served from `dist/`:
+
+| Path | Content |
+|---|---|
+| `/api/v1/index.json` | All controllers: org, repo, name, repository, latestVersion, versions[], url |
+| `/api/v1/{org}/{repo}/index.json` | Controller: org, repo, name, repository, versions[{version, url}] |
+| `/api/v1/{org}/{repo}/{version}/index.json` | Version: org, repo, version, crdsBundle, openapiSource, openapiLive, resources[…] |
+
+Each resource entry in the Level 3 response includes:
+```json
+{
+  "kind": "Deployment", "group": "apps", "version": "v1",
+  "plural": "deployments", "scope": "Namespaced",
+  "shortNames": ["deploy"],
+  "definitionKey": "io.k8s.api.apps.v1.Deployment",
+  "userManaged": false,
+  "urls": {
+    "definitionsSource": "https://github.com/…/_definitions.json",
+    "definitionsLive":   "https://github.com/…/_definitions.json",
+    "schemaSource":      "https://github.com/…/deployment-apps-v1.json",
+    "schemaLive":        "https://github.com/…/deployment-apps-v1.json",
+    "crd":               null
+  }
+}
+```
+
+### JSON Schema filename formula
+
+```
+non-core: {kind.toLowerCase()}-{group.split('.')[0]}-{apiVersion}.json
+core:     {kind.toLowerCase()}-{apiVersion}.json
+```
+
+Examples: `deployment-apps-v1.json`, `pod-v1.json`, `clusterpolicy-kyverno-v1.json`.
 
 ---
 

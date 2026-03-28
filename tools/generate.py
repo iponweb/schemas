@@ -190,6 +190,51 @@ def collect_crds(sources_root: Path, crd_path: str, crd_dir: Path, index_yaml: P
           flush=True)
 
 
+def annotate_definition_keys(index_yaml: Path, json_schema_source_dir: Path):
+    """
+    For each resource in index_yaml, find its definition key inside
+    json-schema/source/_definitions.json and store it as 'definitionKey'.
+
+    The key format follows openapi2jsonschema conventions, e.g.:
+      io.k8s.api.apps.v1.Deployment
+      aws.k8s.karpenter.v1.EC2NodeClass
+    Matching is done by the last dot-segment equalling the kind name;
+    when multiple candidates exist the one whose first segment matches the
+    resource group's first segment is preferred.
+    """
+    defs_path = json_schema_source_dir / '_definitions.json'
+    if not defs_path.exists() or not index_yaml.exists():
+        return
+    with open(defs_path) as f:
+        defs_data = json.load(f)
+    definitions = list(defs_data.get('definitions', {}).keys())
+    with open(index_yaml) as f:
+        existing = yaml.safe_load(f) or {}
+    resources = existing.get('resources', [])
+    for r in resources:
+        kind = r.get('kind', '')
+        group = r.get('group', '')
+        candidates = [k for k in definitions if k.split('.')[-1] == kind]
+        if not candidates:
+            continue
+        if len(candidates) == 1:
+            r['definitionKey'] = candidates[0]
+            continue
+        group_prefix = group.split('.')[0] if group else None
+        if group_prefix:
+            preferred = [k for k in candidates if k.startswith(group_prefix + '.')]
+            if preferred:
+                r['definitionKey'] = preferred[0]
+                continue
+        r['definitionKey'] = candidates[0]
+    existing['resources'] = resources
+    index_yaml.write_text(
+        yaml.dump(existing, Dumper=_NoAnchorDumper, default_flow_style=False, sort_keys=False, allow_unicode=True)
+    )
+    print(f"  definition keys: annotated {sum(1 for r in resources if 'definitionKey' in r)}"
+          f"/{len(resources)} resources → {index_yaml}", flush=True)
+
+
 # ---------------------------------------------------------------------------
 # Schema comparison
 # ---------------------------------------------------------------------------
@@ -413,6 +458,7 @@ def main():
                 "--discovery-base-url", discovery_base_url,
                 "--output", index_yaml,
             ])
+            annotate_definition_keys(index_yaml, output_dir)
 
         # -------------------------------------------------------------------
         # Step 11 — Collect CRDs (optional)
@@ -422,6 +468,7 @@ def main():
             crd_dir = REPO_ROOT / "schemas" / rel / "crd"
             index_yaml = REPO_ROOT / "schemas" / rel / "index.yaml"
             collect_crds(sources_root, crd_path_cfg, crd_dir, index_yaml)
+            annotate_definition_keys(index_yaml, output_dir)
 
             # Build crds.yaml — all CRDs as a single multi-document YAML for Terraform
             crds_yaml_out = REPO_ROOT / "schemas" / rel / "crds.yaml"
@@ -460,6 +507,8 @@ def main():
                 "--output",  index_yaml,
                 "--envtest-bin-dir", envtest_bin_dir,
             ])
+            # Re-annotate after envtest overwrites index.yaml
+            annotate_definition_keys(index_yaml, output_dir)
 
             # -------------------------------------------------------------------
             # Step 13 — Live JSON Schema from /openapi/v2 (optional)

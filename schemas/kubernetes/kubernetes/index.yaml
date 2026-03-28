@@ -1,2 +1,18 @@
 name: "Kubernetes"
 repository: "https://github.com/kubernetes/kubernetes"
+
+# T2: resources that have full verbs but are auto-managed by Kubernetes itself.
+# These are not internal (T1, auto-detected from verbs), but are rarely created
+# directly by users — they are maintained by controllers, kubelet, or the API server.
+systemResources:
+  - {kind: Endpoints,          group: ""}
+  - {kind: Event,              group: ""}
+  - {kind: ControllerRevision, group: apps}
+  - {kind: Lease,              group: coordination.k8s.io}
+  - {kind: LeaseCandidate,     group: coordination.k8s.io}
+  - {kind: EndpointSlice,      group: discovery.k8s.io}
+  - {kind: Event,              group: events.k8s.io}
+  - {kind: CSINode,            group: storage.k8s.io}
+  - {kind: CSIStorageCapacity, group: storage.k8s.io}
+  - {kind: VolumeAttachment,   group: storage.k8s.io}
+  - {kind: ResourceSlice,      group: resource.k8s.io}
