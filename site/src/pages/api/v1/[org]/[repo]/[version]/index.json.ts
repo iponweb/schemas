@@ -4,7 +4,7 @@ import { join } from 'node:path'
 import { getAllControllers, getResources } from '../../../../../../lib/data'
 
 const SCHEMAS_ROOT   = new URL('../../../../../../../../schemas', import.meta.url).pathname
-const SCHEMAS_GITHUB = 'https://github.com/iponweb/schemas/blob/main/schemas'
+const SCHEMAS_GITHUB = 'https://raw.githubusercontent.com/iponweb/schemas/main/schemas'
 
 function ghCheck(base: string, gh: string, rel: string): string | null {
   return existsSync(join(base, rel)) ? `${gh}/${rel}` : null
@@ -34,6 +34,9 @@ export const GET: APIRoute = ({ params }) => {
   const gh     = `${SCHEMAS_GITHUB}/${org}/${repo}/${version}`
   const check  = (rel: string) => ghCheck(fsBase, gh, rel)
 
+  const definitionsSource = check('json-schema/source/_definitions.json')
+  const definitionsLive   = check('json-schema/live/_definitions.json')
+
   const resources = getResources(org, repo, version).map(r => {
     const sf = schemaFile(r.kind, r.group, r.version)
     const entry: Record<string, unknown> = {
@@ -43,16 +46,14 @@ export const GET: APIRoute = ({ params }) => {
       plural:  r.plural,
       scope:   r.scope,
     }
-    if (r.shortNames?.length)       entry.shortNames   = r.shortNames
-    if (r.definitionKey)            entry.definitionKey = r.definitionKey
-    if (r.userManaged === false)     entry.userManaged  = false
+    if (r.shortNames?.length)    entry.shortNames   = r.shortNames
+    if (r.definitionKey)         entry.definitionKey = r.definitionKey
+    if (r.userManaged === false)  entry.userManaged  = false
 
     entry.urls = {
-      definitionsSource: check('json-schema/source/_definitions.json'),
-      definitionsLive:   check('json-schema/live/_definitions.json'),
-      schemaSource:      check(`json-schema/source/${sf}`),
-      schemaLive:        check(`json-schema/live/${sf}`),
-      crd:               r.group ? check(`crd/${r.plural}.${r.group}.yaml`) : null,
+      schemaSource: check(`json-schema/source/${sf}`),
+      schemaLive:   check(`json-schema/live/${sf}`),
+      crd:          r.group ? check(`crd/${r.plural}.${r.group}.yaml`) : null,
     }
     return entry
   })
@@ -61,10 +62,12 @@ export const GET: APIRoute = ({ params }) => {
     org,
     repo,
     version,
-    url:          `${base}/api/v1/${org}/${repo}/${version}/index.json`,
-    crdsBundle:   check('crds.yaml'),
-    openapiSource: check('openapi/source.json'),
-    openapiLive:   check('openapi/live.json'),
+    url:              `${base}/api/v1/${org}/${repo}/${version}/index.json`,
+    crdsBundle:       check('crds.yaml'),
+    openapiSource:    check('openapi/source.json'),
+    openapiLive:      check('openapi/live.json'),
+    definitionsSource,
+    definitionsLive,
     resources,
   }
 
