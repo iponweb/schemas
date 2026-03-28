@@ -36,6 +36,27 @@ from pathlib import Path
 import yaml
 
 
+def load_system_resources(output_path):
+    """
+    Load the systemResources list from the controller-level index.yaml
+    (two directories up from the version-level output path).
+
+    Returns a set of (kind, group) tuples, or an empty set if not found.
+    """
+    controller_index = Path(output_path).parent.parent / 'index.yaml'
+    if not controller_index.exists():
+        return set()
+    try:
+        with open(controller_index) as f:
+            data = yaml.safe_load(f) or {}
+        result = set()
+        for entry in data.get('systemResources', []):
+            result.add((entry.get('kind', ''), entry.get('group', '')))
+        return result
+    except Exception:
+        return set()
+
+
 class _NoAnchorDumper(yaml.SafeDumper):
     """SafeDumper that never emits YAML anchors/aliases."""
     def ignore_aliases(self, data):
@@ -91,6 +112,14 @@ def parse_resource_list(data, group):
         }
         if r.get('shortNames'):
             entry['shortNames'] = r['shortNames']
+        # T1: mark as not user-managed if:
+        #   - verbs are present but do not include 'delete' (create-only or read-only),
+        #   - or the group is the internal API server group.
+        verbs = r.get('verbs')
+        if verbs is not None and 'delete' not in verbs:
+            entry['userManaged'] = False
+        elif group == 'internal.apiserver.k8s.io':
+            entry['userManaged'] = False
         resources.append(entry)
     return resources
 
@@ -215,6 +244,14 @@ def main():
     else:
         resources = discover_static(args.discovery_base_url, opener, dump_dir=dump_dir)
     print(f"  found {len(resources)} resources", flush=True)
+
+    # T2: apply userManaged=false for system-managed resources listed in
+    # the controller-level index.yaml (two directories above the output file).
+    system_resources = load_system_resources(args.output)
+    if system_resources:
+        for r in resources:
+            if (r['kind'], r.get('group', '')) in system_resources:
+                r.setdefault('userManaged', False)
 
     output = Path(args.output)
     existing = {}

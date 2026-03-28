@@ -2,7 +2,7 @@
 import Layout from '../../../../../layouts/Layout.astro'
 import PropertyTree from '../../../../../components/PropertyTree'
 import ChangeHistory from '../../../../../components/ChangeHistory'
-import { getAllControllers, getResources, getResourceSchema, getResourceSchemaFromDefinitions, getDefinitions, getChangeHistory } from '../../../../../lib/data'
+import { getAllControllers, getResources, getResourceSchema, getResourceSchemaFromDefinitions, getDefinitions, getChangeHistory, getResourceAssets, getControllerMeta } from '../../../../../lib/data'
 import type { ChangeHistoryEntry } from '../../../../../lib/data'
 import type { GetStaticPaths } from 'astro'
 
@@ -82,6 +82,9 @@ const nextVersion = (() => {
   const idx = ctrl.versions.indexOf(version)
   return idx > 0 ? ctrl.versions[idx - 1] : null
 })()
+
+const resourceAssets = getResourceAssets(org, repo, version, resource.kind, resource.group, resource.version, resource.plural)
+const meta = getControllerMeta(org, repo)
 ---
 
 <Layout
@@ -110,6 +113,11 @@ const nextVersion = (() => {
             <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-violet-100 text-violet-700 font-mono">
               {version}
             </span>
+            {resource.userManaged === false && (
+              <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-zinc-100 text-zinc-500 border border-zinc-200">
+                system
+              </span>
+            )}
           </div>
           <h1 class="text-3xl font-bold text-zinc-900 font-mono mb-2">{resource.kind}</h1>
           <div class="flex flex-wrap gap-3 text-sm text-zinc-500">
@@ -162,6 +170,185 @@ const nextVersion = (() => {
         </div>
       </div>
     </div>
+
+    <!-- Files & Links -->
+    {(resourceAssets.jsonSchemaSource || resourceAssets.jsonSchemaLive || resourceAssets.crdFile || meta?.repository) && (
+      <div class="mb-8">
+        <h2 class="text-lg font-semibold text-zinc-800 mb-4">Files &amp; Links</h2>
+        <div class="bg-white border border-zinc-200 rounded-xl shadow-sm divide-y divide-zinc-100">
+
+          {/* GitHub tree link */}
+          <a
+            href={resourceAssets.githubTree}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex items-center justify-between px-4 py-3 hover:bg-zinc-50 transition-colors group"
+          >
+            <div class="flex items-center gap-3">
+              <svg class="w-4 h-4 text-zinc-400 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
+              </svg>
+              <div>
+                <span class="text-sm font-medium text-zinc-700 group-hover:text-violet-700 transition-colors">Browse on GitHub</span>
+                <span class="ml-2 text-xs text-zinc-400 font-mono">schemas/{org}/{repo}/{version}/</span>
+              </div>
+            </div>
+            <svg class="w-3.5 h-3.5 text-zinc-300 group-hover:text-violet-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+          </a>
+
+          {/* Controller GitHub repo */}
+          {meta?.repository && (
+            <a
+              href={`${meta.repository}/tree/${version}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex items-center justify-between px-4 py-3 hover:bg-zinc-50 transition-colors group"
+            >
+              <div class="flex items-center gap-3">
+                <svg class="w-4 h-4 text-zinc-400 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
+                </svg>
+                <div>
+                  <span class="text-sm font-medium text-zinc-700 group-hover:text-violet-700 transition-colors">Controller source</span>
+                  <span class="ml-2 text-xs text-zinc-400 font-mono">{meta.repository.replace('https://github.com/', '')}@{version}</span>
+                </div>
+              </div>
+              <svg class="w-3.5 h-3.5 text-zinc-300 group-hover:text-violet-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg>
+            </a>
+          )}
+
+          {/* CRD YAML */}
+          {resourceAssets.crdFile && (
+            <a
+              href={resourceAssets.crdFile}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex items-center justify-between px-4 py-3 hover:bg-zinc-50 transition-colors group"
+            >
+              <div class="flex items-center gap-3">
+                <svg class="w-4 h-4 text-zinc-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+                <div>
+                  <span class="text-sm font-medium text-zinc-700 group-hover:text-violet-700 transition-colors">CRD definition</span>
+                  <span class="ml-2 text-xs text-zinc-400 font-mono">crd/{resource.plural}.{resource.group}.yaml</span>
+                </div>
+              </div>
+              <svg class="w-3.5 h-3.5 text-zinc-300 group-hover:text-violet-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg>
+            </a>
+          )}
+
+          {/* JSON Schema source */}
+          {resourceAssets.jsonSchemaSource && (
+            <a
+              href={resourceAssets.jsonSchemaSource}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex items-center justify-between px-4 py-3 hover:bg-zinc-50 transition-colors group"
+            >
+              <div class="flex items-center gap-3">
+                <svg class="w-4 h-4 text-zinc-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                </svg>
+                <div>
+                  <span class="text-sm font-medium text-zinc-700 group-hover:text-violet-700 transition-colors">JSON Schema</span>
+                  <span class="ml-2 text-xs text-zinc-400 font-mono">json-schema/source/{resourceAssets.jsonSchemaFile}</span>
+                </div>
+              </div>
+              <span class="text-xs text-zinc-400 bg-zinc-100 px-2 py-0.5 rounded font-mono">source</span>
+            </a>
+          )}
+
+          {/* JSON Schema live */}
+          {resourceAssets.jsonSchemaLive && (
+            <a
+              href={resourceAssets.jsonSchemaLive}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex items-center justify-between px-4 py-3 hover:bg-zinc-50 transition-colors group"
+            >
+              <div class="flex items-center gap-3">
+                <svg class="w-4 h-4 text-zinc-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                </svg>
+                <div>
+                  <span class="text-sm font-medium text-zinc-700 group-hover:text-violet-700 transition-colors">JSON Schema</span>
+                  <span class="ml-2 text-xs text-zinc-400 font-mono">json-schema/live/{resourceAssets.jsonSchemaFile}</span>
+                </div>
+              </div>
+              <span class="text-xs text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded font-mono">live</span>
+            </a>
+          )}
+
+          {/* _definitions.json source */}
+          {resourceAssets.definitionsSource && (
+            <a
+              href={resourceAssets.definitionsSource}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex items-center justify-between px-4 py-3 hover:bg-zinc-50 transition-colors group"
+            >
+              <div class="flex items-center gap-3">
+                <svg class="w-4 h-4 text-zinc-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                </svg>
+                <div>
+                  <span class="text-sm font-medium text-zinc-700 group-hover:text-violet-700 transition-colors">All definitions</span>
+                  <span class="ml-2 text-xs text-zinc-400 font-mono">json-schema/source/_definitions.json</span>
+                  {resourceAssets.definitionKey && (
+                    <button
+                      data-copy={resourceAssets.definitionKey}
+                      title="Copy $ref name"
+                      class="ml-2 text-xs font-mono text-violet-500 hover:text-violet-700 hover:bg-violet-50 px-1 py-0.5 rounded transition-colors cursor-copy"
+                    >
+                      #{resourceAssets.definitionKey}
+                    </button>
+                  )}
+                </div>
+              </div>
+              <span class="text-xs text-zinc-400 bg-zinc-100 px-2 py-0.5 rounded font-mono">source</span>
+            </a>
+          )}
+
+          {/* _definitions.json live */}
+          {resourceAssets.definitionsLive && (
+            <a
+              href={resourceAssets.definitionsLive}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex items-center justify-between px-4 py-3 hover:bg-zinc-50 transition-colors group"
+            >
+              <div class="flex items-center gap-3">
+                <svg class="w-4 h-4 text-zinc-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                </svg>
+                <div>
+                  <span class="text-sm font-medium text-zinc-700 group-hover:text-violet-700 transition-colors">All definitions</span>
+                  <span class="ml-2 text-xs text-zinc-400 font-mono">json-schema/live/_definitions.json</span>
+                  {resourceAssets.definitionKey && (
+                    <button
+                      data-copy={resourceAssets.definitionKey}
+                      title="Copy $ref name"
+                      class="ml-2 text-xs font-mono text-violet-500 hover:text-violet-700 hover:bg-violet-50 px-1 py-0.5 rounded transition-colors cursor-copy"
+                    >
+                      #{resourceAssets.definitionKey}
+                    </button>
+                  )}
+                </div>
+              </div>
+              <span class="text-xs text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded font-mono">live</span>
+            </a>
+          )}
+
+        </div>
+      </div>
+    )}
 
     <!-- Schema Tree or Message -->
     {!hasSchema ? (
@@ -216,3 +403,18 @@ const nextVersion = (() => {
     )}
   </div>
 </Layout>
+
+<script>
+  document.addEventListener('click', (e) => {
+    const btn = (e.target as Element).closest('[data-copy]') as HTMLElement | null
+    if (!btn) return
+    e.stopPropagation()
+    e.preventDefault()
+    const text = btn.dataset.copy!
+    navigator.clipboard.writeText(text).then(() => {
+      const orig = btn.textContent!
+      btn.textContent = 'Copied!'
+      setTimeout(() => { btn.textContent = orig }, 1200)
+    })
+  })
+</script>

@@ -410,6 +410,100 @@ export function getVersionAssets(org: string, repo: string, version: string): {
   }
 }
 
+/**
+ * Finds the definition key for a kind within a _definitions.json file.
+ * Searches by matching the last segment of the key (the Kind name).
+ * When multiple keys match (same kind in different groups), prefers the one
+ * whose group segment matches the resource's group first segment.
+ */
+function findDefinitionKey(defsPath: string, kind: string, group: string): string | null {
+  if (!existsSync(defsPath)) return null
+  try {
+    const defs = readJsonFile(defsPath) as { definitions?: Record<string, unknown> }
+    if (!defs.definitions) return null
+    const entries = Object.keys(defs.definitions)
+    const candidates = entries.filter(key => key.split('.').at(-1) === kind)
+    if (candidates.length === 0) return null
+    if (candidates.length === 1) return candidates[0]
+    // Prefer the key whose reversed-group prefix matches the resource group
+    const groupPrefix = group ? group.split('.')[0] : null
+    if (groupPrefix) {
+      const preferred = candidates.find(k => k.startsWith(groupPrefix + '.'))
+      if (preferred) return preferred
+    }
+    return candidates[0]
+  } catch {
+    return null
+  }
+}
+
+/**
+ * Returns GitHub UI links for files relevant to a specific resource kind.
+ * JSON schema filename convention from openapi2jsonschema:
+ *   core group:     {kind}-{version}.json
+ *   non-core group: {kind}-{groupFirstSegment}-{version}.json
+ * where kind and groupFirstSegment are lowercased.
+ */
+export function getResourceAssets(
+  org: string,
+  repo: string,
+  version: string,
+  kind: string,
+  group: string,
+  apiVersion: string,
+  plural: string,
+): {
+  jsonSchemaSource:   string | null
+  jsonSchemaLive:     string | null
+  jsonSchemaFile:     string
+  definitionsSource:  string | null
+  definitionsLive:    string | null
+  definitionKey:      string | null
+  crdFile:            string | null
+  githubTree:         string
+} {
+  const base = join(SCHEMAS_ROOT, org, repo, version)
+  const gh   = `${SCHEMAS_GITHUB}/${org}/${repo}/${version}`
+
+  const kindLower = kind.toLowerCase()
+  const groupPrefix = group ? group.split('.')[0] : null
+  const schemaFile = groupPrefix
+    ? `${kindLower}-${groupPrefix}-${apiVersion}.json`
+    : `${kindLower}-${apiVersion}.json`
+
+  const check = (rel: string) =>
+    existsSync(join(base, rel)) ? `${gh}/${rel}` : null
+
+  // Prefer the pre-computed key from index.yaml (written by generate.py),
+  // fall back to scanning _definitions.json at build time.
+  const indexPath = join(SCHEMAS_ROOT, org, repo, version, 'index.yaml')
+  let definitionKey: string | null = null
+  if (existsSync(indexPath)) {
+    try {
+      const idx = readYaml(indexPath) as { resources?: Array<{ kind: string; group: string; definitionKey?: string }> }
+      const match = idx?.resources?.find(r => r.kind === kind && (r.group ?? '') === (group ?? ''))
+      definitionKey = match?.definitionKey ?? null
+    } catch { /* ignore */ }
+  }
+  if (!definitionKey) {
+    const defSourcePath = join(base, 'json-schema', 'source', '_definitions.json')
+    const defLivePath   = join(base, 'json-schema', 'live', '_definitions.json')
+    definitionKey = findDefinitionKey(defSourcePath, kind, group)
+      ?? findDefinitionKey(defLivePath, kind, group)
+  }
+
+  return {
+    jsonSchemaSource:  check(`json-schema/source/${schemaFile}`),
+    jsonSchemaLive:    check(`json-schema/live/${schemaFile}`),
+    jsonSchemaFile:    schemaFile,
+    definitionsSource: check('json-schema/source/_definitions.json'),
+    definitionsLive:   check('json-schema/live/_definitions.json'),
+    definitionKey,
+    crdFile:           group ? check(`crd/${plural}.${group}.yaml`) : null,
+    githubTree:        `https://github.com/iponweb/schemas/tree/main/schemas/${org}/${repo}/${version}`,
+  }
+}
+
 export function getControllerIconFile(
   org: string,
   repo: string,
