@@ -237,7 +237,14 @@
           "default": {},
           "$ref": "#/definitions/aws.k8s.karpenter.v1.EC2NodeClassStatus"
         }
-      }
+      },
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "karpenter.k8s.aws",
+          "kind": "EC2NodeClass",
+          "version": "v1"
+        }
+      ]
     },
     "aws.k8s.karpenter.v1.EC2NodeClassSpec": {
       "description": "EC2NodeClassSpec is the top level specification for the AWS Karpenter Provider. This will contain configuration necessary to launch instances in AWS.",
@@ -982,7 +989,14 @@
           "default": {},
           "$ref": "#/definitions/sh.karpenter.v1.NodeClaimStatus"
         }
-      }
+      },
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "karpenter.sh",
+          "kind": "NodeClaim",
+          "version": "v1"
+        }
+      ]
     },
     "sh.karpenter.v1.NodeClaimSpec": {
       "description": "NodeClaimSpec describes the desired state of the NodeClaim",
@@ -1193,7 +1207,14 @@
           "default": {},
           "$ref": "#/definitions/sh.karpenter.v1.NodePoolStatus"
         }
-      }
+      },
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "karpenter.sh",
+          "kind": "NodePool",
+          "version": "v1"
+        }
+      ]
     },
     "sh.karpenter.v1.NodePoolSpec": {
       "description": "NodePoolSpec is the top level nodepool specification. Nodepools launch nodes in response to pods that are unschedulable. A single nodepool is capable of managing a diverse set of nodes. Node properties are determined from a combination of nodepool and pod scheduling constraints.",
@@ -1365,7 +1386,14 @@
           "default": {},
           "$ref": "#/definitions/sh.karpenter.v1alpha1.NodeOverlayStatus"
         }
-      }
+      },
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "karpenter.sh",
+          "kind": "NodeOverlay",
+          "version": "v1alpha1"
+        }
+      ]
     },
     "sh.karpenter.v1alpha1.NodeOverlaySpec": {
       "type": "object",

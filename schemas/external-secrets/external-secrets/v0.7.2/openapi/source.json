@@ -26,7 +26,14 @@
           "default": {},
           "$ref": "#/definitions/io.external-secrets.generators.v1alpha1.ACRAccessTokenSpec"
         }
-      }
+      },
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "generators.external-secrets.io",
+          "kind": "ACRAccessToken",
+          "version": "v1alpha1"
+        }
+      ]
     },
     "io.external-secrets.generators.v1alpha1.ACRAccessTokenSpec": {
       "description": "ACRAccessTokenSpec defines how to generate the access token e.g. how to authenticate and which registry to use. see: https://github.com/Azure/acr/blob/main/docs/AAD-OAuth.md#overview",
@@ -183,7 +190,14 @@
           "default": {},
           "$ref": "#/definitions/io.external-secrets.generators.v1alpha1.ECRAuthorizationTokenSpec"
         }
-      }
+      },
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "generators.external-secrets.io",
+          "kind": "ECRAuthorizationToken",
+          "version": "v1alpha1"
+        }
+      ]
     },
     "io.external-secrets.generators.v1alpha1.ECRAuthorizationTokenSpec": {
       "type": "object",
@@ -228,7 +242,14 @@
           "default": {},
           "$ref": "#/definitions/io.external-secrets.generators.v1alpha1.FakeSpec"
         }
-      }
+      },
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "generators.external-secrets.io",
+          "kind": "Fake",
+          "version": "v1alpha1"
+        }
+      ]
     },
     "io.external-secrets.generators.v1alpha1.FakeSpec": {
       "description": "FakeSpec contains the static data.",
@@ -310,7 +331,14 @@
           "default": {},
           "$ref": "#/definitions/io.external-secrets.generators.v1alpha1.GCRAccessTokenSpec"
         }
-      }
+      },
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "generators.external-secrets.io",
+          "kind": "GCRAccessToken",
+          "version": "v1alpha1"
+        }
+      ]
     },
     "io.external-secrets.generators.v1alpha1.GCRAccessTokenSpec": {
       "type": "object",
@@ -351,7 +379,14 @@
           "default": {},
           "$ref": "#/definitions/io.external-secrets.generators.v1alpha1.PasswordSpec"
         }
-      }
+      },
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "generators.external-secrets.io",
+          "kind": "Password",
+          "version": "v1alpha1"
+        }
+      ]
     },
     "io.external-secrets.generators.v1alpha1.PasswordSpec": {
       "description": "PasswordSpec controls the behavior of the password generator.",
@@ -750,7 +785,14 @@
           "default": {},
           "$ref": "#/definitions/io.external-secrets.v1alpha1.SecretStoreStatus"
         }
-      }
+      },
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "external-secrets.io",
+          "kind": "ClusterSecretStore",
+          "version": "v1alpha1"
+        }
+      ]
     },
     "io.external-secrets.v1alpha1.ExternalSecret": {
       "description": "ExternalSecret is the Schema for the external-secrets API.",
@@ -776,10 +818,17 @@
           "default": {},
           "$ref": "#/definitions/io.external-secrets.v1alpha1.ExternalSecretStatus"
         }
-      }
+      },
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "external-secrets.io",
+          "kind": "ExternalSecret",
+          "version": "v1alpha1"
+        }
+      ]
     },
     "io.external-secrets.v1alpha1.ExternalSecretData": {
-      "description": "ExternalSecretData defines the connection between the Kubernetes Secret key (spec.data.\u003ckey\u003e) and the Provider data.",
+      "description": "ExternalSecretData defines the connection between the Kubernetes Secret key (spec.data.<key>) and the Provider data.",
       "type": "object",
       "required": [
         "secretKey",
@@ -847,7 +896,7 @@
           }
         },
         "refreshInterval": {
-          "description": "RefreshInterval is the amount of time before the values are read again from the SecretStore provider Valid time units are \"ns\", \"us\" (or \"µs\"), \"ms\", \"s\", \"m\", \"h\" May be set to zero to fetch and create it once. Defaults to 1h.",
+          "description": "RefreshInterval is the amount of time before the values are read again from the SecretStore provider Valid time units are \"ns\", \"us\" (or \"\u00b5s\"), \"ms\", \"s\", \"m\", \"h\" May be set to zero to fetch and create it once. Defaults to 1h.",
           "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Duration"
         },
         "secretStoreRef": {
@@ -1315,7 +1364,14 @@
           "default": {},
           "$ref": "#/definitions/io.external-secrets.v1alpha1.PushSecretStatus"
         }
-      }
+      },
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "external-secrets.io",
+          "kind": "PushSecret",
+          "version": "v1alpha1"
+        }
+      ]
     },
     "io.external-secrets.v1alpha1.PushSecretData": {
       "type": "object",
@@ -1527,7 +1583,14 @@
           "default": {},
           "$ref": "#/definitions/io.external-secrets.v1alpha1.SecretStoreStatus"
         }
-      }
+      },
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "external-secrets.io",
+          "kind": "SecretStore",
+          "version": "v1alpha1"
+        }
+      ]
     },
     "io.external-secrets.v1alpha1.SecretStoreProvider": {
       "description": "SecretStoreProvider contains the provider-specific configration.",
@@ -2451,7 +2514,14 @@
           "default": {},
           "$ref": "#/definitions/io.external-secrets.v1beta1.ClusterExternalSecretStatus"
         }
-      }
+      },
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "external-secrets.io",
+          "kind": "ClusterExternalSecret",
+          "version": "v1beta1"
+        }
+      ]
     },
     "io.external-secrets.v1beta1.ClusterExternalSecretNamespaceFailure": {
       "description": "ClusterExternalSecretNamespaceFailure represents a failed namespace deployment and it's reason.",
@@ -2573,7 +2643,14 @@
           "default": {},
           "$ref": "#/definitions/io.external-secrets.v1beta1.SecretStoreStatus"
         }
-      }
+      },
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "external-secrets.io",
+          "kind": "ClusterSecretStore",
+          "version": "v1beta1"
+        }
+      ]
     },
     "io.external-secrets.v1beta1.ClusterSecretStoreCondition": {
       "description": "ClusterSecretStoreCondition describes a condition by which to choose namespaces to process ExternalSecrets in for a ClusterSecretStore instance.",
@@ -2671,10 +2748,17 @@
           "default": {},
           "$ref": "#/definitions/io.external-secrets.v1beta1.ExternalSecretStatus"
         }
-      }
+      },
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "external-secrets.io",
+          "kind": "ExternalSecret",
+          "version": "v1beta1"
+        }
+      ]
     },
     "io.external-secrets.v1beta1.ExternalSecretData": {
-      "description": "ExternalSecretData defines the connection between the Kubernetes Secret key (spec.data.\u003ckey\u003e) and the Provider data.",
+      "description": "ExternalSecretData defines the connection between the Kubernetes Secret key (spec.data.<key>) and the Provider data.",
       "type": "object",
       "required": [
         "secretKey",
@@ -2834,7 +2918,7 @@
           }
         },
         "refreshInterval": {
-          "description": "RefreshInterval is the amount of time before the values are read again from the SecretStore provider Valid time units are \"ns\", \"us\" (or \"µs\"), \"ms\", \"s\", \"m\", \"h\" May be set to zero to fetch and create it once. Defaults to 1h.",
+          "description": "RefreshInterval is the amount of time before the values are read again from the SecretStore provider Valid time units are \"ns\", \"us\" (or \"\u00b5s\"), \"ms\", \"s\", \"m\", \"h\" May be set to zero to fetch and create it once. Defaults to 1h.",
           "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.Duration"
         },
         "secretStoreRef": {
@@ -3432,7 +3516,14 @@
           "default": {},
           "$ref": "#/definitions/io.external-secrets.v1beta1.SecretStoreStatus"
         }
-      }
+      },
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "external-secrets.io",
+          "kind": "SecretStore",
+          "version": "v1beta1"
+        }
+      ]
     },
     "io.external-secrets.v1beta1.SecretStoreProvider": {
       "description": "SecretStoreProvider contains the provider-specific configuration.",
@@ -4169,7 +4260,7 @@
       "type": "string"
     },
     "io.k8s.apimachinery.pkg.apis.meta.v1.FieldsV1": {
-      "description": "FieldsV1 stores a set of fields in a data structure like a Trie, in JSON format.\n\nEach key is either a '.' representing the field itself, and will always map to an empty set, or a string representing a sub-field or item. The string will follow one of these four formats: 'f:\u003cname\u003e', where \u003cname\u003e is the name of a field in a struct, or key in a map 'v:\u003cvalue\u003e', where \u003cvalue\u003e is the exact json formatted value of a list item 'i:\u003cindex\u003e', where \u003cindex\u003e is position of a item in a list 'k:\u003ckeys\u003e', where \u003ckeys\u003e is a map of  a list item's key fields to their unique values If a key maps to an empty Fields value, the field that key represents is part of the set.\n\nThe exact format is defined in sigs.k8s.io/structured-merge-diff",
+      "description": "FieldsV1 stores a set of fields in a data structure like a Trie, in JSON format.\n\nEach key is either a '.' representing the field itself, and will always map to an empty set, or a string representing a sub-field or item. The string will follow one of these four formats: 'f:<name>', where <name> is the name of a field in a struct, or key in a map 'v:<value>', where <value> is the exact json formatted value of a list item 'i:<index>', where <index> is position of a item in a list 'k:<keys>', where <keys> is a map of  a list item's key fields to their unique values If a key maps to an empty Fields value, the field that key represents is part of the set.\n\nThe exact format is defined in sigs.k8s.io/structured-merge-diff",
       "type": "object"
     },
     "io.k8s.apimachinery.pkg.apis.meta.v1.LabelSelector": {

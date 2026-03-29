@@ -374,7 +374,14 @@
           "$ref": "#/definitions/io.external-secrets.v1alpha1.SecretStoreStatus"
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "external-secrets.io",
+          "kind": "ClusterSecretStore",
+          "version": "v1alpha1"
+        }
+      ]
     },
     "io.external-secrets.v1alpha1.ExternalSecret": {
       "description": "ExternalSecret is the Schema for the external-secrets API.",
@@ -401,7 +408,14 @@
           "$ref": "#/definitions/io.external-secrets.v1alpha1.ExternalSecretStatus"
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "external-secrets.io",
+          "kind": "ExternalSecret",
+          "version": "v1alpha1"
+        }
+      ]
     },
     "io.external-secrets.v1alpha1.ExternalSecretData": {
       "description": "ExternalSecretData defines the connection between the Kubernetes Secret key (spec.data.<key>) and the Provider data.",
@@ -968,7 +982,14 @@
           "$ref": "#/definitions/io.external-secrets.v1alpha1.SecretStoreStatus"
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "external-secrets.io",
+          "kind": "SecretStore",
+          "version": "v1alpha1"
+        }
+      ]
     },
     "io.external-secrets.v1alpha1.SecretStoreProvider": {
       "description": "SecretStoreProvider contains the provider-specific configration.",
@@ -1922,7 +1943,14 @@
           "$ref": "#/definitions/io.external-secrets.v1beta1.ClusterExternalSecretStatus"
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "external-secrets.io",
+          "kind": "ClusterExternalSecret",
+          "version": "v1beta1"
+        }
+      ]
     },
     "io.external-secrets.v1beta1.ClusterExternalSecretNamespaceFailure": {
       "description": "ClusterExternalSecretNamespaceFailure represents a failed namespace deployment and it's reason.",
@@ -2049,7 +2077,14 @@
           "$ref": "#/definitions/io.external-secrets.v1beta1.SecretStoreStatus"
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "external-secrets.io",
+          "kind": "ClusterSecretStore",
+          "version": "v1beta1"
+        }
+      ]
     },
     "io.external-secrets.v1beta1.ClusterSecretStoreCondition": {
       "description": "ClusterSecretStoreCondition describes a condition by which to choose namespaces to process ExternalSecrets in for a ClusterSecretStore instance.",
@@ -2152,7 +2187,14 @@
           "$ref": "#/definitions/io.external-secrets.v1beta1.ExternalSecretStatus"
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "external-secrets.io",
+          "kind": "ExternalSecret",
+          "version": "v1beta1"
+        }
+      ]
     },
     "io.external-secrets.v1beta1.ExternalSecretData": {
       "description": "ExternalSecretData defines the connection between the Kubernetes Secret key (spec.data.<key>) and the Provider data.",
@@ -2906,7 +2948,14 @@
           "$ref": "#/definitions/io.external-secrets.v1beta1.SecretStoreStatus"
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "external-secrets.io",
+          "kind": "SecretStore",
+          "version": "v1beta1"
+        }
+      ]
     },
     "io.external-secrets.v1beta1.SecretStoreProvider": {
       "description": "SecretStoreProvider contains the provider-specific configuration.",

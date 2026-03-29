@@ -34,7 +34,7 @@ resources:
   scope: Namespaced
   shortNames:
   - gtw
-  definitionKey: io.k8s.networking.gateway.v1.Gateway
+  definitionKey: io.k8s.networking.gateway.v1beta1.Gateway
 - kind: GatewayClass
   group: gateway.networking.k8s.io
   version: v1beta1
@@ -42,13 +42,13 @@ resources:
   scope: Cluster
   shortNames:
   - gc
-  definitionKey: io.k8s.networking.gateway.v1.GatewayClass
+  definitionKey: io.k8s.networking.gateway.v1beta1.GatewayClass
 - kind: HTTPRoute
   group: gateway.networking.k8s.io
   version: v1beta1
   plural: httproutes
   scope: Namespaced
-  definitionKey: io.k8s.networking.gateway.v1.HTTPRoute
+  definitionKey: io.k8s.networking.gateway.v1beta1.HTTPRoute
 - kind: ReferenceGrant
   group: gateway.networking.k8s.io
   version: v1beta1
@@ -56,4 +56,4 @@ resources:
   scope: Namespaced
   shortNames:
   - refgrant
-  definitionKey: io.k8s.networking.gateway.v1alpha2.ReferenceGrant
+  definitionKey: io.k8s.networking.gateway.v1beta1.ReferenceGrant

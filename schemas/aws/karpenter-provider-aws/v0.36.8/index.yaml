@@ -16,7 +16,7 @@ resources:
   shortNames:
   - ec2nc
   - ec2ncs
-  definitionKey: aws.k8s.karpenter.v1.EC2NodeClass
+  definitionKey: aws.k8s.karpenter.v1beta1.EC2NodeClass
 - kind: NodeClaim
   group: karpenter.sh
   version: v1
@@ -34,10 +34,10 @@ resources:
   version: v1beta1
   plural: nodeclaims
   scope: Cluster
-  definitionKey: sh.karpenter.v1.NodeClaim
+  definitionKey: sh.karpenter.v1beta1.NodeClaim
 - kind: NodePool
   group: karpenter.sh
   version: v1beta1
   plural: nodepools
   scope: Cluster
-  definitionKey: sh.karpenter.v1.NodePool
+  definitionKey: sh.karpenter.v1beta1.NodePool

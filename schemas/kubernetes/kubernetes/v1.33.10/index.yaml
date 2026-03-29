@@ -174,13 +174,13 @@ resources:
   version: v1beta1
   plural: validatingadmissionpolicies
   scope: Cluster
-  definitionKey: io.k8s.api.admissionregistration.v1.ValidatingAdmissionPolicy
+  definitionKey: io.k8s.api.admissionregistration.v1beta1.ValidatingAdmissionPolicy
 - kind: ValidatingAdmissionPolicyBinding
   group: admissionregistration.k8s.io
   version: v1beta1
   plural: validatingadmissionpolicybindings
   scope: Cluster
-  definitionKey: io.k8s.api.admissionregistration.v1.ValidatingAdmissionPolicyBinding
+  definitionKey: io.k8s.api.admissionregistration.v1beta1.ValidatingAdmissionPolicyBinding
 - kind: CustomResourceDefinition
   group: apiextensions.k8s.io
   version: v1
@@ -292,7 +292,7 @@ resources:
   scope: Namespaced
   shortNames:
   - hpa
-  definitionKey: io.k8s.api.autoscaling.v1.HorizontalPodAutoscaler
+  definitionKey: io.k8s.api.autoscaling.v2.HorizontalPodAutoscaler
 - kind: CronJob
   group: batch
   version: v1
@@ -326,7 +326,7 @@ resources:
   version: v1beta1
   plural: clustertrustbundles
   scope: Cluster
-  definitionKey: io.k8s.api.certificates.v1alpha1.ClusterTrustBundle
+  definitionKey: io.k8s.api.certificates.v1beta1.ClusterTrustBundle
 - kind: Lease
   group: coordination.k8s.io
   version: v1
@@ -347,7 +347,7 @@ resources:
   plural: leasecandidates
   scope: Namespaced
   userManaged: false
-  definitionKey: io.k8s.api.coordination.v1alpha2.LeaseCandidate
+  definitionKey: io.k8s.api.coordination.v1beta1.LeaseCandidate
 - kind: EndpointSlice
   group: discovery.k8s.io
   version: v1
@@ -363,7 +363,7 @@ resources:
   shortNames:
   - ev
   userManaged: false
-  definitionKey: io.k8s.api.core.v1.Event
+  definitionKey: io.k8s.api.events.v1.Event
 - kind: FlowSchema
   group: flowcontrol.apiserver.k8s.io
   version: v1
@@ -426,13 +426,13 @@ resources:
   scope: Cluster
   shortNames:
   - ip
-  definitionKey: io.k8s.api.networking.v1.IPAddress
+  definitionKey: io.k8s.api.networking.v1beta1.IPAddress
 - kind: ServiceCIDR
   group: networking.k8s.io
   version: v1beta1
   plural: servicecidrs
   scope: Cluster
-  definitionKey: io.k8s.api.networking.v1.ServiceCIDR
+  definitionKey: io.k8s.api.networking.v1beta1.ServiceCIDR
 - kind: RuntimeClass
   group: node.k8s.io
   version: v1
@@ -488,7 +488,7 @@ resources:
   version: v1alpha3
   plural: resourceclaims
   scope: Namespaced
-  definitionKey: io.k8s.api.core.v1.ResourceClaim
+  definitionKey: io.k8s.api.resource.v1alpha3.ResourceClaim
 - kind: ResourceClaimTemplate
   group: resource.k8s.io
   version: v1alpha3
@@ -507,51 +507,51 @@ resources:
   version: v1beta1
   plural: deviceclasses
   scope: Cluster
-  definitionKey: io.k8s.api.resource.v1alpha3.DeviceClass
+  definitionKey: io.k8s.api.resource.v1beta1.DeviceClass
 - kind: ResourceClaim
   group: resource.k8s.io
   version: v1beta1
   plural: resourceclaims
   scope: Namespaced
-  definitionKey: io.k8s.api.core.v1.ResourceClaim
+  definitionKey: io.k8s.api.resource.v1beta1.ResourceClaim
 - kind: ResourceClaimTemplate
   group: resource.k8s.io
   version: v1beta1
   plural: resourceclaimtemplates
   scope: Namespaced
-  definitionKey: io.k8s.api.resource.v1alpha3.ResourceClaimTemplate
+  definitionKey: io.k8s.api.resource.v1beta1.ResourceClaimTemplate
 - kind: ResourceSlice
   group: resource.k8s.io
   version: v1beta1
   plural: resourceslices
   scope: Cluster
   userManaged: false
-  definitionKey: io.k8s.api.resource.v1alpha3.ResourceSlice
+  definitionKey: io.k8s.api.resource.v1beta1.ResourceSlice
 - kind: DeviceClass
   group: resource.k8s.io
   version: v1beta2
   plural: deviceclasses
   scope: Cluster
-  definitionKey: io.k8s.api.resource.v1alpha3.DeviceClass
+  definitionKey: io.k8s.api.resource.v1beta2.DeviceClass
 - kind: ResourceClaim
   group: resource.k8s.io
   version: v1beta2
   plural: resourceclaims
   scope: Namespaced
-  definitionKey: io.k8s.api.core.v1.ResourceClaim
+  definitionKey: io.k8s.api.resource.v1beta2.ResourceClaim
 - kind: ResourceClaimTemplate
   group: resource.k8s.io
   version: v1beta2
   plural: resourceclaimtemplates
   scope: Namespaced
-  definitionKey: io.k8s.api.resource.v1alpha3.ResourceClaimTemplate
+  definitionKey: io.k8s.api.resource.v1beta2.ResourceClaimTemplate
 - kind: ResourceSlice
   group: resource.k8s.io
   version: v1beta2
   plural: resourceslices
   scope: Cluster
   userManaged: false
-  definitionKey: io.k8s.api.resource.v1alpha3.ResourceSlice
+  definitionKey: io.k8s.api.resource.v1beta2.ResourceSlice
 - kind: PriorityClass
   group: scheduling.k8s.io
   version: v1
@@ -610,7 +610,7 @@ resources:
   scope: Cluster
   shortNames:
   - vac
-  definitionKey: io.k8s.api.storage.v1alpha1.VolumeAttributesClass
+  definitionKey: io.k8s.api.storage.v1beta1.VolumeAttributesClass
 - kind: StorageVersionMigration
   group: storagemigration.k8s.io
   version: v1alpha1

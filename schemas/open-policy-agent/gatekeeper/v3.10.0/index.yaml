@@ -40,37 +40,37 @@ resources:
   version: v1alpha1
   plural: assign
   scope: Cluster
-  definitionKey: sh.gatekeeper.mutations.v1.Assign
+  definitionKey: sh.gatekeeper.mutations.v1alpha1.Assign
 - kind: AssignMetadata
   group: mutations.gatekeeper.sh
   version: v1alpha1
   plural: assignmetadata
   scope: Cluster
-  definitionKey: sh.gatekeeper.mutations.v1.AssignMetadata
+  definitionKey: sh.gatekeeper.mutations.v1alpha1.AssignMetadata
 - kind: ModifySet
   group: mutations.gatekeeper.sh
   version: v1alpha1
   plural: modifyset
   scope: Cluster
-  definitionKey: sh.gatekeeper.mutations.v1.ModifySet
+  definitionKey: sh.gatekeeper.mutations.v1alpha1.ModifySet
 - kind: Assign
   group: mutations.gatekeeper.sh
   version: v1beta1
   plural: assign
   scope: Cluster
-  definitionKey: sh.gatekeeper.mutations.v1.Assign
+  definitionKey: sh.gatekeeper.mutations.v1beta1.Assign
 - kind: AssignMetadata
   group: mutations.gatekeeper.sh
   version: v1beta1
   plural: assignmetadata
   scope: Cluster
-  definitionKey: sh.gatekeeper.mutations.v1.AssignMetadata
+  definitionKey: sh.gatekeeper.mutations.v1beta1.AssignMetadata
 - kind: ModifySet
   group: mutations.gatekeeper.sh
   version: v1beta1
   plural: modifyset
   scope: Cluster
-  definitionKey: sh.gatekeeper.mutations.v1.ModifySet
+  definitionKey: sh.gatekeeper.mutations.v1beta1.ModifySet
 - kind: ConstraintPodStatus
   group: status.gatekeeper.sh
   version: v1beta1
@@ -100,10 +100,10 @@ resources:
   version: v1alpha1
   plural: constrainttemplates
   scope: Cluster
-  definitionKey: sh.gatekeeper.templates.v1.ConstraintTemplate
+  definitionKey: sh.gatekeeper.templates.v1alpha1.ConstraintTemplate
 - kind: ConstraintTemplate
   group: templates.gatekeeper.sh
   version: v1beta1
   plural: constrainttemplates
   scope: Cluster
-  definitionKey: sh.gatekeeper.templates.v1.ConstraintTemplate
+  definitionKey: sh.gatekeeper.templates.v1beta1.ConstraintTemplate

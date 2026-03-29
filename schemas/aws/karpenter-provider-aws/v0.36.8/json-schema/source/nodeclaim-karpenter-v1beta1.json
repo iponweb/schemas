@@ -10,6 +10,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "karpenter.sh/v1beta1"
       ]
     },
     "kind": {
@@ -17,6 +20,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "NodeClaim"
       ]
     },
     "metadata": {
@@ -32,6 +38,13 @@
       "$ref": "_definitions.json#/definitions/sh.karpenter.v1beta1.NodeClaimStatus"
     }
   },
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "karpenter.sh",
+      "kind": "NodeClaim",
+      "version": "v1beta1"
+    }
+  ],
   "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

@@ -21,7 +21,14 @@
           "$ref": "#/definitions/io.external-secrets.generators.v1alpha1.ACRAccessTokenSpec"
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "generators.external-secrets.io",
+          "kind": "ACRAccessToken",
+          "version": "v1alpha1"
+        }
+      ]
     },
     "io.external-secrets.generators.v1alpha1.ACRAccessTokenSpec": {
       "description": "ACRAccessTokenSpec defines how to generate the access token e.g. how to authenticate and which registry to use. see: https://github.com/Azure/acr/blob/main/docs/AAD-OAuth.md#overview",
@@ -203,7 +210,14 @@
           "$ref": "#/definitions/io.external-secrets.generators.v1alpha1.CloudsmithAccessTokenSpec"
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "generators.external-secrets.io",
+          "kind": "CloudsmithAccessToken",
+          "version": "v1alpha1"
+        }
+      ]
     },
     "io.external-secrets.generators.v1alpha1.CloudsmithAccessTokenSpec": {
       "description": "CloudsmithAccessTokenSpec defines the configuration for generating a Cloudsmith access token using OIDC authentication.",
@@ -257,7 +271,14 @@
           "$ref": "#/definitions/io.external-secrets.generators.v1alpha1.ClusterGeneratorSpec"
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "generators.external-secrets.io",
+          "kind": "ClusterGenerator",
+          "version": "v1alpha1"
+        }
+      ]
     },
     "io.external-secrets.generators.v1alpha1.ClusterGeneratorSpec": {
       "description": "ClusterGeneratorSpec defines the desired state of a ClusterGenerator.",
@@ -301,7 +322,14 @@
           "$ref": "#/definitions/io.external-secrets.generators.v1alpha1.ECRAuthorizationTokenSpec"
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "generators.external-secrets.io",
+          "kind": "ECRAuthorizationToken",
+          "version": "v1alpha1"
+        }
+      ]
     },
     "io.external-secrets.generators.v1alpha1.ECRAuthorizationTokenSpec": {
       "description": "ECRAuthorizationTokenSpec defines the desired state to generate an AWS ECR authorization token.",
@@ -352,7 +380,14 @@
           "$ref": "#/definitions/io.external-secrets.generators.v1alpha1.FakeSpec"
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "generators.external-secrets.io",
+          "kind": "Fake",
+          "version": "v1alpha1"
+        }
+      ]
     },
     "io.external-secrets.generators.v1alpha1.FakeSpec": {
       "description": "FakeSpec contains the static data.",
@@ -449,7 +484,14 @@
           "$ref": "#/definitions/io.external-secrets.generators.v1alpha1.GCRAccessTokenSpec"
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "generators.external-secrets.io",
+          "kind": "GCRAccessToken",
+          "version": "v1alpha1"
+        }
+      ]
     },
     "io.external-secrets.generators.v1alpha1.GCRAccessTokenSpec": {
       "description": "GCRAccessTokenSpec defines the desired state to generate a Google Container Registry access token.",
@@ -549,7 +591,14 @@
           "$ref": "#/definitions/io.external-secrets.generators.v1alpha1.GeneratorStateStatus"
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "generators.external-secrets.io",
+          "kind": "GeneratorState",
+          "version": "v1alpha1"
+        }
+      ]
     },
     "io.external-secrets.generators.v1alpha1.GeneratorStateSpec": {
       "description": "GeneratorStateSpec defines the desired state of a generator state resource.",
@@ -637,7 +686,14 @@
           "$ref": "#/definitions/io.external-secrets.generators.v1alpha1.GithubAccessTokenSpec"
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "generators.external-secrets.io",
+          "kind": "GithubAccessToken",
+          "version": "v1alpha1"
+        }
+      ]
     },
     "io.external-secrets.generators.v1alpha1.GithubAccessTokenSpec": {
       "description": "GithubAccessTokenSpec defines the desired state to generate a GitHub access token.",
@@ -733,7 +789,14 @@
           "$ref": "#/definitions/io.external-secrets.generators.v1alpha1.GrafanaSpec"
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "generators.external-secrets.io",
+          "kind": "Grafana",
+          "version": "v1alpha1"
+        }
+      ]
     },
     "io.external-secrets.generators.v1alpha1.GrafanaAuth": {
       "description": "GrafanaAuth defines the authentication methods for connecting to a Grafana instance.",
@@ -840,7 +903,14 @@
           "$ref": "#/definitions/io.external-secrets.generators.v1alpha1.MFASpec"
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "generators.external-secrets.io",
+          "kind": "MFA",
+          "version": "v1alpha1"
+        }
+      ]
     },
     "io.external-secrets.generators.v1alpha1.MFASpec": {
       "description": "MFASpec controls the behavior of the mfa generator.",
@@ -915,7 +985,14 @@
           "$ref": "#/definitions/io.external-secrets.generators.v1alpha1.PasswordSpec"
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "generators.external-secrets.io",
+          "kind": "Password",
+          "version": "v1alpha1"
+        }
+      ]
     },
     "io.external-secrets.generators.v1alpha1.PasswordSpec": {
       "description": "PasswordSpec controls the behavior of the password generator.",
@@ -984,7 +1061,14 @@
           "$ref": "#/definitions/io.external-secrets.generators.v1alpha1.QuayAccessTokenSpec"
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "generators.external-secrets.io",
+          "kind": "QuayAccessToken",
+          "version": "v1alpha1"
+        }
+      ]
     },
     "io.external-secrets.generators.v1alpha1.QuayAccessTokenSpec": {
       "description": "QuayAccessTokenSpec defines the desired state to generate a Quay access token.",
@@ -1051,7 +1135,14 @@
           "$ref": "#/definitions/io.external-secrets.generators.v1alpha1.SSHKeySpec"
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "generators.external-secrets.io",
+          "kind": "SSHKey",
+          "version": "v1alpha1"
+        }
+      ]
     },
     "io.external-secrets.generators.v1alpha1.SSHKeySpec": {
       "description": "SSHKeySpec controls the behavior of the ssh key generator.",
@@ -1094,7 +1185,14 @@
           "$ref": "#/definitions/io.external-secrets.generators.v1alpha1.STSSessionTokenSpec"
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "generators.external-secrets.io",
+          "kind": "STSSessionToken",
+          "version": "v1alpha1"
+        }
+      ]
     },
     "io.external-secrets.generators.v1alpha1.STSSessionTokenSpec": {
       "description": "STSSessionTokenSpec defines the desired state to generate an AWS STS session token.",
@@ -1160,7 +1258,14 @@
           "$ref": "#/definitions/io.external-secrets.generators.v1alpha1.UUIDSpec"
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "generators.external-secrets.io",
+          "kind": "UUID",
+          "version": "v1alpha1"
+        }
+      ]
     },
     "io.external-secrets.generators.v1alpha1.UUIDSpec": {
       "description": "UUIDSpec controls the behavior of the uuid generator.",
@@ -1187,7 +1292,14 @@
           "$ref": "#/definitions/io.external-secrets.generators.v1alpha1.VaultDynamicSecretSpec"
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "generators.external-secrets.io",
+          "kind": "VaultDynamicSecret",
+          "version": "v1alpha1"
+        }
+      ]
     },
     "io.external-secrets.generators.v1alpha1.VaultDynamicSecretSpec": {
       "description": "VaultDynamicSecretSpec defines the desired spec of VaultDynamicSecret.",
@@ -1254,7 +1366,14 @@
           "$ref": "#/definitions/io.external-secrets.generators.v1alpha1.WebhookSpec"
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "generators.external-secrets.io",
+          "kind": "Webhook",
+          "version": "v1alpha1"
+        }
+      ]
     },
     "io.external-secrets.generators.v1alpha1.WebhookCAProvider": {
       "description": "WebhookCAProvider defines a location to fetch the cert for the webhook provider from.",
@@ -2184,7 +2303,14 @@
           "$ref": "#/definitions/io.external-secrets.v1.ClusterExternalSecretStatus"
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "external-secrets.io",
+          "kind": "ClusterExternalSecret",
+          "version": "v1"
+        }
+      ]
     },
     "io.external-secrets.v1.ClusterExternalSecretNamespaceFailure": {
       "description": "ClusterExternalSecretNamespaceFailure represents a failed namespace deployment and it's reason.",
@@ -2333,7 +2459,14 @@
           "$ref": "#/definitions/io.external-secrets.v1.SecretStoreStatus"
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "external-secrets.io",
+          "kind": "ClusterSecretStore",
+          "version": "v1"
+        }
+      ]
     },
     "io.external-secrets.v1.ClusterSecretStoreCondition": {
       "description": "ClusterSecretStoreCondition describes a condition by which to choose namespaces to process ExternalSecrets in for a ClusterSecretStore instance.",
@@ -2669,7 +2802,14 @@
           "$ref": "#/definitions/io.external-secrets.v1.ExternalSecretStatus"
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "external-secrets.io",
+          "kind": "ExternalSecret",
+          "version": "v1"
+        }
+      ]
     },
     "io.external-secrets.v1.ExternalSecretData": {
       "description": "ExternalSecretData defines the connection between the Kubernetes Secret key (spec.data.<key>) and the Provider data.",
@@ -4518,7 +4658,14 @@
           "$ref": "#/definitions/io.external-secrets.v1.SecretStoreStatus"
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "external-secrets.io",
+          "kind": "SecretStore",
+          "version": "v1"
+        }
+      ]
     },
     "io.external-secrets.v1.SecretStoreProvider": {
       "description": "SecretStoreProvider contains the provider-specific configuration.",
@@ -5709,7 +5856,14 @@
           "$ref": "#/definitions/io.external-secrets.v1alpha1.ClusterPushSecretStatus"
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "external-secrets.io",
+          "kind": "ClusterPushSecret",
+          "version": "v1alpha1"
+        }
+      ]
     },
     "io.external-secrets.v1alpha1.ClusterPushSecretNamespaceFailure": {
       "description": "ClusterPushSecretNamespaceFailure represents a failed namespace deployment and it's reason.",
@@ -5823,7 +5977,14 @@
           "$ref": "#/definitions/io.external-secrets.v1alpha1.PushSecretStatus"
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "external-secrets.io",
+          "kind": "PushSecret",
+          "version": "v1alpha1"
+        }
+      ]
     },
     "io.external-secrets.v1alpha1.PushSecretData": {
       "description": "PushSecretData defines data to be pushed to the provider and associated metadata.",

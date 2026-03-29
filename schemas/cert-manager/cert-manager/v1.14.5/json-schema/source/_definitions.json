@@ -737,7 +737,14 @@
           "$ref": "#/definitions/io.cert-manager.acme.v1.ChallengeStatus"
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "acme.cert-manager.io",
+          "kind": "Challenge",
+          "version": "v1"
+        }
+      ]
     },
     "io.cert-manager.acme.v1.ChallengeSpec": {
       "type": "object",
@@ -853,7 +860,14 @@
           "$ref": "#/definitions/io.cert-manager.acme.v1.OrderStatus"
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "acme.cert-manager.io",
+          "kind": "Order",
+          "version": "v1"
+        }
+      ]
     },
     "io.cert-manager.acme.v1.OrderSpec": {
       "type": "object",
@@ -1004,7 +1018,14 @@
           "$ref": "#/definitions/io.cert-manager.v1.CertificateStatus"
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "cert-manager.io",
+          "kind": "Certificate",
+          "version": "v1"
+        }
+      ]
     },
     "io.cert-manager.v1.CertificateAdditionalOutputFormat": {
       "description": "CertificateAdditionalOutputFormat defines an additional output format of a Certificate resource. These contain supplementary data formats of the signed certificate chain and paired private key.",
@@ -1126,7 +1147,14 @@
           "$ref": "#/definitions/io.cert-manager.v1.CertificateRequestStatus"
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "cert-manager.io",
+          "kind": "CertificateRequest",
+          "version": "v1"
+        }
+      ]
     },
     "io.cert-manager.v1.CertificateRequestCondition": {
       "description": "CertificateRequestCondition contains condition information for a CertificateRequest.",
@@ -1487,7 +1515,14 @@
           "$ref": "#/definitions/io.cert-manager.v1.IssuerStatus"
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "cert-manager.io",
+          "kind": "ClusterIssuer",
+          "version": "v1"
+        }
+      ]
     },
     "io.cert-manager.v1.Issuer": {
       "description": "An Issuer represents a certificate issuing authority which can be referenced as part of `issuerRef` fields. It is scoped to a single namespace and can therefore only be referenced by resources within the same namespace.",
@@ -1519,7 +1554,14 @@
           "$ref": "#/definitions/io.cert-manager.v1.IssuerStatus"
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "cert-manager.io",
+          "kind": "Issuer",
+          "version": "v1"
+        }
+      ]
     },
     "io.cert-manager.v1.IssuerCondition": {
       "description": "IssuerCondition contains condition information for an Issuer.",

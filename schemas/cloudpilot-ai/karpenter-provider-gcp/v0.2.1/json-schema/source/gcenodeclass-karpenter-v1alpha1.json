@@ -7,6 +7,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "karpenter.k8s.gcp/v1alpha1"
       ]
     },
     "kind": {
@@ -14,6 +17,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "GCENodeClass"
       ]
     },
     "metadata": {
@@ -29,6 +35,13 @@
       "$ref": "_definitions.json#/definitions/gcp.k8s.karpenter.v1alpha1.GCENodeClassStatus"
     }
   },
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "karpenter.k8s.gcp",
+      "kind": "GCENodeClass",
+      "version": "v1alpha1"
+    }
+  ],
   "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

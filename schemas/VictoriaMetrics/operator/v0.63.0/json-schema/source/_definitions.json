@@ -229,7 +229,14 @@
           "$ref": "#/definitions/com.victoriametrics.operator.v1.VLAgentStatus"
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "operator.victoriametrics.com",
+          "kind": "VLAgent",
+          "version": "v1"
+        }
+      ]
     },
     "com.victoriametrics.operator.v1.VLAgentRemoteWriteSettings": {
       "description": "VLAgentRemoteWriteSettings - defines global settings for all remoteWrite urls.",
@@ -681,7 +688,14 @@
           "$ref": "#/definitions/com.victoriametrics.operator.v1.VLClusterStatus"
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "operator.victoriametrics.com",
+          "kind": "VLCluster",
+          "version": "v1"
+        }
+      ]
     },
     "com.victoriametrics.operator.v1.VLClusterSpec": {
       "description": "VLClusterSpec defines the desired state of VLCluster",
@@ -1342,7 +1356,14 @@
           "$ref": "#/definitions/com.victoriametrics.operator.v1.VLSingleStatus"
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "operator.victoriametrics.com",
+          "kind": "VLSingle",
+          "version": "v1"
+        }
+      ]
     },
     "com.victoriametrics.operator.v1.VLSingleSpec": {
       "description": "VLSingleSpec defines the desired state of VLSingle",
@@ -2025,7 +2046,14 @@
           "$ref": "#/definitions/com.victoriametrics.operator.v1.VMAnomalyStatus"
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "operator.victoriametrics.com",
+          "kind": "VMAnomaly",
+          "version": "v1"
+        }
+      ]
     },
     "com.victoriametrics.operator.v1.VMAnomalyMonitoringPullSpec": {
       "description": "VMAnomalyMonitoringPullSpec defines pull monitoring configuration which is enabled by default and served at POD_IP:8490/metrics",
@@ -2634,7 +2662,14 @@
           "$ref": "#/definitions/com.victoriametrics.operator.v1.VTClusterStatus"
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "operator.victoriametrics.com",
+          "kind": "VTCluster",
+          "version": "v1"
+        }
+      ]
     },
     "com.victoriametrics.operator.v1.VTClusterSpec": {
       "description": "VTClusterSpec defines the desired state of VTCluster",
@@ -3291,7 +3326,14 @@
           "$ref": "#/definitions/com.victoriametrics.operator.v1.VTSingleStatus"
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "operator.victoriametrics.com",
+          "kind": "VTSingle",
+          "version": "v1"
+        }
+      ]
     },
     "com.victoriametrics.operator.v1.VTSingleSpec": {
       "description": "VTSingleSpec defines the desired state of VTSingle",
@@ -7700,7 +7742,14 @@
           "$ref": "#/definitions/com.victoriametrics.operator.v1beta1.VLogsStatus"
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "operator.victoriametrics.com",
+          "kind": "VLogs",
+          "version": "v1beta1"
+        }
+      ]
     },
     "com.victoriametrics.operator.v1beta1.VLogsSpec": {
       "description": "VLogsSpec defines the desired state of VLogs VLogs is deprecated, migrate to the VLSingle",
@@ -8050,7 +8099,14 @@
           "$ref": "#/definitions/com.victoriametrics.operator.v1beta1.VMAgentStatus"
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "operator.victoriametrics.com",
+          "kind": "VMAgent",
+          "version": "v1beta1"
+        }
+      ]
     },
     "com.victoriametrics.operator.v1beta1.VMAgentRemoteWriteSettings": {
       "description": "VMAgentRemoteWriteSettings - defines global settings for all remoteWrite urls.",
@@ -8793,7 +8849,14 @@
           "$ref": "#/definitions/com.victoriametrics.operator.v1beta1.VMAlertStatus"
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "operator.victoriametrics.com",
+          "kind": "VMAlert",
+          "version": "v1beta1"
+        }
+      ]
     },
     "com.victoriametrics.operator.v1beta1.VMAlertDatasourceSpec": {
       "description": "VMAlertDatasourceSpec defines the remote storage configuration for VmAlert to read alerts from",
@@ -9407,7 +9470,14 @@
           "$ref": "#/definitions/com.victoriametrics.operator.v1beta1.VMAlertmanagerStatus"
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "operator.victoriametrics.com",
+          "kind": "VMAlertmanager",
+          "version": "v1beta1"
+        }
+      ]
     },
     "com.victoriametrics.operator.v1beta1.VMAlertmanagerConfig": {
       "description": "VMAlertmanagerConfig is the Schema for the vmalertmanagerconfigs API",
@@ -9434,7 +9504,14 @@
           "$ref": "#/definitions/com.victoriametrics.operator.v1beta1.VMAlertmanagerConfigStatus"
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "operator.victoriametrics.com",
+          "kind": "VMAlertmanagerConfig",
+          "version": "v1beta1"
+        }
+      ]
     },
     "com.victoriametrics.operator.v1beta1.VMAlertmanagerConfigSpec": {
       "description": "VMAlertmanagerConfigSpec defines configuration for VMAlertmanagerConfig it must reference only locally defined objects",
@@ -9954,7 +10031,14 @@
           "$ref": "#/definitions/com.victoriametrics.operator.v1beta1.VMAuthStatus"
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "operator.victoriametrics.com",
+          "kind": "VMAuth",
+          "version": "v1beta1"
+        }
+      ]
     },
     "com.victoriametrics.operator.v1beta1.VMAuthLoadBalancer": {
       "description": "VMAuthLoadBalancer configures vmauth as a load balancer for the requests",
@@ -10902,7 +10986,14 @@
           "$ref": "#/definitions/com.victoriametrics.operator.v1beta1.VMClusterStatus"
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "operator.victoriametrics.com",
+          "kind": "VMCluster",
+          "version": "v1beta1"
+        }
+      ]
     },
     "com.victoriametrics.operator.v1beta1.VMClusterSpec": {
       "description": "VMClusterSpec defines the desired state of VMCluster",
@@ -11304,7 +11395,14 @@
           "$ref": "#/definitions/com.victoriametrics.operator.v1beta1.ScrapeObjectStatus"
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "operator.victoriametrics.com",
+          "kind": "VMNodeScrape",
+          "version": "v1beta1"
+        }
+      ]
     },
     "com.victoriametrics.operator.v1beta1.VMNodeScrapeSpec": {
       "description": "VMNodeScrapeSpec defines specification for VMNodeScrape.",
@@ -11461,7 +11559,14 @@
           "$ref": "#/definitions/com.victoriametrics.operator.v1beta1.ScrapeObjectStatus"
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "operator.victoriametrics.com",
+          "kind": "VMPodScrape",
+          "version": "v1beta1"
+        }
+      ]
     },
     "com.victoriametrics.operator.v1beta1.VMPodScrapeSpec": {
       "description": "VMPodScrapeSpec defines the desired state of VMPodScrape",
@@ -11545,7 +11650,14 @@
           "$ref": "#/definitions/com.victoriametrics.operator.v1beta1.ScrapeObjectStatus"
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "operator.victoriametrics.com",
+          "kind": "VMProbe",
+          "version": "v1beta1"
+        }
+      ]
     },
     "com.victoriametrics.operator.v1beta1.VMProbeSpec": {
       "description": "VMProbeSpec contains specification parameters for a Probe.",
@@ -11792,7 +11904,14 @@
           "$ref": "#/definitions/com.victoriametrics.operator.v1beta1.VMRuleStatus"
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "operator.victoriametrics.com",
+          "kind": "VMRule",
+          "version": "v1beta1"
+        }
+      ]
     },
     "com.victoriametrics.operator.v1beta1.VMRuleSpec": {
       "description": "VMRuleSpec defines the desired state of VMRule",
@@ -11856,7 +11975,14 @@
           "$ref": "#/definitions/com.victoriametrics.operator.v1beta1.ScrapeObjectStatus"
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "operator.victoriametrics.com",
+          "kind": "VMScrapeConfig",
+          "version": "v1beta1"
+        }
+      ]
     },
     "com.victoriametrics.operator.v1beta1.VMScrapeConfigSpec": {
       "description": "VMScrapeConfigSpec defines the desired state of VMScrapeConfig",
@@ -12429,7 +12555,14 @@
           "$ref": "#/definitions/com.victoriametrics.operator.v1beta1.ScrapeObjectStatus"
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "operator.victoriametrics.com",
+          "kind": "VMServiceScrape",
+          "version": "v1beta1"
+        }
+      ]
     },
     "com.victoriametrics.operator.v1beta1.VMServiceScrapeSpec": {
       "description": "VMServiceScrapeSpec defines the desired state of VMServiceScrape",
@@ -12522,7 +12655,14 @@
           "$ref": "#/definitions/com.victoriametrics.operator.v1beta1.VMSingleStatus"
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "operator.victoriametrics.com",
+          "kind": "VMSingle",
+          "version": "v1beta1"
+        }
+      ]
     },
     "com.victoriametrics.operator.v1beta1.VMSingleSpec": {
       "description": "VMSingleSpec defines the desired state of VMSingle",
@@ -12876,7 +13016,14 @@
           "$ref": "#/definitions/com.victoriametrics.operator.v1beta1.ScrapeObjectStatus"
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "operator.victoriametrics.com",
+          "kind": "VMStaticScrape",
+          "version": "v1beta1"
+        }
+      ]
     },
     "com.victoriametrics.operator.v1beta1.VMStaticScrapeSpec": {
       "description": "VMStaticScrapeSpec defines the desired state of VMStaticScrape.",
@@ -13258,7 +13405,14 @@
           "$ref": "#/definitions/com.victoriametrics.operator.v1beta1.VMUserStatus"
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "operator.victoriametrics.com",
+          "kind": "VMUser",
+          "version": "v1beta1"
+        }
+      ]
     },
     "com.victoriametrics.operator.v1beta1.VMUserIPFilters": {
       "description": "VMUserIPFilters defines filters for IP addresses supported only with enterprise version of [vmauth](https://docs.victoriametrics.com/victoriametrics/vmauth/#ip-filters)",

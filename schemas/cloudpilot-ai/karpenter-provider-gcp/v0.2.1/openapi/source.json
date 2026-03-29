@@ -108,7 +108,14 @@
           "default": {},
           "$ref": "#/definitions/gcp.k8s.karpenter.v1alpha1.GCENodeClassStatus"
         }
-      }
+      },
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "karpenter.k8s.gcp",
+          "kind": "GCENodeClass",
+          "version": "v1alpha1"
+        }
+      ]
     },
     "gcp.k8s.karpenter.v1alpha1.GCENodeClassSpec": {
       "description": "GCENodeClassSpec is the top level specification for the GCP Karpenter Provider. This will contain the configuration necessary to launch instances in GCP.",
@@ -671,7 +678,14 @@
           "default": {},
           "$ref": "#/definitions/sh.karpenter.v1.NodeClaimStatus"
         }
-      }
+      },
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "karpenter.sh",
+          "kind": "NodeClaim",
+          "version": "v1"
+        }
+      ]
     },
     "sh.karpenter.v1.NodeClaimSpec": {
       "description": "NodeClaimSpec describes the desired state of the NodeClaim",
@@ -882,7 +896,14 @@
           "default": {},
           "$ref": "#/definitions/sh.karpenter.v1.NodePoolStatus"
         }
-      }
+      },
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "karpenter.sh",
+          "kind": "NodePool",
+          "version": "v1"
+        }
+      ]
     },
     "sh.karpenter.v1.NodePoolSpec": {
       "description": "NodePoolSpec is the top level nodepool specification. Nodepools launch nodes in response to pods that are unschedulable. A single nodepool is capable of managing a diverse set of nodes. Node properties are determined from a combination of nodepool and pod scheduling constraints.",
@@ -1043,7 +1064,14 @@
           "default": {},
           "$ref": "#/definitions/sh.karpenter.v1alpha1.NodeOverlayStatus"
         }
-      }
+      },
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "karpenter.sh",
+          "kind": "NodeOverlay",
+          "version": "v1alpha1"
+        }
+      ]
     },
     "sh.karpenter.v1alpha1.NodeOverlaySpec": {
       "type": "object",

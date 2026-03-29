@@ -31,5 +31,12 @@
     }
   },
   "additionalProperties": false,
-  "$schema": "http://json-schema.org/schema#"
+  "$schema": "http://json-schema.org/schema#",
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "externaldata.gatekeeper.sh",
+      "kind": "Provider",
+      "version": "v1beta1"
+    }
+  ]
 }

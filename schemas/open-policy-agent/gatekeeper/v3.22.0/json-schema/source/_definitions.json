@@ -541,7 +541,14 @@
           "$ref": "#/definitions/sh.gatekeeper.config.v1alpha1.ConfigStatus"
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "config.gatekeeper.sh",
+          "kind": "Config",
+          "version": "v1alpha1"
+        }
+      ]
     },
     "sh.gatekeeper.config.v1alpha1.ConfigSpec": {
       "description": "ConfigSpec defines the desired state of Config.",
@@ -719,7 +726,14 @@
           "$ref": "#/definitions/sh.gatekeeper.connection.v1alpha1.ConnectionStatus"
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "connection.gatekeeper.sh",
+          "kind": "Connection",
+          "version": "v1alpha1"
+        }
+      ]
     },
     "sh.gatekeeper.connection.v1alpha1.ConnectionSpec": {
       "description": "ConnectionSpec defines the desired state of Connection.",
@@ -779,7 +793,14 @@
           "$ref": "#/definitions/sh.gatekeeper.expansion.v1alpha1.ExpansionTemplateStatus"
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "expansion.gatekeeper.sh",
+          "kind": "ExpansionTemplate",
+          "version": "v1alpha1"
+        }
+      ]
     },
     "sh.gatekeeper.expansion.v1alpha1.ExpansionTemplateSpec": {
       "description": "ExpansionTemplateSpec defines the desired state of ExpansionTemplate.",
@@ -863,7 +884,14 @@
           "$ref": "#/definitions/sh.gatekeeper.expansion.v1beta1.ExpansionTemplateStatus"
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "expansion.gatekeeper.sh",
+          "kind": "ExpansionTemplate",
+          "version": "v1beta1"
+        }
+      ]
     },
     "sh.gatekeeper.expansion.v1beta1.ExpansionTemplateSpec": {
       "description": "ExpansionTemplateSpec defines the desired state of ExpansionTemplate.",
@@ -948,7 +976,14 @@
           "$ref": "#/definitions/sh.gatekeeper.externaldata.v1alpha1.ProviderStatus"
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "externaldata.gatekeeper.sh",
+          "kind": "Provider",
+          "version": "v1alpha1"
+        }
+      ]
     },
     "sh.gatekeeper.externaldata.v1alpha1.ProviderError": {
       "description": "ProviderError represents a single error caught while managing providers.",
@@ -1076,7 +1111,14 @@
           "$ref": "#/definitions/sh.gatekeeper.externaldata.v1beta1.ProviderStatus"
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "externaldata.gatekeeper.sh",
+          "kind": "Provider",
+          "version": "v1beta1"
+        }
+      ]
     },
     "sh.gatekeeper.externaldata.v1beta1.ProviderError": {
       "description": "ProviderError represents a single error caught while managing providers.",
@@ -1307,7 +1349,14 @@
           "$ref": "#/definitions/sh.gatekeeper.mutations.v1.AssignStatus"
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "mutations.gatekeeper.sh",
+          "kind": "Assign",
+          "version": "v1"
+        }
+      ]
     },
     "sh.gatekeeper.mutations.v1.AssignField": {
       "type": "object",
@@ -1352,7 +1401,14 @@
           "$ref": "#/definitions/sh.gatekeeper.mutations.v1.AssignMetadataStatus"
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "mutations.gatekeeper.sh",
+          "kind": "AssignMetadata",
+          "version": "v1"
+        }
+      ]
     },
     "sh.gatekeeper.mutations.v1.AssignMetadataSpec": {
       "description": "AssignMetadataSpec defines the desired state of AssignMetadata.",
@@ -1499,7 +1555,14 @@
           "$ref": "#/definitions/sh.gatekeeper.mutations.v1.ModifySetStatus"
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "mutations.gatekeeper.sh",
+          "kind": "ModifySet",
+          "version": "v1"
+        }
+      ]
     },
     "sh.gatekeeper.mutations.v1.ModifySetParameters": {
       "type": "object",
@@ -1636,7 +1699,14 @@
           "$ref": "#/definitions/sh.gatekeeper.mutations.v1alpha1.AssignStatus"
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "mutations.gatekeeper.sh",
+          "kind": "Assign",
+          "version": "v1alpha1"
+        }
+      ]
     },
     "sh.gatekeeper.mutations.v1alpha1.AssignField": {
       "type": "object",
@@ -1681,7 +1751,14 @@
           "$ref": "#/definitions/sh.gatekeeper.mutations.v1alpha1.AssignImageStatus"
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "mutations.gatekeeper.sh",
+          "kind": "AssignImage",
+          "version": "v1alpha1"
+        }
+      ]
     },
     "sh.gatekeeper.mutations.v1alpha1.AssignImageParameters": {
       "type": "object",
@@ -1776,7 +1853,14 @@
           "$ref": "#/definitions/sh.gatekeeper.mutations.v1alpha1.AssignMetadataStatus"
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "mutations.gatekeeper.sh",
+          "kind": "AssignMetadata",
+          "version": "v1alpha1"
+        }
+      ]
     },
     "sh.gatekeeper.mutations.v1alpha1.AssignMetadataSpec": {
       "description": "AssignMetadataSpec defines the desired state of AssignMetadata.",
@@ -1923,7 +2007,14 @@
           "$ref": "#/definitions/sh.gatekeeper.mutations.v1alpha1.ModifySetStatus"
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "mutations.gatekeeper.sh",
+          "kind": "ModifySet",
+          "version": "v1alpha1"
+        }
+      ]
     },
     "sh.gatekeeper.mutations.v1alpha1.ModifySetParameters": {
       "type": "object",
@@ -2060,7 +2151,14 @@
           "$ref": "#/definitions/sh.gatekeeper.mutations.v1beta1.AssignStatus"
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "mutations.gatekeeper.sh",
+          "kind": "Assign",
+          "version": "v1beta1"
+        }
+      ]
     },
     "sh.gatekeeper.mutations.v1beta1.AssignField": {
       "type": "object",
@@ -2105,7 +2203,14 @@
           "$ref": "#/definitions/sh.gatekeeper.mutations.v1beta1.AssignMetadataStatus"
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "mutations.gatekeeper.sh",
+          "kind": "AssignMetadata",
+          "version": "v1beta1"
+        }
+      ]
     },
     "sh.gatekeeper.mutations.v1beta1.AssignMetadataSpec": {
       "description": "AssignMetadataSpec defines the desired state of AssignMetadata.",
@@ -2252,7 +2357,14 @@
           "$ref": "#/definitions/sh.gatekeeper.mutations.v1beta1.ModifySetStatus"
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "mutations.gatekeeper.sh",
+          "kind": "ModifySet",
+          "version": "v1beta1"
+        }
+      ]
     },
     "sh.gatekeeper.mutations.v1beta1.ModifySetParameters": {
       "type": "object",
@@ -2404,7 +2516,14 @@
           "$ref": "#/definitions/sh.gatekeeper.status.v1alpha1.ConnectionPodStatusStatus"
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "status.gatekeeper.sh",
+          "kind": "ConnectionPodStatus",
+          "version": "v1alpha1"
+        }
+      ]
     },
     "sh.gatekeeper.status.v1alpha1.ConnectionPodStatusStatus": {
       "description": "ConnectionPodStatusStatus defines the observed state of ConnectionPodStatus.",
@@ -2477,7 +2596,14 @@
           "$ref": "#/definitions/sh.gatekeeper.status.v1beta1.ConfigPodStatusStatus"
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "status.gatekeeper.sh",
+          "kind": "ConfigPodStatus",
+          "version": "v1beta1"
+        }
+      ]
     },
     "sh.gatekeeper.status.v1beta1.ConfigPodStatusStatus": {
       "type": "object",
@@ -2529,7 +2655,14 @@
           "$ref": "#/definitions/sh.gatekeeper.status.v1beta1.ConstraintPodStatusStatus"
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "status.gatekeeper.sh",
+          "kind": "ConstraintPodStatus",
+          "version": "v1beta1"
+        }
+      ]
     },
     "sh.gatekeeper.status.v1beta1.ConstraintPodStatusStatus": {
       "description": "ConstraintPodStatusStatus defines the observed state of ConstraintPodStatus.",
@@ -2594,7 +2727,14 @@
           "$ref": "#/definitions/sh.gatekeeper.status.v1beta1.ConstraintTemplatePodStatusStatus"
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "status.gatekeeper.sh",
+          "kind": "ConstraintTemplatePodStatus",
+          "version": "v1beta1"
+        }
+      ]
     },
     "sh.gatekeeper.status.v1beta1.ConstraintTemplatePodStatusStatus": {
       "description": "ConstraintTemplatePodStatusStatus defines the observed state of ConstraintTemplatePodStatus.",
@@ -2715,7 +2855,14 @@
           "$ref": "#/definitions/sh.gatekeeper.status.v1beta1.ExpansionTemplatePodStatusStatus"
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "status.gatekeeper.sh",
+          "kind": "ExpansionTemplatePodStatus",
+          "version": "v1beta1"
+        }
+      ]
     },
     "sh.gatekeeper.status.v1beta1.ExpansionTemplatePodStatusStatus": {
       "description": "ExpansionTemplatePodStatusStatus defines the observed state of ExpansionTemplatePodStatus.",
@@ -2787,7 +2934,14 @@
           "$ref": "#/definitions/sh.gatekeeper.status.v1beta1.MutatorPodStatusStatus"
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "status.gatekeeper.sh",
+          "kind": "MutatorPodStatus",
+          "version": "v1beta1"
+        }
+      ]
     },
     "sh.gatekeeper.status.v1beta1.MutatorPodStatusStatus": {
       "description": "MutatorPodStatusStatus defines the observed state of MutatorPodStatus.",
@@ -2875,7 +3029,14 @@
           "$ref": "#/definitions/sh.gatekeeper.status.v1beta1.ProviderPodStatusStatus"
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "status.gatekeeper.sh",
+          "kind": "ProviderPodStatus",
+          "version": "v1beta1"
+        }
+      ]
     },
     "sh.gatekeeper.status.v1beta1.ProviderPodStatusStatus": {
       "description": "ProviderPodStatusStatus defines the observed state of ProviderPodStatus.",
@@ -2970,7 +3131,14 @@
           "$ref": "#/definitions/sh.gatekeeper.syncset.v1alpha1.SyncSetSpec"
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "syncset.gatekeeper.sh",
+          "kind": "SyncSet",
+          "version": "v1alpha1"
+        }
+      ]
     },
     "sh.gatekeeper.syncset.v1alpha1.SyncSetSpec": {
       "type": "object",
@@ -3077,7 +3245,14 @@
           "$ref": "#/definitions/sh.gatekeeper.templates.v1.ConstraintTemplateStatus"
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "templates.gatekeeper.sh",
+          "kind": "ConstraintTemplate",
+          "version": "v1"
+        }
+      ]
     },
     "sh.gatekeeper.templates.v1.ConstraintTemplateSpec": {
       "description": "ConstraintTemplateSpec defines the desired state of ConstraintTemplate.",
@@ -3297,7 +3472,14 @@
           "$ref": "#/definitions/sh.gatekeeper.templates.v1alpha1.ConstraintTemplateStatus"
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "templates.gatekeeper.sh",
+          "kind": "ConstraintTemplate",
+          "version": "v1alpha1"
+        }
+      ]
     },
     "sh.gatekeeper.templates.v1alpha1.ConstraintTemplateSpec": {
       "description": "ConstraintTemplateSpec defines the desired state of ConstraintTemplate.",
@@ -3517,7 +3699,14 @@
           "$ref": "#/definitions/sh.gatekeeper.templates.v1beta1.ConstraintTemplateStatus"
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "templates.gatekeeper.sh",
+          "kind": "ConstraintTemplate",
+          "version": "v1beta1"
+        }
+      ]
     },
     "sh.gatekeeper.templates.v1beta1.ConstraintTemplateSpec": {
       "description": "ConstraintTemplateSpec defines the desired state of ConstraintTemplate.",

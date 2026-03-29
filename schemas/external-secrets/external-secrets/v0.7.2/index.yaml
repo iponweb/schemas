@@ -44,7 +44,7 @@ resources:
   scope: Cluster
   shortNames:
   - css
-  definitionKey: io.external-secrets.v1alpha1.ClusterSecretStore
+  definitionKey: io.external-secrets.v1beta1.ClusterSecretStore
 - kind: ExternalSecret
   group: external-secrets.io
   version: v1beta1
@@ -52,7 +52,7 @@ resources:
   scope: Namespaced
   shortNames:
   - es
-  definitionKey: io.external-secrets.v1alpha1.ExternalSecret
+  definitionKey: io.external-secrets.v1beta1.ExternalSecret
 - kind: SecretStore
   group: external-secrets.io
   version: v1beta1
@@ -60,7 +60,7 @@ resources:
   scope: Namespaced
   shortNames:
   - ss
-  definitionKey: io.external-secrets.v1alpha1.SecretStore
+  definitionKey: io.external-secrets.v1beta1.SecretStore
 - kind: ACRAccessToken
   group: generators.external-secrets.io
   version: v1alpha1

@@ -255,7 +255,14 @@
           "$ref": "#/definitions/io.x-k8s.csi.secrets-store.v1.SecretProviderClassStatus"
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "secrets-store.csi.x-k8s.io",
+          "kind": "SecretProviderClass",
+          "version": "v1"
+        }
+      ]
     },
     "io.x-k8s.csi.secrets-store.v1.SecretProviderClassObject": {
       "description": "SecretProviderClassObject defines the object fetched from external secrets store",
@@ -291,7 +298,14 @@
           "$ref": "#/definitions/io.x-k8s.csi.secrets-store.v1.SecretProviderClassPodStatusStatus"
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "secrets-store.csi.x-k8s.io",
+          "kind": "SecretProviderClassPodStatus",
+          "version": "v1"
+        }
+      ]
     },
     "io.x-k8s.csi.secrets-store.v1.SecretProviderClassPodStatusStatus": {
       "description": "SecretProviderClassPodStatusStatus defines the observed state of SecretProviderClassPodStatus",
@@ -440,7 +454,14 @@
           "$ref": "#/definitions/io.x-k8s.csi.secrets-store.v1alpha1.SecretProviderClassStatus"
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "secrets-store.csi.x-k8s.io",
+          "kind": "SecretProviderClass",
+          "version": "v1alpha1"
+        }
+      ]
     },
     "io.x-k8s.csi.secrets-store.v1alpha1.SecretProviderClassObject": {
       "description": "SecretProviderClassObject defines the object fetched from external secrets store",
@@ -476,7 +497,14 @@
           "$ref": "#/definitions/io.x-k8s.csi.secrets-store.v1alpha1.SecretProviderClassPodStatusStatus"
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "secrets-store.csi.x-k8s.io",
+          "kind": "SecretProviderClassPodStatus",
+          "version": "v1alpha1"
+        }
+      ]
     },
     "io.x-k8s.csi.secrets-store.v1alpha1.SecretProviderClassPodStatusStatus": {
       "description": "SecretProviderClassPodStatusStatus defines the observed state of SecretProviderClassPodStatus",

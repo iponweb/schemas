@@ -35,5 +35,12 @@
     }
   },
   "additionalProperties": false,
-  "$schema": "http://json-schema.org/schema#"
+  "$schema": "http://json-schema.org/schema#",
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "gateway.networking.k8s.io",
+      "kind": "GRPCRoute",
+      "version": "v1"
+    }
+  ]
 }

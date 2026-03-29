@@ -246,14 +246,14 @@
           "type": "string"
         },
         "rule": {
-          "description": "Rule represents the expression which will be evaluated by CEL. ref: https://github.com/google/cel-spec The Rule is scoped to the location of the x-kubernetes-validations extension in the schema. The `self` variable in the CEL expression is bound to the scoped value. Example: - Rule scoped to the root of a resource with a status subresource: {\"rule\": \"self.status.actual \u003c= self.spec.maxDesired\"}\n\nIf the Rule is scoped to an object with properties, the accessible properties of the object are field selectable via `self.field` and field presence can be checked via `has(self.field)`. Null valued fields are treated as absent fields in CEL expressions. If the Rule is scoped to an object with additionalProperties (i.e. a map) the value of the map are accessible via `self[mapKey]`, map containment can be checked via `mapKey in self` and all entries of the map are accessible via CEL macros and functions such as `self.all(...)`. If the Rule is scoped to an array, the elements of the array are accessible via `self[i]` and also by macros and functions. If the Rule is scoped to a scalar, `self` is bound to the scalar value. Examples: - Rule scoped to a map of objects: {\"rule\": \"self.components['Widget'].priority \u003c 10\"} - Rule scoped to a list of integers: {\"rule\": \"self.values.all(value, value \u003e= 0 \u0026\u0026 value \u003c 100)\"} - Rule scoped to a string value: {\"rule\": \"self.startsWith('kube')\"}\n\nThe `apiVersion`, `kind`, `metadata.name` and `metadata.generateName` are always accessible from the root of the object and from any x-kubernetes-embedded-resource annotated objects. No other metadata properties are accessible.\n\nUnknown data preserved in custom resources via x-kubernetes-preserve-unknown-fields is not accessible in CEL expressions. This includes: - Unknown field values that are preserved by object schemas with x-kubernetes-preserve-unknown-fields. - Object properties where the property schema is of an \"unknown type\". An \"unknown type\" is recursively defined as:\n  - A schema with no type and x-kubernetes-preserve-unknown-fields set to true\n  - An array where the items schema is of an \"unknown type\"\n  - An object where the additionalProperties schema is of an \"unknown type\"\n\nOnly property names of the form `[a-zA-Z_.-/][a-zA-Z0-9_.-/]*` are accessible. Accessible property names are escaped according to the following rules when accessed in the expression: - '__' escapes to '__underscores__' - '.' escapes to '__dot__' - '-' escapes to '__dash__' - '/' escapes to '__slash__' - Property names that exactly match a CEL RESERVED keyword escape to '__{keyword}__'. The keywords are:\n\t  \"true\", \"false\", \"null\", \"in\", \"as\", \"break\", \"const\", \"continue\", \"else\", \"for\", \"function\", \"if\",\n\t  \"import\", \"let\", \"loop\", \"package\", \"namespace\", \"return\".\nExamples:\n  - Rule accessing a property named \"namespace\": {\"rule\": \"self.__namespace__ \u003e 0\"}\n  - Rule accessing a property named \"x-prop\": {\"rule\": \"self.x__dash__prop \u003e 0\"}\n  - Rule accessing a property named \"redact__d\": {\"rule\": \"self.redact__underscores__d \u003e 0\"}\n\nEquality on arrays with x-kubernetes-list-type of 'set' or 'map' ignores element order, i.e. [1, 2] == [2, 1]. Concatenation on arrays with x-kubernetes-list-type use the semantics of the list type:\n  - 'set': `X + Y` performs a union where the array positions of all elements in `X` are preserved and\n    non-intersecting elements in `Y` are appended, retaining their partial order.\n  - 'map': `X + Y` performs a merge where the array positions of all keys in `X` are preserved but the values\n    are overwritten by values in `Y` when the key sets of `X` and `Y` intersect. Elements in `Y` with\n    non-intersecting keys are appended, retaining their partial order.",
+          "description": "Rule represents the expression which will be evaluated by CEL. ref: https://github.com/google/cel-spec The Rule is scoped to the location of the x-kubernetes-validations extension in the schema. The `self` variable in the CEL expression is bound to the scoped value. Example: - Rule scoped to the root of a resource with a status subresource: {\"rule\": \"self.status.actual <= self.spec.maxDesired\"}\n\nIf the Rule is scoped to an object with properties, the accessible properties of the object are field selectable via `self.field` and field presence can be checked via `has(self.field)`. Null valued fields are treated as absent fields in CEL expressions. If the Rule is scoped to an object with additionalProperties (i.e. a map) the value of the map are accessible via `self[mapKey]`, map containment can be checked via `mapKey in self` and all entries of the map are accessible via CEL macros and functions such as `self.all(...)`. If the Rule is scoped to an array, the elements of the array are accessible via `self[i]` and also by macros and functions. If the Rule is scoped to a scalar, `self` is bound to the scalar value. Examples: - Rule scoped to a map of objects: {\"rule\": \"self.components['Widget'].priority < 10\"} - Rule scoped to a list of integers: {\"rule\": \"self.values.all(value, value >= 0 && value < 100)\"} - Rule scoped to a string value: {\"rule\": \"self.startsWith('kube')\"}\n\nThe `apiVersion`, `kind`, `metadata.name` and `metadata.generateName` are always accessible from the root of the object and from any x-kubernetes-embedded-resource annotated objects. No other metadata properties are accessible.\n\nUnknown data preserved in custom resources via x-kubernetes-preserve-unknown-fields is not accessible in CEL expressions. This includes: - Unknown field values that are preserved by object schemas with x-kubernetes-preserve-unknown-fields. - Object properties where the property schema is of an \"unknown type\". An \"unknown type\" is recursively defined as:\n  - A schema with no type and x-kubernetes-preserve-unknown-fields set to true\n  - An array where the items schema is of an \"unknown type\"\n  - An object where the additionalProperties schema is of an \"unknown type\"\n\nOnly property names of the form `[a-zA-Z_.-/][a-zA-Z0-9_.-/]*` are accessible. Accessible property names are escaped according to the following rules when accessed in the expression: - '__' escapes to '__underscores__' - '.' escapes to '__dot__' - '-' escapes to '__dash__' - '/' escapes to '__slash__' - Property names that exactly match a CEL RESERVED keyword escape to '__{keyword}__'. The keywords are:\n\t  \"true\", \"false\", \"null\", \"in\", \"as\", \"break\", \"const\", \"continue\", \"else\", \"for\", \"function\", \"if\",\n\t  \"import\", \"let\", \"loop\", \"package\", \"namespace\", \"return\".\nExamples:\n  - Rule accessing a property named \"namespace\": {\"rule\": \"self.__namespace__ > 0\"}\n  - Rule accessing a property named \"x-prop\": {\"rule\": \"self.x__dash__prop > 0\"}\n  - Rule accessing a property named \"redact__d\": {\"rule\": \"self.redact__underscores__d > 0\"}\n\nEquality on arrays with x-kubernetes-list-type of 'set' or 'map' ignores element order, i.e. [1, 2] == [2, 1]. Concatenation on arrays with x-kubernetes-list-type use the semantics of the list type:\n  - 'set': `X + Y` performs a union where the array positions of all elements in `X` are preserved and\n    non-intersecting elements in `Y` are appended, retaining their partial order.\n  - 'map': `X + Y` performs a merge where the array positions of all keys in `X` are preserved but the values\n    are overwritten by values in `Y` when the key sets of `X` and `Y` intersect. Elements in `Y` with\n    non-intersecting keys are appended, retaining their partial order.",
           "type": "string",
           "default": ""
         }
       }
     },
     "io.k8s.apimachinery.pkg.apis.meta.v1.FieldsV1": {
-      "description": "FieldsV1 stores a set of fields in a data structure like a Trie, in JSON format.\n\nEach key is either a '.' representing the field itself, and will always map to an empty set, or a string representing a sub-field or item. The string will follow one of these four formats: 'f:\u003cname\u003e', where \u003cname\u003e is the name of a field in a struct, or key in a map 'v:\u003cvalue\u003e', where \u003cvalue\u003e is the exact json formatted value of a list item 'i:\u003cindex\u003e', where \u003cindex\u003e is position of a item in a list 'k:\u003ckeys\u003e', where \u003ckeys\u003e is a map of  a list item's key fields to their unique values If a key maps to an empty Fields value, the field that key represents is part of the set.\n\nThe exact format is defined in sigs.k8s.io/structured-merge-diff",
+      "description": "FieldsV1 stores a set of fields in a data structure like a Trie, in JSON format.\n\nEach key is either a '.' representing the field itself, and will always map to an empty set, or a string representing a sub-field or item. The string will follow one of these four formats: 'f:<name>', where <name> is the name of a field in a struct, or key in a map 'v:<value>', where <value> is the exact json formatted value of a list item 'i:<index>', where <index> is position of a item in a list 'k:<keys>', where <keys> is a map of  a list item's key fields to their unique values If a key maps to an empty Fields value, the field that key represents is part of the set.\n\nThe exact format is defined in sigs.k8s.io/structured-merge-diff",
       "type": "object"
     },
     "io.k8s.apimachinery.pkg.apis.meta.v1.LabelSelector": {
@@ -508,7 +508,14 @@
           "default": {},
           "$ref": "#/definitions/sh.gatekeeper.config.v1alpha1.ConfigStatus"
         }
-      }
+      },
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "config.gatekeeper.sh",
+          "kind": "Config",
+          "version": "v1alpha1"
+        }
+      ]
     },
     "sh.gatekeeper.config.v1alpha1.ConfigSpec": {
       "description": "ConfigSpec defines the desired state of Config.",
@@ -662,7 +669,14 @@
           "default": {},
           "$ref": "#/definitions/sh.gatekeeper.expansion.v1alpha1.ExpansionTemplateSpec"
         }
-      }
+      },
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "expansion.gatekeeper.sh",
+          "kind": "ExpansionTemplate",
+          "version": "v1alpha1"
+        }
+      ]
     },
     "sh.gatekeeper.expansion.v1alpha1.ExpansionTemplateSpec": {
       "description": "ExpansionTemplateSpec defines the desired state of ExpansionTemplate.",
@@ -726,7 +740,14 @@
           "default": {},
           "$ref": "#/definitions/sh.gatekeeper.externaldata.v1alpha1.ProviderSpec"
         }
-      }
+      },
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "externaldata.gatekeeper.sh",
+          "kind": "Provider",
+          "version": "v1alpha1"
+        }
+      ]
     },
     "sh.gatekeeper.externaldata.v1alpha1.ProviderSpec": {
       "description": "ProviderSpec defines the desired state of Provider.",
@@ -872,7 +893,14 @@
           "default": {},
           "$ref": "#/definitions/sh.gatekeeper.mutations.v1.AssignStatus"
         }
-      }
+      },
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "mutations.gatekeeper.sh",
+          "kind": "Assign",
+          "version": "v1"
+        }
+      ]
     },
     "sh.gatekeeper.mutations.v1.AssignField": {
       "type": "object",
@@ -915,7 +943,14 @@
           "default": {},
           "$ref": "#/definitions/sh.gatekeeper.mutations.v1.AssignMetadataStatus"
         }
-      }
+      },
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "mutations.gatekeeper.sh",
+          "kind": "AssignMetadata",
+          "version": "v1"
+        }
+      ]
     },
     "sh.gatekeeper.mutations.v1.AssignMetadataSpec": {
       "description": "AssignMetadataSpec defines the desired state of AssignMetadata.",
@@ -1054,7 +1089,14 @@
           "default": {},
           "$ref": "#/definitions/sh.gatekeeper.mutations.v1.ModifySetStatus"
         }
-      }
+      },
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "mutations.gatekeeper.sh",
+          "kind": "ModifySet",
+          "version": "v1"
+        }
+      ]
     },
     "sh.gatekeeper.mutations.v1.ModifySetParameters": {
       "type": "object",
@@ -1184,7 +1226,14 @@
           "default": {},
           "$ref": "#/definitions/sh.gatekeeper.mutations.v1alpha1.AssignStatus"
         }
-      }
+      },
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "mutations.gatekeeper.sh",
+          "kind": "Assign",
+          "version": "v1alpha1"
+        }
+      ]
     },
     "sh.gatekeeper.mutations.v1alpha1.AssignField": {
       "type": "object",
@@ -1227,7 +1276,14 @@
           "default": {},
           "$ref": "#/definitions/sh.gatekeeper.mutations.v1alpha1.AssignMetadataStatus"
         }
-      }
+      },
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "mutations.gatekeeper.sh",
+          "kind": "AssignMetadata",
+          "version": "v1alpha1"
+        }
+      ]
     },
     "sh.gatekeeper.mutations.v1alpha1.AssignMetadataSpec": {
       "description": "AssignMetadataSpec defines the desired state of AssignMetadata.",
@@ -1366,7 +1422,14 @@
           "default": {},
           "$ref": "#/definitions/sh.gatekeeper.mutations.v1alpha1.ModifySetStatus"
         }
-      }
+      },
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "mutations.gatekeeper.sh",
+          "kind": "ModifySet",
+          "version": "v1alpha1"
+        }
+      ]
     },
     "sh.gatekeeper.mutations.v1alpha1.ModifySetParameters": {
       "type": "object",
@@ -1496,7 +1559,14 @@
           "default": {},
           "$ref": "#/definitions/sh.gatekeeper.mutations.v1beta1.AssignStatus"
         }
-      }
+      },
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "mutations.gatekeeper.sh",
+          "kind": "Assign",
+          "version": "v1beta1"
+        }
+      ]
     },
     "sh.gatekeeper.mutations.v1beta1.AssignField": {
       "type": "object",
@@ -1539,7 +1609,14 @@
           "default": {},
           "$ref": "#/definitions/sh.gatekeeper.mutations.v1beta1.AssignMetadataStatus"
         }
-      }
+      },
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "mutations.gatekeeper.sh",
+          "kind": "AssignMetadata",
+          "version": "v1beta1"
+        }
+      ]
     },
     "sh.gatekeeper.mutations.v1beta1.AssignMetadataSpec": {
       "description": "AssignMetadataSpec defines the desired state of AssignMetadata.",
@@ -1678,7 +1755,14 @@
           "default": {},
           "$ref": "#/definitions/sh.gatekeeper.mutations.v1beta1.ModifySetStatus"
         }
-      }
+      },
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "mutations.gatekeeper.sh",
+          "kind": "ModifySet",
+          "version": "v1beta1"
+        }
+      ]
     },
     "sh.gatekeeper.mutations.v1beta1.ModifySetParameters": {
       "type": "object",
@@ -1804,7 +1888,14 @@
           "default": {},
           "$ref": "#/definitions/sh.gatekeeper.status.v1beta1.ConstraintPodStatusStatus"
         }
-      }
+      },
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "status.gatekeeper.sh",
+          "kind": "ConstraintPodStatus",
+          "version": "v1beta1"
+        }
+      ]
     },
     "sh.gatekeeper.status.v1beta1.ConstraintPodStatusStatus": {
       "description": "ConstraintPodStatusStatus defines the observed state of ConstraintPodStatus.",
@@ -1860,7 +1951,14 @@
           "default": {},
           "$ref": "#/definitions/sh.gatekeeper.status.v1beta1.ConstraintTemplatePodStatusStatus"
         }
-      }
+      },
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "status.gatekeeper.sh",
+          "kind": "ConstraintTemplatePodStatus",
+          "version": "v1beta1"
+        }
+      ]
     },
     "sh.gatekeeper.status.v1beta1.ConstraintTemplatePodStatusStatus": {
       "description": "ConstraintTemplatePodStatusStatus defines the observed state of ConstraintTemplatePodStatus.",
@@ -1950,7 +2048,14 @@
           "default": {},
           "$ref": "#/definitions/sh.gatekeeper.status.v1beta1.MutatorPodStatusStatus"
         }
-      }
+      },
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "status.gatekeeper.sh",
+          "kind": "MutatorPodStatus",
+          "version": "v1beta1"
+        }
+      ]
     },
     "sh.gatekeeper.status.v1beta1.MutatorPodStatusStatus": {
       "description": "MutatorPodStatusStatus defines the observed state of MutatorPodStatus.",
@@ -2052,7 +2157,14 @@
           "default": {},
           "$ref": "#/definitions/sh.gatekeeper.templates.v1.ConstraintTemplateStatus"
         }
-      }
+      },
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "templates.gatekeeper.sh",
+          "kind": "ConstraintTemplate",
+          "version": "v1"
+        }
+      ]
     },
     "sh.gatekeeper.templates.v1.ConstraintTemplateSpec": {
       "description": "ConstraintTemplateSpec defines the desired state of ConstraintTemplate.",
@@ -2218,7 +2330,14 @@
           "default": {},
           "$ref": "#/definitions/sh.gatekeeper.templates.v1alpha1.ConstraintTemplateStatus"
         }
-      }
+      },
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "templates.gatekeeper.sh",
+          "kind": "ConstraintTemplate",
+          "version": "v1alpha1"
+        }
+      ]
     },
     "sh.gatekeeper.templates.v1alpha1.ConstraintTemplateSpec": {
       "description": "ConstraintTemplateSpec defines the desired state of ConstraintTemplate.",
@@ -2384,7 +2503,14 @@
           "default": {},
           "$ref": "#/definitions/sh.gatekeeper.templates.v1beta1.ConstraintTemplateStatus"
         }
-      }
+      },
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "templates.gatekeeper.sh",
+          "kind": "ConstraintTemplate",
+          "version": "v1beta1"
+        }
+      ]
     },
     "sh.gatekeeper.templates.v1beta1.ConstraintTemplateSpec": {
       "description": "ConstraintTemplateSpec defines the desired state of ConstraintTemplate.",

@@ -84,6 +84,22 @@ func main() {
 	// falling back onto vanilla Kubernetes definitions
 	definitionGetter := mergedDefinitions(generated.GetOpenAPIDefinitions, vanilla.Definitions, namer)
 
+	// Build a set for O(1) CRD root-type lookup inside GetDefinitionName.
+	crdNameSet := make(map[string]bool, len(crdNames))
+	for _, n := range crdNames {
+		crdNameSet[n] = true
+	}
+
+	// Pre-sort host conversion rule keys longest-first once, rather than on
+	// every GetDefinitionName call.
+	ruleKeys := make([]string, 0, len(hostConversionRules))
+	for k := range hostConversionRules {
+		ruleKeys = append(ruleKeys, k)
+	}
+	sort.Slice(ruleKeys, func(i, j int) bool {
+		return len(ruleKeys[i]) > len(ruleKeys[j])
+	})
+
 	cfg := &common.Config{
 		Info: &spec.Info{
 			InfoProps: spec.InfoProps{
@@ -93,15 +109,7 @@ func main() {
 		},
 		GetDefinitions: definitionGetter,
 		GetDefinitionName: func(name string) (string, spec.Extensions) {
-			// Sort rules longest-first so specific sub-package rules win
-			// over broad module-level fallbacks.
-			ruleKeys := make([]string, 0, len(hostConversionRules))
-			for k := range hostConversionRules {
-				ruleKeys = append(ruleKeys, k)
-			}
-			sort.Slice(ruleKeys, func(i, j int) bool {
-				return len(ruleKeys[i]) > len(ruleKeys[j])
-			})
+			originalName := name // save before mutation for GVK lookup
 
 			ruleMatched := false
 			for _, f := range ruleKeys {
@@ -150,7 +158,28 @@ func main() {
 				strings.Join(reverse(strings.Split(hostname, ".")), "."),
 				strings.Replace(path, "/", ".", -1),
 			)
-			return definitionName, nil
+
+			// Inject x-kubernetes-group-version-kind for root CRD types so that
+			// source-generated schemas carry the same GVK annotation as live ones.
+			// After host conversion + path stripping:
+			//   hostname = API group  (e.g. "karpenter.k8s.aws")
+			//   path     = "version.Kind"  (e.g. "v1.EC2NodeClass")
+			var extensions spec.Extensions
+			if ruleMatched && crdNameSet[originalName] {
+				if dotIdx := strings.LastIndex(path, "."); dotIdx >= 0 {
+					extensions = spec.Extensions{
+						"x-kubernetes-group-version-kind": []map[string]string{
+							{
+								"group":   hostname,
+								"kind":    path[dotIdx+1:],
+								"version": path[:dotIdx],
+							},
+						},
+					}
+				}
+			}
+
+			return definitionName, extensions
 		},
 	}
 

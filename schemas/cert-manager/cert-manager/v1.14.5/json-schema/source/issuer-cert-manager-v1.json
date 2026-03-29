@@ -35,5 +35,12 @@
     }
   },
   "additionalProperties": false,
-  "$schema": "http://json-schema.org/schema#"
+  "$schema": "http://json-schema.org/schema#",
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "cert-manager.io",
+      "kind": "Issuer",
+      "version": "v1"
+    }
+  ]
 }

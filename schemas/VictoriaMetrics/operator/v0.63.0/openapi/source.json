@@ -228,7 +228,14 @@
           "default": {},
           "$ref": "#/definitions/com.victoriametrics.operator.v1.VLAgentStatus"
         }
-      }
+      },
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "operator.victoriametrics.com",
+          "kind": "VLAgent",
+          "version": "v1"
+        }
+      ]
     },
     "com.victoriametrics.operator.v1.VLAgentRemoteWriteSettings": {
       "description": "VLAgentRemoteWriteSettings - defines global settings for all remoteWrite urls.",
@@ -675,7 +682,14 @@
           "default": {},
           "$ref": "#/definitions/com.victoriametrics.operator.v1.VLClusterStatus"
         }
-      }
+      },
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "operator.victoriametrics.com",
+          "kind": "VLCluster",
+          "version": "v1"
+        }
+      ]
     },
     "com.victoriametrics.operator.v1.VLClusterSpec": {
       "description": "VLClusterSpec defines the desired state of VLCluster",
@@ -1331,7 +1345,14 @@
           "default": {},
           "$ref": "#/definitions/com.victoriametrics.operator.v1.VLSingleStatus"
         }
-      }
+      },
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "operator.victoriametrics.com",
+          "kind": "VLSingle",
+          "version": "v1"
+        }
+      ]
     },
     "com.victoriametrics.operator.v1.VLSingleSpec": {
       "description": "VLSingleSpec defines the desired state of VLSingle",
@@ -2010,7 +2031,14 @@
           "default": {},
           "$ref": "#/definitions/com.victoriametrics.operator.v1.VMAnomalyStatus"
         }
-      }
+      },
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "operator.victoriametrics.com",
+          "kind": "VMAnomaly",
+          "version": "v1"
+        }
+      ]
     },
     "com.victoriametrics.operator.v1.VMAnomalyMonitoringPullSpec": {
       "description": "VMAnomalyMonitoringPullSpec defines pull monitoring configuration which is enabled by default and served at POD_IP:8490/metrics",
@@ -2202,11 +2230,11 @@
           }
         },
         "configRawYaml": {
-          "description": "ConfigRawYaml - raw configuration for anomaly, it helps it to start without secret. priority -\u003e hardcoded ConfigRaw -\u003e ConfigRaw, provided by user -\u003e ConfigSecret.",
+          "description": "ConfigRawYaml - raw configuration for anomaly, it helps it to start without secret. priority -> hardcoded ConfigRaw -> ConfigRaw, provided by user -> ConfigSecret.",
           "type": "string"
         },
         "configSecret": {
-          "description": "ConfigSecret is the name of a Kubernetes Secret in the same namespace as the VMAnomaly object, which contains configuration for this VMAnomaly, configuration must be inside secret key: anomaly.yaml. It must be created by user. instance. Defaults to 'vmanomaly-\u003canomaly-name\u003e' The secret is mounted into /etc/anomaly/config.",
+          "description": "ConfigSecret is the name of a Kubernetes Secret in the same namespace as the VMAnomaly object, which contains configuration for this VMAnomaly, configuration must be inside secret key: anomaly.yaml. It must be created by user. instance. Defaults to 'vmanomaly-<anomaly-name>' The secret is mounted into /etc/anomaly/config.",
           "$ref": "#/definitions/io.k8s.api.core.v1.SecretKeySelector"
         },
         "containers": {
@@ -2610,7 +2638,14 @@
           "default": {},
           "$ref": "#/definitions/com.victoriametrics.operator.v1.VTClusterStatus"
         }
-      }
+      },
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "operator.victoriametrics.com",
+          "kind": "VTCluster",
+          "version": "v1"
+        }
+      ]
     },
     "com.victoriametrics.operator.v1.VTClusterSpec": {
       "description": "VTClusterSpec defines the desired state of VTCluster",
@@ -3262,7 +3297,14 @@
           "default": {},
           "$ref": "#/definitions/com.victoriametrics.operator.v1.VTSingleStatus"
         }
-      }
+      },
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "operator.victoriametrics.com",
+          "kind": "VTSingle",
+          "version": "v1"
+        }
+      ]
     },
     "com.victoriametrics.operator.v1.VTSingleSpec": {
       "description": "VTSingleSpec defines the desired state of VTSingle",
@@ -5082,7 +5124,7 @@
           "type": "string"
         },
         "http_config": {
-          "description": "The HTTP client's configuration. You must use this configuration to supply the personal access token (PAT) as part of the HTTP `Authorization` header. For Jira Cloud, use basic_auth with the email address as the username and the PAT as the password. For Jira Data Center, use the 'authorization' field with 'credentials: \u003cPAT value\u003e'.",
+          "description": "The HTTP client's configuration. You must use this configuration to supply the personal access token (PAT) as part of the HTTP `Authorization` header. For Jira Cloud, use basic_auth with the email address as the username and the PAT as the password. For Jira Data Center, use the 'authorization' field with 'credentials: <PAT value>'.",
           "$ref": "#/definitions/com.victoriametrics.operator.v1beta1.HTTPConfig"
         },
         "issue_type": {
@@ -5897,7 +5939,7 @@
           "type": "string"
         },
         "token": {
-          "description": "The secret's key that contains the registered application’s API token, see https://pushover.net/apps. It must be at them same namespace as CRD",
+          "description": "The secret's key that contains the registered application\u2019s API token, see https://pushover.net/apps. It must be at them same namespace as CRD",
           "$ref": "#/definitions/io.k8s.api.core.v1.SecretKeySelector"
         },
         "url": {
@@ -5909,7 +5951,7 @@
           "type": "string"
         },
         "user_key": {
-          "description": "The secret's key that contains the recipient user’s user key. It must be at them same namespace as CRD",
+          "description": "The secret's key that contains the recipient user\u2019s user key. It must be at them same namespace as CRD",
           "$ref": "#/definitions/io.k8s.api.core.v1.SecretKeySelector"
         }
       }
@@ -6263,7 +6305,7 @@
           "type": "string"
         },
         "matchers": {
-          "description": "List of matchers that the alert’s labels should match. For the first level route, the operator adds a namespace: \"CRD_NS\" matcher. https://prometheus.io/docs/alerting/latest/configuration/#matcher",
+          "description": "List of matchers that the alert\u2019s labels should match. For the first level route, the operator adds a namespace: \"CRD_NS\" matcher. https://prometheus.io/docs/alerting/latest/configuration/#matcher",
           "type": "array",
           "items": {
             "type": "string",
@@ -7037,7 +7079,7 @@
           }
         },
         "outputs": {
-          "description": "Outputs is a list of output aggregate functions to produce.\n\nThe following names are allowed:\n\n- total - aggregates input counters - increase - counts the increase over input counters - count_series - counts the input series - count_samples - counts the input samples - sum_samples - sums the input samples - last - the last biggest sample value - min - the minimum sample value - max - the maximum sample value - avg - the average value across all the samples - stddev - standard deviation across all the samples - stdvar - standard variance across all the samples - histogram_bucket - creates VictoriaMetrics histogram for input samples - quantiles(phi1, ..., phiN) - quantiles' estimation for phi in the range [0..1]\n\nThe output time series will have the following names:\n\n  input_name:aggr_\u003cinterval\u003e_\u003coutput\u003e",
+          "description": "Outputs is a list of output aggregate functions to produce.\n\nThe following names are allowed:\n\n- total - aggregates input counters - increase - counts the increase over input counters - count_series - counts the input series - count_samples - counts the input samples - sum_samples - sums the input samples - last - the last biggest sample value - min - the minimum sample value - max - the maximum sample value - avg - the average value across all the samples - stddev - standard deviation across all the samples - stdvar - standard variance across all the samples - histogram_bucket - creates VictoriaMetrics histogram for input samples - quantiles(phi1, ..., phiN) - quantiles' estimation for phi in the range [0..1]\n\nThe output time series will have the following names:\n\n  input_name:aggr_<interval>_<output>",
           "type": "array",
           "items": {
             "type": "string",
@@ -7449,7 +7491,7 @@
           "type": "string"
         },
         "months": {
-          "description": "Months  defines list of calendar months identified by a case-insensitive name (e.g. ‘January’) or numeric 1. For example, ['1:3', 'may:august', 'december']",
+          "description": "Months  defines list of calendar months identified by a case-insensitive name (e.g. \u2018January\u2019) or numeric 1. For example, ['1:3', 'may:august', 'december']",
           "type": "array",
           "items": {
             "type": "string",
@@ -7577,7 +7619,14 @@
           "default": {},
           "$ref": "#/definitions/com.victoriametrics.operator.v1beta1.VLogsStatus"
         }
-      }
+      },
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "operator.victoriametrics.com",
+          "kind": "VLogs",
+          "version": "v1beta1"
+        }
+      ]
     },
     "com.victoriametrics.operator.v1beta1.VLogsSpec": {
       "description": "VLogsSpec defines the desired state of VLogs VLogs is deprecated, migrate to the VLSingle",
@@ -7924,7 +7973,14 @@
           "default": {},
           "$ref": "#/definitions/com.victoriametrics.operator.v1beta1.VMAgentStatus"
         }
-      }
+      },
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "operator.victoriametrics.com",
+          "kind": "VMAgent",
+          "version": "v1beta1"
+        }
+      ]
     },
     "com.victoriametrics.operator.v1beta1.VMAgentRemoteWriteSettings": {
       "description": "VMAgentRemoteWriteSettings - defines global settings for all remoteWrite urls.",
@@ -8662,7 +8718,14 @@
           "default": {},
           "$ref": "#/definitions/com.victoriametrics.operator.v1beta1.VMAlertStatus"
         }
-      }
+      },
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "operator.victoriametrics.com",
+          "kind": "VMAlert",
+          "version": "v1beta1"
+        }
+      ]
     },
     "com.victoriametrics.operator.v1beta1.VMAlertDatasourceSpec": {
       "description": "VMAlertDatasourceSpec defines the remote storage configuration for VmAlert to read alerts from",
@@ -9269,7 +9332,14 @@
           "default": {},
           "$ref": "#/definitions/com.victoriametrics.operator.v1beta1.VMAlertmanagerStatus"
         }
-      }
+      },
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "operator.victoriametrics.com",
+          "kind": "VMAlertmanager",
+          "version": "v1beta1"
+        }
+      ]
     },
     "com.victoriametrics.operator.v1beta1.VMAlertmanagerConfig": {
       "description": "VMAlertmanagerConfig is the Schema for the vmalertmanagerconfigs API",
@@ -9295,7 +9365,14 @@
           "default": {},
           "$ref": "#/definitions/com.victoriametrics.operator.v1beta1.VMAlertmanagerConfigStatus"
         }
-      }
+      },
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "operator.victoriametrics.com",
+          "kind": "VMAlertmanagerConfig",
+          "version": "v1beta1"
+        }
+      ]
     },
     "com.victoriametrics.operator.v1beta1.VMAlertmanagerConfigSpec": {
       "description": "VMAlertmanagerConfigSpec defines configuration for VMAlertmanagerConfig it must reference only locally defined objects",
@@ -9402,7 +9479,7 @@
           "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.LabelSelector"
         },
         "configRawYaml": {
-          "description": "ConfigRawYaml - raw configuration for alertmanager, it helps it to start without secret. priority -\u003e hardcoded ConfigRaw -\u003e ConfigRaw, provided by user -\u003e ConfigSecret.",
+          "description": "ConfigRawYaml - raw configuration for alertmanager, it helps it to start without secret. priority -> hardcoded ConfigRaw -> ConfigRaw, provided by user -> ConfigSecret.",
           "type": "string"
         },
         "configReloadAuthKeySecret": {
@@ -9427,7 +9504,7 @@
           "$ref": "#/definitions/io.k8s.api.core.v1.ResourceRequirements"
         },
         "configSecret": {
-          "description": "ConfigSecret is the name of a Kubernetes Secret in the same namespace as the VMAlertmanager object, which contains configuration for this VMAlertmanager, configuration must be inside secret key: alertmanager.yaml. It must be created by user. instance. Defaults to 'vmalertmanager-\u003calertmanager-name\u003e' The secret is mounted into /etc/alertmanager/config.",
+          "description": "ConfigSecret is the name of a Kubernetes Secret in the same namespace as the VMAlertmanager object, which contains configuration for this VMAlertmanager, configuration must be inside secret key: alertmanager.yaml. It must be created by user. instance. Defaults to 'vmalertmanager-<alertmanager-name>' The secret is mounted into /etc/alertmanager/config.",
           "type": "string"
         },
         "configSelector": {
@@ -9447,7 +9524,7 @@
           "type": "boolean"
         },
         "disableNamespaceMatcher": {
-          "description": "DisableNamespaceMatcher disables adding top route label matcher \"namespace = \u003cVMAlertmanagerConfig.namespace\u003e\" for VMAlertmanagerConfig It may be useful if alert doesn't have namespace label for some reason",
+          "description": "DisableNamespaceMatcher disables adding top route label matcher \"namespace = <VMAlertmanagerConfig.namespace>\" for VMAlertmanagerConfig It may be useful if alert doesn't have namespace label for some reason",
           "type": "boolean"
         },
         "disableRouteContinueEnforce": {
@@ -9706,7 +9783,7 @@
           "$ref": "#/definitions/com.victoriametrics.operator.v1beta1.StorageSpec"
         },
         "templates": {
-          "description": "Templates is a list of ConfigMap key references for ConfigMaps in the same namespace as the VMAlertmanager object, which shall be mounted into the VMAlertmanager Pods. The Templates are mounted into /etc/vm/templates/\u003cconfigmap-name\u003e/\u003cconfigmap-key\u003e.",
+          "description": "Templates is a list of ConfigMap key references for ConfigMaps in the same namespace as the VMAlertmanager object, which shall be mounted into the VMAlertmanager Pods. The Templates are mounted into /etc/vm/templates/<configmap-name>/<configmap-key>.",
           "type": "array",
           "items": {
             "default": {},
@@ -9810,7 +9887,14 @@
           "default": {},
           "$ref": "#/definitions/com.victoriametrics.operator.v1beta1.VMAuthStatus"
         }
-      }
+      },
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "operator.victoriametrics.com",
+          "kind": "VMAuth",
+          "version": "v1beta1"
+        }
+      ]
     },
     "com.victoriametrics.operator.v1beta1.VMAuthLoadBalancer": {
       "description": "VMAuthLoadBalancer configures vmauth as a load balancer for the requests",
@@ -10751,7 +10835,14 @@
           "default": {},
           "$ref": "#/definitions/com.victoriametrics.operator.v1beta1.VMClusterStatus"
         }
-      }
+      },
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "operator.victoriametrics.com",
+          "kind": "VMCluster",
+          "version": "v1beta1"
+        }
+      ]
     },
     "com.victoriametrics.operator.v1beta1.VMClusterSpec": {
       "description": "VMClusterSpec defines the desired state of VMCluster",
@@ -11149,7 +11240,14 @@
           "default": {},
           "$ref": "#/definitions/com.victoriametrics.operator.v1beta1.ScrapeObjectStatus"
         }
-      }
+      },
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "operator.victoriametrics.com",
+          "kind": "VMNodeScrape",
+          "version": "v1beta1"
+        }
+      ]
     },
     "com.victoriametrics.operator.v1beta1.VMNodeScrapeSpec": {
       "description": "VMNodeScrapeSpec defines specification for VMNodeScrape.",
@@ -11304,7 +11402,14 @@
           "default": {},
           "$ref": "#/definitions/com.victoriametrics.operator.v1beta1.ScrapeObjectStatus"
         }
-      }
+      },
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "operator.victoriametrics.com",
+          "kind": "VMPodScrape",
+          "version": "v1beta1"
+        }
+      ]
     },
     "com.victoriametrics.operator.v1beta1.VMPodScrapeSpec": {
       "description": "VMPodScrapeSpec defines the desired state of VMPodScrape",
@@ -11386,7 +11491,14 @@
           "default": {},
           "$ref": "#/definitions/com.victoriametrics.operator.v1beta1.ScrapeObjectStatus"
         }
-      }
+      },
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "operator.victoriametrics.com",
+          "kind": "VMProbe",
+          "version": "v1beta1"
+        }
+      ]
     },
     "com.victoriametrics.operator.v1beta1.VMProbeSpec": {
       "description": "VMProbeSpec contains specification parameters for a Probe.",
@@ -11626,7 +11738,14 @@
           "default": {},
           "$ref": "#/definitions/com.victoriametrics.operator.v1beta1.VMRuleStatus"
         }
-      }
+      },
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "operator.victoriametrics.com",
+          "kind": "VMRule",
+          "version": "v1beta1"
+        }
+      ]
     },
     "com.victoriametrics.operator.v1beta1.VMRuleSpec": {
       "description": "VMRuleSpec defines the desired state of VMRule",
@@ -11687,7 +11806,14 @@
           "default": {},
           "$ref": "#/definitions/com.victoriametrics.operator.v1beta1.ScrapeObjectStatus"
         }
-      }
+      },
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "operator.victoriametrics.com",
+          "kind": "VMScrapeConfig",
+          "version": "v1beta1"
+        }
+      ]
     },
     "com.victoriametrics.operator.v1beta1.VMScrapeConfigSpec": {
       "description": "VMScrapeConfigSpec defines the desired state of VMScrapeConfig",
@@ -12256,7 +12382,14 @@
           "default": {},
           "$ref": "#/definitions/com.victoriametrics.operator.v1beta1.ScrapeObjectStatus"
         }
-      }
+      },
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "operator.victoriametrics.com",
+          "kind": "VMServiceScrape",
+          "version": "v1beta1"
+        }
+      ]
     },
     "com.victoriametrics.operator.v1beta1.VMServiceScrapeSpec": {
       "description": "VMServiceScrapeSpec defines the desired state of VMServiceScrape",
@@ -12347,7 +12480,14 @@
           "default": {},
           "$ref": "#/definitions/com.victoriametrics.operator.v1beta1.VMSingleStatus"
         }
-      }
+      },
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "operator.victoriametrics.com",
+          "kind": "VMSingle",
+          "version": "v1beta1"
+        }
+      ]
     },
     "com.victoriametrics.operator.v1beta1.VMSingleSpec": {
       "description": "VMSingleSpec defines the desired state of VMSingle",
@@ -12698,7 +12838,14 @@
           "default": {},
           "$ref": "#/definitions/com.victoriametrics.operator.v1beta1.ScrapeObjectStatus"
         }
-      }
+      },
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "operator.victoriametrics.com",
+          "kind": "VMStaticScrape",
+          "version": "v1beta1"
+        }
+      ]
     },
     "com.victoriametrics.operator.v1beta1.VMStaticScrapeSpec": {
       "description": "VMStaticScrapeSpec defines the desired state of VMStaticScrape.",
@@ -13077,7 +13224,14 @@
           "default": {},
           "$ref": "#/definitions/com.victoriametrics.operator.v1beta1.VMUserStatus"
         }
-      }
+      },
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "operator.victoriametrics.com",
+          "kind": "VMUser",
+          "version": "v1beta1"
+        }
+      ]
     },
     "com.victoriametrics.operator.v1beta1.VMUserIPFilters": {
       "description": "VMUserIPFilters defines filters for IP addresses supported only with enterprise version of [vmauth](https://docs.victoriametrics.com/victoriametrics/vmauth/#ip-filters)",
@@ -13987,7 +14141,7 @@
       "type": "object",
       "properties": {
         "timeoutSeconds": {
-          "description": "timeoutSeconds specifies the seconds of ClientIP type session sticky time. The value must be \u003e0 \u0026\u0026 \u003c=86400(for 1 day) if ServiceAffinity == \"ClientIP\". Default value is 10800(for 3 hours).",
+          "description": "timeoutSeconds specifies the seconds of ClientIP type session sticky time. The value must be >0 && <=86400(for 1 day) if ServiceAffinity == \"ClientIP\". Default value is 10800(for 3 hours).",
           "type": "integer",
           "format": "int32"
         }
@@ -14300,7 +14454,7 @@
       ],
       "properties": {
         "containerPort": {
-          "description": "Number of port to expose on the pod's IP address. This must be a valid port number, 0 \u003c x \u003c 65536.",
+          "description": "Number of port to expose on the pod's IP address. This must be a valid port number, 0 < x < 65536.",
           "type": "integer",
           "format": "int32",
           "default": 0
@@ -14310,7 +14464,7 @@
           "type": "string"
         },
         "hostPort": {
-          "description": "Number of port to expose on the host. If specified, this must be a valid port number, 0 \u003c x \u003c 65536. If HostNetwork is specified, this must match ContainerPort. Most containers do not need this.",
+          "description": "Number of port to expose on the host. If specified, this must be a valid port number, 0 < x < 65536. If HostNetwork is specified, this must match ContainerPort. Most containers do not need this.",
           "type": "integer",
           "format": "int32"
         },
@@ -14475,7 +14629,7 @@
           "$ref": "#/definitions/io.k8s.api.core.v1.ConfigMapKeySelector"
         },
         "fieldRef": {
-          "description": "Selects a field of the pod: supports metadata.name, metadata.namespace, `metadata.labels['\u003cKEY\u003e']`, `metadata.annotations['\u003cKEY\u003e']`, spec.nodeName, spec.serviceAccountName, status.hostIP, status.podIP, status.podIPs.",
+          "description": "Selects a field of the pod: supports metadata.name, metadata.namespace, `metadata.labels['<KEY>']`, `metadata.annotations['<KEY>']`, spec.nodeName, spec.serviceAccountName, status.hostIP, status.podIP, status.podIPs.",
           "$ref": "#/definitions/io.k8s.api.core.v1.ObjectFieldSelector"
         },
         "resourceFieldRef": {
@@ -14493,7 +14647,7 @@
       "type": "object",
       "properties": {
         "volumeClaimTemplate": {
-          "description": "Will be used to create a stand-alone PVC to provision the volume. The pod in which this EphemeralVolumeSource is embedded will be the owner of the PVC, i.e. the PVC will be deleted together with the pod.  The name of the PVC will be `\u003cpod name\u003e-\u003cvolume name\u003e` where `\u003cvolume name\u003e` is the name from the `PodSpec.Volumes` array entry. Pod validation will reject the pod if the concatenated name is not valid for a PVC (for example, too long).\n\nAn existing PVC with that name that is not owned by the pod will *not* be used for the pod to avoid using an unrelated volume by mistake. Starting the pod is then blocked until the unrelated PVC is removed. If such a pre-created PVC is meant to be used by the pod, the PVC has to updated with an owner reference to the pod once the pod exists. Normally this should not be necessary, but it may be useful when manually reconstructing a broken cluster.\n\nThis field is read-only and no changes will be made by Kubernetes to the PVC after it has been created.\n\nRequired, must not be nil.",
+          "description": "Will be used to create a stand-alone PVC to provision the volume. The pod in which this EphemeralVolumeSource is embedded will be the owner of the PVC, i.e. the PVC will be deleted together with the pod.  The name of the PVC will be `<pod name>-<volume name>` where `<volume name>` is the name from the `PodSpec.Volumes` array entry. Pod validation will reject the pod if the concatenated name is not valid for a PVC (for example, too long).\n\nAn existing PVC with that name that is not owned by the pod will *not* be used for the pod to avoid using an unrelated volume by mistake. Starting the pod is then blocked until the unrelated PVC is removed. If such a pre-created PVC is meant to be used by the pod, the PVC has to updated with an owner reference to the pod once the pod exists. Normally this should not be necessary, but it may be useful when manually reconstructing a broken cluster.\n\nThis field is read-only and no changes will be made by Kubernetes to the PVC after it has been created.\n\nRequired, must not be nil.",
           "$ref": "#/definitions/io.k8s.api.core.v1.PersistentVolumeClaimTemplate"
         }
       }
@@ -14589,7 +14743,7 @@
       "type": "object",
       "properties": {
         "datasetName": {
-          "description": "datasetName is Name of the dataset stored as metadata -\u003e name on the dataset for Flocker should be considered as deprecated",
+          "description": "datasetName is Name of the dataset stored as metadata -> name on the dataset for Flocker should be considered as deprecated",
           "type": "string"
         },
         "datasetUUID": {
@@ -14822,7 +14976,7 @@
           "type": "string"
         },
         "initiatorName": {
-          "description": "initiatorName is the custom iSCSI Initiator Name. If initiatorName is specified with iscsiInterface simultaneously, new iSCSI interface \u003ctarget portal\u003e:\u003cvolume name\u003e will be created for the connection.",
+          "description": "initiatorName is the custom iSCSI Initiator Name. If initiatorName is specified with iscsiInterface simultaneously, new iSCSI interface <target portal>:<volume name> will be created for the connection.",
           "type": "string"
         },
         "iqn": {
@@ -15479,7 +15633,7 @@
       }
     },
     "io.k8s.api.core.v1.PodAffinityTerm": {
-      "description": "Defines a set of pods (namely those matching the labelSelector relative to the given namespace(s)) that this pod should be co-located (affinity) or not co-located (anti-affinity) with, where co-located is defined as running on a node whose value of the label with key \u003ctopologyKey\u003e matches that of any node on which a pod of the set of pods is running",
+      "description": "Defines a set of pods (namely those matching the labelSelector relative to the given namespace(s)) that this pod should be co-located (affinity) or not co-located (anti-affinity) with, where co-located is defined as running on a node whose value of the label with key <topologyKey> matches that of any node on which a pod of the set of pods is running",
       "type": "object",
       "required": [
         "topologyKey"
@@ -15976,7 +16130,7 @@
           "type": "string"
         },
         "type": {
-          "description": "type indicates which kind of seccomp profile will be applied. Valid options are:\n\nLocalhost - a profile defined in a file on the node should be used. RuntimeDefault - the container runtime default profile should be used. Unconfined - no profile should be applied.\n\nPossible enum values:\n - `\"Localhost\"` indicates a profile defined in a file on the node should be used. The file's location relative to \u003ckubelet-root-dir\u003e/seccomp.\n - `\"RuntimeDefault\"` represents the default container runtime seccomp profile.\n - `\"Unconfined\"` indicates no seccomp profile is applied (A.K.A. unconfined).",
+          "description": "type indicates which kind of seccomp profile will be applied. Valid options are:\n\nLocalhost - a profile defined in a file on the node should be used. RuntimeDefault - the container runtime default profile should be used. Unconfined - no profile should be applied.\n\nPossible enum values:\n - `\"Localhost\"` indicates a profile defined in a file on the node should be used. The file's location relative to <kubelet-root-dir>/seccomp.\n - `\"RuntimeDefault\"` represents the default container runtime seccomp profile.\n - `\"Unconfined\"` indicates no seccomp profile is applied (A.K.A. unconfined).",
           "type": "string",
           "default": "",
           "enum": [
@@ -16137,7 +16291,7 @@
           "$ref": "#/definitions/io.k8s.api.core.v1.SELinuxOptions"
         },
         "seccompProfile": {
-          "description": "The seccomp options to use by this container. If seccomp options are provided at both the pod \u0026 container level, the container options override the pod options. Note that this field cannot be set when spec.os.name is windows.",
+          "description": "The seccomp options to use by this container. If seccomp options are provided at both the pod & container level, the container options override the pod options. Note that this field cannot be set when spec.os.name is windows.",
           "$ref": "#/definitions/io.k8s.api.core.v1.SeccompProfile"
         },
         "windowsOptions": {
@@ -16451,7 +16605,7 @@
       }
     },
     "io.k8s.api.core.v1.Toleration": {
-      "description": "The pod this Toleration is attached to tolerates any taint that matches the triple \u003ckey,value,effect\u003e using the matching operator \u003coperator\u003e.",
+      "description": "The pod this Toleration is attached to tolerates any taint that matches the triple <key,value,effect> using the matching operator <operator>.",
       "type": "object",
       "properties": {
         "effect": {
@@ -16536,7 +16690,7 @@
           ]
         },
         "topologyKey": {
-          "description": "TopologyKey is the key of node labels. Nodes that have a label with this key and identical values are considered to be in the same topology. We consider each \u003ckey, value\u003e as a \"bucket\", and try to put balanced number of pods into each bucket. We define a domain as a particular instance of a topology. Also, we define an eligible domain as a domain whose nodes meet the requirements of nodeAffinityPolicy and nodeTaintsPolicy. e.g. If TopologyKey is \"kubernetes.io/hostname\", each Node is a domain of that topology. And, if TopologyKey is \"topology.kubernetes.io/zone\", each zone is a domain of that topology. It's a required field.",
+          "description": "TopologyKey is the key of node labels. Nodes that have a label with this key and identical values are considered to be in the same topology. We consider each <key, value> as a \"bucket\", and try to put balanced number of pods into each bucket. We define a domain as a particular instance of a topology. Also, we define an eligible domain as a domain whose nodes meet the requirements of nodeAffinityPolicy and nodeTaintsPolicy. e.g. If TopologyKey is \"kubernetes.io/hostname\", each Node is a domain of that topology. And, if TopologyKey is \"topology.kubernetes.io/zone\", each zone is a domain of that topology. It's a required field.",
           "type": "string",
           "default": ""
         },
@@ -16947,7 +17101,7 @@
       }
     },
     "io.k8s.api.networking.v1.HTTPIngressRuleValue": {
-      "description": "HTTPIngressRuleValue is a list of http selectors pointing to backends. In the example: http://\u003chost\u003e/\u003cpath\u003e?\u003csearchpart\u003e -\u003e backend where where parts of the url correspond to RFC 3986, this resource will be used to match against everything after the last '/' and before the first '?' or '#'.",
+      "description": "HTTPIngressRuleValue is a list of http selectors pointing to backends. In the example: http://<host>/<path>?<searchpart> -> backend where where parts of the url correspond to RFC 3986, this resource will be used to match against everything after the last '/' and before the first '?' or '#'.",
       "type": "object",
       "required": [
         "paths"
@@ -17049,11 +17203,11 @@
       "description": "JSON represents any valid JSON value. These types are supported: bool, int64, float64, string, []interface{}, map[string]interface{} and nil."
     },
     "io.k8s.apimachinery.pkg.api.resource.Quantity": {
-      "description": "Quantity is a fixed-point representation of a number. It provides convenient marshaling/unmarshaling in JSON and YAML, in addition to String() and AsInt64() accessors.\n\nThe serialization format is:\n\n``` \u003cquantity\u003e        ::= \u003csignedNumber\u003e\u003csuffix\u003e\n\n\t(Note that \u003csuffix\u003e may be empty, from the \"\" case in \u003cdecimalSI\u003e.)\n\n\u003cdigit\u003e           ::= 0 | 1 | ... | 9 \u003cdigits\u003e          ::= \u003cdigit\u003e | \u003cdigit\u003e\u003cdigits\u003e \u003cnumber\u003e          ::= \u003cdigits\u003e | \u003cdigits\u003e.\u003cdigits\u003e | \u003cdigits\u003e. | .\u003cdigits\u003e \u003csign\u003e            ::= \"+\" | \"-\" \u003csignedNumber\u003e    ::= \u003cnumber\u003e | \u003csign\u003e\u003cnumber\u003e \u003csuffix\u003e          ::= \u003cbinarySI\u003e | \u003cdecimalExponent\u003e | \u003cdecimalSI\u003e \u003cbinarySI\u003e        ::= Ki | Mi | Gi | Ti | Pi | Ei\n\n\t(International System of units; See: http://physics.nist.gov/cuu/Units/binary.html)\n\n\u003cdecimalSI\u003e       ::= m | \"\" | k | M | G | T | P | E\n\n\t(Note that 1024 = 1Ki but 1000 = 1k; I didn't choose the capitalization.)\n\n\u003cdecimalExponent\u003e ::= \"e\" \u003csignedNumber\u003e | \"E\" \u003csignedNumber\u003e ```\n\nNo matter which of the three exponent forms is used, no quantity may represent a number greater than 2^63-1 in magnitude, nor may it have more than 3 decimal places. Numbers larger or more precise will be capped or rounded up. (E.g.: 0.1m will rounded up to 1m.) This may be extended in the future if we require larger or smaller quantities.\n\nWhen a Quantity is parsed from a string, it will remember the type of suffix it had, and will use the same type again when it is serialized.\n\nBefore serializing, Quantity will be put in \"canonical form\". This means that Exponent/suffix will be adjusted up or down (with a corresponding increase or decrease in Mantissa) such that:\n\n- No precision is lost - No fractional digits will be emitted - The exponent (or suffix) is as large as possible.\n\nThe sign will be omitted unless the number is negative.\n\nExamples:\n\n- 1.5 will be serialized as \"1500m\" - 1.5Gi will be serialized as \"1536Mi\"\n\nNote that the quantity will NEVER be internally represented by a floating point number. That is the whole point of this exercise.\n\nNon-canonical values will still parse as long as they are well formed, but will be re-emitted in their canonical form. (So always use canonical form, or don't diff.)\n\nThis format is intended to make it difficult to use these numbers without writing some sort of special handling code in the hopes that that will cause implementors to also use a fixed point implementation.",
+      "description": "Quantity is a fixed-point representation of a number. It provides convenient marshaling/unmarshaling in JSON and YAML, in addition to String() and AsInt64() accessors.\n\nThe serialization format is:\n\n``` <quantity>        ::= <signedNumber><suffix>\n\n\t(Note that <suffix> may be empty, from the \"\" case in <decimalSI>.)\n\n<digit>           ::= 0 | 1 | ... | 9 <digits>          ::= <digit> | <digit><digits> <number>          ::= <digits> | <digits>.<digits> | <digits>. | .<digits> <sign>            ::= \"+\" | \"-\" <signedNumber>    ::= <number> | <sign><number> <suffix>          ::= <binarySI> | <decimalExponent> | <decimalSI> <binarySI>        ::= Ki | Mi | Gi | Ti | Pi | Ei\n\n\t(International System of units; See: http://physics.nist.gov/cuu/Units/binary.html)\n\n<decimalSI>       ::= m | \"\" | k | M | G | T | P | E\n\n\t(Note that 1024 = 1Ki but 1000 = 1k; I didn't choose the capitalization.)\n\n<decimalExponent> ::= \"e\" <signedNumber> | \"E\" <signedNumber> ```\n\nNo matter which of the three exponent forms is used, no quantity may represent a number greater than 2^63-1 in magnitude, nor may it have more than 3 decimal places. Numbers larger or more precise will be capped or rounded up. (E.g.: 0.1m will rounded up to 1m.) This may be extended in the future if we require larger or smaller quantities.\n\nWhen a Quantity is parsed from a string, it will remember the type of suffix it had, and will use the same type again when it is serialized.\n\nBefore serializing, Quantity will be put in \"canonical form\". This means that Exponent/suffix will be adjusted up or down (with a corresponding increase or decrease in Mantissa) such that:\n\n- No precision is lost - No fractional digits will be emitted - The exponent (or suffix) is as large as possible.\n\nThe sign will be omitted unless the number is negative.\n\nExamples:\n\n- 1.5 will be serialized as \"1500m\" - 1.5Gi will be serialized as \"1536Mi\"\n\nNote that the quantity will NEVER be internally represented by a floating point number. That is the whole point of this exercise.\n\nNon-canonical values will still parse as long as they are well formed, but will be re-emitted in their canonical form. (So always use canonical form, or don't diff.)\n\nThis format is intended to make it difficult to use these numbers without writing some sort of special handling code in the hopes that that will cause implementors to also use a fixed point implementation.",
       "type": "string"
     },
     "io.k8s.apimachinery.pkg.apis.meta.v1.FieldsV1": {
-      "description": "FieldsV1 stores a set of fields in a data structure like a Trie, in JSON format.\n\nEach key is either a '.' representing the field itself, and will always map to an empty set, or a string representing a sub-field or item. The string will follow one of these four formats: 'f:\u003cname\u003e', where \u003cname\u003e is the name of a field in a struct, or key in a map 'v:\u003cvalue\u003e', where \u003cvalue\u003e is the exact json formatted value of a list item 'i:\u003cindex\u003e', where \u003cindex\u003e is position of a item in a list 'k:\u003ckeys\u003e', where \u003ckeys\u003e is a map of  a list item's key fields to their unique values If a key maps to an empty Fields value, the field that key represents is part of the set.\n\nThe exact format is defined in sigs.k8s.io/structured-merge-diff",
+      "description": "FieldsV1 stores a set of fields in a data structure like a Trie, in JSON format.\n\nEach key is either a '.' representing the field itself, and will always map to an empty set, or a string representing a sub-field or item. The string will follow one of these four formats: 'f:<name>', where <name> is the name of a field in a struct, or key in a map 'v:<value>', where <value> is the exact json formatted value of a list item 'i:<index>', where <index> is position of a item in a list 'k:<keys>', where <keys> is a map of  a list item's key fields to their unique values If a key maps to an empty Fields value, the field that key represents is part of the set.\n\nThe exact format is defined in sigs.k8s.io/structured-merge-diff",
       "type": "object"
     },
     "io.k8s.apimachinery.pkg.apis.meta.v1.LabelSelector": {

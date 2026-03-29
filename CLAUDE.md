@@ -46,7 +46,7 @@ tools/
   discover.py                    # Populates index.yaml from API discovery
   envtest.py                     # Live CRD discovery via envtest kube-apiserver
   envtest_openapi.py             # Fetches /openapi/v2 from envtest, produces json-schema/live/
-  validate.py                    # Schema validation script
+  validate.py                    # Schema validation: JSON, $refs, index.yaml integrity, GVK
   openapi-json-gen/
     main.go.tmpl                 # Go source template for the OpenAPI builder
 builder/
@@ -77,6 +77,8 @@ Karpenter (and ideally all future controllers) use the shared pipeline.
  5. openapi-gen → generated/openapi/openapi_generated.go
  6. write generated/go.mod + render generated/main.go from main.go.tmpl
  7. go mod tidy && go run ./main.go → generated/openapi/openapi.json
+    (main.go.tmpl injects x-kubernetes-group-version-kind into the OpenAPI spec for each
+     root CRD type via GetDefinitionName; openapi2jsonschema preserves these extensions)
  8. openapi2jsonschema → schemas/ORG/REPO/VERSION/json-schema/source/
  9. tools/discover.py (static)   # (optional) populate index.yaml from discovery_base_url
 10. collect_crds                  # (optional) copy CRD YAMLs to crd/, write crds.yaml, populate index.yaml
@@ -128,6 +130,11 @@ what is currently running.
 ```bash
 make validate CONTROLLER=aws/karpenter-provider-aws VERSION=v1.10.0
 ```
+
+`validate.py` checks: (1) `_definitions.json` is valid JSON, (2) all schema files are
+valid JSON, (3) every `$ref` resolves within `_definitions.json`, (4) every resource in
+`index.yaml` has a `definitionKey` that exists in `_definitions.json` and whose definition
+carries the correct `x-kubernetes-group-version-kind`.
 
 ### For built-in Kubernetes schemas
 
@@ -543,6 +550,24 @@ Common root causes for source MISS:
 - A type is listed in `crd_names` but the Go type doesn't exist at that version
   (CRD added to helm chart before Go type was written) — remove from `crd_names`.
 
+### Multi-version CRDs and definitionKey matching
+
+When a CRD is served at more than one API version (e.g. `v1` and `v1beta1`) and the
+controller has separate Go types for each version, there are separate definition keys:
+`io.external-secrets.v1alpha1.ExternalSecret` and `io.external-secrets.v1beta1.ExternalSecret`.
+`annotate_definition_keys()` uses the version segment embedded in the key name to break
+the tie — `v1beta1` in the segment goes to the `v1beta1` definition.
+
+Each source definition carries exactly **one** `x-kubernetes-group-version-kind` entry
+matching its own version. Live kube-apiserver schemas may carry multiple entries (all
+served versions in one array), but source schemas never accumulate across versions.
+
+`validate.py` enforces this: it checks that the `definitionKey` in `index.yaml` exists
+in `_definitions.json` and that the definition's GVK matches the resource's
+`(group, kind, version)`. A mismatch here means `annotate_definition_keys()` chose the
+wrong definition — verify that distinct Go types exist for each API version and that the
+version segment in the definition key matches.
+
 ### generated/ is gitignored
 
 The `**/generated/*` pattern in `.gitignore` covers intermediate build artifacts.
@@ -671,10 +696,27 @@ offers a "Hide system resources" toggle (only when discovery data is available).
 
 `tools/generate.py` calls `annotate_definition_keys()` after schema generation to match
 each resource to its key in `_definitions.json` (e.g. `io.k8s.api.apps.v1.Deployment`)
-and write it back to `index.yaml`. Matching logic:
-- Find all keys in `_definitions.json` whose last dot-segment equals `resource.kind`
-- Prefer the key whose prefix starts with the first segment of `resource.group`
-- Write the best match as `definitionKey` in the resource entry
+and write it back to `index.yaml`. Matching runs in two passes:
+
+1. **GVK-primary** (exact match): build a `(group, kind, version) → def_key` index from
+   `x-kubernetes-group-version-kind` already in `_definitions.json`. This is authoritative
+   for Kubernetes built-in schemas (GVK comes from `swagger.json`) and for freshly
+   generated CRD schemas (GVK injected by `main.go.tmpl` — see below).
+
+2. **Name + version fallback**: when GVK-primary misses (e.g. older schemas without GVK),
+   find all definition keys whose last dot-segment equals `resource.kind`, narrow by
+   group prefix, then prefer the candidate whose second-to-last segment matches
+   `resource.version` exactly (e.g. `v1beta1` in `io.external-secrets.v1beta1.ExternalSecret`).
+   This correctly separates multi-version CRDs that have distinct definitions per version.
+
+`x-kubernetes-group-version-kind` in source `_definitions.json`:
+- **CRD schemas** — injected by `main.go.tmpl` via the `GetDefinitionName` hook: for each
+  Go type listed in `crd_names`, the hook derives `(group, kind, version)` from the
+  host-conversion result and returns it as `spec.Extensions`. `openapi2jsonschema` preserves
+  these extensions. Each definition carries exactly **one** GVK entry matching its own
+  API version — never accumulated across multiple served versions.
+- **Kubernetes built-in schemas** — preserved directly from `swagger.json` by
+  `openapi2jsonschema`. No extra injection step needed.
 
 The site uses `definitionKey` for the copyable `$ref` name shown on resource kind pages.
 `getResourceAssets()` prefers this pre-computed value and falls back to scanning

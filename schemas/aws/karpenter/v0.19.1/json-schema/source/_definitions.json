@@ -21,7 +21,14 @@
           "$ref": "#/definitions/aws.k8s.karpenter.v1alpha1.AWSNodeTemplateSpec"
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "karpenter.k8s.aws",
+          "kind": "AWSNodeTemplate",
+          "version": "v1alpha1"
+        }
+      ]
     },
     "aws.k8s.karpenter.v1alpha1.AWSNodeTemplateSpec": {
       "description": "AWSNodeTemplateSpec is the top level specification for the AWS Karpenter Provider. This will contain configuration necessary to launch instances in AWS.",
@@ -617,7 +624,14 @@
           "$ref": "#/definitions/sh.karpenter.v1alpha5.ProvisionerStatus"
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "karpenter.sh",
+          "kind": "Provisioner",
+          "version": "v1alpha5"
+        }
+      ]
     },
     "sh.karpenter.v1alpha5.ProvisionerSpec": {
       "description": "ProvisionerSpec is the top level provisioner specification. Provisioners launch nodes in response to pods that are unschedulable. A single provisioner is capable of managing a diverse set of nodes. Node properties are determined from a combination of provisioner and pod scheduling constraints.",

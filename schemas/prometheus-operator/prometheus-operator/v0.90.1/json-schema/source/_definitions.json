@@ -107,7 +107,14 @@
           "$ref": "#/definitions/com.coreos.monitoring.v1.AlertmanagerStatus"
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "monitoring.coreos.com",
+          "kind": "Alertmanager",
+          "version": "v1"
+        }
+      ]
     },
     "com.coreos.monitoring.v1.AlertmanagerConfigMatcherStrategy": {
       "type": "object",
@@ -1885,7 +1892,14 @@
           "$ref": "#/definitions/com.coreos.monitoring.v1.ConfigResourceStatus"
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "monitoring.coreos.com",
+          "kind": "PodMonitor",
+          "version": "v1"
+        }
+      ]
     },
     "com.coreos.monitoring.v1.PodMonitorList": {
       "description": "PodMonitorList is a list of PodMonitors.",
@@ -2069,7 +2083,14 @@
           "$ref": "#/definitions/com.coreos.monitoring.v1.ConfigResourceStatus"
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "monitoring.coreos.com",
+          "kind": "Probe",
+          "version": "v1"
+        }
+      ]
     },
     "com.coreos.monitoring.v1.ProbeList": {
       "description": "ProbeList is a list of Probes.",
@@ -2421,7 +2442,14 @@
           "$ref": "#/definitions/com.coreos.monitoring.v1.PrometheusStatus"
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "monitoring.coreos.com",
+          "kind": "Prometheus",
+          "version": "v1"
+        }
+      ]
     },
     "com.coreos.monitoring.v1.PrometheusList": {
       "description": "PrometheusList is a list of Prometheuses.",
@@ -2485,7 +2513,14 @@
           "$ref": "#/definitions/com.coreos.monitoring.v1.ConfigResourceStatus"
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "monitoring.coreos.com",
+          "kind": "PrometheusRule",
+          "version": "v1"
+        }
+      ]
     },
     "com.coreos.monitoring.v1.PrometheusRuleExcludeConfig": {
       "description": "PrometheusRuleExcludeConfig enables users to configure excluded PrometheusRule names and their namespaces to be ignored while enforcing namespace label for alerts and metrics.",
@@ -3929,7 +3964,14 @@
           "$ref": "#/definitions/com.coreos.monitoring.v1.ConfigResourceStatus"
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "monitoring.coreos.com",
+          "kind": "ServiceMonitor",
+          "version": "v1"
+        }
+      ]
     },
     "com.coreos.monitoring.v1.ServiceMonitorList": {
       "description": "ServiceMonitorList is a list of ServiceMonitors.",
@@ -4315,7 +4357,14 @@
           "$ref": "#/definitions/com.coreos.monitoring.v1.ThanosRulerStatus"
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "monitoring.coreos.com",
+          "kind": "ThanosRuler",
+          "version": "v1"
+        }
+      ]
     },
     "com.coreos.monitoring.v1.ThanosRulerList": {
       "description": "ThanosRulerList is a list of ThanosRulers.",
@@ -5179,7 +5228,14 @@
           "$ref": "#/definitions/com.coreos.monitoring.v1.ConfigResourceStatus"
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "monitoring.coreos.com",
+          "kind": "AlertmanagerConfig",
+          "version": "v1alpha1"
+        }
+      ]
     },
     "com.coreos.monitoring.v1alpha1.AlertmanagerConfigList": {
       "description": "AlertmanagerConfigList is a list of AlertmanagerConfig.",
@@ -7366,7 +7422,14 @@
           "$ref": "#/definitions/com.coreos.monitoring.v1.PrometheusStatus"
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "monitoring.coreos.com",
+          "kind": "PrometheusAgent",
+          "version": "v1alpha1"
+        }
+      ]
     },
     "com.coreos.monitoring.v1alpha1.PrometheusAgentList": {
       "description": "PrometheusAgentList is a list of Prometheus agents.",
@@ -8626,7 +8689,14 @@
           "$ref": "#/definitions/com.coreos.monitoring.v1.ConfigResourceStatus"
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "monitoring.coreos.com",
+          "kind": "ScrapeConfig",
+          "version": "v1alpha1"
+        }
+      ]
     },
     "com.coreos.monitoring.v1alpha1.ScrapeConfigList": {
       "description": "ScrapeConfigList is a list of ScrapeConfigs.",

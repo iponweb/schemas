@@ -26,5 +26,12 @@
     }
   },
   "additionalProperties": false,
-  "$schema": "http://json-schema.org/schema#"
+  "$schema": "http://json-schema.org/schema#",
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "generators.external-secrets.io",
+      "kind": "GCRAccessToken",
+      "version": "v1alpha1"
+    }
+  ]
 }

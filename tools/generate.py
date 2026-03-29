@@ -195,25 +195,45 @@ def annotate_definition_keys(index_yaml: Path, json_schema_source_dir: Path):
     For each resource in index_yaml, find its definition key inside
     json-schema/source/_definitions.json and store it as 'definitionKey'.
 
-    The key format follows openapi2jsonschema conventions, e.g.:
-      io.k8s.api.apps.v1.Deployment
-      aws.k8s.karpenter.v1.EC2NodeClass
-    Matching is done by the last dot-segment equalling the kind name;
-    when multiple candidates exist the one whose first segment matches the
-    resource group's first segment is preferred.
+    Primary matching: exact (group, kind, version) lookup via the
+    x-kubernetes-group-version-kind extension that openapi-gen and
+    swagger.json both embed in root-type definitions.
+
+    Fallback matching (when GVK is absent from a definition): last
+    dot-segment equals kind, preferring the candidate whose first segment
+    matches the resource's group prefix.
     """
     defs_path = json_schema_source_dir / '_definitions.json'
     if not defs_path.exists() or not index_yaml.exists():
         return
     with open(defs_path) as f:
         defs_data = json.load(f)
-    definitions = list(defs_data.get('definitions', {}).keys())
+    definitions = defs_data.get('definitions', {})
+
+    # Build GVK → definition-key index from x-kubernetes-group-version-kind.
+    # A definition may declare multiple GVK entries; index all of them.
+    gvk_index: dict[tuple, str] = {}
+    for def_key, defn in definitions.items():
+        for gvk in defn.get('x-kubernetes-group-version-kind', []):
+            t = (gvk.get('group', ''), gvk.get('kind', ''), gvk.get('version', ''))
+            gvk_index[t] = def_key
+
     with open(index_yaml) as f:
         existing = yaml.safe_load(f) or {}
     resources = existing.get('resources', [])
+
     for r in resources:
-        kind = r.get('kind', '')
-        group = r.get('group', '')
+        kind    = r.get('kind', '')
+        group   = r.get('group', '')
+        version = r.get('version', '')
+
+        # Primary: exact GVK match
+        match = gvk_index.get((group, kind, version))
+        if match:
+            r['definitionKey'] = match
+            continue
+
+        # Fallback: name-based heuristic (last segment == kind)
         candidates = [k for k in definitions if k.split('.')[-1] == kind]
         if not candidates:
             continue
@@ -221,12 +241,19 @@ def annotate_definition_keys(index_yaml: Path, json_schema_source_dir: Path):
             r['definitionKey'] = candidates[0]
             continue
         group_prefix = group.split('.')[0] if group else None
+        pool = candidates
         if group_prefix:
             preferred = [k for k in candidates if k.startswith(group_prefix + '.')]
             if preferred:
-                r['definitionKey'] = preferred[0]
+                pool = preferred
+        # Prefer the definition whose dot-segments contain the resource version.
+        if version:
+            ver_match = [k for k in pool if version in k.split('.')]
+            if ver_match:
+                r['definitionKey'] = ver_match[0]
                 continue
-        r['definitionKey'] = candidates[0]
+        r['definitionKey'] = pool[0]
+
     existing['resources'] = resources
     index_yaml.write_text(
         yaml.dump(existing, Dumper=_NoAnchorDumper, default_flow_style=False, sort_keys=False, allow_unicode=True)

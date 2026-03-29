@@ -48,7 +48,14 @@
           "$ref": "#/definitions/io.argoproj.v1alpha1.AppProjectStatus"
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "argoproj.io",
+          "kind": "AppProject",
+          "version": "v1alpha1"
+        }
+      ]
     },
     "io.argoproj.v1alpha1.AppProjectSpec": {
       "description": "AppProjectSpec is the specification of an AppProject",
@@ -207,7 +214,14 @@
           "$ref": "#/definitions/io.argoproj.v1alpha1.ApplicationStatus"
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "argoproj.io",
+          "kind": "Application",
+          "version": "v1alpha1"
+        }
+      ]
     },
     "io.argoproj.v1alpha1.ApplicationCondition": {
       "description": "ApplicationCondition contains details about an application condition, which is usually an error or warning",
@@ -348,7 +362,14 @@
           "$ref": "#/definitions/io.argoproj.v1alpha1.ApplicationSetStatus"
         }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "argoproj.io",
+          "kind": "ApplicationSet",
+          "version": "v1alpha1"
+        }
+      ]
     },
     "io.argoproj.v1alpha1.ApplicationSetApplicationStatus": {
       "description": "ApplicationSetApplicationStatus contains details about each Application managed by the ApplicationSet",

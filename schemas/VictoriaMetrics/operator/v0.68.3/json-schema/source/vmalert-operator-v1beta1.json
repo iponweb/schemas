@@ -29,5 +29,12 @@
     }
   },
   "additionalProperties": false,
-  "$schema": "http://json-schema.org/schema#"
+  "$schema": "http://json-schema.org/schema#",
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "operator.victoriametrics.com",
+      "kind": "VMAlert",
+      "version": "v1beta1"
+    }
+  ]
 }

@@ -7,6 +7,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "karpenter.k8s.aws/v1beta1"
       ]
     },
     "kind": {
@@ -14,6 +17,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "EC2NodeClass"
       ]
     },
     "metadata": {
@@ -29,6 +35,13 @@
       "$ref": "_definitions.json#/definitions/aws.k8s.karpenter.v1beta1.EC2NodeClassStatus"
     }
   },
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "karpenter.k8s.aws",
+      "kind": "EC2NodeClass",
+      "version": "v1beta1"
+    }
+  ],
   "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }

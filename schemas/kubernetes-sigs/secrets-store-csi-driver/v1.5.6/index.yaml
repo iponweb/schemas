@@ -16,10 +16,10 @@ resources:
   version: v1alpha1
   plural: secretproviderclasses
   scope: Namespaced
-  definitionKey: io.x-k8s.csi.secrets-store.v1.SecretProviderClass
+  definitionKey: io.x-k8s.csi.secrets-store.v1alpha1.SecretProviderClass
 - kind: SecretProviderClassPodStatus
   group: secrets-store.csi.x-k8s.io
   version: v1alpha1
   plural: secretproviderclasspodstatuses
   scope: Namespaced
-  definitionKey: io.x-k8s.csi.secrets-store.v1.SecretProviderClassPodStatus
+  definitionKey: io.x-k8s.csi.secrets-store.v1alpha1.SecretProviderClassPodStatus

@@ -30,5 +30,12 @@
     }
   },
   "additionalProperties": false,
-  "$schema": "http://json-schema.org/schema#"
+  "$schema": "http://json-schema.org/schema#",
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "monitoring.coreos.com",
+      "kind": "PrometheusRule",
+      "version": "v1"
+    }
+  ]
 }

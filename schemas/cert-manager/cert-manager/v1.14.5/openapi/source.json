@@ -419,7 +419,7 @@
       }
     },
     "io.cert-manager.acme.v1.ACMEIssuerDNS01ProviderAkamai": {
-      "description": "ACMEIssuerDNS01ProviderAkamai is a structure containing the DNS configuration for Akamai DNS—Zone Record Management API",
+      "description": "ACMEIssuerDNS01ProviderAkamai is a structure containing the DNS configuration for Akamai DNS\u2014Zone Record Management API",
       "type": "object",
       "required": [
         "serviceConsumerDomain",
@@ -549,7 +549,7 @@
       ],
       "properties": {
         "nameserver": {
-          "description": "The IP address or hostname of an authoritative DNS server supporting RFC2136 in the form host:port. If the host is an IPv6 address it must be enclosed in square brackets (e.g [2001:db8::1]) ; port is optional. This field is required.",
+          "description": "The IP address or hostname of an authoritative DNS server supporting RFC2136 in the form host:port. If the host is an IPv6 address it must be enclosed in square brackets (e.g [2001:db8::1])\u00a0; port is optional. This field is required.",
           "type": "string",
           "default": ""
         },
@@ -716,7 +716,14 @@
           "default": {},
           "$ref": "#/definitions/io.cert-manager.acme.v1.ChallengeStatus"
         }
-      }
+      },
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "acme.cert-manager.io",
+          "kind": "Challenge",
+          "version": "v1"
+        }
+      ]
     },
     "io.cert-manager.acme.v1.ChallengeSpec": {
       "type": "object",
@@ -747,7 +754,7 @@
           "$ref": "#/definitions/io.cert-manager.v1.ObjectReference"
         },
         "key": {
-          "description": "The ACME challenge key for this challenge For HTTP01 challenges, this is the value that must be responded with to complete the HTTP01 challenge in the format: `\u003cprivate key JWK thumbprint\u003e.\u003ckey from acme server for challenge\u003e`. For DNS01 challenges, this is the base64 encoded SHA256 sum of the `\u003cprivate key JWK thumbprint\u003e.\u003ckey from acme server for challenge\u003e` text that must be set as the TXT record content.",
+          "description": "The ACME challenge key for this challenge For HTTP01 challenges, this is the value that must be responded with to complete the HTTP01 challenge in the format: `<private key JWK thumbprint>.<key from acme server for challenge>`. For DNS01 challenges, this is the base64 encoded SHA256 sum of the `<private key JWK thumbprint>.<key from acme server for challenge>` text that must be set as the TXT record content.",
           "type": "string",
           "default": ""
         },
@@ -829,7 +836,14 @@
           "default": {},
           "$ref": "#/definitions/io.cert-manager.acme.v1.OrderStatus"
         }
-      }
+      },
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "acme.cert-manager.io",
+          "kind": "Order",
+          "version": "v1"
+        }
+      ]
     },
     "io.cert-manager.acme.v1.OrderSpec": {
       "type": "object",
@@ -976,7 +990,14 @@
           "default": {},
           "$ref": "#/definitions/io.cert-manager.v1.CertificateStatus"
         }
-      }
+      },
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "cert-manager.io",
+          "kind": "Certificate",
+          "version": "v1"
+        }
+      ]
     },
     "io.cert-manager.v1.CertificateAdditionalOutputFormat": {
       "description": "CertificateAdditionalOutputFormat defines an additional output format of a Certificate resource. These contain supplementary data formats of the signed certificate chain and paired private key.",
@@ -1093,7 +1114,14 @@
           "default": {},
           "$ref": "#/definitions/io.cert-manager.v1.CertificateRequestStatus"
         }
-      }
+      },
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "cert-manager.io",
+          "kind": "CertificateRequest",
+          "version": "v1"
+        }
+      ]
     },
     "io.cert-manager.v1.CertificateRequestCondition": {
       "description": "CertificateRequestCondition contains condition information for a CertificateRequest.",
@@ -1447,7 +1475,14 @@
           "default": {},
           "$ref": "#/definitions/io.cert-manager.v1.IssuerStatus"
         }
-      }
+      },
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "cert-manager.io",
+          "kind": "ClusterIssuer",
+          "version": "v1"
+        }
+      ]
     },
     "io.cert-manager.v1.Issuer": {
       "description": "An Issuer represents a certificate issuing authority which can be referenced as part of `issuerRef` fields. It is scoped to a single namespace and can therefore only be referenced by resources within the same namespace.",
@@ -1478,7 +1513,14 @@
           "default": {},
           "$ref": "#/definitions/io.cert-manager.v1.IssuerStatus"
         }
-      }
+      },
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "cert-manager.io",
+          "kind": "Issuer",
+          "version": "v1"
+        }
+      ]
     },
     "io.cert-manager.v1.IssuerCondition": {
       "description": "IssuerCondition contains condition information for an Issuer.",
@@ -2147,7 +2189,7 @@
       }
     },
     "io.k8s.api.core.v1.PodAffinityTerm": {
-      "description": "Defines a set of pods (namely those matching the labelSelector relative to the given namespace(s)) that this pod should be co-located (affinity) or not co-located (anti-affinity) with, where co-located is defined as running on a node whose value of the label with key \u003ctopologyKey\u003e matches that of any node on which a pod of the set of pods is running",
+      "description": "Defines a set of pods (namely those matching the labelSelector relative to the given namespace(s)) that this pod should be co-located (affinity) or not co-located (anti-affinity) with, where co-located is defined as running on a node whose value of the label with key <topologyKey> matches that of any node on which a pod of the set of pods is running",
       "type": "object",
       "required": [
         "topologyKey"
@@ -2238,7 +2280,7 @@
       }
     },
     "io.k8s.api.core.v1.Toleration": {
-      "description": "The pod this Toleration is attached to tolerates any taint that matches the triple \u003ckey,value,effect\u003e using the matching operator \u003coperator\u003e.",
+      "description": "The pod this Toleration is attached to tolerates any taint that matches the triple <key,value,effect> using the matching operator <operator>.",
       "type": "object",
       "properties": {
         "effect": {
@@ -2302,7 +2344,7 @@
       "type": "string"
     },
     "io.k8s.apimachinery.pkg.apis.meta.v1.FieldsV1": {
-      "description": "FieldsV1 stores a set of fields in a data structure like a Trie, in JSON format.\n\nEach key is either a '.' representing the field itself, and will always map to an empty set, or a string representing a sub-field or item. The string will follow one of these four formats: 'f:\u003cname\u003e', where \u003cname\u003e is the name of a field in a struct, or key in a map 'v:\u003cvalue\u003e', where \u003cvalue\u003e is the exact json formatted value of a list item 'i:\u003cindex\u003e', where \u003cindex\u003e is position of a item in a list 'k:\u003ckeys\u003e', where \u003ckeys\u003e is a map of  a list item's key fields to their unique values If a key maps to an empty Fields value, the field that key represents is part of the set.\n\nThe exact format is defined in sigs.k8s.io/structured-merge-diff",
+      "description": "FieldsV1 stores a set of fields in a data structure like a Trie, in JSON format.\n\nEach key is either a '.' representing the field itself, and will always map to an empty set, or a string representing a sub-field or item. The string will follow one of these four formats: 'f:<name>', where <name> is the name of a field in a struct, or key in a map 'v:<value>', where <value> is the exact json formatted value of a list item 'i:<index>', where <index> is position of a item in a list 'k:<keys>', where <keys> is a map of  a list item's key fields to their unique values If a key maps to an empty Fields value, the field that key represents is part of the set.\n\nThe exact format is defined in sigs.k8s.io/structured-merge-diff",
       "type": "object"
     },
     "io.k8s.apimachinery.pkg.apis.meta.v1.LabelSelector": {
@@ -2548,11 +2590,11 @@
           "default": ""
         },
         "namespace": {
-          "description": "Namespace is the namespace of the referent. When unspecified, this refers to the local namespace of the Route.\n\nNote that there are specific rules for ParentRefs which cross namespace boundaries. Cross-namespace references are only valid if they are explicitly allowed by something in the namespace they are referring to. For example: Gateway has the AllowedRoutes field, and ReferenceGrant provides a generic way to enable any other kind of cross-namespace reference.\n\n\u003cgateway:experimental:description\u003e ParentRefs from a Route to a Service in the same namespace are \"producer\" routes, which apply default routing rules to inbound connections from any namespace to the Service.\n\nParentRefs from a Route to a Service in a different namespace are \"consumer\" routes, and these routing rules are only applied to outbound connections originating from the same namespace as the Route, for which the intended destination of the connections are a Service targeted as a ParentRef of the Route. \u003c/gateway:experimental:description\u003e\n\nSupport: Core",
+          "description": "Namespace is the namespace of the referent. When unspecified, this refers to the local namespace of the Route.\n\nNote that there are specific rules for ParentRefs which cross namespace boundaries. Cross-namespace references are only valid if they are explicitly allowed by something in the namespace they are referring to. For example: Gateway has the AllowedRoutes field, and ReferenceGrant provides a generic way to enable any other kind of cross-namespace reference.\n\n<gateway:experimental:description> ParentRefs from a Route to a Service in the same namespace are \"producer\" routes, which apply default routing rules to inbound connections from any namespace to the Service.\n\nParentRefs from a Route to a Service in a different namespace are \"consumer\" routes, and these routing rules are only applied to outbound connections originating from the same namespace as the Route, for which the intended destination of the connections are a Service targeted as a ParentRef of the Route. </gateway:experimental:description>\n\nSupport: Core",
           "type": "string"
         },
         "port": {
-          "description": "Port is the network port this Route targets. It can be interpreted differently based on the type of parent resource.\n\nWhen the parent resource is a Gateway, this targets all listeners listening on the specified port that also support this kind of Route(and select this Route). It's not recommended to set `Port` unless the networking behaviors specified in a Route must apply to a specific port as opposed to a listener(s) whose port(s) may be changed. When both Port and SectionName are specified, the name and port of the selected listener must match both specified values.\n\n\u003cgateway:experimental:description\u003e When the parent resource is a Service, this targets a specific port in the Service spec. When both Port (experimental) and SectionName are specified, the name and port of the selected port must match both specified values. \u003c/gateway:experimental:description\u003e\n\nImplementations MAY choose to support other parent resources. Implementations supporting other types of parent resources MUST clearly document how/if Port is interpreted.\n\nFor the purpose of status, an attachment is considered successful as long as the parent resource accepts it partially. For example, Gateway listeners can restrict which Routes can attach to them by Route kind, namespace, or hostname. If 1 of 2 Gateway listeners accept attachment from the referencing Route, the Route MUST be considered successfully attached. If no Gateway listeners accept attachment from this Route, the Route MUST be considered detached from the Gateway.\n\nSupport: Extended\n\n\u003cgateway:experimental\u003e",
+          "description": "Port is the network port this Route targets. It can be interpreted differently based on the type of parent resource.\n\nWhen the parent resource is a Gateway, this targets all listeners listening on the specified port that also support this kind of Route(and select this Route). It's not recommended to set `Port` unless the networking behaviors specified in a Route must apply to a specific port as opposed to a listener(s) whose port(s) may be changed. When both Port and SectionName are specified, the name and port of the selected listener must match both specified values.\n\n<gateway:experimental:description> When the parent resource is a Service, this targets a specific port in the Service spec. When both Port (experimental) and SectionName are specified, the name and port of the selected port must match both specified values. </gateway:experimental:description>\n\nImplementations MAY choose to support other parent resources. Implementations supporting other types of parent resources MUST clearly document how/if Port is interpreted.\n\nFor the purpose of status, an attachment is considered successful as long as the parent resource accepts it partially. For example, Gateway listeners can restrict which Routes can attach to them by Route kind, namespace, or hostname. If 1 of 2 Gateway listeners accept attachment from the referencing Route, the Route MUST be considered successfully attached. If no Gateway listeners accept attachment from this Route, the Route MUST be considered detached from the Gateway.\n\nSupport: Extended\n\n<gateway:experimental>",
           "type": "integer",
           "format": "int32"
         },

@@ -219,11 +219,17 @@
       "properties": {
         "apiVersion": {
           "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
-          "type": "string"
+          "type": "string",
+          "enum": [
+            "karpenter.k8s.aws/v1"
+          ]
         },
         "kind": {
           "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
-          "type": "string"
+          "type": "string",
+          "enum": [
+            "EC2NodeClass"
+          ]
         },
         "metadata": {
           "default": {},
@@ -238,6 +244,13 @@
           "$ref": "#/definitions/aws.k8s.karpenter.v1.EC2NodeClassStatus"
         }
       },
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "karpenter.k8s.aws",
+          "kind": "EC2NodeClass",
+          "version": "v1"
+        }
+      ],
       "additionalProperties": false
     },
     "aws.k8s.karpenter.v1.EC2NodeClassSpec": {
@@ -988,11 +1001,17 @@
       "properties": {
         "apiVersion": {
           "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
-          "type": "string"
+          "type": "string",
+          "enum": [
+            "karpenter.sh/v1"
+          ]
         },
         "kind": {
           "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
-          "type": "string"
+          "type": "string",
+          "enum": [
+            "NodeClaim"
+          ]
         },
         "metadata": {
           "default": {},
@@ -1007,6 +1026,13 @@
           "$ref": "#/definitions/sh.karpenter.v1.NodeClaimStatus"
         }
       },
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "karpenter.sh",
+          "kind": "NodeClaim",
+          "version": "v1"
+        }
+      ],
       "additionalProperties": false
     },
     "sh.karpenter.v1.NodeClaimSpec": {
@@ -1205,11 +1231,17 @@
       "properties": {
         "apiVersion": {
           "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
-          "type": "string"
+          "type": "string",
+          "enum": [
+            "karpenter.sh/v1"
+          ]
         },
         "kind": {
           "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
-          "type": "string"
+          "type": "string",
+          "enum": [
+            "NodePool"
+          ]
         },
         "metadata": {
           "default": {},
@@ -1224,6 +1256,13 @@
           "$ref": "#/definitions/sh.karpenter.v1.NodePoolStatus"
         }
       },
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "karpenter.sh",
+          "kind": "NodePool",
+          "version": "v1"
+        }
+      ],
       "additionalProperties": false
     },
     "sh.karpenter.v1.NodePoolSpec": {
@@ -1383,11 +1422,17 @@
       "properties": {
         "apiVersion": {
           "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
-          "type": "string"
+          "type": "string",
+          "enum": [
+            "karpenter.sh/v1alpha1"
+          ]
         },
         "kind": {
           "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
-          "type": "string"
+          "type": "string",
+          "enum": [
+            "NodeOverlay"
+          ]
         },
         "metadata": {
           "default": {},
@@ -1402,6 +1447,13 @@
           "$ref": "#/definitions/sh.karpenter.v1alpha1.NodeOverlayStatus"
         }
       },
+      "x-kubernetes-group-version-kind": [
+        {
+          "group": "karpenter.sh",
+          "kind": "NodeOverlay",
+          "version": "v1alpha1"
+        }
+      ],
       "additionalProperties": false
     },
     "sh.karpenter.v1alpha1.NodeOverlaySpec": {

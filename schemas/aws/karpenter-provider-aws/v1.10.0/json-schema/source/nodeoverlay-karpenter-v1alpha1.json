@@ -9,6 +9,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "karpenter.sh/v1alpha1"
       ]
     },
     "kind": {
@@ -16,6 +19,9 @@
       "type": [
         "string",
         "null"
+      ],
+      "enum": [
+        "NodeOverlay"
       ]
     },
     "metadata": {
@@ -31,6 +37,13 @@
       "$ref": "_definitions.json#/definitions/sh.karpenter.v1alpha1.NodeOverlayStatus"
     }
   },
+  "x-kubernetes-group-version-kind": [
+    {
+      "group": "karpenter.sh",
+      "kind": "NodeOverlay",
+      "version": "v1alpha1"
+    }
+  ],
   "additionalProperties": false,
   "$schema": "http://json-schema.org/schema#"
 }
