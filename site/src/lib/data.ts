@@ -180,7 +180,7 @@ export function getVersionDiff(
   const newResources = getResources(org, repo, versionNew)
   const oldResources = getResources(org, repo, versionOld)
 
-  const toKey = (r: Resource) => `${r.group}/${r.kind}`
+  const toKey = (r: Resource) => `${r.group}/${r.kind}/${r.version}`
 
   const oldMap = new Map(oldResources.map(r => [toKey(r), r]))
   const newMap = new Map(newResources.map(r => [toKey(r), r]))
@@ -480,8 +480,10 @@ export function getResourceAssets(
   let definitionKey: string | null = null
   if (existsSync(indexPath)) {
     try {
-      const idx = readYaml(indexPath) as { resources?: Array<{ kind: string; group: string; definitionKey?: string }> }
-      const match = idx?.resources?.find(r => r.kind === kind && (r.group ?? '') === (group ?? ''))
+      const idx = readYaml(indexPath) as { resources?: Array<{ kind: string; group: string; version: string; definitionKey?: string }> }
+      const match = idx?.resources?.find(
+        r => r.kind === kind && (r.group ?? '') === (group ?? '') && r.version === apiVersion
+      ) ?? idx?.resources?.find(r => r.kind === kind && (r.group ?? '') === (group ?? ''))
       definitionKey = match?.definitionKey ?? null
     } catch { /* ignore */ }
   }
@@ -502,6 +504,47 @@ export function getResourceAssets(
     crdFile:           group ? check(`crd/${plural}.${group}.yaml`) : null,
     githubTree:        `https://github.com/iponweb/schemas/tree/main/schemas/${org}/${repo}/${version}`,
   }
+}
+
+/**
+ * Compare schemas for two API versions of the same CRD (e.g. v1 vs v1beta1)
+ * within the same controller release. Returns field-level diff.
+ */
+export function getApiVersionComparison(
+  org: string,
+  repo: string,
+  controllerVersion: string,
+  plural: string,
+  group: string,
+  apiVersionA: string,
+  apiVersionB: string,
+): { added: string[]; removed: string[]; changed: string[] } {
+  const schemA = getResourceSchema(org, repo, controllerVersion, plural, group, apiVersionA)
+  const schemB = getResourceSchema(org, repo, controllerVersion, plural, group, apiVersionB)
+  if (!schemA || !schemB) return { added: [], removed: [], changed: [] }
+
+  const flatA = flattenSchemaToMap(schemA, {})
+  const flatB = flattenSchemaToMap(schemB, {})
+
+  const added: string[] = []
+  const removed: string[] = []
+  const changed: string[] = []
+
+  for (const [key, valA] of flatA) {
+    if (!flatB.has(key)) {
+      removed.push(key)
+    } else {
+      const valB = flatB.get(key)!
+      if (valB.description !== valA.description) {
+        changed.push(key)
+      }
+    }
+  }
+  for (const [key] of flatB) {
+    if (!flatA.has(key)) added.push(key)
+  }
+
+  return { added, removed, changed }
 }
 
 export function getControllerIconFile(

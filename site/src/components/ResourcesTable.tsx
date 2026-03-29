@@ -70,7 +70,7 @@ export default function ResourcesTable({ resources, base, org, repo, version }: 
                     <td class="px-4 py-3">
                       <div class="flex items-center gap-2">
                         <a
-                          href={`${base}/${org}/${repo}/${version}/${resource.group || 'core'}/${resource.kind}/`}
+                          href={`${base}/${org}/${repo}/${version}/${resource.group || 'core'}/${resource.version}/${resource.kind}/`}
                           class="font-mono font-semibold text-violet-700 hover:text-violet-900 transition-colors"
                         >
                           {resource.kind}

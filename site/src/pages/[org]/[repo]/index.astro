@@ -166,7 +166,7 @@ const versionInfos = ctrl.versions.map((version, i) => {
                     <td class="px-4 py-3">
                       <div class="flex items-center gap-2">
                         <a
-                          href={`${base}/${org}/${repo}/${latestVersion}/${resource.group || 'core'}/${resource.kind}/`}
+                          href={`${base}/${org}/${repo}/${latestVersion}/${resource.group || 'core'}/${resource.version}/${resource.kind}/`}
                           class="font-mono font-medium text-violet-700 hover:text-violet-900 transition-colors"
                         >
                           {resource.kind}

@@ -1,16 +1,16 @@
 ---
-import Layout from '../../../../../layouts/Layout.astro'
-import PropertyTree from '../../../../../components/PropertyTree'
-import ChangeHistory from '../../../../../components/ChangeHistory'
-import FileBadge from '../../../../../components/FileBadge.astro'
-import { getAllControllers, getResources, getResourceSchema, getResourceSchemaFromDefinitions, getDefinitions, getChangeHistory, getResourceAssets, getControllerMeta } from '../../../../../lib/data'
-import type { ChangeHistoryEntry } from '../../../../../lib/data'
+import Layout from '../../../../../../layouts/Layout.astro'
+import PropertyTree from '../../../../../../components/PropertyTree'
+import ChangeHistory from '../../../../../../components/ChangeHistory'
+import FileBadge from '../../../../../../components/FileBadge.astro'
+import { getAllControllers, getResources, getResourceSchema, getResourceSchemaFromDefinitions, getDefinitions, getChangeHistory, getResourceAssets, getControllerMeta, getApiVersionComparison } from '../../../../../../lib/data'
+import type { ChangeHistoryEntry } from '../../../../../../lib/data'
 import type { GetStaticPaths } from 'astro'
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const controllers = getAllControllers()
   const paths: {
-    params: { org: string; repo: string; version: string; group: string; kind: string }
+    params: { org: string; repo: string; version: string; group: string; kind: string; apiVersion: string }
     props: object
   }[] = []
 
@@ -20,7 +20,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
     for (const version of ctrl.versions) {
       const resources = getResources(ctrl.org, ctrl.repo, version)
       for (const resource of resources) {
-        const cacheKey = `${ctrl.org}/${ctrl.repo}/${resource.group}/${resource.kind}`
+        const cacheKey = `${ctrl.org}/${ctrl.repo}/${resource.group}/${resource.kind}/${resource.version}`
         let changeHistory: ChangeHistoryEntry[]
         if (historyCache.has(cacheKey)) {
           changeHistory = historyCache.get(cacheKey)!
@@ -36,6 +36,12 @@ export const getStaticPaths: GetStaticPaths = async () => {
           )
           historyCache.set(cacheKey, changeHistory)
         }
+
+        // Find all resources with same kind+group in this controller version (sibling API versions)
+        const siblings = resources.filter(
+          r => r.kind === resource.kind && (r.group || '') === (resource.group || '') && r.version !== resource.version
+        )
+
         paths.push({
           params: {
             org: ctrl.org,
@@ -43,8 +49,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
             version,
             group: resource.group || 'core',
             kind: resource.kind,
+            apiVersion: resource.version,
           },
-          props: { resource, ctrl, changeHistory },
+          props: { resource, ctrl, changeHistory, siblings },
         })
       }
     }
@@ -52,18 +59,19 @@ export const getStaticPaths: GetStaticPaths = async () => {
   return paths
 }
 
-const { resource, ctrl, changeHistory } = Astro.props as {
-  resource: import('../../../../../lib/types').Resource
-  ctrl: import('../../../../../lib/types').Controller
+const { resource, ctrl, changeHistory, siblings } = Astro.props as {
+  resource: import('../../../../../../lib/types').Resource
+  ctrl: import('../../../../../../lib/types').Controller
   changeHistory: ChangeHistoryEntry[]
+  siblings: import('../../../../../../lib/types').Resource[]
 }
-const { org, repo, version, group } = Astro.params
+const { org, repo, version, group, apiVersion } = Astro.params
 const label = repo.charAt(0).toUpperCase() + repo.slice(1)
 const base = import.meta.env.BASE_URL.replace(/\/$/, '')
 
 // Try to get schema from CRD, then fall back to definitions (for kubernetes/)
 let schema = null
-let definitions: Record<string, import('../../../../../lib/types').SchemaProperty> = {}
+let definitions: Record<string, import('../../../../../../lib/types').SchemaProperty> = {}
 const isKubernetes = org === 'kubernetes' && repo === 'kubernetes'
 
 if (!isKubernetes) {
@@ -86,6 +94,26 @@ const nextVersion = (() => {
 
 const resourceAssets = getResourceAssets(org, repo, version, resource.kind, resource.group, resource.version, resource.plural)
 const meta = getControllerMeta(org, repo)
+
+// Cross-API-version comparisons (only for CRD-based controllers, not kubernetes/)
+const apiVersionComparisons: Array<{
+  apiVersion: string
+  added: string[]
+  removed: string[]
+  changed: string[]
+}> = []
+
+if (!isKubernetes && siblings.length > 0) {
+  for (const sibling of siblings) {
+    const comp = getApiVersionComparison(
+      org, repo, version,
+      resource.plural, resource.group,
+      resource.version,   // current
+      sibling.version,    // compare against
+    )
+    apiVersionComparisons.push({ apiVersion: sibling.version, ...comp })
+  }
+}
 ---
 
 <Layout
@@ -95,7 +123,7 @@ const meta = getControllerMeta(org, repo)
     { label: org, href: `${base}/` },
     { label: repo, href: `${base}/${org}/${repo}/` },
     { label: version, href: `${base}/${org}/${repo}/${version}/` },
-    { label: resource.kind, href: `${base}/${org}/${repo}/${version}/${group}/${resource.kind}/` },
+    { label: resource.kind, href: `${base}/${org}/${repo}/${version}/${group}/${resource.version}/${resource.kind}/` },
   ]}
 >
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -120,6 +148,25 @@ const meta = getControllerMeta(org, repo)
               </span>
             )}
           </div>
+
+          {/* API version tabs — only shown when siblings exist */}
+          {siblings.length > 0 && (
+            <div class="flex flex-wrap gap-1.5 mb-2">
+              {[resource, ...siblings].sort((a, b) => a.version.localeCompare(b.version)).map(r => (
+                <a
+                  href={`${base}/${org}/${repo}/${version}/${group}/${r.version}/${resource.kind}/`}
+                  class={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium font-mono transition-colors ${
+                    r.version === resource.version
+                      ? 'bg-violet-600 text-white'
+                      : 'bg-zinc-100 text-zinc-600 hover:bg-violet-100 hover:text-violet-700'
+                  }`}
+                >
+                  {r.version}
+                </a>
+              ))}
+            </div>
+          )}
+
           <h1 class="text-3xl font-bold text-zinc-900 font-mono mb-2">{resource.kind}</h1>
           <div class="flex flex-wrap gap-3 text-sm text-zinc-500">
             <span class="font-mono">
@@ -154,7 +201,7 @@ const meta = getControllerMeta(org, repo)
         <div class="flex gap-2">
           {prevVersion && (
             <a
-              href={`${base}/${org}/${repo}/${prevVersion}/${group}/${resource.kind}/`}
+              href={`${base}/${org}/${repo}/${prevVersion}/${group}/${resource.version}/${resource.kind}/`}
               class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs bg-zinc-100 text-zinc-600 hover:bg-zinc-200 rounded-lg transition-colors font-mono"
             >
               ← {prevVersion}
@@ -162,7 +209,7 @@ const meta = getControllerMeta(org, repo)
           )}
           {nextVersion && (
             <a
-              href={`${base}/${org}/${repo}/${nextVersion}/${group}/${resource.kind}/`}
+              href={`${base}/${org}/${repo}/${nextVersion}/${group}/${resource.version}/${resource.kind}/`}
               class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs bg-zinc-100 text-zinc-600 hover:bg-zinc-200 rounded-lg transition-colors font-mono"
             >
               {nextVersion} →
@@ -417,6 +464,49 @@ const meta = getControllerMeta(org, repo)
         </div>
       </div>
     )}
+
+    {/* Cross-API-version comparison sections */}
+    {apiVersionComparisons.filter(c => c.added.length > 0 || c.removed.length > 0 || c.changed.length > 0).map(comp => (
+      <div class="mt-8 bg-white border border-zinc-200 rounded-xl shadow-sm overflow-hidden">
+        <div class="bg-zinc-50 border-b border-zinc-200 px-6 py-4">
+          <h2 class="text-base font-semibold text-zinc-700">
+            Differences vs <span class="font-mono text-violet-700">{comp.apiVersion}</span>
+          </h2>
+        </div>
+        <div class="p-4 space-y-3">
+          {comp.added.length > 0 && (
+            <div>
+              <div class="text-xs font-semibold text-emerald-700 mb-1.5">Added in {resource.version}</div>
+              <div class="flex flex-wrap gap-1.5">
+                {comp.added.map(f => (
+                  <span class="inline-flex items-center gap-1 text-xs font-mono bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded border border-emerald-200">+{f}</span>
+                ))}
+              </div>
+            </div>
+          )}
+          {comp.removed.length > 0 && (
+            <div>
+              <div class="text-xs font-semibold text-rose-700 mb-1.5">Removed in {resource.version}</div>
+              <div class="flex flex-wrap gap-1.5">
+                {comp.removed.map(f => (
+                  <span class="inline-flex items-center gap-1 text-xs font-mono bg-rose-50 text-rose-700 px-2 py-0.5 rounded border border-rose-200">-{f}</span>
+                ))}
+              </div>
+            </div>
+          )}
+          {comp.changed.length > 0 && (
+            <div>
+              <div class="text-xs font-semibold text-amber-700 mb-1.5">Changed between versions</div>
+              <div class="flex flex-wrap gap-1.5">
+                {comp.changed.map(f => (
+                  <span class="inline-flex items-center gap-1 text-xs font-mono bg-amber-50 text-amber-700 px-2 py-0.5 rounded border border-amber-200">~{f}</span>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+    ))}
 
     {changeHistory.length > 0 && (
       <div class="mt-8">
